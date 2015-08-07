@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Mock Interviews</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Condensed:400,700'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="template/css/bootstrap.css">
+    <link rel="stylesheet" href="libraries/font-awesome-4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="template/css/flexslider.css">
+    <link rel="stylesheet" href="template/css/style.css">
+    <link rel="stylesheet" href="template/css/custom.css">
+    <link rel="stylesheet" href="template/css/responsive.css">
+    <!--[if IE 9]>
+    <script src="template/js/media.match.min.js"></script>
+    <![endif]-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="main-wrapper">
+    <div id="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 page-content">
+                    <div class="white-container candidates-search">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h5 class="mt5 mb0">Search Advisors</h5>
+                            </div>
+                            <div class="col-sm-6">
+                                <input id="searchKey" type="text" class="form-control" placeholder="Search Advisors"/>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <button id="searchAdvisorBtn" class="btn btn-primary" type="button">Search</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div id="searchAdvisorResult" class="col-md-12"></div>
+                    </div>
+                    <div class="row">
+                        <div id="pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="template/js/jquery.ba-outside-events.min.js"></script>
+<script src="template/js/jquery.responsive-tabs.js"></script>
+<script src="template/js/jquery.flexslider-min.js"></script>
+<script src="template/js/jquery.fitvids.js"></script>
+<script src="template/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="template/js/jquery.inview.min.js"></script>
+<script src="template/js/script.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/dateformat.js"></script>
+<script type="text/javascript" src="js/sha1.js"></script>
+<script type="text/javascript" src="js/library.js"></script>
+<script type="text/javascript" src="js/frontcommon.js"></script>
+<script type="text/javascript" src='js/strophe.js'></script>
+<script type="text/javascript" src="js/chat.js"></script>
+<script type="text/javascript">
+    var loc = document.location + "";
+    var BASE_URL = loc.substring(0, loc.lastIndexOf("/")) + "/";
+    $(document).ready(function () {
+        $("#searchAdvisorBtn").click(function () {
+            var searchKey = $("#searchKey").val();
+            if (searchKey == "") {
+                alert("Please enter the search term");
+                return;
+            }
+            searchAdvisors(searchKey, 1);
+        });
+
+        $("#searchKey").on("keypress", function (e) {
+            if (e.which == 13) {
+                var searchKey = $("#searchKey").val();
+                if (searchKey == "") {
+                    alert("Please enter the search term");
+                    return;
+                }
+                searchAdvisors(searchKey, 1);
+                return false;
+            }
+        });
+    });
+
+    var PAGE_SIZE = 10;
+    function searchAdvisors(searchKey, currentPage) {
+        $("#searchAdvisorResult").html("");
+        var start = ((currentPage - 1) * 10);
+        $.ajax({
+            type: "POST",
+            url: BASE_URL + "search.do",
+            data: "searchkey=" + searchKey + "&start=" + start,
+            async: false
+        }).done(function (msg) {
+            var jresponse = jQuery.parseJSON(msg);
+            var json = jresponse.JSON_DOC_LIST;
+            var resultsFound = false;
+            $.each(json, function (i) {
+                var skillsJson = json[i].skills.replace(/\[/, '').replace(/\]/, '').split(",");
+                var mySkills = '';
+                for (var j = 0; j < (skillsJson.length < 5 ? skillsJson.length : 5); j++) {
+                    mySkills = mySkills + skillsJson[j] + ",";
+                }
+                if (mySkills.length > 0) mySkills = mySkills.substring(0, mySkills.length - 1);
+                var myEducation = '';
+                if (json[i].school != null) {
+                    var schoolJson = json[i].school.replace(/\[/, '').replace(/\]/, '').split(",");
+                    var degreeJson = json[i].degree.replace(/\[/, '').replace(/\]/, '').split(",");
+                    var fieldofstudyJson = json[i].fieldofstudy.replace(/\[/, '').replace(/\]/, '').split(",");
+                    myEducation = '<i class="fa fa-graduation-cap"></i><span class="ml5">';
+                    for (var j = 0; j < (schoolJson.length < 3 ? schoolJson.length : 2); j++) {
+                        myEducation = myEducation + '<span class="ml5"><b>' + schoolJson[j] + "</b> " + degreeJson[j] + ' - ' + fieldofstudyJson[j] + ' </span>';
+                    }
+                    myEducation += "</span>";
+                }
+
+                var myPositions = '<span class="ml5">';
+                if (json[i].position != null) {
+                    var compJson = json[i].companies.replace(/\[/, '').replace(/\]/, '').split(",");
+                    var posJson = json[i].position.replace(/\[/, '').replace(/\]/, '').split(",");
+                    for (var j = 0; j < (compJson.length < 3 ? compJson.length : 2); j++) {
+                        myPositions = myPositions + '<span><b>' + compJson[j] + '</b>, ' + posJson[j] + '</span><br/>';
+                    }
+                    myPositions += "</span>";
+                }
+                var status = "";
+                /*if(json[i].additional.online == "0")    
+                 status = "red.png";
+                 else
+                 status = "green.png";*/
+                var profilepic = "images/face.jpg";
+                /*if("" != json[i].additional.profilepic){
+                 profilepic = json[i].additional.profilepic;
+                 }*/
+                /*var searchItem = '<div class="panel panel-default  interviewerresult" uname="'+json[i].username+'">'+
+                 '<div class="panel-body">'+
+                 '<div class="row">'+
+                 '<div class="col-md-3">'+
+                 '<div style="position: relative; left: 0; top: 0;">'+
+                 '   <img style="position: relative; top: 0; left: 0;" class="img-responsive img-hover" src="'+profilepic+'" width="110px" height="110px" alt="">'+
+                 '<img src="images/'+status+'" width="18px" height="18px"  style="position: absolute; top: 5px; left: 90px;"/>'+
+                 '</div> '+
+                 //'   <span style="margin:0px 0px 0px 18px;">'+getStarView(json[i].additional.rating)+
+                 '   </span>'+
+                 '</div>'+
+                 '<div class="col-md-8" style="padding:0px">'+
+                 '   <p><i class="fa fa-user"></i>&nbsp;<a href="#">'+json[i].username+'</a></p><p><i class="fa fa-flag-checkered"></i>&nbsp; '+json[i].country+' </p><p><i class="fa fa-usd"></i>&nbsp;'+json[i].rate+'</p>'+
+                 '   <p><small><b>Skills:</b>'+mySkills+'</small></p>'+myEducation+myPositions+
+                 '</div>'+
+                 '</div>  '+
+                 '</div>'+
+                 '</div>';*/
+
+                var searchItem = '<div class="candidates-item">'
+                        + '<div class="thumb"><img src="' + profilepic + '" alt=""></div>'
+                        + '<h6 class="title"><a href="#">' + json[i].username + '</a></h6>'
+                        + '<ul class="top-btns">'
+                        + '<li><i class="fa fa-map-marker"></i> ' + json[i].country + '</li>'
+                        + '</ul>'
+                        + '<div class="content"><p class="skills"><b>Skills</b> ' + mySkills + '</p>'
+                        + '<p class="position"><i class="fa fa-suitcase"></i> ' + myPositions + '</p>'
+                        + '<p class="education">' + myEducation + '</p>'
+                        + '</div></div>';
+
+
+                $("#searchAdvisorResult").append(searchItem);
+                resultsFound = true;
+            });
+
+            if (resultsFound == false) {
+                $("#searchAdvisorResult").html("<div class='alert alert-info'>No results found.</div>");
+                $(".pagination").hide();
+            }
+
+            var totalRecords = jresponse.NUM_OF_RESULTS;
+            var html = getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, "INTERVIEWER");
+            $("#paginationdiv").html(html);
+        });
+    }
+
+    function getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, searchFor) {
+        var totalPages = Math.ceil(totalRecords / PAGE_SIZE);
+        var html = "";
+        if (totalPages > 1) {
+            html += "<ul class='pagination pull-right'>"
+            for (var i = 0; i < totalPages; i++) {
+                if (currentPage == (i + 1)) {
+                    html = html + "<li class='active'><a href='javascript:void(0)'>" + (i + 1) + "</a></li>";
+                } else {
+                    html = html + "<li class=''><a href='javascript:searchAdvisors(\"" + searchKey + "\"," + (i + 1) + ")'>" + (i + 1) + "</a></li>";
+                }
+            }
+            html += "</ul>"
+        }
+        return html;
+    }
+</script>
+</body>
+</html>

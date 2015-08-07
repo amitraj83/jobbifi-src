@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+ 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+<context:component-scan base-package="com.interview" />	
+	
+	
+	<bean id="myProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	  <property name="location" value="classpath:${plocation}"/>
+	</bean>
+	
+	<bean id="placeholderProperties"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="classpath:local.properties" />
+	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+	    <property name="ignoreUnresolvablePlaceholders" value="true" />
+	    <property name="order" value="1" />
+	</bean>
+	 
+<!--  Define Framework Services 
+	<bean id="mongoService" class="com.interview.framework.MongoService">
+		<constructor-arg type="java.lang.String" name="host" value="${mongoHost}"></constructor-arg>
+		<constructor-arg type="int" name="port" value="${mongoPort}"></constructor-arg>
+	</bean>
+  -->	  					   
+<!--  Define Framework Services Ends here-->
+	
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="WaitForTasksToCompleteOnShutdown" value="true" />
+	</bean>
+    					   
+   <bean id="dsrmiregistry" class="com.interview.rmi.DataStoreRegistry">
+	 	<constructor-arg type="java.lang.String" name="dataStoreAddress" value="${datastoreaddress}"></constructor-arg>
+		<constructor-arg type="int" name="port" value="${datastoreport}"></constructor-arg>
+	</bean>	
+   <!--
+ 	<bean id="rmiserver" class="com.interview.rmi.RmiServer">
+	 	<constructor-arg type="java.lang.String" name="host" value="${rmiServerName}"></constructor-arg>
+		<constructor-arg type="int" name="port" value="${rmiport}"></constructor-arg>
+	</bean>
+ 
+ 	 
+	<bean id="backendServerRMIClient" class="com.interview.rmi.common.BackendServerRMIClient">
+		<constructor-arg name="serverAddress" value="127.0.0.1"></constructor-arg>
+		<constructor-arg name="serverPort" value="3201"></constructor-arg>
+		<constructor-arg name="rmiServerName" value="GeneralServer"></constructor-arg>
+	</bean>
+  	 -->
+  	
+  	<!-- Define DataStore Services Ends here
+  	
+  	<bean id="baseDataStore" class="com.interview.datastore.BaseDataStore">
+  	<constructor-arg name="mongoService" ref="mongoService"></constructor-arg>
+  	</bean>
+  	-->
+  	
+  	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService"/>
+  	
+ 	<bean id="ivSpecServicebean" class="com.interview.framework.util.IVSpecService">
+  	</bean>
+  	
+  	<bean id="encryptionService" class="com.interview.framework.util.EncryptionService">
+  		<constructor-arg name="ivSpecService" ref="ivSpecServicebean"></constructor-arg>
+  	</bean>
+  	
+  	<bean id="decryptionService" class="com.interview.framework.util.DecryptionService">
+  		<constructor-arg name="ivSpecService" ref="ivSpecServicebean"></constructor-arg>
+  	</bean>
+  	
+  	<bean id="conversionService" class="com.interview.framework.util.ConversionService">
+  	</bean>
+  	
+  	
+  	
+ 	
+</beans>

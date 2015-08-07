@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   					   
+	
+	<bean id="placeholderProperties"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="classpath:local.properties" />
+	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+	    <property name="ignoreUnresolvablePlaceholders" value="true" />
+	    <property name="order" value="1" />
+	</bean>
+	
+	<bean id="services" class="com.interview.services.Services"/>	
+	<bean id="solrservice" class="com.interview.solr.SolrService">
+	 	<constructor-arg type="java.lang.String" name="host" value="${solrHost}"></constructor-arg>
+		<constructor-arg type="java.lang.String" name="port" value="${solrPort}"></constructor-arg>
+	</bean>					   
+	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService"/>
+	
+	
+ 	<bean id="rmiserver" class="com.interview.rmi.RmiServer">
+ 		<constructor-arg type="java.lang.String" name="host" value="${rmiServerName}"></constructor-arg>
+		<constructor-arg type="int" name="port" value="${rmiport}"></constructor-arg>
+	</bean>
+ 
+ 	<bean id="interviewerSearchHandler" class="com.interview.request.handlers.InterviewerSearchHandler"/>
+ 	<bean id="deleteInterviewHandler" class="com.interview.request.handlers.DeleteInterviewHandler"/>
+ 	<bean id="NorbertSearchService" class="com.interview.norbert.server.NorbertSearchServer"/>
+ 	
+ 	
+ 	
+ 	<bean id="profilesearch" class="com.interview.services.ProfileSearchImpl"/>
+ 	
+ 
+</beans>

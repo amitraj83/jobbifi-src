@@ -1,0 +1,79 @@
+/usr/bin/mongod --master --dbpath /home/sayandeep/mongofromServer/mongodb/ &
+/usr/bin/mongod --dbpath /home/sayandeep/mongofromServer/mongodb/ --replSet rs0&
+/usr/bin/mongod --master --dbpath /home/sayandeep/mongofromServer/newmongodb &
+
+cd /home/sayandeep/zookeeper/zookeeper-3.4.6/bin
+./zkServer.sh start
+
+cd /home/sayandeep/solr/example
+sudo java -jar start.jar &
+
+sudo kill -15 `ps -ef | grep DataStoreServer.jar | awk '{print $2}' `
+sudo kill -15 `ps -ef | grep BackendServer.jar | awk '{print $2}' `
+sudo kill -15 `ps -ef | grep FileServer.jar | awk '{print $2}' `
+sudo kill -15 `ps -ef | grep SearchServer.jar | awk '{print $2}' `
+sudo kill -15 `ps -ef | grep indexapp.jar | awk '{print $2}' `
+
+cd /home/sayandeep/Code/mockinterview/interview-code/framework
+./compile.sh
+cd /home/sayandeep/Code/mockinterview/interview-code/DataStoreServer/
+./compile-run.sh
+cd /home/sayandeep/Code/mockinterview/interview-code/BackendServer/
+./compile-run.sh
+cd /home/sayandeep/Code/mockinterview/interview-code/FileServer
+./compile-run.sh
+cd /home/sayandeep/Code/mockinterview/interview-code/mock-interview
+./compile-run.sh
+
+cd /home/sayandeep/Code/mockinterview/interview-code/SearchServer
+./compile-run.sh
+
+Indexapp
+cd /home/sayandeep/Code/mockinterview/interview-code/indexapp/target
+java -cp indexapp-jar-with-dependencies.jar com.interview.index.BootStrapper ../src/main/resources/local.properties
+
+
+
+
+#######################
+ DELETE SOLR DOCUMENTS 
+
+http://localhost:8983/solr/update?stream.body=%3Cdelete%3E%3Cquery%3E*:*%3C/query%3E%3C/delete%3E&commit=true
+
+#################################
+ COMMITTING TOMCAT WEBAPP TO SVN
+
+
+~/Code/jobbifi-webapp (except directories lib, classes)
+TO
+~/Code/mockinterview/interview-code/mock-interview/src/main/webapp
+
+```
+cd ~/Code/mockinterview/interview-code/mock-interview/src/main/webapp/
+svn delete --force *
+cp -r ~/Code/jobbifi-webapp/WEB-INF ~/Code/mockinterview/interview-code/mock-interview/src/main/webapp
+cp -r ~/Code/jobbifi-webapp/resources ~/Code/mockinterview/interview-code/mock-interview/src/main/webapp
+rm -rf ~/Code/mockinterview/interview-code/mock-interview/src/main/webapp/WEB-INF/lib
+rm -rf ~/Code/mockinterview/interview-code/mock-interview/src/main/webapp/WEB-INF/classes
+svn add *
+```
+
+~/Code/jobbifi-webapp (except directory WEB-INF)
+TO
+~/Code/mockinterview/interview-code/frontend/interviewbackend
+
+```
+cd ~/Code/mockinterview/interview-code/frontend/interviewbackend/
+svn delete --force *
+cp -r ~/Code/jobbifi-webapp/* ~/Code/mockinterview/interview-code/frontend/interviewbackend
+rm -rf ~/Code/mockinterview/interview-code/frontend/interviewbackend/WEB-INF
+rm -rf ~/Code/mockinterview/interview-code/frontend/interviewbackend/.git
+svn add *
+```
+
+
+#######################
+ JOBBIFI ROOT PASSWORD
+
+ pcfejpqanugx
+

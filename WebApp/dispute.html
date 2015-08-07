@@ -1,0 +1,275 @@
+<html>
+<head>
+    <script>
+        $(document).ready(function () {
+            $('#myTab a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+
+//$('#myTab a:last').tab('show')
+        });
+    </script>
+
+</head>
+<body>
+<br>
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-6 ">
+
+
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#currentdisputes" role="tab" data-toggle="tab">Current Disputes</a></li>
+            <li><a href="#createdispute" role="tab" data-toggle="tab">Create Dispute</a></li>
+            <li><a href="#closeddisputes" role="tab" data-toggle="tab">Closed Disputes</a></li>
+
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in" id="createdispute">
+                <br>
+
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Select Interview:</h4>
+                    </div>
+                    <div class="col-md-8">
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" disabled="disabled">
+
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    Action <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /input-group -->
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Upload Document:</h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+		      <span class="input-group-btn">
+			<button class="btn btn-default" type="button">Upload</button>
+		      </span>
+                        </div>
+                        <!-- /input-group -->
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Your Message:</h4>
+                    </div>
+                    <div class="col-md-8">
+
+                        <div class="input-group"><textarea class="form-control" rows="7" cols="100"></textarea></div>
+                        <!-- /input-group -->
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-8">
+                        <button type="button" class="btn btn-primary btn-lg">Create Dispute</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade in active" id="currentdisputes">
+
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <td><strong>Dispute Id</strong></td>
+                        <td><strong>Interview</strong></td>
+                        <td><strong>Dispute with</strong></td>
+                        <td><strong>Amount</strong></td>
+                        <td><strong>Result</strong></td>
+                        <td><strong>Date Closed</strong></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>#2398457</td>
+                        <td>My first interview</td>
+                        <td>Adam</td>
+                        <td>90.0</td>
+                        <td>PENDING</td>
+                        <td>23 Mar, 2013</td>
+                    </tr>
+                    <tr>
+                        <td>#2398457</td>
+                        <td>My first interview</td>
+                        <td>Adam</td>
+                        <td>90.0</td>
+                        <td>PENDING</td>
+                        <td>23 Mar, 2013</td>
+                    </tr>
+                </table>
+
+                <ol class="breadcrumb">
+                    <li><a href="#">Current Disputes</a></li>
+                    <li class="active"><a href="#">#9879</a></li>
+
+                </ol>
+
+                <h2>Interview : My First Interview</h3>
+                    <h4>Dispute Between: Amit Vs Adam (<span style="color:green;">OPEN</span>)</h4>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Panel title</h3>
+                                </div>
+                                <div class="panel-body">
+                                    Panel content
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Panel title</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <textarea type="email" class="form-control" id="exampleInputEmail1"
+                                              style="height:150px"></textarea>
+                                    <button type="button" class="btn btn-primary btn-lg pull-right">Submit Response
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Total Amount in Dispute : 90.00<br><br>Result: $00.00
+                                        paid<br><br>CLOSED</h3>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="closeddisputes">
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <td><strong>Dispute Id</strong></td>
+                        <td><strong>Interview</strong></td>
+                        <td><strong>Dispute with</strong></td>
+                        <td><strong>Amount</strong></td>
+                        <td><strong>Result</strong></td>
+                        <td><strong>Date Closed</strong></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>#2398457</td>
+                        <td>My first interview</td>
+                        <td>Adam</td>
+                        <td>90.0</td>
+                        <td>PENDING</td>
+                        <td>23 Mar, 2013</td>
+                    </tr>
+                    <tr>
+                        <td>#2398457</td>
+                        <td>My first interview</td>
+                        <td>Adam</td>
+                        <td>90.0</td>
+                        <td>PENDING</td>
+                        <td>23 Mar, 2013</td>
+                    </tr>
+                </table>
+
+                <ol class="breadcrumb">
+                    <li><a href="#">Current Disputes</a></li>
+                    <li class="active"><a href="#">#9879</a></li>
+
+                </ol>
+
+                <h2>Interview : My First Interview</h3>
+                    <h4>Dispute Between: Amit Vs Adam (<span style="color:green;">CLOSED</span>)</h4>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Panel title</h3>
+                                </div>
+                                <div class="panel-body">
+                                    Panel content
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Panel title</h3>
+                                </div>
+                                <div class="panel-body">
+                                    Your response
+                                </div>
+                            </div>
+
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Admin</h3>
+                                </div>
+                                <div class="panel-body">
+                                    This dispute has been resolved and closed.
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Total Amount in Dispute : 90.00<br><br>Result: $00.00
+                                        paid<br><br>CLOSED</h3>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

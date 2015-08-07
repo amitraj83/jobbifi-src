@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+ 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="com.interview" />	
+	
+	<bean id="placeholderProperties"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="classpath:local.properties" />
+	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+	    <property name="ignoreUnresolvablePlaceholders" value="true" />
+	    <property name="order" value="1" />
+	</bean>
+	
+	<!--  Define Framework Services -->	
+	<bean id="mongoService" class="com.interview.framework.MongoService">
+		<constructor-arg type="java.lang.String" name="host" value="${mongoHost}"></constructor-arg>
+		<constructor-arg type="int" name="port" value="${mongoPort}"></constructor-arg>
+	</bean>
+     					   
+	<!--  Define Framework Services Ends here-->	
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="WaitForTasksToCompleteOnShutdown" value="true" />
+	</bean>
+    					   
+    <bean id="services" class="com.interview.services.Services"/>					   
+	
+ 	<bean id="rmiserver" class="com.interview.rmi.RmiDataStoreServer">
+	 	<constructor-arg type="java.lang.String" name="host" value="${rmiServerName}"></constructor-arg>
+		<constructor-arg type="int" name="port" value="${rmiport}"></constructor-arg>
+	</bean>
+    <bean id="datastoreService" class="com.interview.norbert.DataStoreServer"/>
+	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService"/>
+  	 
+  	<!-- Define DataStore Services -->
+  	<bean id="baseDataStore" class="com.interview.datastore.BaseDataStore">
+  		<constructor-arg name="mongoService" ref="mongoService"></constructor-arg>
+  	</bean>
+  	<bean id="interviewerDataStore" class="com.interview.datastore.InterviewerDataStore"/>
+  	<bean id="requestsDataStore" class="com.interview.datastore.RequestsDataStore"/>
+  	<bean id="chatStore" class="com.interview.datastore.ChatStore"/>
+  	<bean id="interviewDataStore" class="com.interview.datastore.InterviewDataStore"/>
+  	<bean id="bidStore" class="com.interview.datastore.BidStore"/>
+  	<bean id="ratingStore" class="com.interview.datastore.RatingStore"/>
+  	<bean id="transactionStore" class="com.interview.datastore.TransactionStore"/>
+  	<bean id="resetPassStore" class="com.interview.datastore.ResetPasswordDataStore"/>
+  	<bean id="notificationStore" class="com.interview.datastore.NotificationStore"/>
+  	<bean id="skillsdatastore" class="com.interview.datastore.SkillsDataStore"/>
+  	<bean id="uploadedfileDS" class="com.interview.datastore.UploadedFileDataStore"/>
+  	<bean id="disputeDataStore" class="com.interview.datastore.DisputeDataStore"/>
+  	<bean id="disputeMessageDataStore" class="com.interview.datastore.DisputeMessageDataStore"/>
+  	<bean id="userTransactionDataStore" class="com.interview.datastore.UserTransactionDataStore"/>
+  	<bean id="ticketStore" class="com.interview.datastore.TicketStore"/>
+  	<bean id="companyAccountStore" class="com.interview.datastore.CompanyAccountStore"/>
+  	<bean id="calendarEventStore" class="com.interview.datastore.CalendarEventStore"/>
+  	<bean id="interviewScheduleStore" class="com.interview.datastore.InterviewScheduleStore"/>
+  	<bean id="educationStore" class="com.interview.datastore.EducationStore"/>
+  	<bean id="positionStore" class="com.interview.datastore.PositionStore"/>
+  	<bean id="escrowdatastore" class="com.interview.datastore.EscrowDataStore"/>
+  	<bean id="skilldatastore" class="com.interview.datastore.SkillDataStore"/>
+  	<bean id="jobstore" class="com.interview.datastore.JobStore"/>
+  	<bean id="testStore" class="com.interview.datastore.TestDataStore"/>
+  	<bean id="questionStore" class="com.interview.datastore.QuestionDataStore"/>
+  	<bean id="userTestStore" class="com.interview.datastore.UserTestStore"/>
+  	<bean id="messageStore" class="com.interview.datastore.MessageStore"/>
+  	<bean id="contactlistStore" class="com.interview.datastore.ContactListStore"/>
+  	<bean id="withdrawfundstore" class="com.interview.datastore.WithdrawFundStore"/>
+  	<!-- Define DataStore Services Ends here-->
+ 	
+</beans>

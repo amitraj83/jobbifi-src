@@ -1,0 +1,65 @@
+-educations
+	-education
+		-degree
+		-fieldOfStudy
+		-schoolname
+
+-certifications
+	-certification
+		-authority
+		-name
+		-number
+	
+-Email Address
+
+-industry
+
+-languages
+	-language
+		-langName
+		-proficiency
+		
+
+-location
+
+-pictureURL
+
+-positions
+	-position
+		-company
+		-description
+		-expLevel
+		-industries
+			-industry
+				-name
+		-skillsAndExperience
+		-title
+
+
+-skills
+	-skill
+		-skillname
+		-proficiency
+		-expYear
+
+-specialities
+
+-summary
+
+
+
+----------------
+in addition
+-userType
+	-interviewer
+	or
+	-interviewee
+	
+-interviewRate
+
+
+
+
+
+
+		

@@ -1,0 +1,200 @@
+<link rel="stylesheet" type="text/css" href="css/slider.css">
+<script type="text/javascript" src="js/bootstrap-slider.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#slideexperience").slider({});
+        $("#slidebudget").slider({});
+        $(".interviewresult").hover(
+                function () {
+                    var placebid = '<div  class="well biddivbody" style="padding:5px;">' +
+                            '<div class="input-group">' +
+                            '  <span class="input-group-addon bidform">$</span>' +
+                            '  <input type="text" class="form-control bidform" placeholder="Price" style="padding:3px">' +
+                            '</div>' +
+                            '<textarea class="form-control input-block-level" rows="2" placeholder="Your Message"></textarea>' +
+                            '<button type="button" id="makebid" iid="' + $(this).find(".biddiv").attr("iid") + '"  style="display: block; width: 100%;" class="btn btn-primary btn-sm">Place your bid</button>' +
+                            '</div>';
+                    $(this).find(".biddiv").html(placebid);
+                },
+                function () {
+                    //$(this).find( ".biddiv" ).find(".biddivbody").remove();
+                    $(".biddivbody").remove();
+                    //$(this).find( ".biddiv" ).html("");
+                }
+        );
+
+        $(document).off('click', '#makebid');
+        $(document).on('click', '#makebid', function () {
+            var iid = $(this).attr("iid");
+            var price = $(this).parent().find("input").val();
+            var msg = $(this).parent().find("textarea").val();
+            var uploadedFID = "";
+            var statusdiv = $(this).parent().parent();
+            var params = "bidder=" + user.getUserName() + "&iid=" + iid + "&msg=" + msg + "&price=" + price + "&bidfid=" + uploadedFID;
+            $.ajax({
+                type: "GET",
+                url: BASE_URL + "makebid.do",
+                data: params
+            }).done(function (msg) {
+                var json = jQuery.parseJSON(msg);
+                if (json.success == 1) {
+                    var bidObject = new Bid(json.id, json.bidder, json.iid, json.msg, json.price, json.status, json.dt);
+                    allBidsPosted.put(json.id, bidObject);
+                    var parent = $(statusdiv).parent();
+                    $(statusdiv).remove();
+                    $(parent).html('<span class="label label-success">Bid Placed</span>');
+
+                } else {
+                    $(statusdiv).html('<span class="label label-danger">Bid Failed.</span>');
+                }
+            });
+        });
+
+
+        /*$(".interviewresult").click(function(){
+         $.get("single_interviewpage.html", function(data) {
+         $("#searchview_main").html(data);
+
+         });
+         });*/
+
+    });
+</script>
+
+<br>
+<style type="text/css">
+    label {
+        margin-bottom: 0px;
+        font-weight: normal;
+    !important
+    }
+
+    .panel:hover {
+        background-color: #F0F1F2 !important;
+        cursor: pointer;
+    }
+
+    .bidform {
+        height: 30px !important;
+    }
+</style>
+<div class="row">
+
+
+    <div class="col-md-3">
+        <div class="well" style="padding:10px 19px 0px 19px">
+
+            <b>Functions</b><br>
+            <label>
+                <input type="checkbox"> Software
+            </label><br>
+            <label>
+                <input type="checkbox"> Consulting
+            </label><br>
+            <label>
+                <input type="checkbox"> Finance
+            </label><br>
+            <label>
+                <input type="checkbox"> Marketing
+            </label><br>
+            <!--<label>
+              <input type="checkbox"> Technology
+            </label><br>
+             <label>-->
+            &nbsp;&nbsp;&nbsp;&nbsp; <a href="#">more</a>
+            </label>
+            <hr style="margin:8px 0px 8px 0px">
+            <!-- <b>Employers</b><br>
+            <label >
+              <input type="checkbox"> Facebook
+            </label><br>
+            <label>
+              <input type="checkbox"> Google
+            </label><br>
+            <label>
+              <input type="checkbox"> Microsoft
+            </label><br>
+            <label>
+              <input type="checkbox"> IBM
+            </label><br>
+            <label>
+              <input type="checkbox"> Accenture
+            </label><br>
+             <label>
+               &nbsp;&nbsp;&nbsp;&nbsp; <a href="#">more</a>
+            </label>-->
+            <b>Skills </b><br>
+            <label>
+                <input type="checkbox"> Java
+            </label><br>
+            <label>
+                <input type="checkbox"> PhP
+            </label><br>
+            <label>
+                <input type="checkbox"> SQL
+            </label><br>
+            <label>
+                <input type="checkbox"> .NET
+            </label><br>
+            <!--<label>
+              <input type="checkbox"> C/C++
+            </label><br>-->
+            <label>
+                &nbsp;&nbsp;&nbsp;&nbsp; <a href="#">more</a>
+            </label>
+            <hr style="margin:8px 0px 8px 0px">
+            <b>Experience</b><br>
+
+            <div class="row">
+                <div class="col-md-2" style="padding:0px 0px 0px 15px;">1</div>
+                <div class="col-md-8" style="padding:0px 0px 0px 12px"><input id="slideexperience" type="text"
+                                                                              class="span2 text-right" value=""
+                                                                              data-slider-min="1" data-slider-max="25"
+                                                                              data-slider-step="5"
+                                                                              data-slider-value="[1,10]"/></div>
+                <div class="col-md-2" style="padding:0px">25</div>
+            </div>
+            <hr>
+            <b>Budget</b><br>
+
+            <div class="row">
+                <div class="col-md-2" style="padding:0px 0px 0px 15px;">€10</div>
+                <div class="col-md-8" style="padding:0px 0px 0px 12px"><input id="slidebudget" type="text"
+                                                                              class="span2 text-right" value=""
+                                                                              data-slider-min="10" data-slider-max="400"
+                                                                              data-slider-step="5"
+                                                                              data-slider-value="[50,200]"/></div>
+                <div class="col-md-2" style="padding:0px">€400</div>
+            </div>
+            <hr style="margin:8px 0px 8px 0px">
+            <b>Location</b><br>
+            <label>
+                <input type="checkbox"> Unites States
+            </label><br>
+            <label>
+                <input type="checkbox"> Germany
+            </label><br>
+            <label>
+                <input type="checkbox"> Japan
+            </label><br>
+            <label>
+                <input type="checkbox"> France
+            </label><br>
+            <label>
+                &nbsp;&nbsp;&nbsp;&nbsp; <a href="#">more</a>
+            </label>
+
+
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div id="searchview_main">
+            <h3>Search Results for '$skey$'</h3>
+            <hr>
+            $searchresults$
+        </div>
+
+
+    </div>
+</div>	

@@ -1,6 +1,7 @@
 /usr/bin/mongod --master --dbpath /home/sayandeep/mongofromServer/mongodb/ &
 /usr/bin/mongod --dbpath /home/sayandeep/mongofromServer/mongodb/ --replSet rs0&
 /usr/bin/mongod --master --dbpath /home/sayandeep/mongofromServer/newmongodb &
+sudo mongod --master -dbpath /home/sayandeep/data/mongo/ &
 
 cd /home/sayandeep/zookeeper/zookeeper-3.4.6/bin
 ./zkServer.sh start

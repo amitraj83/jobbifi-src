@@ -21,6 +21,7 @@ import com.interview.framework.rmi.common.IEscrowDataStore;
 import com.interview.framework.rmi.common.IInterviewDataStore;
 import com.interview.framework.rmi.common.IInterviewScheduleStore;
 import com.interview.framework.rmi.common.IInterviewerDataStore;
+import com.interview.framework.rmi.common.IJobApplicationStore;
 import com.interview.framework.rmi.common.IJobStore;
 import com.interview.framework.rmi.common.IMessageStore;
 import com.interview.framework.rmi.common.INotificationStore;
@@ -493,4 +494,18 @@ public class DataStoreRegistry {
 		}
 		return null;
 	}
+	
+	public IJobApplicationStore getJobApplicationStore(){
+		try {
+			return (IJobApplicationStore) (this.registry.lookup(IJobApplicationStore.NAME));
+		} catch (AccessException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

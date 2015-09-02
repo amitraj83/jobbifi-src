@@ -20,6 +20,7 @@ import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Bid;
 import com.interview.framework.pojo.Dispute;
 import com.interview.framework.pojo.Interview;
+import com.interview.framework.pojo.Job;
 import com.interview.framework.pojo.UploadedFile;
 import com.interview.rmi.DataStoreRegistry;
 
@@ -65,6 +66,8 @@ public class DownloadInterviewFileHandler extends RequestHandler {
             
           } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_DOCUMENT)){
               filePath = myProps.getProperty("jobDocDir") + uploadedFile.getPath_on_Disk();
+          } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_APPLICATION_DOCUMENT)){
+              filePath = myProps.getProperty("jobApplicationDocDir") + uploadedFile.getPath_on_Disk();
           }
           
           InputStream is = new FileInputStream(new File(filePath));
@@ -129,7 +132,22 @@ public class DownloadInterviewFileHandler extends RequestHandler {
           e.printStackTrace();
         }
       }
-    }
+    } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_APPLICATION_DOCUMENT)) {
+    	 if (accessgingUser.equals(uploadedFile.getOwner())){
+    		 return true;
+    	 } else {
+    		 try {
+				Job job = DataStoreRegistry.getInstance().getJobStore().getJob(uploadedFile.getArtifactid());
+				if(job.getInterviewer().equals(accessgingUser)){
+					return true;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+    		return false;
+    	 }
+        
+    } 
     return false;
   }
 

@@ -61,7 +61,7 @@ function loadNewMessageCount(){
 		}
 	});
 	
-	//setTimeout(function(){loadNewMessageCount()}, 30*1000);
+	setTimeout(function(){loadNewMessageCount()}, 30*1000);
 }
 
 function gup( name ){

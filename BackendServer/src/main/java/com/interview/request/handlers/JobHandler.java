@@ -6,12 +6,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
+
 import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.pojo.Job;
+import com.interview.framework.pojo.JobApplication;
 import com.interview.rmi.DataStoreRegistry;
 
+@Service
 public class JobHandler extends RequestHandler {
 
   public JobHandler() {
@@ -31,10 +36,24 @@ public class JobHandler extends RequestHandler {
         e.printStackTrace();
         resMap.put("status", -1);
       }
-    } else if (null != SUB_REQ && REQUEST_TYPES.GET_JOBS_OFFERED.equals(SUB_REQ)) {
+    } else if (null != SUB_REQ && REQUEST_TYPES.GET_JOBS_OFFERED.equals(SUB_REQ)){
       try {
         String interviewer = (String) data.get(DATASTORES.JOB.INTERVIEWER);
         List<Job> jobs = DataStoreRegistry.getInstance().getJobStore().getJobsOffered(interviewer);
+        for(Job job : jobs){
+        	List<JobApplication> jobApplications = DataStoreRegistry.getInstance().getJobApplicationStore().getJobApplicationsByJobId(job.getId());
+        	for(JobApplication jobApplication : jobApplications){
+        		if(null != jobApplication.getCvFileId() && !"".equals(jobApplication.getCvFileId())){
+        			jobApplication.setUploadedFile(DataStoreRegistry.getInstance().getUploadedFileDataStore()
+        					.getUploadedFile(new ObjectId(jobApplication.getCvFileId())));
+        		}
+        		jobApplication.setRating(DataStoreRegistry.getInstance().getRatingStore().getAvgRating(jobApplication.getApplicantId()));
+        		jobApplication.setReviewCount(DataStoreRegistry.getInstance().getRatingStore().getReviewsCount(jobApplication.getApplicantId()));
+        		Map<String, Object> userMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getUserExternalInfo(jobApplication.getApplicantId());
+        		jobApplication.setProfilePic((String)userMap.get(USER.PROFILE_PIC));
+        	}       
+        	job.setJobApplications(jobApplications);
+        }
         resMap.put("jobs", jobs);
       } catch (RemoteException e) {
         e.printStackTrace();

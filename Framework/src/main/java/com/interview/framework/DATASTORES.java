@@ -133,6 +133,7 @@ public interface DATASTORES {
       String CHAT_DOCUMENT = "CHAT_DOCUMENT";
       String DISPUTE_DOCUMENT = "DISPUTE_DOCUMENT";
       String JOB_DOCUMENT = "JOB_DOCUMENT";
+      String JOB_APPLICATION_DOCUMENT = "JOB_APPLICATION_DOCUMENT";
     }
 
   }
@@ -368,6 +369,23 @@ public interface DATASTORES {
     String EXPERIENCE = "experience";
     String LOCATION = "location";
     String ID = "id";
+  }
+  
+  interface JOB_APPLICATION {
+	  String DBCollection = "jobapplications";
+	  String ID = "_id";
+	  String JOB_ID = "jobId";
+	  String COVER_LETTER = "coverLetter";
+	  String CV_FILE_ID = "cvFileId";
+	  String DATE = "dt";
+	  String APPLICANT_ID = "applicantId";
+	  String STATUS = "status";
+	  
+	  interface Status {
+		  String APPLIED = "Applied";
+		  String ACCEPTED = "Accepted";
+		  String REJECTED = "Rejected";
+	  }
   }
   
   interface TEST {

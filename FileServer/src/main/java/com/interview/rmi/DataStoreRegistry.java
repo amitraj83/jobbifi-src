@@ -16,6 +16,7 @@ import com.interview.framework.rmi.common.IDispute;
 import com.interview.framework.rmi.common.IDisputeMessageDataStore;
 import com.interview.framework.rmi.common.IInterviewDataStore;
 import com.interview.framework.rmi.common.IInterviewerDataStore;
+import com.interview.framework.rmi.common.IJobStore;
 import com.interview.framework.rmi.common.INotificationStore;
 import com.interview.framework.rmi.common.IRatingStore;
 import com.interview.framework.rmi.common.IRequestDataStore;
@@ -311,4 +312,18 @@ public class DataStoreRegistry {
     }
     return null;
   }
+  
+  public IJobStore getJobStore() {
+	try {
+
+		return (IJobStore) (this.registry.lookup(IJobStore.NAME));
+	} catch (AccessException e) {
+		e.printStackTrace();
+	} catch (RemoteException e) {
+		e.printStackTrace();
+	} catch (NotBoundException e) {
+		e.printStackTrace();
+	}
+	return null;
+}
 }

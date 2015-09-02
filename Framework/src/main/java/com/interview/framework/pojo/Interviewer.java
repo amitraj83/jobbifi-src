@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Interviewer implements Serializable {
-
+  
+  private static final long serialVersionUID = 1L;
+  
   String id;
   String username;
   String password;
@@ -25,7 +27,6 @@ public class Interviewer implements Serializable {
   private List<Position> positions = new ArrayList<Position>();
   private String[] industries;
   private String userSocialNetwork;
-
 
   public String getChatPass() {
     return chatPass;

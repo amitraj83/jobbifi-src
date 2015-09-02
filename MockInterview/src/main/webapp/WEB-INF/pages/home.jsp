@@ -496,7 +496,7 @@ We are backed-up by several talented career advisors who desire to train job see
                     <div class="single-table wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
                         <h2>Job Post - Basic</h2>
 
-                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>0</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>0</span> monthly</p>
                         <ul>
                             <li>10 posting</li>
                             <li>Response Management</li>
@@ -511,7 +511,7 @@ We are backed-up by several talented career advisors who desire to train job see
                          data-wow-delay="400ms">
                         <h2>Job Post - Full</h2>
 
-                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>3500</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>3500</span> monthly</p>
                         <ul>
                             <li>50 job posting</li>
                             <li>Response Management</li>
@@ -525,7 +525,7 @@ We are backed-up by several talented career advisors who desire to train job see
                     <div class="single-table wow zoomIn" data-wow-duration="700ms" data-wow-delay="500ms">
                         <h2>CV Search - Basic</h2>
 
-                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>0</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>0</span> monthly</p>
                         <ul>
                             <li>200 CV Access</li>
                             <li>Free Communication</li>
@@ -539,7 +539,7 @@ We are backed-up by several talented career advisors who desire to train job see
                     <div class="single-table featured-table  wow zoomIn" data-wow-duration="700ms" data-wow-delay="600ms">
                         <h2>CV Search - Full</h2>
 
-                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>4000</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>4000</span> monthly</p>
                         <ul>
                             <li>Unlimited CV Access</li>
                             <li>Free Communication</li>

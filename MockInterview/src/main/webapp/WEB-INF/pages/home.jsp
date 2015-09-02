@@ -266,32 +266,29 @@
 <div id="about-us">
     <div class="container">
         <div class="row text-center section-title">
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-8 col-sm-offset-2">
                 <h3 class="wow fadeInDown" data-wow-duration="700ms" data-wow-delay="300ms">About Us</h3>
                 <hr class="title-border">
-                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget
-                    sagittis imperdiet.</p>
+                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">We are career experts. Our network of job seekers, career advisors and employer helps you to find the right person who can help you to grow in your career path. We connect job seeking candidates with the right career advisor who can help you to prepare for your upcoming interview and do the job referrals. Our intelligent search engine helps employers to find the right candidate for their requirements. </p>
             </div>
         </div>
         <div class="row about-content">
             <div class="col-sm-4 wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
                 <h2>Our Vision</h2>
 
-                <p>His sumo verear torquatos et. Ad sint eripuit tractatos sit. Affert dissentiet nec ut. Eos no autem
-                    dolorem facilisi. Eu unum mucius scripserit qui. Ipsum omnes voluptaria est id.</p>
+                <p>Our vision is to break the communication gap between fresh job seeking candidates and experienced professionals who potentially can be career advisors or recruiters in the top companies.</p>
             </div>
             <div class="col-sm-4 wow zoomIn" data-wow-duration="700ms" data-wow-delay="400ms">
                 <h2>Our History</h2>
 
-                <p>In ius lorem consul ridens, corrumpit maiestatis scriptorem mei ex. Postulant dissentiunt id eum,
-                    sonet aliquid sensibus cum et. Ius tation argumentum et. </p>
+                <p>History 
+We are backed-up by several talented career advisors who desire to train job seeking candidates for their upcoming dream job interview. </p>
             </div>
             <div class="col-sm-4 wow zoomIn" data-wow-duration="700ms" data-wow-delay="500ms">
                 <h2>Our Values</h2>
 
-                <p>Cum menandri urbanitas te, sea erat eligendi repudiandae cu, nam te nusquam sententiae cotidieque.
-                    Diam postea vulputate vis ne, usu vivendum accommodare ex</p>
+                <p>We are driven by our core value that a job seeking candidate is a precious talent. We are committed to connect such candidates with the right persons and help them grow in their career.
+</p>
             </div>
         </div>
         <!--/about-content
@@ -398,9 +395,7 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <h3 class="wow fadeInDown" data-wow-duration="700ms" data-wow-delay="300ms">Trending Employers</h3>
                 <hr class="title-border">
-                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget
-                    sagittis imperdiet.</p>
+                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">Schedule job interviews with top employers and get trained by our career advisors to increase your chances to succeed in that dream job interview.</p>
             </div>
         </div>
         <div id="clients-carousel" class="carousel slide" data-ride="carousel">
@@ -450,7 +445,7 @@
             <div class="text-center wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
                 <h1>SOME STATS</h1>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing aliquam est lectus</p>
+                <p>Some important numbers that describe the potential of our resources.</p>
             </div>
             <div class="row funs">
                 <div class="col-xs-3 wow zoomIn" data-wow-duration="700ms" data-wow-delay="500ms">
@@ -492,23 +487,20 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <h3 class="wow fadeInDown" data-wow-duration="700ms" data-wow-delay="300ms">Pricing</h3>
                 <hr class="title-border">
-                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget
-                    sagittis imperdiet.</p>
+                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">We offer unbeatable packages for the employers to post jobs and to find the right candidate</p>
             </div>
         </div>
         <div class="pricing-table">
             <div class="row">
                 <div class="col-sm-3">
                     <div class="single-table wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
-                        <h2>Starter</h2>
+                        <h2>Job Post - Basic</h2>
 
-                        <p class="price"><span class="dollar-icon">$</span><span>19</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>0</span> monthly</p>
                         <ul>
-                            <li>5 Domain Names</li>
-                            <li>1GB Dedicated Ram</li>
-                            <li>5 Sub Domain</li>
-                            <li>10 Addon Domain</li>
+                            <li>10 posting</li>
+                            <li>Response Management</li>
+                            <li>Valid for first 3 months</li>
                             <li>24/7 Support</li>
                         </ul>
                         <a href="#" class="btn-signup">Sign-up</a>
@@ -517,14 +509,13 @@
                 <div class="col-sm-3">
                     <div class="single-table featured-table wow zoomIn" data-wow-duration="700ms"
                          data-wow-delay="400ms">
-                        <h2>Business</h2>
+                        <h2>Job Post - Full</h2>
 
-                        <p class="price"><span class="dollar-icon">$</span><span>129</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>3500</span> monthly</p>
                         <ul>
-                            <li>5 Domain Names</li>
-                            <li>1GB Dedicated Ram</li>
-                            <li>5 Sub Domain</li>
-                            <li>10 Addon Domain</li>
+                            <li>50 job posting</li>
+                            <li>Response Management</li>
+                            <li>Hiring Management</li>
                             <li>24/7 Support</li>
                         </ul>
                         <a href="#" class="btn-signup">Sign-up</a>
@@ -532,29 +523,27 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="single-table wow zoomIn" data-wow-duration="700ms" data-wow-delay="500ms">
-                        <h2>Basic</h2>
+                        <h2>CV Search - Basic</h2>
 
-                        <p class="price"><span class="dollar-icon">$</span><span>49</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>0</span> monthly</p>
                         <ul>
-                            <li>5 Domain Names</li>
-                            <li>1GB Dedicated Ram</li>
-                            <li>5 Sub Domain</li>
-                            <li>10 Addon Domain</li>
+                            <li>200 CV Access</li>
+                            <li>Free Communication</li>
+                            <li>Valid for first 3 months</li>
                             <li>24/7 Support</li>
                         </ul>
                         <a href="#" class="btn-signup">Sign-up</a>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="single-table wow zoomIn" data-wow-duration="700ms" data-wow-delay="600ms">
-                        <h2>Ultra</h2>
+                    <div class="single-table featured-table  wow zoomIn" data-wow-duration="700ms" data-wow-delay="600ms">
+                        <h2>CV Search - Full</h2>
 
-                        <p class="price"><span class="dollar-icon">$</span><span>199</span> monthly</p>
+                        <p class="price"><span class="dollar-icon"><i class="fa fa-inr fa-lg" style="vertical-align: -31%;padding-right: 5px;"></i></span><span>4000</span> monthly</p>
                         <ul>
-                            <li>5 Domain Names</li>
-                            <li>1GB Dedicated Ram</li>
-                            <li>5 Sub Domain</li>
-                            <li>10 Addon Domain</li>
+                            <li>Unlimited CV Access</li>
+                            <li>Free Communication</li>
+                            <li>Hiring Management</li>
                             <li>24/7 Support</li>
                         </ul>
                         <a href="#" class="btn-signup">Sign-up</a>
@@ -586,9 +575,7 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <h3 class="wow fadeInDown" data-wow-duration="700ms" data-wow-delay="300ms">Contact Us</h3>
                 <hr class="title-border">
-                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget
-                    sagittis imperdiet.</p>
+                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms"></p>
             </div>
         </div>
         <div class="contact-content">
@@ -596,26 +583,26 @@
                 <div class="col-sm-4 wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
                     <h2>Visit Our Office</h2>
                     <address>
-                        <p><i class="fa fa-map-marker"></i> Adress: 1234 Street Name, City Name</p>
+                        <p><i class="fa fa-map-marker"></i> #20,13th Cross,4th Main</p>
 
-                        <p><i class="fa fa-phone"></i> Phone: (123) 456-7890</p>
+                        <p style="padding-left: 20px;">Sampangiramnagar,Near BSNL Office</p>
 
-                        <p><i class="fa fa-envelope"></i> Email: support@jobbifi.com</p>
+                        <p style="padding-left: 20px;">Bangalore 5600 027</p>
                     </address>
                 </div>
                 <div class="col-sm-4 wow zoomIn" data-wow-duration="700ms" data-wow-delay="400ms">
-                    <h2>Business Hours</h2>
+                    <h2>Talk to us</h2>
 
                     <div class="business-time">
-                        <p><i class="fa fa-clock-o"></i> Mon. - Fri. 8am to 5pm</p>
+                        <p><i class="fa fa-phone"></i> Phone : +91-9036928424</p>
 
-                        <p><i class="fa fa-clock-o"></i> Sat. 8am to 11am</p>
+                        <p><i class="fa fa-envelope"></i> Email : support@jobbifi.com</p>
 
-                        <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p>
+                        <!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
                     </div>
                 </div>
                 <div class="col-sm-4 wow zoomIn" data-wow-duration="700ms" data-wow-delay="500ms">
-                    <h2>Visit Our Office</h2>
+                    <h2>Have a query ?</h2>
 
                     <form id="contact-form" class="contact-form" name="contact-form" method="post"
                           action="send-mail.php">

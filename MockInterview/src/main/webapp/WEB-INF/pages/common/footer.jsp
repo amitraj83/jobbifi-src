@@ -11,7 +11,7 @@
                     <li><a href="">Careers</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
-                <span class="pull-right">&copy; 2015 Jobbifi Technologies LLP India</span>
+                <span class="pull-right">&copy; 2015 Jobbifi Technologies LLP</span>
             </div>
         </div>
     </div>

@@ -500,7 +500,7 @@ We are backed-up by several talented career advisors who desire to train job see
                         <ul>
                             <li>10 posting</li>
                             <li>Response Management</li>
-                            <li>Valid for 6 months</li>
+                            <li>Valid for first 3 months</li>
                             <li>24/7 Support</li>
                         </ul>
                         <a href="#" class="btn-signup">Sign-up</a>
@@ -515,7 +515,7 @@ We are backed-up by several talented career advisors who desire to train job see
                         <ul>
                             <li>50 job posting</li>
                             <li>Response Management</li>
-                            <li>Valid for 1 month</li>
+                            <li>Hiring Management</li>
                             <li>24/7 Support</li>
                         </ul>
                         <a href="#" class="btn-signup">Sign-up</a>
@@ -529,7 +529,7 @@ We are backed-up by several talented career advisors who desire to train job see
                         <ul>
                             <li>200 CV Access</li>
                             <li>Free Communication</li>
-                            <li>Hiring Management</li>
+                            <li>Valid for first 3 months</li>
                             <li>24/7 Support</li>
                         </ul>
                         <a href="#" class="btn-signup">Sign-up</a>

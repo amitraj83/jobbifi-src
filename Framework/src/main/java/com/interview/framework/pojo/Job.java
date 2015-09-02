@@ -1,6 +1,7 @@
 package com.interview.framework.pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Job implements Serializable {
@@ -34,6 +35,8 @@ public class Job implements Serializable {
   private String experience;
   
   private String location;
+  
+  private List<JobApplication> jobApplications = new ArrayList<JobApplication>(0);
   
   public String getId() {
     return id;
@@ -145,5 +148,13 @@ public class Job implements Serializable {
 
 	public void setLocation(String location) {
 		this.location = location;
-	} 
+	}
+
+	public List<JobApplication> getJobApplications() {
+		return jobApplications;
+	}
+
+	public void setJobApplications(List<JobApplication> jobApplications) {
+		this.jobApplications = jobApplications;
+	} 	
 }

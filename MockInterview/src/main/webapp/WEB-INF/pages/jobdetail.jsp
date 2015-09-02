@@ -88,80 +88,75 @@
 
 
             <div class="row">
-                <div class="col-md-9 page-content">
-                    <div class="clearfix white-container">
-                        <!--<p>
-								 |  ${job.experience} yr exp. | $${job.salary} | Posted 
-								
-							</p>
-							-->
-
-                    </div>
-
-                    <div class=="clearfix white-container
-                    " id="msgdetail">
-
-                </div>
-                <sec:authorize access="isAuthenticated()">
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h1 class="panel-title" style="font-size:18px;">Apply for this job</h1>
-                        </div>
-                        <div class="panel-body">
-
-
-                            <div class="clearfix white-container">
-
-                                <form class="form form-horizontal" id="jobDetailContactForm">
-
-                                    <div class="form-group">
-                                        <label class="col-md-2">Cover Letter</label>
-
-                                        <div class="col-md-10">
-                                            <textarea name="message" id="inputmessage" rows="5" cols="80"
-                                                      class="form-control"></textarea>
-                                        </div>
-                                        <input type="hidden" name="jobid" value="${jobid}"/>
-                                        <input type="hidden" name="jobtitle" value="${job.title}"/>
-                                        <input type="hidden" name="to" value="${job.interviewer}"/>
-                                        <input type="hidden" name="parentMessageId" id="parentMessageId" value=""/>
-                                        <input type="hidden" name="type" id="type" value=""/>
-
-                                    </div>
-                                    <!--  Implement upload logic from here
-                                    -->
-                                    <div class="form-group">
-                                        <label class="col-md-2">Resume</label>
-
-                                        <div class="col-md-8">
-                                            <div class="form-inline">
-                                                <div class="form-group" style="padding-left:16px;">
-                                                    <input type="file" name="files[]" id="js-upload-files" multiple>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <button type="submit" class="btn btn-default pull-right">Send</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </sec:authorize>
-                <sec:authorize access="!isAuthenticated()">
-                    <div class="pull-right">
-                        <button type="submit" class="btn btn-default">Apply</button>
-                    </div>
-                </sec:authorize>
-
+                <div class="col-md-9 page-content">                    
+                    <div class="clearfix white-container" id="msgdetail">
+					
+                     <sec:authorize access="isAuthenticated()">                
+	                	<c:choose>
+	                		<c:when test="${not empty jobApplication}">
+	                		
+	                			<div class="alert alert-success">You have already sent the application.</div>
+	                			<div class="panel panel-default">
+	                				<div class="panel-heading"><h4 class="panel-title">Job Application Details<span class="pull-right">05:21 PM</span></h4></div>
+	                				<div class="panel-body">
+	                					<p>${jobApplication.coverLetter}</p>
+	                					<c:if test="${not empty uploadedFile}">
+	                						<p><a href="${uploadedFile.URL}" target="_blank">${uploadedFile.originalFileName}</a></p>
+	                					</c:if>
+	               					</div>
+	            				</div>
+	                		</c:when>
+	                		<c:otherwise>
+	                			<div class="panel panel-default" id="jobApplicationPanel">
+			                        <div class="panel-heading">
+			                            <h1 class="panel-title" style="font-size:18px;">Apply for this job</h1>
+			                        </div>
+			                        <div class="panel-body">
+			                            <div class="clearfix white-container">
+			                                <form class="form form-horizontal" id="jobApplicationForm">
+			                                	<input type="hidden" name="jobId" value="${jobid}">                                	
+			                                    <div class="form-group">
+			                                        <label class="col-md-2">Cover Letter</label>
+			                                        <div class="col-md-10">
+			                                            <textarea name="coverLetter" id="coverLetter" rows="5" cols="80"
+			                                                      class="form-control"></textarea>
+			                                        </div>                                        
+			                                    </div>
+			                                    <div class="form-group">
+			                                        <label class="col-md-2">Resume</label>
+			                                        <div class="col-md-8">
+			                                            <div class="form-inline">
+			                                                <div class="form-group" style="padding-left:16px;">
+			                                                    <input id="jobapplicationdoc" type="file" name="file"
+								                                       data-url="<c:url value='/aauth/fileupload.do?type=jobapplicationdoc&jobid=${jobid}' />" multiple style="opacity:0;
+														      		filter:alpha(opacity: 0);" class="pull-left hide">
+								                                <button id="attachfile" type="button" class="btn btn-sm btn-info">Upload Resume</button>
+								                                <img id="fileloader" style="display: none;" alt="Processing..." src="<c:url value="/resources/img/loading.gif" />">				
+								                                <div id="selectedfile" style="clear:both"></div>
+								                                <input type="hidden" name="cvFileId" id="jobapplicationid">
+			                                                </div>
+			                                            </div>
+			                                        </div>
+			
+			
+			                                    </div>
+			                                    <div class="form-group">
+			                                        <div class="col-md-offset-2 col-md-10">
+			                                            <button type="submit" class="btn btn-default pull-right">Send</button>
+			                                        </div>
+			                                    </div>
+			                                </form>
+			                            </div>
+			
+			                        </div>
+			                    </div>
+	                		</c:otherwise>
+	                	</c:choose>
+	                    
+	                </sec:authorize> 	
+                </div>                
             </div>
+            
             <div class="col-md-4 page-sidebar">
                 <div class="widget sidebar-widget white-container ">
                     <!-- <div class="row">
@@ -182,22 +177,42 @@
 </div>
 </div>
 
-
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
-
     var id = "${jobid}";
-    var messageto = "${job.interviewer}";
-    var msgfrom = "${username}";
-    var length = "";
-
+    
     $(function () {
+    	/* file upload */
+        $('#jobapplicationdoc').fileupload({
+            dataType: 'json',
+            maxChunkSize: 20000000,
+            done: function (e, data) {
+                var jsonResponse = jQuery.parseJSON(data.jqXHR.responseText);
+                if (jsonResponse && jsonResponse._id) {
+                    var html = "<a target='_blank' href='" + BASE_URL + jsonResponse.url + "' >" + jsonResponse.originalfn + "</a><br/>";
+                    $("#selectedfile").html(html);
+                    $("#jobapplicationid").val(jsonResponse._id);
+                } else {
+                    showError("Unable to upload the file.");
+                }
+                $("#fileloader").hide();
+            },
+            add: function (e, data) {
+                data.submit();
+                $("#fileloader").show();
+            }
+        });
 
+        /* trigger file upload on button */
+        $("#attachfile").click(function () {
+            $('#jobapplicationdoc').trigger('click');
+        });
+    	
         $("#nav_jobs").addClass("active");
         $("#date").html(prettyDate(new Date(Number(${job.dt}))));
         $("#postedByRating").rating({clearButton: "", showCaption: false});
-        $("#jobDetailContactForm").validate({
+        $("#jobApplicationForm").validate({
             rule: {
                 message: {required: true}
             },
@@ -206,85 +221,42 @@
                 return false;
             }
         });
-
-        loadMessages();
     });
 
-    function loadMessages() {
-        var jobsHtml = "";
+    function submitForm() {    	    	
         $.ajax({
-            type: 'GET',
-            url: BASE_URL + 'getjobmessage.do',
-            data: "iid=" + id + "&messageto=" + messageto,
-            async: false
-        }).done(function (res) {
-            $("#type").val("REPLY");
-
-            var resData = jQuery.parseJSON(res);
-            var jobs = resData.JOB_LIST;
-            if (null != jobs && jobs.length > 0) {
-                length = Number(jobs.length);
-                $("#parentMessageId").val(jobs[0].id);
-                for (var i = 0; i < jobs.length; i++) {
-                    jobsHtml += '<div class="panel panel-default">' +
+            type: 'POST',
+            url: BASE_URL + 'jobapplication/save.do',
+            data: $("#jobApplicationForm").serialize(),
+            success: function (res) {
+            	var json = jQuery.parseJSON(res);
+            	if(json.status == 1) {
+            		$("#jobApplicationPanel").hide();
+                    var jobsHtml = '<div class="panel panel-default">' +
                             '<div class="panel-heading">' +
-                            '<h4 class="panel-title">' +
-                            '<a data-toggle="collapse" data-parent="#accordion" href="#collapse' + i +
-                            '"><i class="fa fa-plus" ></i> ' + jobs[i].from + '</a>' +
-                            '<span class="pull-right">' + prettyDate(new Date(jobs[i].creationDate)) + '</span>' +
+                            '<h4 class="panel-title">Job Application' +
+                            '<span class="pull-right">' + prettyDate(new Date()) + '</span>' +
                             '</h4>' +
                             '</div>' +
-                            '<div id="collapse' + i + '" class="panel-collapse collapse">' +
                             '<div class="panel-body">' +
-                            '<p>' + jobs[i].message + '</p>' +
-                            '</div>' +
+                            '<p>' + $("#coverLetter").val() + '</p>' +
+                            $("#selectedfile").html() +
                             '</div>' +
                             '</div>';
-                }
-            } else {
-                length = 0;
-                $("#type").val("ORIGINAL");
-            }
-        });
-
-        $("#msgdetail").html(jobsHtml);
-    }
-
-
-    function submitForm() {
-        $.ajax({
-            type: 'POST',
-            url: BASE_URL + 'jobmessage.do',
-            data: $("#jobDetailContactForm").serialize(),
-            success: function (res) {
-                var jobsHtml = '<div class="panel panel-default">' +
-                        '<div class="panel-heading">' +
-                        '<h4 class="panel-title">' +
-                        '<a data-toggle="collapse" data-parent="#accordion" href="#collapse' + length + '"><i class="fa fa-plus"></i> ' + msgfrom + '</a>' +
-                        '<span class="pull-right">' + prettyDate(new Date()) + '</span>' +
-                        '</h4>' +
-                        '</div>' +
-                        '<div id="collapse' + length + '" class="panel-collapse collapse">' +
-                        '<div class="panel-body">' +
-                        '<p>' + $("#inputmessage").val() + '</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
-                $("#msgdetail").append(jobsHtml)
-                length++;
-                console.log(res);
+                    $("#msgdetail").html(jobsHtml);	
+                    
+                    $("#selectedfile").html("");
+                    $("#jobapplicationid").val("");
+                    
+            	} else {
+            		$("#msgdetail").html("<div class='alert alert-error'>Error occured while processing request.</div>");
+            	}           	                
             },
             error: function (status) {
-
+            	console.log(status);
             }
         });
-
-        $.ajax({
-            type: 'POST',
-            url: BASE_URL + 'addcontactlist.do',
-            data: $("#jobDetailContactForm").serialize()
-        });
-    }
+    }    
 </script>
 </body>
 </html>

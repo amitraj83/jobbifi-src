@@ -73,6 +73,7 @@
   	<bean id="messageStore" class="com.interview.datastore.MessageStore"/>
   	<bean id="contactlistStore" class="com.interview.datastore.ContactListStore"/>
   	<bean id="withdrawfundstore" class="com.interview.datastore.WithdrawFundStore"/>
+  	<bean id="jobapplicationstore" class="com.interview.datastore.JobApplicationStore"/>
   	<!-- Define DataStore Services Ends here-->
  	
 </beans>

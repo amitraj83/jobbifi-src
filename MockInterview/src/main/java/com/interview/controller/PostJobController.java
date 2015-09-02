@@ -67,7 +67,7 @@ public class PostJobController extends BaseController{
   @RequestMapping(value = "/getJobsOffered.do", method = RequestMethod.GET)
   public ModelAndView getJobsOffered(ModelMap model, HttpServletRequest req) {
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
-    String user =getLoginUser();
+    String user = getLoginUser();
     reqMap.put(DATASTORES.JOB.INTERVIEWER, user);
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.GET_JOBS_OFFERED);
     Map<String, Object> resMap =

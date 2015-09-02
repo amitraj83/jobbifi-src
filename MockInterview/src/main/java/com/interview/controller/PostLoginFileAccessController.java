@@ -148,6 +148,30 @@ public class PostLoginFileAccessController extends BaseController {
         	  logger.error("IO EXCEPTION : ", e);
           }
           
+    } else if (request.getParameter("type").equals("jobapplicationdoc")) {           
+        try {     
+            Map<Object, Object> data = new HashMap<Object, Object>();
+            String content = new String(file.getBytes()); 
+            data.put("IS", content);       
+            data.put("FN", file.getOriginalFilename());
+            data.put("EXT", FilenameUtils.getExtension(file.getOriginalFilename()));
+            data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
+            data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
+            data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
+            String userName = getLoginUser();
+            data.put(USER.USERNAME, userName);            
+            data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.FILESERVER_SAVE_JOB_APPLICATION_FILE);
+            data.put(DATASTORES.JOB_APPLICATION.JOB_ID, request.getParameter("jobid"));
+            
+            res = Services.getInstance().getRequestHandlerService()
+                    .handleRequest(data, REQUEST_TYPES.FILESERVER_JOB_APPLICATION_FILE);        
+            logger.info("Resposne : " + res);
+            
+            res.put("originalfn", file.getOriginalFilename());
+          } catch (IOException e) {
+        	  logger.error("IO EXCEPTION : ", e);
+          }
+          
     } else if (request.getParameter("type").equals("chatdocument")) {
       String targetUser = request.getParameter("targetuser");
       try {
@@ -245,6 +269,11 @@ public class PostLoginFileAccessController extends BaseController {
     downloadFile(request, response);
   }
 
+  @RequestMapping(value = "aauth/jobapplication/filedownload.do", method = RequestMethod.GET)
+  public void joApplicationfileDownload(HttpServletRequest request, HttpServletResponse response) {
+    downloadFile(request, response);
+  }
+  
   private void downloadFile(HttpServletRequest request, HttpServletResponse response) {
     Map<Object, Object> reqmap = new HashMap<Object, Object>();
     reqmap.put(VARIABLES.ENCRYPTED_FILE_ID, request.getParameter("fileid"));

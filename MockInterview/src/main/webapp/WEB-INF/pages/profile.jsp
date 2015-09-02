@@ -293,7 +293,6 @@
     function showJobsOffered(user) {
 
         $.ajax({
-
             url: "<c:url value='getJobsOffered.do'/>",
             type: 'GET',
             async: false,
@@ -306,7 +305,6 @@
                         '<a class="btn btn-default" href="<c:url value="/postjob.do"/>">' +
                         '    Post a Job</a>' +
                         '</div></div> ';
-                //'<div class="panel-group" id="jobslist"></div>';
                 if (null != jobs && jobs.length > 0) {
                     for (var i = 0; i < jobs.length; i++) {
                         jobsHtml += '<div class="panel panel-default">' +
@@ -319,6 +317,7 @@
                                 '<div id="collapse' + i + '" class="panel-collapse collapse">' +
                                 '<div class="panel-body">' +
                                 '<p>' + jobs[i].description + '</p>' +
+                                getApplicantHtml(jobs[i]) +
                                 '</div>' +
                                 '</div>' +
                                 '</div>';
@@ -327,15 +326,74 @@
                     jobsHtml = "You did not posted any jobs yet. Use post job button to post a job to get desire candidate.";
                 }
                 $("#interviewoffered").html(jobsHtml);
+                
+                $(".user-rating").rating({
+                    'min': 0,
+                    'max': 5,
+                    'step': 1,
+                    'readonly': true,
+                    'showClear': false,
+                    'showCaption': false
+                });
             }
         });
 
     }
-    ;
 
     function getUserProfileLink(user) {
         return "<a target='_blank' href='" + BASE_URL + "userprofile.do?name=" + user + "'>" + user + "</a>";
     }
+
+function getApplicantHtml(job){
+
+	var html = '<div class="table-responsive">'+
+               '<table class="table table-hover">'+
+               '<thead>'+
+               '<tr>'+
+               '<th>Applicant</th>'+
+               '<th>Cover Letter</th>'+
+               '<th>Resume</th>'+
+               '<th>Date</th>'+
+               '<th>Status</th>'+
+               '</tr>'+
+               '</thead>';
+                     
+    var applications = job.jobApplications;
+    if(applications.length > 0) {
+    	for(var i =0; i < applications.length; i++){
+    		html += "<tr>" +
+    				"<td style='width:25%'>"+
+    				"<div class='row'>" +
+    				"<div class='col-md-4'><img style='height:70px;width:60px' src='"+applications[i].profilePic +"' title='"+
+    				applications[i].applicantId + "' ></div>" +
+    				"<div class='col-md-8'>"+
+    					getUserProfileLink(applications[i].applicantId)+ "<br/>" +
+    					"<input type='number' class='user-rating' value='"+applications[i].rating+"'/>" +
+    					"<div><span id='reviewcount'> "+applications[i].reviewCount+"</span> Reviews</div>"+
+    				"</div>" +		     				
+    				"</div>" +	
+					"</td>"+
+    				"<td>"+applications[i].coverLetter+"</td>";
+    		if(applications[i].cvFileId != ""){
+    			html += "<td><a target='_blank' href='"+BASE_URL+applications[i].uploadedFile.url+"'>"+applications[i].uploadedFile.originalFileName+"</a></td>";
+    		} else {
+    			html += "<td>NA</td>";
+    		}		
+    				
+    				
+    		html +=	"<td>"+ prettyDate(new Date(applications[i].dt)) +"</td>"+
+    				"<td>"+applications[i].status+"</td>"+
+    				"</tr>";
+    	}
+    
+    } else {
+    	html += "<tr><td colspan'5'>No applicant found.</td></tr>";
+    }
+                            
+    html += '</table>' +
+            '</div>';
+            return html;
+}
 </script>
 </body>
 </html>

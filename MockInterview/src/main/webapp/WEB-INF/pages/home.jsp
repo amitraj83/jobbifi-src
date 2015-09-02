@@ -266,7 +266,7 @@
 <div id="about-us">
     <div class="container">
         <div class="row text-center section-title">
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-8 col-sm-offset-2">
                 <h3 class="wow fadeInDown" data-wow-duration="700ms" data-wow-delay="300ms">About Us</h3>
                 <hr class="title-border">
                 <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">We are career experts. Our network of job seekers, career advisors and employer helps you to find the right person who can help you to grow in your career path. We connect job seeking candidates with the right career advisor who can help you to prepare for your upcoming interview and do the job referrals. Our intelligent search engine helps employers to find the right candidate for their requirements. </p>
@@ -395,7 +395,7 @@ We are backed-up by several talented career advisors who desire to train job see
             <div class="col-sm-6 col-sm-offset-3">
                 <h3 class="wow fadeInDown" data-wow-duration="700ms" data-wow-delay="300ms">Trending Employers</h3>
                 <hr class="title-border">
-                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">Find the jobs in top employers and get trained by our career advisors to increase your chances to succeed in your dream job interview.</p>
+                <p class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">Schedule job interviews with top employers and get trained by our career advisors to increase your chances to succeed in that dream job interview.</p>
             </div>
         </div>
         <div id="clients-carousel" class="carousel slide" data-ride="carousel">
@@ -445,7 +445,7 @@ We are backed-up by several talented career advisors who desire to train job see
             <div class="text-center wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
                 <h1>SOME STATS</h1>
 
-                <p>Some important numbers that describe the potential of our resource.</p>
+                <p>Some important numbers that describe the potential of our resources.</p>
             </div>
             <div class="row funs">
                 <div class="col-xs-3 wow zoomIn" data-wow-duration="700ms" data-wow-delay="500ms">
@@ -494,7 +494,7 @@ We are backed-up by several talented career advisors who desire to train job see
             <div class="row">
                 <div class="col-sm-3">
                     <div class="single-table wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
-                        <h2>Job Post - Starter</h2>
+                        <h2>Job Post - Basic</h2>
 
                         <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>0</span> monthly</p>
                         <ul>
@@ -509,7 +509,7 @@ We are backed-up by several talented career advisors who desire to train job see
                 <div class="col-sm-3">
                     <div class="single-table featured-table wow zoomIn" data-wow-duration="700ms"
                          data-wow-delay="400ms">
-                        <h2>Job Post - Featured</h2>
+                        <h2>Job Post - Full</h2>
 
                         <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>3500</span> monthly</p>
                         <ul>
@@ -523,7 +523,7 @@ We are backed-up by several talented career advisors who desire to train job see
                 </div>
                 <div class="col-sm-3">
                     <div class="single-table wow zoomIn" data-wow-duration="700ms" data-wow-delay="500ms">
-                        <h2>CV Search - Starter</h2>
+                        <h2>CV Search - Basic</h2>
 
                         <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>0</span> monthly</p>
                         <ul>
@@ -537,7 +537,7 @@ We are backed-up by several talented career advisors who desire to train job see
                 </div>
                 <div class="col-sm-3">
                     <div class="single-table featured-table  wow zoomIn" data-wow-duration="700ms" data-wow-delay="600ms">
-                        <h2>CV Search - Featured</h2>
+                        <h2>CV Search - Full</h2>
 
                         <p class="price"><span class="dollar-icon"><i class="fa fa-inr"></i></span><span>4000</span> monthly</p>
                         <ul>
@@ -585,9 +585,9 @@ We are backed-up by several talented career advisors who desire to train job see
                     <address>
                         <p><i class="fa fa-map-marker"></i> #20,13th Cross,4th Main</p>
 
-                        <p>Sampangiramnagar,Near BSNL Office</p>
+                        <p style="padding-left: 20px;">Sampangiramnagar,Near BSNL Office</p>
 
-                        <p>Bangalore 5600 027</p>
+                        <p style="padding-left: 20px;">Bangalore 5600 027</p>
                     </address>
                 </div>
                 <div class="col-sm-4 wow zoomIn" data-wow-duration="700ms" data-wow-delay="400ms">

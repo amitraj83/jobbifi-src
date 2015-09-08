@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
+import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.pojo.JobApplication;
@@ -53,10 +54,24 @@ public class JobApplicationHandler extends RequestHandler {
 	    			 resMap.put("jobApplication", null);
 	    		 }
 			} catch (RemoteException e) {
-				e.printStackTrace();
+				logger.error("Exception thrown while getting the Job Application : ", e);
 				resMap.put("jobApplication", jobApplication);
 			}	    	
-	    }	    
+	    } else if (null != SUB_REQ && REQUEST_TYPES.JOB_APPLICATION_SUB_REQ.UPDATE_APPLICATION_STATUS.equals(SUB_REQ)) {
+	    	String id = (String) data.get(DATASTORES.JOB_APPLICATION.ID);
+	    	String status = (String) data.get(DATASTORES.JOB_APPLICATION.STATUS);
+	    	try {
+				boolean result = DataStoreRegistry.getInstance().getJobApplicationStore().updateStatus(id, status);
+				if(result){
+					resMap.put("status", 1);
+				}else {
+					resMap.put("status", -1);
+				}
+			} catch (RemoteException e) {
+				logger.error("Exception thrown while updating Job Application Status : ", e);
+				resMap.put("status", -1);
+			}	    	
+	    }
 	    return resMap;
 	}
 }

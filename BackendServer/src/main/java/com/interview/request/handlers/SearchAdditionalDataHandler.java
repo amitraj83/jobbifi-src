@@ -14,15 +14,14 @@ public class SearchAdditionalDataHandler extends RequestHandler {
 
   @Override
   public Map<String, Object> handleRequest(Map<Object, Object> users) {
+	  
     Map<String, Object> resMap = null;
     try {
-      resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getAdditionalData(users);
+    	resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getAdditionalData(users);
 
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    	e.printStackTrace();
     }
     return resMap;
   }
-
 }

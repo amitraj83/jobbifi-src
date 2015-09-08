@@ -6,11 +6,14 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.pojo.Interviewer;
 import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;
 
+@Service
 public class InterviewerRegistrationHandler extends RequestHandler {
 
   @Autowired

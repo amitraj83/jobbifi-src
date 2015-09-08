@@ -383,8 +383,9 @@ public interface DATASTORES {
 	  
 	  interface Status {
 		  String APPLIED = "Applied";
-		  String ACCEPTED = "Accepted";
-		  String REJECTED = "Rejected";
+		  String SHORTLISTED = "Shortlisted";
+		  String INTERVIEWED = "Interviewed";
+		  String RECRUITED = "Recruited";
 	  }
   }
   

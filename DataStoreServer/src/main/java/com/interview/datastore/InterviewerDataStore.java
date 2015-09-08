@@ -357,16 +357,19 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     }
 
     BasicDBObject clause = new BasicDBObject("$or", orList);
-
     DBCursor cursor = collection.find(clause);
     while (cursor.hasNext()) {
       DBObject row = cursor.next();
       Map<String, Object> data = new HashMap<String, Object>();
       data.put(USER.RATING, row.get(USER.RATING));
       data.put(USER.PROFILE_PIC, row.get(USER.PROFILE_PIC).toString());
+      List<Education> educations = getAllEducations(row);
+      data.put(USER.EDUCATIONS, educations);
+
+      List<Position> positions = getAllPositions(row);
+      data.put(USER.POSITIONS, positions);
       response.put(row.get(USER.USERNAME).toString(), data);
     }
-
     return response;
   }
 
@@ -586,6 +589,51 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 	
 	    DBObject row = collection.findOne(query);
 	    return row.get(USER.PASSWORD).toString();		
+	}
+
+	@Override
+	public List<Object> getTopAdvisorList(int noOfResult) throws RemoteException {
+		DBCollection collection =
+		        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+		
+	    List<Object> result = new ArrayList<Object>();
+	    DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWER"))
+	    		.sort(new BasicDBObject(USER.RATING, -1)).limit(noOfResult);
+	    while (cursor.hasNext()) {
+	    	DBObject obj = cursor.next();
+	    	Map<String, Object> responseMap = new HashMap<String, Object>();
+		      responseMap.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+		      responseMap.put(USER.SKILLS, obj.get(USER.SKILLS).toString());
+		      responseMap.put(USER.RATE, obj.get(USER.RATE).toString());
+		      responseMap.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+		      responseMap.put(USER.BALANCE, obj.get(USER.BALANCE).toString());
+		      responseMap.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+		      responseMap.put(USER.RATING, obj.get(USER.RATING).toString());
+		      responseMap.put(USER.CV, obj.get(USER.CV).toString());
+		      responseMap.put(USER.TYPE, obj.get(USER.TYPE).toString());
+		      responseMap.put(USER.EMAIL, obj.get(USER.EMAIL).toString());
+		      if (obj.get(USER.CHATPASS) != null)
+		        responseMap.put(USER.CHATPASS, obj.get(USER.CHATPASS).toString());
+		      responseMap.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+		      if (obj.get(USER.SOCIAL_NETWORK) != null)
+		        responseMap.put(USER.SOCIAL_NETWORK, obj.get(USER.SOCIAL_NETWORK).toString());
+		      else
+		        responseMap.put(USER.SOCIAL_NETWORK, Interviewer.SOCIALNETWORKS.DIRECT);
+	
+		      List<Map<String, Object>> ratingmap = getAllReviews(obj);
+		      responseMap.put(VARIABLES.ALLREVIEWS, ratingmap);
+	
+		      List<Education> educations = getAllEducations(obj);
+		      responseMap.put(USER.EDUCATIONS, educations);
+	
+		      List<Position> positions = getAllPositions(obj);
+		      responseMap.put(USER.POSITIONS, positions);
+	
+		      List<Skill> skills = getAllSkills(obj);
+		      responseMap.put(USER.SKILL_LIST, skills);
+		      result.add(responseMap);
+	    }
+	    return result;		
 	}
   
 }

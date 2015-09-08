@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.util.NumberUtils;
 
 
 import com.interview.framework.REQUEST_TYPES;
@@ -57,8 +58,14 @@ public class UpdateProfileHandler extends RequestHandler {
 	    	  interviewer.setCompanies((String[]) data.get(USER.COMPANIES));
 	      if (data.get(USER.SKILLS) != null)
 	    	   interviewer.setSkills((String[]) data.get(USER.SKILLS));
-	      if (data.get(USER.RATE) != null)
-	        interviewer.setRate(Integer.parseInt(data.get(USER.RATE).toString()));
+	      if (data.get(USER.RATE) != null) {
+	    	  Integer rate =  NumberUtils.parseNumber((String) data.get(USER.RATE), Integer.class);
+	    	  if(null != rate) {
+	    		  interviewer.setRate(rate);
+	    	  } else {
+	    		  interviewer.setRate(0);
+	    	  }
+	      }
 	      if (data.get(USER.CV) != null)
 	        interviewer.setCv(data.get(USER.CV).toString());
 	      if (data.get(USER.COUNTRY) != null)

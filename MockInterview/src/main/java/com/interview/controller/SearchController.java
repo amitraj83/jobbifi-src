@@ -8,20 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.services.Services;
 
 /***
  *  
- *  The class handles the request for Searching the INTERVIEWER
+ *  The class handles the request for Searching the INTERVIEWER (Advisor)
  *  users.
  * 
  *
@@ -58,24 +55,23 @@ public class SearchController {
 	        usersList.put(interviewer.get("username").toString(), "");
 	    }
 	
-	    it = data.keySet().iterator();
+	    /* get additional data for the user */
 	    Map<String, Object> additionalMap =
 	        Services.getInstance().getRequestHandlerService()
 	            .handleRequest(usersList, REQUEST_TYPES.SEARCH_ADDITIONAL_DATA);
+	    
+	    it = data.keySet().iterator();
 	    while (it.hasNext()) {
 	      String key = it.next();
-	      Map<String, Object> interviewer = (Map<String, Object>) data.get(key);
-	      
+	      Map<String, Object> interviewer = (Map<String, Object>) data.get(key);	      
 	      // Check the case for the user exist in solr but not in the database
 	      // This is not case as we do not have a delete functionality in the application
 	      if (interviewer.get("username") != null && 
-	    		  ((Map<String, Object>) additionalMap.get(interviewer.get("username"))) != null) {
-	       /* if (Services.getInstance().getUserSessionManager()
-	            .isUserOnline(interviewer.get("username").toString()))
-	          ((Map<String, Object>) additionalMap.get(interviewer.get("username"))).put("online", "1");
-	        else*/
+	    		  ((Map<String, Object>) additionalMap.get(interviewer.get("username"))) != null) {	     
+	    	  
 	          ((Map<String, Object>) additionalMap.get(interviewer.get("username"))).put("online", "0");
-	        interviewer.put("additional", additionalMap.get(interviewer.get("username")));
+	          interviewer.put("additional", additionalMap.get(interviewer.get("username")));
+	        
 	      }
 	    }
     }
@@ -83,4 +79,19 @@ public class SearchController {
     return new ModelAndView("searchResult", "message", Services.getInstance()
         .getJSONUtilityService().getJSONStringOfMap(responseMap));
   }
+  
+  @RequestMapping(value = "/gettopadvisor.do", method = RequestMethod.POST)
+  public ModelAndView getTopAdvisor(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+	  
+	  Map<Object, Object> requestMap = new HashMap<Object, Object>();
+	  requestMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.INTERVIEWER_SUB_REQ.GET_TOP_ADVISOR);
+	  requestMap.put("noOfResult", req.getParameter("noOfResult"));
+	  
+	  Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
+      .handleRequest(requestMap, REQUEST_TYPES.INTERVIEWER);
+	  
+	  return new ModelAndView("searchResult", "message", Services.getInstance()
+		        .getJSONUtilityService().getJSONStringOfMap(responseMap));
+  }
+  
 }

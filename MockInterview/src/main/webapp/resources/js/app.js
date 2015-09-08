@@ -161,7 +161,8 @@ function logout(){
     }).done(function( msg ) {
         window.location.href = (BASE_URL);    
     }).error(function(msg){
-        console.log("Error occured while logout");        
+        console.log("Error occured while logout");
+        window.location.href = (BASE_URL);
     });
 }
 

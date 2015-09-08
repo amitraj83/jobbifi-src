@@ -19,9 +19,17 @@ public class REQUEST_TYPES {
   }
   public static final String LINKEDIN_USER_REG = "LINKEDIN_USER_REG";
   public static final String INTERVIEWER_REGISTRATION = "INTERVIEWER_REGISTRATION";
+  
+  public static final String INTERVIEWER = "INTERVIEWER";
+  public interface INTERVIEWER_SUB_REQ {
+	  public static final String GET_TOP_ADVISOR = "GET_TOP_ADVISOR";  
+  }
+  
   public static final String SEARCH_INTERVIEWER = "SEARCH_INTERVIEWER";
   public static final String SEARCH_INTERVIEWS = "SEARCH_INTERVIEWS";
   public static final String SEARCH_JOBS = "SEARCH_JOBS";
+  public static final String SEARCH_INTERVIEWEE = "SEARCH_INTERVIEWEE";
+  
   public static final String FIRST_REQUEST = "FIRST_REQUEST";
   public static final String RETRIEVE_FIRST_REQUEST = "RETRIEVE_FIRST_REQUEST";
   public static final String PROCESS_FIRST_REQUEST = "PROCESS_FIRST_REQUEST";
@@ -161,6 +169,7 @@ public class REQUEST_TYPES {
   public static final String JOB_APPLICATION_REQ = "JOB_APPLICATION_REQ";  
   public interface JOB_APPLICATION_SUB_REQ {
 	  public static final String SAVE_APPLICATION = "SAVE_APPLICATION";
+	  public static final String UPDATE_APPLICATION_STATUS = "UPDATE_APPLICATION_STATUS";
 	  public static final String GET_APPLICATION_BY_JOB = "GET_APPLICATION_BY_JOB";
 	  public static final String GET_APPLICATION_BY_JOB_AND_USER = "GET_APPLICATION_BY_JOB_AND_USER";	  
   }

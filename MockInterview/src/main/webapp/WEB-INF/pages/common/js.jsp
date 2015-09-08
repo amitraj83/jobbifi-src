@@ -9,13 +9,7 @@
     </div>
 </div>
 
-
-
-
 <script type="text/javascript"> 
-
-
-
 var BASE_URL = window.location.protocol + "//" + window.location.host + "${pageContext.request.contextPath}/";
 
 /** Paginaion */
@@ -77,5 +71,4 @@ if(BASE_URL == window.location.href  )
     $("#navigation").addClass("homeview");
 else
     $("#navigation").addClass("otherview");
-
 </script>    

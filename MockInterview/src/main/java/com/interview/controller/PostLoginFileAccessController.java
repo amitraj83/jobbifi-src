@@ -56,50 +56,54 @@ public class PostLoginFileAccessController extends BaseController {
     Map<String, Object> res = null;
     
     if (request.getParameter("type").equals("profilepicupdate")) {
-      boolean fileWritten = true;
-      File myfile = null;
-      String secToken = "";
-      String uuid = "";
-      String extension = "";
-
-      SecureRandom random = new SecureRandom();
-      secToken = new BigInteger(130, random).toString(32);
-      uuid = UUID.randomUUID().toString();
-      extension = FilenameUtils.getExtension(file.getOriginalFilename());
       
-      String path = myProps.getProperty("profilepicpath") + "" + secToken;            
+      SecureRandom random = new SecureRandom();
+      String secToken = new BigInteger(130, random).toString(32);
+      String uuid = UUID.randomUUID().toString();
+      String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+             
+      //  myProps.getProperty("profilepicpath") 
+      String path = request.getSession().getServletContext().getRealPath("/") + PROFILE_PIC_DIRECTORY 
+    		  + File.separatorChar + secToken;
+      logger.info("Path : " + path);
       File profilePicDir = new File(path);
       if(!profilePicDir.exists()){
         if(!profilePicDir.mkdir()){
-        	logger.info("Unable to create the directory. Check the permissions. Path : " + profilePicDir);
+        	logger.info("Unable to create the directory. Check the permissions. Path : " + path);
         }
       }
       
-      myfile = new File(profilePicDir + File.separator + uuid + "." + extension);
       try {
-        if (!myfile.exists())
-          myfile.createNewFile();
+    	  	File myfile = new File(path + File.separator + uuid + "." + extension);
+    	  	if (!myfile.exists()) {
+    		  	myfile.createNewFile();
+    	    }
+        
+	        boolean fileWritten = Services.getInstance().getFileUtilities().copyMultipartFile(file, myfile);
+	        if (fileWritten) {         	 
+	      	  String profilePicUrl = request.getContextPath() + File.separatorChar + PROFILE_PIC_DIRECTORY + File.separatorChar +
+	      			  secToken + File.separatorChar + uuid  + "." + extension;    	  
+	      	  Map<Object, Object> data = new HashMap<Object, Object>();
+	      	  data.put(USER.USERNAME, getLoginUser());    	  
+	      	  data.put(USER.PROFILE_PIC, profilePicUrl);
+	      	  data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.UPDATE_USER_PROFILE_PIC);
+	      	  Services.getInstance().getRequestHandlerService().handleRequest(data, REQUEST_TYPES.UPDATE_USER_PROFILE);
+	      	  
+	          res = new HashMap<String, Object>();
+	          res.put("st", secToken);
+	          res.put("fn", uuid + "." + extension);
+	          res.put("mime", file.getContentType());
+	          res.put("path", profilePicUrl);
+	        } else {
+	          logger.info("Writing file failed: " + myfile.getAbsolutePath());
+	          res = new HashMap<String, Object>();
+	          res.put("error", "1");
+	        }
+          
       } catch (IOException e) {
-    	  logger.error("Exception occured while creating new file.", e);
-      }
-
-      fileWritten = Services.getInstance().getFileUtilities().copyMultipartFile(file, myfile);
-      if (fileWritten) {         	 
-    	  String profilePicUrl = request.getContextPath() + File.separatorChar + PROFILE_PIC_DIRECTORY + File.separatorChar +
-    			  secToken + File.separatorChar + uuid  + "." + extension;    	  
-    	  Map<Object, Object> data = new HashMap<Object, Object>();
-    	  data.put(USER.USERNAME, getLoginUser());    	  
-    	  data.put(USER.PROFILE_PIC, profilePicUrl);
-    	  data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.UPDATE_USER_PROFILE_PIC);
-    	  Services.getInstance().getRequestHandlerService().handleRequest(data, REQUEST_TYPES.UPDATE_USER_PROFILE);
-    	  
-        res = new HashMap<String, Object>();
-        res.put("st", secToken);
-        res.put("fn", uuid + "." + extension);
-        res.put("mime", file.getContentType());
-        res.put("path", profilePicUrl);
-      } else {
-        logger.info("[Post Login] Writing file failed: " + myfile.getAbsolutePath());
+    	  logger.error("IO Exception : Update profile picture.  ", e);
+    	  res = new HashMap<String, Object>();
+          res.put("error", "1");
       }
       
     } else if (request.getParameter("type").equals("interviewdoc")) {           

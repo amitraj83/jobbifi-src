@@ -20,4 +20,5 @@ public interface IJobApplicationStore extends Remote {
 	
 	public List<JobApplication> getJobApplicationsByJobIdAndUserId(String jobId, String userId) throws RemoteException;
 
+	public boolean updateStatus(String id, String status) throws RemoteException;
 }

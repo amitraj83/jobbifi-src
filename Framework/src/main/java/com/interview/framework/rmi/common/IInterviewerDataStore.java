@@ -57,4 +57,8 @@ public interface IInterviewerDataStore extends Remote {
   public String getUserPassword(String username) throws RemoteException; 
   
   public void updateUserPaypaladdress(String username,String paypaladdress) throws RemoteException;
+  
+  public List<Object>  getTopAdvisorList(int noOfResult) throws RemoteException;
+  
+  
 }

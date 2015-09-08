@@ -46,6 +46,11 @@ public class SearchServerRMIClient {
             Services.getInstance().getSearchServerClient()
                 .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEW);// executeRequest(requestBuilder.build());
         
+    if(type.equals(REQUEST_TYPES.SEARCH_INTERVIEWEE))
+    	response =
+        Services.getInstance().getSearchServerClient()
+            .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEWEE); 
+    
     System.out.println(response);
 
     String jsonSearchResponse = response.getDocs(0);

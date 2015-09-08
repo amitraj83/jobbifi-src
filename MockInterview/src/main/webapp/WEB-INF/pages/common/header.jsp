@@ -216,9 +216,9 @@
                         <li><a title="My Interviews" href="<c:url value='/myinterview.do'/>">My Interviews</a></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_INTERVIEWER')">
-                        <li id="nav_mocks"><a title="Mocks" href="<c:url value='/mocks.do'/>">Mocks</a></li>
-                        <!-- <li><a title="Employers" href="<c:url value='/employer.do'/>">Employers</a></li> -->
+                        <li id="nav_mocks"><a title="Mocks" href="<c:url value='/mocks.do'/>">Mocks</a></li>                        
                         <li><a title="My Interviews" href="<c:url value='/awardedbid.do'/>">My Interviews</a></li>
+                        <li><a title="Employer" href="<c:url value='/jobapplications.do'/>">Employer</a></li>
                     </sec:authorize>
                     <!-- ANY LOGGED IN USER -->
                     <sec:authorize access="hasRole('ROLE_USER')">

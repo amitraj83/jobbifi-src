@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 page-sidebar">
-                <%@ include file="/WEB-INF/pages/myInterviewSidebar.jsp" %>
+                <%@ include file="/WEB-INF/pages/employerSidebar.jsp" %>
             </div>
             <div class="col-md-9 page-content">
                 <div class="white-container">
@@ -132,7 +132,7 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#postjob").addClass("active");
+        $("#sidenav_postjob").addClass("active");
 
         $("#postJobForm").validate({
             rules: {

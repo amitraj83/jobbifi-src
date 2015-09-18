@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <!-- FORGOT PASSWORD -->
-                                <button class="btn btn-link" href="javascript:void(0)"
+                                <button class="btn btn-link" 
                                         onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot password?
                                 </button>
                                 <!-- SIGN UP -->
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form accept-charset="UTF-8" role="form" id="login-recordar" method="post">
+                            <form accept-charset="UTF-8" id="login-recordar" method="post">
                                 <fieldset>
                                     <p class="clearfix"> Email address you use to log in to your account
                                         <br> We'll send you an email with instructions to choose a new password. </p>
@@ -92,70 +92,68 @@
 
                         <div class="clearfix">
                             <br/>
-
                             <form id="signupform" class="form-horizontal">
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 control-label">Email</label>
-
+                            	<div class="form-group row">
+                                    <label class="col-md-4 control-label">User type</label>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" id="email" name="email"
-                                               placeholder="Email Address">
+                                    	<label class="pull-left radio-inline">
+                                                <input name="usertype"  checked="checked" value="INTERVIEWEE" type="radio"> Interviewee                                            
+                                        </label>                                    	                                       
+                                        <label class="radio-inline">
+                                               <input name="usertype" value="INTERVIEWER" type="radio"> Interviewer                                            
+                                        </label>                                                                                                                   
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="firstname" class="col-md-4 control-label">Username</label>
-
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="username" name="username"
-                                               placeholder="Choose a username">
-                                    </div>
+                                
+                                <div id="intervieweeSignUpForm">
+	                                <div class="form-group row">
+	                                    <label for="email" class="col-md-4 control-label">Email</label>
+	
+	                                    <div class="col-md-8">
+	                                        <input type="text" class="form-control" id="email" name="email"
+	                                               placeholder="Email Address">
+	                                    </div>
+	                                </div>
+	                                <div class="form-group row">
+	                                    <label for="firstname" class="col-md-4 control-label">Username</label>
+	
+	                                    <div class="col-md-8">
+	                                        <input type="text" class="form-control" id="username" name="username"
+	                                               placeholder="Choose a username">
+	                                    </div>
+	                                </div>
+	                                <div class="form-group row">
+	                                    <label for="lastname" class="col-md-4 control-label">Password</label>
+	
+	                                    <div class="col-md-8">
+	                                        <input type="password" class="form-control" id="password" name="password"
+	                                               placeholder="Password">
+	                                    </div>
+	                                </div>
+	                                <div class="form-group row">
+	                                    <label for="password" class="col-md-4 control-label">Repeat Password
+	                                    </label>
+	
+	                                    <div class="col-md-8">
+	                                        <input type="password" class="form-control" id="confirmpassword"
+	                                               name="confirmpassword" placeholder="Confirm Password">
+	                                    </div>
+	                                </div>
+	                                
+	                                <div class="form-group row">
+	                                    <div class="col-md-12">
+	                                        <button type="submit" class="btn btn-default">Sign Up</button>
+	                                        <img id="signupbtnloader" style="display: none;" alt="Processing..."
+	                                             src="<c:url value=" /resources/img/loading.gif " />">
+	                                    </div>
+	                                </div>
+	                                
+	                                <p class="text-muted text-small sign-in-separator">
+	                                        or
+	                                </p>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="lastname" class="col-md-4 control-label">Password</label>
-
-                                    <div class="col-md-8">
-                                        <input type="password" class="form-control" id="password" name="password"
-                                               placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 control-label">Repeat Password
-                                    </label>
-
-                                    <div class="col-md-8">
-                                        <input type="password" class="form-control" id="confirmpassword"
-                                               name="confirmpassword" placeholder="Confirm Password">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 control-label">User type
-                                    </label>
-
-                                    <div class="col-md-8">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="usertype" checked="checked"
-                                                       value="INTERVIEWER"> Interviewer
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="usertype" value="INTERVIEWEE"> Interviewee
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-default">Sign Up</button>
-                                        <img id="signupbtnloader" style="display: none;" alt="Processing..."
-                                             src="<c:url value=" /resources/img/loading.gif " />">
-                                    </div>
-                                </div>
-                                <div class="clearfix">
-                                    <p class="text-muted text-small sign-in-separator">
-                                        or
-                                    </p>
+                                
+                                <div class="clearfix">                                
                                     <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
                                         using Linked<i class="fa fa-linkedin"></i></button>
                                 </div>
@@ -213,11 +211,10 @@
                     <sec:authorize access="hasRole('ROLE_INTERVIEWEE')">
                         <li id="nav_jobs"><a title="Jobs" href="<c:url value='/jobs.do'/>">Jobs</a></li>
                         <li><a title="Advisors" href="<c:url value='/advisors.do'/>">Advisors</a></li>
-                        <li><a title="My Interviews" href="<c:url value='/myinterview.do'/>">My Interviews</a></li>
+                        <li><a title="My Interviews" href="<c:url value='/myinterview.do'/>">My Mocks</a></li>
                     </sec:authorize>
-                    <sec:authorize access="hasRole('ROLE_INTERVIEWER')">
-                        <li id="nav_mocks"><a title="Mocks" href="<c:url value='/mocks.do'/>">Mocks</a></li>                        
-                        <li><a title="My Interviews" href="<c:url value='/awardedbid.do'/>">My Interviews</a></li>
+                    <sec:authorize access="hasRole('ROLE_INTERVIEWER')">                    
+                    	<li id="nav_advisors"><a title="Advisors" href="<c:url value='/mocks.do'/>">Advisors</a></li>
                         <li><a title="Employer" href="<c:url value='/jobapplications.do'/>">Employer</a></li>
                     </sec:authorize>
                     <!-- ANY LOGGED IN USER -->

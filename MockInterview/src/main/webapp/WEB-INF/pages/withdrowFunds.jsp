@@ -26,6 +26,7 @@
                     <div class="clearfix">
                         <div class="row">
                             <div class="col-xs-12 col-md-12"><h1 style="margin-top:0px">Withdraw Funds</h1>
+                                
                                 <hr/>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -66,7 +67,7 @@
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-3 col-sm-9">
                                                         <button type="submit" class="btn btn-default" role="button">
-                                                            Withdrow Funds
+                                                            Withdraw Funds
                                                         </button>
                                                     </div>
                                                 </div>
@@ -74,6 +75,92 @@
                                         </form>
                                     </div>
                                 </div>
+                                
+                                <hr/>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Withdraw to Bank Account</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                    	<form class="form form-horizontal" id="bankWithdrawFundForm">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Name (as per bank account)</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="accountName"
+                                                               placeholder="Account Name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Account Number</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="accountNumber" id="accountNumber"
+                                                               placeholder="Account Number">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Confirm Account Number</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="confirmAccountNumber" id="confirmAccountNumber"
+                                                               placeholder="Confirm Account Number">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">IFSC Code</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="ifscCode"
+                                                               placeholder="IFSC Code">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Account Type</label>
+                                                    <div class="col-sm-6">
+                                                        <select name="accountType" class="form-control">
+                                                        	<option value="Savings">Savings</option>
+                                                        	<option value="Current">Current</option>
+                                                        	<option value="Salary">Salary</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Bank Name</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="bankName"
+                                                               placeholder="Bank Name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Bank Branch</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="bankBranch"
+                                                               placeholder="Bank Branch">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Bank City</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="bankCity"
+                                                               placeholder="Bank City">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Amount</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="amount"
+                                                               placeholder="Amount">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-3 col-sm-9">
+                                                        <button type="submit" class="btn btn-default">Withdraw Funds</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>                                
+                                
                             </div>
                         </div>
                     </div>
@@ -88,8 +175,10 @@
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
+
     var balance = parseFloat("${User_Balance}");
     $("#available_balance").html("$" + balance.toFixed(2));
+
     $(function () {
         $("#withdrawFundForm").validate({
             rules: {
@@ -97,13 +186,31 @@
                 paypalAddress: {required: true}
             },
             submitHandler: function (form) {
-                submitDepositForm();
+                submitWithdrawForm();
                 return;
             }
         });
+        
+        $("#bankWithdrawFundForm").validate({
+            rules: {
+                amount: {required: true, number: true},
+                accountName: {required: true},
+                accountNumber: {required: true},
+                confirmAccountNumber : {equalTo: "#accountNumber"},
+                accountType: {required: true},
+                ifscCode: {required: true},
+                bankName : {required: true},
+                bankBranch : {required: true},
+                bankCity : {required: true},
+            },
+            submitHandler: function (form) {
+                submitBankWithdrawForm();
+                return;
+            }
+        });       
     });
 
-    function submitDepositForm() {
+    function submitWithdrawForm() {
         $.ajax({
             type: "POST",
             url: "<c:url value='/withdrawfunds.do'/>",
@@ -119,11 +226,27 @@
         });
     }
 
+    function submitBankWithdrawForm(){
+    	$.ajax({
+            type: "POST",
+            url: "<c:url value='/withdrawbankfunds.do'/>",
+            data: $("#bankWithdrawFundForm").serialize()
+        }).done(function (msg) {
+            var json = jQuery.parseJSON(msg);
+            if (json.status == 1) {
+                showSuccess("We got your withdraw fund request. We will notify you once the payment processed.");
+            } else {
+                showError("You do not have enough balance to withdraw this amount.");
+            }
+            $("#bankWithdrawFundForm").trigger("reset");
+        });
+    }
+    
     $.validator.addMethod('lessThan', function (value, el, param) {
         var i = parseFloat(amount);
         var j = parseFloat(balance);
         return (i < j) ? true : false;
-    });
+    });    
 </script>
 </body>
 </html>

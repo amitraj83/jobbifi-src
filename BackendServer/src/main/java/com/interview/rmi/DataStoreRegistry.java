@@ -10,6 +10,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import com.interview.framework.VARIABLES;
+import com.interview.framework.rmi.common.IBankWithdrawFundRequestStore;
 import com.interview.framework.rmi.common.IBidStore;
 import com.interview.framework.rmi.common.ICalendarEvent;
 import com.interview.framework.rmi.common.IChatStore;
@@ -508,4 +509,16 @@ public class DataStoreRegistry {
 		return null;
 	}
 	
+	public IBankWithdrawFundRequestStore getBankWithdrawFundRequestStore(){
+		try {
+			return (IBankWithdrawFundRequestStore) (this.registry.lookup(IBankWithdrawFundRequestStore.NAME));
+		} catch (AccessException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}	
 }

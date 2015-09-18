@@ -75,6 +75,17 @@ function gup( name ){
       return results[1];
 }
 
+function gupurl( name , url){
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
+    var regexS = "[\\?&]"+name+"=([^&#]*)";  
+    var regex = new RegExp( regexS );  
+    var results = regex.exec( url); 
+    if( results == null )
+        return "";  
+    else
+      return results[1];
+}
+
 function callF(name){	
 	window[name]();
 }
@@ -252,6 +263,15 @@ $(function(){
 			 registerUser();
 			 return false;
 		}		
+	});
+	
+	$("#signupform input[name='usertype']").on("click", function(){
+		var value  = $(this).val();
+		if(value == "INTERVIEWEE") {
+			$("#intervieweeSignUpForm").show();
+		} else {
+			$("#intervieweeSignUpForm").hide();
+		}
 	});
 	
 	if(gup("callbackj")!= ""){

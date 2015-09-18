@@ -12,6 +12,7 @@ import org.bson.types.ObjectId;
 import com.interview.framework.DATASTORES;
 import com.interview.framework.pojo.Job;
 import com.interview.framework.rmi.common.IJobStore;
+import com.interview.helper.MongoDataHelper;
 import com.interview.services.Services;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
@@ -45,6 +46,8 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
       job.setDt(new Date((Long) row.get(DATASTORES.JOB.DATE)).getTime());
       job.setStatus(new Integer(row.get(DATASTORES.JOB.STATUS).toString()));
       job.setCompanyName(row.get(DATASTORES.JOB.COMPANY_NAME).toString());
+      job.setCompanyDescription(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_DESCRIPTION));
+      job.setCompanyVideo(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO));      
       job.setApplyUrl(row.get(DATASTORES.JOB.APPLY_URL).toString());
       job.setIndustry(row.get(DATASTORES.JOB.INDUSTRY).toString());
       job.setFile(row.get(DATASTORES.JOB.FILE).toString());
@@ -86,6 +89,8 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
     dbObject.put(DATASTORES.JOB.STATUS, job.getStatus());
     dbObject.put(DATASTORES.JOB.SALARY, job.getSalary());
     dbObject.put(DATASTORES.JOB.COMPANY_NAME, job.getCompanyName());
+    dbObject.put(DATASTORES.JOB.COMPANY_DESCRIPTION, job.getCompanyDescription());
+    dbObject.put(DATASTORES.JOB.COMPANY_VIDEO, job.getCompanyVideo());
     dbObject.put(DATASTORES.JOB.APPLY_URL, job.getApplyUrl());
     dbObject.put(DATASTORES.JOB.INDUSTRY, job.getIndustry());
     dbObject.put(DATASTORES.JOB.FILE, job.getFile());
@@ -125,6 +130,8 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
       job.setStatus(new Integer(row.get(DATASTORES.JOB.STATUS).toString()));
       job.setTitle(row.get(DATASTORES.JOB.TITLE).toString());
       job.setCompanyName(row.get(DATASTORES.JOB.COMPANY_NAME).toString());
+      job.setCompanyDescription(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_DESCRIPTION));
+      job.setCompanyVideo(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO));
 
       if (row.get(DATASTORES.JOB.APPLY_URL) != null) {
         job.setApplyUrl(row.get(DATASTORES.JOB.APPLY_URL).toString());

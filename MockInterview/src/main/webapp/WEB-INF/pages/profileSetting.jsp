@@ -231,7 +231,11 @@
             done: function (e, data) {
                 var jsonResponse = jQuery.parseJSON(data.jqXHR.responseText);
                 if (null != jsonResponse) {
-                    $("#update_img").attr({src: BASE_URL + jsonResponse.path});
+                	if(jsonResponse.error == "1"){
+                		showError("Error occured while uploading the profile picture. Please try again later.");
+                	} else {
+                		$("#update_img").attr({src: BASE_URL + jsonResponse.path});	
+                	}                    
                 }
             },
             add: function (e, data) {

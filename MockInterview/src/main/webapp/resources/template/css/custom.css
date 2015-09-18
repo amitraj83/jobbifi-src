@@ -1,0 +1,24 @@
+
+#topadvisorlist .star-rating {
+	float: left;
+}
+
+#topadvisorlist .rating-container {
+	font-size: 14px;
+}
+
+#topadvisorlist .advisor-hr {
+	margin: 7px 0;
+}
+
+#topadvisorlist .rating-span {
+	display: inline-block; 
+	margin: 0px 0px 0px 6px;
+}
+
+#latestjoblist .latest-job {}
+#latestjoblist .latest-job .job-title { color: #0072bc;}
+#latestjoblist .latest-job .job-skill { margin: 2px 0;}
+#latestjoblist .latest-job .job-company { margin: 2px 0; font-weight: bold;}
+#latestjoblist .latest-job .job-location { margin: 2px 0; }
+#latestjoblist .job-line { margin: 8px 0; }

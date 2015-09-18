@@ -163,6 +163,7 @@ public class REQUEST_TYPES {
   public static final String JOB = "JOB";
   public static final String POST_JOB = "POST_JOB";
   public static final String GET_JOBS_OFFERED = "GET_JOBS_OFFERED";
+  public static final String GET_LATEST_JOBS = "GET_LATEST_JOBS";
   public static final String SEARCH_JOB_INFO = "SEARCH_JOB_INFO";
   public static final String GET_JOB = "GET_JOB";
   
@@ -204,6 +205,11 @@ public class REQUEST_TYPES {
   public static final String PASSWORD = "PASSWORD";
   public interface PASSWORD_SUB_REQ {
 	  public static final String CHANGE_PASSWORD = "CHANGE_PASSWORD";
+  }
+  
+  public static final String BANK_WITHDRAW_FUND_REQUEST = "BANK_WITHDRAW_FUND_REQUEST";
+  public interface BANK_WITHDRAW_FUND_REQUEST_SUB_REQ {
+	  public static final String SAVE_REQUEST = "SAVE_REQUEST";
   }
   
 }

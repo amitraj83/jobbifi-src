@@ -37,6 +37,8 @@ public class PostJobController extends BaseController{
     job.setDescription(req.getParameter(VARIABLES.POST_JOB.DESCRIPTION));
     job.setSalary(req.getParameter(VARIABLES.POST_JOB.SALARY));
     job.setCompanyName(req.getParameter(VARIABLES.POST_JOB.COMPANY_NAME));
+    job.setCompanyDescription(req.getParameter(VARIABLES.POST_JOB.COMPANY_DESCRIPTION));
+    job.setCompanyVideo(req.getParameter(VARIABLES.POST_JOB.COMPANY_VIDEO));
     job.setApplyUrl(req.getParameter(VARIABLES.POST_JOB.APPLY_URL));
     job.setIndustry(req.getParameter(VARIABLES.POST_JOB.INDUSTRY));
     job.setExperience(req.getParameter(VARIABLES.POST_JOB.EXPERIENCE));

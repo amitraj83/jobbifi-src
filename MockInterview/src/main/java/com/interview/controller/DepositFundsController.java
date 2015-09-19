@@ -1,5 +1,6 @@
 package com.interview.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,12 +17,12 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
+import com.interview.framework.pojo.BankWithdrawFundRequest;
 import com.interview.framework.pojo.Transactions;
 import com.interview.services.Services;
 import com.paypal.api.payments.Amount;
@@ -60,6 +61,7 @@ public class DepositFundsController extends BaseController {
 	
 	 @RequestMapping(value = "/withdrawfunds.do", method = RequestMethod.POST)
 	 public ModelAndView withdrawfunds(ModelMap model, HttpServletRequest req, HttpServletResponse res){
+		 
 		 Transactions transaction =new Transactions();
 		   Map<Object,Object> reqMap = new HashMap<Object, Object>();
 		   transaction.setAmount(new Double(req.getParameter("amount")));
@@ -71,6 +73,29 @@ public class DepositFundsController extends BaseController {
 		   Map<String, Object>  resMap= Services.getInstance().getRequestHandlerService()
 	                  .handleRequest(reqMap, REQUEST_TYPES.DEPOSIT_FUNDS); 
 			return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
+	      			.getJSONStringOfMap(resMap));	      		     
+	 }
+	 
+	 @RequestMapping(value = "/withdrawbankfunds.do", method = RequestMethod.POST)
+	 public ModelAndView withdrawFundToBank(ModelMap model, HttpServletRequest req, HttpServletResponse res){
+		 
+		   BankWithdrawFundRequest fundRequest = new BankWithdrawFundRequest();
+		   fundRequest.setUsername(getLoginUser());
+		   fundRequest.setAccountName(req.getParameter("accountName"));
+		   fundRequest.setAccountNumber(req.getParameter("accountNumber"));
+		   fundRequest.setAccountType(req.getParameter("accountType"));
+		   fundRequest.setIfscCode(req.getParameter("ifscCode"));
+		   fundRequest.setBankName(req.getParameter("bankName"));
+		   fundRequest.setBankBranch(req.getParameter("bankBranch"));
+		   fundRequest.setBankCity(req.getParameter("bankCity"));
+		   fundRequest.setAmount(new BigDecimal(req.getParameter("amount")));
+		   
+		   Map<Object,Object> reqMap = new HashMap<Object, Object>();		   
+		   reqMap.put("fundRequest", fundRequest);
+		   reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.BANK_WITHDRAW_FUND_REQUEST_SUB_REQ.SAVE_REQUEST);
+		   Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+	                  .handleRequest(reqMap, REQUEST_TYPES.BANK_WITHDRAW_FUND_REQUEST); 
+		  return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
 	      			.getJSONStringOfMap(resMap));	      		     
 	 }
 	 

@@ -1,7 +1,6 @@
 <%@ include file="/WEB-INF/pages/common/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-
 <head>
     <%@ include file="/WEB-INF/pages/common/css.jsp" %>
     <title>Jobs</title>
@@ -34,6 +33,16 @@
                 </div>
                 <div class="col-md-4 page-sidebar">
                 	<div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
+                	
+                		<div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
+                			<h3>Need to talk with advisor ?</h3>
+                			<p>Post your Mock interview and invite advisor to train you and for job referrals</p>
+  							<div style="text-align:center">
+                				<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>
+               				</div>
+                		</div>
+                	
+                	
 						<h3 style="font-weight: bold;margin: 30px 0;">Top Advisor</h3>
 						<div id="topadvisorlist"></div>                
                     </div>
@@ -128,7 +137,7 @@
             searchJobs(null, 1, 10);
         }
 
-        searchFeaturedJobs("", 1, 10);
+        //searchFeaturedJobs("", 1, 10);
         $("#newmessageForm").validate({
             rules: {
                 message: {
@@ -251,7 +260,7 @@
                 if (currentPage == (i + 1)) {
                     html = html + "<li class='active'><a href='javascript:void(0)'>" + (i + 1) + "</a></li>";
                 } else {
-                    html = html + "<li class=''><a href='javascript:searchJobs(\"" + searchKey + "\"," + (i + 1) + ")'>" + (i + 1) + "</a></li>";
+                    html = html + "<li class=''><a href='javascript:searchJobs(\"" + searchKey + "\"," + (i + 1) + ", 10)'>" + (i + 1) + "</a></li>";
                 }
             }
             html += "</ul>"
@@ -322,23 +331,23 @@
         });
     }
 
-    var topAdvisor =
-        '<div class="row">' +
-        '<div class="col-md-3">' +
-        '<img src="{{ image }}" class="img-thumbnail">' +        
-        '</div>' +
-        '<div class="col-md-9">' +
-        '<div><a style="color:#454545;font-weight:bold" href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
-        '<div class="advisor-skills">{{skills}}</div>' +
-        '<input type="number" value="{{rating}}" class="userRating" /> <span> {{ rating }} </span>' +
-        '</div>' +
-        '</div><hr />';    
+var topAdvisor =
+    '<div class="row">' +
+    '<div class="col-md-3">' +
+    '<img src="{{ image }}" class="img-thumbnail">' +        
+    '</div>' +
+    '<div class="col-md-9">' +
+    '<div><a style="color:#454545;font-weight:bold" href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
+    '<div class="advisor-skills">{{skills}}</div>' +
+    '<div><input type="number" value="{{rating}}" class="userRating" /> <span class="rating-span"> ({{rating}}/5) </span></div>' +
+    '</div>' +
+    '</div><hr class="advisor-hr" />';    
     
 function loadTopAdvisor(){
 	$.ajax({
         type: "POST",
         url: BASE_URL + "gettopadvisor.do",
-        data: "noOfResult=10",
+        data: "noOfResult=5",
     }).done(function (res) {
         var jsonResult = jQuery.parseJSON(res); 
         var json = jsonResult.advisorList;

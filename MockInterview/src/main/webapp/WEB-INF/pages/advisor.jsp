@@ -33,7 +33,24 @@
                         <div id="pagination"></div>
                     </div>
                 </div>
-                <!-- end main content -->
+                
+                <div class="col-md-4 page-sidebar">
+                	<div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
+                	
+                		<div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
+                			<h3>Need to talk with advisor ?</h3>
+                			<p>Post your Mock interview and invite advisor to train you and for job referrals</p>
+  							<div style="text-align:center">
+                				<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>
+               				</div>
+                		</div>
+                	
+                	
+						<h3 style="font-weight: bold;margin: 30px 0 15px;">Latest Jobs</h3>
+						<div id="latestjoblist"></div>                
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -50,6 +67,8 @@
         } else {
             searchAdvisors(null, 1);
         }
+        
+        loadLatestJob(searchKey);
         
         $("#searchAdvisorBtn").click(function (e) {
         	var searchKey = $("#searchKey").val();
@@ -78,8 +97,6 @@
     }
 
     var PAGE_SIZE = 10;
-
-
     function searchAdvisors(searchKey, currentPage) {
 
         $("#searchAdvisorResult").html("");
@@ -124,7 +141,7 @@
 	                        '<center><input type="number" value="{{rating}}" class="userRating" /> <span>( {{ rating }} / 5)</span></center>' +
 	                        '</div>' +
 	                        '<div class="col-md-9">' +
-	                        '<div class="advisor-name"><a href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
+	                        '<div class="advisor-name"><a target="_blank" href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
 	                        '<div class="advisor-title"><strong>Skills</strong> {{ #skills }}<span class="label label-default">{{ . }}</span> {{ /skills }}</div>' +
 	                        '<div><span class="advisor-rate"><strong>Rate:&nbsp;&nbsp;</strong><i class="fa fa-inr"></i> {{rate}} /hr</span><span></div>' +
 	
@@ -198,7 +215,40 @@
         }
         return html;
     }
+    
+    var jobItem = '<div class="latest-job">'+
+	  '<a class="job-title" target="_blank" href=" '+BASE_URL+'jobdetail.do?jid={{id}}" title="{{title}}" >{{ title }}</a>'+
+	  '<p class="job-skill"> {{ #skills }} <span class="label label-info">{{ . }}</span> {{ /skills }} </p>'+
+	  '<p class="job-company">{{companyname}}</p>'+
+	  '<p class="job-location">{{location}}</p>' +
+	  '</div><hr class="job-line">';
+    
+    function loadLatestJob(searchKey){    	
+    	searchKey =  (searchKey == null || searchKey == "") ? "''" : searchKey;
+    	$.ajax({
+            type: "GET",
+            url: BASE_URL + "searchjobs.do",
+            data: "searchkey=" + searchKey + "&start=0&rows=5",
+        }).done(function (res) {
+
+        	var jsonResult = jQuery.parseJSON(res);
+			var jsonDocList = jsonResult.JSON_DOC_LIST;                        
+			if (null != jsonDocList && Object.keys(jsonDocList).length > 0) {
+                $.each(jsonDocList, function (i) {                	                	
+                	var templateData = {
+                		'id' : jsonDocList[i].id, 
+                		'title' : jsonDocList[i].title,
+                		'skills' : jsonDocList[i].skills,
+                		'companyname' : jsonDocList[i].companyname,
+                		'location' : jsonDocList[i].location
+                	};
+                	var html = Mustache.to_html(jobItem, templateData);
+                	$("#latestjoblist").append(html);
+                	
+                });
+            }
+        });
+    }    
 </script>
 </body>
-
 </html>

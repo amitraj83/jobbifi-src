@@ -84,10 +84,15 @@ public class SearchInterviewInfoHandler extends RequestHandler {
 	    	  String key = it.next();
 	    	  String value = iidFileMap.get(key);
 	    	  if(null != value && !"".equals(value)){
-	    		  UploadedFile uploadedFile = DataStoreRegistry.getInstance().getUploadedFileDataStore().getUploadedFile(new ObjectId(value));  
+	    		  UploadedFile uploadedFile = DataStoreRegistry.getInstance().getUploadedFileDataStore().getUploadedFile(new ObjectId(value));
 	    		  Map<String, Object> uploadedFileMap = new HashMap<String, Object>();
-	    		  uploadedFileMap.put(DATASTORES.UPLOAD_FILE.URL, uploadedFile.getURL());
-	    		  uploadedFileMap.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, uploadedFile.getOriginalFileName());
+	    		  if(null != uploadedFile) {
+	    			  uploadedFileMap.put(DATASTORES.UPLOAD_FILE.URL, uploadedFile.getURL());
+		    		  uploadedFileMap.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, uploadedFile.getOriginalFileName());  
+	    		  } else {
+	    			  uploadedFileMap.put(DATASTORES.UPLOAD_FILE.URL, null);
+		    		  uploadedFileMap.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, null);
+	    		  }
 	    		  iidFiles.put(key, uploadedFileMap);		  
 	    	  }    	  
 	      } 

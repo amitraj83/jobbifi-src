@@ -79,6 +79,8 @@ public interface VARIABLES {
     String INDUSTRY = "industry";
     String SALARY = "salary";
     String COMPANY_NAME = "companyname";
+    String COMPANY_DESCRIPTION = "companydescription";
+    String COMPANY_VIDEO = "companyvideo";
     String APPLY_URL = "applyurl";
     String EXPERIENCE = "experience";
     String LOCATION = "location";

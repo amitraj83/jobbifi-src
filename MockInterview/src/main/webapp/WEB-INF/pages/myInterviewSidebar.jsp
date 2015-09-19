@@ -14,6 +14,7 @@
     </sec:authorize>
 
     <sec:authorize access="hasRole('ROLE_INTERVIEWER')">
+    	<a class="list-group-item" id="sidenav_searchMock" title="Search Mocks" href="<c:url value='/mocks.do'/>">Search Mocks</a>
         <a href="<c:url value='/awardedbid.do'/>" id="myinterview" class="list-group-item">My Interviews</a>
         <a href="<c:url value='/allbidplaced.do'/>" id="allbid" class="list-group-item">My Bids</a>        
     </sec:authorize>

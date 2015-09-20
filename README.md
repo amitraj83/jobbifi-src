@@ -2,6 +2,7 @@ JOBBIFI PROJECTS
 ----------------
 
 Directories
+
 * BackendServer: Business logic
 * DataStoreServer: Database connector
 * FileServer: Manages uploaded files

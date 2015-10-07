@@ -643,14 +643,14 @@ We are backed-up by several talented career advisors who desire to train job see
             var urlToAppend = '';
             switch ($("#front-search-dropdown").next().find("button").attr("title")) {
                 case "Jobs":
-                    urlToAppend = 'jobs.do?searchKey=' + $("#front-search-key").val();
+                    urlToAppend = 'jobs.do?searchKey=' + $.trim($("#front-search-key").val());
                     break;
                 case "Advisors":
-                    urlToAppend = 'advisors.do?searchKey=' + $("#front-search-key").val();
+                    urlToAppend = 'advisors.do?searchKey=' + $.trim($("#front-search-key").val());
                     break;
 
                 case "Mock Interviews":
-                    urlToAppend = 'mocks.do?searchKey=' + $("#front-search-key").val();
+                    urlToAppend = 'mocks.do?searchKey=' + $.trim($("#front-search-key").val());
                     break;
 
 
@@ -663,7 +663,12 @@ We are backed-up by several talented career advisors who desire to train job see
             window.location = BASE_URL + $(this).attr('data-target');
         });
 
-
+        $("#front-search-key").on("keypress", function (e) {
+        	if (e.which == 13) {
+        		$( "#front-search-button" ).trigger( "click" );
+			}
+        });
+        
         var items = ["PERFECT CAREER ADVISOR", "NEXT AWESOME RECRUIT", "DREAM JOB"],
                 $text = $('#search-form-title-changer'),
                 delay = 4; //seconds

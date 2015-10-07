@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Search Jobs</h2>
-
+							<div id="searchJobMessage"></div>
                             <div class="input-group">
                                 <input id="searchKey" type="text" class="form-control"
                                        placeholder="I am looking for a...">
@@ -24,7 +24,6 @@
 									<button id="searchJobBtn" class="btn btn-default" type="button">Search</button>
 									</span>
                             </div>
-                            <div class="col-md-offset-3 col-md-9" id="searchJobMessage"></div>
                         </div>
                     </div>
                     <div class="row" style="padding-top:20px;">
@@ -99,7 +98,7 @@
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
     function searchJobMessage() {
-        $("#searchJobMessage").html("<label class='clearfix error'>Please enter what are you looking for?<label>");
+        $("#searchJobMessage").html("<div class='alert alert-danger'> Please enter what are you looking for? </div>");
         setTimeout(function () {
             $("#searchJobMessage").html("");
         }, 3600 * 2);

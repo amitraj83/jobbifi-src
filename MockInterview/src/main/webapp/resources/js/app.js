@@ -17,7 +17,7 @@ function hideLoader(){
 };
 
 function showError(message){
-	$.notify({message: message},{type: 'error', 
+	$.notify({message: message},{type: 'danger', 
 		placement: {
 			from: "top",
 			align: "center"
@@ -237,10 +237,24 @@ function login(){
 }
 
 $(function(){
+	
+	$('#myModal').on('hidden.bs.modal', function () {
+		$('#forgotpasswordbox').hide();
+		$('#signupbox').hide();
+		$('#loginbox').show();
+	});
+	
+	
 	$("#loginform").validate({
 		rules:{
 			j_username : {required:true},
 			j_password : {required:true, minlength:8}
+		},messages: {
+			j_username: "Username/Email is required.",
+			j_password: {
+			required: "Password is required.",
+			minlength: "Please enter at least 8 characters."
+			}
 		},
 		 submitHandler: function(form) {
 			login();

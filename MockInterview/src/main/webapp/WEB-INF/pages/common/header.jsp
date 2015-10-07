@@ -6,7 +6,8 @@
     <div class="modal-dialog login-modal" style="width: 400px;">
         <div class="modal-content">
             <div class="modal-body text-center">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span
                         class="sr-only">Close</span></button>
                 <div id="loginbox" class="row">
                     <div class="col-md-10 col-md-offset-1">

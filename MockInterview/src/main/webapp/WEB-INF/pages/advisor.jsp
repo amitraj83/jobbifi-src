@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Search Advisors</h2>
-
+							<div id="searchJobMessage"></div>
                             <div class="input-group">
                                 <input id="searchKey" type="text" class="form-control" placeholder="Search Advisors">
                                             <span class="input-group-btn">
@@ -58,6 +58,14 @@
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
+
+	function searchJobMessage() {
+	    $("#searchJobMessage").html("<div class='alert alert-danger'> Please enter what are you looking for? </div>");
+	    setTimeout(function () {
+	        $("#searchJobMessage").html("");
+	    }, 3600 * 2);
+	}
+	
     $(document).ready(function () {
 
         var searchKey = getParameterByName("searchKey");
@@ -73,7 +81,8 @@
         $("#searchAdvisorBtn").click(function (e) {
         	var searchKey = $("#searchKey").val();
        	    if (searchKey == "") {
-                 showWarning("Please enter the search term you want to search.");
+                 //showWarning("Please enter the search term you want to search.");
+                 searchJobMessage();
                   return;
             }
             searchAdvisors(searchKey, 1);
@@ -88,7 +97,8 @@
         if (e.which == 13) {
             var searchKey = $("#searchKey").val();
             if (searchKey == "") {
-                showWarning("Please enter the search term you want to search.");
+                //showWarning("Please enter the search term you want to search.");
+                searchJobMessage();
                 return;
             }
             searchAdvisors(searchKey, 1);

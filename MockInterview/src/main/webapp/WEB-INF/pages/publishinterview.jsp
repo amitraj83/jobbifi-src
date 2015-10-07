@@ -127,7 +127,13 @@
                 budget: {required: true, number: true},
                 experience: {required: true, number: true},
                 description: {required: true},
-                industry: {required: true},
+            },messages: {
+            	title: "Interview title is required.",
+            	industry: "Industry is required.",
+            	skills: "Skill is required.",
+            	budget: "Budget is required.",
+            	experience: "Experience is required.",
+            	description: "Description is required.",
             },
             submitHandler: function (form) {
                 submitForm();

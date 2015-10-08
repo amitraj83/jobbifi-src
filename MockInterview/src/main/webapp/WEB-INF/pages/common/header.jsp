@@ -42,7 +42,7 @@
                                 </button>
                                 <!-- SIGN UP -->
                                 <div class="form-group" id="login-sign-up-button">
-                                    <div class="control"> Don't have an account? <a class=""
+                                    <div class="control"> Don't have an account? <a class="btn btn-link"
                                                                                     onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign
                                         up here.</a></div>
                                 </div>

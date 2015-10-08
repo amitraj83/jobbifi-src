@@ -119,7 +119,7 @@
             type: "POST",
             url: BASE_URL + "search.do",
             data: "searchkey=" + searchKey + "&start=" + start,
-            async: false
+            //async: false
         }).done(function (msg) {
         	
             var jresponse = jQuery.parseJSON(msg);

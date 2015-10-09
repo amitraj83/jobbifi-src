@@ -69,7 +69,7 @@
     $(document).ready(function () {
 
         var searchKey = getParameterByName("searchKey");
-        if (searchKey != null) {
+        if (searchKey != "") {
             $("#searchKey").val(searchKey);
             searchAdvisors(searchKey, 1);
         } else {

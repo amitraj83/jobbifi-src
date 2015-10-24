@@ -74,6 +74,11 @@
     <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 
     <script type="text/javascript">
+    $(document).ready(function () {
+    	$("#footer").css("position","fixed");
+    	$("#footer").addClass( "navbar-fixed-bottom");
+    });
+    
         $(function () {
             $("#depositFundForm").validate({
                 rules: {

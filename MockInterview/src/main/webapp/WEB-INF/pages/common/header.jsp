@@ -6,7 +6,8 @@
     <div class="modal-dialog login-modal" style="width: 400px;">
         <div class="modal-content">
             <div class="modal-body text-center">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span
                         class="sr-only">Close</span></button>
                 <div id="loginbox" class="row">
                     <div class="col-md-10 col-md-offset-1">
@@ -41,7 +42,7 @@
                                 </button>
                                 <!-- SIGN UP -->
                                 <div class="form-group" id="login-sign-up-button">
-                                    <div class="control"> Don't have an account? <a class=""
+                                    <div class="control"> Don't have an account? <a class="btn btn-link"
                                                                                     onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign
                                         up here.</a></div>
                                 </div>

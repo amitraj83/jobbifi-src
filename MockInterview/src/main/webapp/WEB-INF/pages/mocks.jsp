@@ -20,18 +20,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Search Mock Interviews</h2>
-
+							<div id="searchMockMessage"></div>
                             <div class="input-group">
                                 <input id="searchKey" type="text" class="form-control" placeholder="Enter skills"/>
                                             <span class="input-group-btn">
                                     <button id="searchMockBtn" class="btn btn-default" type="button">Search</button>
                                 </span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-md-offset-4 col-md-8" id="searchMockMessage"></div>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 30px;">
@@ -46,7 +41,7 @@
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
     function searchMockMessage() {
-        $("#searchMockMessage").html("<label class='clearfix error'>Please enter what are you looking for?<label>");
+        $("#searchMockMessage").html("<div class='alert alert-danger'> Please enter what are you looking for? </div>");
         setTimeout(function () {
             $("#searchMockMessage").html("");
         }, 3600 * 2);

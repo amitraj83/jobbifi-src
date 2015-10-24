@@ -60,8 +60,11 @@
                                                     <label class="col-sm-3 control-label">Amount</label>
 
                                                     <div class="col-sm-6">
-                                                        <input type="text" class="form-control" name="amount"
-                                                               placeholder="Amount">
+                                                    <div class="input-group">
+
+                                                        <span class="input-group-addon">$</span>
+                                                        <input type="text" class="form-control" name="amount">
+                                                               </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -147,8 +150,11 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label">Amount</label>
                                                     <div class="col-sm-6">
-                                                        <input type="text" class="form-control" name="amount"
-                                                               placeholder="Amount">
+                                                    <div class="input-group">
+
+                                                        <span class="input-group-addon">$</span>
+                                                        <input type="text" class="form-control" name="amount">
+                                                               </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

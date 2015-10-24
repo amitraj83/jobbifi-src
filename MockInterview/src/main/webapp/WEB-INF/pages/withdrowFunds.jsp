@@ -26,7 +26,7 @@
                     <div class="clearfix">
                         <div class="row">
                             <div class="col-xs-12 col-md-12"><h1 style="margin-top:0px">Withdraw Funds</h1>
-                                
+                                <div id="message"></div>
                                 <hr/>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -218,9 +218,9 @@
         }).done(function (msg) {
             var json = jQuery.parseJSON(msg);
             if (json.result == 1) {
-                showSuccess("We got your withdraw fund request. We will notify you once the payment processed.");
+                message("We got your withdraw fund request. We will notify you once the payment processed.","success");
             } else {
-                showError("You do not have enough balance to withdraw this amount.");
+                message("You do not have enough balance to withdraw this amount.","danger");
             }
             $("#withdrawFundForm").trigger("reset");
         });
@@ -234,9 +234,9 @@
         }).done(function (msg) {
             var json = jQuery.parseJSON(msg);
             if (json.status == 1) {
-                showSuccess("We got your withdraw fund request. We will notify you once the payment processed.");
+                message("We got your withdraw fund request. We will notify you once the payment processed.","success");
             } else {
-                showError("You do not have enough balance to withdraw this amount.");
+            	message("You do not have enough balance to withdraw this amount.","danger");
             }
             $("#bankWithdrawFundForm").trigger("reset");
         });
@@ -247,6 +247,7 @@
         var j = parseFloat(balance);
         return (i < j) ? true : false;
     });    
+    
 </script>
 </body>
 </html>

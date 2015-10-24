@@ -638,6 +638,12 @@ We are backed-up by several talented career advisors who desire to train job see
 <script type="text/javascript">
     $(document).ready(function () {
 
+    	
+    	$(".btn-signup").on("click",function(){
+    		$('#myModal').modal('show');
+    		$('#loginbox').hide(); 
+    		$('#signupbox').show();    		
+    	});
 
         $("#front-search-button").on("click", function () {
             var urlToAppend = '';

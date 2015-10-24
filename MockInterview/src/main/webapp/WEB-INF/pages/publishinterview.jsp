@@ -21,6 +21,7 @@
 
                 <div class="clearfix white-container">
                     <h1 class="title">Publish Your Interview</h1>
+                    <div id="message"></div>
                     <hr>
 
                     <form id="publishInterviewForm" class="form-horizontal">
@@ -159,7 +160,7 @@
                     $("#selectedfile").html(html);
                     $("#interviewdocid").val(jsonResponse._id);
                 } else {
-                    showError("Unable to upload the file.");
+                    message("Unable to upload the file.","danger");
                 }
                 $("#fileloader").hide();
             },
@@ -186,16 +187,17 @@
         }).done(function (res) {
             var resData = jQuery.parseJSON(res);
             if (resData.status == 1) {
-                showSuccess("Your interview is posted successfully.");
+                message("Your interview is posted successfully.","success");
                 $('#publishInterviewForm').trigger("reset");
                 $("#selectedfile").html("");
             } else {
-                showError("Your interview was not posted. Please Try Again.");
+                message("Your interview was not posted. Please Try Again.","danger");
             }
         }).always(function (jqXHR, textStatus) {
             $("#submitloader").hide();
         });
     }
+    
 </script>
 </body>
 </html>

@@ -200,10 +200,10 @@
                     <!-- IF USER IS NOT AUTHENTICATED -->
                     <sec:authorize access="!isAuthenticated()">
                         <li class="scroll active"><a href="#navigation">Home</a></li>
-                        <li class="scroll"><a class="scroll" href="/#services">Services</a></li>
-                        <li class="scroll"><a class="scroll" href="/#about-us">About us</a></li>
-                        <li class="scroll"><a class="scroll" href="/#pricing-tables">For Employers</a></li>
-                        <li class="scroll"><a class="scroll" href="/#contact-us">Contact</a></li>
+                        <li class="scroll"><a class="scroll" href="#services">Services</a></li>
+                        <li class="scroll"><a class="scroll" href="#about-us">About us</a></li>
+                        <li class="scroll"><a class="scroll" href="#pricing-tables">For Employers</a></li>
+                        <li class="scroll"><a class="scroll" href="#contact-us">Contact</a></li>
                         <li class="scroll"><a href="#navigation" data-toggle="modal" data-target="#myModal">Login</a>
                         </li>
                         <!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->

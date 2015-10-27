@@ -52,8 +52,9 @@
                             <p class="text-muted text-small sign-in-separator">
                                 or
                             </p>
-                            <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<i
-                                    class="fa fa-linkedin"></i></button>
+                            <!--button onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<i
+                                    class="fa fa-linkedin"></i></button-->
+                            <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<span class="lowercase">in</span></button>
                         </div>
                         <br/>
                     </div>
@@ -105,7 +106,7 @@
                                         </label>                                                                                                                   
                                     </div>
                                 </div>
-                                
+                                <!-- start intervieweeSignUpForm-->
                                 <div id="intervieweeSignUpForm">
 	                                <div class="form-group row">
 	                                    <label for="email" class="col-md-4 control-label">Email</label>
@@ -153,10 +154,16 @@
 	                                        or
 	                                </p>
                                 </div>
+                                <!-- End intervieweeSignUpForm-->
+
+                                <!-- Start interviewerSignUpForm-->
+                                <!-- End interviewerSignUpForm-->
                                 
                                 <div class="clearfix">                                
+                                    <!--button onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
+                                        using Linked<i class="fa fa-linkedin"></i></button-->
                                     <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
-                                        using Linked<i class="fa fa-linkedin"></i></button>
+                                        using Linked<span class="lowercase">in</span></button>
                                 </div>
                                 <br/>
                                 Already have an account? <a id="signinlink" href="javascript:void(0)"

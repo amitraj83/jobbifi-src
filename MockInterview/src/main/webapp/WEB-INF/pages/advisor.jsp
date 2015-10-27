@@ -41,7 +41,8 @@
                 			<h3>Need to talk with advisor ?</h3>
                 			<p>Post your Mock interview and invite advisor to train you and for job referrals</p>
   							<div style="text-align:center">
-                				<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>
+  								<a onclick="showPostAMockScreen()" class="btn btn-success">Post a Mock</a>
+                				<!--a href="/publishinterview.do" class="btn btn-success">Post a Mock</a-->
                				</div>
                 		</div>
                 	
@@ -105,6 +106,16 @@
             return false;
         }
     }
+    
+    function showPostAMockScreen(){
+    	if (LOGIN_USER == null) {
+            showLoginBox();
+            return;
+        }else{
+        	window.location = "/publishinterview.do";
+        }
+    }
+    
 
     var PAGE_SIZE = 10;
     function searchAdvisors(searchKey, currentPage) {

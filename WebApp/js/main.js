@@ -102,6 +102,15 @@ $(document).ready(function ($) {
     });
 
     $('.navbar-collapse ul li a.scroll').click(function () {
+
+    	console.debug(window.location.pathname);
+    	var pageUrl = window.location.pathname;
+    	var menuitem = this;
+    
+    	if( pageUrl != '/'){
+    		document.location.href = "/?menuitem="+menuitem.hash;
+    	}
+    	
         try {
             $('html, body').animate({scrollTop: $(this.hash).offset().top - 79}, 1000);
         } catch (err) {

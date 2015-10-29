@@ -43,11 +43,10 @@
                     <br/>
 
                     <div id="home-search-form" class="text-center">
-                        <select id="front-search-dropdown" class="selectpicker" data-width="161px" data-size='auto'>
+                        <select id="front-search-dropdown" class="selectpicker" data-width="170px" data-size='auto'>
                             <option selected>Jobs</option>
                             <option>Advisors</option>
                             <option>Mock Interviews</option>
-                            <!--<option>Mock interviews</option>-->
                         </select>
                         <input id="front-search-key" type="text" class="form-control" aria-label="Search term"
                                placeholder="Skills, company name or keywords">

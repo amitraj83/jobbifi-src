@@ -48,6 +48,12 @@ function showInfo(message){
 		}, z_index:2500});
 }
 
+function message(msg,type) {
+    $("#message").html("<div class='alert alert-"+type+"'>"+msg+"</div>");
+    setTimeout(function () {
+        $("#message").html("");
+    }, 3600 * 2);
+}
 /** ----------------- **/
 
 function loadNewMessageCount(){	

@@ -23,6 +23,7 @@
                 </div>
                 <div class="col-md-9">
                     <h1 style="margin-top:0px">Messages</h1>
+                    <div id="message"></div>
                     <hr/>
                     <section id="msgSection">
                         <div class="clearfix white-container" id="msgdetail"></div>
@@ -273,6 +274,7 @@
             async: false
         }).done(function (res) {
             showSuccess("Message sent successfully.");
+            message("Message sent successfully.","success");
             $("#inputmessage").val("");
         });
     });

@@ -19,6 +19,7 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-md-12">
+                            <sec:authorize access="hasRole('ROLE_INTERVIEWEE')" var="isInterviewee"></sec:authorize>
                             <h2>Search Mock Interviews</h2>
 							<div id="searchMockMessage"></div>
                             <div class="input-group">
@@ -108,7 +109,10 @@
                 }
 
                 var attachment = "";
-                var bidHtml = "<button class='btn btn-xs btn-default' onclick='showBidPopUp(\"" + json[i].id + "\", this, \"" + json[i].interviewee + "\")'><i class='fa fa-share-square' style='color:white'></i> Place Bid</button>";
+                var bidHtml = "";
+                if(${isInterviewee} == false){
+                bidHtml = "<button class='btn btn-xs btn-default' onclick='showBidPopUp(\"" + json[i].id + "\", this, \"" + json[i].interviewee + "\")'><i class='fa fa-share-square' style='color:white'></i> Place Bid</button>";
+                }
                 if (LOGIN_USER != null) {
 
                     if (null != wholeJSON.iidFiles[json[i].id] && "" != wholeJSON.iidFiles[json[i].id]) {

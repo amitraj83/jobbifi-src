@@ -144,7 +144,8 @@
                                                           class="form form-horizontal" id="ratingForm">
 
                                                         <p>Let us know about your experience</p>
-
+                                                        <div id="message"></div>
+												
                                                         <div class="form-group">
                                                             <label class="col-md-12">Was Technical Support
                                                                 Helpful?</label>
@@ -453,12 +454,12 @@
         }).done(function (res) {
             var resData = jQuery.parseJSON(res);
             if (resData.code == 23) {
-                showSuccess("Thank you. Your ratings have been saved.");
+                message("Thank you. Your ratings have been saved.","success");
                 $("#submitrating").hide();
                 $("#reviewSection").html("<p>" + $("#new-review").val() + "</p>");
 
             } else {
-                showError("Unable to saved rating. Please try again later.");
+                message("Unable to saved rating. Please try again later.","danger");
             }
         });
     }

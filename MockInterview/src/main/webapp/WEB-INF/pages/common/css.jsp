@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-
+<link rel="shortcut icon" href="images/ico/favicon.png">
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-datepicker3.min.css' />">
 <link rel="stylesheet" href="<c:url value='/resources/css/star-rating.css' />">

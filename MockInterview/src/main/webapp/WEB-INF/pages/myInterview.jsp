@@ -17,10 +17,25 @@
 
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-12" style="margin-top:0px;margin-bottom:10px;">
-                        <h1>All Interviews</h1>
-                    </div>
-                </div>
+						<div id="allInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>All Interview </h1>
+						</div>
+						<div id="openInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>Open Interviews</h1>
+						</div>
+
+						<div id="currentInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>Current Interviews</h1>
+						</div>
+						<div id="completedInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>Completed Interviews</h1>
+						</div>
+
+					</div>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-striped">
@@ -48,6 +63,36 @@
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
     var status = "${status}";
+    
+    if(status == "COMPLETED"){
+    	$("#allInterview").hide();
+    	$("#openInterview").hide();
+    	$("#currentInterview").hide();
+    	$("#completedInterview").show();
+    	
+    }else if(status == "OPEN"){
+    
+    	$("#allInterview").hide();
+    	$("#openInterview").show();
+    	$("#currentInterview").hide();
+    	$("#completedInterview").hide();
+    
+    }else if(status == "IN PROGRESS"){
+    	
+    	$("#allInterview").hide();
+    	$("#openInterview").hide();
+    	$("#currentInterview").show();
+    	$("#completedInterview").hide();
+
+    }else {
+    
+    	$("#allInterview").show();
+    	$("#openInterview").hide();
+    	$("#currentInterview").hide();
+    	$("#completedInterview").hide();
+
+    }
+    
     $(function () {
         loadAllInterview();
         $("#interview").html(status + " INTERVIEW");

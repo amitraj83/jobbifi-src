@@ -57,7 +57,7 @@
             }
             searchMocks(searchKey, 1);
         });
-        $("#searchKey").on("keypress", function (e) {
+        $("#searchKey").on("k0eypress", function (e) {
             search(e);
         });
         var searchKey = getParameterByName("searchKey");

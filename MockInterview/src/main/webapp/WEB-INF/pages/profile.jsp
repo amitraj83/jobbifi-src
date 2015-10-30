@@ -35,8 +35,7 @@
                             <strong>
                                 <h1 style="margin-top:0px;text-transform:capitalize;font-weight:bold;">
                                     <div id="profile_username"></div>
-                                    <small style="font-size:46%;margin-top:5px;">Software Engineer at Goldman Sachs
-                                    </small>
+                                    <div id="user_position" style="font-size:41%;margin-top:5px;"></div>
                                 </h1>
                             </strong>
 
@@ -132,6 +131,8 @@
     $(function () {
         getProfileDetails();
     });
+    
+    var userPosition = "";
 
     function getProfileDetails() {
         $.ajax({
@@ -140,6 +141,9 @@
             async: false,
             success: function (res) {
                 var user = jQuery.parseJSON(res);
+                
+                console.log(user);
+                
                 $("#reviewcount").html(user.reviewCount);
                 $("#profile_balance").html(Number(user.balance).toFixed(2));
                 $("#profile_username").html(user.username);
@@ -201,8 +205,15 @@
                                 + allpositions[i].endYear
                                 + ')</b></h4></span>'
                                 + allpositions[i].description + '<hr>';
+                                userPosition = allpositions[0].title;
                     }
-                    $("#workexperience").html(workexp);
+                    			$("#workexperience").html(workexp);
+                    			if(userPosition != ""){
+                    				$("#user_position").html(userPosition);
+                    			}else{
+                    				$("#user_position").html("User  Position information not available.");
+                    			}
+                    			
                 } else {
                     $("#workexperience").html("<div>Work experience information not available.</div>");
                 }

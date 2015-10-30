@@ -142,8 +142,6 @@
             success: function (res) {
                 var user = jQuery.parseJSON(res);
                 
-                console.log(user);
-                
                 $("#reviewcount").html(user.reviewCount);
                 $("#profile_balance").html(Number(user.balance).toFixed(2));
                 $("#profile_username").html(user.username);

@@ -43,7 +43,7 @@
                                 <!-- SIGN UP -->
                                 <div class="form-group" id="login-sign-up-button">
                                     <div class="control"> Don't have an account? <a class="btn btn-link"
-                                                                                    onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign
+                                                                                    onClick="$('#loginbox').hide(); $('#signupbox').show();checkForWhichButtonClicked();">Sign
                                         up here.</a></div>
                                 </div>
                             </form>
@@ -94,16 +94,27 @@
 
                         <div class="clearfix">
                             <br/>
-                            <form id="signupform" class="form-horizontal">
+
+							<script>
+							function checkForWhichButtonClicked(){
+								if($('#interviewerId'
+								).is(':checked')) {
+									$('#intervieweeSignUpForm').css({
+										'display' : 'none'
+									});
+								}
+							}
+							</script>
+							<form id="signupform" class="form-horizontal">
                             	<div class="form-group row">
                                     <label class="col-md-4 control-label">User type</label>
                                     <div class="col-md-8">
                                     	<label class="pull-left radio-inline">
-                                                <input name="usertype"  checked="checked" value="INTERVIEWEE" type="radio"> Interviewee                                            
+                                                <input name="usertype" checked = "checked" id="intervieweeId" value="INTERVIEWEE" type="radio"> Interviewee                                            
                                         </label>                                    	                                       
                                         <label class="radio-inline">
-                                               <input name="usertype" value="INTERVIEWER" type="radio"> Interviewer                                            
-                                        </label>                                                                                                                   
+                                               <input name="usertype"  id  = "interviewerId" value="INTERVIEWER" type="radio"> Interviewer                                            
+                                        </label>                                                                                                  
                                     </div>
                                 </div>
                                 <!-- start intervieweeSignUpForm-->
@@ -252,7 +263,6 @@
             </nav>
             <div class="search">
                 <form role="form"><i class="fa fa-search"></i>
-
                     <div class="field-toggle">
                         <input type="text" class="search-form" autocomplete="off" placeholder="Search">
                     </div>
@@ -260,6 +270,7 @@
             </div>
         </div>
     </div>
+   
 </header>
 
 

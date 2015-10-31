@@ -2341,8 +2341,32 @@ body.modal-open {
     text-transform: lowercase;
 }
 
+#myModal button.lowercase {
+    text-transform: initial !important;
+}
+
 
 #navigation.otherview > div.main-nav
 {
     top: 0px;
+}
+
+#myModal .login-form-content .form-control {
+    background-color: #fcfcfc;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #d7d7d7;
+    border-radius: 0;
+    box-shadow: none;
+    height: 42px;
+    margin-bottom: 5px;
+}
+
+#myModal .login-form-content .form-control:focus {
+    border-color: #0072bc;
+}
+
+#myModal div.small.muted.clearfix,
+#myModal .login-form-content-footer a {
+    color: #888;
 }

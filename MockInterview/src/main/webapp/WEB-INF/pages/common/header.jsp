@@ -6,57 +6,60 @@
     <div class="modal-dialog login-modal" style="width: 400px;">
         <div class="modal-content">
             <div class="modal-body text-center">
-                <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
                 <div id="loginbox" class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <h3 class="text-center">Log in to Jobbifi</h3>
 
-                        <div>
-                            <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                            <form id="loginform" class="form-horizontal" role="form" name='f'
-                                  action="j_spring_security_check" method='POST'>
-                                <input type="hidden" id="callback"/>
+                        <h3 class="clearfix">
+                            <span>
+                                <strong>Welcome to Jobbifi</strong>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </span>
+                        </h3>
 
-                                <div class="input-group" id="login-username"><span class="input-group-addon"><span
-                                        class="fa fa-user" aria-hidden="true"></span></span>
-                                    <input type="text" class="form-control" id="j_username" name='j_username'
-                                           placeholder="someone@example.com"/>
-                                </div>
-                                <div class="input-group" id="login-password"><span class="input-group-addon"><i
-                                        class="fa fa-lock"></i></span>
-                                    <input type="password" class="form-control" id="j_password" name='j_password'
-                                           placeholder="Password"/>
-                                </div>
-                                <div class="form-group" id="login-submit-button">
-                                    <div class="controls">
-                                        <button type="submit" name="submit" class="btn btn-default">Login</button>
+                        <div class="row">
+                            <div class="col-md-12 login-form-content">
+                                <!-- LOGIN W/ LINKEDIN -->
+                                <br />
+                                <br />
+                                <button class="btn btn-default btn-block lowercase" onclick="linkedinLogin();">Login with LinkedIn</button>
+                                <br />
+                                <div class="clearfix small muted">or</div>
+                                <br />
+
+                                <!-- LOGIN W/O LINKEDIN -->
+                                <form id="loginform" role="form" name="f" action="j_spring_security_check" method="POST">
+                                    <div class="form-group email-field">
+                                        <input type="email" class="form-control text-center" required="required"
+                                               placeholder="someone@example.com" id="j_username" name='j_username'>
+                                    </div>
+                                    <div class="form-group password-field">
+                                        <input type="password" class="form-control text-center" required="required"
+                                               placeholder="Password" id="j_password" name='j_password'>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" id="login-submit-button" class="btn btn-success btn-block lowercase">Login</button>
                                         <img id="loginbtnloader" style="display: none;" alt="Processing..."
                                              src="<c:url value=" /resources/img/loading.gif " />"/>
                                     </div>
-                                </div>
-                                <!-- FORGOT PASSWORD -->
-                                <button class="btn btn-link" 
-                                        onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot password?
-                                </button>
-                                <!-- SIGN UP -->
-                                <div class="form-group" id="login-sign-up-button">
-                                    <div class="control"> Don't have an account? <a class="btn btn-link"
-                                                                                    onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign
-                                        up here.</a></div>
-                                </div>
-                            </form>
+                                    <input type="hidden" id="callback"/>
+                                </form>
+                            </div>
                         </div>
-                        <div class="clearfix">
-                            <p class="text-muted text-small sign-in-separator">
-                                or
-                            </p>
-                            <!--button onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<i
-                                    class="fa fa-linkedin"></i></button-->
-                            <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<span class="lowercase">in</span></button>
+
+                        <div class="row">
+                            <div style="display: none;" id="login-alert" class="alert alert-danger col-md-12"></div>
                         </div>
-                        <br/>
+
+                        <div class="row login-form-content-footer">
+                            <div class="col-md-6 text-left">
+                                <a href="#" class="small muted" onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot password</a>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a href="#" class="small muted" onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign up now</a>
+                            </div>
+                        </div>
+                        <br />
+                
                     </div>
                 </div>
                 <div id="forgotpasswordbox" style="display: none;" class="mainbox">

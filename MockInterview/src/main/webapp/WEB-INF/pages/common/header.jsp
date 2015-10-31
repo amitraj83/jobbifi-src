@@ -1,7 +1,6 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-
 <div class="modal fade bs-example-modal-sm" id="myModal" role="dialog" aria-hidden="true">
     <div class="modal-dialog login-modal" style="width: 400px;">
         <div class="modal-content">
@@ -207,7 +206,7 @@
                 <ul class="nav navbar-nav">
                     <!-- IF USER IS NOT AUTHENTICATED -->
                     <sec:authorize access="!isAuthenticated()">
-                        <li class="scroll active"><a href="#navigation">Home</a></li>
+                        <li class="scroll active"><a href="#navigation" onclick="activeHome()">Home</a></li>
                         <li class="scroll"><a class="scroll" href="#services">Services</a></li>
                         <li class="scroll"><a class="scroll" href="#about-us">About us</a></li>
                         <li class="scroll"><a class="scroll" href="#pricing-tables">For Employers</a></li>

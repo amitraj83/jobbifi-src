@@ -777,6 +777,10 @@ We are backed-up by several talented career advisors who desire to train job see
 
         map.setStyle("map_style");
     }());
+    
+    function activeHome(){
+    	$('.navbar-collapse li.scroll').removeClass('active').eq(0).addClass('active');
+    }
 </script>
 </body>
 

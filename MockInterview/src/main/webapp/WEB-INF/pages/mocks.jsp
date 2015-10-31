@@ -9,6 +9,7 @@
 
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
+<sec:authorize access="isAuthenticated()" var="isAuthenticated"></sec:authorize>
 <div id="wrapper">
     <div id="page-content">
         <div class="container">
@@ -49,6 +50,9 @@
     }
 
     $(function () {
+    	if(${isAuthenticated} == false){
+    		$(".scroll.active").removeClass("active");
+    	}
         $("#sidenav_searchMock").addClass("active");        
         $("#searchMockBtn").click(function (e) {
             var searchKey = $("#searchKey").val();

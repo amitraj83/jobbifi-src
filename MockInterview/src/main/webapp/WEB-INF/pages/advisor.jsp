@@ -9,6 +9,7 @@
 
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
+<sec:authorize access="isAuthenticated()" var="isAuthenticated"></sec:authorize>
 <div id="wrapper">
     <div id="page-content">
         <div class="container">
@@ -69,6 +70,11 @@
 	
     $(document).ready(function () {
 
+    	if(${isAuthenticated} == false){
+    		$(".scroll.active").removeClass("active");
+    	}else{
+	    	$("#nav_advisors").addClass("active");
+    	}
         var searchKey = getParameterByName("searchKey");
         if (searchKey != "") {
             $("#searchKey").val(searchKey);

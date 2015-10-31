@@ -219,8 +219,8 @@
                     <!-- IF USER IS AN INTERVIEWEE -->
                     <sec:authorize access="hasRole('ROLE_INTERVIEWEE')">
                         <li id="nav_jobs"><a title="Jobs" href="<c:url value='/jobs.do'/>">Jobs</a></li>
-                        <li><a title="Advisors" href="<c:url value='/advisors.do'/>">Advisors</a></li>
-                        <li><a title="My Interviews" href="<c:url value='/myinterview.do'/>">My Mocks</a></li>
+                        <li id="nav_advisors"><a title="Advisors" href="<c:url value='/advisors.do'/>">Advisors</a></li>
+                        <li id="nav_mocks"><a title="My Interviews" href="<c:url value='/myinterview.do'/>">My Mocks</a></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_INTERVIEWER')">                    
                     	<li id="nav_advisors"><a title="Advisors" href="<c:url value='/mocks.do'/>">Advisors</a></li>

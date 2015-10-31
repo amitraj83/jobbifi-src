@@ -207,7 +207,7 @@
                 <ul class="nav navbar-nav">
                     <!-- IF USER IS NOT AUTHENTICATED -->
                     <sec:authorize access="!isAuthenticated()">
-                        <li class="scroll"><a href="#navigation">Home</a></li>
+                        <li class="scroll active"><a href="#navigation">Home</a></li>
                         <li class="scroll"><a class="scroll" href="#services">Services</a></li>
                         <li class="scroll"><a class="scroll" href="#about-us">About us</a></li>
                         <li class="scroll"><a class="scroll" href="#pricing-tables">For Employers</a></li>

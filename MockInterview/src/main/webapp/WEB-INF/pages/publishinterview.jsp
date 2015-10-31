@@ -20,8 +20,8 @@
                 <div id="interviewee_publishresponse"></div>
 
                 <div class="clearfix white-container">
-                    <h1 class="title">Publish Your Interview</h1>
                     <div id="message"></div>
+                    <h1 class="title">Publish Interview</h1>
                     <hr>
 
                     <form id="publishInterviewForm" class="form-horizontal">
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-sm-3 control-label">Upload Document</label>
 
                             <div class="col-sm-9">
@@ -98,7 +98,7 @@
                                 <div style="clear: both" id="selectedfile"></div>
                                 <input type="hidden" name="ifile" id="interviewdocid">
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
                                 <button type="submit" class="btn btn-default">Publish Interview</button>

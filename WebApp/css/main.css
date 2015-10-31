@@ -2337,6 +2337,10 @@ body.modal-open {
 #loginbox > div > div.clearfix > button {
     letter-spacing: 1px;
 }
+.lowercase{
+    text-transform: lowercase;
+}
+
 
 #navigation.otherview > div.main-nav
 {

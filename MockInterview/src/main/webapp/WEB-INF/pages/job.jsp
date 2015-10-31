@@ -37,7 +37,9 @@
                 			<h3>Need to talk with advisor ?</h3>
                 			<p>Post your Mock interview and invite advisor to train you and for job referrals</p>
   							<div style="text-align:center">
-                				<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>
+  							
+  								<a onclick="showPostAMockScreen()" class="btn btn-success">Post a Mock</a>
+                				<!--<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>-->
                				</div>
                 		</div>
                 	
@@ -276,6 +278,15 @@
 
         $('input:hidden[name="to"]').val(interviewer);
         $("#contactmeModal").modal("show");
+    }
+    
+    function showPostAMockScreen(){
+    	if (LOGIN_USER == null) {
+            showLoginBox();
+            return;
+        }else{
+        	window.location = "/publishinterview.do";
+        }
     }
 
     function submitForm() {

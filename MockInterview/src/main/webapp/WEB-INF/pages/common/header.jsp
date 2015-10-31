@@ -62,8 +62,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="panel-title">Forgot your password?</div>
-                            <div style="float: right; font-size: 80%; position: relative; top: -10px"><a
+                            <div style="font-size: 80%; top: -10px"><a
                                     href="javascript:void(0);" id="acceso"
+                                    style="color: #0072bc;"
                                     onclick="$('#forgotpasswordbox').hide(); $('#loginbox').show()"> Account Access</a>
                             </div>
                         </div>
@@ -199,7 +200,7 @@
                 <ul class="nav navbar-nav">
                     <!-- IF USER IS NOT AUTHENTICATED -->
                     <sec:authorize access="!isAuthenticated()">
-                        <li class="scroll active"><a href="#navigation">Home</a></li>
+                        <li class="scroll"><a href="#navigation">Home</a></li>
                         <li class="scroll"><a class="scroll" href="#services">Services</a></li>
                         <li class="scroll"><a class="scroll" href="#about-us">About us</a></li>
                         <li class="scroll"><a class="scroll" href="#pricing-tables">For Employers</a></li>

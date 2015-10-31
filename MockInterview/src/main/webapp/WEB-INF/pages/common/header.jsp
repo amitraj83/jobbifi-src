@@ -37,9 +37,9 @@
                                     </div>
                                 </div>
                                 <!-- FORGOT PASSWORD -->
-                                <button class="btn btn-link" 
+                                <a class="btn btn-link" 
                                         onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot password?
-                                </button>
+                                </a>
                                 <!-- SIGN UP -->
                                 <div class="form-group" id="login-sign-up-button">
                                     <div class="control"> Don't have an account? <a class="btn btn-link"

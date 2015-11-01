@@ -2370,3 +2370,8 @@ body.modal-open {
 #myModal .login-form-content-footer a {
     color: #888;
 }
+
+#loginform > div.form-group.password-field {
+    padding-top: 0 !important;
+}
+

@@ -2346,3 +2346,7 @@ body.modal-open {
 {
     top: 0px;
 }
+
+#user-balance-div{
+    display: none;
+}

@@ -57,6 +57,7 @@
             }
             searchMocks(searchKey, 1);
         });
+        
         $("#searchKey").on("keypress", function (e) {
             search(e);
         });

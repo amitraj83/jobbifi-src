@@ -53,7 +53,7 @@
                             </p>
                             <!--button onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<i
                                     class="fa fa-linkedin"></i></button-->
-                            <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<span class="lowercase">in</span></button>
+                            <a onclick="linkedinLogin();" class="btn btn-default btn-linkedin"> Login with Linked<span class="lowercase">in</span></a>
                         </div>
                         <br/>
                     </div>
@@ -162,8 +162,8 @@
                                 <div class="clearfix">                                
                                     <!--button onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
                                         using Linked<i class="fa fa-linkedin"></i></button-->
-                                    <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
-                                        using Linked<span class="lowercase">in</span></button>
+                                    <a onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
+                                        using Linked<span class="lowercase">in</span></a>
                                 </div>
                                 <br/>
                                 Already have an account? <a id="signinlink" href="javascript:void(0)"

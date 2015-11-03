@@ -2375,3 +2375,7 @@ body.modal-open {
     padding-top: 0 !important;
 }
 
+#user-balance-div{
+    display: none;
+}
+

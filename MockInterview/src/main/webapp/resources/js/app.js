@@ -128,8 +128,10 @@ function registerUser(){
         if(json.response == 2){
         	showWarning("This username already exist. Please try with another username.");            
         } else if(json.response == 1){
-            showSuccess("You have been registered successfully.");
             $("#myModal").modal("hide");
+            showSuccess("You have been registered successfully.");
+            login(username, password);
+
         } else if(json.response == -1){
             showError("Error occured while registration.");                      
         }
@@ -205,6 +207,47 @@ function login(){
 
   $("#loginbtnloader").show();
   var data = "j_username=" + $("#j_username").val() + "&j_password=" + $("#j_password").val();    
+  $.ajax({
+      'type': 'POST',
+      'url': BASE_URL + "j_spring_security_check",      
+      'data': data,
+      'dataType': 'json',
+       success:function(response){
+            if(response.RESULT != null && response.RESULT == "SUCCESS"){
+               if(response.REDIRECT){
+            	   // admin
+                  window.top.location = BASE_URL + response.REDIRECT;
+                  return;
+               }
+               
+               var callback = "";
+               if($("#callback").val() != ""){
+            	   if(window.location.href.indexOf("?") > 0 ){
+            		   callback = "&callbackj=" + $("#callback").val();
+            	   } else {
+            		   callback = "?callbackj=" + $("#callback").val();
+            	   }
+               }
+               
+               window.top.location.href = window.top.location.href + callback;                
+               $("#myModal").modal("hide");
+
+            } else {
+            	showError("Email or password is wrong.");                
+            }
+            $("#loginbtnloader").hide();
+       }, 
+       error : function(){
+    	   showError("Unable to process the rquest.");
+    	   $("#loginbtnloader").hide();
+       }
+    });
+}
+
+function login( username , password){	 
+
+  $("#loginbtnloader").show();
+  var data = "j_username=" + username + "&j_password=" +password;    
   $.ajax({
       'type': 'POST',
       'url': BASE_URL + "j_spring_security_check",      

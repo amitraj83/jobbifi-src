@@ -35,6 +35,7 @@
                             <strong>
                                 <h1 style="margin-top:0px;text-transform:capitalize;font-weight:bold;">
                                     <div id="profile_username"></div>
+                                    
                                     <div id="user_position" style="font-size:41%;margin-top:5px;"></div>
                                 </h1>
                             </strong>

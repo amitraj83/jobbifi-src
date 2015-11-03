@@ -61,7 +61,7 @@
                 </div>
                 <div id="forgotpasswordbox" style="display: none;" class="mainbox">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
+                        <div	 class="panel-heading">
                             <div class="panel-title">Forgot your password?</div>
                             <div style="float: right; font-size: 80%; position: relative; top: -10px"><a
                                     href="javascript:void(0);" id="acceso"
@@ -96,6 +96,7 @@
                             <br/>
 
 							<script>
+							
 							function checkForWhichButtonClicked(){
 								if($('#interviewerId'
 								).is(':checked')) {
@@ -104,6 +105,7 @@
 									});
 								}
 							}
+			
 							</script>
 							<form id="signupform" class="form-horizontal">
                             	<div class="form-group row">

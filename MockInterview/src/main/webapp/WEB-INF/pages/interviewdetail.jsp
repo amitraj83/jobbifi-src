@@ -57,6 +57,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="bidsreceived">
+                                    <br/>
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
@@ -72,6 +73,7 @@
                                 </div>
 
                                 <div class="tab-pane fade in" id="escrowdeposit">
+                                    <br/>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="well" style="padding:10px;text-align:center"><b>Total Escrow</b>
@@ -135,6 +137,7 @@
                                 </div>
 
                                 <div class="tab-pane fade in" id="rateinterviewer">
+                                	<br/>
                                     <div class="row" style="margin-top:10px;">
                                         <div class="col-md-12">
 
@@ -517,6 +520,10 @@
             }
         });
     }
+    
+    $(document).ready(function () {
+    	$(".acc-link").hide();
+    });
 </script>
 </body>
 </html>

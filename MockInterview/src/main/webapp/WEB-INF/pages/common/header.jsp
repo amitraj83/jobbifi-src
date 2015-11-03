@@ -44,8 +44,6 @@
                                     <input type="hidden" id="callback"/>
                                 </form>
                             </div>
-                        </div>
-
                         <div class="row">
                             <div style="display: none;" id="login-alert" class="alert alert-danger col-md-12"></div>
                         </div>
@@ -64,7 +62,7 @@
                 </div>
                 <div id="forgotpasswordbox" style="display: none;" class="mainbox">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
+                        <div	 class="panel-heading">
                             <div class="panel-title">Forgot your password?</div>
                             <div style="float: right; font-size: 80%; position: relative; top: -10px"><a
                                     href="javascript:void(0);" id="acceso"
@@ -97,16 +95,29 @@
 
                         <div class="clearfix">
                             <br/>
-                            <form id="signupform" class="form-horizontal">
+
+							<script>
+							
+							function checkForWhichButtonClicked(){
+								if($('#interviewerId'
+								).is(':checked')) {
+									$('#intervieweeSignUpForm').css({
+										'display' : 'none'
+									});
+								}
+							}
+			
+							</script>
+							<form id="signupform" class="form-horizontal">
                             	<div class="form-group row">
                                     <label class="col-md-4 control-label">User type</label>
                                     <div class="col-md-8">
                                     	<label class="pull-left radio-inline">
-                                                <input name="usertype"  checked="checked" value="INTERVIEWEE" type="radio"> Interviewee                                            
+                                                <input name="usertype" checked = "checked" id="intervieweeId" value="INTERVIEWEE" type="radio"> Interviewee                                            
                                         </label>                                    	                                       
                                         <label class="radio-inline">
-                                               <input name="usertype" value="INTERVIEWER" type="radio"> Interviewer                                            
-                                        </label>                                                                                                                   
+                                               <input name="usertype"  id  = "interviewerId" value="INTERVIEWER" type="radio"> Interviewer                                            
+                                        </label>                                                                                                  
                                     </div>
                                 </div>
                                 <!-- start intervieweeSignUpForm-->
@@ -169,6 +180,7 @@
                                         using Linked<span class="lowercase">in</span></button>
                                 </div>
                                 <br/>
+                                
                                 Already have an account? <a id="signinlink" href="javascript:void(0)"
                                                             onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign
                                 in here.</a>
@@ -255,7 +267,6 @@
             </nav>
             <div class="search">
                 <form role="form"><i class="fa fa-search"></i>
-
                     <div class="field-toggle">
                         <input type="text" class="search-form" autocomplete="off" placeholder="Search">
                     </div>
@@ -263,6 +274,7 @@
             </div>
         </div>
     </div>
+   
 </header>
 
 

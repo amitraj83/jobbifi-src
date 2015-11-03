@@ -16,6 +16,9 @@
             </div>
 
             <div class="col-md-9">
+            	<div class="row">
+            		<div id="message"></div>
+            	</div>
                 <div class="row">
 						<div id="allInterview" class="col-md-12"
 							style="margin-top: 0px; margin-bottom: 10px;">
@@ -45,6 +48,8 @@
                                 <th>Bids</th>
                                 <th>Status</th>
                                 <th>Date</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody id="interviewTable"></tbody>
@@ -138,13 +143,19 @@
             $("#interviewTable").html("");
             if (count > 0) {
                 for (var i = 0; i < myinterview.length; i++) {
-                    var html = '<tr onclick="interviewdetail(\'' + myinterview[i].id + '\');" style="cursor: pointer;">' +
-                                    '            <td> ' + myinterview[i].title + ' </td>' +
-                                    '            <td> ' + myinterview[i].bidcount + ' </td>' +
-                                    '            <td> ' + myinterview[i].statusString + ' </td>' +
-                                    '            <td> ' + prettyDate(new Date(myinterview[i].dt)) + ' </td>' +
-                                    '        </tr>'
-                            ;
+                	var html = '<tr>' +
+                    '            <td onclick="interviewdetail(\'' + myinterview[i].id + '\');" style="cursor: pointer;"> ' + myinterview[i].title + ' </td>' +
+                    '            <td> ' + myinterview[i].bidcount + ' </td>' +
+                    '            <td> ' + myinterview[i].statusString + ' </td>' +
+                    '            <td> ' + prettyDate(new Date(myinterview[i].dt)) + ' </td>' ;
+
+					if( myinterview[i].statusString === "OPEN"){
+						html +='<td onclick="updateInterview(\'' + myinterview[i].id + '\');" style="cursor: pointer;"> <button type="button" class="btn btn-warning">Edit</button> </td> ' +
+                    		'<td onclick="deleteInterview(\'' + myinterview[i].id + '\');" style="cursor: pointer;"> <button type="button" class="btn btn-danger">Delete</button> </td> '+	
+                    		' </tr>';
+                   	}else{
+                   		html +='<td>-</td><td>-</td></tr>'
+                   	}
                     $("#interviewTable").append(html);
                 }
             } else {
@@ -154,7 +165,7 @@
 
         });
     }
-
+//"/deleteinterview.do"
 
     $(document).on("click", ".transpage", function (event) {
         event.preventDefault();
@@ -165,6 +176,28 @@
         window.location.href = BASE_URL + "interviewdetail.do?iid=" + iid;
     }
 
+    function deleteInterview(iid){
+    	var param = "iid=" + iid;
+    	$.ajax({
+            type: "GET",
+            url: BASE_URL + "deleteinterview.do",
+            data: param,
+            async: false
+        }).done(function (res) {
+        	loadAllInterview();
+        	if(JSON.parse(res).code == 0){
+        		 message(JSON.parse(res).message,"success")
+        	}else{
+        		message("Something went wrong, Please try again !!!","danger");
+        	}
+        });
+    
+    }
+    
+    function updateInterview(iid){
+    	window.location.href = BASE_URL + "updateinterviewdetail.do?iid=" + iid;
+    }
+    
     function selectNavigation() {
         if (status == "ALL") {
             $("#allinterview").addClass("active");

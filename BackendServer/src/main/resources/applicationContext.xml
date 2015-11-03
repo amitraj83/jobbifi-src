@@ -77,6 +77,7 @@
   	<bean id="chatHistoryHandler" class="com.interview.request.handlers.ChatHistoryHandler"/>
   	<bean id="friendListHandler" class="com.interview.request.handlers.FriendListHandler"/>
   	<bean id="postInterviewHandler" class="com.interview.request.handlers.PostInterviewHandler"/>
+  	<bean id="updateInterviewHandler" class="com.interview.request.handlers.UpdateInterviewHandler"/>
   	<bean id="getInterviewHandler" class="com.interview.request.handlers.GetInterviewHandler"/>
   	<bean id="bidHandler" class="com.interview.request.handlers.BidHandler"/>
   	<bean id="getMyBidHandler" class="com.interview.request.handlers.GetMyBidHandler"/>

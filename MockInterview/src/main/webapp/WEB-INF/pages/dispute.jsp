@@ -36,6 +36,7 @@
 
                             <!-- Dispute Tab -->
                             <div class="tab-pane fade in" id="createdispute">
+                            	<br/>
                                 <form class="form form-horizontal" name="disputeform" id="disputeform">
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Select Interview</label>
@@ -88,6 +89,7 @@
 
                             <!-- Current Dispute List -->
                             <div class="tab-pane fade in active" id="currentdisputes">
+                                <br/>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -105,6 +107,7 @@
 
                             <!-- Close Dispute List -->
                             <div class="tab-pane fade in" id="closeddisputes">
+                                <br/>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -516,6 +519,10 @@
                 $(element).hide();
             });
         }
+    });
+    
+    $(document).ready(function () {
+    	$(".acc-link").hide();
     });
 </script>
 </body>

@@ -469,6 +469,15 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
       if (key.equals(DATASTORES.INTERVIEW.ESCROW_BALANCE))
         updateDoc.append(DATASTORES.INTERVIEW.ESCROW_BALANCE,
             changes.get(DATASTORES.INTERVIEW.ESCROW_BALANCE));
+      if (key.equals(DATASTORES.INTERVIEW.BUDGET))
+          updateDoc.append(DATASTORES.INTERVIEW.BUDGET,
+              changes.get(DATASTORES.INTERVIEW.BUDGET));
+      if (key.equals(DATASTORES.INTERVIEW.INDUSTRY))
+          updateDoc.append(DATASTORES.INTERVIEW.INDUSTRY,
+              changes.get(DATASTORES.INTERVIEW.INDUSTRY));
+      if (key.equals(DATASTORES.INTERVIEW.EXPERIENCE))
+          updateDoc.append(DATASTORES.INTERVIEW.EXPERIENCE,
+              changes.get(DATASTORES.INTERVIEW.EXPERIENCE));
 
 
     }

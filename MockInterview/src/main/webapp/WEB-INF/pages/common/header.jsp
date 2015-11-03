@@ -1,7 +1,6 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-
 <div class="modal fade bs-example-modal-sm" id="myModal" role="dialog" aria-hidden="true">
     <div class="modal-dialog login-modal" style="width: 400px;">
         <div class="modal-content">
@@ -64,8 +63,9 @@
                     <div class="panel panel-default">
                         <div	 class="panel-heading">
                             <div class="panel-title">Forgot your password?</div>
-                            <div style="float: right; font-size: 80%; position: relative; top: -10px"><a
+                            <div style="font-size: 80%; top: -10px"><a
                                     href="javascript:void(0);" id="acceso"
+                                    style="color: #0072bc;"
                                     onclick="$('#forgotpasswordbox').hide(); $('#loginbox').show()"> Account Access</a>
                             </div>
                         </div>
@@ -176,8 +176,8 @@
                                 <div class="clearfix">                                
                                     <!--button onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
                                         using Linked<i class="fa fa-linkedin"></i></button-->
-                                    <button onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
-                                        using Linked<span class="lowercase">in</span></button>
+                                    <a onclick="linkedinLogin();" class="btn btn-default btn-linkedin">Sign up
+                                        using Linked<span class="lowercase">in</span></a>
                                 </div>
                                 <br/>
                                 
@@ -221,7 +221,7 @@
                 <ul class="nav navbar-nav">
                     <!-- IF USER IS NOT AUTHENTICATED -->
                     <sec:authorize access="!isAuthenticated()">
-                        <li class="scroll active"><a href="#navigation">Home</a></li>
+                        <li class="scroll active"><a href="#navigation" onclick="activeHome()">Home</a></li>
                         <li class="scroll"><a class="scroll" href="#services">Services</a></li>
                         <li class="scroll"><a class="scroll" href="#about-us">About us</a></li>
                         <li class="scroll"><a class="scroll" href="#pricing-tables">For Employers</a></li>
@@ -233,8 +233,8 @@
                     <!-- IF USER IS AN INTERVIEWEE -->
                     <sec:authorize access="hasRole('ROLE_INTERVIEWEE')">
                         <li id="nav_jobs"><a title="Jobs" href="<c:url value='/jobs.do'/>">Jobs</a></li>
-                        <li><a title="Advisors" href="<c:url value='/advisors.do'/>">Advisors</a></li>
-                        <li><a title="My Interviews" href="<c:url value='/myinterview.do'/>">My Mocks</a></li>
+                        <li id="nav_advisors"><a title="Advisors" href="<c:url value='/advisors.do'/>">Advisors</a></li>
+                        <li id="nav_mocks"><a title="My Interviews" href="<c:url value='/myinterview.do'/>">My Mocks</a></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_INTERVIEWER')">                    
                     	<li id="nav_advisors"><a title="Advisors" href="<c:url value='/mocks.do'/>">Advisors</a></li>

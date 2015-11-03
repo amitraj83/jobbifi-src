@@ -99,6 +99,12 @@ $(document).ready(function ($) {
 
     $(window).scroll(function (event) {
         Scroll();
+        $('.navbar-collapse li.scroll').hide().fadeIn('fast');
+        if($(window).scrollTop()<32){
+            $('.navbar-collapse li.scroll')
+                    .removeClass('active')
+                    .eq(0).addClass('active');
+        }
     });
 
     $('.navbar-collapse ul li a.scroll').click(function () {
@@ -133,12 +139,13 @@ $(document).ready(function ($) {
             } catch (err) {
                 console.log("JS error: " + err.message);
             }
-        })
+        });
+
         $.each(contentTop, function (i) {
             if (winTop > contentTop[i] - rangeTop) {
                 $('.navbar-collapse li.scroll')
                     .removeClass('active')
-                    .eq(i).addClass('active');
+                    .eq(i+1).addClass('active');
             }
         })
 

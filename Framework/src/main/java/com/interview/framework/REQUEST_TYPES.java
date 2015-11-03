@@ -54,6 +54,7 @@ public class REQUEST_TYPES {
 
   public static final String FRIENDLIST_TO_UPDATE = "FL";
   public static final String POST_INTERVIEW = "POST_INTERVIEW";
+  public static final String UPDATE_INTERVIEW = "UPDATE_INTERVIEW";
   public static final String GET_INTERVIEW = "GET_INTERVIEW";
   public interface GET_INTERVIEW_SUB_REQ{
 	  String GET_DISPUTABLE_INTERVIEW = "GET_DISPUTABLE_INTERVIEW";

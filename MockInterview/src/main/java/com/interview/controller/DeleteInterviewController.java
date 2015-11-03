@@ -30,10 +30,11 @@ public class DeleteInterviewController {
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService()
             .handleRequest(reqMap, REQUEST_TYPES.DELETE_INTERVIEW);
-    if (new Integer(resMap.get("code").toString()) == 0) {
+    //TODO need to ask that how to call this because it gives null pointer exception
+    /*if (new Integer(resMap.get("code").toString()) == 0) {
       Services.getInstance().getRequestHandlerService()
           .handleRequest(reqMap, REQUEST_TYPES.DELETE_INTERVIEW_SOLR);
-    }
+    }*/
 
 
     return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()

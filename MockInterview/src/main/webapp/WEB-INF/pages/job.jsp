@@ -8,6 +8,7 @@
 
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
+<sec:authorize access="isAuthenticated()" var="isAuthenticated"></sec:authorize>
 <div id="wrapper">
     <div id="page-content">
         <div class="container">
@@ -107,7 +108,9 @@
     }
 
     $(document).ready(function () {
-
+    	if(${isAuthenticated} == false){
+    		$(".scroll.active").removeClass("active");
+    	}
         $("#nav_jobs").addClass("active");
         $("#searchJobBtn").click(function () {
             var searchKey = $("#searchKey").val();

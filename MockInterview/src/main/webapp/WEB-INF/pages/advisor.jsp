@@ -9,6 +9,7 @@
 
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
+<sec:authorize access="isAuthenticated()" var="isAuthenticated"></sec:authorize>
 <div id="wrapper">
     <div id="page-content">
         <div class="container">
@@ -69,6 +70,11 @@
 	
     $(document).ready(function () {
 
+    	if(${isAuthenticated} == false){
+    		$(".scroll.active").removeClass("active");
+    	}else{
+	    	$("#nav_advisors").addClass("active");
+    	}
         var searchKey = getParameterByName("searchKey");
         if (searchKey != "") {
             $("#searchKey").val(searchKey);
@@ -138,8 +144,10 @@
             
             if(jresponse.NUM_OF_RESULTS > 0) {            
 	            $.each(json, function (i) {	
-	            	
-	            	var skills = json[i].skills.replace(/\[/,'').replace(/\]/,'').split(",");
+	            	var skills="";
+	            	if(typeof json[i].skills != "undefined"){
+		            	skills = json[i].skills.replace(/\[/,'').replace(/\]/,'').split(",");
+	            	}
 	            	var positions = [];
 	            	for(var j=0; j < json[i].additional.positions.length; j++){
 	            		var icon =  (j == 0) ? true : false;

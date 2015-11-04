@@ -244,46 +244,6 @@ function login(){
     });
 }
 
-function login( username , password){	 
-
-  $("#loginbtnloader").show();
-  var data = "j_username=" + username + "&j_password=" +password;    
-  $.ajax({
-      'type': 'POST',
-      'url': BASE_URL + "j_spring_security_check",      
-      'data': data,
-      'dataType': 'json',
-       success:function(response){
-            if(response.RESULT != null && response.RESULT == "SUCCESS"){
-               if(response.REDIRECT){
-            	   // admin
-                  window.top.location = BASE_URL + response.REDIRECT;
-                  return;
-               }
-               
-               var callback = "";
-               if($("#callback").val() != ""){
-            	   if(window.location.href.indexOf("?") > 0 ){
-            		   callback = "&callbackj=" + $("#callback").val();
-            	   } else {
-            		   callback = "?callbackj=" + $("#callback").val();
-            	   }
-               }
-               
-               window.top.location.href = window.top.location.href + callback;                
-               $("#myModal").modal("hide");
-
-            } else {
-            	showError("Email or password is wrong.");                
-            }
-            $("#loginbtnloader").hide();
-       }, 
-       error : function(){
-    	   showError("Unable to process the rquest.");
-    	   $("#loginbtnloader").hide();
-       }
-    });
-}
 
 $(function(){
 	

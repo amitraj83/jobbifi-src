@@ -59,6 +59,7 @@
                 
                     </div>
                 </div>
+				</div>
                 <div id="forgotpasswordbox" style="display: none;" class="mainbox">
                     <div class="panel panel-default">
                         <div	 class="panel-heading">
@@ -188,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 </div>

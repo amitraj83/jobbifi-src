@@ -48,7 +48,7 @@ public class ResetPasswordHandler extends RequestHandler {
             model.put("useremail", useremail);
             model.put("username", username);
             model.put("url", url);
-	    	Services.getInstance().getEmailService().sendMail(useremail, 
+	    	Services.getInstance().getEmailService().sendMailChannel(useremail, 
 	    			  myProps.getProperty("mail.resetpasswordlink.subject"), "resetpassword.ftl",model);
 	          
 	        resMap.put("RESULT", "SUCCESS");  	       	

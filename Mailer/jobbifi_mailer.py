@@ -21,22 +21,24 @@ def callback(ch, method, properties, body):
         smtp.starttls()
         smtp.ehlo()
 
-    smtp.login(SMTP_USERNAME, SMTP_PASSWORD)
+        smtp.login(SMTP_USERNAME, SMTP_PASSWORD)
 
-    from_addr = "<%s>" % (SMTP_USERNAME)
-    to_addr = email_dict['recipient']
+        from_addr = "<%s>" % (SMTP_USERNAME)
+        to_addr = email_dict['recipient']
 
-    subj = email_dict['subject']
-    date = datetime.datetime.now().strftime( "%d/%m/%Y %H:%M" )
+        subj = email_dict['subject']
+        date = datetime.datetime.now().strftime( "%d/%m/%Y %H:%M" )
 
-    message_text = email_dict['body']
+        message_text = email_dict['body']
 
-    msg = "From: %s\nTo: %s\nSubject: %s\nDate: %s\n\n%s" % ( from_addr, to_addr, subj, date, message_text )
+        msg = "From: %s\nTo: %s\nSubject: %s\nDate: %s\n\n%s" % ( from_addr, to_addr, subj, date, message_text )
 
-    smtp.sendmail(from_addr, to_addr, msg)
-    smtp.quit()
+        smtp.sendmail(from_addr, to_addr, msg)
+
+        print "[INFO] Sent mail to %s" % (to_addr)
+        smtp.quit()
     except Exception as e:
-    print "Basic Exception:", str(e)
+        print "Basic Exception:", str(e)
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()

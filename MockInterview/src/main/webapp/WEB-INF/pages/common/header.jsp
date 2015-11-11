@@ -83,7 +83,9 @@
                                         <input id="forgotpass_email" class="form-control" placeholder="Email"
                                                name="email" type="email">
                                     </div>
-                                    <button type="button" class="btn btn-default" onclick="sendForgotPasswordMail();">
+                                    <label id="forgotpass_email-error" class="error" for="forgotpass_email" style="display: inline-block;"></label>
+                                    <br/>
+                                    <button type="submit" class="btn btn-default">
                                         Continue
                                     </button>
                                     <img id="passwordbtnloader" style="display: none;" alt="Processing..."

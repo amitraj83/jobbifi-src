@@ -281,6 +281,15 @@ $(function(){
 			error.insertAfter(element.parent());			
 		}
 	});
+	$("#login-recordar").validate({
+		rules : {
+			email:{required:true, email:true}
+		},
+		 submitHandler: function(form) {
+			 sendForgotPasswordMail();
+			 return false;
+		}
+	});
 	
 	$("#signupform").validate({
 		rules : {

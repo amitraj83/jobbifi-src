@@ -59,7 +59,11 @@
                 
                     </div>
                 </div>
-                <div id="forgotpasswordbox" style="display: none;" class="mainbox">
+                
+                <!--- Sign up box -->
+                
+            </div>
+            <div id="forgotpasswordbox" style="display: none;" class="mainbox">
                     <div class="panel panel-default">
                         <div	 class="panel-heading">
                             <div class="panel-title">Forgot your password?</div>
@@ -88,7 +92,6 @@
                         </div>
                     </div>
                 </div>
-                <!--- Sign up box -->
                 <div id="signupbox" style="display: none;" class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <h3 class="text-center">Sign up with Jobbifi</h3>
@@ -188,7 +191,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

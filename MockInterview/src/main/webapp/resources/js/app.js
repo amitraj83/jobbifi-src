@@ -126,7 +126,7 @@ function registerUser(){
     }).done(function( msg ) {
         var json = jQuery.parseJSON(msg);
         if(json.response == 2){
-        	showWarning("This username already exist. Please try with another username.");            
+        	showWarning("This username/email already exist. Please try with another username.");            
         } else if(json.response == 1){
             $("#myModal").modal("hide");
             showSuccess("You have been registered successfully.");
@@ -230,13 +230,9 @@ function login(){
             		   callback = "?callbackj=" + $("#callback").val();
             	   }
                }
-               //$(".navbar-brand").trigger("click");
-               /*$( ".navbar-brand" ).each(function() {
-            	   $( this ).trigger("click");
-            	 });*/
-               var href = window.top.location.href ;
-               href = href.replace('#','');
-               window.top.location.href = href + callback;                
+               
+               window.top.location.href = window.top.location.href + callback; 
+               location.reload();
                $("#myModal").modal("hide");
 
             } else {

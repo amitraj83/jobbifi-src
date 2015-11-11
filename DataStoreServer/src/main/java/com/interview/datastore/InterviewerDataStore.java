@@ -198,13 +198,15 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
   }
 
   public boolean isExist(DBObject data) throws RemoteException {
+	  System.out.println("12345678901234567890");
     DBCollection collection =
         Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
     if (!((String) data.get("username")).isEmpty()) {
-      long count =
-          collection.count(new BasicDBObject("id", data.get("id")).append("username",
-              data.get("username")));
-      if (count > 0)
+      long countForEmail =
+          collection.count(new BasicDBObject("id", data.get("id")));
+      long countForUserName =
+              collection.count(new BasicDBObject("username",data.get("username")));
+      if (countForEmail > 0 || countForUserName > 0)
         return true;
       else
         return false;

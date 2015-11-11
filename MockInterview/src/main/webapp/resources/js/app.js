@@ -261,10 +261,13 @@ $(function(){
 	
 	$("#loginform").validate({
 		rules:{
-			j_username : {required:true},
+			j_username : {required:true,email:true},
 			j_password : {required:true, minlength:8}
 		},messages: {
-			j_username: "Username/Email is required.",
+			j_username: {
+				required:"Email is required.",
+				email:"Please enter valid email."
+			},
 			j_password: {
 			required: "Password is required.",
 			minlength: "Please enter at least 8 characters."

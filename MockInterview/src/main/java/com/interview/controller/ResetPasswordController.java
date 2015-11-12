@@ -53,12 +53,12 @@ public class ResetPasswordController {
         Services.getInstance().getRequestHandlerService()
             .handleRequest(reqMap, REQUEST_TYPES.RESET_PASSWORD);
     int result = new Integer(resMap.get("response").toString());
-    
     model.addAttribute("status", result);
     model.addAttribute("authid", req.getParameter("authid")); 
     model.addAttribute("authinstance", req.getParameter("authinstance")); 
     model.addAttribute("authtoken", req.getParameter("authtoken")); 
-    return "forward:/resetpasswordscreen.jsp";
+   
+    return "resetpasswordscreen";
   }
 
   @RequestMapping(value = "/resetpasswordemail.do", method = RequestMethod.GET)

@@ -59,8 +59,9 @@
                 
                     </div>
                 </div>
-				</div>
-                <div id="forgotpasswordbox" style="display: none;" class="mainbox">
+            </div>
+            <div id="forgotpasswordbox" style="display: none;" class="mainbox">
+
                     <div class="panel panel-default">
                         <div	 class="panel-heading">
                             <div class="panel-title">Forgot your password?</div>
@@ -80,7 +81,9 @@
                                         <input id="forgotpass_email" class="form-control" placeholder="Email"
                                                name="email" type="email">
                                     </div>
-                                    <button type="button" class="btn btn-default" onclick="sendForgotPasswordMail();">
+                                    <label id="forgotpass_email-error" class="error" for="forgotpass_email" style="display: inline-block;"></label>
+                                    <br/>
+                                    <button type="submit" class="btn btn-default">
                                         Continue
                                     </button>
                                     <img id="passwordbtnloader" style="display: none;" alt="Processing..."
@@ -89,7 +92,6 @@
                         </div>
                     </div>
                 </div>
-                <!--- Sign up box -->
                 <div id="signupbox" style="display: none;" class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <h3 class="text-center">Sign up with Jobbifi</h3>
@@ -189,7 +191,10 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
             
+>>>>>>> master
         </div>
     </div>
 </div>

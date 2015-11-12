@@ -126,6 +126,7 @@ public class ResetPasswordHandler extends RequestHandler {
     	logger.error("Remote Exception : ", e);      
     } catch (Exception e) {
     	logger.error("Exception : ", e);
+    	resMap.put("status", "2");
     }
     return resMap;
   }

@@ -126,11 +126,13 @@ function registerUser(){
     }).done(function( msg ) {
         var json = jQuery.parseJSON(msg);
         if(json.response == 2){
-        	showWarning("This username already exist. Please try with another username.");            
+        	showWarning("This username/email already exist. Please try with another username.");            
         } else if(json.response == 1){
             $("#myModal").modal("hide");
             showSuccess("You have been registered successfully.");
-            login(username, password);
+            $("#j_username").val(username) ;
+            $("#j_password").val(password);
+            login();
 
         } else if(json.response == -1){
             showError("Error occured while registration.");                      
@@ -229,7 +231,8 @@ function login(){
             	   }
                }
                
-               window.top.location.href = window.top.location.href + callback;                
+               window.top.location.href = window.top.location.href + callback; 
+               location.reload();
                $("#myModal").modal("hide");
 
             } else {
@@ -245,6 +248,7 @@ function login(){
 }
 
 
+
 $(function(){
 	
 	$('#myModal').on('hidden.bs.modal', function () {
@@ -256,10 +260,13 @@ $(function(){
 	
 	$("#loginform").validate({
 		rules:{
-			j_username : {required:true},
+			j_username : {required:true,email:true},
 			j_password : {required:true, minlength:8}
 		},messages: {
-			j_username: "Username/Email is required.",
+			j_username: {
+				required:"Email is required.",
+				email:"Please enter valid email."
+			},
 			j_password: {
 			required: "Password is required.",
 			minlength: "Please enter at least 8 characters."
@@ -271,6 +278,15 @@ $(function(){
 		},
 		 errorPlacement: function(error, element) {			
 			error.insertAfter(element.parent());			
+		}
+	});
+	$("#login-recordar").validate({
+		rules : {
+			email:{required:true, email:true}
+		},
+		 submitHandler: function(form) {
+			 sendForgotPasswordMail();
+			 return false;
 		}
 	});
 	

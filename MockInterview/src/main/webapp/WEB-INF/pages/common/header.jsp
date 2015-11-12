@@ -191,10 +191,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
-            
->>>>>>> master
+
         </div>
     </div>
 </div>

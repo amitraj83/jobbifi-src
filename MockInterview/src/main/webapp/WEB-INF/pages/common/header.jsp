@@ -59,11 +59,9 @@
                 
                     </div>
                 </div>
-                
-                <!--- Sign up box -->
-                
             </div>
             <div id="forgotpasswordbox" style="display: none;" class="mainbox">
+
                     <div class="panel panel-default">
                         <div	 class="panel-heading">
                             <div class="panel-title">Forgot your password?</div>
@@ -193,6 +191,10 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+            
+>>>>>>> master
         </div>
     </div>
 </div>

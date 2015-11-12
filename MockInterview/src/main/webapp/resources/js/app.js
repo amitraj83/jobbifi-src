@@ -249,7 +249,6 @@ function login(){
 
 
 
-
 $(function(){
 	
 	$('#myModal').on('hidden.bs.modal', function () {

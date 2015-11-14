@@ -125,9 +125,11 @@ function registerUser(){
         data:   param,
     }).done(function( msg ) {
         var json = jQuery.parseJSON(msg);
-        if(json.response == 2){
-        	showWarning("This username/email already exist. Please try with another username.");            
-        } else if(json.response == 1){
+        if(json.response == 3){
+        	showWarning("This email already exist. Please try with another email.");            
+        }else if(json.response == 4){
+        	showWarning("This username already exist. Please try with another username.");
+        }else if(json.response == 1){
             $("#myModal").modal("hide");
             showSuccess("You have been registered successfully.");
             $("#j_username").val(username) ;
@@ -138,12 +140,12 @@ function registerUser(){
             showError("Error occured while registration.");                      
         }
         
-        $("#username").val("");   
-        $("#email").val("");    
-        $("#password").val("");    
-        $("#confirmpassword").val("");  
+        //$("#username").val("");   
+        //$("#email").val("");    
+        //$("#password").val("");    
+        //$("#confirmpassword").val("");  
     }).always(function(jqXHR, textStatus) {
-		$("#submitloader").hide();		
+		$("#signupbtnloader").hide();
 	});	
 }
 

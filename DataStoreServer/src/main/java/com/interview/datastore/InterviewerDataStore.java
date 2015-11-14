@@ -89,9 +89,9 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     dbObject.put(USER.SOCIAL_NETWORK, interviewer.getUserSocialNetwork());
     dbObject.put(USER.TIME, new Date().getTime());
 
-
-    if (isExist(dbObject)) {
-      return 2;
+    int isExistUserNameOrEmail = isExistUserNameOrEmail(dbObject);
+    if (isExistUserNameOrEmail == 3 || isExistUserNameOrEmail == 4 || isExistUserNameOrEmail == -1) {
+      return isExistUserNameOrEmail;
     } else {
       collection.insert(dbObject);
       return 1;
@@ -212,6 +212,24 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
         return false;
     } else
       return false;
+  }
+  
+  public int isExistUserNameOrEmail(DBObject data) throws RemoteException {
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+    if (!((String) data.get("username")).isEmpty()) {
+      long countForEmail =
+          collection.count(new BasicDBObject("id", data.get("id")));
+      long countForUserName =
+              collection.count(new BasicDBObject("username",data.get("username")));
+      if (countForEmail > 0)
+        return 3;
+      else if (countForUserName > 0)
+    	  return 4;
+      else 
+    	  return 1;
+    }
+    return -1;
   }
 
   public String getType(String username) throws RemoteException {

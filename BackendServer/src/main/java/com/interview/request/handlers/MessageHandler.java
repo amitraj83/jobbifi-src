@@ -89,14 +89,22 @@ public class MessageHandler extends RequestHandler {
 		   }
 		   return res;
 		   
+	   }else if(SUB_REQ!=null && SUB_REQ.equals(REQUEST_TYPES.MESSAGE_SUB_REQ.GET_MESSAGE_BETWEEN)){
+		   try {
+			   List<Message> list = DataStoreRegistry.getInstance().getMessageStore().getChatMessages(data.get("user1").toString(), data.get("user2").toString());
+			   res.put("MESSAGE_LIST", list);
+		   } catch(Exception e){
+			   e.printStackTrace();
+		   }
+		   return res;
 	   }else {
 		   try{
 			   Message msg = new Message();
 			   msg = (Message)(data.get("Message"));
 			   int pageNum = Integer.parseInt(data.get("pagenum").toString());
-			   List<Message> list = DataStoreRegistry.getInstance().getMessageStore().getMessage(msg, pageNum);
+			   List<Message> list = DataStoreRegistry.getInstance().getMessageStore().getMessage1(msg, pageNum);
 			   res.put("MESSAGE_LIST", list);
-			   res.put("MESSAGE_LIST_COUNT", DataStoreRegistry.getInstance().getMessageStore().getMessageCount(msg));
+			   res.put("MESSAGE_LIST_COUNT", list.size());
 		   } catch(Exception e){
 			 e.printStackTrace();
 		   }

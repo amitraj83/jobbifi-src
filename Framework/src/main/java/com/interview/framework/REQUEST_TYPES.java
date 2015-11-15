@@ -46,6 +46,7 @@ public class REQUEST_TYPES {
 	  public static final String GET_SUB_MESSAGE = "GET_SUB_MESSAGE";
 	  public static final String GET_NEW_MESSAGE_COUNT = "GET_NEW_MESSAGE_COUNT";
 	  public static final String CHANGE_MESSAGE_STATUS = "CHANGE_MESSAGE_STATUS";
+	  public static final String GET_MESSAGE_BETWEEN = "GET_MESSAGE_BETWEEN";
   }
   
   public interface CHAT_HISTORY_SUB_REQ {

@@ -31,6 +31,9 @@
                     <section id="subMsgSection" style="display: none;">
                         <div class="clearfix white-container" id="submsgdetail"></div>
                     </section>
+                    <section id="chatMessage" style="display: none;">
+                        <div class="clearfix white-container" id="chatMessagedetail"></div>
+                    </section>
                     <ul class="pagination pull-right" id="message_pagination">
                     </ul>
 
@@ -63,6 +66,10 @@
 
         $(document).on('click', '#nav-allmessage', function () {
             loadMessages(1);
+            $("#chatMessagedetail").html('');
+            $("#message").html('');
+            $("#chatMessage").hide();
+            $("#nav-allmessage").addClass("active");            
         });
         loadMessages();
     });
@@ -117,8 +124,9 @@
                     if (LOGIN_USER == from) {
                         from = "Me";
                     }
-
-                    jobsHtml += '<tr><td>' + from + '</td><td>' + to + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
+					var from1="'"+jobs[i].from+"'";
+					var to1="'"+jobs[i].to+"'";
+                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + from + '</td><td>' + to + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
                 }
                 jobsHtml += '</tbody></table>';
             } else {
@@ -278,6 +286,51 @@
             $("#inputmessage").val("");
         });
     });
+    
+    function getChat(from,to){
+        var user = '';
+        if(LOGIN_USER==from){
+            user=to;
+        }
+        if(LOGIN_USER==to){
+            user=from;
+        }
+        $.ajax({
+            type: 'GET',
+            url: BASE_URL + 'getmessagebetween.do',
+            data: "user=" + user,
+            async: false
+        }).done(function (res) {
+            $("#message").html("Between : "+from+" vs "+to);
+            var resData = jQuery.parseJSON(res);
+            var messages = resData.MESSAGE_LIST;
+            var data = '';
+            for (var i = 0; i < messages.length; i++) {
+                
+                if (messages[i].from === LOGIN_USER) {
+                    CSS_Class = "panel-warning";
+                } else {
+                    CSS_Class = "panel-danger";
+                }
+
+                var messagetrail = '<div class="panel ' + CSS_Class + '">' +
+                        '<div class="panel-heading">' +
+                        '  <h3 class="panel-title"><span><i class="fa fa-user"></i>&nbsp' + messages[i].from +
+                        '</span><span class="pull-right "><h5 style="margin-top:1px">' +
+                        prettyDate(new Date(Number(messages[i].lastReplyToDate))) + '</h5></span></h3>' +
+                        '</div>' +
+                        '<div class="panel-body">' + messages[i].message +
+                        '</div></div>';
+                data+=messagetrail;                
+            }
+
+            $("#chatMessagedetail").html(data);
+            $("#chatMessage").show();
+            $("#msgSection").hide();
+            $("#nav-allmessage").removeClass("active");
+            
+        });
+    }
 </script>
 </body>
 </html>

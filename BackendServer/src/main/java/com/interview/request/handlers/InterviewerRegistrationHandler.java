@@ -59,11 +59,17 @@ public class InterviewerRegistrationHandler extends RequestHandler {
 	    	connection.disconnect();
 	    	*/
 	    	  	    	  
-	    	  
-              Map<String, Object> model = new HashMap<String, Object>();
-              model.put("username", interviewer.getUsername());              
-	    	  Services.getInstance().getEmailService().sendMail(interviewer.getEmail(), 
-	    			  myProps.getProperty("mail.register.subject"), "registration.ftl",model);
+	    	    	 Map<String, String> param = new HashMap<String, String>(); 
+	    	    	 param.put("email", interviewer.getEmail());
+	    	    	 param.put("password", interviewer.getPassword());
+	    	    	 param.put("usertype", "INTERVIEWER");
+	    	    	 param.put("companylogo", "");
+	    	    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, interviewer.getEmail(), "mail.resetpasswordlink.subject");
+	    	         
+              //Map<String, Object> model = new HashMap<String, Object>();
+              //model.put("username", interviewer.getUsername());              
+	    	  //Services.getInstance().getEmailService().sendMail(interviewer.getEmail(), 
+	    			  //myProps.getProperty("mail.register.subject"), "registration.ftl",model);
 	    	  
 	      }
       

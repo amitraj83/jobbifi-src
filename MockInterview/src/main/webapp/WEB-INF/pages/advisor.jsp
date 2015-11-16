@@ -57,6 +57,50 @@
         </div>
     </div>
 </div>
+<!-- Contact Me Modal -->
+<div class="modal fade bs-example-modal-sm" id="contactmeModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog login-modal" style="width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Send Message</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="contactme" class="mainbox col-md-12">
+                            <form class="form form-horizontal" id="newmessageForm">
+                                <input type="hidden" name="jobid" value=""/>
+                                <input type="hidden" name="jobtitle" value=""/>
+                                <input type="hidden" name="parentMessageId" value=""/>
+                                <input type="hidden" name="refentity" value=""/>
+                                <input type="hidden" name="to"/>
+
+                                <div class="form-group">
+                                    <label class="col-md-2">Message</label>
+
+                                    <div class="col-md-8">
+                                        <textarea name="message" id="inputmessage" rows="5" cols="80"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-8">
+                                        <button type="submit" id="newmessage" class="btn btn-default">Send</button>
+                                        <img id="contactMeloader" style="display: none;" alt="Processing..."
+                                             src="<c:url value=" /resources/img/loading.gif " />">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
@@ -97,6 +141,18 @@
 
         $("#searchKey").on("keypress", function (e) {
             search(e);
+        });
+        
+        $("#newmessageForm").validate({
+            rules: {
+                message: {
+                    required: true
+                },
+            },
+            submitHandler: function (form) {
+                submitForm();
+                return false;
+            }
         });
     });
 
@@ -168,6 +224,7 @@
 	                        '<div class="col-md-3">' +
 	                        '<img src="{{ image }}" style="width:100%;height:150px;" alt="..." class="img-thumbnail">' +
 	                        '<center><input type="number" value="{{rating}}" class="userRating" /> <span>( {{ rating }} / 5)</span></center>' +
+	                        '<button onclick="showContactMeScreen(\'{{ username }}\');" class="btn btn-default btn-xs" type="button"><i style="color:white;" class="fa fa-envelope-o"></i> Contact me</button>' +
 	                        '</div>' +
 	                        '<div class="col-md-9">' +
 	                        '<div class="advisor-name"><a target="_blank" href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
@@ -277,7 +334,32 @@
                 });
             }
         });
-    }    
+    }
+    function showContactMeScreen(interviewer) {
+        if (LOGIN_USER == null) {
+            showInfo("You need to login to contact " + interviewer);
+            showLoginBox();
+            return;
+        }
+
+        $('input:hidden[name="to"]').val(interviewer);
+        $("#contactmeModal").modal("show");
+    }
+    function submitForm() {
+        $("#contactMeloader").show();
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'sendnewmessage.do',
+            data: $("#newmessageForm").serialize(),
+            async: false
+        }).done(function (res) {
+            $("#contactmeModal").modal("hide");
+            showSuccess("Your message has been sent.");
+            $("#inputmessage").val("");
+        }).always(function (jqXHR, textStatus) {
+            $("#contactMeloader").hide();
+        });
+    }
 </script>
 </body>
 </html>

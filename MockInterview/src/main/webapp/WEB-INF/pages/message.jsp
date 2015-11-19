@@ -119,6 +119,7 @@
                         to = "Me";
                         if (jobs[i].status == "UNREAD") {
                             labelNew = "&nbsp;&nbsp;<label class='label label-success'>New</label>";
+                            message='<strong>'+message+'</strong>';
                         }
                     }
                     if (LOGIN_USER == from) {
@@ -126,7 +127,7 @@
                     }
 					var from1="'"+jobs[i].from+"'";
 					var to1="'"+jobs[i].to+"'";
-                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + from + '</td><td>' + to + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
+                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + from +labelNew+ '</td><td>' + to + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
                 }
                 jobsHtml += '</tbody></table>';
             } else {
@@ -135,6 +136,7 @@
             $("#msgdetail").html(jobsHtml);
             $("#subMsgSection").hide();
             $("#msgSection").show();
+            loadNewMessageCount();
         });
     }
 
@@ -328,7 +330,7 @@
             $("#chatMessage").show();
             $("#msgSection").hide();
             $("#nav-allmessage").removeClass("active");
-            
+            loadNewMessageCount();
         });
     }
 </script>

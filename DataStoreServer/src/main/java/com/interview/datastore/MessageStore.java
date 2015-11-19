@@ -200,6 +200,7 @@ public class MessageStore extends UnicastRemoteObject implements IMessageStore {
 			  msg.setTitle(row.get(DATASTORES.MESSAGE.TITLE).toString());
 			  list.add(msg);
 		}
+		changeMessageStatusOfThread(user1,user2);
 		return list;
 	}
 	
@@ -306,5 +307,20 @@ public class MessageStore extends UnicastRemoteObject implements IMessageStore {
 		 BasicDBObject updateDoc =
 		 new BasicDBObject("$set", new BasicDBObject(DATASTORES.MESSAGE.STATUS, DATASTORES.MESSAGE.MESSAGE_STATUS.READ));
 		 collection.update(query, updateDoc);
+	}
+	
+	public void changeMessageStatusOfThread(String from,String to) throws RemoteException {
+		 DBCollection collection = Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.MESSAGE.Collection);
+		 DBObject query1 = new BasicDBObject(DATASTORES.MESSAGE.FROM,from);
+		 DBObject query2 = new BasicDBObject(DATASTORES.MESSAGE.TO,to);
+		 DBObject query3 = new BasicDBObject(DATASTORES.MESSAGE.STATUS,"UNREAD");
+		 BasicDBList andList = new BasicDBList();
+		 andList.add(query1);
+		 andList.add(query2);
+		 andList.add(query3);
+		 BasicDBObject finalQuery = new BasicDBObject("$and", andList);
+		 BasicDBObject updateDoc =
+		 new BasicDBObject("$set", new BasicDBObject(DATASTORES.MESSAGE.STATUS, DATASTORES.MESSAGE.MESSAGE_STATUS.READ));
+		 collection.updateMulti(finalQuery, updateDoc);
 	}
 }

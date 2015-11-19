@@ -166,4 +166,32 @@ public class EmailService {
 	    }
 	}
 	
+	public void sendMailChannelOnEvent(String scenarioid,Map<String, String> param,String recipient, String subject){
+		
+		String queue = myProps.getProperty("mail.channel.queue");		
+		ConnectionFactory factory = new ConnectionFactory();
+	    factory.setHost(myProps.getProperty("mail.channel.host"));
+	    Connection connection;
+
+	    try {
+    		  Map<String, Object> messageMap = new HashMap<String, Object>();
+		      messageMap.put("body", param);
+		      messageMap.put("scenarioid", scenarioid);
+		      messageMap.put("recipient", recipient);
+		      messageMap.put("subject", subject);
+		      String message = new ObjectMapper().writeValueAsString(messageMap);
+		      logger.info(" Message :" + message);
+	    	
+		      connection = factory.newConnection();
+      		  Channel channel = connection.createChannel();
+	      	  channel.queueDeclare(queue, false, false, false, null);
+	      	  channel.basicPublish("", queue, null, message.getBytes());
+	      	  channel.close();
+	      	  connection.close();
+	      
+	    } catch (IOException e) {
+	    	logger.error("", e);	      
+	    }
+	}
+	
 }

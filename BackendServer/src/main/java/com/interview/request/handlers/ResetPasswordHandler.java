@@ -42,6 +42,9 @@ public class ResetPasswordHandler extends RequestHandler {
 	        String username =
 	              (String) DataStoreRegistry.getInstance().getInterviewerDataStore()
 	                  .getUserInfo(useremail).get(USER.USERNAME);
+	        if(username==null){
+	        	throw new Exception();
+	        }
 	        String url = Services.getInstance().getGenerateResetPasswordURLService().generateURL(username, useremail);
 	           
 	        Map<String, Object> model = new HashMap<String, Object>(); 

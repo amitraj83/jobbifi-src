@@ -141,6 +141,97 @@ public class MessageStore extends UnicastRemoteObject implements IMessageStore {
 		  }
 		  return list;
 	}
+	
+	public List<Message> getMessage1(Message message, int pageNum) throws RemoteException{
+		  List<Message> list = new ArrayList<Message>();
+		  DBCollection collection = Services.getInstance().getBaseDataStore()
+				  .db.getCollection(DATASTORES.MESSAGE.Collection);
+		  		 
+		  DBObject query1 = new BasicDBObject(DATASTORES.MESSAGE.FROM,message.getFrom());
+		  DBObject query2 = new BasicDBObject(DATASTORES.MESSAGE.TO,message.getFrom());
+		  DBObject query3 = new BasicDBObject(DATASTORES.MESSAGE.TYPE,message.getType());
+		  
+		  List<String> l1 = collection.distinct("from", query2);
+		  List<String> l2 = collection.distinct("to", query1);
+		  
+		  for (String x : l1){
+			   if (!l2.contains(x))
+			      l2.add(x);
+			}
+		  
+		  for (String obj : l2) {
+			  //
+			  DBCursor cursor = getChatBetween(obj, message.getFrom());
+			  for (DBObject row : cursor) {
+				  Message msg=new Message(); 
+				  msg.setFrom(row.get(DATASTORES.MESSAGE.FROM).toString());
+				  msg.setTo(row.get(DATASTORES.MESSAGE.TO).toString());
+				  msg.setMessage(row.get(DATASTORES.MESSAGE.MESSAGE).toString());
+				  msg.setCreationDate(new Date((Long) row.get(DATASTORES.MESSAGE.CREATIONDATE)).getTime());
+				  msg.setStatus(row.get(DATASTORES.MESSAGE.STATUS).toString());
+				  msg.setParentMessageId(row.get(DATASTORES.MESSAGE.PARENTMESSAGEID).toString());
+				  msg.setId(row.get(DATASTORES.MESSAGE.ID).toString());
+				  msg.setRefEntity(row.get(DATASTORES.MESSAGE.REFENTITY).toString());
+				  msg.setRefId(row.get(DATASTORES.MESSAGE.REF_ID).toString());
+				  msg.setLastReplyToDate(new Date((Long) row.get(DATASTORES.MESSAGE.LASTREPLYTODATE)).getTime());
+				  msg.setTitle(row.get(DATASTORES.MESSAGE.TITLE).toString());
+				  list.add(msg);
+				  break;
+			}
+		  }
+		  return list;
+	}
+	
+	public List<Message> getChatMessages(String user1, String user2) throws RemoteException{
+		List<Message> list = new ArrayList<Message>();
+		  DBCursor cursor = getChatBetween(user1, user2);
+		  for (DBObject row : cursor) {
+			  Message msg=new Message(); 
+			  msg.setFrom(row.get(DATASTORES.MESSAGE.FROM).toString());
+			  msg.setTo(row.get(DATASTORES.MESSAGE.TO).toString());
+			  msg.setMessage(row.get(DATASTORES.MESSAGE.MESSAGE).toString());
+			  msg.setCreationDate(new Date((Long) row.get(DATASTORES.MESSAGE.CREATIONDATE)).getTime());
+			  msg.setStatus(row.get(DATASTORES.MESSAGE.STATUS).toString());
+			  msg.setParentMessageId(row.get(DATASTORES.MESSAGE.PARENTMESSAGEID).toString());
+			  msg.setId(row.get(DATASTORES.MESSAGE.ID).toString());
+			  msg.setRefEntity(row.get(DATASTORES.MESSAGE.REFENTITY).toString());
+			  msg.setRefId(row.get(DATASTORES.MESSAGE.REF_ID).toString());
+			  msg.setLastReplyToDate(new Date((Long) row.get(DATASTORES.MESSAGE.LASTREPLYTODATE)).getTime());
+			  msg.setTitle(row.get(DATASTORES.MESSAGE.TITLE).toString());
+			  list.add(msg);
+		}
+		changeMessageStatusOfThread(user1,user2);
+		return list;
+	}
+	
+	private DBCursor getChatBetween(String user1, String user2){
+		DBCollection collection = Services.getInstance().getBaseDataStore()
+				  .db.getCollection(DATASTORES.MESSAGE.Collection);
+		  DBObject queryAnd1 = new BasicDBObject(DATASTORES.MESSAGE.TO,user1);
+		  DBObject queryAnd2 = new BasicDBObject(DATASTORES.MESSAGE.FROM,user2);
+		  DBObject query3 = new BasicDBObject(DATASTORES.MESSAGE.TYPE,"ORIGINAL");
+		  BasicDBList andList = new BasicDBList();
+		  andList.add(queryAnd1);
+		  andList.add(queryAnd2);
+		  andList.add(query3);
+		  BasicDBObject andQuery1 = new BasicDBObject("$and", andList);
+		  
+
+		  DBObject queryAnd_1 = new BasicDBObject(DATASTORES.MESSAGE.TO,user2);
+		  DBObject queryAnd_2 = new BasicDBObject(DATASTORES.MESSAGE.FROM,user1);
+		  BasicDBList andList1 = new BasicDBList();
+		  andList1.add(queryAnd_1);
+		  andList1.add(queryAnd_2);
+		  andList1.add(query3);
+		  BasicDBObject andQuery2 = new BasicDBObject("$and", andList1);
+		  
+		  BasicDBList orList = new BasicDBList();
+		  orList.add(andQuery1);
+		  orList.add(andQuery2);
+		  BasicDBObject orQuery = new BasicDBObject("$or", orList);
+		  
+		  return collection.find(orQuery).sort(new BasicDBObject(DATASTORES.MESSAGE.LASTREPLYTODATE, -1));
+	}
 		  
 	public List<Message> getMessage(String  parentmessageid) throws RemoteException{
 		  List<Message> list = new ArrayList<Message>();
@@ -216,5 +307,20 @@ public class MessageStore extends UnicastRemoteObject implements IMessageStore {
 		 BasicDBObject updateDoc =
 		 new BasicDBObject("$set", new BasicDBObject(DATASTORES.MESSAGE.STATUS, DATASTORES.MESSAGE.MESSAGE_STATUS.READ));
 		 collection.update(query, updateDoc);
+	}
+	
+	public void changeMessageStatusOfThread(String from,String to) throws RemoteException {
+		 DBCollection collection = Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.MESSAGE.Collection);
+		 DBObject query1 = new BasicDBObject(DATASTORES.MESSAGE.FROM,from);
+		 DBObject query2 = new BasicDBObject(DATASTORES.MESSAGE.TO,to);
+		 DBObject query3 = new BasicDBObject(DATASTORES.MESSAGE.STATUS,"UNREAD");
+		 BasicDBList andList = new BasicDBList();
+		 andList.add(query1);
+		 andList.add(query2);
+		 andList.add(query3);
+		 BasicDBObject finalQuery = new BasicDBObject("$and", andList);
+		 BasicDBObject updateDoc =
+		 new BasicDBObject("$set", new BasicDBObject(DATASTORES.MESSAGE.STATUS, DATASTORES.MESSAGE.MESSAGE_STATUS.READ));
+		 collection.updateMulti(finalQuery, updateDoc);
 	}
 }

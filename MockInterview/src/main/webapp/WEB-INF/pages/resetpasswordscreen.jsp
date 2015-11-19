@@ -85,6 +85,7 @@
 			var changepass1 = $("#changepass1").val();
 			var changepass2 = $("#changepass2").val();
 			if (changepass1 == changepass2) {
+				if(changepass1.length < 8){
 				var encryptedPass = CryptoJS.SHA1(changepass2);
 				$
 						.ajax(
@@ -119,6 +120,9 @@
 														"<div class='alert alert-error'>The system has encountered some problem. Please try again.</div>");
 									}
 								});
+				}else{
+					$("#changepasserror").html("<div class='alert alert-error'>Please enter at least 8 characters.</div>");
+				}
 			} else {
 				$("#changepasserror").html("The two passwords are not same.");
 			}

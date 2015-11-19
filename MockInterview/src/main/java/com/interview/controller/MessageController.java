@@ -2,6 +2,7 @@ package com.interview.controller;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -85,6 +86,18 @@ public class MessageController extends BaseController{
 		 reqMap.put("pagenum", req.getParameter("pagenum"));
 		 reqMap.put("Message", msg);
 		
+		 Map<String, Object>  resMap = Services.getInstance().getRequestHandlerService()
+		            .handleRequest(reqMap, REQUEST_TYPES.MESSAGE);
+		 return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
+			        .getJSONStringOfMap(resMap));
+	 }
+	 
+	 @RequestMapping(value = "/getmessagebetween.do", method = RequestMethod.GET)
+	 public ModelAndView getMessageBetween(HttpServletRequest req){
+		 Map<Object, Object> reqMap = new HashMap<Object, Object>();
+		 reqMap.put("user1", req.getParameter("user"));
+		 reqMap.put("user2", getLoginUser());
+		 reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.MESSAGE_SUB_REQ.GET_MESSAGE_BETWEEN);
 		 Map<String, Object>  resMap = Services.getInstance().getRequestHandlerService()
 		            .handleRequest(reqMap, REQUEST_TYPES.MESSAGE);
 		 return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()

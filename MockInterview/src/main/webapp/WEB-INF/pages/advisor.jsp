@@ -31,7 +31,7 @@
                         <div id="searchAdvisorResult" class="col-md-12"></div>
                     </div>
                     <div class="row">
-                        <div id="pagination"></div>
+                        <div id="paginationdiv"></div>
                     </div>
                 </div>
                 
@@ -183,7 +183,7 @@
     function searchAdvisors(searchKey, currentPage) {
 
         $("#searchAdvisorResult").html("");
-        if (searchKey == null) {
+        if (searchKey == null || searchKey=="") {
             searchKey = "''";
         }
 
@@ -288,6 +288,9 @@
     function getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, searchFor) {
         var totalPages = Math.ceil(totalRecords / PAGE_SIZE);
         var html = "";
+        if(searchKey=="''"){
+            searchKey="";
+        }
         if (totalPages > 1) {
             html += "<ul class='pagination pull-right'>"
             for (var i = 0; i < totalPages; i++) {

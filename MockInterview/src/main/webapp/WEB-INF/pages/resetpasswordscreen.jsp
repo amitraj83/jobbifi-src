@@ -85,7 +85,7 @@
 			var changepass1 = $("#changepass1").val();
 			var changepass2 = $("#changepass2").val();
 			if (changepass1 == changepass2) {
-				if(changepass1.length < 8){
+				if(changepass1.length >= 8){
 				var encryptedPass = CryptoJS.SHA1(changepass2);
 				$
 						.ajax(

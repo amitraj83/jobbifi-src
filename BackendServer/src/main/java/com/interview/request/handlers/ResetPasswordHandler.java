@@ -42,20 +42,22 @@ public class ResetPasswordHandler extends RequestHandler {
 	        String username =
 	              (String) DataStoreRegistry.getInstance().getInterviewerDataStore()
 	                  .getUserInfo(useremail).get(USER.USERNAME);
-	        if(username==null){
-	        	throw new Exception();
+	        if(username!=null){
+		        String url = Services.getInstance().getGenerateResetPasswordURLService().generateURL(username, useremail);
+		        
+		        
+		        Map<String, String> param = new HashMap<String, String>(); 
+		    	 //param.put("email", useremail.toString());
+		    	 param.put("username", username);
+		    	 param.put("url", url);
+		    	 param.put("companylogo", "");
+		    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, useremail.toString(), "mail.resetpasswordlink.subject");
+		         
+		        resMap.put("response", "1");  	       	
+	        }else{
+	        	
+	        	resMap.put("response", "0");
 	        }
-	        String url = Services.getInstance().getGenerateResetPasswordURLService().generateURL(username, useremail);
-	           
-	        Map<String, Object> model = new HashMap<String, Object>(); 
-            model.put("useremail", useremail);
-            model.put("username", username);
-            model.put("url", url);
-	    	Services.getInstance().getEmailService().sendMailChannel(url, useremail, 
-	    			  myProps.getProperty("mail.resetpasswordlink.subject"));
-	          
-	        resMap.put("RESULT", "SUCCESS");  	       	
-
     	} else if (subrequest == 2) {
 	        // validate link and show password reset screen
 	        String encodedUserName = data.get(VARIABLES.RESET_PASS.AUTH_ID).toString();

@@ -158,12 +158,15 @@ function sendForgotPasswordMail(){
 		 type:'GET',
 		 success : function(response){
 			var resData = jQuery.parseJSON(response);	
-			if(resData.RESULT && resData.RESULT == "SUCCESS"){
+			//if(resData.RESULT && resData.RESULT == "SUCCESS"){
+			if(resData.response == 1){
 				showSuccess("A link to change your password has been sent at the email address you provided. " +
           		"Please visit the url to change your password");
 				$("#forgotpass_email").val("");
 				$("#myModal").modal("hide");
-			} else {
+			}else if(resData.response == 0){ 
+				showError("We couldn't find a jobbify account associated with "+$("#forgotpass_email").val()+".");
+			}else {
 				showError("We are unable to send the email. Please verify your email address or try again later.");
 			}
 			$("#passwordbtnloader").hide();

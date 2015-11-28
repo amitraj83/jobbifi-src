@@ -186,7 +186,7 @@
         if (searchKey == null || searchKey=="") {
             searchKey = "''";
         }
-
+        $(".pagination").hide();
         var start = ((currentPage - 1) * 10);
         $.ajax({
             type: "POST",

@@ -135,7 +135,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-default">Post Job</button>
+                                <button type="submit" class="btn btn-default">Update Job</button>
                                 <img id="submitloader" style="display: none;" alt="Processing..."
                                      src="<c:url value="/resources/img/loading.gif" />">
                             </div>

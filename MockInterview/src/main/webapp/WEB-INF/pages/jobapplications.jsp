@@ -51,6 +51,7 @@ function showJobsOffered() {
                             '<h4 class="panel-title">' +
                             '<a data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '"><i class="fa fa-plus"></i> ' + jobs[i].title + '</a>' +
                             '<span class="pull-right">' + prettyDate(new Date(jobs[i].dt)) + '</span>' +
+                            '<a href="javascript:void()" class="pull-right" onclick="updateJob(\''+ jobs[i].id +'\');" style="cursor: pointer;margin-right: 10px;color: #0072bc;">Edit</a>'+
                             '</h4>' +
                             '</div>' +
                             '<div id="collapse' + i + '" class="panel-collapse collapse">' +
@@ -69,6 +70,10 @@ function showJobsOffered() {
             $(".user-rating").rating({'min':0,'max':5,'step':1,'readonly':true,'showClear': false, 'showCaption': false});
         }
     });
+}
+    
+function updateJob(jid){
+	window.location.href = BASE_URL + "editjob.do?jid=" + jid;
 }
 
 function getUserProfileLink(user) {

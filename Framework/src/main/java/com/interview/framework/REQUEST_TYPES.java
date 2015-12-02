@@ -168,6 +168,7 @@ public class REQUEST_TYPES {
   public static final String GET_LATEST_JOBS = "GET_LATEST_JOBS";
   public static final String SEARCH_JOB_INFO = "SEARCH_JOB_INFO";
   public static final String GET_JOB = "GET_JOB";
+  public static final String UPDATE_JOB = "UPDATE_JOB";
   
   public static final String JOB_APPLICATION_REQ = "JOB_APPLICATION_REQ";  
   public interface JOB_APPLICATION_SUB_REQ {

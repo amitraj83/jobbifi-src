@@ -36,8 +36,7 @@
                             <strong>
                                 <h1 style="margin-top:0px;text-transform:capitalize;font-weight:bold;">
                                     <div id="profile_username"></div>
-                                    <small style="font-size:46%;margin-top:5px;">Software Engineer at Goldman Sachs
-                                    </small>
+                                    <div id="user_position" style="font-size:41%;margin-top:5px;"></div>
                                 </h1>
                             </strong>
 
@@ -200,6 +199,11 @@
                                 + allpositions[i].description + '<hr>';
                     }
                     $("#workexperience").html(workexp);
+                    if(allpositions[allpositions.length-1].title != ""){
+        				$("#user_position").html(allpositions[allpositions.length-1].title);
+        			}else{
+        				$("#user_position").html("User  Position information not available.");
+        			}
                 } else {
                     $("#workexperience").html("<div>Work experience information not available.</div>");
                 }

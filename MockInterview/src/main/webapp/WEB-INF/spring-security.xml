@@ -21,6 +21,9 @@
 		<intercept-url pattern="/login.do" access="permitAll"/>
 		<intercept-url pattern="/loginfailed.do" access="permitAll"/>
 		
+		<intercept-url pattern="/publishinterview.do" access="hasAnyRole('ROLE_INTERVIEWEE')"/>
+		<intercept-url pattern="/postjob.do" access="hasAnyRole('ROLE_INTERVIEWER')"/>
+		
 		<intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')" />				
 			
 		<!-- 

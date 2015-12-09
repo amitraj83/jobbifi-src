@@ -64,6 +64,8 @@ function loadNewMessageCount(){
 		var json = jQuery.parseJSON(res);
 		if(json.NEW_MESSAGE_COUNT > 0){
 			$("#messageCount").html('<span class="label label-success">' + json.NEW_MESSAGE_COUNT + '</span>');
+		}else{
+			$("#messageCount").html('');
 		}
 	});
 	
@@ -125,6 +127,7 @@ function registerUser(){
         data:   param,
     }).done(function( msg ) {
         var json = jQuery.parseJSON(msg);
+        $("html").find("[data-notify='container']").remove();
         if(json.response == 3){
         	showWarning("This email already exist. Please try with another email.");            
         }else if(json.response == 4){

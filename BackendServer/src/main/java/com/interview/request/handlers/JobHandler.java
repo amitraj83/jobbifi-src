@@ -100,7 +100,22 @@ public class JobHandler extends RequestHandler {
 			e.printStackTrace();
 			resMap.put("job", null);
 		}
-    }    
+    }else if (null != SUB_REQ && REQUEST_TYPES.UPDATE_JOB.equals(SUB_REQ)){
+    	try {
+    		Job job = (Job)data.get("job");
+    		String jobid = (String) job.getId();
+    		try {
+  	    	  DataStoreRegistry.getInstance().getJobStore().updateJob(jobid, job);;
+  	    	  resMap.put("status", 1);
+  	      } catch (RemoteException e) {
+  	    	  resMap.put("status", -1);
+  	      }
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+			resMap.put("job", null);
+		}
+    }
     return resMap;
   }
 }

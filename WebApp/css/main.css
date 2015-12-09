@@ -2358,7 +2358,7 @@ body.modal-open {
     border-radius: 0;
     box-shadow: none;
     height: 42px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 #myModal .login-form-content .form-control:focus {

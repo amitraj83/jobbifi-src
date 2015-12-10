@@ -18,6 +18,7 @@ enum EmailType {
 	INTERVIEW_BID_DENIED = 13;
 	NEW_JOB = 14;
 	NEW_JOB_APPLICATION = 15;
+	JOB_APPLICATION_SHORTLISTED = 16;
 }
 
 enum AttributeType {

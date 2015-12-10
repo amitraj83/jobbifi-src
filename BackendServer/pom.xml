@@ -8,17 +8,15 @@
 	<name>BackendServer</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<spring.version>3.1.0.M1</spring.version>
-		<!-- protobuf paths -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 		<spring.version>3.1.0.M1</spring.version> <!-- protobuf paths -->
 		<protobuf.input.directory>${project.basedir}/src/main/proto</protobuf.input.directory>
-		<protobuf.output.directory>${project.build.directory}/generated-sources</protobuf.output.directory>
-
-		<!-- library versions -->
+		<protobuf.output.directory>${project.build.directory}/generated-sources</protobuf.output.directory>  <!-- library versions -->
 		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
 		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<os-maven-plugin.version>1.4.1.Final</os-maven-plugin.version>
-		<protobuf.version>2.6.1</protobuf.version>
+		<protobuf.version>2.4.1</protobuf.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -58,6 +56,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.linkedin</groupId>
+			<artifactId>norbert_2.8.1</artifactId>
+			<version>0.6.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -153,7 +156,6 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
-		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -168,40 +170,37 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>  <!-- compile proto buffer files using copied protoc binary -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>compile-protoc</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<tasks>
+								<mkdir dir="${protobuf.output.directory}" />
+								<path id="proto.path">
+									<fileset dir="src/main/proto">
+										<include name="**/*.proto" />
+									</fileset>
+								</path>
+								<pathconvert pathsep=" " property="proto.files"
+									refid="proto.path" />
+								<exec executable="protoc" failonerror="true">
+									<arg value="--java_out=${protobuf.output.directory}" />
+									<arg value="-I${project.basedir}/src/main/proto" />
+									<arg line="${proto.files}" />
+								</exec>
+							</tasks>
+							<sourceRoot>target/generated-sources</sourceRoot>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-			
-			<!-- compile proto buffer files using copied protoc binary -->
-		 <plugin>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <executions>
-                <execution>
-                    <id>compile-protoc</id>
-                    <phase>generate-sources</phase>
-                    <configuration>
-                        <tasks>
-                            <mkdir dir="${protobuf.output.directory}" />
-                            <path id="proto.path">
-                                <fileset dir="src/main/proto">
-                                    <include name="**/*.proto" />
-                                </fileset>
-                            </path>
-                            <pathconvert pathsep=" " property="proto.files" refid="proto.path" />
-                            <exec executable="protoc" failonerror="true">
-                                <arg value="--java_out=${protobuf.output.directory}" />
-                                <arg value="-I${project.basedir}/src/main/proto" />
-                                <arg line="${proto.files}" />
-                            </exec>
-                        </tasks>
-                        <sourceRoot>target/generated-sources</sourceRoot>
-                    </configuration>
-                    <goals>
-                        <goal>run</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-
-			
 		</plugins>
 	</build>
 	<repositories>

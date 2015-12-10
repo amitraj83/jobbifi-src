@@ -71,48 +71,18 @@ public class BackendServerRMIClient {
           this.rmiServer = (ReceiveMessageInterface) (registry.lookup(rmiServerName));
         } else {
           log.debug("Datastore not running at the moment. Please start datastore.");
-
-          //
         }
-
       }
-
     } catch (AccessException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (NotBoundException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
   public Map<String, Object> executeRequest(Map<Object, Object> req, String type) {
-    // JSONUtilityService jsonService = Services.getInstance().getJSONUtilityService();
-    // Builder requestBuilder =
-    // Request.newBuilder().setType(type).setData(jsonService.getJSONStringOfMap(req));
-    //
-    // Response response =
-    // Services.getInstance().getBackendClient().executeRequest(requestBuilder.build());
-    //
-    // String data = response.getData();
-    // try {
-    // Map<String, Object> responseObject = jsonService.readValue(data, Map.class);
-    // return responseObject;
-    // } catch (JsonParseException e) {
-    // // TODO Auto-generated catch block
-    // e.printStackTrace();
-    // } catch (JsonMappingException e) {
-    // // TODO Auto-generated catch block
-    // e.printStackTrace();
-    // } catch (IOException e) {
-    // // TODO Auto-generated catch block
-    // e.printStackTrace();
-    // }
-    // return (Map<String, Object>) new HashMap<String, Object>();
-
     Map<String, Object> map = null;
     try {
       allocateRMIServer();
@@ -122,5 +92,4 @@ public class BackendServerRMIClient {
     }
     return map;
   }
-
 }

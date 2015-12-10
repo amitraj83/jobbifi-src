@@ -2,49 +2,36 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
-	   					   http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<context:component-scan base-package="com.interview" />
-
 	<bean id="myProps"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="location" value="classpath:local.properties" />
 	</bean>
-
 	<bean id="placeholderProperties"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:local.properties" />
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="order" value="1" />
-	</bean>
-
-	<!-- Define Framework Services Ends here -->
-
+	</bean>  <!-- Define Framework Services Ends here -->
 	<bean id="taskExecutor"
 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<property name="corePoolSize" value="5" />
 		<property name="maxPoolSize" value="10" />
 		<property name="WaitForTasksToCompleteOnShutdown" value="true" />
 	</bean>
-
 	<bean id="rmiregistry" class="com.interview.rmi.RMIRegistry">
 		<constructor-arg type="int" name="port" value="${rmiport}"></constructor-arg>
 	</bean>
-
 	<bean id="services" class="com.interview.services.Services" />
 	<bean id="statusChangeValidator" class="com.interview.services.StatusChangeValidator" />
 	<bean id="transactionHistoryService" class="com.interview.transaction.TransactionHistoryService" />
-
 	<bean id="dsrmiregistry" class="com.interview.rmi.DataStoreRegistry">
 		<constructor-arg type="java.lang.String" name="dataStoreAddress"
 			value="${datastoreaddress}"></constructor-arg>
 		<constructor-arg type="int" name="port" value="${datastoreport}"></constructor-arg>
 	</bean>
-
 	<bean id="bidAccept" class="com.interview.lifecycle.BidAccept" />
 	<bean id="CancelInterview" class="com.interview.lifecycle.CancelInterview" />
 	<bean id="CompleteInterview" class="com.interview.lifecycle.CompleteInterview" />
@@ -55,16 +42,13 @@
 	<bean id="ReleaseFunds" class="com.interview.lifecycle.ReleaseFunds" />
 	<bean id="RepostInterview" class="com.interview.lifecycle.RepostInterview" />
 	<bean id="rating" class="com.interview.lifecycle.RatingService" />
-
 	<bean id="rmiserver" class="com.interview.rmi.RmiServer">
 		<constructor-arg type="java.lang.String" name="host"
 			value="${rmiServerName}"></constructor-arg>
-	</bean>
-	<!-- <bean id="solrservice" class="com.interview.solr.SolrService"> <constructor-arg 
+	</bean> <!-- <bean id="solrservice" class="com.interview.solr.SolrService"> <constructor-arg 
 		type="java.lang.String" name="host" value="${solrHost}"></constructor-arg> 
 		<constructor-arg type="java.lang.String" name="port" value="${solrPort}"></constructor-arg> 
 		</bean> -->
-
 	<bean id="profilesearch" class="com.interview.services.ProfileSearchImpl" />
 	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService" />
 	<bean id="interviewerRegistration"
@@ -103,5 +87,6 @@
 	<bean id="testHandler" class="com.interview.request.handlers.TestHandler" />
 	<bean id="messageHandler" class="com.interview.request.handlers.MessageHandler" />
 	<bean id="contactlistHandler" class="com.interview.request.handlers.ContactListHandler" />
+	<bean id="supportRequestHandler" class="com.interview.request.handlers.SupportRequestHandler" />
 	<!-- Define DataStore Services Ends here -->
 </beans>

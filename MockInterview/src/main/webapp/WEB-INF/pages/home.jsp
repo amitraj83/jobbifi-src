@@ -1,7 +1,6 @@
 <%@ include file="/WEB-INF/pages/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>Jobbifi</title>
 <link rel="stylesheet"
@@ -15,9 +14,9 @@
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
 <link rel="shortcut icon" href="images/ico/favicon.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -46,8 +45,8 @@
 				<div class="item active">
 					<div class="carousel-caption container text-center">
 						<h2 class="text-center">
-							FIND YOUR<br />
-							<span id="search-form-title-changer">DREAM JOB</span>&nbsp;
+							FIND YOUR<br /> <span id="search-form-title-changer">DREAM
+								JOB</span>&nbsp;
 						</h2>
 						<br />
 

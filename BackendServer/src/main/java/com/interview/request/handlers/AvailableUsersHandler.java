@@ -40,13 +40,11 @@ public class AvailableUsersHandler extends RequestHandler {
       }
 
       // As interviewee
-      List<Interview> interviews =
-          DataStoreRegistry.getInstance().getInterviewDataStore()
-              .getInterviews(username, DATASTORES.INTERVIEW.INTERVIEWEE);
+      List<Interview> interviews = DataStoreRegistry.getInstance().getInterviewDataStore()
+          .getInterviews(username, DATASTORES.INTERVIEW.INTERVIEWEE);
       for (Interview interview : interviews) {
-        List<String> bidIDs =
-            DataStoreRegistry.getInstance().getBidStore()
-                .getAllBidIDsForInterview(interview.getId());
+        List<String> bidIDs = DataStoreRegistry.getInstance().getBidStore()
+            .getAllBidIDsForInterview(interview.getId());
         for (String bidid : bidIDs) {
           String bidder =
               DataStoreRegistry.getInstance().getBidStore().getBid(new ObjectId(bidid)).getBidder();

@@ -35,9 +35,9 @@ public class PostInterviewHandler extends RequestHandler {
     interview.setExperience((String) data.get(VARIABLES.POST_INTERVIEW.EXPERIENCE));
     interview.setIndustry((String) data.get(VARIABLES.POST_INTERVIEW.INDUSTRY));
 
-    if(data.get(DATASTORES.INTERVIEW.FILE) != null)
-      interview.setFile((String)data.get(DATASTORES.INTERVIEW.FILE));
-    
+    if (data.get(DATASTORES.INTERVIEW.FILE) != null)
+      interview.setFile((String) data.get(DATASTORES.INTERVIEW.FILE));
+
     List<String> skillsList = new ArrayList<String>();
     String skillsString = (String) data.get(VARIABLES.POST_INTERVIEW.SKILLS);
     String[] skillsArray = skillsString.split(",");
@@ -58,8 +58,8 @@ public class PostInterviewHandler extends RequestHandler {
 
       if (id != null) {
         resMap.put("iid", id.toString());
-        Services.getInstance().getNotificationService()
-            .processNotification(interview, VARIABLES.NOTIFICATION.TYPE.NEW_INTERVIEW_NOTIFICATION);
+        Services.getInstance().getNotificationService().processNotification(interview,
+            VARIABLES.NOTIFICATION.TYPE.NEW_INTERVIEW_NOTIFICATION);
         resMap.put("status", 1);
 
         // Notification notification = createNotification(interview);
@@ -77,7 +77,7 @@ public class PostInterviewHandler extends RequestHandler {
       } else
         resMap.put("status", -1);
     } catch (RemoteException e) {
-    	e.printStackTrace();
+      e.printStackTrace();
     }
     return resMap;
   }

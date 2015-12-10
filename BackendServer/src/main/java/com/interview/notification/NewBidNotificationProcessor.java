@@ -39,9 +39,8 @@ public class NewBidNotificationProcessor extends NotificationProcessor {
       notification.setEntryDate(bid.getDate());
       Set<String> recepients = new HashSet<String>();
       recepients.add(bid.getBidder());
-      Interview interview =
-          DataStoreRegistry.getInstance().getInterviewDataStore()
-              .getInterview(new ObjectId(bid.getIid()));
+      Interview interview = DataStoreRegistry.getInstance().getInterviewDataStore()
+          .getInterview(new ObjectId(bid.getIid()));
       recepients.add(interview.getInterviewee());
       List<Bid> bids =
           DataStoreRegistry.getInstance().getBidStore().getBidsReceivedForInterview(bid.getIid());

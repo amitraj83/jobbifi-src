@@ -2,15 +2,27 @@ import pika
 from smtplib import SMTP
 import datetime
 import json
+import sys, glob
+sys.path.append('gen-py')
+import mailer_pb2
 
 SMTP_HOST = 'purkays.name'
 SMTP_USERNAME = 'support@jobbifi.com'
 SMTP_PORT = 25
 SMTP_PASSWORD = 'lqC2QeMD9hRwjy4kfwc0'
 
+import pdb
+pdb.set_trace()
+
+def parse_email(email_message):
+    email = mailer_pb2.Email();
+    email.parseFromString(email_message)
+    return email
+
 def callback(ch, method, properties, body):
     print " [x] Received %r" % (body,)
-    email_dict = json.loads(body)
+    email = parse_email(body)
+    pdb.set_trace()
     debuglevel = 0
 
     try:

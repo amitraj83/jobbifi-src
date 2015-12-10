@@ -1,109 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:context="http://www.springframework.org/schema/context"
- 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
 	   					   http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="com.interview" />	
-	
-	<bean id="myProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-	  <property name="location" value="classpath:local.properties"/>
-	</bean>	
-	
-	<bean id="placeholderProperties"
-    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	    <property name="location" value="classpath:local.properties" />
-	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
-	    <property name="ignoreUnresolvablePlaceholders" value="true" />
-	    <property name="order" value="1" />
+	<context:component-scan base-package="com.interview" />
+
+	<bean id="myProps"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:local.properties" />
 	</bean>
-	
-	<!--  Define Framework Services Ends here-->
-	
+
+	<bean id="placeholderProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:local.properties" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="order" value="1" />
+	</bean>
+
+	<!-- Define Framework Services Ends here -->
+
 	<bean id="taskExecutor"
 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<property name="corePoolSize" value="5" />
 		<property name="maxPoolSize" value="10" />
 		<property name="WaitForTasksToCompleteOnShutdown" value="true" />
 	</bean>
-    
-    <bean id="rmiregistry" class="com.interview.rmi.RMIRegistry">
-	 	<constructor-arg type="int" name="port" value="${rmiport}"></constructor-arg>
-	</bean>	
-    					   
-    <bean id="services" class="com.interview.services.Services"/>					   
-	<bean id="statusChangeValidator" class="com.interview.services.StatusChangeValidator"/>	
-	<bean id="transactionHistoryService" class="com.interview.transaction.TransactionHistoryService"/>	
-		
-	<bean id="dsrmiregistry" class="com.interview.rmi.DataStoreRegistry">
-	 	<constructor-arg type="java.lang.String" name="dataStoreAddress" value="${datastoreaddress}"></constructor-arg>
-		<constructor-arg type="int" name="port" value="${datastoreport}"></constructor-arg>
-	</bean>			
-					   
-	<bean id="bidAccept" class="com.interview.lifecycle.BidAccept"/>					   
-	<bean id="CancelInterview" class="com.interview.lifecycle.CancelInterview"/>					   
-	<bean id="CompleteInterview" class="com.interview.lifecycle.CompleteInterview"/>					   
-	<bean id="DeleteInterview" class="com.interview.lifecycle.DeleteInterview"/>					   
-	<bean id="EditInterview" class="com.interview.lifecycle.EditInterview"/>					   
-	<bean id="EscrowDeposit" class="com.interview.lifecycle.EscrowDeposit"/>					   
-	<bean id="InterviewDispute" class="com.interview.lifecycle.InterviewDispute"/>					   
-	<bean id="ReleaseFunds" class="com.interview.lifecycle.ReleaseFunds"/>					   
-	<bean id="RepostInterview" class="com.interview.lifecycle.RepostInterview"/>					   
-	<bean id="rating" class="com.interview.lifecycle.RatingService"/>					   
-	<bean id="norbertbackendserver" class="com.interview.norbert.server.BackendServer"/>
-	
-	<bean id="rmiserver" class="com.interview.rmi.RmiServer">
-	 	<constructor-arg type="java.lang.String" name="host" value="${rmiServerName}"></constructor-arg>
-	</bean>	
-	<!-- 
-	<bean id="solrservice" class="com.interview.solr.SolrService">
-	 	<constructor-arg type="java.lang.String" name="host" value="${solrHost}"></constructor-arg>
-		<constructor-arg type="java.lang.String" name="port" value="${solrPort}"></constructor-arg>
-	</bean>					   
-	 -->
-		    					   
-	<bean id="profilesearch" class="com.interview.services.ProfileSearchImpl"/>
-	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService"/>
-	<bean id="interviewerRegistration" class="com.interview.request.handlers.InterviewerRegistrationHandler"/>
-  	<bean id="userCredentialManager" class="com.interview.request.handlers.UserCredentialsManager"/>
-  	<bean id="firstRequestHandler" class="com.interview.request.handlers.FirstRequestHandler"/>
-  	<bean id="userInfoHandler" class="com.interview.request.handlers.UserInfoHandler"/>
-  	<bean id="retrieveFirstRequestHandler" class="com.interview.request.handlers.RetrieveFirstRequestHandler"/>
-  	<bean id="processFirstRequestHandler" class="com.interview.request.handlers.ProcessFirstRequestHandler"/>
-  	<bean id="saveChatMessageHandler" class="com.interview.request.handlers.SaveChatMessageHandler"/>
-  	<bean id="chatHistoryHandler" class="com.interview.request.handlers.ChatHistoryHandler"/>
-  	<bean id="friendListHandler" class="com.interview.request.handlers.FriendListHandler"/>
-  	<bean id="postInterviewHandler" class="com.interview.request.handlers.PostInterviewHandler"/>
-  	<bean id="updateInterviewHandler" class="com.interview.request.handlers.UpdateInterviewHandler"/>
-  	<bean id="getInterviewHandler" class="com.interview.request.handlers.GetInterviewHandler"/>
-  	<bean id="bidHandler" class="com.interview.request.handlers.BidHandler"/>
-  	<bean id="getMyBidHandler" class="com.interview.request.handlers.GetMyBidHandler"/>
-  	<bean id="statusChangeHandler" class="com.interview.request.handlers.StatusChangeHandler"/>
-  	<bean id="awardInterviewHandler" class="com.interview.request.handlers.AwardInterviewHandler"/>
-  	<bean id="escrowHandler" class="com.interview.request.handlers.EscrowHandler"/>
-  	<bean id="releaseFundsHandler" class="com.interview.request.handlers.ReleaseFundsHandler"/>
-  	<bean id="depositFundsHandler" class="com.interview.request.handlers.DepositFundsHandler"/>
-  	<bean id="completeInterviewHandler" class="com.interview.request.handlers.CompleteInterviewHandler"/>
-  	<bean id="ratingHandler" class="com.interview.request.handlers.RatingHandler"/>
-  	<bean id="searchAdditionalDataHandler" class="com.interview.request.handlers.SearchAdditionalDataHandler"/>
-  	<bean id="checkRatingAllowedHandler" class="com.interview.request.handlers.CheckRatingAllowedHandler"/>
-  	<bean id="deleteInterviewHandler" class="com.interview.request.handlers.DeleteInterviewHandler"/>
-  	<bean id="cancelInterviewHandler" class="com.interview.request.handlers.CancelInterviewHandler"/>
-  	<bean id="transactionHistoryHandler" class="com.interview.request.handlers.TransactionHistoryHandler"/>
-  	<bean id="jobHandler" class="com.interview.request.handlers.JobHandler"/>
-  	<bean id="testHandler" class="com.interview.request.handlers.TestHandler"/>
-  	<bean id="messageHandler" class="com.interview.request.handlers.MessageHandler"/>
-  	<bean id="contactlistHandler" class="com.interview.request.handlers.ContactListHandler"/>
-  	<!-- Define DataStore Services Ends here-->
-  	
-  	<!-- Free Marker -->
-  	<bean class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean" id="freemarkerConfiguration">
-	  <!-- Turn this off to always load via SpringTemplateLoader -->
-	  <property name="preferFileSystemAccess" value="false"></property>
-	  <property name="templateLoaderPath" value="classpath:/template"></property>
+
+	<bean id="rmiregistry" class="com.interview.rmi.RMIRegistry">
+		<constructor-arg type="int" name="port" value="${rmiport}"></constructor-arg>
 	</bean>
- 	
+
+	<bean id="services" class="com.interview.services.Services" />
+	<bean id="statusChangeValidator" class="com.interview.services.StatusChangeValidator" />
+	<bean id="transactionHistoryService" class="com.interview.transaction.TransactionHistoryService" />
+
+	<bean id="dsrmiregistry" class="com.interview.rmi.DataStoreRegistry">
+		<constructor-arg type="java.lang.String" name="dataStoreAddress"
+			value="${datastoreaddress}"></constructor-arg>
+		<constructor-arg type="int" name="port" value="${datastoreport}"></constructor-arg>
+	</bean>
+
+	<bean id="bidAccept" class="com.interview.lifecycle.BidAccept" />
+	<bean id="CancelInterview" class="com.interview.lifecycle.CancelInterview" />
+	<bean id="CompleteInterview" class="com.interview.lifecycle.CompleteInterview" />
+	<bean id="DeleteInterview" class="com.interview.lifecycle.DeleteInterview" />
+	<bean id="EditInterview" class="com.interview.lifecycle.EditInterview" />
+	<bean id="EscrowDeposit" class="com.interview.lifecycle.EscrowDeposit" />
+	<bean id="InterviewDispute" class="com.interview.lifecycle.InterviewDispute" />
+	<bean id="ReleaseFunds" class="com.interview.lifecycle.ReleaseFunds" />
+	<bean id="RepostInterview" class="com.interview.lifecycle.RepostInterview" />
+	<bean id="rating" class="com.interview.lifecycle.RatingService" />
+
+	<bean id="rmiserver" class="com.interview.rmi.RmiServer">
+		<constructor-arg type="java.lang.String" name="host"
+			value="${rmiServerName}"></constructor-arg>
+	</bean>
+	<!-- <bean id="solrservice" class="com.interview.solr.SolrService"> <constructor-arg 
+		type="java.lang.String" name="host" value="${solrHost}"></constructor-arg> 
+		<constructor-arg type="java.lang.String" name="port" value="${solrPort}"></constructor-arg> 
+		</bean> -->
+
+	<bean id="profilesearch" class="com.interview.services.ProfileSearchImpl" />
+	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService" />
+	<bean id="interviewerRegistration"
+		class="com.interview.request.handlers.InterviewerRegistrationHandler" />
+	<bean id="userCredentialManager" class="com.interview.request.handlers.UserCredentialsManager" />
+	<bean id="firstRequestHandler" class="com.interview.request.handlers.FirstRequestHandler" />
+	<bean id="userInfoHandler" class="com.interview.request.handlers.UserInfoHandler" />
+	<bean id="retrieveFirstRequestHandler"
+		class="com.interview.request.handlers.RetrieveFirstRequestHandler" />
+	<bean id="processFirstRequestHandler"
+		class="com.interview.request.handlers.ProcessFirstRequestHandler" />
+	<bean id="saveChatMessageHandler" class="com.interview.request.handlers.SaveChatMessageHandler" />
+	<bean id="chatHistoryHandler" class="com.interview.request.handlers.ChatHistoryHandler" />
+	<bean id="friendListHandler" class="com.interview.request.handlers.FriendListHandler" />
+	<bean id="postInterviewHandler" class="com.interview.request.handlers.PostInterviewHandler" />
+	<bean id="updateInterviewHandler" class="com.interview.request.handlers.UpdateInterviewHandler" />
+	<bean id="getInterviewHandler" class="com.interview.request.handlers.GetInterviewHandler" />
+	<bean id="bidHandler" class="com.interview.request.handlers.BidHandler" />
+	<bean id="getMyBidHandler" class="com.interview.request.handlers.GetMyBidHandler" />
+	<bean id="statusChangeHandler" class="com.interview.request.handlers.StatusChangeHandler" />
+	<bean id="awardInterviewHandler" class="com.interview.request.handlers.AwardInterviewHandler" />
+	<bean id="escrowHandler" class="com.interview.request.handlers.EscrowHandler" />
+	<bean id="releaseFundsHandler" class="com.interview.request.handlers.ReleaseFundsHandler" />
+	<bean id="depositFundsHandler" class="com.interview.request.handlers.DepositFundsHandler" />
+	<bean id="completeInterviewHandler" class="com.interview.request.handlers.CompleteInterviewHandler" />
+	<bean id="ratingHandler" class="com.interview.request.handlers.RatingHandler" />
+	<bean id="searchAdditionalDataHandler"
+		class="com.interview.request.handlers.SearchAdditionalDataHandler" />
+	<bean id="checkRatingAllowedHandler"
+		class="com.interview.request.handlers.CheckRatingAllowedHandler" />
+	<bean id="deleteInterviewHandler" class="com.interview.request.handlers.DeleteInterviewHandler" />
+	<bean id="cancelInterviewHandler" class="com.interview.request.handlers.CancelInterviewHandler" />
+	<bean id="transactionHistoryHandler"
+		class="com.interview.request.handlers.TransactionHistoryHandler" />
+	<bean id="jobHandler" class="com.interview.request.handlers.JobHandler" />
+	<bean id="testHandler" class="com.interview.request.handlers.TestHandler" />
+	<bean id="messageHandler" class="com.interview.request.handlers.MessageHandler" />
+	<bean id="contactlistHandler" class="com.interview.request.handlers.ContactListHandler" />
+	<!-- Define DataStore Services Ends here -->
 </beans>

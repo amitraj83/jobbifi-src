@@ -24,14 +24,13 @@ public class AwardInterviewHandler extends RequestHandler {
       String iid = data.get("iid").toString();
       String bid_id = data.get("bid").toString();
 
-      int status =
-          Services.getInstance().getBidAcceptService()
-              .acceptBid(new ObjectId(iid), new ObjectId(bid_id));
+      int status = Services.getInstance().getBidAcceptService().acceptBid(new ObjectId(iid),
+          new ObjectId(bid_id));
 
       resMap.put("response", RETURN_VALUES.getResponseMessage(status));
 
-      Services.getInstance().getNotificationService()
-          .processNotification(iid, VARIABLES.NOTIFICATION.TYPE.AWARD_INTERVIEW);
+      Services.getInstance().getNotificationService().processNotification(iid,
+          VARIABLES.NOTIFICATION.TYPE.AWARD_INTERVIEW);
     } catch (RemoteException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

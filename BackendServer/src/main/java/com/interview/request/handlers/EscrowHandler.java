@@ -56,19 +56,18 @@ public class EscrowHandler extends RequestHandler {
 
           String message = RETURN_VALUES.getResponseMessage(status);
 
-          double bal =
-              new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
-                  .getUserInfo(i.getInterviewee()).get(USER.BALANCE).toString());
-          Services.getInstance().getNotificationService()
-              .processNotification(i, VARIABLES.NOTIFICATION.TYPE.ESCROW_NOTIFICATION);
+          double bal = new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .getUserInfo(i.getInterviewee()).get(USER.BALANCE).toString());
+          Services.getInstance().getNotificationService().processNotification(i,
+              VARIABLES.NOTIFICATION.TYPE.ESCROW_NOTIFICATION);
 
           res.put("message", message);
           res.put("code", status);
           res.put("eb", eb);
           res.put("status", i.getStatus());
           res.put("bal", bal);
-          res.put("escrowlist", DataStoreRegistry.getInstance().getEscrowDataStore()
-              .getEscrowEntry(iid.toString()));
+          res.put("escrowlist",
+              DataStoreRegistry.getInstance().getEscrowDataStore().getEscrowEntry(iid.toString()));
         } else {
           res.put("message", "Full amount has already been deposited");
         }
@@ -83,8 +82,8 @@ public class EscrowHandler extends RequestHandler {
         Interview i = DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(iid);
         if (data.get(USER.USERNAME).equals(i.getInterviewee())
             || data.get(USER.USERNAME).equals(i.getInterviewer())) {
-          res.put("escrowlist", DataStoreRegistry.getInstance().getEscrowDataStore()
-              .getEscrowEntry(iid.toString()));
+          res.put("escrowlist",
+              DataStoreRegistry.getInstance().getEscrowDataStore().getEscrowEntry(iid.toString()));
         } else
           res.put("errow", "You are not allowed for this operation");
       } catch (RemoteException e) {

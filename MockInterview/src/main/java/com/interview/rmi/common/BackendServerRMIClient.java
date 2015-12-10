@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 import com.interview.framework.VARIABLES;
 import com.linkedin.norbert.javacompat.cluster.Node;
 import com.linkedin.norbert.javacompat.cluster.ZooKeeperClusterClient;
-// import scala.collection.immutable.HashMap;
 
 
 public class BackendServerRMIClient {
@@ -35,9 +34,7 @@ public class BackendServerRMIClient {
     cc.awaitConnectionUninterruptibly();
     log.debug("String of cluster client: " + cc.toString());
     if (cc.isConnected()) {
-
       allocateRMIServer();
-
     } else {
       log.debug("not connected to cluster");
     }
@@ -74,6 +71,8 @@ public class BackendServerRMIClient {
           this.rmiServer = (ReceiveMessageInterface) (registry.lookup(rmiServerName));
         } else {
           log.debug("Datastore not running at the moment. Please start datastore.");
+
+          //
         }
 
       }

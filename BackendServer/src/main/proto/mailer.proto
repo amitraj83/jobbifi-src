@@ -1,0 +1,54 @@
+option java_package = "com.interview.proto";
+option java_outer_classname = "Mailer";
+
+enum EmailType {
+	NEW_REGISTRATION_INTERVIEWER = 0;
+	FORGOT_PASSWORD = 1;
+	PASSWORD_UPDATED = 2;
+	NEW_MOCK_INTERVIEW = 3;
+	MOCK_INTERVIEW_UPDATED = 4;
+	BID_PLACED = 5;
+	NEW_MESSAGE = 6;
+	NEW_DISPUTE = 7;
+	NEW_FUND_DEPOSIT = 8;
+	NEW_FUND_WITHDRAWAL = 9;
+}
+
+enum AttributeType {
+	SUPPORT_REQUEST_NAME = 0;
+	SUPPORT_REQUEST_EMAIL = 1;
+	SUPPORT_REQUEST_MESSAGE = 2;
+	INTERVIEW_INTERVIEWEE = 3;
+	INTERVIEW_TITLE = 4;
+	USER_TYPE = 5;
+	BID_BIDDER = 6;
+	BID_MESSAGE = 7;
+	BID_PRICE = 8;
+	BID_DATE = 9;
+	DISPUTE_AMOUNT = 10;
+    DISPUTE_MESSAGE = 11;
+    DISPUTE_DISPUTEBY = 12;
+    DISPUTE_INTERVIEW_TITLE = 13;
+    DISPUTE_DISPUTEWITH = 14;
+	DISPUTE_USER = 15;
+	DISPUTE_DISPUTER = 16;
+	DISPUTE_ID = 17;
+	INTERVIEWER_EMAIL = 18;
+	PASSWORD_RESET_URL = 19;
+	USER_NAME = 20;
+	MESSAGE_SENDER = 21;
+	MESSAGE_RECEIVER = 22;
+	MESSAGE_CONTENT = 23;
+	FUND_AMOUNT = 24;
+}
+
+message Attribute {
+	required AttributeType type = 1;
+	required string value = 2;
+}
+
+message Email {
+	required EmailType type = 1;
+	required string recipient = 2;
+	repeated Attribute data = 3;
+}

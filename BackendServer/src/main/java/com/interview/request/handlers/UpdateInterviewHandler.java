@@ -29,12 +29,14 @@ public class UpdateInterviewHandler extends RequestHandler {
     Map<String, Object> resMap = new HashMap<String, Object>();
     Map<String, Object> resultMap = null;
     resMap.put(VARIABLES.POST_INTERVIEW.TITLE, (String) data.get(VARIABLES.POST_INTERVIEW.TITLE));
-    //interview.setInterviewee((String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWEE));
-    //interview.setInterviewer((String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWER));
+    // interview.setInterviewee((String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWEE));
+    // interview.setInterviewer((String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWER));
 
-    resMap.put(VARIABLES.POST_INTERVIEW.BUDGET,(String) data.get(VARIABLES.POST_INTERVIEW.BUDGET));
-    resMap.put(VARIABLES.POST_INTERVIEW.EXPERIENCE,(String) data.get(VARIABLES.POST_INTERVIEW.EXPERIENCE));
-    resMap.put(VARIABLES.POST_INTERVIEW.INDUSTRY,(String) data.get(VARIABLES.POST_INTERVIEW.INDUSTRY));
+    resMap.put(VARIABLES.POST_INTERVIEW.BUDGET, (String) data.get(VARIABLES.POST_INTERVIEW.BUDGET));
+    resMap.put(VARIABLES.POST_INTERVIEW.EXPERIENCE,
+        (String) data.get(VARIABLES.POST_INTERVIEW.EXPERIENCE));
+    resMap.put(VARIABLES.POST_INTERVIEW.INDUSTRY,
+        (String) data.get(VARIABLES.POST_INTERVIEW.INDUSTRY));
 
     List<String> skillsList = new ArrayList<String>();
     String skillsString = (String) data.get(VARIABLES.POST_INTERVIEW.SKILLS);
@@ -42,24 +44,25 @@ public class UpdateInterviewHandler extends RequestHandler {
     for (String skill : skillsArray) {
       skillsList.add(skill);
     }
-    resMap.put(VARIABLES.POST_INTERVIEW.SKILLS,skillsList);
-    resMap.put(VARIABLES.POST_INTERVIEW.DESCRIPTION,(String) data.get(VARIABLES.POST_INTERVIEW.DESCRIPTION));
-    //interview.setDt(new Date().getTime());
-    //interview.setStatus(INTERVIEW_STATUS.PENDING);
+    resMap.put(VARIABLES.POST_INTERVIEW.SKILLS, skillsList);
+    resMap.put(VARIABLES.POST_INTERVIEW.DESCRIPTION,
+        (String) data.get(VARIABLES.POST_INTERVIEW.DESCRIPTION));
+    // interview.setDt(new Date().getTime());
+    // interview.setStatus(INTERVIEW_STATUS.PENDING);
 
     try {
-      //final ObjectId id =
-      //    DataStoreRegistry.getInstance().getInterviewDataStore().saveInterview(interview);
-    	
-    	DataStoreRegistry.getInstance().getInterviewDataStore()
-    		.updateInterview(new ObjectId((String)data.get(VARIABLES.IID)), resMap);
-    	 resultMap = new HashMap<String, Object>();
-    	 resultMap.put("message", "Success");
-    	 
-    	 resultMap.put("code", "0");
-    	 
+      // final ObjectId id =
+      // DataStoreRegistry.getInstance().getInterviewDataStore().saveInterview(interview);
+
+      DataStoreRegistry.getInstance().getInterviewDataStore()
+          .updateInterview(new ObjectId((String) data.get(VARIABLES.IID)), resMap);
+      resultMap = new HashMap<String, Object>();
+      resultMap.put("message", "Success");
+
+      resultMap.put("code", "0");
+
     } catch (RemoteException e) {
-    	e.printStackTrace();
+      e.printStackTrace();
     }
     return resultMap;
   }

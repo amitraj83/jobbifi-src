@@ -16,8 +16,8 @@ public class InterviewDispute {
     Interview interview = DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(iid);
     if (interview.getStatus() == INTERVIEW_STATUS.IN_PROGRESS) {
 
-      DataStoreRegistry.getInstance().getInterviewDataStore()
-          .updateInterviewStatus(iid, INTERVIEW_STATUS.DISPUTE);
+      DataStoreRegistry.getInstance().getInterviewDataStore().updateInterviewStatus(iid,
+          INTERVIEW_STATUS.DISPUTE);
 
       return RETURN_VALUES.DISPUTE_START_SUCCESS;
     } else

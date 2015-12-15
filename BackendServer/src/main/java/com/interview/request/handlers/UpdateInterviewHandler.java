@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bson.types.ObjectId;
 
@@ -57,6 +58,24 @@ public class UpdateInterviewHandler extends RequestHandler {
     	 resultMap.put("message", "Success");
     	 
     	 resultMap.put("code", "0");
+    	 
+    	 
+    	 Map<String, String> param = new HashMap<String, String>(); 
+         //param.put("username", (String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWEE));
+    	 	param.put("url", (String) data.get("baseURL")+"/interviewdetail.do?iid="+(String)data.get(VARIABLES.IID));
+    	 	param.put("companylogo", "");
+    	 List<String> users = DataStoreRegistry.getInstance().getBidStore().getBidderForInterview((String)data.get(VARIABLES.IID));
+    	 List<String> receivers = new ArrayList<String>();
+    	 if(users != null){
+    		 Map<String,String> getEmailListFromUsersList =  DataStoreRegistry.getInstance().getInterviewerDataStore().getEmailListFromUsersList(users);
+    		 for (Entry<String, String> obj : getEmailListFromUsersList.entrySet()) {
+    			 receivers.add(obj.getValue());
+			}
+    		 
+    		 Services.getInstance().getEmailService().sendMailChannelOnEvent("50", 
+    				 param, receivers, "Recent Changes to Mock Interview ! "+(String) data.get(VARIABLES.POST_INTERVIEW.TITLE));
+    		 
+    	 }
     	 
     } catch (RemoteException e) {
     	e.printStackTrace();

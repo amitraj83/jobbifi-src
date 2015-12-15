@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.interview.framework.REQUEST_TYPES;
+import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 @Controller
 public class BidController extends BaseController{
@@ -31,6 +33,7 @@ public class BidController extends BaseController{
     reqMap.put(VARIABLES.Bid.PRICE, req.getParameter(VARIABLES.Bid.PRICE));
     reqMap.put(VARIABLES.Bid.BID_FID, req.getParameter("bidfid"));
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.BID_SUB_REQ.MAKE_BID);
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
     
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService()

@@ -45,6 +45,8 @@ public interface IInterviewerDataStore extends Remote {
       String country) throws RemoteException;
 
   public String getUserEmail(String username) throws RemoteException;
+  
+  public Map<String,String> getEmailListFromUsersList(List<String> users) throws RemoteException;
 
   public boolean isUserEmailExist(String emailAddress) throws RemoteException;
 

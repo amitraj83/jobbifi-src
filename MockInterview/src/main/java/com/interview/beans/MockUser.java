@@ -14,7 +14,7 @@ public class MockUser implements UserDetails {
 	private String userActualName;
 	private String username;
 	private String password;
-	private String userRole;	
+	private String userRole;
 	
 	public MockUser(String username, String password, String userRole, String userActualName){
 		this.username = username;
@@ -76,5 +76,5 @@ public class MockUser implements UserDetails {
 
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
-	}	
+	}
 }

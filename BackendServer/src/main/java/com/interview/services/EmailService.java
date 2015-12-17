@@ -1,13 +1,11 @@
 package com.interview.services;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,15 +48,11 @@ public class EmailService {
     }
 
     try {
-      Map<String, Object> messageMap = new HashMap<String, Object>();
-      messageMap.put("email", emailBuilder.build().toByteString());
-      String message = new ObjectMapper().writeValueAsString(messageMap);
-      logger.info(" Message :" + message);
-
+      byte[] message = emailBuilder.build().toByteArray();
       connection = factory.newConnection();
       Channel channel = connection.createChannel();
       channel.queueDeclare(queue, false, false, false, null);
-      channel.basicPublish("", queue, null, message.getBytes());
+      channel.basicPublish("", queue, null, message);
       channel.close();
       connection.close();
     } catch (IOException e) {

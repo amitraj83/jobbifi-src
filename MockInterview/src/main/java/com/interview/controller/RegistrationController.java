@@ -29,6 +29,7 @@ import com.interview.framework.pojo.Education;
 import com.interview.framework.pojo.Interviewer;
 import com.interview.framework.pojo.Position;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 @Controller
 public class RegistrationController {
@@ -118,6 +119,7 @@ public class RegistrationController {
     
     Map<Object, Object> requestMap = new HashMap<Object, Object>();
     requestMap.put("user", interviewer);
+    requestMap.put("baseURL", Util.getbBaseURLpath(req));
     Map<String, Object> responseMap =
         Services.getInstance().getRequestHandlerService()
             .handleRequest(requestMap, REQUEST_TYPES.INTERVIEWER_REGISTRATION);

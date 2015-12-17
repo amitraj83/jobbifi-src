@@ -3,15 +3,15 @@ package com.interview.request.handlers;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
@@ -24,10 +24,6 @@ import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;
 
 public class BidHandler extends RequestHandler implements DisposableBean {
-
-  @Autowired
-  private Properties myProps;
-
   private static final Logger logger = Logger.getLogger(BidHandler.class);
 
   public BidHandler() {
@@ -77,10 +73,41 @@ public class BidHandler extends RequestHandler implements DisposableBean {
 
           Map<String, Object> userMap = DataStoreRegistry.getInstance().getInterviewerDataStore()
               .getUserInfo(interview.getInterviewee());
-          model.put(AttributeType.INTERVIEW_INTERVIEWEE, interview.getInterviewee());
-          model.put(AttributeType.INTERVIEW_TITLE, interview.getTitle());
-          Services.getInstance().getEmailService().sendMail(Mailer.EmailType.BID_PLACED, model,
-              userMap.get(USER.EMAIL).toString());
+
+          // send mail to interviewee about bid
+          Map<AttributeType, String> param = new HashMap<AttributeType, String>();
+          param.put(AttributeType.INTERVIEW_INTERVIEWEE, interview.getInterviewee());
+          param.put(AttributeType.INTERVIEW_TITLE, interview.getTitle());
+          param.put(AttributeType.INTERVIEW_URL, data.get("baseURL").toString()
+              + "/interviewdetail.do?iid=" + data.get(VARIABLES.Bid.INTERVIEW_ID).toString());
+          int highestBidAmount = DataStoreRegistry.getInstance().getBidStore()
+              .getMaxBidOfInterview(data.get(VARIABLES.Bid.INTERVIEW_ID).toString());
+          param.put(AttributeType.BID_PRICE_HIGHEST, String.valueOf(highestBidAmount));
+          String email = DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .getUserEmail(interview.getInterviewee());
+          List<String> resEmail = new ArrayList<String>();
+          resEmail.add(email);
+          Services.getInstance().getEmailService().sendMail(Mailer.EmailType.BID_PLACED_INTERVIEWEE,
+              model, userMap.get(USER.EMAIL).toString());
+              // Services.getInstance().getEmailService().sendMailChannelOnEvent("6", param,
+              // resEmail,
+              // "You received a new bid for " + interview.getTitle());
+
+          // send mail to bidder
+          Map<AttributeType, String> param1 = new HashMap<AttributeType, String>();
+          param1.put(AttributeType.BID_BIDDER, bid.getBidder());
+          param1.put(AttributeType.BID_PRICE, bid.getPrice());
+          param1.put(AttributeType.INTERVIEW_TITLE, interview.getTitle());
+          param1.put(AttributeType.INTERVIEW_URL, data.get("baseURL").toString()
+              + "/interviewdetail.do?iid=" + data.get(VARIABLES.Bid.INTERVIEW_ID).toString());
+          param1.put(AttributeType.BID_PRICE_HIGHEST, String.valueOf(highestBidAmount));
+          String email1 = DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .getUserEmail(bid.getBidder());
+          Services.getInstance().getEmailService().sendMail(Mailer.EmailType.BID_PLACED_INTERVIEWER,
+              model, email1);
+
+          // Services.getInstance().getEmailService().sendMailChannelOnEvent("7", param, resEmail1,
+          // "Your bid has been placed successfully for " + interview.getTitle());
         }
       } catch (Exception e) {
         logger.error(" Exception MAKE BID: ", e);
@@ -106,3 +133,4 @@ public class BidHandler extends RequestHandler implements DisposableBean {
     logger.debug("Destroying Bidhander Bean.......");
   }
 }
+

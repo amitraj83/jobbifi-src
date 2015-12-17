@@ -2,10 +2,8 @@ package com.interview.request.handlers;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.interview.framework.REQUEST_TYPES;
@@ -17,8 +15,6 @@ import com.interview.services.Services;
 
 @Service
 public class InterviewerRegistrationHandler extends RequestHandler {
-  @Autowired
-  private Properties myProps;
   private static final Logger logger = Logger.getLogger(InterviewerRegistrationHandler.class);
 
   public InterviewerRegistrationHandler() {
@@ -35,15 +31,18 @@ public class InterviewerRegistrationHandler extends RequestHandler {
       interviewer.setChatPass(Services.getInstance().getPasswordGenerator().generatePassword());
       success_status =
           DataStoreRegistry.getInstance().getInterviewerDataStore().insertInterviewer(interviewer);
+
       if (success_status == 2) {
         map.put("response", "2");
         return map;
       } else {
-        Map<AttributeType, String> param = new HashMap<AttributeType, String>();
-        param.put(AttributeType.INTERVIEWER_EMAIL, interviewer.getEmail());
-        param.put(AttributeType.USER_TYPE, "INTERVIEWER");
-        Services.getInstance().getEmailService()
-            .sendMail(Mailer.EmailType.NEW_REGISTRATION_INTERVIEWER, param, interviewer.getEmail());
+        Map<AttributeType, String> params = new HashMap<AttributeType, String>();
+        params.put(AttributeType.USER_NAME, interviewer.getUsername());
+        params.put(AttributeType.USER_TYPE, "INTERVIEWER");
+        Services.getInstance().getEmailService().sendMail(
+            Mailer.EmailType.NEW_REGISTRATION_INTERVIEWER, params, interviewer.getEmail());
+        // Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, recList,
+        // "mail.resetpasswordlink.subject");
       }
     } catch (Exception e) {
       logger.error("Exception : INTERVIEWER REGISTRATION : ", e);

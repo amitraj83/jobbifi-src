@@ -4,11 +4,9 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.interview.framework.REQUEST_TYPES;
@@ -22,10 +20,6 @@ import com.interview.services.Services;
 
 @Service
 public class ResetPasswordHandler extends RequestHandler {
-
-  @Autowired
-  private Properties myProps;
-
   public ResetPasswordHandler() {
     addHandler(this, REQUEST_TYPES.RESET_PASSWORD);
   }
@@ -36,7 +30,6 @@ public class ResetPasswordHandler extends RequestHandler {
   public Map<String, Object> handleRequest(Map<Object, Object> data) {
     Map<String, Object> resMap = new HashMap<String, Object>();
     try {
-
       int subrequest = new Integer(data.get(REQUEST_TYPES.SUB_REQ_RESET_PASSWORD).toString());
       if (subrequest == 1) {
         // Email the reset password link
@@ -52,8 +45,12 @@ public class ResetPasswordHandler extends RequestHandler {
           params.put(AttributeType.PASSWORD_RESET_URL, url);
           Services.getInstance().getEmailService().sendMail(Mailer.EmailType.FORGOT_PASSWORD,
               params, useremail.toString());
+          // Services.getInstance().getEmailService().sendMailChannelOnEvent("2", params, resEmail,
+          // "mail.resetpasswordlink.subject");
+
           resMap.put("response", "1");
         } else {
+
           resMap.put("response", "0");
         }
       } else if (subrequest == 2) {

@@ -12,6 +12,7 @@ import org.bson.types.ObjectId;
 import com.interview.framework.DATASTORES;
 import com.interview.framework.INTERVIEW_STATUS;
 import com.interview.framework.REQUEST_TYPES;
+import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Interview;
 import com.interview.rmi.DataStoreRegistry;
@@ -61,7 +62,21 @@ public class PostInterviewHandler extends RequestHandler {
         Services.getInstance().getNotificationService().processNotification(interview,
             VARIABLES.NOTIFICATION.TYPE.NEW_INTERVIEW_NOTIFICATION);
         resMap.put("status", 1);
-
+        Map<String, String> param = new HashMap<String, String>(); 
+        param.put("username", (String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWEE));
+   	 	param.put("interviewtitle", (String) data.get(VARIABLES.POST_INTERVIEW.TITLE));
+   	 	param.put("skills", skillsString);
+   	 	param.put("experience", (String) data.get(VARIABLES.POST_INTERVIEW.EXPERIENCE));
+   	 	param.put("url", (String) data.get("baseURL")+"/interviewdetail.do?iid="+id.toString());
+   	 	param.put("companylogo", "");
+   	 	List<String> receivers =
+             DataStoreRegistry.getInstance().getInterviewerDataStore()
+                 .getMatchingUsersList(interview.getSkills(), null, null);
+   	 	//TODO: Pending
+   	 	//Need to identify that can we send the email multiple user with this functionality?
+   	 	//We also find the advisor according to skills
+   	 Services.getInstance().getEmailService().sendMailChannelOnEvent("4", param, receivers, "Your Jobbify Password has been changed!");
+        
         // Notification notification = createNotification(interview);
         // Services.getInstance().getNotificationStore().save(notification);
         /*

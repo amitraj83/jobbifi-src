@@ -1,6 +1,8 @@
 package com.interview.request.handlers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -60,11 +62,14 @@ public class InterviewerRegistrationHandler extends RequestHandler {
 	    	*/
 	    	  	    	  
 	    	    	 Map<String, String> param = new HashMap<String, String>(); 
-	    	    	 param.put("email", interviewer.getEmail());
+	    	    	 param.put("username", interviewer.getUsername());
 	    	    	 param.put("password", interviewer.getPassword());
 	    	    	 param.put("usertype", "INTERVIEWER");
 	    	    	 param.put("companylogo", "");
-	    	    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, interviewer.getEmail(), "mail.resetpasswordlink.subject");
+	    	    	 param.put("jobbify_support_email_address", "support@jobbifi.com");
+	    	    	 List<String> recList = new ArrayList<String>();
+	    	    	 recList.add(interviewer.getEmail());
+	    	    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, recList, "mail.resetpasswordlink.subject");
 	    	         
               //Map<String, Object> model = new HashMap<String, Object>();
               //model.put("username", interviewer.getUsername());              

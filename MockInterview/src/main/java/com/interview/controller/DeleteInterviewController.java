@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 @Controller
 public class DeleteInterviewController {
@@ -26,6 +27,7 @@ public class DeleteInterviewController {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("_id", req.getParameter("iid"));
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
 
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService()

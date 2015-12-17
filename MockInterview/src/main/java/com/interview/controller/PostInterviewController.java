@@ -20,6 +20,7 @@ import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 @Controller
 public class PostInterviewController extends BaseController {
@@ -235,6 +236,7 @@ public class PostInterviewController extends BaseController {
 
     String user =getLoginUser();
     reqMap.put(VARIABLES.POST_INTERVIEW.INTERVIEWEE, user);
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
     if (req.getParameter(DATASTORES.INTERVIEW.FILE) != null)
       reqMap.put(DATASTORES.INTERVIEW.FILE, req.getParameter(DATASTORES.INTERVIEW.FILE));
 
@@ -269,7 +271,7 @@ public class PostInterviewController extends BaseController {
     reqMap.put(VARIABLES.IID, req.getParameter(VARIABLES.IID));
     String user =getLoginUser();
     reqMap.put(VARIABLES.POST_INTERVIEW.INTERVIEWEE, user);
-
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService()
             .handleRequest(reqMap, REQUEST_TYPES.UPDATE_INTERVIEW);

@@ -2,6 +2,7 @@ package com.interview.services;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -166,7 +167,7 @@ public class EmailService {
 	    }
 	}
 	
-	public void sendMailChannelOnEvent(String scenarioid,Map<String, String> param,String recipient, String subject){
+	public void sendMailChannelOnEvent(String scenarioid,Map<String, String> param,List<String> recipient, String subject){
 		
 		String queue = myProps.getProperty("mail.channel.queue");		
 		ConnectionFactory factory = new ConnectionFactory();

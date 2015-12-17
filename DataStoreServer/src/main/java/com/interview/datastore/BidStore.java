@@ -156,6 +156,23 @@ public class BidStore extends UnicastRemoteObject implements IBidStore {
 
     return list;
   }
+  
+  @Override
+  public List<String> getBidderForInterview(String _id) throws RemoteException {
+	    List<String> list = new ArrayList<String>();
+
+	    DBCollection collection =
+	        Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.BID.DBCollection);
+	    DBObject query = new BasicDBObject();
+	    query.put(VARIABLES.Bid.INTERVIEW_ID, _id);
+
+	    DBCursor cursor = collection.find(query);
+	    while (cursor.hasNext()) {
+	      DBObject row = cursor.next();
+	      list.add((String) row.get(VARIABLES.Bid.BIDDER));
+	    }
+	    return list;
+	  }
 
   public void updateBidStatus(ObjectId bid, int bidStatus) {
     DBCollection collection =
@@ -319,5 +336,19 @@ public int getBidCount(String iid) throws RemoteException {
 	      	result.add(bid);	      	
 	    }
 	    return result;
+	}
+
+	@Override
+	public int getMaxBidOfInterview(String iid) throws RemoteException {
+		int price = 0;
+		DBCollection collection =
+		        Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.BID.DBCollection);
+		    DBObject query = new BasicDBObject();
+		    query.put(VARIABLES.Bid.INTERVIEW_ID, iid);
+		    DBCursor cursor = collection.find(query).sort(new BasicDBObject(VARIABLES.Bid.PRICE, -1)).limit(1);
+		    while (cursor.hasNext()) {
+		        price = (int) cursor.next().get("price");
+		    }
+		return price;
 	}
 }

@@ -401,11 +401,11 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     List<String> usersList = new ArrayList<String>();
     BasicDBList orList = new BasicDBList();
 
-    if (skills.size() > 0) {
+    if (skills!=null && skills.size() > 0) {
       DBObject skillsQuery = new BasicDBObject(USER.SKILLS, new BasicDBObject("$in", skills));
       orList.add(skillsQuery);
     }
-    if (companies.size() > 0) {
+    if (companies!=null && companies.size() > 0) {
       DBObject companyQuery =
           new BasicDBObject(USER.COMPANIES, new BasicDBObject("$in", companies));
       orList.add(companyQuery);
@@ -424,6 +424,27 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     return usersList;
   }
 
+  @Override
+  public Map<String,String> getEmailListFromUsersList(List<String> users) throws RemoteException {
+	    DBCollection collection =
+	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+
+	    Map<String,String> userEmailMap = new HashMap<String,String>();
+	    BasicDBList userList = new BasicDBList();
+	    if (users.size() > 0) {
+	      DBObject usersQuery = new BasicDBObject(USER.USERNAME, new BasicDBObject("$in", users));
+	      userList.add(usersQuery);
+	    }
+	    DBCursor cursor = collection.find(userList);
+	    while (cursor.hasNext()) {
+	      DBObject row = cursor.next();
+	      userEmailMap.put(row.get("username").toString(), row.get("id").toString());
+	    }
+
+	    return userEmailMap;
+	  }
+  
+  
   @Override
   public String getUserEmail(String username) throws RemoteException {
 

@@ -17,6 +17,7 @@ function hideLoader(){
 };
 
 function showError(message){
+	$("html").find("[data-notify='container']").remove();
 	$.notify({message: message},{type: 'danger', 
 		placement: {
 			from: "top",
@@ -25,6 +26,7 @@ function showError(message){
 }
 
 function showSuccess(message){
+	$("html").find("[data-notify='container']").remove();
 	$.notify({message: message},{type: 'success',
 		placement: {
 			from: "top",
@@ -33,6 +35,7 @@ function showSuccess(message){
 }
 
 function showWarning(message){
+	$("html").find("[data-notify='container']").remove();
 	$.notify({message: message},{type: 'warning',
 		placement: {
 			from: "top",
@@ -41,6 +44,7 @@ function showWarning(message){
 }
 
 function showInfo(message){
+	$("html").find("[data-notify='container']").remove();
 	$.notify({message: message},{type: 'info',
 		placement: {
 			from: "top",

@@ -1,6 +1,8 @@
 package com.interview.request.handlers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.rmi.DataStoreRegistry;
+import com.interview.services.Services;
 
 @Service
 public class PasswordHandler extends RequestHandler {
@@ -37,6 +40,16 @@ public class PasswordHandler extends RequestHandler {
 		    			  .setPasswordForUserName(username, newpassword);
 		    	  if(result){
 		    		  res.put("RESULT", "SUCCESS");
+		    		  Map<String, String> param = new HashMap<String, String>(); 
+				    	 param.put("username", username);
+				    	 param.put("password", password);
+				    	 param.put("companylogo", "");
+				    	 param.put("jobbify_support_email_address", "support@jobbifi.com");
+				    	 String email =  DataStoreRegistry.getInstance().getInterviewerDataStore().getUserEmail(username);
+				    	 List<String> resEmail = new ArrayList<String>();
+				    	 resEmail.add(email);
+				    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("3", param, resEmail, "Your Jobbify Password has been changed!");
+				         
 		    	  } else {
 		    		  res.put("RESULT", "ERROR");
 		    	  }	

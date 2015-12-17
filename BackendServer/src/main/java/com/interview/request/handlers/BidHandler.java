@@ -3,8 +3,10 @@ package com.interview.request.handlers;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -77,6 +79,32 @@ public class BidHandler extends RequestHandler implements DisposableBean {
 	  	        model.put("title", interview.getTitle());
 	  	  	   	Services.getInstance().getEmailService().sendMail(userMap.get(USER.EMAIL).toString(), 
 	  	  	   			myProps.getProperty("mail.bidplaced.subject"), "bidplaced.ftl",model);
+	  	  	   	
+	  	  	   	//send mail to interviewee about bid
+	  	  	Map<String, String> param = new HashMap<String, String>(); 
+	    	 param.put("username", interview.getInterviewee());
+	    	 param.put("interviewtitle", interview.getTitle());
+	    	 param.put("interviewurl",data.get("baseURL").toString()+"/interviewdetail.do?iid="+data.get(VARIABLES.Bid.INTERVIEW_ID).toString());
+	    	 int highestBidAmount = DataStoreRegistry.getInstance().getBidStore().getMaxBidOfInterview(data.get(VARIABLES.Bid.INTERVIEW_ID).toString());
+	    	 param.put("highestbidamount", ""+highestBidAmount);
+	    	 String email =  DataStoreRegistry.getInstance().getInterviewerDataStore().getUserEmail(interview.getInterviewee());
+	    	 	List<String> resEmail = new ArrayList<String>();
+	    	 	resEmail.add(email);
+	    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("6", param, resEmail, "You received a new bid for "
+	    	 		+ interview.getTitle());
+	         
+	    	//send mail to bidder 
+		  	  	Map<String, String> param1 = new HashMap<String, String>(); 
+		    	 param1.put("username", bid.getBidder());
+		    	 param1.put("bidamount", bid.getPrice());
+		    	 param1.put("interviewtitle", interview.getTitle());
+		    	 param1.put("interviewurl",data.get("baseURL").toString()+"/interviewdetail.do?iid="+data.get(VARIABLES.Bid.INTERVIEW_ID).toString());
+		    	 param1.put("highestbidamount", ""+highestBidAmount);
+		    	 String email1 =  DataStoreRegistry.getInstance().getInterviewerDataStore().getUserEmail(bid.getBidder());
+		    	 	List<String> resEmail1 = new ArrayList<String>();
+		    	 	resEmail.add(email1);
+		    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("7", param, resEmail1, "Your bid has been placed successfully for "
+		    	 		+ interview.getTitle());
 	  	  	   
 	  	      }
 	  	    } catch (Exception e) {    

@@ -1,8 +1,10 @@
 package com.interview.request.handlers;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -51,7 +53,9 @@ public class ResetPasswordHandler extends RequestHandler {
 		    	 param.put("username", username);
 		    	 param.put("url", url);
 		    	 param.put("companylogo", "");
-		    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, useremail.toString(), "mail.resetpasswordlink.subject");
+		    	 	List<String> resEmail = new ArrayList<String>();
+		    	 	resEmail.add(useremail.toString());
+		    	 Services.getInstance().getEmailService().sendMailChannelOnEvent("2", param, resEmail, "mail.resetpasswordlink.subject");
 		         
 		        resMap.put("response", "1");  	       	
 	        }else{

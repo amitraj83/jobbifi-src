@@ -12,9 +12,10 @@ import org.bson.types.ObjectId;
 import com.interview.framework.DATASTORES;
 import com.interview.framework.INTERVIEW_STATUS;
 import com.interview.framework.REQUEST_TYPES;
-import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Interview;
+import com.interview.proto.Mailer;
+import com.interview.proto.Mailer.AttributeType;
 import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;
 
@@ -62,33 +63,28 @@ public class PostInterviewHandler extends RequestHandler {
         Services.getInstance().getNotificationService().processNotification(interview,
             VARIABLES.NOTIFICATION.TYPE.NEW_INTERVIEW_NOTIFICATION);
         resMap.put("status", 1);
-        Map<String, String> param = new HashMap<String, String>(); 
-        param.put("username", (String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWEE));
-   	 	param.put("interviewtitle", (String) data.get(VARIABLES.POST_INTERVIEW.TITLE));
-   	 	param.put("skills", skillsString);
-   	 	param.put("experience", (String) data.get(VARIABLES.POST_INTERVIEW.EXPERIENCE));
-   	 	param.put("url", (String) data.get("baseURL")+"/interviewdetail.do?iid="+id.toString());
-   	 	param.put("companylogo", "");
-   	 	List<String> receivers =
-             DataStoreRegistry.getInstance().getInterviewerDataStore()
-                 .getMatchingUsersList(interview.getSkills(), null, null);
-   	 	//TODO: Pending
-   	 	//Need to identify that can we send the email multiple user with this functionality?
-   	 	//We also find the advisor according to skills
-   	 Services.getInstance().getEmailService().sendMailChannelOnEvent("4", param, receivers, "Your Jobbify Password has been changed!");
-        
-        // Notification notification = createNotification(interview);
-        // Services.getInstance().getNotificationStore().save(notification);
-        /*
-         * Services.getInstance().getThreadPoolService().execute(new Runnable() {
-         * 
-         * @Override public void run() { ObjectMapper mapper = new ObjectMapper(); // can reuse,
-         * share globally mapper.configure( org.codehaus.jackson.map.DeserializationConfig
-         * .Feature.FAIL_ON_UNKNOWN_PROPERTIES, false); //interview.setId
-         * ((String)data.get(VARIABLES.POST_INTERVIEW.TITLE)); interview.setId(id.toString());
-         * interview.setDoctype("interview");
-         * Services.getInstance().getSolrService().addPojo(interview); } });
-         */
+        Map<AttributeType, String> params = new HashMap<AttributeType, String>();
+        params.put(AttributeType.USER_NAME,
+            (String) data.get(VARIABLES.POST_INTERVIEW.INTERVIEWEE));
+        params.put(AttributeType.INTERVIEW_TITLE,
+            (String) data.get(VARIABLES.POST_INTERVIEW.TITLE));
+        params.put(AttributeType.USER_SKILLS, skillsString);
+        params.put(AttributeType.USER_EXPERIENCE,
+            (String) data.get(VARIABLES.POST_INTERVIEW.EXPERIENCE));
+        params.put(AttributeType.INTERVIEW_URL,
+            (String) data.get("baseURL") + "/interviewdetail.do?iid=" + id.toString());
+        List<String> receivers = DataStoreRegistry.getInstance().getInterviewerDataStore()
+            .getMatchingUsersList(interview.getSkills(), null, null);
+        // TODO: Pending
+        // Need to identify that can we send the email multiple user with this functionality?
+        // We also find the advisor according to skills
+        for (String recipient : receivers) {
+          Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_MOCK_INTERVIEW,
+              params, recipient);
+        }
+        // Services.getInstance().getEmailService().sendMailChannelOnEvent("4", params, receivers,
+        // "Your Jobbify Password has been changed!");
+
       } else
         resMap.put("status", -1);
     } catch (RemoteException e) {

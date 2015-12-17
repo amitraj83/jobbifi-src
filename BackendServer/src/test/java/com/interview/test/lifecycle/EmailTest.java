@@ -25,7 +25,7 @@ public class EmailTest {
     data.put(AttributeType.SUPPORT_REQUEST_EMAIL, "deepcyan@gmail.com");
     // Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_REGISTRATION_INTERVIEWER,
     // data, "deepcyan@gmail.com");
-    sendMail(Mailer.EmailType.NEW_REGISTRATION_INTERVIEWER, data, "deepcyan@gmail.com");
+    sendMail(Mailer.EmailType.NEW_REGISTRATION, data, "deepcyan@gmail.com");
   }
 
   private static void sendMail(EmailType emailType, Map<AttributeType, String> params,

@@ -2,7 +2,7 @@ option java_package = "com.interview.proto";
 option java_outer_classname = "Mailer";
 
 enum EmailType {
-	NEW_REGISTRATION_INTERVIEWER = 0;
+	NEW_REGISTRATION = 0;
 	FORGOT_PASSWORD = 1;
 	PASSWORD_UPDATED = 2;
 	NEW_MOCK_INTERVIEW = 3;
@@ -16,6 +16,10 @@ enum EmailType {
 	AWARD_INTERVIEW_FAILURE = 11;
 	BID_PLACED_INTERVIEWER = 12;
 	INTERVIEW_DELETED = 13;
+	INTERVIEW_BID_DENIED = 14;
+	NEW_JOB = 15;
+	NEW_JOB_APPLICATION = 16;
+	JOB_APPLICATION_SHORTLISTED = 17;
 }
 
 enum AttributeType {

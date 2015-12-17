@@ -39,8 +39,8 @@ public class InterviewerRegistrationHandler extends RequestHandler {
         Map<AttributeType, String> params = new HashMap<AttributeType, String>();
         params.put(AttributeType.USER_NAME, interviewer.getUsername());
         params.put(AttributeType.USER_TYPE, "INTERVIEWER");
-        Services.getInstance().getEmailService().sendMail(
-            Mailer.EmailType.NEW_REGISTRATION_INTERVIEWER, params, interviewer.getEmail());
+        Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_REGISTRATION, params,
+            interviewer.getEmail());
         // Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, recList,
         // "mail.resetpasswordlink.subject");
       }

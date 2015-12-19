@@ -41,9 +41,8 @@ public class EscrowDepositService {
       String userTransactionId = null;
       try {
 
-        Map<String, Object> userInfo =
-            DataStoreRegistry.getInstance().getInterviewerDataStore()
-                .getUserInfo(interview.getInterviewee());
+        Map<String, Object> userInfo = DataStoreRegistry.getInstance().getInterviewerDataStore()
+            .getUserInfo(interview.getInterviewee());
         prevBalance = new Double(userInfo.get(USER.BALANCE).toString());
         prevEscrowBalance = interview.getEb();
 
@@ -55,9 +54,8 @@ public class EscrowDepositService {
            * interview.getInterviewee()); revertBal.put("amount", amount); revertBal.put("type",
            * VARIABLES.ADD); revertData.put("revertBal", revertBal);
            */
-          double newBalance =
-              DataStoreRegistry.getInstance().getInterviewerDataStore()
-                  .updateBalance(interview.getInterviewee(), amount, VARIABLES.SUB);
+          double newBalance = DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .updateBalance(interview.getInterviewee(), amount, VARIABLES.SUB);
 
           if (prevBalance - newBalance == amount) {
             stage = 2;
@@ -65,9 +63,8 @@ public class EscrowDepositService {
             DataStoreRegistry.getInstance().getInterviewDataStore()
                 .depositEscrowBalance(new ObjectId(interview.getId()), amount);
 
-            double newEB =
-                DataStoreRegistry.getInstance().getInterviewDataStore()
-                    .getInterview(interview.getId()).getEb();
+            double newEB = DataStoreRegistry.getInstance().getInterviewDataStore()
+                .getInterview(interview.getId()).getEb();
 
             if (newEB - prevEscrowBalance == amount) {
 
@@ -88,21 +85,17 @@ public class EscrowDepositService {
                * revertData.put("withdrawEscrow", withdrawEscrow);
                */
               /*
-							*/
+              			*/
               /*
                * Map<String, Object> removeCompanyAccount = new HashMap<String, Object>();
                * removeCompanyAccount.put("_id", cAccountId);
                */
               stage = 4;
 
-              transaction =
-                  Services
-                      .getInstance()
-                      .getTransactionHistoryService()
-                      .logTransaction(new Date().getTime(), DATASTORES.TRANSACTION.TTYPE.CREDIT,
-                          interview.getInterviewee(), "ESCROW",
-                          DATASTORES.TRANSACTION.TSTATUS.DONE, "Escrow deposit", amount, 0, amount,
-                          newBalance);
+              transaction = Services.getInstance().getTransactionHistoryService().logTransaction(
+                  new Date().getTime(), DATASTORES.TRANSACTION.TTYPE.CREDIT,
+                  interview.getInterviewee(), "ESCROW", DATASTORES.TRANSACTION.TSTATUS.DONE,
+                  "Escrow deposit", amount, 0, amount, newBalance);
 
               stage = 5;
 
@@ -121,11 +114,8 @@ public class EscrowDepositService {
               stage = 6;
               interviewPrevStatus = interview.getStatus();
 
-              DataStoreRegistry
-                  .getInstance()
-                  .getInterviewDataStore()
-                  .updateInterviewStatus(new ObjectId(interview.getId()),
-                      INTERVIEW_STATUS.ESCROW_DEPOSITED);
+              DataStoreRegistry.getInstance().getInterviewDataStore().updateInterviewStatus(
+                  new ObjectId(interview.getId()), INTERVIEW_STATUS.ESCROW_DEPOSITED);
 
               return 1;
             } else
@@ -156,9 +146,8 @@ public class EscrowDepositService {
           revertStage1(interview, prevBalance);
         } else if (stage == 6) {
           try {
-            int istatus =
-                DataStoreRegistry.getInstance().getInterviewDataStore()
-                    .getInterview(interview.getId()).getStatus();
+            int istatus = DataStoreRegistry.getInstance().getInterviewDataStore()
+                .getInterview(interview.getId()).getStatus();
             if (istatus != INTERVIEW_STATUS.ESCROW_DEPOSITED) {
               revertStage6(interview, interviewPrevStatus);
               revertStage5(userTransactionId);
@@ -211,9 +200,8 @@ public class EscrowDepositService {
     ticket.setCreatedBy("SYSTEM");
 
     String description =
-        "Please delete an entry in UserTransaction collection\r\n"
-            + "Following are the details\r\n" + "user transaction _id : " + userTransactionId
-            + "\r\n" + "";
+        "Please delete an entry in UserTransaction collection\r\n" + "Following are the details\r\n"
+            + "user transaction _id : " + userTransactionId + "\r\n" + "";
     ticket.setDescription(description);
     ticket.setServicetype(DATASTORES.TICKET.SERVICE_TYPES.TRANSACTION_STATUS);
     ticket.setStatus(DATASTORES.TICKET.STATUS_TYPES.UNATTENDED);
@@ -241,9 +229,8 @@ public class EscrowDepositService {
     Ticket ticket = new Ticket();
     ticket.setCreatedBy("SYSTEM");
 
-    String description =
-        "Please delete a transaction in Transaction\r\n" + "Following are the details\r\n"
-            + "Transaction ID : " + id + "\r\n" + "";
+    String description = "Please delete a transaction in Transaction\r\n"
+        + "Following are the details\r\n" + "Transaction ID : " + id + "\r\n" + "";
     ticket.setDescription(description);
     ticket.setServicetype(DATASTORES.TICKET.SERVICE_TYPES.TRANSACTION_STATUS);
     ticket.setStatus(DATASTORES.TICKET.STATUS_TYPES.UNATTENDED);
@@ -295,9 +282,8 @@ public class EscrowDepositService {
   private void revertStage2(Interview interview, Double prevEscrowBalance) {
     Double currEB = null;
     try {
-      currEB =
-          DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(interview.getId())
-              .getEb();
+      currEB = DataStoreRegistry.getInstance().getInterviewDataStore()
+          .getInterview(interview.getId()).getEb();
 
       Map<String, Object> changes = new HashMap<String, Object>();
       changes.put(DATASTORES.INTERVIEW.ESCROW_BALANCE, prevEscrowBalance);
@@ -307,9 +293,8 @@ public class EscrowDepositService {
     } catch (RemoteException e) {
 
       try {
-        double afterRevertEB =
-            DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(interview.getId())
-                .getEb();
+        double afterRevertEB = DataStoreRegistry.getInstance().getInterviewDataStore()
+            .getInterview(interview.getId()).getEb();
         if (afterRevertEB != prevEscrowBalance) {
           // raise a tickets
           double diff = afterRevertEB - prevEscrowBalance;
@@ -327,9 +312,8 @@ public class EscrowDepositService {
     Double currBal = null;
     Double afterRevertBal = null;
     try {
-      currBal =
-          new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
-              .getUserInfo(interview.getInterviewee()).get(USER.BALANCE).toString());
+      currBal = new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
+          .getUserInfo(interview.getInterviewee()).get(USER.BALANCE).toString());
 
       DataStoreRegistry.getInstance().getInterviewerDataStore()
           .setBalance(interview.getInterviewee(), prevBalance);
@@ -337,9 +321,8 @@ public class EscrowDepositService {
     } catch (RemoteException e) {
       if (currBal != null) {
         try {
-          afterRevertBal =
-              new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
-                  .getUserInfo(interview.getInterviewee()).get(USER.BALANCE).toString());
+          afterRevertBal = new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .getUserInfo(interview.getInterviewee()).get(USER.BALANCE).toString());
         } catch (RemoteException e1) {
           e1.printStackTrace();
         }

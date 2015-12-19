@@ -17,6 +17,7 @@ import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 @Controller
 public class AwardProjectController extends BaseController {
@@ -27,7 +28,7 @@ public class AwardProjectController extends BaseController {
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("iid", req.getParameter("iid"));
     reqMap.put("bid", req.getParameter("bid"));
-
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService()
             .handleRequest(reqMap, REQUEST_TYPES.AWARD_INTERVIEW);

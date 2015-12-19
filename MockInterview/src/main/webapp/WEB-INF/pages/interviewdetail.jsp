@@ -57,6 +57,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="bidsreceived">
+                                    <br/>
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
@@ -72,6 +73,7 @@
                                 </div>
 
                                 <div class="tab-pane fade in" id="escrowdeposit">
+                                    <br/>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="well" style="padding:10px;text-align:center"><b>Total Escrow</b>
@@ -135,6 +137,7 @@
                                 </div>
 
                                 <div class="tab-pane fade in" id="rateinterviewer">
+                                	<br/>
                                     <div class="row" style="margin-top:10px;">
                                         <div class="col-md-12">
 
@@ -144,7 +147,8 @@
                                                           class="form form-horizontal" id="ratingForm">
 
                                                         <p>Let us know about your experience</p>
-
+                                                        <div id="message"></div>
+												
                                                         <div class="form-group">
                                                             <label class="col-md-12">Was Technical Support
                                                                 Helpful?</label>
@@ -453,12 +457,12 @@
         }).done(function (res) {
             var resData = jQuery.parseJSON(res);
             if (resData.code == 23) {
-                showSuccess("Thank you. Your ratings have been saved.");
+                message("Thank you. Your ratings have been saved.","success");
                 $("#submitrating").hide();
                 $("#reviewSection").html("<p>" + $("#new-review").val() + "</p>");
 
             } else {
-                showError("Unable to saved rating. Please try again later.");
+                message("Unable to saved rating. Please try again later.","danger");
             }
         });
     }
@@ -516,6 +520,10 @@
             }
         });
     }
+    
+    $(document).ready(function () {
+    	$(".acc-link").hide();
+    });
 </script>
 </body>
 </html>

@@ -22,9 +22,8 @@ public class RetrieveNotificationHandler extends RequestHandler {
     List<String> onlineUsers = (List<String>) data.get("users");
     Map<String, Object> map = new HashMap<String, Object>();
     try {
-      map =
-          (Map) DataStoreRegistry.getInstance().getNotificationStore()
-              .getNotifications(onlineUsers);
+      map = (Map) DataStoreRegistry.getInstance().getNotificationStore()
+          .getNotifications(onlineUsers);
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

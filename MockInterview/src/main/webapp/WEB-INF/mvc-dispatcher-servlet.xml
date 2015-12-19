@@ -1,10 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
- xmlns:context="http://www.springframework.org/schema/context"
- xmlns:task="http://www.springframework.org/schema/task"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xmlns:mvc="http://www.springframework.org/schema/mvc"
- xmlns:p="http://www.springframework.org/schema/p"
- xsi:schemaLocation="
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context 
@@ -14,99 +12,89 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-  
-   <context:component-scan base-package="com.interview" />
-   
-   <task:annotation-driven />
-  
-   <bean id="myProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-	  <property name="location" value="classpath:${property.file}"/>
-   </bean>
-	
-  
-  <bean id="placeholderProperties"
-    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	    <property name="location" value="classpath:frontend.properties" />
-	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
-	    <property name="ignoreUnresolvablePlaceholders" value="true" />
-	    <property name="order" value="1" />
+
+	<context:component-scan base-package="com.interview" />
+
+	<task:annotation-driven />
+
+	<bean id="myProps"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:${property.file}" />
 	</bean>
-	
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-        p:maxUploadSize="20000000"/>
-        
-    <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>       
+
+
+	<bean id="placeholderProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:frontend.properties" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="order" value="1" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:maxUploadSize="20000000" />
+
+	<bean
+		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 	<bean id="rmiClient" class="com.interview.rmi.common.BackendServerRMIClient">
-	<constructor-arg name="serverAddress" value="127.0.0.1"></constructor-arg>
-	<constructor-arg name="serverPort" value="3201"></constructor-arg>
-	<constructor-arg name="rmiServerName" value="GeneralServer"></constructor-arg>
+		<constructor-arg name="serverAddress" value="127.0.0.1"></constructor-arg>
+		<constructor-arg name="serverPort" value="3201"></constructor-arg>
+		<constructor-arg name="rmiServerName" value="GeneralServer"></constructor-arg>
 	</bean>
-	
+
 
 	<bean id="searchRmiClient" class="com.interview.rmi.common.SearchServerRMIClient">
-	<constructor-arg name="serverAddress" value="127.0.0.1"></constructor-arg>
-	<constructor-arg name="serverPort" value="3200"></constructor-arg>
-	<constructor-arg name="rmiServerName" value="searchserver2"></constructor-arg>
+		<constructor-arg name="serverAddress" value="127.0.0.1"></constructor-arg>
+		<constructor-arg name="serverPort" value="3200"></constructor-arg>
+		<constructor-arg name="rmiServerName" value="searchserver2"></constructor-arg>
 	</bean>
-	
+
 	<bean id="fileserverRMIClient" class="com.interview.rmi.common.FileServerRMIClient">
-	<constructor-arg name="serverAddress" value="127.0.0.1"></constructor-arg>
-	<constructor-arg name="serverPort" value="3203"></constructor-arg>
-	<constructor-arg name="rmiServerName" value="FileServer"></constructor-arg>
+		<constructor-arg name="serverAddress" value="127.0.0.1"></constructor-arg>
+		<constructor-arg name="serverPort" value="3203"></constructor-arg>
+		<constructor-arg name="rmiServerName" value="FileServer"></constructor-arg>
 	</bean>
 
 	<bean id="requestHandler" class="com.interview.services.RequestHandlerService">
-		<property name="client" >
-			<ref bean="rmiClient"/>
+		<property name="client">
+			<ref bean="rmiClient" />
 		</property>
-		<property name="searchClient" >
-			<ref bean="searchRmiClient"/>
+		<property name="searchClient">
+			<ref bean="searchRmiClient" />
 		</property>
-		<property name="fileServerClient" >
-			<ref bean="fileserverRMIClient"/>
-		</property>	
+		<property name="fileServerClient">
+			<ref bean="fileserverRMIClient" />
+		</property>
 	</bean>
-  
-  	<bean id="userSessionManager" class="com.interview.rmi.common.UserSessionManager"/>
-  	<bean id="userDataService" class="com.interview.security.UserDataService"/>
-  	<bean id="authenticationSuccessListener" class="com.interview.listener.AuthenticationSuccessListener"/>
-  	<bean id="authenticationFailureListener" class="com.interview.listener.AuthenticationFailureListener"/>
-  	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService"/>
-  	  
-    <bean id="backendClient" class="com.interview.norbert.client.BackendClient"/>
-	<bean id="fsclient" class="com.interview.norbert.client.FileServerClient"/>
-	<bean id="searchclient" class="com.interview.norbert.client.SearchClient"/>
-	<bean id="services" class="com.interview.services.Services"/>
 
-	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	  	<property name="prefix">
-	   		<value>/WEB-INF/pages/</value>
-	  	</property>
-	  	<property name="suffix">
-	   		<value>.jsp</value>
-	  	</property>
-	 </bean>
-	 
-	 <!-- 
-	 <bean id="messageSource"
-        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:messages" />
-        <property name="defaultEncoding" value="UTF-8" />
-     </bean>
-     
-     <bean id="localeResolver"
-        class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-        <property name="defaultLocale" value="en" />
-        <property name="cookieName" value="myAppLocaleCookie"></property>
-        <property name="cookieMaxAge" value="3600"></property>
-    </bean>
- 
-    <interceptors>
-        <bean
-            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="locale" />
-        </bean>
-    </interceptors>
-     -->
-	 
+	<bean id="userSessionManager" class="com.interview.rmi.common.UserSessionManager" />
+	<bean id="userDataService" class="com.interview.security.UserDataService" />
+	<bean id="authenticationSuccessListener" class="com.interview.listener.AuthenticationSuccessListener" />
+	<bean id="authenticationFailureListener" class="com.interview.listener.AuthenticationFailureListener" />
+	<bean id="jsontilityService" class="com.interview.framework.util.JSONUtilityService" />
+
+	<bean id="backendClient" class="com.interview.norbert.client.BackendClient" />
+	<bean id="fsclient" class="com.interview.norbert.client.FileServerClient" />
+	<bean id="searchclient" class="com.interview.norbert.client.SearchClient" />
+	<bean id="services" class="com.interview.services.Services" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> 
+		<property name="basename" value="classpath:messages" /> <property name="defaultEncoding" 
+		value="UTF-8" /> </bean> <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"> 
+		<property name="defaultLocale" value="en" /> <property name="cookieName" 
+		value="myAppLocaleCookie"></property> <property name="cookieMaxAge" value="3600"></property> 
+		</bean> <interceptors> <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> 
+		<property name="paramName" value="locale" /> </bean> </interceptors> -->
+
 </beans>

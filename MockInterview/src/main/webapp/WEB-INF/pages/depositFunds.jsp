@@ -46,8 +46,11 @@
                                                     <label class="col-sm-3 control-label">Amount </label>
 
                                                     <div class="col-sm-6">
-                                                        <input type="text" class="form-control" name="amount"
-                                                               id="amounttodeposit" placeholder="Amount">
+                                                    	<div class="input-group">
+                                                        	<span class="input-group-addon">$</span>
+                                                        	<input type="text" class="form-control" name="amount"
+                                                            	   id="amounttodeposit">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -74,6 +77,11 @@
     <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 
     <script type="text/javascript">
+    $(document).ready(function () {
+    	$("#footer").css("position","fixed");
+    	$("#footer").addClass( "navbar-fixed-bottom");
+    });
+    
         $(function () {
             $("#depositFundForm").validate({
                 rules: {

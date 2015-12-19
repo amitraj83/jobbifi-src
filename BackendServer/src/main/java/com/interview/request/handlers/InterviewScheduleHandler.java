@@ -50,18 +50,18 @@ public class InterviewScheduleHandler extends RequestHandler {
           newschedule.setDate2(date2);
           newschedule.setDate3(date3);
           newschedule.setIid(iid);
-          newschedule.setOth_opted(new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTED)
-              .toString()));
-          newschedule.setOth_option1(new Boolean(data.get(
-              DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION1).toString()));
-          newschedule.setOth_option2(new Boolean(data.get(
-              DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION2).toString()));
-          newschedule.setOth_option3(new Boolean(data.get(
-              DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION3).toString()));
-          newschedule.setFinaldate(new Long(data.get(DATASTORES.INTERVIEW_SCHEDULE.FINAL_DATE)
-              .toString()));
-          newschedule.setFinal_option(new Integer(data.get(
-              DATASTORES.INTERVIEW_SCHEDULE.FINAL_OPTION).toString()));
+          newschedule.setOth_opted(
+              new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTED).toString()));
+          newschedule.setOth_option1(
+              new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION1).toString()));
+          newschedule.setOth_option2(
+              new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION2).toString()));
+          newschedule.setOth_option3(
+              new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION3).toString()));
+          newschedule.setFinaldate(
+              new Long(data.get(DATASTORES.INTERVIEW_SCHEDULE.FINAL_DATE).toString()));
+          newschedule.setFinal_option(
+              new Integer(data.get(DATASTORES.INTERVIEW_SCHEDULE.FINAL_OPTION).toString()));
           newschedule.setTime(new Date().getTime());
 
           if (existingSchedule == null) {
@@ -120,14 +120,14 @@ public class InterviewScheduleHandler extends RequestHandler {
           if (existingSchedule == null)
             res.put("status", "No schedule exist to update.");
           else {
-            existingSchedule.setOth_opted(new Boolean(data.get(
-                DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTED).toString()));
-            existingSchedule.setOth_option1(new Boolean(data.get(
-                DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION1).toString()));
-            existingSchedule.setOth_option2(new Boolean(data.get(
-                DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION2).toString()));
-            existingSchedule.setOth_option3(new Boolean(data.get(
-                DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION3).toString()));
+            existingSchedule.setOth_opted(
+                new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTED).toString()));
+            existingSchedule.setOth_option1(
+                new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION1).toString()));
+            existingSchedule.setOth_option2(
+                new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION2).toString()));
+            existingSchedule.setOth_option3(
+                new Boolean(data.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION3).toString()));
             existingSchedule.setTime(new Date().getTime());
 
             if (scheduleStore.updateSchedule(existingSchedule))

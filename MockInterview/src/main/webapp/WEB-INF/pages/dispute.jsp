@@ -20,6 +20,7 @@
                     <div class="col-md-12" id="interviewee_maincontent">
                         <div class="row">
                             <h1>Interview Disputes</h1>
+                            <div id="message"></div>
                         </div>
                     </div>
 
@@ -35,6 +36,7 @@
 
                             <!-- Dispute Tab -->
                             <div class="tab-pane fade in" id="createdispute">
+                            	<br/>
                                 <form class="form form-horizontal" name="disputeform" id="disputeform">
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Select Interview</label>
@@ -87,6 +89,7 @@
 
                             <!-- Current Dispute List -->
                             <div class="tab-pane fade in active" id="currentdisputes">
+                                <br/>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -104,6 +107,7 @@
 
                             <!-- Close Dispute List -->
                             <div class="tab-pane fade in" id="closeddisputes">
+                                <br/>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -166,7 +170,8 @@
                     $("#selectedifile").html(html);
                     $("#disputedocid").val(jsonResponse._id);
                 } else {
-                    showError("Unable to upload the file.");
+                    //showError("Unable to upload the file.");
+                	message("Unable to upload the file.","danger");
                 }
                 $("#fileloader").hide();
             },
@@ -273,11 +278,13 @@
                         '<td>-</td>' +
                         '</tr>');
 
-                showSuccess("You have successfully created the dispute.");
+                message("You have successfully created the dispute.","success")
             } else if (jsonResponse.status == "2") {
-                showWarning("The interview is already in the dispute status.");
+                //showWarning("The interview is already in the dispute status.");
+                message("The interview is already in the dispute status.","warning");
             } else {
-                showError("Sorry, You cannot raise the dispute at the moment.");
+                //showError("Sorry, You cannot raise the dispute at the moment.");
+                message("Sorry, You cannot raise the dispute at the moment.","danger");
             }
 
             $("#disputemessage").val("");
@@ -512,6 +519,10 @@
                 $(element).hide();
             });
         }
+    });
+    
+    $(document).ready(function () {
+    	$(".acc-link").hide();
     });
 </script>
 </body>

@@ -26,6 +26,7 @@
                         <div class="col-md-12">
                             <h2>Your Profile</h2>
                         </div>
+                        <div class="col-md-12" id="message"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -231,7 +232,11 @@
             done: function (e, data) {
                 var jsonResponse = jQuery.parseJSON(data.jqXHR.responseText);
                 if (null != jsonResponse) {
-                    $("#update_img").attr({src: BASE_URL + jsonResponse.path});
+                	if(jsonResponse.error == "1"){
+                		showError("Error occured while uploading the profile picture. Please try again later.");
+                	} else {
+                		$("#update_img").attr({src: BASE_URL + jsonResponse.path});	
+                	}                    
                 }
             },
             add: function (e, data) {
@@ -391,8 +396,9 @@
         }).done(function (msg) {
             var resData = jQuery.parseJSON(msg);
             if (resData.status == 1) {
-
-                $("#buttonPanel").prepend("<span class='label label-success'>Your profile has been updated successfully.</span>");
+            	$("html,body").animate({scrollTop:0},"slow");
+            	message("Your profile has been updated successfully.","success");
+//                 $("#buttonPanel").prepend("<span class='label label-success'>Your profile has been updated successfully.</span>");
 
 
             } else {

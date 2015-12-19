@@ -10,7 +10,6 @@ import com.interview.framework.rmi.common.IRequestDataStore;
 import com.interview.rmi.DataStoreRegistry;
 
 public class RetrieveFirstRequestHandler extends RequestHandler {
-
   public RetrieveFirstRequestHandler() {
     addHandler(this, REQUEST_TYPES.RETRIEVE_FIRST_REQUEST);
   }
@@ -25,10 +24,8 @@ public class RetrieveFirstRequestHandler extends RequestHandler {
       firstRequests.put(VARIABLES.ACCEPTED_FRIENDS,
           requestDSService.getAcceptedFriends((String) data.get(USER.USERNAME)));
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
     return firstRequests;
   }
-
 }

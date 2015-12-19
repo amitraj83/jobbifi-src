@@ -45,4 +45,7 @@ public interface IBidStore extends Remote {
  
   public List<Bid> getBidsForInterviewsByUser(String username, Collection<String> iids) throws RemoteException;
   
+  public int getMaxBidOfInterview(String iid) throws RemoteException;
+  
+  public List<String> getBidderForInterview(String _id) throws RemoteException;
 }

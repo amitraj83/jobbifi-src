@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.interview.framework.DATASTORES;
@@ -36,5 +38,24 @@ public class JobApplicationController extends BaseController {
 		Map<String, Object> res = Services.getInstance().getRequestHandlerService().handleRequest(req, REQUEST_TYPES.JOB_APPLICATION_REQ);
 		return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
 		        .getJSONStringOfMap(res));
-	}	
+	}
+	
+	@RequestMapping(value="/jobapplications.do", method=RequestMethod.GET)
+	public String getJobApplications(HttpServletRequest request){
+		return "jobapplications";
+	}
+	
+	@RequestMapping(value="/jobapplication/updatestatus.do", method=RequestMethod.POST)
+	public ModelAndView updateApplicationStatus(@RequestParam("id") String id, @RequestParam("status") String status){
+				
+		Map<Object, Object> req = new HashMap<Object, Object>();
+		req.put(DATASTORES.JOB_APPLICATION.ID, id);
+		req.put(DATASTORES.JOB_APPLICATION.STATUS, status);
+		req.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.JOB_APPLICATION_SUB_REQ.UPDATE_APPLICATION_STATUS);
+		Map<String, Object> res = Services.getInstance().getRequestHandlerService()
+					.handleRequest(req, REQUEST_TYPES.JOB_APPLICATION_REQ);
+		return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
+		        .getJSONStringOfMap(res));
+	}
+	
 }

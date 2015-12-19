@@ -44,11 +44,10 @@ public class RequestHandlerService {
     // only two server - one for search and other for all requests.
     if (type.equals(REQUEST_TYPES.SEARCH_INTERVIEWER)
         || type.equals(REQUEST_TYPES.SEARCH_INTERVIEWS)
+        || type.equals(REQUEST_TYPES.SEARCH_INTERVIEWEE)
         || type.equals(REQUEST_TYPES.DELETE_INTERVIEW_SOLR)
         || type.equals(REQUEST_TYPES.SEARCH_JOBS)) {
-
       return searchClient.executeRequest(req, type);
-
     } else if (type.contains("FILESERVER")) {
       if (type.substring(0, "FILESERVER".length()).equals("FILESERVER"))
         return fileServerClient.executeRequest(req, type);

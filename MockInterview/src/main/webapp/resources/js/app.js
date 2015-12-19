@@ -17,7 +17,8 @@ function hideLoader(){
 };
 
 function showError(message){
-	$.notify({message: message},{type: 'error', 
+	$("html").find("[data-notify='container']").remove();
+	$.notify({message: message},{type: 'danger', 
 		placement: {
 			from: "top",
 			align: "center"
@@ -25,6 +26,7 @@ function showError(message){
 }
 
 function showSuccess(message){
+	$("html").find("[data-notify='container']").remove();
 	$.notify({message: message},{type: 'success',
 		placement: {
 			from: "top",
@@ -33,6 +35,7 @@ function showSuccess(message){
 }
 
 function showWarning(message){
+	$("html").find("[data-notify='container']").remove();
 	$.notify({message: message},{type: 'warning',
 		placement: {
 			from: "top",
@@ -41,6 +44,7 @@ function showWarning(message){
 }
 
 function showInfo(message){
+	$("html").find("[data-notify='container']").remove();
 	$.notify({message: message},{type: 'info',
 		placement: {
 			from: "top",
@@ -48,6 +52,12 @@ function showInfo(message){
 		}, z_index:2500});
 }
 
+function message(msg,type) {
+    $("#message").html("<div class='alert alert-"+type+"'>"+msg+"</div>");
+    setTimeout(function () {
+        $("#message").html("");
+    }, 3600 * 2);
+}
 /** ----------------- **/
 
 function loadNewMessageCount(){	
@@ -58,6 +68,8 @@ function loadNewMessageCount(){
 		var json = jQuery.parseJSON(res);
 		if(json.NEW_MESSAGE_COUNT > 0){
 			$("#messageCount").html('<span class="label label-success">' + json.NEW_MESSAGE_COUNT + '</span>');
+		}else{
+			$("#messageCount").html('');
 		}
 	});
 	
@@ -69,6 +81,17 @@ function gup( name ){
     var regexS = "[\\?&]"+name+"=([^&#]*)";  
     var regex = new RegExp( regexS );  
     var results = regex.exec( window.location.href ); 
+    if( results == null )
+        return "";  
+    else
+      return results[1];
+}
+
+function gupurl( name , url){
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
+    var regexS = "[\\?&]"+name+"=([^&#]*)";  
+    var regex = new RegExp( regexS );  
+    var results = regex.exec( url); 
     if( results == null )
         return "";  
     else
@@ -108,21 +131,28 @@ function registerUser(){
         data:   param,
     }).done(function( msg ) {
         var json = jQuery.parseJSON(msg);
-        if(json.response == 2){
-        	showWarning("This username already exist. Please try with another username.");            
-        } else if(json.response == 1){
-            showSuccess("You have been registered successfully.");
+        $("html").find("[data-notify='container']").remove();
+        if(json.response == 3){
+        	showWarning("This email already exist. Please try with another email.");            
+        }else if(json.response == 4){
+        	showWarning("This username already exist. Please try with another username.");
+        }else if(json.response == 1){
             $("#myModal").modal("hide");
+            showSuccess("You have been registered successfully.");
+            $("#j_username").val(username) ;
+            $("#j_password").val(password);
+            login();
+
         } else if(json.response == -1){
             showError("Error occured while registration.");                      
         }
         
-        $("#username").val("");   
-        $("#email").val("");    
-        $("#password").val("");    
-        $("#confirmpassword").val("");  
+        //$("#username").val("");   
+        //$("#email").val("");    
+        //$("#password").val("");    
+        //$("#confirmpassword").val("");  
     }).always(function(jqXHR, textStatus) {
-		$("#submitloader").hide();		
+		$("#signupbtnloader").hide();
 	});	
 }
 
@@ -135,12 +165,15 @@ function sendForgotPasswordMail(){
 		 type:'GET',
 		 success : function(response){
 			var resData = jQuery.parseJSON(response);	
-			if(resData.RESULT && resData.RESULT == "SUCCESS"){
+			//if(resData.RESULT && resData.RESULT == "SUCCESS"){
+			if(resData.response == 1){
 				showSuccess("A link to change your password has been sent at the email address you provided. " +
           		"Please visit the url to change your password");
 				$("#forgotpass_email").val("");
 				$("#myModal").modal("hide");
-			} else {
+			}else if(resData.response == 0){ 
+				showError("We couldn't find a jobbify account associated with "+$("#forgotpass_email").val()+".");
+			}else {
 				showError("We are unable to send the email. Please verify your email address or try again later.");
 			}
 			$("#passwordbtnloader").hide();
@@ -161,7 +194,8 @@ function logout(){
     }).done(function( msg ) {
         window.location.href = (BASE_URL);    
     }).error(function(msg){
-        console.log("Error occured while logout");        
+        console.log("Error occured while logout");
+        window.location.href = (BASE_URL);
     });
 }
 
@@ -209,7 +243,8 @@ function login(){
             	   }
                }
                
-               window.top.location.href = window.top.location.href + callback;                
+               window.top.location.href = window.top.location.href + callback; 
+               location.reload();
                $("#myModal").modal("hide");
 
             } else {
@@ -224,11 +259,30 @@ function login(){
     });
 }
 
+
+
 $(function(){
+	
+	$('#myModal').on('hidden.bs.modal', function () {
+		$('#forgotpasswordbox').hide();
+		$('#signupbox').hide();
+		$('#loginbox').show();
+	});
+	
+	
 	$("#loginform").validate({
 		rules:{
-			j_username : {required:true},
+			j_username : {required:true,email:true},
 			j_password : {required:true, minlength:8}
+		},messages: {
+			j_username: {
+				required:"Email is required.",
+				email:"Please enter valid email."
+			},
+			j_password: {
+			required: "Password is required.",
+			minlength: "Please enter at least 8 characters."
+			}
 		},
 		 submitHandler: function(form) {
 			login();
@@ -236,6 +290,15 @@ $(function(){
 		},
 		 errorPlacement: function(error, element) {			
 			error.insertAfter(element.parent());			
+		}
+	});
+	$("#login-recordar").validate({
+		rules : {
+			email:{required:true, email:true}
+		},
+		 submitHandler: function(form) {
+			 sendForgotPasswordMail();
+			 return false;
 		}
 	});
 	
@@ -251,6 +314,15 @@ $(function(){
 			 registerUser();
 			 return false;
 		}		
+	});
+	
+	$("#signupform input[name='usertype']").on("click", function(){
+		var value  = $(this).val();
+		if(value == "INTERVIEWEE") {
+			$("#intervieweeSignUpForm").show();
+		} else {
+			$("#intervieweeSignUpForm").hide();
+		}
 	});
 	
 	if(gup("callbackj")!= ""){

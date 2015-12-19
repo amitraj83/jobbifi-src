@@ -20,7 +20,8 @@
                 <div id="interviewee_publishresponse"></div>
 
                 <div class="clearfix white-container">
-                    <h1 class="title">Publish Your Interview</h1>
+                    <div id="message"></div>
+                    <h1 class="title">Publish Interview</h1>
                     <hr>
 
                     <form id="publishInterviewForm" class="form-horizontal">
@@ -80,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-sm-3 control-label">Upload Document</label>
 
                             <div class="col-sm-9">
@@ -97,7 +98,7 @@
                                 <div style="clear: both" id="selectedfile"></div>
                                 <input type="hidden" name="ifile" id="interviewdocid">
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
                                 <button type="submit" class="btn btn-default">Publish Interview</button>
@@ -127,7 +128,13 @@
                 budget: {required: true, number: true},
                 experience: {required: true, number: true},
                 description: {required: true},
-                industry: {required: true},
+            },messages: {
+            	title: "Interview title is required.",
+            	industry: "Industry is required.",
+            	skills: "Skill is required.",
+            	budget: "Budget is required.",
+            	experience: "Experience is required.",
+            	description: "Description is required.",
             },
             submitHandler: function (form) {
                 submitForm();
@@ -153,7 +160,7 @@
                     $("#selectedfile").html(html);
                     $("#interviewdocid").val(jsonResponse._id);
                 } else {
-                    showError("Unable to upload the file.");
+                    message("Unable to upload the file.","danger");
                 }
                 $("#fileloader").hide();
             },
@@ -180,16 +187,17 @@
         }).done(function (res) {
             var resData = jQuery.parseJSON(res);
             if (resData.status == 1) {
-                showSuccess("Your interview is posted successfully.");
+                message("Your interview is posted successfully.","success");
                 $('#publishInterviewForm').trigger("reset");
                 $("#selectedfile").html("");
             } else {
-                showError("Your interview was not posted. Please Try Again.");
+                message("Your interview was not posted. Please Try Again.","danger");
             }
         }).always(function (jqXHR, textStatus) {
             $("#submitloader").hide();
         });
     }
+    
 </script>
 </body>
 </html>

@@ -18,6 +18,10 @@ public class Job implements Serializable {
 
   private String description;
 
+  private String companyVideo;
+  
+  private String companyDescription;
+  
   private long dt;
 
   private int status;
@@ -156,5 +160,21 @@ public class Job implements Serializable {
 
 	public void setJobApplications(List<JobApplication> jobApplications) {
 		this.jobApplications = jobApplications;
-	} 	
+	}
+
+	public String getCompanyVideo() {
+		return companyVideo;
+	}
+
+	public void setCompanyVideo(String companyVideo) {
+		this.companyVideo = companyVideo;
+	}
+
+	public String getCompanyDescription() {
+		return companyDescription;
+	}
+
+	public void setCompanyDescription(String companyDescription) {
+		this.companyDescription = companyDescription;
+	} 		
 }

@@ -39,8 +39,8 @@ public class BidAccept {
 
       for (Bid b : bids) {
         if (!b.getId().equals(bid_id.toString()))
-          DataStoreRegistry.getInstance().getBidStore()
-              .updateBidStatus(new ObjectId(b.getId()), BID_STATUS.REJECT);
+          DataStoreRegistry.getInstance().getBidStore().updateBidStatus(new ObjectId(b.getId()),
+              BID_STATUS.REJECT);
       }
 
       return RETURN_VALUES.ACCEPT_BID_SUCCESS;

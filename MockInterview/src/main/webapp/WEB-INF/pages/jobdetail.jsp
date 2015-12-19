@@ -11,17 +11,18 @@
     <div id="page-content">
         <div class="container">
 
-
             <div class="row">
                 <div class="col-md-9">
                     <div>
+                    <div class="alert alert-success" id="successJobApply" name = "successJobApply"> Your application received.</div>
                         <div class="row pull-right">
                             <div class="col-md-6 jobdetail-userpic">
                                 <a target="_blank"
                                    href="<c:url value='/userprofile.do?name=${job.interviewer}'/>">
 
                                     <img class="img-responsive img-hover img-thumbnail" src="${profilepic}"
-                                         alt="User Pic" style="height:100px;"/>
+                                         alt="User Pic"
+                                         v style="height:100px;"/>
                                 </a>
                             </div>
                             <div class="col-md-6 jobdetail-postedby">
@@ -66,24 +67,21 @@
                         <hr>
                     </div>
                     <h3>Job Description</h3>
-
                     <p>${job.description}</p>
 
-                    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.</p>
-
+					<c:if test="${not empty job.companyDescription or not empty job.companyVideo}">
+						<h3>Company Description</h3>
+						<p>${job.companyDescription}</p>						
+						<c:if test="${not empty job.companyVideo}">
+							<div id="youTubeVideo"></div>						 	
+						 </c:if> 
+					</c:if>
                     <hr/>
                 </div>
                 <div class="col-md-3">
 
 
                 </div>
-
             </div>
 
 
@@ -94,8 +92,8 @@
                      <sec:authorize access="isAuthenticated()">                
 	                	<c:choose>
 	                		<c:when test="${not empty jobApplication}">
-	                		
 	                			<div class="alert alert-success">You have already sent the application.</div>
+	                			
 	                			<div class="panel panel-default">
 	                				<div class="panel-heading"><h4 class="panel-title">Job Application Details<span class="pull-right">05:21 PM</span></h4></div>
 	                				<div class="panel-body">
@@ -108,6 +106,11 @@
 	                		</c:when>
 	                		<c:otherwise>
 	                			<div class="panel panel-default" id="jobApplicationPanel">
+	                			<span id ="errorDoc" name = "errorDoc"><code>Please select Resume.</code><br /></span>
+	                			<span id="errorTCover" name = "errorTCover"> <code>Please enter details in Cover letter.</code></span>
+			                        <span id="coverTextSize" name = "coverTextSize"><code> Cover letter is to small,At least  contains more than 250 words. </code></span> 
+									<span id="errorFileType" name = "errorFileType" ><code>Please select proper file (.doc,docx,pdf will be accepted).</code></span>
+									
 			                        <div class="panel-heading">
 			                            <h1 class="panel-title" style="font-size:18px;">Apply for this job</h1>
 			                        </div>
@@ -142,7 +145,7 @@
 			                                    </div>
 			                                    <div class="form-group">
 			                                        <div class="col-md-offset-2 col-md-10">
-			                                            <button type="submit" class="btn btn-default pull-right">Send</button>
+			                                            <button type="submit" class="btn btn-default pull-right">Apply</button>
 			                                        </div>
 			                                    </div>
 			                                </form>
@@ -180,8 +183,21 @@
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
-    var id = "${jobid}";
-    
+	var jobapplicationdocVal = '';
+
+	$("#successJobApply").hide();
+	/*Get uploaded file name for checking file ext and selected or not.   */
+   $('#jobapplicationdoc').bind('change', function() {
+	 jobapplicationdocVal = $('#jobapplicationdoc').val(); 
+	});
+
+	$('#errorDoc').hide();
+	$('#errorTCover').hide();
+	
+	$("#errorFileType").hide();
+	$("#coverTextSize").hide();
+	
+    var id = "${jobid}";    
     $(function () {
     	/* file upload */
         $('#jobapplicationdoc').fileupload({
@@ -224,39 +240,83 @@
     });
 
     function submitForm() {    	    	
-        $.ajax({
-            type: 'POST',
-            url: BASE_URL + 'jobapplication/save.do',
-            data: $("#jobApplicationForm").serialize(),
-            success: function (res) {
-            	var json = jQuery.parseJSON(res);
-            	if(json.status == 1) {
-            		$("#jobApplicationPanel").hide();
-                    var jobsHtml = '<div class="panel panel-default">' +
-                            '<div class="panel-heading">' +
-                            '<h4 class="panel-title">Job Application' +
-                            '<span class="pull-right">' + prettyDate(new Date()) + '</span>' +
-                            '</h4>' +
-                            '</div>' +
-                            '<div class="panel-body">' +
-                            '<p>' + $("#coverLetter").val() + '</p>' +
-                            $("#selectedfile").html() +
-                            '</div>' +
-                            '</div>';
-                    $("#msgdetail").html(jobsHtml);	
-                    
-                    $("#selectedfile").html("");
-                    $("#jobapplicationid").val("");
-                    
-            	} else {
-            		$("#msgdetail").html("<div class='alert alert-error'>Error occured while processing request.</div>");
-            	}           	                
-            },
-            error: function (status) {
-            	console.log(status);
-            }
-        });
+        var  coverLetterVal = $('#coverLetter').val(); 
+		if(jobapplicationdocVal==''){ 
+        	$('#errorDoc').show();
+    	}else{
+    		$('#errorDoc').hide();
+    	} 
+    	
+		if(coverLetterVal==''){ 
+        	$('#errorTCover').show();
+    	}else{
+    		$('#errorTCover').hide();
+    	} 
+        
+		if(coverLetterVal != '' &&  jobapplicationdocVal != ''){
+			//check for the file extension.
+			var ext = jobapplicationdocVal.split('.').pop().toLowerCase();
+			
+			if($.inArray(ext, ['doc','docx','pdf']) == -1) {
+			     $("#errorFileType").show();
+			}else{
+				$("#errorFileType").hide();
+			}	
+			
+			//check the cover letter size .
+			var coverLetterTxtSize = coverLetterVal.length;
+			
+			if(coverLetterTxtSize < 250 ){
+			   $("#coverTextSize").show();
+			}else{
+				$("#coverTextSize").hide();
+			}
+			
+			
+			if(coverLetterTxtSize > 250 && $.inArray(ext, ['doc','docx','pdf']) != -1 ){
+			$.ajax({
+	            type: 'POST',
+	            url: BASE_URL + 'jobapplication/save.do',
+	            data: $("#jobApplicationForm").serialize(),
+	            success: function (res) {
+	            	var json = jQuery.parseJSON(res);
+	            	$("#successJobApply").show();
+	            	if(json.status == 1) {
+	            		$("#jobApplicationPanel").hide();
+	                    var jobsHtml = '<div class="panel panel-default">' +
+	                            '<div class="panel-heading">' +
+	                            '<h4 class="panel-title">Job Application' +
+	                            '<span class="pull-right">' + prettyDate(new Date()) + '</span>' +
+	                            '</h4>' +
+	                            '</div>' +
+	                            '<div class="panel-body">' +
+	                            '<p>' + $("#coverLetter").val() + '</p>' +
+	                            $("#selectedfile").html() +
+	                            '</div>' +
+	                            '</div>';
+	                    $("#msgdetail").html(jobsHtml);	
+	                    
+	                    $("#selectedfile").html("");
+	                    $("#jobapplicationid").val("");
+	                	
+	                    
+	            	} else {
+	            		$("#msgdetail").html("<div class='alert alert-error'>Error occured while processing request.</div>");
+	            	}           	                
+	            },
+	            error: function (status) {
+	            	console.log(status);
+	            }
+	        });	
+		}
+		}
     }    
+    
+    <c:if test="${not empty job.companyVideo}">
+    	var v = gupurl("v", '${job.companyVideo}');    
+    	var html = '<iframe width="420" height="315" src="http://www.youtube.com/embed/'+v+'"></iframe>';
+    	$("#youTubeVideo").html(html);
+   	</c:if>
 </script>
 </body>
 </html>

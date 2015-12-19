@@ -99,9 +99,24 @@ $(document).ready(function ($) {
 
     $(window).scroll(function (event) {
         Scroll();
+        $('.navbar-collapse li.scroll').hide().fadeIn('fast');
+        if($(window).scrollTop()<32){
+            $('.navbar-collapse li.scroll')
+                    .removeClass('active')
+                    .eq(0).addClass('active');
+        }
     });
 
     $('.navbar-collapse ul li a.scroll').click(function () {
+
+    	console.debug(window.location.pathname);
+    	var pageUrl = window.location.pathname;
+    	var menuitem = this;
+    
+    	if( pageUrl != '/'){
+    		document.location.href = "/?menuitem="+menuitem.hash;
+    	}
+    	
         try {
             $('html, body').animate({scrollTop: $(this.hash).offset().top - 79}, 1000);
         } catch (err) {
@@ -124,12 +139,13 @@ $(document).ready(function ($) {
             } catch (err) {
                 console.log("JS error: " + err.message);
             }
-        })
+        });
+
         $.each(contentTop, function (i) {
             if (winTop > contentTop[i] - rangeTop) {
                 $('.navbar-collapse li.scroll')
                     .removeClass('active')
-                    .eq(i).addClass('active');
+                    .eq(i+1).addClass('active');
             }
         })
 

@@ -16,11 +16,29 @@
             </div>
 
             <div class="col-md-9">
+            	<div class="row">
+            		<div id="message"></div>
+            	</div>
                 <div class="row">
-                    <div class="col-md-12" style="margin-top:0px;margin-bottom:10px;">
-                        <h1>All Interviews</h1>
-                    </div>
-                </div>
+						<div id="allInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>All Interview </h1>
+						</div>
+						<div id="openInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>Open Interviews</h1>
+						</div>
+
+						<div id="currentInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>Current Interviews</h1>
+						</div>
+						<div id="completedInterview" class="col-md-12"
+							style="margin-top: 0px; margin-bottom: 10px;">
+							<h1>Completed Interviews</h1>
+						</div>
+
+					</div>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-striped">
@@ -30,6 +48,8 @@
                                 <th>Bids</th>
                                 <th>Status</th>
                                 <th>Date</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody id="interviewTable"></tbody>
@@ -48,6 +68,36 @@
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
     var status = "${status}";
+    
+    if(status == "COMPLETED"){
+    	$("#allInterview").hide();
+    	$("#openInterview").hide();
+    	$("#currentInterview").hide();
+    	$("#completedInterview").show();
+    	
+    }else if(status == "OPEN"){
+    
+    	$("#allInterview").hide();
+    	$("#openInterview").show();
+    	$("#currentInterview").hide();
+    	$("#completedInterview").hide();
+    
+    }else if(status == "IN PROGRESS"){
+    	
+    	$("#allInterview").hide();
+    	$("#openInterview").hide();
+    	$("#currentInterview").show();
+    	$("#completedInterview").hide();
+
+    }else {
+    
+    	$("#allInterview").show();
+    	$("#openInterview").hide();
+    	$("#currentInterview").hide();
+    	$("#completedInterview").hide();
+
+    }
+    
     $(function () {
         loadAllInterview();
         $("#interview").html(status + " INTERVIEW");
@@ -93,13 +143,19 @@
             $("#interviewTable").html("");
             if (count > 0) {
                 for (var i = 0; i < myinterview.length; i++) {
-                    var html = '<tr onclick="interviewdetail(\'' + myinterview[i].id + '\');" style="cursor: pointer;">' +
-                                    '            <td> ' + myinterview[i].title + ' </td>' +
-                                    '            <td> ' + myinterview[i].bidcount + ' </td>' +
-                                    '            <td> ' + myinterview[i].statusString + ' </td>' +
-                                    '            <td> ' + prettyDate(new Date(myinterview[i].dt)) + ' </td>' +
-                                    '        </tr>'
-                            ;
+                	var html = '<tr>' +
+                    '            <td onclick="interviewdetail(\'' + myinterview[i].id + '\');" style="cursor: pointer;"> ' + myinterview[i].title + ' </td>' +
+                    '            <td> ' + myinterview[i].bidcount + ' </td>' +
+                    '            <td> ' + myinterview[i].statusString + ' </td>' +
+                    '            <td> ' + prettyDate(new Date(myinterview[i].dt)) + ' </td>' ;
+
+					if( myinterview[i].statusString === "OPEN"){
+						html +='<td onclick="updateInterview(\'' + myinterview[i].id + '\');" style="cursor: pointer;"> <button type="button" class="btn btn-warning">Edit</button> </td> ' +
+                    		'<td onclick="deleteInterview(\'' + myinterview[i].id + '\');" style="cursor: pointer;"> <button type="button" class="btn btn-danger">Delete</button> </td> '+	
+                    		' </tr>';
+                   	}else{
+                   		html +='<td>-</td><td>-</td></tr>'
+                   	}
                     $("#interviewTable").append(html);
                 }
             } else {
@@ -109,7 +165,7 @@
 
         });
     }
-
+//"/deleteinterview.do"
 
     $(document).on("click", ".transpage", function (event) {
         event.preventDefault();
@@ -120,6 +176,28 @@
         window.location.href = BASE_URL + "interviewdetail.do?iid=" + iid;
     }
 
+    function deleteInterview(iid){
+    	var param = "iid=" + iid;
+    	$.ajax({
+            type: "GET",
+            url: BASE_URL + "deleteinterview.do",
+            data: param,
+            async: false
+        }).done(function (res) {
+        	loadAllInterview();
+        	if(JSON.parse(res).code == 0){
+        		 message(JSON.parse(res).message,"success")
+        	}else{
+        		message("Something went wrong, Please try again !!!","danger");
+        	}
+        });
+    
+    }
+    
+    function updateInterview(iid){
+    	window.location.href = BASE_URL + "updateinterviewdetail.do?iid=" + iid;
+    }
+    
     function selectNavigation() {
         if (status == "ALL") {
             $("#allinterview").addClass("active");

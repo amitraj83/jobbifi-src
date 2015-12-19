@@ -74,6 +74,13 @@ public class NorbertSearchServer implements DisposableBean {
                         (Integer) reqMap.get("rows"));
             break;
           case INTERVIEWEE:
+        	  solrResponses =
+              Services
+                  .getInstance()
+                  .getSolrService()
+                  .searchInterviewee((String) reqMap.get("searchkey"), (Integer) reqMap.get("start"),
+                      (Integer) reqMap.get("rows"));
+          break;
           case JOB:
             
               String searchKey = (String) reqMap.get("searchkey");
@@ -101,6 +108,9 @@ public class NorbertSearchServer implements DisposableBean {
         // log.debug("document username : " + documentId);
         // responseBuilder.addDocs(documentId);
         // }
+        String response = (null !=  solrResponses) ? solrResponses.toString() : null;
+        log.debug("Response : " + response);
+        
         responseBuilder.addDocs(Services.getInstance().getJSONUtilityService()
             .getJSONStringOfMap(solrResponses));
         System.out.println(responseBuilder);

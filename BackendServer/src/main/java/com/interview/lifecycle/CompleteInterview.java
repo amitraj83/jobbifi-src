@@ -16,8 +16,8 @@ public class CompleteInterview {
     Interview interview = DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(iid);
     if (interview.getStatus() == INTERVIEW_STATUS.PENDING
         || interview.getStatus() == INTERVIEW_STATUS.FULLY_PAID) {
-      DataStoreRegistry.getInstance().getInterviewDataStore()
-          .updateInterviewStatus(iid, INTERVIEW_STATUS.COMPLETED);
+      DataStoreRegistry.getInstance().getInterviewDataStore().updateInterviewStatus(iid,
+          INTERVIEW_STATUS.COMPLETED);
       return RETURN_VALUES.COMPLETE_INTERVIEW_SUCCESS;
     }
     /*

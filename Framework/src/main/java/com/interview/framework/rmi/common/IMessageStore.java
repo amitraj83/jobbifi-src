@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import com.interview.framework.pojo.Message;
-
 public interface IMessageStore extends Remote {
 	
 	 String NAME = "messageStore";
@@ -15,6 +14,10 @@ public interface IMessageStore extends Remote {
 	 public List<Message> getMessages(Message message) throws RemoteException;
 	 
 	 public List<Message> getMessage(Message message, int pageNum) throws RemoteException;
+	 
+	 public List<Message> getMessage1(Message message, int pageNum) throws RemoteException;
+	 
+	 public List<Message> getChatMessages(String user1, String user2) throws RemoteException;
 	 
 	 public List<Message> getMessage(String  parentmessageid) throws RemoteException;
 	 

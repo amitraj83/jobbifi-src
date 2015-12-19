@@ -90,7 +90,8 @@ public interface DATASTORES {
     String SKILLS_FIELD = "sk";
   }
   
-  interface WITHDRAW_FUND{
+  interface WITHDRAW_FUND {
+	  
 	  String ID = "_id";
 	  String USERNAME = "username";
 	  String AMOUNT = "amount";
@@ -104,6 +105,33 @@ public interface DATASTORES {
 	  String STATUS_PENDING = "PENDING";
 	  String STATUS_DONE = "DONE";
   }
+  
+  interface BANK_WITHDRAW_FUND_REQUEST {
+	  
+	  String DBCollection = "bankwithdrawfundrequests";
+	  
+	  String ID = "_id";
+	  String ACCOUNT_NAME = "accountname";
+	  String ACCOUNT_NUMBER = "accountnumber";
+	  String IFSC_CODE = "ifsecode";
+	  String ACCOUNT_TYPE = "accounttype";
+	  String BANK_NAME = "bankname";
+	  String BANK_BRANCH = "bankbranch";
+	  String BANK_CITY = "bankcity";
+	  
+	  String USERNAME = "username";
+	  String AMOUNT = "amount";
+	  String REQUESTED_DATE = "requesteddate";
+	  String PROCESSED_DATE = "processeddate";
+	  String STATUS = "status";
+	  
+	  interface status {
+		  String PENDING = "PENDING";
+		  String PROCESSED = "PROCESSED";
+		  String COMPLETED = "COMPLETED";
+	  }	  
+  }
+  
   interface CONTACT_LIST{
 	  String ID = "_id";
 	  String COLLECTION ="contactlist";
@@ -363,12 +391,14 @@ public interface DATASTORES {
     String STATUS = "status";
     String SALARY = "salary";
     String COMPANY_NAME = "companyname";
+    String COMPANY_DESCRIPTION = "companydescription";
+    String COMPANY_VIDEO = "companyvideo";    
     String APPLY_URL = "applyurl";
     String INDUSTRY = "industry";
     String FILE = "ifile";
     String EXPERIENCE = "experience";
     String LOCATION = "location";
-    String ID = "id";
+    String ID = "id";    
   }
   
   interface JOB_APPLICATION {
@@ -383,8 +413,9 @@ public interface DATASTORES {
 	  
 	  interface Status {
 		  String APPLIED = "Applied";
-		  String ACCEPTED = "Accepted";
-		  String REJECTED = "Rejected";
+		  String SHORTLISTED = "Shortlisted";
+		  String INTERVIEWED = "Interviewed";
+		  String RECRUITED = "Recruited";
 	  }
   }
   

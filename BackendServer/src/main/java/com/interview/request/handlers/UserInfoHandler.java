@@ -61,10 +61,8 @@ public class UserInfoHandler extends RequestHandler {
         resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getUserInfo(id);
         Map<String, Integer> individualRating = getIndividualRating(id);
         resMap.put("individualratings", individualRating);
-        resMap.put(
-            "reviewCount",
-            DataStoreRegistry.getInstance().getRatingStore()
-                .getReviewsCount(resMap.get(USER.USERNAME).toString()));
+        resMap.put("reviewCount", DataStoreRegistry.getInstance().getRatingStore()
+            .getReviewsCount(resMap.get(USER.USERNAME).toString()));
       } catch (RemoteException e) {
         e.printStackTrace();
       }

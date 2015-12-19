@@ -33,10 +33,10 @@
                                 </center>
                             </div>
                             <strong>
+
                                 <h1 style="margin-top:0px;text-transform:capitalize;font-weight:bold;">
                                     <div id="profile_username"></div>
-                                    <small style="font-size:46%;margin-top:5px;">Software Engineer at Goldman Sachs
-                                    </small>
+                                    <div id="user_position" style="font-size:41%;margin-top:5px;"></div>
                                 </h1>
                             </strong>
 
@@ -132,6 +132,8 @@
     $(function () {
         getProfileDetails();
     });
+    
+    var userPosition = "";
 
     function getProfileDetails() {
         $.ajax({
@@ -140,10 +142,7 @@
             async: false,
             success: function (res) {
                 var user = jQuery.parseJSON(res);
-                if (user.type == "INTERVIEWER") {
-                    showJobsOffered(user);
-                }
-
+                
                 $("#reviewcount").html(user.reviewCount);
                 $("#profile_balance").html(Number(user.balance).toFixed(2));
                 $("#profile_username").html(user.username);
@@ -205,8 +204,15 @@
                                 + allpositions[i].endYear
                                 + ')</b></h4></span>'
                                 + allpositions[i].description + '<hr>';
+                                userPosition = allpositions[0].title;
                     }
-                    $("#workexperience").html(workexp);
+                    			$("#workexperience").html(workexp);
+                    			if(userPosition != ""){
+                    				$("#user_position").html(userPosition);
+                    			}else{
+                    				$("#user_position").html("User  Position information not available.");
+                    			}
+                    			
                 } else {
                     $("#workexperience").html("<div>Work experience information not available.</div>");
                 }
@@ -289,111 +295,9 @@
         });
     }
 
-    /* show jobs offered */
-    function showJobsOffered(user) {
-
-        $.ajax({
-            url: "<c:url value='getJobsOffered.do'/>",
-            type: 'GET',
-            async: false,
-            success: function (res) {
-                var resData = jQuery.parseJSON(res);
-                var jobs = resData.jobs;
-                var jobsHtml = '<div class="job-posted-header"><i class="fa fa-2x fa-newspaper-o"></i> ' +
-                        '&nbsp;<span style="font-size:28px;">Jobs Posted</span>' +
-                        '<div class="clearfix pull-right">' +
-                        '<a class="btn btn-default" href="<c:url value="/postjob.do"/>">' +
-                        '    Post a Job</a>' +
-                        '</div></div> ';
-                if (null != jobs && jobs.length > 0) {
-                    for (var i = 0; i < jobs.length; i++) {
-                        jobsHtml += '<div class="panel panel-default">' +
-                                '<div class="panel-heading">' +
-                                '<h4 class="panel-title">' +
-                                '<a data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '"><i class="fa fa-plus"></i> ' + jobs[i].title + '</a>' +
-                                '<span class="pull-right">' + prettyDate(new Date(jobs[i].dt)) + '</span>' +
-                                '</h4>' +
-                                '</div>' +
-                                '<div id="collapse' + i + '" class="panel-collapse collapse">' +
-                                '<div class="panel-body">' +
-                                '<p>' + jobs[i].description + '</p>' +
-                                getApplicantHtml(jobs[i]) +
-                                '</div>' +
-                                '</div>' +
-                                '</div>';
-                    }
-                } else {
-                    jobsHtml = "You did not posted any jobs yet. Use post job button to post a job to get desire candidate.";
-                }
-                $("#interviewoffered").html(jobsHtml);
-                
-                $(".user-rating").rating({
-                    'min': 0,
-                    'max': 5,
-                    'step': 1,
-                    'readonly': true,
-                    'showClear': false,
-                    'showCaption': false
-                });
-            }
-        });
-
-    }
-
     function getUserProfileLink(user) {
         return "<a target='_blank' href='" + BASE_URL + "userprofile.do?name=" + user + "'>" + user + "</a>";
     }
-
-function getApplicantHtml(job){
-
-	var html = '<div class="table-responsive">'+
-               '<table class="table table-hover">'+
-               '<thead>'+
-               '<tr>'+
-               '<th>Applicant</th>'+
-               '<th>Cover Letter</th>'+
-               '<th>Resume</th>'+
-               '<th>Date</th>'+
-               '<th>Status</th>'+
-               '</tr>'+
-               '</thead>';
-                     
-    var applications = job.jobApplications;
-    if(applications.length > 0) {
-    	for(var i =0; i < applications.length; i++){
-    		html += "<tr>" +
-    				"<td style='width:25%'>"+
-    				"<div class='row'>" +
-    				"<div class='col-md-4'><img style='height:70px;width:60px' src='"+applications[i].profilePic +"' title='"+
-    				applications[i].applicantId + "' ></div>" +
-    				"<div class='col-md-8'>"+
-    					getUserProfileLink(applications[i].applicantId)+ "<br/>" +
-    					"<input type='number' class='user-rating' value='"+applications[i].rating+"'/>" +
-    					"<div><span id='reviewcount'> "+applications[i].reviewCount+"</span> Reviews</div>"+
-    				"</div>" +		     				
-    				"</div>" +	
-					"</td>"+
-    				"<td>"+applications[i].coverLetter+"</td>";
-    		if(applications[i].cvFileId != ""){
-    			html += "<td><a target='_blank' href='"+BASE_URL+applications[i].uploadedFile.url+"'>"+applications[i].uploadedFile.originalFileName+"</a></td>";
-    		} else {
-    			html += "<td>NA</td>";
-    		}		
-    				
-    				
-    		html +=	"<td>"+ prettyDate(new Date(applications[i].dt)) +"</td>"+
-    				"<td>"+applications[i].status+"</td>"+
-    				"</tr>";
-    	}
-    
-    } else {
-    	html += "<tr><td colspan'5'>No applicant found.</td></tr>";
-    }
-                            
-    html += '</table>' +
-            '</div>';
-            return html;
-}
 </script>
 </body>
 </html>

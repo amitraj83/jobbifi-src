@@ -1,6 +1,7 @@
 package com.interview.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 @Controller
 public class PostInterviewController extends BaseController {
@@ -76,6 +78,29 @@ public class PostInterviewController extends BaseController {
 	  resMap.put("iid", req.getParameter("iid"));
 	  map.addAllAttributes(resMap);
 	  return "interviewdetail";
+  }
+  
+  @RequestMapping(value="/updateinterviewdetail.do", method=RequestMethod.GET)
+  public String updateInterviewDetail(HttpServletRequest req,Model map){
+	  
+	  Map<Object, Object> reqMap = new HashMap<Object, Object>();
+	  reqMap.put("_id", req.getParameter("iid"));
+	  reqMap.put(VARIABLES.IID, req.getParameter("iid"));
+	    
+	  Map<String, Object> resMap  =
+		        Services.getInstance().getRequestHandlerService()
+		            .handleRequest(reqMap, REQUEST_TYPES.INTERVIEW_DETAILS);
+		
+	  resMap.put("iid", req.getParameter("iid"));
+	  List<String> skills = (List<String>) resMap.get(VARIABLES.POST_INTERVIEW.SKILLS);
+	  String skillsString ="";
+	  for (String string : skills) {
+		  skillsString+=string+",";
+	  }
+	  skillsString=skillsString.substring(0, skillsString.length()-1);
+	  resMap.put(VARIABLES.POST_INTERVIEW.SKILLS,skillsString);
+	  map.addAllAttributes(resMap);
+	  return "updateinterviewdetail";
   }
   
   // TODO : change the link use above method
@@ -211,6 +236,7 @@ public class PostInterviewController extends BaseController {
 
     String user =getLoginUser();
     reqMap.put(VARIABLES.POST_INTERVIEW.INTERVIEWEE, user);
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
     if (req.getParameter(DATASTORES.INTERVIEW.FILE) != null)
       reqMap.put(DATASTORES.INTERVIEW.FILE, req.getParameter(DATASTORES.INTERVIEW.FILE));
 
@@ -224,6 +250,32 @@ public class PostInterviewController extends BaseController {
       Services.getInstance().getRequestHandlerService()
           .handleRequest(reqMapFS, REQUEST_TYPES.FILESERVER_UPDATE_INTERVIEW_FILE);
     }
+    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
+        .getJSONStringOfMap(resMap));
+  }
+  
+  @RequestMapping(value = "/editinterview.do", method = RequestMethod.POST)
+  public ModelAndView editInterview(ModelMap model, HttpServletRequest req) {
+
+    Map<Object, Object> reqMap = new HashMap<Object, Object>();
+    reqMap.put(VARIABLES.POST_INTERVIEW.TITLE, req.getParameter(VARIABLES.POST_INTERVIEW.TITLE));
+    reqMap.put(VARIABLES.POST_INTERVIEW.INTERVIEWER, "");
+    reqMap.put(VARIABLES.POST_INTERVIEW.SKILLS, req.getParameter(VARIABLES.POST_INTERVIEW.SKILLS));
+    reqMap.put(VARIABLES.POST_INTERVIEW.DESCRIPTION,
+        req.getParameter(VARIABLES.POST_INTERVIEW.DESCRIPTION));
+    reqMap.put(VARIABLES.POST_INTERVIEW.BUDGET, req.getParameter(VARIABLES.POST_INTERVIEW.BUDGET));
+    reqMap.put(VARIABLES.POST_INTERVIEW.EXPERIENCE,
+        req.getParameter(VARIABLES.POST_INTERVIEW.EXPERIENCE));
+    reqMap.put(VARIABLES.POST_INTERVIEW.INDUSTRY,
+        req.getParameter(VARIABLES.POST_INTERVIEW.INDUSTRY));
+    reqMap.put(VARIABLES.IID, req.getParameter(VARIABLES.IID));
+    String user =getLoginUser();
+    reqMap.put(VARIABLES.POST_INTERVIEW.INTERVIEWEE, user);
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
+    Map<String, Object> resMap =
+        Services.getInstance().getRequestHandlerService()
+            .handleRequest(reqMap, REQUEST_TYPES.UPDATE_INTERVIEW);
+
     return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
         .getJSONStringOfMap(resMap));
   }

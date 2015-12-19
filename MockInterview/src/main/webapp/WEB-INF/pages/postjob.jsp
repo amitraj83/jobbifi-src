@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 page-sidebar">
-                <%@ include file="/WEB-INF/pages/myInterviewSidebar.jsp" %>
+                <%@ include file="/WEB-INF/pages/employerSidebar.jsp" %>
             </div>
             <div class="col-md-9 page-content">
                 <div class="white-container">
@@ -62,10 +62,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Description</label>
-
+                            <label class="col-sm-3 control-label">Job Description</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" name="description" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Company Video</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="companyvideo" placeholder="Only youtube video">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Company Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="companydescription" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -132,7 +143,7 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#postjob").addClass("active");
+        $("#sidenav_postjob").addClass("active");
 
         $("#postJobForm").validate({
             rules: {
@@ -201,13 +212,12 @@
                 $("#selectedfile").html("");
 
             } else {
-                showError("Your job was not posted. Please Try Again.");
+                showError("Your job was not posted. Please try again.");
             }
         }).always(function (jqXHR, textStatus) {
             $("#submitloader").hide();
         });
-    }
-    ;
+    };
 </script>
 </body>
 </html>

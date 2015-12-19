@@ -7,12 +7,10 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>indexapp</name>
 	<url>http://maven.apache.org</url>
-
 	<properties>
-		<spring.version>3.1.0.M1</spring.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 		<spring.version>3.1.0.M1</spring.version>
 	</properties>
-
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -20,7 +18,6 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
@@ -46,7 +43,6 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
@@ -54,7 +50,6 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
@@ -62,7 +57,6 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -70,9 +64,7 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
-
 	<build>
 		<finalName>indexapp</finalName>
 		<plugins>
@@ -83,8 +75,6 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-
-
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
@@ -93,7 +83,6 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -109,7 +98,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>

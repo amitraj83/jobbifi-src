@@ -15,8 +15,8 @@ public class CancelInterview {
 
     Interview interview = DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(_id);
     if (interview.getStatus() == INTERVIEW_STATUS.PENDING) {
-      DataStoreRegistry.getInstance().getInterviewDataStore()
-          .updateInterviewStatus(_id, INTERVIEW_STATUS.CANCELLED);
+      DataStoreRegistry.getInstance().getInterviewDataStore().updateInterviewStatus(_id,
+          INTERVIEW_STATUS.CANCELLED);
       return RETURN_VALUES.CANCEL_INTERVIEW_SUCCESS;
     } else
       return RETURN_VALUES.CANCEL_INTERVIEW_FAIL_INVALID_STATE;

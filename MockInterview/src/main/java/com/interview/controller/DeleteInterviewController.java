@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 @Controller
 public class DeleteInterviewController {
@@ -26,14 +27,16 @@ public class DeleteInterviewController {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("_id", req.getParameter("iid"));
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
 
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService()
             .handleRequest(reqMap, REQUEST_TYPES.DELETE_INTERVIEW);
-    if (new Integer(resMap.get("code").toString()) == 0) {
+    //TODO need to ask that how to call this because it gives null pointer exception
+    /*if (new Integer(resMap.get("code").toString()) == 0) {
       Services.getInstance().getRequestHandlerService()
           .handleRequest(reqMap, REQUEST_TYPES.DELETE_INTERVIEW_SOLR);
-    }
+    }*/
 
 
     return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()

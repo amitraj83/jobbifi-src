@@ -24,12 +24,10 @@ public class NewInterviewNotificationProcessor extends NotificationProcessor {
   public void process(Object document) {
     try {
       Interview interview = (Interview) document;
-      List<String> companies =
-          Services.getInstance().getCompanyServices()
-              .getRelatedCompaniesForSkills(interview.getSkills());
-      List<String> receivers =
-          DataStoreRegistry.getInstance().getInterviewerDataStore()
-              .getMatchingUsersList(interview.getSkills(), companies, null);
+      List<String> companies = Services.getInstance().getCompanyServices()
+          .getRelatedCompaniesForSkills(interview.getSkills());
+      List<String> receivers = DataStoreRegistry.getInstance().getInterviewerDataStore()
+          .getMatchingUsersList(interview.getSkills(), companies, null);
       receivers.remove(interview.getInterviewee());
       for (String receiver : receivers) {
 

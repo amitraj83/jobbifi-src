@@ -22,13 +22,17 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <h1 style="margin-top:0px">Messages</h1>
+                    <h1 style="margin-top:0px" id="heading">Messages</h1>
+                    <div id="message"></div>
                     <hr/>
                     <section id="msgSection">
                         <div class="clearfix white-container" id="msgdetail"></div>
                     </section>
                     <section id="subMsgSection" style="display: none;">
                         <div class="clearfix white-container" id="submsgdetail"></div>
+                    </section>
+                    <section id="chatMessage" style="display: none;">
+                        <div class="clearfix white-container" id="chatMessagedetail"></div>
                     </section>
                     <ul class="pagination pull-right" id="message_pagination">
                     </ul>
@@ -62,6 +66,11 @@
 
         $(document).on('click', '#nav-allmessage', function () {
             loadMessages(1);
+            $("#chatMessagedetail").html('');
+            $("#heading").html('Messages');
+            $("#message").html('');
+            $("#chatMessage").hide();
+            $("#nav-allmessage").addClass("active");            
         });
         loadMessages();
     });
@@ -111,13 +120,15 @@
                         to = "Me";
                         if (jobs[i].status == "UNREAD") {
                             labelNew = "&nbsp;&nbsp;<label class='label label-success'>New</label>";
+                            message='<strong>'+message+'</strong>';
                         }
                     }
                     if (LOGIN_USER == from) {
                         from = "Me";
                     }
-
-                    jobsHtml += '<tr><td>' + from + '</td><td>' + to + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
+					var from1="'"+jobs[i].from+"'";
+					var to1="'"+jobs[i].to+"'";
+                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + from +labelNew+ '</td><td>' + to + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
                 }
                 jobsHtml += '</tbody></table>';
             } else {
@@ -126,6 +137,7 @@
             $("#msgdetail").html(jobsHtml);
             $("#subMsgSection").hide();
             $("#msgSection").show();
+            loadNewMessageCount();
         });
     }
 
@@ -273,9 +285,105 @@
             async: false
         }).done(function (res) {
             showSuccess("Message sent successfully.");
+            message("Message sent successfully.","success");
             $("#inputmessage").val("");
         });
     });
+    
+    function getChat(from,to){
+        var user = '';
+        var toUser = '';
+        if(LOGIN_USER==from){
+            user=to;
+        }
+        if(LOGIN_USER==to){
+            user=from;
+        }
+        $.ajax({
+            type: 'GET',
+            url: BASE_URL + 'getmessagebetween.do',
+            data: "user=" + user,
+            async: false
+        }).done(function (res) {
+            //$("#message").html("Between : "+from+" vs "+to);
+            var resData = jQuery.parseJSON(res);
+            var messages = resData.MESSAGE_LIST;
+            var data = '';
+            for (var i = messages.length-1; i >= 0; i--) {
+                
+                if (messages[i].from === LOGIN_USER) {
+                    CSS_Class = "panel-warning";
+                } else {
+                    CSS_Class = "panel-danger";
+                }
+
+                var messagetrail = '<div class="panel ' + CSS_Class + '">' +
+                        '<div class="panel-heading">' +
+                        '  <h3 class="panel-title"><span><i class="fa fa-user"></i>&nbsp' + messages[i].from +
+                        '</span><span class="pull-right "><h5 style="margin-top:1px">' +
+                        prettyDate(new Date(Number(messages[i].lastReplyToDate))) + '</h5></span></h3>' +
+                        '</div>' +
+                        '<div class="panel-body">' + messages[i].message +
+                        '</div></div>';
+                data+=messagetrail;                
+            }
+
+            data+='<div id="yourmesssages"></div><div id="chatForm"></div>';
+            var messagetrail1 = '<div class="panel panel-warning">' +
+            '<div class="panel-heading">' +
+            '  <h3 class="panel-title"><span><i class="fa fa-user"></i>&nbsp' +
+            LOGIN_USER + '</span><span class="pull-right"></span></h3>' +
+            '</div>' +
+            '<div class="panel-body" style="padding:5px;">' +
+            '<form class="form form-horizontal" id="newmessageForm">'+
+            '<textarea class="form-control input-sm" style="margin:0 0 10px" id="send_message" name="message"></textarea>' +
+            '<input type="hidden" name="to" value="'+user+'"/>'+
+            '<input type="hidden" name="jobid" value=""/>'+
+            '<input type="hidden" name="jobtitle" value=""/>'+
+            '<input type="hidden" name="parentMessageId" value=""/>'+
+            '<input type="hidden" name="refentity" value=""/>'+
+            '<div class="row">' +
+            '	<div class="col-md-5 pull-right">'+
+            '<img id="loader" style="display: none;" alt="Processing..." src=" /resources/img/loading.gif ">'+
+            '<button type="button" onclick="submitForm();" id="sendMessage" class="btn btn-info pull-right">Send Message</button></div>' +
+            '</form>'
+            '</div>' +
+            '</div>' +
+            '</div>';
+            
+            
+            $("#chatMessagedetail").html(data+messagetrail1);
+            $("#heading").html(user);
+            $("#chatMessage").show();
+            $("#msgSection").hide();
+            $("#nav-allmessage").removeClass("active");
+            loadNewMessageCount();
+        });
+    }
+    function submitForm() {
+        $("#loader").show();
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'sendnewmessage.do',
+            data: $("#newmessageForm").serialize(),
+            async: false
+        }).done(function (res) {
+            $("#contactmeModal").modal("hide");
+            showSuccess("Your message has been sent.");
+            var temp = '<div class="panel panel-warning">' +
+            '<div class="panel-heading">' +
+            '  <h3 class="panel-title"><span><i class="fa fa-user"></i>&nbsp' + LOGIN_USER +
+            '</span><span class="pull-right "><h5 style="margin-top:1px">' +
+            prettyDate(new Date()) + '</h5></span></h3>' +
+            '</div>' +
+            '<div class="panel-body">' + $("#send_message").val() +
+            '</div></div>';
+            $( temp ).insertBefore( "#yourmesssages" );
+            $("#send_message").val("");
+        }).always(function (jqXHR, textStatus) {
+            $("#loader").hide();
+        });
+    }
 </script>
 </body>
 </html>

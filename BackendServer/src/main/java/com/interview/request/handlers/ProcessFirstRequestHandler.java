@@ -19,12 +19,9 @@ public class ProcessFirstRequestHandler extends RequestHandler {
     // System.out.println("IN Process First Request Handler");
     Map<String, Object> resMap = new HashMap<String, Object>();
     try {
-      int status =
-          DataStoreRegistry
-              .getInstance()
-              .getRequestsDataStore()
-              .updateStatus(data.get(FIRST_REQUESTS.ID).toString(),
-                  FIRST_REQUESTS.STATUSES.valueOf(data.get(FIRST_REQUESTS.STATUS) + ""));
+      int status = DataStoreRegistry.getInstance().getRequestsDataStore().updateStatus(
+          data.get(FIRST_REQUESTS.ID).toString(),
+          FIRST_REQUESTS.STATUSES.valueOf(data.get(FIRST_REQUESTS.STATUS) + ""));
       resMap.put("result", status);
       resMap.putAll(DataStoreRegistry.getInstance().getRequestsDataStore()
           .getUsersOfRequestId(data.get(FIRST_REQUESTS.ID).toString()));

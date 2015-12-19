@@ -8,6 +8,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 import com.interview.framework.DATASTORES;
+import com.interview.framework.USER;
 import com.interview.framework.pojo.JobApplication;
 import com.interview.framework.rmi.common.IJobApplicationStore;
 import com.interview.helper.MongoDataHelper;
@@ -119,5 +120,18 @@ public class JobApplicationStore extends UnicastRemoteObject implements IJobAppl
 		      jobApplications.add(jobApplication);
 		  }
 		return jobApplications;
+	}
+
+	@Override
+	public boolean updateStatus(String id, String status)
+			throws RemoteException {
+		DBCollection collection =
+		        Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.JOB_APPLICATION.DBCollection);
+		    DBObject query = new BasicDBObject(DATASTORES.JOB_APPLICATION.ID, new ObjectId(id));
+		    DBObject updateDoc = new BasicDBObject("$set", new BasicDBObject(DATASTORES.JOB_APPLICATION.STATUS, status));
+		    WriteResult wr = collection.update(query, updateDoc);
+		    CommandResult cr = wr.getCachedLastError();
+		    return cr.ok();
+		
 	}	
 }

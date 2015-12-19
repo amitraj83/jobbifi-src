@@ -3,7 +3,10 @@ from smtplib import SMTP
 import datetime
 import json
 import sys, glob
-sys.path.append('gen-py')
+import os
+pwd = os.path.dirname(os.path.realpath(__file__))
+fn = os.path.join(pwd, "gen-py")
+sys.path.append(fn)
 import mailer_pb2
 
 from templates import *

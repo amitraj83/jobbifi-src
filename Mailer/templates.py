@@ -2,9 +2,11 @@
 import emails
 from emails.template import JinjaTemplate as T
 
+import os
 import sys, glob
 sys.path.append('gen-py')
 import mailer_pb2
+pwd = os.path.dirname(os.path.realpath(__file__))
 
 SMTP_HOST = 'purkays.name'
 SMTP_USERNAME = 'support@jobbifi.com'
@@ -13,6 +15,8 @@ SMTP_PORT = 25
 SMTP_PASSWORD = 'lqC2QeMD9hRwjy4kfwc0'
 
 templates = {}
+
+logo_file = os.path.join(pwd, "logo.png")
 
 m = emails.Message(html=T("""Hello {{ USER_NAME }},
  
@@ -40,7 +44,7 @@ Jobbifi Support
 """),
                    subject=T("Welcome to Jobbifi"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.NEW_REGISTRATION] = m
 
@@ -78,7 +82,7 @@ Jobbifi Support
 """),
                    subject=T("Password reset on Jobbifi"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.FORGOT_PASSWORD] = m
 
@@ -110,7 +114,7 @@ Jobbifi Support
 """),
                    subject=T("Your Jobbifi Password has been changed"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.PASSWORD_UPDATED] = m
 
@@ -146,7 +150,7 @@ Jobbifi Support
 """),
                    subject=T("A new mock interview matches your profile - {{ INTERVIEW_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.NEW_MOCK_INTERVIEW] = m
 
@@ -178,7 +182,7 @@ Jobbifi Support
 """),
                    subject=T("Recent Changes to Mock Interview - {{ INTERVIEW_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.MOCK_INTERVIEW_UPDATED] = m
 
@@ -213,7 +217,7 @@ Jobbifi Support
 """),
                    subject=T("A mock interview you applied to was closed - {{ INTERVIEW_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.INTERVIEW_DELETED] = m
 
@@ -249,7 +253,7 @@ Jobbifi Support
 """),
                    subject=T("You received a new bid for {{ INTERVIEW_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.BID_PLACED_INTERVIEWEE] = m
 
@@ -286,7 +290,7 @@ Jobbifi Support
 """),
                    subject=T("Your bid has been placed successfully for {{ INTERVIEW_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.BID_PLACED_INTERVIEWEE] = m
 
@@ -317,7 +321,7 @@ Jobbifi Support
 """),
                    subject=T("Congratulations! You won! - {{ INTERVIEW_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.AWARD_INTERVIEW_SUCCESS] = m
 
@@ -350,7 +354,7 @@ Jobbifi Support
 """),
                    subject=T("Proposal Ended - {{ INTERVIEW_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.INTERVIEW_BID_DENIED] = m
 
@@ -379,7 +383,7 @@ Jobbifi Support
 """),
                    subject=T("You have a new message from {{ USER_NAME }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.NEW_MESSAGE] = m
 
@@ -414,7 +418,7 @@ Jobbifi Support
 """),
                    subject=T("A new job posted matches your profile - {{ JOB_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.NEW_JOB] = m
 
@@ -449,7 +453,7 @@ Jobbifi Support
 """),
                    subject=T("You’ve received a new job application for {{ JOB_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.NEW_JOB_APPLICATION] = m
 
@@ -488,7 +492,7 @@ Jobbifi Support
 """),
                    subject=T("Your profile is shortlisted for {{ JOB_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.JOB_APPLICATION_SHORTLISTED] = m
 
@@ -531,7 +535,7 @@ m = emails.Message(html=T("""Dear $user$,
 """),
                    subject=T("A new dispute has been created"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
-m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.NEW_DISPUTE] = m
 

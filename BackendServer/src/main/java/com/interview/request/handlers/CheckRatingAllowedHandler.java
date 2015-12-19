@@ -40,14 +40,12 @@ public class CheckRatingAllowedHandler extends RequestHandler {
         } else
           resMap.put("ratingavailable", false);
       }
-      resMap.put(
-          "currAvg",
-          DataStoreRegistry.getInstance().getInterviewerDataStore().getUserInfo(rateFor)
-              .get(USER.RATING));
+      resMap.put("currAvg", DataStoreRegistry.getInstance().getInterviewerDataStore()
+          .getUserInfo(rateFor).get(USER.RATING));
 
       resMap.put("result", res);
     } catch (RemoteException e) {
-    	e.printStackTrace();
+      e.printStackTrace();
     }
     return resMap;
   }

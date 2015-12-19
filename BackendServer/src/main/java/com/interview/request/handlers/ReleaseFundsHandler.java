@@ -37,9 +37,8 @@ public class ReleaseFundsHandler extends RequestHandler {
 
         int status = i.getStatus();
 
-        double bal =
-            new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
-                .getUserInfo(i.getInterviewee()).get(USER.BALANCE).toString());
+        double bal = new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()
+            .getUserInfo(i.getInterviewee()).get(USER.BALANCE).toString());
         DataStoreRegistry.getInstance().getEscrowDataStore().releaseStatusUpdate(escrowID);
         String message = RETURN_VALUES.getResponseMessage(code);
 
@@ -48,12 +47,11 @@ public class ReleaseFundsHandler extends RequestHandler {
         res.put("eb", eb);
         res.put("code", code);
         res.put("bal", bal);
-        Services.getInstance().getNotificationService()
-            .processNotification(i, VARIABLES.NOTIFICATION.TYPE.FINANCIAL_NOTIFICATION);
+        Services.getInstance().getNotificationService().processNotification(i,
+            VARIABLES.NOTIFICATION.TYPE.FINANCIAL_NOTIFICATION);
 
-        double totalReleasedFunds =
-            DataStoreRegistry.getInstance().getEscrowDataStore()
-                .getReleasedEscrowForInterview(i.getId());
+        double totalReleasedFunds = DataStoreRegistry.getInstance().getEscrowDataStore()
+            .getReleasedEscrowForInterview(i.getId());
 
         Bid acceptedBid =
             DataStoreRegistry.getInstance().getBidStore().getAcceptedBidForInterview(i.getId());

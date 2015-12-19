@@ -4,10 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProfileSearchImpl implements IProfileSearch {
-
   @Override
   public JSONObject getProfiles(String key) {
-
     JSONObject json = new JSONObject();
     try {
       json.put("name", "Raj");
@@ -16,5 +14,4 @@ public class ProfileSearchImpl implements IProfileSearch {
     }
     return json;
   }
-
 }

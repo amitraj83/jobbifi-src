@@ -29,24 +29,24 @@ public class StatusChangeHandler extends RequestHandler {
       int bid_status = new Integer(data.get(VARIABLES.Bid.STATUS).toString());
 
       if (bid_status == BID_STATUS.PENDING) {
-        DataStoreRegistry.getInstance().getBidStore()
-            .updateBidStatus(new ObjectId(bid), bid_status);
+        DataStoreRegistry.getInstance().getBidStore().updateBidStatus(new ObjectId(bid),
+            bid_status);
       } else if (bid_status == BID_STATUS.ACCEPT) {
-        DataStoreRegistry.getInstance().getBidStore()
-            .updateBidStatus(new ObjectId(bid), bid_status);
+        DataStoreRegistry.getInstance().getBidStore().updateBidStatus(new ObjectId(bid),
+            bid_status);
         List<String> bidList =
             DataStoreRegistry.getInstance().getBidStore().getAllBidIDsForInterview(iid);
         bidList.remove(bid);
         for (String bid_id : bidList) {
           if (bid_id != bid)
-            DataStoreRegistry.getInstance().getBidStore()
-                .updateBidStatus(new ObjectId(bid_id), BID_STATUS.REJECT);
+            DataStoreRegistry.getInstance().getBidStore().updateBidStatus(new ObjectId(bid_id),
+                BID_STATUS.REJECT);
         }
         DataStoreRegistry.getInstance().getInterviewDataStore()
             .updateInterviewStatus(new ObjectId(iid), INTERVIEW_STATUS.IN_PROGRESS);
       } else if (bid_status == BID_STATUS.REJECT) {
-        DataStoreRegistry.getInstance().getBidStore()
-            .updateBidStatus(new ObjectId(bid), bid_status);
+        DataStoreRegistry.getInstance().getBidStore().updateBidStatus(new ObjectId(bid),
+            bid_status);
       }
 
       resMap.put("status", 1);

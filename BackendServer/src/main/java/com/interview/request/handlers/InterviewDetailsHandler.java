@@ -38,16 +38,15 @@ public class InterviewDetailsHandler extends RequestHandler {
       resMap.put(DATASTORES.INTERVIEW.STATUS, interview.getStatus());
       resMap.put(DATASTORES.INTERVIEW.TITLE, interview.getTitle());
       resMap.put(DATASTORES.INTERVIEW.STATUS_STRING, interview.getStatusString());
-     if(null!=interview.getFile() && !interview.getFile().equals("")){
-      UploadedFile file =
-          DataStoreRegistry.getInstance().getUploadedFileDataStore()
-              .getUploadedFile(new ObjectId(interview.getFile()));
-      if (file != null) {
+      if (null != interview.getFile() && !interview.getFile().equals("")) {
+        UploadedFile file = DataStoreRegistry.getInstance().getUploadedFileDataStore()
+            .getUploadedFile(new ObjectId(interview.getFile()));
+        if (file != null) {
           resMap.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFileName());
           resMap.put(DATASTORES.UPLOAD_FILE.URL, file.getURL());
         }
-     }
-    
+      }
+
 
       if (interview.getBudget() != null)
         resMap.put(DATASTORES.INTERVIEW.BUDGET, interview.getBudget());

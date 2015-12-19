@@ -22,8 +22,8 @@ public class RepostInterview {
       ObjectId id =
           DataStoreRegistry.getInstance().getInterviewDataStore().saveInterview(interview);
       if (id != null) {
-        DataStoreRegistry.getInstance().getInterviewDataStore()
-            .updateInterviewStatus(id, INTERVIEW_STATUS.PENDING);
+        DataStoreRegistry.getInstance().getInterviewDataStore().updateInterviewStatus(id,
+            INTERVIEW_STATUS.PENDING);
         return id;
       } else
         return null;

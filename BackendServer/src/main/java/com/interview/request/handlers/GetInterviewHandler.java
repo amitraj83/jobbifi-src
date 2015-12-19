@@ -21,8 +21,8 @@ import com.interview.rmi.DataStoreRegistry;
 
 public class GetInterviewHandler extends RequestHandler {
 
-	private static final Logger logger = Logger.getLogger(GetInterviewHandler.class);
-	
+  private static final Logger logger = Logger.getLogger(GetInterviewHandler.class);
+
   public GetInterviewHandler() {
     addHandler(this, REQUEST_TYPES.GET_INTERVIEW);
   }
@@ -32,97 +32,106 @@ public class GetInterviewHandler extends RequestHandler {
 
     Map<String, Object> resMap = new HashMap<String, Object>();
     try {
-	      String user = (String) data.get(USER.USERNAME);
-	      String userRole = (String) data.get(USER.ROLE);	     
-	      String SUB_REQ ="";
-	      if(data.get(REQUEST_TYPES.SUB_REQ)!=null)
-	    	  SUB_REQ = data.get(REQUEST_TYPES.SUB_REQ).toString();
-	      IInterviewDataStore iStore = DataStoreRegistry.getInstance().getInterviewDataStore();
-	      if(SUB_REQ !=null && SUB_REQ.equals(REQUEST_TYPES.GET_INTERVIEW_SUB_REQ.GET_DISPUTABLE_INTERVIEW)){
-	    	  resMap.put("disputable_list", iStore.getDisputableList(user,userRole));
-	    	  
-	      }else if(SUB_REQ !=null && SUB_REQ.equals(REQUEST_TYPES.GET_INTERVIEW_SUB_REQ.GET_INTERVIEW_LIST)){
-	      Map<String, Map<String, String>> fileMap = new HashMap<String, Map<String, String>>();
-	      int pageNumber = new Integer(data.get("pagenum").toString());
-	      int status = getStatus((String) data.get("status"));
-	      List<Interview> list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWEE,pageNumber,status);	      
-	      if(list != null){
-	    	  Iterator it = list.iterator();
-	    	  while(it.hasNext()){
-	    		  Interview interview =(Interview) it.next();	    		  
-	    		  logger.info("Interview ID : " + interview.getId());	    		  
-	    		  interview.setBidcount(DataStoreRegistry.getInstance().getBidStore().getBidCount(interview.getId())) ;	    		
-	    		  logger.info("Bid Count : " + interview.getBidcount());
-	    	  }
-	      }
-	      
-	      resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWEE, list);
-	      resMap.put("MY_INTERVIEW_AS_INTERVIEWEE_COUNT", DataStoreRegistry.getInstance().getInterviewDataStore().getTotalinterviewcount(user, DATASTORES.INTERVIEW.INTERVIEWEE,status));
-	      populateFileMap(fileMap, list);
-	      
-	      
-	      list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWER);
-	      resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWER, list);
-	      populateFileMap(fileMap, list);
-	      
-	      list = iStore.getInterviewsWhereIBid(user);
-	      if(list!=null){
-	    	  Iterator it = list.iterator();
-	    	  while (it.hasNext()){
-	    		  Interview interview =(Interview) it.next();	   
-	    		  interview.setPrice(DataStoreRegistry.getInstance().getBidStore().getAcceptedBidForInterview(interview.getId()).getPrice());
-	    		  
-	    	  }
-	      }
-	      resMap.put(VARIABLES.INTERVIEWS_WHERE_I_BID, list);
-	      populateFileMap(fileMap, list);
-	      
-	      resMap.put("FILEMAP", fileMap);
-	      }
-	      
-	      else{
-		      Map<String, Map<String, String>> fileMap = new HashMap<String, Map<String, String>>();
-		      List<Interview> list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWEE);	      
-		      if(list != null){
-		    	  Iterator it = list.iterator();
-		    	  while(it.hasNext()){
-		    		  Interview interview =(Interview) it.next();	    		  
-		    		  logger.info("Interview ID : " + interview.getId());	    		  
-		    		  interview.setBidcount(DataStoreRegistry.getInstance().getBidStore().getBidCount(interview.getId())) ;	    		
-		    		  logger.info("Bid Count : " + interview.getBidcount());
-		    	  }
-		      }
-		      
-		      resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWEE, list);
-		      populateFileMap(fileMap, list);
-		      
-		      
-		      list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWER);
-		      resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWER, list);
-		      populateFileMap(fileMap, list);
-		      
-		      list = iStore.getInterviewsWhereIBid(user);
-		      if(list!=null){
-		    	  Iterator it = list.iterator();
-		    	  while (it.hasNext()){
-		    		  Interview interview =(Interview) it.next();	   
-		    		  interview.setPrice(DataStoreRegistry.getInstance().getBidStore().getAcceptedBidForInterview(interview.getId()).getPrice());
-		    		  
-		    	  }
-		      }
-		      resMap.put(VARIABLES.INTERVIEWS_WHERE_I_BID, list);
-		      populateFileMap(fileMap, list);
-		      
-		      resMap.put("FILEMAP", fileMap);
-		      }
+      String user = (String) data.get(USER.USERNAME);
+      String userRole = (String) data.get(USER.ROLE);
+      String SUB_REQ = "";
+      if (data.get(REQUEST_TYPES.SUB_REQ) != null)
+        SUB_REQ = data.get(REQUEST_TYPES.SUB_REQ).toString();
+      IInterviewDataStore iStore = DataStoreRegistry.getInstance().getInterviewDataStore();
+      if (SUB_REQ != null
+          && SUB_REQ.equals(REQUEST_TYPES.GET_INTERVIEW_SUB_REQ.GET_DISPUTABLE_INTERVIEW)) {
+        resMap.put("disputable_list", iStore.getDisputableList(user, userRole));
+
+      } else if (SUB_REQ != null
+          && SUB_REQ.equals(REQUEST_TYPES.GET_INTERVIEW_SUB_REQ.GET_INTERVIEW_LIST)) {
+        Map<String, Map<String, String>> fileMap = new HashMap<String, Map<String, String>>();
+        int pageNumber = new Integer(data.get("pagenum").toString());
+        int status = getStatus((String) data.get("status"));
+        List<Interview> list =
+            iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWEE, pageNumber, status);
+        if (list != null) {
+          Iterator it = list.iterator();
+          while (it.hasNext()) {
+            Interview interview = (Interview) it.next();
+            logger.info("Interview ID : " + interview.getId());
+            interview.setBidcount(
+                DataStoreRegistry.getInstance().getBidStore().getBidCount(interview.getId()));
+            logger.info("Bid Count : " + interview.getBidcount());
+          }
+        }
+
+        resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWEE, list);
+        resMap.put("MY_INTERVIEW_AS_INTERVIEWEE_COUNT",
+            DataStoreRegistry.getInstance().getInterviewDataStore().getTotalinterviewcount(user,
+                DATASTORES.INTERVIEW.INTERVIEWEE, status));
+        populateFileMap(fileMap, list);
+
+
+        list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWER);
+        resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWER, list);
+        populateFileMap(fileMap, list);
+
+        list = iStore.getInterviewsWhereIBid(user);
+        if (list != null) {
+          Iterator it = list.iterator();
+          while (it.hasNext()) {
+            Interview interview = (Interview) it.next();
+            interview.setPrice(DataStoreRegistry.getInstance().getBidStore()
+                .getAcceptedBidForInterview(interview.getId()).getPrice());
+
+          }
+        }
+        resMap.put(VARIABLES.INTERVIEWS_WHERE_I_BID, list);
+        populateFileMap(fileMap, list);
+
+        resMap.put("FILEMAP", fileMap);
+      }
+
+      else {
+        Map<String, Map<String, String>> fileMap = new HashMap<String, Map<String, String>>();
+        List<Interview> list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWEE);
+        if (list != null) {
+          Iterator it = list.iterator();
+          while (it.hasNext()) {
+            Interview interview = (Interview) it.next();
+            logger.info("Interview ID : " + interview.getId());
+            interview.setBidcount(
+                DataStoreRegistry.getInstance().getBidStore().getBidCount(interview.getId()));
+            logger.info("Bid Count : " + interview.getBidcount());
+          }
+        }
+
+        resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWEE, list);
+        populateFileMap(fileMap, list);
+
+
+        list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWER);
+        resMap.put(VARIABLES.MY_INTERVIEW_AS_INTERVIEWER, list);
+        populateFileMap(fileMap, list);
+
+        list = iStore.getInterviewsWhereIBid(user);
+        if (list != null) {
+          Iterator it = list.iterator();
+          while (it.hasNext()) {
+            Interview interview = (Interview) it.next();
+            interview.setPrice(DataStoreRegistry.getInstance().getBidStore()
+                .getAcceptedBidForInterview(interview.getId()).getPrice());
+
+          }
+        }
+        resMap.put(VARIABLES.INTERVIEWS_WHERE_I_BID, list);
+        populateFileMap(fileMap, list);
+
+        resMap.put("FILEMAP", fileMap);
+      }
     } catch (RemoteException e) {
-      
-    	e.printStackTrace();
+
+      e.printStackTrace();
     }
     return resMap;
   }
 
-  
+
   private void populateFileMap(Map<String, Map<String, String>> fileMap, List<Interview> list) {
     try {
       for (Interview interview : list) {
@@ -144,33 +153,27 @@ public class GetInterviewHandler extends RequestHandler {
     }
   }
 
-  public int getStatus(String status){
-	  if(status.equals("OPEN")){
-			return 0;
-		}
-		else if(status.equals("IN PROGRESS") ){
-			return 1;
-		}
-		
-		else if(status.equals("APPROVAL PENDING") ){
-			return 4;
-		}
-		else if(status.equals("COMPLETED") ){
-			return 5;
-		}
-		else if(status.equals("CANCELLED")){
-			return 6;
-		}
-		else if(status.equals("REPOSTED")){
-			return 7;
-		}
-		else if(status.equals("USER RATED")){
-			return 8;
-		}
-		else if(status.equals("DISPUTE")){
-			return 9;
-		}	
-			return 10;
-	  
+  public int getStatus(String status) {
+    if (status.equals("OPEN")) {
+      return 0;
+    } else if (status.equals("IN PROGRESS")) {
+      return 1;
+    }
+
+    else if (status.equals("APPROVAL PENDING")) {
+      return 4;
+    } else if (status.equals("COMPLETED")) {
+      return 5;
+    } else if (status.equals("CANCELLED")) {
+      return 6;
+    } else if (status.equals("REPOSTED")) {
+      return 7;
+    } else if (status.equals("USER RATED")) {
+      return 8;
+    } else if (status.equals("DISPUTE")) {
+      return 9;
+    }
+    return 10;
+
   }
 }

@@ -33,12 +33,10 @@ public class RetrieveAllDisputes extends RequestHandler {
     String username = data.get(USER.USERNAME).toString();
 
     try {
-      List<Interview> list =
-          DataStoreRegistry.getInstance().getInterviewDataStore()
-              .getInterviews(username, DATASTORES.INTERVIEW.INTERVIEWEE);
-      List<Interview> list2 =
-          DataStoreRegistry.getInstance().getInterviewDataStore()
-              .getInterviews(username, DATASTORES.INTERVIEW.INTERVIEWER);
+      List<Interview> list = DataStoreRegistry.getInstance().getInterviewDataStore()
+          .getInterviews(username, DATASTORES.INTERVIEW.INTERVIEWEE);
+      List<Interview> list2 = DataStoreRegistry.getInstance().getInterviewDataStore()
+          .getInterviews(username, DATASTORES.INTERVIEW.INTERVIEWER);
       list.addAll(list2);
 
       Map<String, String> tempITitles = new HashMap<String, String>();

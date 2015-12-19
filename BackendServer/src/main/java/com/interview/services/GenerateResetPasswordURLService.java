@@ -16,8 +16,8 @@ import com.interview.rmi.DataStoreRegistry;
 public class GenerateResetPasswordURLService {
 
   @Autowired
-  private Properties myProps;	
-	
+  private Properties myProps;
+
   public String generateURL(String username, String email) throws RemoteException {
     try {
       String secretKey = Services.getInstance().getSecurityTokenGenerator().getToken();
@@ -32,10 +32,10 @@ public class GenerateResetPasswordURLService {
       ObjectId _id = DataStoreRegistry.getInstance().getResetPasswordDataStore().insert(entity);
       if (_id != null) {
         String authInstanceObjectId = _id.toString();
-        String url = myProps.getProperty("mail.url.reset") + "?"
-                + VARIABLES.RESET_PASS.AUTH_INSTANCE + "=" + authInstanceObjectId + "&"
-                + VARIABLES.RESET_PASS.AUTH_ID + "=" + encodedUserName + "&"
-                + VARIABLES.RESET_PASS.AUTH_TOKEN + "=" + securityToken;
+        String url =
+            myProps.getProperty("mail.url.reset") + "?" + VARIABLES.RESET_PASS.AUTH_INSTANCE + "="
+                + authInstanceObjectId + "&" + VARIABLES.RESET_PASS.AUTH_ID + "=" + encodedUserName
+                + "&" + VARIABLES.RESET_PASS.AUTH_TOKEN + "=" + securityToken;
         System.out.println("RESET PASS URL:" + url);
         return url;
       }

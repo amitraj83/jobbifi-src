@@ -27,15 +27,15 @@ public class TransactionHistoryHandler extends RequestHandler {
       long fromDate = new Long(data.get(VARIABLES.FROM_DATE).toString());
       long toDate = new Long(data.get(VARIABLES.TO_DATE).toString());
       int pageNumber = new Integer(data.get("pagenum").toString());
-      List<Transaction> list =
-          DataStoreRegistry.getInstance().getTransactionStore()
-              .getTransactionsList(user, fromDate, toDate, pageNumber);
+      List<Transaction> list = DataStoreRegistry.getInstance().getTransactionStore()
+          .getTransactionsList(user, fromDate, toDate, pageNumber);
       resMap.put("list", Services.getInstance().getJSONUtilityService().convertObjectToJSON(list));
-      resMap.put("numberofrecords",DataStoreRegistry.getInstance().getTransactionStore().getTotalRecord(user, fromDate, toDate));
-      resMap.put("totalsize", DataStoreRegistry.getInstance().getUserTransactionStore()
-          .getTransactionIDs(user).size());
+      resMap.put("numberofrecords", DataStoreRegistry.getInstance().getTransactionStore()
+          .getTotalRecord(user, fromDate, toDate));
+      resMap.put("totalsize",
+          DataStoreRegistry.getInstance().getUserTransactionStore().getTransactionIDs(user).size());
 
-    } catch (RemoteException e) {     
+    } catch (RemoteException e) {
       e.printStackTrace();
     }
     return resMap;

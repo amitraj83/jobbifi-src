@@ -16,10 +16,8 @@ import com.interview.rmi.common.UserSessionManager;
 import com.interview.security.UserDataService;
 
 public class Services implements ApplicationContextAware {
-
   @Resource(name = "sessionRegistry")
   private SessionRegistryImpl sessionRegistry;
-
   private static ApplicationContext myContext;
   private static Services instance;
 
@@ -36,10 +34,6 @@ public class Services implements ApplicationContextAware {
   public RequestHandlerService getRequestHandlerService() {
     return (RequestHandlerService) myContext.getBean("requestHandler");
   }
-
-  // public BackendServerRMIClient getRMIClient(){
-  // return (BackendServerRMIClient)myContext.getBean("rmiClient");
-  // }
 
   public ShaPasswordEncoder getPasswordEncoder() {
     return (ShaPasswordEncoder) myContext.getBean("passwordEncoder");
@@ -88,7 +82,4 @@ public class Services implements ApplicationContextAware {
   public SearchClient getSearchServerClient() {
     return (SearchClient) myContext.getBean("searchclient");
   }
-
-
-
 }

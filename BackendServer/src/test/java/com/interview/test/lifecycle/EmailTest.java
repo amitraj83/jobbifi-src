@@ -1,14 +1,11 @@
-package com.interview.services;
+package com.interview.test.lifecycle;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
 
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.interview.proto.Mailer;
 import com.interview.proto.Mailer.Attribute;
 import com.interview.proto.Mailer.AttributeType;
 import com.interview.proto.Mailer.Email;
@@ -17,27 +14,26 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
-@Service("emailservice")
-public class EmailService {
+// @RunWith(SpringJUnit4ClassRunner.class)
+// @ContextConfiguration("classpath:applicationContext.xml")
+public class EmailTest {
 
-  @Autowired
-  Properties myProps;
+  // @Test
+  public static void main(String[] args) {
+    System.out.println("Testing in another");
+    Map<AttributeType, String> data = new HashMap<AttributeType, String>();
+    data.put(AttributeType.SUPPORT_REQUEST_EMAIL, "deepcyan@gmail.com");
+    // Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_REGISTRATION_INTERVIEWER,
+    // data, "deepcyan@gmail.com");
+    sendMail(Mailer.EmailType.NEW_REGISTRATION, data, "deepcyan@gmail.com");
+  }
 
-  private static final Logger logger = Logger.getLogger(EmailService.class);
-
-  /**
-   * Sends an email of type `emailType` with variables `params` to `recipient`.
-   * 
-   * @param emailType Type of email. See mailer.proto for types.
-   * @param params Map of variables and values to be substituted in email templates.
-   * @param recipient Email ID of recipient
-   */
-  public void sendMail(EmailType emailType, Map<AttributeType, String> params, String recipient) {
-
+  private static void sendMail(EmailType emailType, Map<AttributeType, String> params,
+      String recipient) {
     ConnectionFactory factory = new ConnectionFactory();
     Connection connection;
-    factory.setHost(myProps.getProperty("mail.channel.host"));
-    String queue = myProps.getProperty("mail.channel.queue");
+    factory.setHost("localhost");
+    String queue = "hello";
 
     Email.Builder emailBuilder = Email.newBuilder();
     emailBuilder.setRecipient(recipient);
@@ -56,7 +52,7 @@ public class EmailService {
       channel.close();
       connection.close();
     } catch (IOException e) {
-      logger.error("", e);
+      System.err.println(e.getMessage());
     }
   }
 }

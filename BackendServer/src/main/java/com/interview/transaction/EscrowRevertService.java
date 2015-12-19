@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
-
 import com.interview.framework.DATASTORES;
 import com.interview.framework.RETURN_VALUES;
 import com.interview.framework.USER;
@@ -22,8 +21,9 @@ import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;
 
 @Service("escrowrevertT")
-public class EscrowRevertService  {
-	private Logger log = Logger.getLogger(EscrowRevertService.class);
+public class EscrowRevertService {
+  private Logger log = Logger.getLogger(EscrowRevertService.class);
+
   public int revertEscrow(Interview interview, double amount) {
     int stage = 0;
     String cAccountId = null;
@@ -36,13 +36,12 @@ public class EscrowRevertService  {
 
       if (eb >= amount) {
         double newEB = eb - amount;
-        Map<String, Object> userInfo =
-            DataStoreRegistry.getInstance().getInterviewerDataStore()
-                .getUserInfo(interview.getInterviewee());
+        Map<String, Object> userInfo = DataStoreRegistry.getInstance().getInterviewerDataStore()
+            .getUserInfo(interview.getInterviewee());
         prevBalance = new Double(userInfo.get(USER.BALANCE).toString());
-        log.info("AMOUNT"+amount);
-        log.info("prevBalance"+prevBalance);
-        log.info("ESCROW_REVERT_FEE"+VARIABLES.ESCROW_REVERT_FEE );
+        log.info("AMOUNT" + amount);
+        log.info("prevBalance" + prevBalance);
+        log.info("ESCROW_REVERT_FEE" + VARIABLES.ESCROW_REVERT_FEE);
         stage = 1;
 
         DataStoreRegistry.getInstance().getInterviewDataStore()
@@ -53,15 +52,14 @@ public class EscrowRevertService  {
         double fee = (amount * VARIABLES.ESCROW_REVERT_FEE / 100);
         double net = amount - fee;
 
-        newBalance =
-            DataStoreRegistry.getInstance().getInterviewerDataStore()
-                .updateBalance(interview.getInterviewee(), net, VARIABLES.ADD);
-        log.info("new Balance"+newBalance );
-        log.info("Difference"+(newBalance - prevBalance));
-        log.info("NET"+net);
-        double interviewerbalance=(double)Math.round((newBalance - prevBalance) * 100) / 100;
+        newBalance = DataStoreRegistry.getInstance().getInterviewerDataStore()
+            .updateBalance(interview.getInterviewee(), net, VARIABLES.ADD);
+        log.info("new Balance" + newBalance);
+        log.info("Difference" + (newBalance - prevBalance));
+        log.info("NET" + net);
+        double interviewerbalance = (double) Math.round((newBalance - prevBalance) * 100) / 100;
         if (interviewerbalance == net) {
-        	log.info("Enterred in the stage 3");
+          log.info("Enterred in the stage 3");
           stage = 3;
 
           CompanyAccount cAccount = new CompanyAccount();
@@ -77,15 +75,12 @@ public class EscrowRevertService  {
               DataStoreRegistry.getInstance().getCompanyAccountStore().insertTransaction(cAccount);
 
           stage = 4;
-          log.info("FEES"+fee);
-          log.info("NET"+net);
-          transaction =
-              Services
-                  .getInstance()
-                  .getTransactionHistoryService()
-                  .logTransaction(new Date().getTime(), DATASTORES.TRANSACTION.TTYPE.DEBIT,
-                      "ESCROW", interview.getInterviewee(), DATASTORES.TRANSACTION.TSTATUS.DONE,
-                      "Reverted funds in dispute", amount, fee, net, newBalance);
+          log.info("FEES" + fee);
+          log.info("NET" + net);
+          transaction = Services.getInstance().getTransactionHistoryService().logTransaction(
+              new Date().getTime(), DATASTORES.TRANSACTION.TTYPE.DEBIT, "ESCROW",
+              interview.getInterviewee(), DATASTORES.TRANSACTION.TSTATUS.DONE,
+              "Reverted funds in dispute", amount, fee, net, newBalance);
 
           stage = 5;
 

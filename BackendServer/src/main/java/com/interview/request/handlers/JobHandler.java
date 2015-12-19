@@ -36,85 +36,92 @@ public class JobHandler extends RequestHandler {
         e.printStackTrace();
         resMap.put("status", -1);
       }
-    } else if (null != SUB_REQ && REQUEST_TYPES.GET_JOBS_OFFERED.equals(SUB_REQ)){
+    } else if (null != SUB_REQ && REQUEST_TYPES.GET_JOBS_OFFERED.equals(SUB_REQ)) {
       try {
         String interviewer = (String) data.get(DATASTORES.JOB.INTERVIEWER);
         List<Job> jobs = DataStoreRegistry.getInstance().getJobStore().getJobsOffered(interviewer);
-        for(Job job : jobs){
-        	List<JobApplication> jobApplications = DataStoreRegistry.getInstance().getJobApplicationStore().getJobApplicationsByJobId(job.getId());
-        	for(JobApplication jobApplication : jobApplications){
-        		if(null != jobApplication.getCvFileId() && !"".equals(jobApplication.getCvFileId())){
-        			jobApplication.setUploadedFile(DataStoreRegistry.getInstance().getUploadedFileDataStore()
-        					.getUploadedFile(new ObjectId(jobApplication.getCvFileId())));
-        		}
-        		jobApplication.setRating(DataStoreRegistry.getInstance().getRatingStore().getAvgRating(jobApplication.getApplicantId()));
-        		jobApplication.setReviewCount(DataStoreRegistry.getInstance().getRatingStore().getReviewsCount(jobApplication.getApplicantId()));
-        		Map<String, Object> userMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getUserExternalInfo(jobApplication.getApplicantId());
-        		jobApplication.setProfilePic((String)userMap.get(USER.PROFILE_PIC));
-        	}       
-        	job.setJobApplications(jobApplications);
+        for (Job job : jobs) {
+          List<JobApplication> jobApplications = DataStoreRegistry.getInstance()
+              .getJobApplicationStore().getJobApplicationsByJobId(job.getId());
+          for (JobApplication jobApplication : jobApplications) {
+            if (null != jobApplication.getCvFileId() && !"".equals(jobApplication.getCvFileId())) {
+              jobApplication
+                  .setUploadedFile(DataStoreRegistry.getInstance().getUploadedFileDataStore()
+                      .getUploadedFile(new ObjectId(jobApplication.getCvFileId())));
+            }
+            jobApplication.setRating(DataStoreRegistry.getInstance().getRatingStore()
+                .getAvgRating(jobApplication.getApplicantId()));
+            jobApplication.setReviewCount(DataStoreRegistry.getInstance().getRatingStore()
+                .getReviewsCount(jobApplication.getApplicantId()));
+            Map<String, Object> userMap = DataStoreRegistry.getInstance().getInterviewerDataStore()
+                .getUserExternalInfo(jobApplication.getApplicantId());
+            jobApplication.setProfilePic((String) userMap.get(USER.PROFILE_PIC));
+          }
+          job.setJobApplications(jobApplications);
         }
         resMap.put("jobs", jobs);
       } catch (RemoteException e) {
         e.printStackTrace();
         resMap.put("jobs", null);
       }
-      
-    } else if (null != SUB_REQ && REQUEST_TYPES.SEARCH_JOB_INFO.equals(SUB_REQ)){
-    	try {
-    		Map<String, Object> result = (Map<String, Object>) data.get("result");
-    		Iterator it = result.keySet().iterator();
-    		while(it.hasNext()){
-    			Map<String, Object> obj =  (Map<String, Object>) result.get(it.next());    			
-    			Job job = DataStoreRegistry.getInstance().getJobStore().getJob((String)obj.get("id"));
-    			obj.put("salary", null == job ? "" : job.getSalary());
-    			obj.put("experience", null == job ? "" : job.getExperience());
-    			obj.put("location", null == job ? "" : job.getLocation());
-    			
-    			Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore().getUserInfo((String)obj.get("interviewer"));    			
-    			obj.put("rating", idata.get(USER.RATING));
-    			obj.put("profilepic", idata.get(USER.PROFILE_PIC));
-    			
-    		}
-    		resMap.put("result", result);    		
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			resMap.put("result", null);   
-		}
+
+    } else if (null != SUB_REQ && REQUEST_TYPES.SEARCH_JOB_INFO.equals(SUB_REQ)) {
+      try {
+        Map<String, Object> result = (Map<String, Object>) data.get("result");
+        Iterator it = result.keySet().iterator();
+        while (it.hasNext()) {
+          Map<String, Object> obj = (Map<String, Object>) result.get(it.next());
+          Job job = DataStoreRegistry.getInstance().getJobStore().getJob((String) obj.get("id"));
+          obj.put("salary", null == job ? "" : job.getSalary());
+          obj.put("experience", null == job ? "" : job.getExperience());
+          obj.put("location", null == job ? "" : job.getLocation());
+
+          Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .getUserInfo((String) obj.get("interviewer"));
+          obj.put("rating", idata.get(USER.RATING));
+          obj.put("profilepic", idata.get(USER.PROFILE_PIC));
+
+        }
+        resMap.put("result", result);
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        resMap.put("result", null);
+      }
     } else if (null != SUB_REQ && REQUEST_TYPES.GET_JOB.equals(SUB_REQ)) {
-    	try {
-    		String jobid = (String) data.get(DATASTORES.JOB.ID);
-    		Job job = DataStoreRegistry.getInstance().getJobStore().getJob(jobid);    		
-    		
-    		if(null != job) {
-    			resMap.put("job", job);
-    			Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore().getUserInfo(job.getInterviewer());    			
-    			resMap.put("rating", idata.get(USER.RATING));
-    			resMap.put("profilepic", idata.get(USER.PROFILE_PIC));
-    		} else {
-    			resMap.put("job", null);
-    		}
-    		
-		} catch (Exception e) {
-			e.printStackTrace();
-			resMap.put("job", null);
-		}
-    }else if (null != SUB_REQ && REQUEST_TYPES.UPDATE_JOB.equals(SUB_REQ)){
-    	try {
-    		Job job = (Job)data.get("job");
-    		String jobid = (String) job.getId();
-    		try {
-  	    	  DataStoreRegistry.getInstance().getJobStore().updateJob(jobid, job);;
-  	    	  resMap.put("status", 1);
-  	      } catch (RemoteException e) {
-  	    	  resMap.put("status", -1);
-  	      }
-    		
-		} catch (Exception e) {
-			e.printStackTrace();
-			resMap.put("job", null);
-		}
+      try {
+        String jobid = (String) data.get(DATASTORES.JOB.ID);
+        Job job = DataStoreRegistry.getInstance().getJobStore().getJob(jobid);
+
+        if (null != job) {
+          resMap.put("job", job);
+          Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .getUserInfo(job.getInterviewer());
+          resMap.put("rating", idata.get(USER.RATING));
+          resMap.put("profilepic", idata.get(USER.PROFILE_PIC));
+        } else {
+          resMap.put("job", null);
+        }
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        resMap.put("job", null);
+      }
+    } else if (null != SUB_REQ && REQUEST_TYPES.UPDATE_JOB.equals(SUB_REQ)) {
+      try {
+        Job job = (Job) data.get("job");
+        String jobid = (String) job.getId();
+        try {
+          DataStoreRegistry.getInstance().getJobStore().updateJob(jobid, job);;
+          resMap.put("status", 1);
+        } catch (RemoteException e) {
+          resMap.put("status", -1);
+        }
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        resMap.put("job", null);
+      }
     }
     return resMap;
   }

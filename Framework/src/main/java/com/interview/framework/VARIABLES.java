@@ -1,7 +1,5 @@
 package com.interview.framework;
 
-
-
 public interface VARIABLES {
 
   String REGISTRATION_INFO = "REGISTRATION_INFO";
@@ -39,27 +37,28 @@ public interface VARIABLES {
 
   int ADD = 1;
   int SUB = 2;
-  interface JOB_DETAIL{
-	  String TITLE="title";
-	  String JOB_ID="_id";
-	  String MESSAGE="message";
-	  String FROM="from";
-	  String TO="to";
+
+  interface JOB_DETAIL {
+    String TITLE = "title";
+    String JOB_ID = "_id";
+    String MESSAGE = "message";
+    String FROM = "from";
+    String TO = "to";
   }
-  
+
   interface MESSAGE {
-	  String TYPE = "type";
-	  String TITLE = "title";
-	  String ID = "id";
-	  String MESSAGE = "message";
-	  String FROM = "from";
-	  String TO = "to";
-	  String PARENTMESSAGEID = "parentMessageId";
-	  String STATUS_READ = "read";
-	  String STATUS_UNREAD = "unread";
-	  String REFENTITY = "JOB";
+    String TYPE = "type";
+    String TITLE = "title";
+    String ID = "id";
+    String MESSAGE = "message";
+    String FROM = "from";
+    String TO = "to";
+    String PARENTMESSAGEID = "parentMessageId";
+    String STATUS_READ = "read";
+    String STATUS_UNREAD = "unread";
+    String REFENTITY = "JOB";
   }
-  
+
   interface POST_INTERVIEW {
     String TITLE = "title";
     String INTERVIEWEE = "interviewee";
@@ -95,8 +94,8 @@ public interface VARIABLES {
     String DATE = "dt";
     String STATUS = "status";
     String BID_FID = "BID_FID";
-    String STATUS_STRING="STATUS_STRING";
-    String INTERVIEWEE="INTERVIEWEE";
+    String STATUS_STRING = "STATUS_STRING";
+    String INTERVIEWEE = "INTERVIEWEE";
   }
 
   interface STATUS_CHANGE_TYPE {
@@ -136,7 +135,6 @@ public interface VARIABLES {
       String ESCROW_NOTIFICATION = "ESN";
       String RATING_NOTIFICATION = "RTN";
     }
-
   }
 
   final String NORBERT_SEARCH_SERVICE_NAME = "search";
@@ -144,4 +142,8 @@ public interface VARIABLES {
   final String NORBERT_DATASTORE_SERVICE_NAME = "datastore";
   final String NORBERT_FILESERVER_SERVICE_NAME = "fileserver";
   final String NORBERT_ZK_CONNECTION_STRING = "localhost:2181";
+
+  final String SUPPORT_REQUEST_NAME = "SUPPORT_REQUEST_NAME";
+  final String SUPPORT_REQUEST_MESSAGE = "SUPPORT_REQUEST_MESSAGE";
+  final String SUPPORT_REQUEST_EMAIL = "SUPPORT_REQUEST_EMAIL";
 }

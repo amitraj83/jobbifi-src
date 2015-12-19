@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import emails
 from emails.template import JinjaTemplate as T
 
@@ -19,10 +20,6 @@ Welcome and thanks for registering with Jobbifi!
 
 You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.
 
-The following Email and password will be required to gain access to your application account.
- 
-Your email: {Email}
-
 If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.
  
 Best regards
@@ -34,11 +31,7 @@ Jobbifi Support
 Welcome and thanks for registering with Jobbifi!
 
 You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.
-
-The following Email and password will be required to gain access to your application account.
  
-Your email: {Email}
-
 If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.
  
 Best regards
@@ -222,7 +215,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.MOCK_INTERVIEW_DELETED] = m
+templates[mailer_pb2.INTERVIEW_DELETED] = m
 
 ###################################################################################################
 
@@ -258,7 +251,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.BID_PLACED_FOR_INTERVIEWEE] = m
+templates[mailer_pb2.BID_PLACED_INTERVIEWEE] = m
 
 
 ###################################################################################################
@@ -295,7 +288,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.BID_PLACED_FOR_INTERVIEWER] = m
+templates[mailer_pb2.BID_PLACED_INTERVIEWEE] = m
 
 
 ###################################################################################################
@@ -326,7 +319,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.INTERVIEW_AWARDED] = m
+templates[mailer_pb2.AWARD_INTERVIEW_SUCCESS] = m
 
 
 ###################################################################################################

@@ -1,17 +1,17 @@
 package com.interview.test.lifecycle;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:applicationContext.xml")
+//import org.junit.After;
+//import org.junit.Before;
+//import org.junit.Test;
+//import org.junit.runner.RunWith;
+//import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+//
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration("classpath:applicationContext.xml")
 public class InterviewLifeCycleTest {
 
-  String encData = "";
+/*  String encData = "";
 
   @Before
   public void initializeTest() {}
@@ -24,25 +24,25 @@ public class InterviewLifeCycleTest {
   @Test
   public void testDecrypt() {
 
-    /*
+    
      * String store; try { store = DataStoreRegistry.getInstance().getInterviewDataStore
      * ().getInterview("52320928a6a64a29b0250ca4").getInterviewee();
      * System.out.println("Interviewer : "+store); } catch (RemoteException e) { // TODO
      * Auto-generated catch block e.printStackTrace(); }
-     */
+     
 
-    /*
+    
      * ResetPasswordDataStore ds = new ResetPasswordDataStore(); ds.setExprired(new
      * ObjectId("525ebc45a6a6e885ca37d610"), true); ResetPasswordEntity entity =
      * ds.getResetPasswordEntity(new ObjectId("525ebc45a6a6e885ca37d610")); assertEquals(true,
      * entity.isExpired());
-     */
+     
   }
 
   @Test
   public void testEncrypt() {
 
-    /*
+    
      * GenerateResetPasswordURLService gen = new GenerateResetPasswordURLService(); String url =
      * gen.generateURL("adam", "adam@tcd.ie"); String[] parts = url.split("[?]")[1].split("&");
      * String authInstance = ""; String authId = ""; String authToken = "";
@@ -73,11 +73,11 @@ public class InterviewLifeCycleTest {
      * 
      * 
      * ds.delete(new ObjectId( entity.getId()));
-     */
+     
 
   }
 
-  /*
+  
    * 
    * private ObjectId iid; private ObjectId bid_id; private Interview interview; private Bid bid;
    * InterviewerDataStore iids = new InterviewerDataStore();
@@ -240,9 +240,9 @@ public class InterviewLifeCycleTest {
    * InterviewDataStore ids = new InterviewDataStore(); ids.deleteInterivew(iid);
    * 
    * BidStore bs = new BidStore(); bs.deleteBid(bid_id); }
-   */
+   
   @After
   public void remove() {
 
   }
-}
+*/}

@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/pages/common/css.jsp" %>
-    <title>Mock Interview</title>
+    <title>Mock Interview Detail </title>
 </head>
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
@@ -11,108 +11,49 @@
 <div id="wrapper">
     <div id="page-content">
         <div class="container">
-            <div class="col-md-8 page-content">
-                <div class="clearfix white-container">
-                    <h2 style="padding-right: 90px;" class="title"> ${title}</h2>
-                    <!-- check this -->
-                    <c:choose>
-                        <c:when test="${statusString !='OPEN'}">
-                            <h4 class="interview-status">${status_string}</h4>
-                        </c:when>
-                    </c:choose>
-                    <p>
-                        <i class="fa fa-map-marker"></i>&nbsp;
-                        ${experience} yr exp. | $${budget} | Posted on <span id="date"></span>
-                    </p>
+            <div class="row">
+                
+                <div class="col-md-9 page-content">
 
-                    <p>
-                        Skills:
-                        <c:forEach var="skill" items="${skills}">
-                        <span class="label label-info">${skill}</span> &nbsp;
-                        </c:forEach>
-                    <hr>
-                    <h3>Job Description</h3>
+                    <div class="clearfix white-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3 class="title">
+                                    <a style="padding-right: 90px;" href="javascript:void(0);"
+                                       id="interviewee_interview_title">${title}</a>
+                                </h3>
+                                <h4 class="interview-status">${status_string}</h4>
 
-                    <p>${description}</p>
-                </div>
-
-
-                <sec:authorize access="isAuthenticated()">
-
-                    <c:choose>
-                        <c:when test="${bid != null}">
-                            <div class="clearfix white-container" id="bidContainer">
-                                <h2 class="title">Your Bid Details:</h2>
-
-                                <p>
-                                    <b>Amount ($) :</b> ${bid.price} <br/>
-                                    <b>Message :</b> ${bid.msg}
+                                <p><i class="fa fa-clock-o"></i> Posted on <span id="date"></span></p>
+                                <hr>
+                                <p><b>Skills Required:</b>
+                                    <c:forEach var="skill" items="${skills}">
+                                        <label class="label label-info">${skill}</label>
+                                    </c:forEach>
                                 </p>
+
+                                <p><b>Description</b>:${description}</p>
+
+                                <p>${ifile}</p>
                             </div>
-                        </c:when>
-                        <c:otherwise>
-
-                            <c:choose>
-                                <c:when test="${statusString =='OPEN'}">
-                                    <div class="clearfix white-container" id="bidContainer">
-                                        <h4 class="title">Place a Bid : </h4>
-
-                                        <form class="form form-horizontal" id="bidForm">
-                                            <input type="hidden" name="iid" value="${iid}"/>
-                                            <input type="hidden" name="bidfid" value=""/>
-
-                                            <div class="form-group">
-                                                <label class="col-md-2">Amount ($)</label>
-
-                                                <div class="col-md-8">
-                                                    <input class="form-control" id="price" type="text" placeholder="0"
-                                                           name="price">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2">Message</label>
-
-                                                <div class="col-md-8">
-                                                    <textarea name=msg rows="5" id="msg" cols="80"
-                                                              class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-offset-2 col-md-8">
-                                                    <button type="submit" class="btn btn-default">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                            <div class="col-md-4">
+                                <div class="well well-default">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img class="img-responsive img-hover" src="$postedbypic$" width="150px"
+                                                 height="150px"/>
+                                        </div>
+                                        <div class="col-md-6">Posted By<br><span>${interviewee}</span></div>
+                                        <input class="custom-rating" type="number" id="userRating"/>
                                     </div>
-                                </c:when>
-                            </c:choose>
-
-                        </c:otherwise>
-                    </c:choose>
-                </sec:authorize>
-            </div>
-            <div class="col-md-4 page-sidebar">
-                <div class="widget sidebar-widget white-container ">
-                    <div class="row">
-
-                        <div class="col-md-6">
-                            <a href="<c:url value='/userprofile.do?name=${interviewee}' />" target="_blank">
-                                <img class="img-responsive img-hover" src="<c:url value=''/>${profilepic}"
-                                     alt="${interviewee}" style="height:100px;">
-                            </a>
-                        </div>
-                        <div class="col-md-6" style="padding:0px 0px 0px 2px">
-                            Posted By<br>
-								<span>
-									<a target="_blank"
-                                       href="<c:url value='/userprofile.do?name=${interviewee}' />">${interviewee}</a>
-								</span>
-                            <input type="number" class="user-rating hide" value="0"/>
-                            <button onclick="contactMe('${interviewee}');" class="btn btn-default"
-                                    style='margin:5px 0;'>Contact Me
-                            </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
+                   
+
                 </div>
             </div>
 
@@ -120,60 +61,29 @@
     </div>
 </div>
 
+
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
-
-    var IID = '${iid}';
-    var interviewee = '${interviewee}';
+    var interview_id = "${iid}";
+    var ecsrowbalance = "0";
+    var budget = "${budget}";
+    var ratingOption = {'min': 0, 'max': 5, 'step': 1, 'showClear': false, 'showCaption': false};
+    var ratingOptionDisable = {
+        'min': 0,
+        'max': 5,
+        'step': 1,
+        'readonly': true,
+        'showClear': false,
+        'showCaption': false
+    };
 
     $(function () {
-        $("#nav_mocks").addClass("active");
+        loadEscrowList();
         showUserRating();
-        $("#bidForm").validate({
-            rules: {
-                price: {number: true, required: true},
-                message: {required: true}
-            },
-            submitHandler: function (form) {
-                placeBid();
-                return false;
-            }
-        });
-
-        $("#date").html(prettyDate(new Date(Number(${dated}))));
+        checkRatingAllowed();
+        $("#date").html(prettyDate(new Date(Number(${dt}))));
     });
-
-    function placeBid() {
-        $.ajax({
-            type: "GET",
-            url: "<c:url value='/makebid.do'/>",
-            data: $("#bidForm").serialize(),
-        }).done(function (msg) {
-            var json = jQuery.parseJSON(msg);
-            if (json.success == 1) {
-                showSuccess("Your bid placed successfully.");
-                var html = '<h2 class="title">Your Bid Details:</h2>' +
-                        '<p>' +
-                        '<b>Amount ($) :</b> ' + $("#price").val() + ' <br/>' +
-                        '<b>Message :</b> ' + $("#msg").val() +
-                        '</p>';
-
-                $("#bidContainer").html(html);
-
-            } else {
-                showError("Request failed to bid on the Mock.");
-            }
-            $("#price").val('');
-            $("#msg").val('');
-        });
-
-        $.ajax({
-            type: 'POST',
-            url: BASE_URL + 'addcontactlist.do',
-            data: "to=" + interviewee
-        });
-    }
 
     function showUserRating() {
         $.ajax({
@@ -181,8 +91,8 @@
             dataType: 'JSON',
             url: BASE_URL + 'userrating.do?username=${interviewee}',
             success: function (data) {
-                $(".user-rating").val(data.rating);
-                $(".user-rating").rating({
+                $(".custom-rating").val(data.rating);
+                $(".custom-rating").rating({
                     'min': 0,
                     'max': 5,
                     'step': 1,
@@ -194,20 +104,109 @@
         });
     }
 
-    function contactMe(interviewee) {
-        if (LOGIN_USER == null) {
-            showLoginBox();
-            showInfo("Please login to contact to User.");
-            $("#callback").val("showMockMessageBox");
-            return;
-        }
+    function loadEscrowList() {
+        var allrows = "";
+        $.ajax({
+            type: "POST",
+            url: BASE_URL + "escrowlist.do",
+            data: "iid=" + interview_id,
+            async: false
+        }).done(function (res) {
+            var resData = jQuery.parseJSON(res);
+            var totalReleased = 0;
+            if (resData.escrowlist.length > 0) {
+                for (var i = 0; i < resData.escrowlist.length; i++) {
+                    var statusButton = "";
+                    if (resData.escrowlist[i].status == "0") {
+                        ecsrowbalance = Number(resData.escrowlist[i].amount) + Number(ecsrowbalance);
+                        statusButton = '<span  iid="' + resData.escrowlist[i].iid + '" escid="' + resData.escrowlist[i].id + '" esc_amount="'
+                                + resData.escrowlist[i].amount + '" class="label label-warning">Not Released</button>';
+                    } else {
+                        statusButton = '<span class="label label-success">Released</span>';
+                        totalReleased = totalReleased + Number(resData.escrowlist[i].amount);
+                    }
 
-        showMockMessageBox();
+                    allrows = allrows + '<tr>' +
+                            '<td class="col-md-3">' + resData.escrowlist[i].visibleId + '</td>' +
+                            '<td class="col-md-3">$' + resData.escrowlist[i].amount + '</td>' +
+                            '<td class="col-md-3">' + statusButton + '</td>' +
+                            '<td class="col-md-3">' + prettyDate(new Date(Number(resData.escrowlist[i].date))) + '</td>' +
+                            '</tr>';
+                }
+            } else {
+                allrows = "<tr><td colspan='4'>No escrow found.</td></tr>";
+            }
+
+            $("#interviewee_interview_allescrows").append(allrows);
+            $("#escrow_screen_totalescrow").html("$" + ecsrowbalance);
+            $("#escrow_screen_totalreleased").html("$" + totalReleased);
+            $("#escrow_screen_totalbudget").html("$" + budget);
+        });
     }
 
-    function showMockMessageBox() {
-        console.log("show message box");
+    function checkRatingAllowed() {
+        var param = "iid=" + interview_id + "&rateFor='${interviewee}'";
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + "ratingallowed.do",
+            data: param,
+        }).done(function (res) {
+            var resData = jQuery.parseJSON(res);
+            if (resData.result == false && resData.ratingavailable == false) {
+                $("#r1").rating(ratingOption);
+                $("#r2").rating(ratingOption);
+                $("#r3").rating(ratingOption);
+                $("#r4").rating(ratingOption);
+                $("#tabRating").hide();
+            } else if (resData.result == false && resData.ratingavailable) {
+                $("#r1").val(resData.rate1).rating(ratingOptionDisable);
+                $("#r2").val(resData.rate2).rating(ratingOptionDisable);
+                $("#r3").val(resData.rate3).rating(ratingOptionDisable);
+                $("#r4").val(resData.rate4).rating(ratingOptionDisable);
+                $("#submitrating").hide();
+                $("#reviewSection").html("<p>" + resData.message + "</p>");
+            } else {
+                $("#r1").rating(ratingOption);
+                $("#r2").rating(ratingOption);
+                $("#r3").rating(ratingOption);
+                $("#r4").rating(ratingOption);
+
+                $("#ratingForm").validate({
+                    rules: {
+                        comment: {required: true}
+                    },
+                    submitHandler: function (form) {
+                        submitRating();
+                        return;
+                    }
+                });
+            }
+        });
     }
+
+    $(document).on('click', "#submitrating", function () {
+        var iid = $(this).attr("alt");
+        var param = "";
+        param = param + "1=" + $("#r1").rating().val() + "&";
+        param = param + "2=" + $("#r2").rating().val() + "&";
+        param = param + "3=" + $("#r3").rating().val() + "&";
+        param = param + "4=" + $("#r4").rating().val();
+        param = param + "&msg=" + $("#new-review").val() + "&iid=" + interview_id + "&rateFor='${interviewee }'";
+
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + "rate.do",
+            data: param
+        }).done(function (res) {
+            var resData = jQuery.parseJSON(res);
+            if (resData.code == 23) {
+                $("#rateinterviewer").prepend('<div class="alert alert-success" role="alert">Thank you. Your ratings have been saved.</div>');
+            } else {
+                $("#rateinterviewer").prepend('<div class="alert alert-danger" role="alert">Sorry. Try again later.</div>');
+            }
+        });
+        return;
+    });
 </script>
 </body>
 </html>

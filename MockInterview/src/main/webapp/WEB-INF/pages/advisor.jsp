@@ -228,7 +228,7 @@
 	                        '</div>' +
 	                        '<div class="col-md-9">' +
 	                        '<div class="advisor-name"><a target="_blank" href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
-	                        '<div class="advisor-title"><strong>Skills</strong> {{ #skills }}<span class="label label-default">{{ . }}</span> {{ /skills }}</div>' +
+	                        '<div class="advisor-title"><strong>Skills</strong> {{ #skills }}<span class="label label-info">{{ . }}</span> {{ /skills }}</div>' +
 	                        '<div><span class="advisor-rate"><strong>Rate:&nbsp;&nbsp;</strong><i class="fa fa-inr"></i> {{rate}} /hr</span><span></div>' +
 	
 	                        '<table class="advisor-result-table">' +

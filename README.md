@@ -12,3 +12,6 @@ Directories
 * MockInterview: Creates classes needed for web server
 * Scripts: (Old) scripts to run all above projects (now superseded by deployment manager)
 * WebApp: JSP, HTML, CSS, images, etc. needed by Tomcat server
+
+Run MongoServer
+sudo /usr/bin/mongod --config /etc/mongod.conf

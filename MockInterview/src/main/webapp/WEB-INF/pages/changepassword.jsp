@@ -50,7 +50,12 @@
                                 <label class="col-lg-3 control-label"></label>
 
                                 <div class="col-lg-9">
-                                    <button class="btn btn-success" type="submit">Update Password</button>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                                <button class="btn btn-success" type="submit">Update Password</button>
+                                        </div>
+                                        <div class="col-md-9" id="changepasswordmessage" ></div>    
+                                    </div>    
                                 </div>
                             </div>
                         </form>
@@ -65,7 +70,10 @@
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
+
     $(function () {
+
+         
         $("#changePasswordForm").validate({
             rules: {
                 currentPassword: {required: true, minlength: 8},
@@ -80,6 +88,10 @@
     });
 
     function changePassword() {
+
+        
+
+
         var data = "currentPassword=" + CryptoJS.SHA1($("#currentPassword").val()) +
                 "&newPassword=" + CryptoJS.SHA1($("#newPassword").val());
         $.ajax({
@@ -91,6 +103,19 @@
                 $("#currentPassword").val('');
                 $("#newPassword").val('');
                 $("#confirmNewPassword").val('');
+
+                var qresponse = resData.RESULT
+                if(qresponse == "ERROR"){
+                    if(resData.MSG != null)
+                        $("#changepasswordmessage").html('<div class="alert alert-danger" role="alert">'+resData.MSG+'</div>');   
+                    else
+                        $("#changepasswordmessage").html('<div class="alert alert-danger" role="alert">Password change failed. Contact Helpdesk.</div>');   
+                }
+                else if(qresponse == "SUCCESS"){
+                    $("#changepasswordmessage").html('<div class="alert alert-success" role="alert">Password changed successfully</div>');
+                }
+
+                
             },
             error: function () {
                 console.log("Error occured while processing the request");

@@ -153,7 +153,7 @@
                         '<div class="col-md-9">' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '<span class="mock_title"><a href="">{{ title }}</a></span><span class="pull-right">' +
+                        '<span class="mock_title" ><a target="_blank" href="{{ BASE_URL }}mockdetail.do?iid={{ id }}">{{ title }}</a></span><span class="pull-right">' +
                         '<i class="fa fa-calendar"></i>{{ datePosted }}</span>' +
                             // '<span class="label label-warning pull-right">{{ status }}</span>'+
                         '</div></div>' +
@@ -222,6 +222,12 @@
                 $("#searchMockResult").html("<div class='alert alert-info'>No Results Found.</div>");
             }
 
+
+            /*$(document).on('click', ".mock_title", function(event){
+                alert("Clicked");
+                alert($(this).attr("iid"));
+            });*/
+
             $("#maincontainer").html(screen);
             $('html, body').animate({
                 scrollTop: 0
@@ -229,6 +235,17 @@
         });
     }
 
+
+    function showMockDetails (iid) {
+        alert("IID "+iid);
+        $.ajax({
+            type: "GET",
+            url: "<c:url value='/mockdetail.do'/>",
+            data: "iid="+iid,
+        }).done(function (msg) {
+            alert("Yes show details"+msg);
+        });
+    }
 
     function getPaginationHTMLForMock(totalRecords, currentPage, searchKey) {
         var PAGE_SIZE = 10;

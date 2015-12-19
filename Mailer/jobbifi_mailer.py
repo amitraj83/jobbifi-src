@@ -7,25 +7,20 @@ sys.path.append('gen-py')
 import mailer_pb2
 
 from templates import *
-import pdb
 
 def parse_email(email_message):
     email = mailer_pb2.Email()
-    # pdb.set_trace()
     email.ParseFromString(email_message)
     return email
 
 def callback(ch, method, properties, body):
     print " [x] Received %r" % (body,)
     email = parse_email(body)
-    # pdb.set_trace()
-    # debuglevel = 0
     emailData = {}
     for kv in email.data:
         emailData[mailer_pb2._ATTRIBUTETYPE.values_by_number[kv.type].name] = kv.value
 
     try:
-        pdb.set_trace()
         templates[email.type].send(render=emailData,
                   to=email.recipient,
                   smtp={"host": SMTP_HOST, "port": SMTP_PORT})

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import emails
 from emails.template import JinjaTemplate as T
 
@@ -60,7 +61,6 @@ Click on this link:
 {Reset Password URL}
 OR
 Copy and paste this URL into your browser’s address bar.
-{Reset Password URL}
 The link will expire in 24 hours.
 If you did not request a password reset, please ignore this email.
 
@@ -226,7 +226,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.MOCK_INTERVIEW_DELETED] = m
+templates[mailer_pb2.INTERVIEW_DELETED] = m
 
 ###################################################################################################
 
@@ -262,7 +262,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.BID_PLACED_FOR_INTERVIEWEE] = m
+templates[mailer_pb2.BID_PLACED_INTERVIEWEE] = m
 
 
 ###################################################################################################
@@ -299,7 +299,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.BID_PLACED_FOR_INTERVIEWER] = m
+templates[mailer_pb2.BID_PLACED_INTERVIEWEE] = m
 
 
 ###################################################################################################
@@ -330,7 +330,7 @@ Jobbifi Support
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open("logo.png", "rb"))
 
-templates[mailer_pb2.INTERVIEW_AWARDED] = m
+templates[mailer_pb2.AWARD_INTERVIEW_SUCCESS] = m
 
 
 ###################################################################################################

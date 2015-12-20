@@ -56,7 +56,7 @@ Please choose one of the options below to reset your password.
 Click on this link:
 {{ PASSWORD_RESET_URL }}
 OR
-Copy and paste this URL into your browser’s address bar.
+Copy and paste this URL into your browser's address bar.
 {{ PASSWORD_RESET_URL }}
 The link will expire in 24 hours.
 If you did not request a password reset, please ignore this email.
@@ -71,7 +71,7 @@ Please choose one of the options below to reset your password.
 Click on this link:
 {{ PASSWORD_RESET_URL }}
 OR
-Copy and paste this URL into your browser’s address bar.
+Copy and paste this URL into your browser's address bar.
 {{ PASSWORD_RESET_URL }}
 The link will expire in 24 hours.
 If you did not request a password reset, please ignore this email.
@@ -127,7 +127,7 @@ A new mock interview {{ INTERVIEW_TITLE }} that matches your profile is availabl
 Please click on below link to view the mock interview.
 {{ INTERVIEW_URL }}
 
-We’ll continue to send you freshly published mock interviews we think are a good match with your profile.
+We'll continue to send you freshly published mock interviews we think are a good match with your profile.
 
 
 Best Regards, 
@@ -141,7 +141,7 @@ A new mock interview {{ INTERVIEW_TITLE }} that matches your profile is availabl
 Please click on below link to view the mock interview.
 {{ INTERVIEW_URL }}
 
-We’ll continue to send you freshly published mock interviews we think are a good match with your profile.
+We'll continue to send you freshly published mock interviews we think are a good match with your profile.
 
 
 Best Regards, 
@@ -193,7 +193,7 @@ m = emails.Message(html=T("""Hello {{ USER_NAME }},
 
 Please note that a mock interview you have placed a bid to, {{ INTERVIEW_TITLE }}, has been cancelled by the interviewee.
 
-We appreciate your participation in the Jobbifi’s marketplace.
+We appreciate your participation in the Jobbifi's marketplace.
 
 Keep up the good work!
 
@@ -206,7 +206,7 @@ Jobbifi Support
 
 Please note that a mock interview you have placed a bid to, {{ INTERVIEW_TITLE }}, has been cancelled by the interviewee.
 
-We appreciate your participation in the Jobbifi’s marketplace.
+We appreciate your participation in the Jobbifi's marketplace.
 
 Keep up the good work!
 
@@ -397,7 +397,7 @@ A new job {{{ JOB_TITLE }}} that matches your profile is available. You may send
 Please click on below link to view the job details.
 {{ JOB_URL }}
 
-We’ll continue to send you freshly posted jobs we think are a good match with your profile.
+We'll continue to send you freshly posted jobs we think are a good match with your profile.
 
 Best Regards, 
 <img src='cid:logo.png' />
@@ -410,7 +410,7 @@ A new job {{{ JOB_TITLE }}} that matches your profile is available. You may send
 Please click on below link to view the job details.
 {{ JOB_URL }}
 
-We’ll continue to send you freshly posted jobs we think are a good match with your profile.
+We'll continue to send you freshly posted jobs we think are a good match with your profile.
 
 Best Regards, 
 <img src='cid:logo.png' />
@@ -451,7 +451,7 @@ Best Regards,
 <img src='cid:logo.png' />
 Jobbifi Support
 """),
-                   subject=T("You’ve received a new job application for {{ JOB_TITLE }}"),
+                   subject=T("You've received a new job application for {{ JOB_TITLE }}"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 

@@ -20,6 +20,7 @@ enum EmailType {
 	NEW_MOCK_INTERVIEW = 16;
 	NEW_REGISTRATION = 17;
 	PASSWORD_UPDATED = 18;
+	SUPPORT_REQUEST = 19;
 }
 
 enum AttributeType {

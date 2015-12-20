@@ -25,7 +25,6 @@ public class SupportController extends BaseController {
     reqMap.put(VARIABLES.SUPPORT_REQUEST_NAME, req.getParameter("name"));
     reqMap.put(VARIABLES.SUPPORT_REQUEST_MESSAGE, req.getParameter("message"));
     reqMap.put(VARIABLES.SUPPORT_REQUEST_EMAIL, req.getParameter("email"));
-    System.out.println("reqMap: " + reqMap.toString());
     Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
         .handleRequest(reqMap, REQUEST_TYPES.CREATE_SUPPORT_REQUEST);
     return new ModelAndView("createSupportRequest", "message",

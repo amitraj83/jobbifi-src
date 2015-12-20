@@ -1,7 +1,6 @@
 package com.interview.framework;
 
 public interface VARIABLES {
-
   String REGISTRATION_INFO = "REGISTRATION_INFO";
   String INTERVIEWER = "INTERVIEWER";
   String INTERVIEWEE = "INTERVIEWEE";
@@ -34,7 +33,6 @@ public interface VARIABLES {
   String ALLREVIEWS = "allreviews";
   int TRNSACTION_PAGE_SIZE = 10;
   String OFFLINE_CHAT_COUNT = "OFFLINE_CHAT_COUNT";
-
   int ADD = 1;
   int SUB = 2;
 
@@ -45,7 +43,6 @@ public interface VARIABLES {
     String FROM = "from";
     String TO = "to";
   }
-
   interface MESSAGE {
     String TYPE = "type";
     String TITLE = "title";
@@ -58,7 +55,6 @@ public interface VARIABLES {
     String STATUS_UNREAD = "unread";
     String REFENTITY = "JOB";
   }
-
   interface POST_INTERVIEW {
     String TITLE = "title";
     String INTERVIEWEE = "interviewee";
@@ -69,7 +65,6 @@ public interface VARIABLES {
     String BUDGET = "budget";
     String EXPERIENCE = "experience";
   }
-
   interface POST_JOB {
     String TITLE = "title";
     String INTERVIEWER = "interviewer";
@@ -84,7 +79,6 @@ public interface VARIABLES {
     String EXPERIENCE = "experience";
     String LOCATION = "location";
   }
-
   interface Bid {
     String BID_ID = "id";
     String BIDDER = "bidder";
@@ -97,22 +91,16 @@ public interface VARIABLES {
     String STATUS_STRING = "STATUS_STRING";
     String INTERVIEWEE = "INTERVIEWEE";
   }
-
   interface STATUS_CHANGE_TYPE {
     String INTERVIEW = "interview";
     String BID = "bid";
   }
-
   interface RESET_PASS {
     String AUTH_INSTANCE = "authinstance";
     String AUTH_ID = "authid";
     String AUTH_TOKEN = "authtoken";
-
   }
-
-
   interface NOTIFICATION {
-
     interface DATASTORE {
       String NOTIFICATIONID = "_id";
       String INTERVIEWID = "interviewId";
@@ -124,9 +112,8 @@ public interface VARIABLES {
       String COLLECTION = "notification";
       String HAS_READ = "hasRead";
     }
-
     interface TYPE {
-      String GLOBAL_NOTIFICATION = "GN"; // for all users
+      String GLOBAL_NOTIFICATION = "GN";
       String NEW_INTERVIEW_NOTIFICATION = "NIN";
       String FINANCIAL_NOTIFICATION = "FIN";
       String NEW_BID_NOTIFICATION = "NBN";
@@ -142,8 +129,8 @@ public interface VARIABLES {
   final String NORBERT_DATASTORE_SERVICE_NAME = "datastore";
   final String NORBERT_FILESERVER_SERVICE_NAME = "fileserver";
   final String NORBERT_ZK_CONNECTION_STRING = "localhost:2181";
-
   final String SUPPORT_REQUEST_NAME = "SUPPORT_REQUEST_NAME";
   final String SUPPORT_REQUEST_MESSAGE = "SUPPORT_REQUEST_MESSAGE";
   final String SUPPORT_REQUEST_EMAIL = "SUPPORT_REQUEST_EMAIL";
+  final String SUPPORT_EMAIL = "support@jobbifi.com";
 }

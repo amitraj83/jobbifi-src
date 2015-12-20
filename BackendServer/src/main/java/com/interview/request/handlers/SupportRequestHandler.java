@@ -32,8 +32,10 @@ public class SupportRequestHandler extends RequestHandler {
       }
     }
     log.debug("emailData: " + emailData.toString());
-    Services.getInstance().getEmailService().sendMail(EmailType.NEW_DISPUTE, emailData,
-        emailData.get(AttributeType.SUPPORT_REQUEST_EMAIL));
-    return null;
+    Services.getInstance().getEmailService().sendMail(EmailType.SUPPORT_REQUEST, emailData,
+        VARIABLES.SUPPORT_EMAIL);
+    HashMap<String, Object> responseMap = new HashMap<String, Object>();
+    responseMap.put("status", "Support request created.");
+    return responseMap;
   }
 }

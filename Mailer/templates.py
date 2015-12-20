@@ -496,16 +496,15 @@ m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, 
 
 templates[mailer_pb2.JOB_APPLICATION_SHORTLISTED] = m
 
-
 ###################################################################################################
 
 m = emails.Message(html=T("""Dear $user$,
 
-	Your {{ INTERVIEW_TITLE }}
+      Your {{ INTERVIEW_TITLE }}
       has been marked in dispute by $disputer$. A detailed reason 
       for dispute is below:
 
-      	{{ BID_MESSAGE }}
+            {{ BID_MESSAGE }}
 
 
       The dispute id is $did$ that you can use in further communication 
@@ -518,11 +517,11 @@ m = emails.Message(html=T("""Dear $user$,
 """),
                    text=T("""Dear $user$,
 
-	Your {{ INTERVIEW_TITLE }}
+      Your {{ INTERVIEW_TITLE }}
       has been marked in dispute by $disputer$. A detailed reason 
       for dispute is below:
 
-      	{{ BID_MESSAGE }}
+            {{ BID_MESSAGE }}
 
 
       The dispute id is $did$ that you can use in further communication 
@@ -538,4 +537,23 @@ m = emails.Message(html=T("""Dear $user$,
 m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
 
 templates[mailer_pb2.NEW_DISPUTE] = m
+
+
+###################################################################################################
+
+m = emails.Message(html=T("""{{ SUPPORT_REQUEST_NAME }} <{{ SUPPORT_REQUEST_EMAIL }}>
+      says
+
+      {{ SUPPORT_REQUEST_MESSAGE }}
+      """),
+                   text=T("""{{ SUPPORT_REQUEST_NAME }} <{{ SUPPORT_REQUEST_EMAIL }}>
+      says
+
+      {{ SUPPORT_REQUEST_MESSAGE }}
+      """),
+                   subject=T("Support Request"),
+                   mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
+m.attach(filename=logo_file, content_disposition="inline", data=open(logo_file, "rb"))
+
+templates[mailer_pb2.SUPPORT_REQUEST] = m
 

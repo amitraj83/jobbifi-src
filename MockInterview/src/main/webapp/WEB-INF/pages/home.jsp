@@ -643,17 +643,18 @@
 	</div>
 	<!--/#pricing-tables-->
 	<!--
-<div id="twitter" class="text-center parallax-section">
-<div class="parallax-content">
-<div class="container">
-    <div class="text-center wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
-        <i class="fa fa-twitter"></i>
-        <h1>PASSION LEADS TO DESIGN, DESIGN LEADS TO PERFORMANCE, PERFORMANCE LEADS TO SUCCESS!</h1>
-        <p>@<a href="#">ThemeRegion</a>- August 13th, 2014</p>
-    </div>
-</div>
-</div>
-</div><!--/parallax-section-->
+	<div id="twitter" class="text-center parallax-section">
+	<div class="parallax-content">
+	<div class="container">
+	    <div class="text-center wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
+	        <i class="fa fa-twitter"></i>
+	        <h1>PASSION LEADS TO DESIGN, DESIGN LEADS TO PERFORMANCE, PERFORMANCE LEADS TO SUCCESS!</h1>
+	        <p>@<a href="#">ThemeRegion</a>- August 13th, 2014</p>
+	    </div>
+	</div>
+	</div>
+	</div>
+	<!--/parallax-section-->
 	<div id="contact-us" class="padding-top padding-bottom">
 		<div class="container">
 			<!-- <div class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
@@ -690,11 +691,11 @@
 
 						<div class="business-time">
 							<p>
-								<i class="fa fa-phone"></i> Phone : +91-9036928424
+								<i class="fa fa-phone"></i> Phone: +91-9036928424
 							</p>
 
 							<p>
-								<i class="fa fa-envelope"></i> Email : support@jobbifi.com
+								<i class="fa fa-envelope"></i> Email: <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>
 							</p>
 
 							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
@@ -723,6 +724,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-default">Submit</button>
 							</div>
+							<div class="alert alert-success" style="display:none;" role="alert" id="contact-form-submitted-alert">Thanks for your query. We'll get back to you soon!</div>
 						</form>
 					</div>
 				</div>
@@ -732,156 +734,188 @@
 	<!--/#contact-us-->
 	<div id="gmap"></div>
 	<!--/#gmap-->
-	<%@ include file="/WEB-INF/pages/common/footer.jsp"%>
-	<%@ include file="/WEB-INF/pages/common/js.jsp"%>
+	<%@ include file="/WEB-INF/pages/common/footer.jsp" %>
+	<%@ include file="/WEB-INF/pages/common/js.jsp" %>
 	<script type="text/javascript">
-    $(document).ready(function () {
+	
+		$(document).ready(function() {
+			$("#contact-form").submit(function(e) {
+				var url = "/support.do";
+				$.ajax({
+					type : "POST",
+					url : url,
+					data : $("#contact-form").serialize(),
+					success : function(data) {
+						alert(data);
+					}
+				});
+				e.preventDefault();
+				$("#contact-form")[0].reset();
+				$("#contact-form-submitted-alert").show();			
+			});
+		});
 
-    	
-    	$(".btn-signup").on("click",function(){
-    		$('#myModal').modal('show');
-    		$('#loginbox').hide(); 
-    		$('#signupbox').show();    		
-    	});
+		$(document)
+				.ready(
+						function() {
+							$(".btn-signup").on("click", function() {
+								$('#myModal').modal('show');
+								$('#loginbox').hide();
+								$('#signupbox').show();
+							});
+							$("#front-search-button")
+									.on(
+											"click",
+											function() {
+												var urlToAppend = '';
+												switch ($(
+														"#front-search-dropdown")
+														.next().find("button")
+														.attr("title")) {
+												case "Jobs":
+													urlToAppend = 'jobs.do?searchKey='
+															+ $
+																	.trim($(
+																			"#front-search-key")
+																			.val());
+													break;
+												case "Advisors":
+													urlToAppend = 'advisors.do?searchKey='
+															+ $
+																	.trim($(
+																			"#front-search-key")
+																			.val());
+													break;
 
-        $("#front-search-button").on("click", function () {
-            var urlToAppend = '';
-            switch ($("#front-search-dropdown").next().find("button").attr("title")) {
-                case "Jobs":
-                    urlToAppend = 'jobs.do?searchKey=' + $.trim($("#front-search-key").val());
-                    break;
-                case "Advisors":
-                    urlToAppend = 'advisors.do?searchKey=' + $.trim($("#front-search-key").val());
-                    break;
+												case "Mock Interviews":
+													urlToAppend = 'mocks.do?searchKey='
+															+ $
+																	.trim($(
+																			"#front-search-key")
+																			.val());
+													break;
+												}
+												window.location = BASE_URL
+														+ urlToAppend;
+											})
 
-                case "Mock Interviews":
-                    urlToAppend = 'mocks.do?searchKey=' + $.trim($("#front-search-key").val());
-                    break;
+							$('#services div.portfolio-content').on(
+									'click',
+									function(event) {
+										console.log("click: " + event.target);
+										window.location = BASE_URL
+												+ $(this).attr('data-target');
+									});
 
+							$("#front-search-key").on("keypress", function(e) {
+								if (e.which == 13) {
+									$("#front-search-button").trigger("click");
+								}
+							});
 
-            }
-            window.location = BASE_URL + urlToAppend;
-        })
+							var items = [ "PERFECT CAREER ADVISOR",
+									"NEXT AWESOME RECRUIT", "DREAM JOB" ], $text = $('#search-form-title-changer'), delay = 4; //seconds
 
-        $('#services div.portfolio-content').on('click', function (event) {
-            console.log("click: " + event.target);
-            window.location = BASE_URL + $(this).attr('data-target');
-        });
+							function loop(delay) {
+								$.each(items, function(i, elm) {
+									$text.delay(delay * 1E3).fadeOut();
+									$text.queue(function() {
+										$text.html(items[i]);
+										$text.dequeue();
+									});
+									$text.fadeIn();
+									$text.queue(function() {
+										if (i == items.length - 1) {
+											loop(delay);
+										}
+										$text.dequeue();
+									});
+								});
+							}
 
-        $("#front-search-key").on("keypress", function (e) {
-        	if (e.which == 13) {
-        		$( "#front-search-button" ).trigger( "click" );
-			}
-        });
-        
-        var items = ["PERFECT CAREER ADVISOR", "NEXT AWESOME RECRUIT", "DREAM JOB"],
-                $text = $('#search-form-title-changer'),
-                delay = 4; //seconds
+							loop(delay);
 
-        function loop(delay) {
-            $.each(items, function (i, elm) {
-                $text.delay(delay * 1E3).fadeOut();
-                $text.queue(function () {
-                    $text.html(items[i]);
-                    $text.dequeue();
-                });
-                $text.fadeIn();
-                $text.queue(function () {
-                    if (i == items.length - 1) {
-                        loop(delay);
-                    }
-                    $text.dequeue();
-                });
-            });
-        }
+						});
 
-        loop(delay);
+		//Google Map Customization
+		$(function() {
+			var map;
+			map = new GMaps({
+				el : '#gmap',
+				lat : 45.995447,
+				lng : -73.5697587,
+				scrollwheel : false,
+				zoom : 10,
+				zoomControl : true,
+				panControl : false,
+				streetViewControl : false,
+				mapTypeControl : false,
+				overviewMapControl : false,
+				clickable : false
+			});
 
-    });
-    //Google Map Customization
-    $(function () {
+			var image = '';
 
-        var map;
+			map.addMarker({
+				lat : 45.995447,
+				lng : -73.5697587,
+				icon : image,
+				animation : google.maps.Animation.DROP,
+				verticalAlign : 'bottom',
+				horizontalAlign : 'center',
+				backgroundColor : '#d3cfcf',
+			});
 
-        map = new GMaps({
-            el: '#gmap',
-            lat: 45.995447,
-            lng: -73.5697587,
-            scrollwheel: false,
-            zoom: 10,
-            zoomControl: true,
-            panControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            overviewMapControl: false,
-            clickable: false
-        });
+			var styles = [ {
+				"featureType" : "road",
+				"stylers" : [ {
+					"color" : "#005b96"
+				} ]
+			}, {
+				"featureType" : "water",
+				"stylers" : [ {
+					"color" : "#99b3cc"
+				} ]
+			}, {
+				"featureType" : "landscape",
+				"stylers" : [ {
+					"color" : "#ffffff"
+				} ]
+			}, {
+				"elementType" : "labels.text.fill",
+				"stylers" : [ {
+					"color" : "#d3cfcf"
+				} ]
+			}, {
+				"featureType" : "poi",
+				"stylers" : [ {
+					"color" : "#0a446a"
+				} ]
+			}, {
+				"elementType" : "labels.text",
+				"stylers" : [ {
+					"saturation" : 1
+				}, {
+					"weight" : 0.1
+				}, {
+					"color" : "#000000"
+				} ]
+			} ];
 
-        var image = '';
-        map.addMarker({
-            lat: 45.995447,
-            lng: -73.5697587,
-            icon: image,
-            animation: google.maps.Animation.DROP,
-            verticalAlign: 'bottom',
-            horizontalAlign: 'center',
-            backgroundColor: '#d3cfcf',
-        });
+			map.addStyle({
+				styledMapName : "Styled Map",
+				styles : styles,
+				mapTypeId : "map_style"
+			});
 
+			map.setStyle("map_style");
+		}());
 
-        var styles = [
-
-            {
-                "featureType": "road",
-                "stylers": [{
-                    "color": "#005b96"
-                }]
-            }, {
-                "featureType": "water",
-                "stylers": [{
-                    "color": "#99b3cc"
-                }]
-            }, {
-                "featureType": "landscape",
-                "stylers": [{
-                    "color": "#ffffff"
-                }]
-            }, {
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                    "color": "#d3cfcf"
-                }]
-            }, {
-                "featureType": "poi",
-                "stylers": [{
-                    "color": "#0a446a"
-                }]
-            }, {
-                "elementType": "labels.text",
-                "stylers": [{
-                    "saturation": 1
-                }, {
-                    "weight": 0.1
-                }, {
-                    "color": "#000000"
-                }]
-            }
-
-        ];
-
-        map.addStyle({
-            styledMapName: "Styled Map",
-            styles: styles,
-            mapTypeId: "map_style"
-        });
-
-        map.setStyle("map_style");
-    }());
-    
-    function activeHome(){
-    	$('.navbar-collapse li.scroll').removeClass('active').eq(0).addClass('active');
-    }
-</script>
+		function activeHome() {
+			$('.navbar-collapse li.scroll').removeClass('active').eq(0)
+					.addClass('active');
+		}
+	</script>
 </body>
 
 </html>

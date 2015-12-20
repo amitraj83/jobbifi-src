@@ -2550,3 +2550,11 @@ padding-left:90px;
 .timeline-body > p + p {
   margin-top: 5px;
 }
+
+/*************
+  ERROR PAGES
+*************/
+
+body.error.error-404 div.jumbotron {
+    background-color: rgba(255,255,255,0.8);
+}

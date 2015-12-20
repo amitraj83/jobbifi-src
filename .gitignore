@@ -74,3 +74,8 @@ dependency-reduced-pom.xml
  
 # PDT-specific
 .buildpath
+
+.idea
+
+logs/
+*.pyc

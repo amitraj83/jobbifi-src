@@ -49,8 +49,9 @@
 
                     </div>
                     <div>
-						<span class="job-location"><i class="fa fa-map-marker"></i>&nbsp; 
-								${job.location}
+						<span class="job-location">
+						<i class="fa fa-map-marker"></i>&nbsp; ${job.location} | Industry : ${job.industry} | Exp. : ${job.experience} yr | Salary : ${job.salary}
+
 						</span>
 						<span>
 							

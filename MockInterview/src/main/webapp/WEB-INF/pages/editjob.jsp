@@ -115,24 +115,7 @@
                                 <input type="text" class="form-control" name="applyurl" placeholder="Apply URL" value="${job.applyUrl}">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Upload Document</label>
-
-                            <div class="col-sm-9">
-                                <input id="postjobdoc" type="file" name="file"
-                                       data-url="<c:url value='/aauth/fileupload.do?type=jobdoc' />" multiple style="opacity:0;
-						      		filter:alpha(opacity: 0);" class="pull-left hide">
-                                <button id="attachfile" type="button" class="btn btn-sm btn-info pull-left"> Attach a
-                                    file
-                                </button>
-                                <img id="fileloader" style="display: none;" alt="Processing..."
-                                     src="<c:url value="/resources/img/loading.gif" />">
-
-                                <div id="selectedfile" style="clear:both"></div>
-                                <input type="hidden" name="ifile" id="jobdocid">
-                                <input type="hidden" name="jid" id="jid" value="${jobid}">
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
                                 <button type="submit" class="btn btn-default">Update Job</button>

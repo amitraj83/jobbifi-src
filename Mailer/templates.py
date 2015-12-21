@@ -498,7 +498,7 @@ templates[mailer_pb2.JOB_APPLICATION_SHORTLISTED] = m
 
 ###################################################################################################
 
-m = emails.Message(html=T("""Dear $user$,
+m = emails.Message(html=T("""Dear {{ USER_NAME }},
 
       Your {{ INTERVIEW_TITLE }}
       has been marked in dispute by $disputer$. A detailed reason 
@@ -515,7 +515,7 @@ m = emails.Message(html=T("""Dear $user$,
 
       Mock Interview Team
 """),
-                   text=T("""Dear $user$,
+                   text=T("""Dear {{ USER_NAME }},
 
       Your {{ INTERVIEW_TITLE }}
       has been marked in dispute by $disputer$. A detailed reason 

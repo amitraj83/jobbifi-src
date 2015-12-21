@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
-                                        <div class="col-md-12 text-center">
+                                        <div class="col-md-4 text-center">
                                             <img src="http://placehold.it/150" id="update_img" class="avatar img-square"
                                                  alt="avatar" width="150px" height="150px">
                                             <input id="uploadphoto" type="file" name="file"
@@ -45,6 +45,12 @@
                                             <button type="button" id="uploadphotobtn" class="btn btn-sm btn-default">
                                                 Upload Photo
                                             </button>
+                                        </div>
+                                        <div class="col-md-8 text-center">
+
+                                            
+                                                <textarea rows="9" class="form-control" id="update_shortcv" placeholder="Short CV"></textarea>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -81,17 +87,12 @@
 
                                             <div class="col-lg-9">
                                                 <div class="row">
-                                                    <div class="col-md-12">
-                                                        <ul class="nav nav-pills" id="update_skills"></ul>
-                                                        <br/>
-                                                    </div>
+                                                    
                                                     <div class="col-md-12 form-inline">
-                                                        <label for="update_skill">Skill name</label>
                                                         <input id="update_skill" class="form-control" type="text"
                                                                value="" placeholder="Skill">
                                                         <label for="update_skillexp">Experience</label>
                                                         <select id="update_skillexp" class="form-control">
-                                                            <option value="0">0 years</option>
                                                             <option value="1">1 years</option>
                                                             <option value="2">2 years</option>
                                                             <option value="3">3 years</option>
@@ -116,17 +117,21 @@
                                                         <button type="button" class="btn btn-success "
                                                                 id="update_addskill">Add
                                                         </button>
+                                                        <span id="skillerror"></span>
+                                                         <br/>
                                                     </div>
+
+                                                    <div class="col-md-12">
+                                                        <ul class="nav nav-pills" id="update_skills"></ul>
+                                                       
+                                                    </div>
+
                                                 </div>
 
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label">Short CV</label>
-
-                                            <div class="col-lg-9">
-                                                <textarea rows="3" class="form-control" id="update_shortcv"></textarea>
-                                            </div>
+                                            
                                         </div>
                                     </form>
                                 </div>
@@ -140,7 +145,7 @@
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" id="update_allpositions"></form>
                                     <a href="javascript:void(0)" class="btn btn-default pull-right"
-                                       id="update_addmoreposition">Add More Position</a>
+                                       id="update_addmoreposition">Add Position</a>
                                 </div>
                             </div>
 
@@ -151,13 +156,13 @@
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" id="update_alleducations"></form>
                                     <a href="javascript:void(0)" class="btn btn-default pull-right"
-                                       id="update_addmoreeducation">Add More Education</a>
+                                       id="update_addmoreeducation">Add Education</a>
                                 </div>
                             </div>
                             <div id="buttonPanel" style="text-align:center; ">
                                 <button type="submit" class="btn btn-success" id="edit_profile_button">Update Details
                                 </button>
-                                <button type="button" class="btn btn-danger">Cancel</button>
+                                <button type="button" class="btn btn-danger" id="edit_profile_cancel">Cancel</button>
                             </div>
                             <br/>
                         </div>
@@ -175,27 +180,34 @@
 <script type="text/javascript">
     var username = '<sec:authentication property="principal.username" />';
 
-    var positionHTML = '<div class="form-group" id="positionDiv">' +
+
+    $("#edit_profile_cancel").click(function(){
+        window.location = BASE_URL+'profile.do';
+    });
+
+
+     var positionHTML = '<div class="form-group" id="positionDiv">' +
             '  <label class="col-md-12">Position</label>' +
             '  <div class="col-md-12">' +
             '      <div class="row form-group">' +
-            '          <label class="col-md-2 control-label">Title</label>' +
+            '          <label class="col-md-2 control-label">Role/Title</label>' +
             '          <div class="col-md-4"><input name="title" class="form-control" type="text" value="$title$"></div>' +
-            '          <label class="col-md-2 control-label">Company</label>' +
+            '          <label class="col-md-2 control-label">Company Name</label>' +
             '          <div class="col-md-4"><input name="companyName" class="form-control" type="text" value="$cn$"></div>' +
             '     </div>  ' +
             '     <div class="row form-group">' +
-            '          <label class="col-md-2 control-label">Start</label>' +
-            '          <div class="col-md-4"><input name="startyear" class="form-control" type="text" value="$sy$"></div>' +
-            '          <label class="col-md-2 control-label">End</label>' +
-            '          <div class="col-md-4"><input name="endyear" class="form-control" type="text" value="$ey$"></div>' +
+            '          <label class="col-md-2 control-label">Start Date</label>' +
+            '          <div class="col-md-4"><select class="form-control">$syui$</select></div>' +
+            '          <label class="col-md-2 control-label">End Date</label>' +
+            '          <div class="col-md-4"><select class="form-control">$eyui$</select></div>' +
             '      </div>  ' +
             '     <div class="row form-group">' +
             '          <label class="col-md-2 control-label">Description</label>' +
             '          <div class="col-md-10"><textarea name="description" rows="3" class="form-control">$desc$</textarea></div>' +
             '      </div>  ' +
             '  </div>' +
-            '</div>';
+            '</div>';       
+
 
     var educationHTML = ' <div class="form-group" id="edudiv">' +
             '<label class="col-md-12">Education</label>' +
@@ -211,10 +223,10 @@
             '          <div class="col-md-10"><input name="university" class="form-control" type="text" value="$uni$"> </div>' +
             '     </div>' +
             '      <div class="row form-group">' +
-            '           <label class="col-md-2 control-label">Start</label>' +
-            '           <div class="col-md-4"><input name="startyear" class="form-control" type="text" value="$sy$"></div>' +
-            '           <label class="col-md-2 control-label">End</label>' +
-            '           <div class="col-md-4"><input name="endyear" class="form-control" type="text" value="$ey$"></div>' +
+            '           <label class="col-md-2 control-label">Start Date</label>' +
+            '           <div class="col-md-4"><select class="form-control">$syui$</select></div>' +
+            '           <label class="col-md-2 control-label">End Date</label>' +
+            '           <div class="col-md-4"><select class="form-control">$eyui$</select></div>' +
             '     </div>' +
             '  </div>' +
             '</div>';
@@ -246,23 +258,47 @@
 
 // btn click event
         $('#update_addskill').click(function () {
-            editSkillSet($("#update_skill").val(), $("#update_skillexp").val());
+
+
+            if($("#update_skill").val() == null || $("#update_skill").val() == "")            
+            { 
+                $("#skillerror").html("Enter an skill");              
+             
+            }
+            else
+            {
+                   $("#skillerror").html("");              
+                editSkillSet($("#update_skill").val(), $("#update_skillexp").val());
+            }
         });
 
         $('#update_addmoreeducation').click(function (event) {
+
+            var sel = "";
+            for(var y = 1990; y < 2020; y++){
+                sel += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+            }
+
             var screen = educationHTML.split("$degree$").join("")
                     .split("$major$").join("")
                     .split("$uni$").join("")
-                    .split("$sy$").join("")
-                    .split("$ey$").join("");
+                    .split("$syui$").join(sel)
+                    .split("$eyui$").join(sel);
             $("#update_alleducations").append(screen);
         });
 
         $('#update_addmoreposition').click(function (event) {
+
+                var sel = "";
+                for(var y = 1990; y < 2020; y++){
+                    sel += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+                }
+
+
             var screen = positionHTML.split("$title$").join("")
                     .split("$cn$").join("")
-                    .split("$sy$").join("")
-                    .split("$ey$").join("")
+                    .split("$syui$").join(sel)
+                    .split("$eyui$").join(sel)
                     .split("$desc$").join("");
             $("#update_allpositions").append(screen);
         });
@@ -290,22 +326,50 @@
                 /* position */
                 var allpositions = user.positions;
                 for (var i = 0; i < allpositions.length; i++) {
+                    var sel = "";
+                    for(var y = 1990; y < 2020; y++){
+                        var selected = (y == allpositions[i].startYear) ? "selected" : "";
+                        sel += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+                    }
+
+                    var sel2 = "";
+                    for(var y = 1990; y < 2020; y++){
+                        var selected = (y == allpositions[i].endYear) ? "selected" : "";
+                        sel2 += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+                    }
+
                     var screen = positionHTML.split("$title$").join(allpositions[i].title)
                             .split("$cn$").join(allpositions[i].companyName)
-                            .split("$sy$").join(allpositions[i].startYear)
-                            .split("$ey$").join(allpositions[i].endYear)
+                            // .split("$syui$").join(allpositions[i].startYear)
+                            .split("$syui$").join(sel)
+                            .split("$eyui$").join(sel2)
                             .split("$desc$").join(allpositions[i].description);
                     $("#update_allpositions").append(screen);
+                    
                 }
 
                 /* education */
                 var alleducations = user.educations;
                 for (var i = 0; i < alleducations.length; i++) {
+
+                    var sel = "";
+                    for(var y = 1990; y < 2020; y++){
+                        var selected = (y == alleducations[i].startYear) ? "selected" : "";
+                        sel += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+                    }
+
+                    var sel2 = "";
+                    for(var y = 1990; y < 2020; y++){
+                        var selected = (y == alleducations[i].endYear) ? "selected" : "";
+                        sel2 += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+                    }
+
+
                     var screen = educationHTML.split("$degree$").join(alleducations[i].degree)
                             .split("$major$").join(alleducations[i].fieldOfStudy)
                             .split("$uni$").join(alleducations[i].schoolname)
-                            .split("$sy$").join(alleducations[i].startYear)
-                            .split("$ey$").join(alleducations[i].endYear);
+                            .split("$syui$").join(sel)
+                            .split("$eyui$").join(sel2);
                     $("#update_alleducations").append(screen);
                 }
 

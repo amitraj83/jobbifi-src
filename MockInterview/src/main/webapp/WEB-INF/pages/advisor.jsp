@@ -196,27 +196,39 @@
         }).done(function (msg) {
         	
             var jresponse = jQuery.parseJSON(msg);
-            var json = jresponse.JSON_DOC_LIST;
-            
-            if(jresponse.NUM_OF_RESULTS > 0) {            
-	            $.each(json, function (i) {	
-	            	var skills="";
-	            	if(typeof json[i].skills != "undefined"){
-		            	skills = json[i].skills.replace(/\[/,'').replace(/\]/,'').split(",");
-	            	}
+            var json = jresponse.data;
+            // if(jresponse.NUM_OF_RESULTS > 0) 
+            // {            
+	            //$.each(json, function (i) 
+
+            if(json.length == 0)
+            {
+                $("#searchAdvisorResult").html("<div class='alert alert-info'>No results found.</div>");
+                $(".pagination").hide();
+            }                    
+            else
+            {   
+                for(var i =0; i < json.length; i++)    
+                {	
+                    var j = json[i];
+                    var skills=j.skills;
+              //       console.log(skills[0])
+	            	// if(typeof json[i].skills != "undefined"){
+		            // 	skills = json[i].skills.replace(/\[/,'').replace(/\]/,'').split(",");
+	            	// }
 	            	var positions = [];
-	            	for(var j=0; j < json[i].additional.positions.length; j++){
+	            	for(var j=0; j < json[i].positions.length; j++){
 	            		var icon =  (j == 0) ? true : false;
-	            		positions.push({ position:json[i].additional.positions[j].title ,
-	            			company : json[i].additional.positions[j].companyName, icon:icon});
+	            		positions.push({ position:json[i].positions[j].title ,
+	            			company : json[i].positions[j].companyName, icon:icon});
 	            	}
 	            	
 	            	var educations = [];
-	            	for(var j=0; j < json[i].additional.educations.length; j++){
+	            	for(var j=0; j < json[i].educations.length; j++){
 	            		var icon =  (j == 0) ? true : false;
-	            		educations.push({ education :json[i].additional.educations[j].degree,
-	            			field : json[i].additional.educations[j].fieldOfStudy,
-	            			school : json[i].additional.educations[j].schoolname,icon:icon});
+	            		educations.push({ education :json[i].educations[j].degree,
+	            			field : json[i].educations[j].fieldOfStudy,
+	            			school : json[i].educations[j].schoolname,icon:icon});
 	            	}
 	            	
 	                var searchItem =
@@ -247,19 +259,18 @@
 	                        '</table>' +
 	                        '</div>' +
 	                        '</div><hr />';
-	
-	                templateData = {
+	                   
+                    templateData = {
 	                    'username': json[i].username,
 	                    'country': json[i].country,
-	                    'rating': parseFloat(json[i].additional.rating).toFixed(1),
+	                    'rating': parseFloat(json[i].avgRating).toFixed(1),
 	                    'positions': positions,
 	                    'skills': skills,
 	                    'rate' : json[i].rate,
 	                    'educations': educations,
-	                    'image': BASE_URL + json[i].additional.profilepic,
+	                    'image': BASE_URL + json[i].profilepic,
 	                }
 	                
-	                console.log(templateData);
 	                searchItem = Mustache.to_html(searchItem, templateData);
 	                $("#searchAdvisorResult").append(searchItem);
 	                
@@ -272,11 +283,12 @@
 	                    'showCaption': false
 	                });
 	                
-	            });
-            } else {
-            	$("#searchAdvisorResult").html("<div class='alert alert-info'>No results found.</div>");
-                $(".pagination").hide();
-            }
+	            }
+                //);
+            } 
+            // else {
+            // 
+            // }
 
             var totalRecords = jresponse.NUM_OF_RESULTS;
             var html = getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, "INTERVIEWER");

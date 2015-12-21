@@ -48,7 +48,7 @@ public class JSONUtilityService extends ObjectMapper {
 
   public String getJSONStringOfQueue(List q) {
     try {
-      writeValueAsString(q);
+      return writeValueAsString(q);
     } catch (JsonGenerationException e) {
       e.printStackTrace();
     } catch (JsonMappingException e) {

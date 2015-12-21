@@ -125,6 +125,24 @@ $(document).ready(function ($) {
         return false;
     });
 
+    $('#footer ul li a.scroll').click(function () {
+
+        console.debug(window.location.pathname);
+        var pageUrl = window.location.pathname;
+        var menuitem = this;
+    
+        if( pageUrl != '/'){
+            document.location.href = "/?menuitem="+menuitem.hash;
+        }
+        
+        try {
+            $('html, body').animate({scrollTop: $(this.hash).offset().top - 110}, 1000);
+        } catch (err) {
+            console.log("JS error: " + err.message);
+        }
+        return false;
+    });
+
     // User define function
     function Scroll() {
         var contentTop = [];

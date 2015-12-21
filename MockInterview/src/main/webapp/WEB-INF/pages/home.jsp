@@ -695,7 +695,7 @@
 							</p>
 
 							<p>
-								<i class="fa fa-envelope"></i> Email: <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>
+								<i class="fa fa-envelope"></i> Email: support@jobbifi.com
 							</p>
 
 							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->

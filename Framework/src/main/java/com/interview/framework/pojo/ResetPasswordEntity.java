@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class ResetPasswordEntity implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -6841298721897646552L;
   private String id;
   private String username;
   private String sectoken;

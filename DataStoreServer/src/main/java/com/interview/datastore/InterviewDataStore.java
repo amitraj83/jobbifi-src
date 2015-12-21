@@ -38,9 +38,8 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
 
   public ObjectId saveInterview(Interview interview) throws RemoteException {
 
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
 
     DBObject dbObject = new BasicDBObject();
     ObjectId _id = new ObjectId();
@@ -65,72 +64,73 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
       return null;
   }
 
-  
+
   public List<Interview> getInterviews(String user, String role) throws RemoteException {
 
-	    DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db
-	            .getCollection(DATASTORES.INTERVIEW.DBCollection);
-	    List<Interview> list = new ArrayList<Interview>();
-	    DBObject query = new BasicDBObject();
-	    if (role.equals(DATASTORES.INTERVIEW.INTERVIEWEE))
-	      query.put(DATASTORES.INTERVIEW.INTERVIEWEE, user);
-	    else if (role.equals(DATASTORES.INTERVIEW.INTERVIEWER))
-	      query.put(DATASTORES.INTERVIEW.INTERVIEWER, user);
-	    DBCursor cursor = collection.find(query).sort(new BasicDBObject(DATASTORES.INTERVIEW.DATE, -1));
-	    while (cursor.hasNext()) {
-	      DBObject row = cursor.next();
-	      Interview interview = new Interview();
-	      // interview = Services.getInstance().getJSONUtilityService().readValue(row.toString(),
-	      // Interview.class);
-	      interview.setDescription(row.get(DATASTORES.INTERVIEW.DESCRIPTION).toString());
-	      interview.setEb(new Double(row.get(DATASTORES.INTERVIEW.ESCROW_BALANCE).toString()));
-	      interview.setInterviewee(row.get(DATASTORES.INTERVIEW.INTERVIEWEE).toString());
-	      if (row.get(DATASTORES.INTERVIEW.INTERVIEWER) != null)
-	        interview.setInterviewer(row.get(DATASTORES.INTERVIEW.INTERVIEWER).toString());
-	      else
-	        interview.setInterviewer("");
-	      List<String> skills = new ArrayList<String>();
-	      skills.add(row.get(DATASTORES.INTERVIEW.SKILLS).toString());
-	      interview.setSkills(skills);
-	      interview.setStatus(new Integer(row.get(DATASTORES.INTERVIEW.STATUS).toString()));
-	      interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
-	      interview.setDt(new Date((Long) row.get(DATASTORES.INTERVIEW.DATE)).getTime());
-	      interview.setId(row.get("_id").toString());
-	      if (row.get(DATASTORES.INTERVIEW.FILE) != null)
-	        interview.setFile(row.get(DATASTORES.INTERVIEW.FILE).toString());
-
-	      if (row.get(DATASTORES.INTERVIEW.BUDGET) != null)
-	        interview.setBudget(row.get(DATASTORES.INTERVIEW.BUDGET).toString());
-
-	      if (row.get(DATASTORES.INTERVIEW.EXPERIENCE) != null)
-	        interview.setExperience(row.get(DATASTORES.INTERVIEW.EXPERIENCE).toString());
-
-	      if (row.get(DATASTORES.INTERVIEW.INDUSTRY) != null)
-	        interview.setIndustry(row.get(DATASTORES.INTERVIEW.INDUSTRY).toString());
-
-
-	      list.add(interview);
-	    }
-	    return list;
-	  
-	  
-  }
-  public List<Interview> getInterviews(String user, String role,int pageNum,int status) throws RemoteException {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     List<Interview> list = new ArrayList<Interview>();
     DBObject query = new BasicDBObject();
     if (role.equals(DATASTORES.INTERVIEW.INTERVIEWEE))
       query.put(DATASTORES.INTERVIEW.INTERVIEWEE, user);
     else if (role.equals(DATASTORES.INTERVIEW.INTERVIEWER))
       query.put(DATASTORES.INTERVIEW.INTERVIEWER, user);
-    if(status!=10)
-    query.put(DATASTORES.INTERVIEW.STATUS, status);
-    int documentsToSkip = pageNum > 0 ? (pageNum - 1)
-			* (VARIABLES.TRNSACTION_PAGE_SIZE) : 0;
-    DBCursor cursor = collection.find(query).skip(documentsToSkip).limit(VARIABLES.TRNSACTION_PAGE_SIZE).sort(new BasicDBObject(DATASTORES.INTERVIEW.DATE, -1));
+    DBCursor cursor = collection.find(query).sort(new BasicDBObject(DATASTORES.INTERVIEW.DATE, -1));
+    while (cursor.hasNext()) {
+      DBObject row = cursor.next();
+      Interview interview = new Interview();
+      // interview = Services.getInstance().getJSONUtilityService().readValue(row.toString(),
+      // Interview.class);
+      interview.setDescription(row.get(DATASTORES.INTERVIEW.DESCRIPTION).toString());
+      interview.setEb(new Double(row.get(DATASTORES.INTERVIEW.ESCROW_BALANCE).toString()));
+      interview.setInterviewee(row.get(DATASTORES.INTERVIEW.INTERVIEWEE).toString());
+      if (row.get(DATASTORES.INTERVIEW.INTERVIEWER) != null)
+        interview.setInterviewer(row.get(DATASTORES.INTERVIEW.INTERVIEWER).toString());
+      else
+        interview.setInterviewer("");
+      List<String> skills = new ArrayList<String>();
+      skills.add(row.get(DATASTORES.INTERVIEW.SKILLS).toString());
+      interview.setSkills(skills);
+      interview.setStatus(new Integer(row.get(DATASTORES.INTERVIEW.STATUS).toString()));
+      interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
+      interview.setDt(new Date((Long) row.get(DATASTORES.INTERVIEW.DATE)).getTime());
+      interview.setId(row.get("_id").toString());
+      if (row.get(DATASTORES.INTERVIEW.FILE) != null)
+        interview.setFile(row.get(DATASTORES.INTERVIEW.FILE).toString());
+
+      if (row.get(DATASTORES.INTERVIEW.BUDGET) != null)
+        interview.setBudget(row.get(DATASTORES.INTERVIEW.BUDGET).toString());
+
+      if (row.get(DATASTORES.INTERVIEW.EXPERIENCE) != null)
+        interview.setExperience(row.get(DATASTORES.INTERVIEW.EXPERIENCE).toString());
+
+      if (row.get(DATASTORES.INTERVIEW.INDUSTRY) != null)
+        interview.setIndustry(row.get(DATASTORES.INTERVIEW.INDUSTRY).toString());
+
+
+      list.add(interview);
+    }
+    return list;
+
+
+  }
+
+  public List<Interview> getInterviews(String user, String role, int pageNum, int status)
+      throws RemoteException {
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    List<Interview> list = new ArrayList<Interview>();
+    DBObject query = new BasicDBObject();
+    if (role.equals(DATASTORES.INTERVIEW.INTERVIEWEE))
+      query.put(DATASTORES.INTERVIEW.INTERVIEWEE, user);
+    else if (role.equals(DATASTORES.INTERVIEW.INTERVIEWER))
+      query.put(DATASTORES.INTERVIEW.INTERVIEWER, user);
+    if (status != 10)
+      query.put(DATASTORES.INTERVIEW.STATUS, status);
+    int documentsToSkip = pageNum > 0 ? (pageNum - 1) * (VARIABLES.TRNSACTION_PAGE_SIZE) : 0;
+    DBCursor cursor =
+        collection.find(query).skip(documentsToSkip).limit(VARIABLES.TRNSACTION_PAGE_SIZE)
+            .sort(new BasicDBObject(DATASTORES.INTERVIEW.DATE, -1));
     while (cursor.hasNext()) {
       DBObject row = cursor.next();
       Interview interview = new Interview();
@@ -168,63 +168,61 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
     return list;
   }
 
-  public int getTotalinterviewcount(String user, String role,int status) throws RemoteException {
+  public int getTotalinterviewcount(String user, String role, int status) throws RemoteException {
 
-	    DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db
-	            .getCollection(DATASTORES.INTERVIEW.DBCollection);
-	    List<Interview> list = new ArrayList<Interview>();
-	    DBObject query = new BasicDBObject();
-	    if (role.equals(DATASTORES.INTERVIEW.INTERVIEWEE))
-	      query.put(DATASTORES.INTERVIEW.INTERVIEWEE, user);
-	    else if (role.equals(DATASTORES.INTERVIEW.INTERVIEWER))
-	      query.put(DATASTORES.INTERVIEW.INTERVIEWER, user);
-	    if(status!=10)
-	    query.put(DATASTORES.INTERVIEW.STATUS, status);
-	    int cursor = collection.find(query).count();
-	    return cursor;
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    List<Interview> list = new ArrayList<Interview>();
+    DBObject query = new BasicDBObject();
+    if (role.equals(DATASTORES.INTERVIEW.INTERVIEWEE))
+      query.put(DATASTORES.INTERVIEW.INTERVIEWEE, user);
+    else if (role.equals(DATASTORES.INTERVIEW.INTERVIEWER))
+      query.put(DATASTORES.INTERVIEW.INTERVIEWER, user);
+    if (status != 10)
+      query.put(DATASTORES.INTERVIEW.STATUS, status);
+    int cursor = collection.find(query).count();
+    return cursor;
 
   }
-  
-  public int getTotalAwardedInterviewCount(String User) throws RemoteException{
-	  DBCollection collection =
-		        Services.getInstance().getBaseDataStore().db
-		            .getCollection(DATASTORES.INTERVIEW.DBCollection);
 
-		    DBObject query = new BasicDBObject();
-		    query.put(DATASTORES.INTERVIEW.INTERVIEWER, User);
-		
-				    int cursor = collection.find(query).count();
-				 return cursor;
-	  
+  public int getTotalAwardedInterviewCount(String User) throws RemoteException {
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
+
+    DBObject query = new BasicDBObject();
+    query.put(DATASTORES.INTERVIEW.INTERVIEWER, User);
+
+    int cursor = collection.find(query).count();
+    return cursor;
+
   }
-  public List<Interview> getDisputableList(String user,String userRole){
-	  DBCollection collection =
-		        Services.getInstance().getBaseDataStore().db
-		            .getCollection(DATASTORES.INTERVIEW.DBCollection);
-		    List<Interview> list = new ArrayList<Interview>();
-		    DBObject query1,query2,query3;
-		    if (userRole.equalsIgnoreCase(DATASTORES.INTERVIEW.INTERVIEWEE))
-		     query1 = new BasicDBObject(DATASTORES.INTERVIEW.INTERVIEWEE, user);		   	    	
-		    else
-		     query1 = new BasicDBObject(DATASTORES.INTERVIEW.INTERVIEWER, user);
-		     query2 = new BasicDBObject(DATASTORES.INTERVIEW.ESCROW_BALANCE,new BasicDBObject("$gt", 0));
-		     query3 = new BasicDBObject(DATASTORES.INTERVIEW.STATUS,new BasicDBObject("$ne", 9));
-		 BasicDBList andList = new BasicDBList();
-		 andList.add(query1);
-		 andList.add(query2);
-		 andList.add(query3);
-		 BasicDBObject finalQuery = new BasicDBObject("$and", andList);	    
-		  DBCursor cursor = collection.find(finalQuery);
-		  while(cursor.hasNext()) {
-		    	 DBObject row = cursor.next();
-		    	 Interview interview = new Interview();
-		    	 interview.setId(row.get(DATASTORES.INTERVIEW.ID).toString());
-		    	 interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
-		    	 interview.setEb(new Double(row.get(DATASTORES.INTERVIEW.ESCROW_BALANCE).toString()));
-		    	 list.add(interview);
-		  }
-	 return list; 
+
+  public List<Interview> getDisputableList(String user, String userRole) {
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    List<Interview> list = new ArrayList<Interview>();
+    DBObject query1, query2, query3;
+    if (userRole.equalsIgnoreCase(DATASTORES.INTERVIEW.INTERVIEWEE))
+      query1 = new BasicDBObject(DATASTORES.INTERVIEW.INTERVIEWEE, user);
+    else
+      query1 = new BasicDBObject(DATASTORES.INTERVIEW.INTERVIEWER, user);
+    query2 = new BasicDBObject(DATASTORES.INTERVIEW.ESCROW_BALANCE, new BasicDBObject("$gt", 0));
+    query3 = new BasicDBObject(DATASTORES.INTERVIEW.STATUS, new BasicDBObject("$ne", 9));
+    BasicDBList andList = new BasicDBList();
+    andList.add(query1);
+    andList.add(query2);
+    andList.add(query3);
+    BasicDBObject finalQuery = new BasicDBObject("$and", andList);
+    DBCursor cursor = collection.find(finalQuery);
+    while (cursor.hasNext()) {
+      DBObject row = cursor.next();
+      Interview interview = new Interview();
+      interview.setId(row.get(DATASTORES.INTERVIEW.ID).toString());
+      interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
+      interview.setEb(new Double(row.get(DATASTORES.INTERVIEW.ESCROW_BALANCE).toString()));
+      list.add(interview);
+    }
+    return list;
   }
 
   public List<Interview> getInterviewsWhereIBid(String user) throws RemoteException {
@@ -240,95 +238,97 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
     return list;
   }
 
-  
-  public List<Interview> getInterviewsWhereIBid(String user,int pageNumber,int status) throws RemoteException {
 
-	    List<Interview> list = new ArrayList<Interview>();
-	    List<Bid> myBids = Services.getInstance().getBidStore().getBidsIPosted(user);
-	    for (Bid bid : myBids) {
-	      String iid = bid.getIid();
-	      Interview interview = getInterview(iid);
-	      if (interview != null)
-	        list.add(interview);
-	    }
-	    return list;
-	  }
-  public List<Interview> getAwardedInterview(String user, int pageNum) throws RemoteException{
-	  DBCollection collection =
-		        Services.getInstance().getBaseDataStore().db
-		            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+  public List<Interview> getInterviewsWhereIBid(String user, int pageNumber, int status)
+      throws RemoteException {
 
-		    DBObject query = new BasicDBObject();
-		    query.put(DATASTORES.INTERVIEW.INTERVIEWER, user);
-		    List<Interview> list = new ArrayList<Interview>();
-		    int documentsToSkip = pageNum > 0 ? (pageNum - 1)
-					* (VARIABLES.TRNSACTION_PAGE_SIZE) : 0;
-				    DBCursor cursor = collection.find(query).skip(documentsToSkip).limit(VARIABLES.TRNSACTION_PAGE_SIZE).sort(new BasicDBObject(DATASTORES.INTERVIEW.DATE, -1));
-				    while (cursor.hasNext()) {
-				        DBObject row = cursor.next();
-				        Interview interview = new Interview();
-				        interview.setBudget(row.get(DATASTORES.INTERVIEW.BUDGET).toString());
-				        interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
-				        interview.setStatus(new Integer(row.get(DATASTORES.INTERVIEW.STATUS).toString()));
-				        interview.setId(row.get(DATASTORES.INTERVIEW.ID).toString());
-				        list.add(interview);
-				    }
-		 
-	return list;	  
+    List<Interview> list = new ArrayList<Interview>();
+    List<Bid> myBids = Services.getInstance().getBidStore().getBidsIPosted(user);
+    for (Bid bid : myBids) {
+      String iid = bid.getIid();
+      Interview interview = getInterview(iid);
+      if (interview != null)
+        list.add(interview);
+    }
+    return list;
   }
-  public Interview getInterview(String _id,int pageNumber,int status) throws RemoteException{
 
-	    DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db
-	            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+  public List<Interview> getAwardedInterview(String user, int pageNum) throws RemoteException {
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
 
-	    DBObject query = new BasicDBObject();
-	    query.put("_id", new ObjectId(_id));
-	    DBObject row = collection.findOne(query);
+    DBObject query = new BasicDBObject();
+    query.put(DATASTORES.INTERVIEW.INTERVIEWER, user);
+    List<Interview> list = new ArrayList<Interview>();
+    int documentsToSkip = pageNum > 0 ? (pageNum - 1) * (VARIABLES.TRNSACTION_PAGE_SIZE) : 0;
+    DBCursor cursor =
+        collection.find(query).skip(documentsToSkip).limit(VARIABLES.TRNSACTION_PAGE_SIZE)
+            .sort(new BasicDBObject(DATASTORES.INTERVIEW.DATE, -1));
+    while (cursor.hasNext()) {
+      DBObject row = cursor.next();
+      Interview interview = new Interview();
+      interview.setBudget(row.get(DATASTORES.INTERVIEW.BUDGET).toString());
+      interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
+      interview.setStatus(new Integer(row.get(DATASTORES.INTERVIEW.STATUS).toString()));
+      interview.setId(row.get(DATASTORES.INTERVIEW.ID).toString());
+      list.add(interview);
+    }
 
-	    Interview interview = null;
-	    if (row != null) {
-
-	      interview = new Interview();
-	      // interview = Services.getInstance().getJSONUtilityService().readValue(row.toString(),
-	      // Interview.class);
-	      interview.setDescription(row.get(DATASTORES.INTERVIEW.DESCRIPTION).toString());
-	      interview.setEb(new Double(row.get(DATASTORES.INTERVIEW.ESCROW_BALANCE).toString()));
-	      interview.setInterviewee(row.get(DATASTORES.INTERVIEW.INTERVIEWEE).toString());
-	      interview.setInterviewer(row.get(DATASTORES.INTERVIEW.INTERVIEWER).toString());
-	      List<String> skills = new ArrayList<String>();
-	      BasicDBList listDBSkills = (BasicDBList) row.get(DATASTORES.INTERVIEW.SKILLS);
-	      Iterator<Object> it = listDBSkills.iterator();
-	      while (it.hasNext()) {
-	        skills.add(it.next().toString());
-	      }
-	      interview.setSkills(skills);
-	      interview.setStatus(new Integer(row.get(DATASTORES.INTERVIEW.STATUS).toString()));
-	      interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
-	      interview.setDt(new Date((Long) row.get(DATASTORES.INTERVIEW.DATE)).getTime());
-	      interview.setId(row.get("_id").toString());
-	      if (row.get(DATASTORES.INTERVIEW.FILE) != null)
-	        interview.setFile(row.get(DATASTORES.INTERVIEW.FILE).toString());
-
-	      if (row.get(DATASTORES.INTERVIEW.BUDGET) != null)
-	        interview.setBudget(row.get(DATASTORES.INTERVIEW.BUDGET).toString());
-
-	      if (row.get(DATASTORES.INTERVIEW.EXPERIENCE) != null)
-	        interview.setExperience(row.get(DATASTORES.INTERVIEW.EXPERIENCE).toString());
-
-	      if (row.get(DATASTORES.INTERVIEW.INDUSTRY) != null)
-	        interview.setIndustry(row.get(DATASTORES.INTERVIEW.INDUSTRY).toString());
-
-
-	    }
-	    return interview;
-	  
-	  
+    return list;
   }
+
+  public Interview getInterview(String _id, int pageNumber, int status) throws RemoteException {
+
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
+
+    DBObject query = new BasicDBObject();
+    query.put("_id", new ObjectId(_id));
+    DBObject row = collection.findOne(query);
+
+    Interview interview = null;
+    if (row != null) {
+
+      interview = new Interview();
+      // interview = Services.getInstance().getJSONUtilityService().readValue(row.toString(),
+      // Interview.class);
+      interview.setDescription(row.get(DATASTORES.INTERVIEW.DESCRIPTION).toString());
+      interview.setEb(new Double(row.get(DATASTORES.INTERVIEW.ESCROW_BALANCE).toString()));
+      interview.setInterviewee(row.get(DATASTORES.INTERVIEW.INTERVIEWEE).toString());
+      interview.setInterviewer(row.get(DATASTORES.INTERVIEW.INTERVIEWER).toString());
+      List<String> skills = new ArrayList<String>();
+      BasicDBList listDBSkills = (BasicDBList) row.get(DATASTORES.INTERVIEW.SKILLS);
+      Iterator<Object> it = listDBSkills.iterator();
+      while (it.hasNext()) {
+        skills.add(it.next().toString());
+      }
+      interview.setSkills(skills);
+      interview.setStatus(new Integer(row.get(DATASTORES.INTERVIEW.STATUS).toString()));
+      interview.setTitle(row.get(DATASTORES.INTERVIEW.TITLE).toString());
+      interview.setDt(new Date((Long) row.get(DATASTORES.INTERVIEW.DATE)).getTime());
+      interview.setId(row.get("_id").toString());
+      if (row.get(DATASTORES.INTERVIEW.FILE) != null)
+        interview.setFile(row.get(DATASTORES.INTERVIEW.FILE).toString());
+
+      if (row.get(DATASTORES.INTERVIEW.BUDGET) != null)
+        interview.setBudget(row.get(DATASTORES.INTERVIEW.BUDGET).toString());
+
+      if (row.get(DATASTORES.INTERVIEW.EXPERIENCE) != null)
+        interview.setExperience(row.get(DATASTORES.INTERVIEW.EXPERIENCE).toString());
+
+      if (row.get(DATASTORES.INTERVIEW.INDUSTRY) != null)
+        interview.setIndustry(row.get(DATASTORES.INTERVIEW.INDUSTRY).toString());
+
+
+    }
+    return interview;
+
+
+  }
+
   public Interview getInterview(String _id) throws RemoteException {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
 
     DBObject query = new BasicDBObject();
     query.put("_id", new ObjectId(_id));
@@ -394,9 +394,8 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
 
   public void updateInterviewStatus(ObjectId _id, int inprogress) {
 
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     DBObject query = new BasicDBObject();
     query.put("_id", _id);
     BasicDBObject updateDoc =
@@ -406,9 +405,8 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
   }
 
   public void depositEscrowBalance(ObjectId _id, double amount) throws RemoteException {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     DBObject query = new BasicDBObject();
     query.put("_id", _id);
 
@@ -421,9 +419,8 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
   }
 
   public void withdrawFromEscrow(ObjectId _id, double amount) throws RemoteException {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     DBObject query = new BasicDBObject();
     query.put("_id", _id);
 
@@ -436,9 +433,8 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
   }
 
   public boolean deleteInterivew(ObjectId iid) {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     DBObject doc = new BasicDBObject("_id", iid);
     WriteResult wr = collection.remove(doc);
     CommandResult cr = wr.getCachedLastError();
@@ -446,9 +442,8 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
   }
 
   public void updateInterview(ObjectId id, Map<String, Object> changes) {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     DBObject query = new BasicDBObject("_id", id);
     BasicDBObject updateDoc = new BasicDBObject();
     Iterator<String> it = changes.keySet().iterator();
@@ -470,14 +465,12 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
         updateDoc.append(DATASTORES.INTERVIEW.ESCROW_BALANCE,
             changes.get(DATASTORES.INTERVIEW.ESCROW_BALANCE));
       if (key.equals(DATASTORES.INTERVIEW.BUDGET))
-          updateDoc.append(DATASTORES.INTERVIEW.BUDGET,
-              changes.get(DATASTORES.INTERVIEW.BUDGET));
+        updateDoc.append(DATASTORES.INTERVIEW.BUDGET, changes.get(DATASTORES.INTERVIEW.BUDGET));
       if (key.equals(DATASTORES.INTERVIEW.INDUSTRY))
-          updateDoc.append(DATASTORES.INTERVIEW.INDUSTRY,
-              changes.get(DATASTORES.INTERVIEW.INDUSTRY));
+        updateDoc.append(DATASTORES.INTERVIEW.INDUSTRY, changes.get(DATASTORES.INTERVIEW.INDUSTRY));
       if (key.equals(DATASTORES.INTERVIEW.EXPERIENCE))
-          updateDoc.append(DATASTORES.INTERVIEW.EXPERIENCE,
-              changes.get(DATASTORES.INTERVIEW.EXPERIENCE));
+        updateDoc.append(DATASTORES.INTERVIEW.EXPERIENCE,
+            changes.get(DATASTORES.INTERVIEW.EXPERIENCE));
 
 
     }
@@ -489,17 +482,16 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
   @Override
   public Map<String, String> getInterviewsStatuses(Collection<String> iids) throws RemoteException {
     Map<String, String> result = new HashMap<String, String>();
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     ArrayList<ObjectId> vals = new ArrayList<ObjectId>();
     for (String iid : iids) {
       vals.add(new ObjectId(iid));
-    }   
+    }
     DBObject query = new BasicDBObject("_id", new BasicDBObject("$in", vals));
     DBCursor cursor = collection.find(query);
     while (cursor.hasNext()) {
-      DBObject row = cursor.next();      
+      DBObject row = cursor.next();
       result.put(row.get("_id").toString(), row.get(DATASTORES.INTERVIEW.STATUS).toString());
     }
     return result;
@@ -508,19 +500,19 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
   @Override
   public Map<String, String> getInterviewsFiles(Collection<String> iids) throws RemoteException {
     Map<String, String> result = new HashMap<String, String>();
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.INTERVIEW.DBCollection);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.INTERVIEW.DBCollection);
     ArrayList<ObjectId> vals = new ArrayList<ObjectId>();
     for (String iid : iids) {
       vals.add(new ObjectId(iid));
-    }   
+    }
     DBObject query = new BasicDBObject("_id", new BasicDBObject("$in", vals));
     DBCursor cursor = collection.find(query);
     while (cursor.hasNext()) {
-      DBObject row = cursor.next();            
-      result.put(row.get("_id").toString(), MongoDataHelper.getStringValue(row, DATASTORES.INTERVIEW.FILE));
+      DBObject row = cursor.next();
+      result.put(row.get("_id").toString(),
+          MongoDataHelper.getStringValue(row, DATASTORES.INTERVIEW.FILE));
     }
     return result;
-  }  
+  }
 }

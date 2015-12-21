@@ -29,12 +29,11 @@ public class InterviewCompleteController {
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("_id", iid);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.COMPLETE_INTERVIEW);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.COMPLETE_INTERVIEW);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 

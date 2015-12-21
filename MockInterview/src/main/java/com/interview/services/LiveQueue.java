@@ -104,9 +104,8 @@ public class LiveQueue {
       Map<Object, Object> reqMap = new HashMap<Object, Object>();
       reqMap.put("user", author);
 
-      Map<String, Object> resMap =
-          Services.getInstance().getRequestHandlerService()
-              .handleRequest(reqMap, REQUEST_TYPES.FRIENDLIST_TO_UPDATE);
+      Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+          .handleRequest(reqMap, REQUEST_TYPES.FRIENDLIST_TO_UPDATE);
       return (List<String>) resMap.get("FL");
     } else if (type.equals(UPDATE_TYPES.FIRST_REQUEST_ACCEPT)) {
 

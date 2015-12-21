@@ -23,6 +23,10 @@ import com.mongodb.DBObject;
 
 public class CalendarEventStore extends UnicastRemoteObject implements ICalendarEvent {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 366566999448877807L;
 
   protected CalendarEventStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
@@ -47,8 +51,8 @@ public class CalendarEventStore extends UnicastRemoteObject implements ICalendar
       if (row.get(DATASTORES.CALENDAR_EVENT.EVENT_TYPE) != null)
         event.setEventtype(row.get(DATASTORES.CALENDAR_EVENT.EVENT_TYPE).toString());
       if (row.get(DATASTORES.CALENDAR_EVENT.IS_RECURSIVE) != null)
-        event
-            .setIsrecursive(new Boolean(row.get(DATASTORES.CALENDAR_EVENT.IS_RECURSIVE).toString()));
+        event.setIsrecursive(
+            new Boolean(row.get(DATASTORES.CALENDAR_EVENT.IS_RECURSIVE).toString()));
       if (row.get(DATASTORES.CALENDAR_EVENT.RECUR_DAYS) != null)
         event.setRecurdays(new Integer(row.get(DATASTORES.CALENDAR_EVENT.RECUR_DAYS).toString()));
       if (row.get(DATASTORES.CALENDAR_EVENT.START_TIME) != null)

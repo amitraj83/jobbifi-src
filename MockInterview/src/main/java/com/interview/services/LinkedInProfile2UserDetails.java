@@ -25,7 +25,7 @@ public class LinkedInProfile2UserDetails {
     LinkedInUserDetails user = new LinkedInUserDetails();
     user.setEmailAddress(profile.getEmailAddress());
     user.setProfileURL(profile.getPublicProfileUrl());
-    user.setPictureUrl(profile.getPictureUrl());    
+    user.setPictureUrl(profile.getPictureUrl());
     Certifications cfs = profile.getCertifications();
     if (cfs != null) {
       List<Certification> certifications = cfs.getCertificationList();

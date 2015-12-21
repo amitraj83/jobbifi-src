@@ -19,6 +19,11 @@ import com.mongodb.DBObject;
 
 public class UserTransactionDataStore extends UnicastRemoteObject implements IUserTransaction {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1101341669643225217L;
+
   protected UserTransactionDataStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }

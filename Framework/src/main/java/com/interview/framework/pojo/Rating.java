@@ -6,6 +6,10 @@ import org.bson.types.ObjectId;
 
 public class Rating implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 414133378822810156L;
   private String id;
   private String username;
   private String ratedBy;

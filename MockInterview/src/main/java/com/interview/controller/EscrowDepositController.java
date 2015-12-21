@@ -19,10 +19,11 @@ import com.interview.services.Services;
 
 
 @Controller
-public class EscrowDepositController extends BaseController{
+public class EscrowDepositController extends BaseController {
 
   @RequestMapping(value = "/escrowdeposit.do", method = RequestMethod.POST)
-  public ModelAndView escrowDeposit(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView escrowDeposit(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
 
     String iid = req.getParameter("iid");
@@ -36,12 +37,11 @@ public class EscrowDepositController extends BaseController{
     String username = getLoginUser();
     reqMap.put(USER.USERNAME, username);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.ESCROW_DEPOSIT);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.ESCROW_DEPOSIT);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
   @RequestMapping(value = "/escrowlist.do", method = RequestMethod.POST)
@@ -56,12 +56,11 @@ public class EscrowDepositController extends BaseController{
     String username = getLoginUser();
     reqMap.put(USER.USERNAME, username);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.ESCROW_DEPOSIT);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.ESCROW_DEPOSIT);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 

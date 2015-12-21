@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LinkedInUserDetails implements Serializable {
-  
-  private static final long serialVersionUID = 1L;	
+
+  private static final long serialVersionUID = 1L;
   private List<Education> educations = new ArrayList<Education>();
   private List<Certification> certifications = new ArrayList<Certification>();
   private String industry;
@@ -20,13 +20,13 @@ public class LinkedInUserDetails implements Serializable {
   private String emailAddress;
   private String country;
   private String pictureUrl;
-  
+
   public String getPictureUrl() {
-	return pictureUrl;
+    return pictureUrl;
   }
-	
+
   public void setPictureUrl(String pictureUrl) {
-		this.pictureUrl = pictureUrl;
+    this.pictureUrl = pictureUrl;
   }
 
   public String getCountry() {
@@ -77,9 +77,9 @@ public class LinkedInUserDetails implements Serializable {
     return this.skills;
   }
 
-  public static class Skill implements Serializable {    
-	private static final long serialVersionUID = 1L;
-	private String skillname;
+  public static class Skill implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String skillname;
     private String proficiency;
     private String expYear;
 
@@ -107,11 +107,11 @@ public class LinkedInUserDetails implements Serializable {
       this.expYear = expYear;
     }
 
-	@Override
-	public String toString() {
-		return "Skill [skillname=" + skillname + ", proficiency=" + proficiency
-				+ ", expYear=" + expYear + "]";
-	}
+    @Override
+    public String toString() {
+      return "Skill [skillname=" + skillname + ", proficiency=" + proficiency + ", expYear="
+          + expYear + "]";
+    }
   }
 
 
@@ -123,9 +123,9 @@ public class LinkedInUserDetails implements Serializable {
     return this.positions;
   }
 
-  public static class Position implements Serializable {    
-	private static final long serialVersionUID = 1L;
-	private String companyName;
+  public static class Position implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String companyName;
     private String description;
     private String expLevel;
     private List<String> industryNames;
@@ -199,14 +199,13 @@ public class LinkedInUserDetails implements Serializable {
       this.title = title;
     }
 
-	@Override
-	public String toString() {
-		return "Position [companyName=" + companyName + ", description="
-				+ description + ", expLevel=" + expLevel + ", industryNames="
-				+ industryNames + ", skillsAndExperience="
-				+ skillsAndExperience + ", title=" + title + ", startYear="
-				+ startYear + ", endYear=" + endYear + "]";
-	}
+    @Override
+    public String toString() {
+      return "Position [companyName=" + companyName + ", description=" + description + ", expLevel="
+          + expLevel + ", industryNames=" + industryNames + ", skillsAndExperience="
+          + skillsAndExperience + ", title=" + title + ", startYear=" + startYear + ", endYear="
+          + endYear + "]";
+    }
   }
 
   public String getLocation() {
@@ -225,9 +224,9 @@ public class LinkedInUserDetails implements Serializable {
     return this.languages;
   }
 
-  public static class Language implements Serializable {    
-	private static final long serialVersionUID = 1L;
-	private String langName;
+  public static class Language implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String langName;
     private String proficiency;
 
     public String getLangName() {
@@ -246,11 +245,10 @@ public class LinkedInUserDetails implements Serializable {
       this.proficiency = proficiency;
     }
 
-	@Override
-	public String toString() {
-		return "Language [langName=" + langName + ", proficiency="
-				+ proficiency + "]";
-	}    
+    @Override
+    public String toString() {
+      return "Language [langName=" + langName + ", proficiency=" + proficiency + "]";
+    }
   }
 
   public String getIndustry() {
@@ -269,9 +267,9 @@ public class LinkedInUserDetails implements Serializable {
     return this.certifications;
   }
 
-  public static class Certification implements Serializable {    
-	private static final long serialVersionUID = 1L;
-	private String authority;
+  public static class Certification implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String authority;
     private String name;
     private String number;
 
@@ -299,11 +297,11 @@ public class LinkedInUserDetails implements Serializable {
       this.number = number;
     }
 
-	@Override
-	public String toString() {
-		return "Certification [authority=" + authority + ", name=" + name
-				+ ", number=" + number + "]";
-	}
+    @Override
+    public String toString() {
+      return "Certification [authority=" + authority + ", name=" + name + ", number=" + number
+          + "]";
+    }
   }
 
   public void addEducation(Education education) {
@@ -315,9 +313,9 @@ public class LinkedInUserDetails implements Serializable {
   }
 
   public static class Education implements Serializable {
-    
-	private static final long serialVersionUID = 1L;
-	private String degree;
+
+    private static final long serialVersionUID = 1L;
+    private String degree;
     private String fieldOfStudy;
     private String schoolname;
     private int startYear;
@@ -363,24 +361,21 @@ public class LinkedInUserDetails implements Serializable {
       this.schoolname = schoolname;
     }
 
-	@Override
-	public String toString() {
-		return "Education [degree=" + degree + ", fieldOfStudy=" + fieldOfStudy
-				+ ", schoolname=" + schoolname + ", startYear=" + startYear
-				+ ", endYear=" + endYear + "]";
-	}
+    @Override
+    public String toString() {
+      return "Education [degree=" + degree + ", fieldOfStudy=" + fieldOfStudy + ", schoolname="
+          + schoolname + ", startYear=" + startYear + ", endYear=" + endYear + "]";
+    }
   }
 
 
-	@Override
-	public String toString() {
-		return "LinkedInUserDetails [educations=" + educations
-				+ ", certifications=" + certifications + ", industry=" + industry
-				+ ", languages=" + languages + ", location=" + location
-				+ ", positions=" + positions + ", skills=" + skills
-				+ ", specialities=" + specialities + ", summary=" + summary
-				+ ", profileURL=" + profileURL + ", emailAddress=" + emailAddress
-				+ ", country=" + country + ", pictureUrl=" + pictureUrl + "]";
-	}
-  
+  @Override
+  public String toString() {
+    return "LinkedInUserDetails [educations=" + educations + ", certifications=" + certifications
+        + ", industry=" + industry + ", languages=" + languages + ", location=" + location
+        + ", positions=" + positions + ", skills=" + skills + ", specialities=" + specialities
+        + ", summary=" + summary + ", profileURL=" + profileURL + ", emailAddress=" + emailAddress
+        + ", country=" + country + ", pictureUrl=" + pictureUrl + "]";
+  }
+
 }

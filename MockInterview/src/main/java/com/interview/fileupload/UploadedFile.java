@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class UploadedFile implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -9180325338363551886L;
   private String name;
   private Integer size;
   private String url;

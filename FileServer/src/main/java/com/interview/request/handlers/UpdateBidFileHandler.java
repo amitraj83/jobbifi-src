@@ -32,8 +32,8 @@ public class UpdateBidFileHandler extends RequestHandler {
     changes.put(DATASTORES.UPLOAD_FILE.ARTIFACT_ID, new ObjectId(bidid));
 
     try {
-      DataStoreRegistry.getInstance().getUploadedFileDataStore()
-          .update(new ObjectId(docId), changes);
+      DataStoreRegistry.getInstance().getUploadedFileDataStore().update(new ObjectId(docId),
+          changes);
     } catch (RemoteException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

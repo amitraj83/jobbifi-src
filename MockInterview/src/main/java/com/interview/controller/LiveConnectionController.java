@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.interview.services.Services;
-
 
 @Controller
 public class LiveConnectionController {
@@ -18,7 +16,8 @@ public class LiveConnectionController {
 
 
   @RequestMapping(value = "/live.do", method = RequestMethod.GET)
-  public ModelAndView processRequest(ModelMap model, HttpServletRequest req, HttpServletResponse res) {    
+  public ModelAndView processRequest(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
     return new ModelAndView("live", "message", null);
   }
 }

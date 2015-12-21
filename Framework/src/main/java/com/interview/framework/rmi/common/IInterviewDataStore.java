@@ -17,10 +17,11 @@ public interface IInterviewDataStore extends Remote {
 
   public ObjectId saveInterview(Interview interview) throws RemoteException;
 
-  public List<Interview> getInterviews(String user, String role, int pagenum,int status) throws RemoteException;
-  
+  public List<Interview> getInterviews(String user, String role, int pagenum, int status)
+      throws RemoteException;
+
   public List<Interview> getInterviews(String user, String role) throws RemoteException;
-  
+
   public List<Interview> getDisputableList(String user, String role) throws RemoteException;
 
   public List<Interview> getInterviewsWhereIBid(String user) throws RemoteException;
@@ -44,14 +45,15 @@ public interface IInterviewDataStore extends Remote {
   public Map<String, String> getInterviewsStatuses(Collection<String> iids) throws RemoteException;
 
   public Map<String, String> getInterviewsFiles(Collection<String> iids) throws RemoteException;
-  
-  public int getTotalinterviewcount(String user, String role,int status) throws RemoteException;
-  
-  public List<Interview> getInterviewsWhereIBid(String user,int pageNumber,int status) throws RemoteException ;
-  
-  public Interview getInterview(String _id,int pageNumber,int status) throws RemoteException;
-  
+
+  public int getTotalinterviewcount(String user, String role, int status) throws RemoteException;
+
+  public List<Interview> getInterviewsWhereIBid(String user, int pageNumber, int status)
+      throws RemoteException;
+
+  public Interview getInterview(String _id, int pageNumber, int status) throws RemoteException;
+
   public List<Interview> getAwardedInterview(String user, int pageNum) throws RemoteException;
-  
+
   public int getTotalAwardedInterviewCount(String User) throws RemoteException;
 }

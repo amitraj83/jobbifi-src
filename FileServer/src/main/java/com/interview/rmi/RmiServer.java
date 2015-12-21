@@ -12,8 +12,15 @@ import com.interview.request.handlers.RequestHandler;
 import com.interview.rmi.common.ReceiveMessageInterface;
 import com.interview.services.Services;
 
-public class RmiServer extends java.rmi.server.UnicastRemoteObject implements
-    ReceiveMessageInterface {
+public class RmiServer extends java.rmi.server.UnicastRemoteObject
+    implements ReceiveMessageInterface {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -7930656332830183067L;
+
+
 
   public RmiServer(String host, int port) throws RemoteException {
     // String name = GlobalProperties.properties.getProperty("rmiServerName");

@@ -20,11 +20,11 @@ import com.interview.services.Services;
 
 @Controller
 public class TransactionHistoryController extends BaseController {
-	
-	@RequestMapping(value="/finance.do", method=RequestMethod.GET)
-	  public String getTransactionHistory(){
-		  return "finance";
-	  }
+
+  @RequestMapping(value = "/finance.do", method = RequestMethod.GET)
+  public String getTransactionHistory() {
+    return "finance";
+  }
 
   @RequestMapping(value = "/transhistory.do", method = RequestMethod.POST)
   public ModelAndView getTransactionHistory(ModelMap model, HttpServletRequest req,
@@ -37,11 +37,10 @@ public class TransactionHistoryController extends BaseController {
     reqMap.put(VARIABLES.FROM_DATE, req.getParameter("fromDate"));
     reqMap.put(VARIABLES.TO_DATE, req.getParameter("toDate"));
     reqMap.put("pagenum", req.getParameter("pagenum"));
-    Map<String, Object> resmap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.TRANSACTION_HISTORY);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resmap));
+    Map<String, Object> resmap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.TRANSACTION_HISTORY);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resmap));
   }
 
 }

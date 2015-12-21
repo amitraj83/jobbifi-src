@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Escrow implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -6222248840339301783L;
   public String id;
   public String visibleId;
   public double amount;

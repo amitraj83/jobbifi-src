@@ -2,9 +2,6 @@ package com.interview.datastore;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -23,6 +20,11 @@ import com.mongodb.WriteResult;
 
 // @Service("")
 public class UploadedFileDataStore extends UnicastRemoteObject implements IUploadedFileDataStore {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 4788714828024643867L;
 
   protected UploadedFileDataStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
@@ -51,9 +53,8 @@ public class UploadedFileDataStore extends UnicastRemoteObject implements IUploa
    * } return null; }
    */
   public UploadedFile getUploadedFile(ObjectId _id) {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
 
     DBObject query = new BasicDBObject(DATASTORES.UPLOAD_FILE.ID, _id);
     DBCursor cursor = collection.find(query);
@@ -84,9 +85,8 @@ public class UploadedFileDataStore extends UnicastRemoteObject implements IUploa
 
 
   public String getURL(ObjectId _id) throws RemoteException {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
 
     DBObject query = new BasicDBObject(DATASTORES.UPLOAD_FILE.ID, _id);
     DBCursor cursor = collection.find(query);
@@ -98,9 +98,8 @@ public class UploadedFileDataStore extends UnicastRemoteObject implements IUploa
   }
 
   public void update(ObjectId _id, Map<String, Object> changes) {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
     DBObject query = new BasicDBObject();
     query.put(DATASTORES.UPLOAD_FILE.ID, _id);
 
@@ -117,9 +116,8 @@ public class UploadedFileDataStore extends UnicastRemoteObject implements IUploa
   }
 
   public ObjectId saveUploadedFile(UploadedFile file) {
-    DBCollection collection =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
+    DBCollection collection = Services.getInstance().getBaseDataStore().db
+        .getCollection(DATASTORES.UPLOAD_FILE.COLLECTION);
 
 
 

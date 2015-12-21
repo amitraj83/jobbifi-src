@@ -16,6 +16,11 @@ import com.mongodb.DBObject;
 
 public class PositionStore extends UnicastRemoteObject implements IPositionStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 7872951323467549990L;
+
   protected PositionStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }

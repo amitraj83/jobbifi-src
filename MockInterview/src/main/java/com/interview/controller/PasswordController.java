@@ -16,25 +16,26 @@ import com.interview.services.Services;
 
 @Controller
 public class PasswordController extends BaseController {
-	Logger loger = Logger.getLogger(PasswordController.class);
-	@RequestMapping(value="/changepassword.do", method=RequestMethod.GET) 
-	public String changePassword(){
-		return "changepassword";
-	}
-	
-	@RequestMapping(value="/changepassword.do", method=RequestMethod.POST) 
-	public ModelAndView processChangePassword(@RequestParam("currentPassword") String currentPassword,
-			@RequestParam("newPassword") String newPassword){
-				
-		 Map<Object, Object> request = new HashMap<Object, Object>();
-		 request.put(USER.USERNAME, getLoginUser());
-		 request.put(USER.PASSWORD, currentPassword);
-		 request.put(USER.NEW_PASSWORD, newPassword);
-		 loger.info("CURRENTPASSWORD"+currentPassword);
-		 loger.info("NEWPASSWORD"+newPassword);
-		 Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
-				 .handleRequest(request, REQUEST_TYPES.PASSWORD);
-		 return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-			        .getJSONStringOfMap(responseMap));
-	}
+  Logger loger = Logger.getLogger(PasswordController.class);
+
+  @RequestMapping(value = "/changepassword.do", method = RequestMethod.GET)
+  public String changePassword() {
+    return "changepassword";
+  }
+
+  @RequestMapping(value = "/changepassword.do", method = RequestMethod.POST)
+  public ModelAndView processChangePassword(@RequestParam("currentPassword") String currentPassword,
+      @RequestParam("newPassword") String newPassword) {
+
+    Map<Object, Object> request = new HashMap<Object, Object>();
+    request.put(USER.USERNAME, getLoginUser());
+    request.put(USER.PASSWORD, currentPassword);
+    request.put(USER.NEW_PASSWORD, newPassword);
+    loger.info("CURRENTPASSWORD" + currentPassword);
+    loger.info("NEWPASSWORD" + newPassword);
+    Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(request, REQUEST_TYPES.PASSWORD);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(responseMap));
+  }
 }

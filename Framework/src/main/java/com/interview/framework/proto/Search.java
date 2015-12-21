@@ -9,7 +9,7 @@ public final class Search {
   public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {}
 
   public enum SearchType implements com.google.protobuf.ProtocolMessageEnum {
-    INTERVIEW(0, 1), INTERVIEWEE(1, 2), INTERVIEWER(2, 3), JOB(3, 4), ;
+    INTERVIEW(0, 1), INTERVIEWEE(1, 2), INTERVIEWER(2, 3), JOB(3, 4),;
 
     public static final int INTERVIEW_VALUE = 1;
     public static final int INTERVIEWEE_VALUE = 2;
@@ -91,8 +91,8 @@ public final class Search {
 
     com.interview.framework.proto.Search.SearchType getType();
   }
-  public static final class Query extends com.google.protobuf.GeneratedMessage implements
-      QueryOrBuilder {
+  public static final class Query extends com.google.protobuf.GeneratedMessage
+      implements QueryOrBuilder {
     // Use Query.newBuilder() to construct.
     private Query(Builder builder) {
       super(builder);
@@ -228,14 +228,14 @@ public final class Search {
 
     public static com.interview.framework.proto.Search.Query parseFrom(
         com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
 
     public static com.interview.framework.proto.Search.Query parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
@@ -246,7 +246,7 @@ public final class Search {
 
     public static com.interview.framework.proto.Search.Query parseFrom(byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
@@ -272,7 +272,7 @@ public final class Search {
 
     public static com.interview.framework.proto.Search.Query parseDelimitedFrom(
         java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+            throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
         return builder.buildParsed();
@@ -565,8 +565,8 @@ public final class Search {
 
     String getDocs(int index);
   }
-  public static final class Response extends com.google.protobuf.GeneratedMessage implements
-      ResponseOrBuilder {
+  public static final class Response extends com.google.protobuf.GeneratedMessage
+      implements ResponseOrBuilder {
     // Use Response.newBuilder() to construct.
     private Response(Builder builder) {
       super(builder);
@@ -662,14 +662,14 @@ public final class Search {
 
     public static com.interview.framework.proto.Search.Response parseFrom(
         com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
 
     public static com.interview.framework.proto.Search.Response parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
@@ -680,7 +680,7 @@ public final class Search {
 
     public static com.interview.framework.proto.Search.Response parseFrom(byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
@@ -689,9 +689,8 @@ public final class Search {
       return newBuilder().mergeFrom(input).buildParsed();
     }
 
-    public static com.interview.framework.proto.Search.Response parseFrom(
-        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static com.interview.framework.proto.Search.Response parseFrom(java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry).buildParsed();
     }
 
@@ -707,7 +706,7 @@ public final class Search {
 
     public static com.interview.framework.proto.Search.Response parseDelimitedFrom(
         java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+            throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
         return builder.buildParsed();
@@ -971,14 +970,14 @@ public final class Search {
   }
 
   private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
-    java.lang.String[] descriptorData =
-        {"\n\026src/proto/search.proto\022\005proto\"7\n\005Query"
-            + "\022\r\n\005value\030\001 \002(\t\022\037\n\004type\030\002 \002(\0162\021.proto.Se"
-            + "archType\"\030\n\010Response\022\014\n\004docs\030\001 \003(\t*F\n\nSe"
-            + "archType\022\r\n\tINTERVIEW\020\001\022\017\n\013INTERVIEWEE\020\002"
-            + "\022\017\n\013INTERVIEWER\020\003\022\007\n\003JOB\020\004B\'\n\035com.interv"
-            + "iew.framework.protoB\006Search"};
+    java.lang.String[] descriptorData = {"\n\026src/proto/search.proto\022\005proto\"7\n\005Query"
+        + "\022\r\n\005value\030\001 \002(\t\022\037\n\004type\030\002 \002(\0162\021.proto.Se"
+        + "archType\"\030\n\010Response\022\014\n\004docs\030\001 \003(\t*F\n\nSe"
+        + "archType\022\r\n\tINTERVIEW\020\001\022\017\n\013INTERVIEWEE\020\002"
+        + "\022\017\n\013INTERVIEWER\020\003\022\007\n\003JOB\020\004B\'\n\035com.interv"
+        + "iew.framework.protoB\006Search"};
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
           public com.google.protobuf.ExtensionRegistry assignDescriptors(
@@ -987,8 +986,9 @@ public final class Search {
             internal_static_proto_Query_descriptor = getDescriptor().getMessageTypes().get(0);
             internal_static_proto_Query_fieldAccessorTable =
                 new com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-                    internal_static_proto_Query_descriptor, new java.lang.String[] {"Value",
-                        "Type",}, com.interview.framework.proto.Search.Query.class,
+                    internal_static_proto_Query_descriptor,
+                    new java.lang.String[] {"Value", "Type",},
+                    com.interview.framework.proto.Search.Query.class,
                     com.interview.framework.proto.Search.Query.Builder.class);
             internal_static_proto_Response_descriptor = getDescriptor().getMessageTypes().get(1);
             internal_static_proto_Response_fieldAccessorTable =

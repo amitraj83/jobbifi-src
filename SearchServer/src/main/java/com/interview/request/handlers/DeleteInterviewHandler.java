@@ -9,21 +9,22 @@ import com.interview.services.Services;
 
 public class DeleteInterviewHandler {
 
-	public String deleteInterviewFromSolr(String id) {
-		try {
+  public String deleteInterviewFromSolr(String id) {
+    try {
 
-			UpdateResponse res = Services.getInstance().getSolrService().getServer().deleteByQuery("id:"+id);
-			System.out.println(res.getResponse());
-			return res.getResponse().toString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (SolrServerException e) {
-			e.printStackTrace();
-		}
+      UpdateResponse res =
+          Services.getInstance().getSolrService().getServer().deleteByQuery("id:" + id);
+      System.out.println(res.getResponse());
+      return res.getResponse().toString();
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (SolrServerException e) {
+      e.printStackTrace();
+    }
 
 
 
-		return null;
-	}
+    return null;
+  }
 
 }

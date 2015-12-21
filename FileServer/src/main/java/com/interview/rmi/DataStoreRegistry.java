@@ -75,17 +75,17 @@ public class DataStoreRegistry {
       e.printStackTrace();
     }
   }
-  
-//  public DataStoreRegistry(String dataStoreAddress, int port) {
-//    try {
-//      instance = this;
-//      registry = LocateRegistry.getRegistry(dataStoreAddress, port);
-//
-//    } catch (RemoteException e) {
-//      e.printStackTrace();
-//    }
-//
-//  }
+
+  // public DataStoreRegistry(String dataStoreAddress, int port) {
+  // try {
+  // instance = this;
+  // registry = LocateRegistry.getRegistry(dataStoreAddress, port);
+  //
+  // } catch (RemoteException e) {
+  // e.printStackTrace();
+  // }
+  //
+  // }
 
   public static DataStoreRegistry getInstance() {
     return instance;
@@ -312,18 +312,18 @@ public class DataStoreRegistry {
     }
     return null;
   }
-  
-  public IJobStore getJobStore() {
-	try {
 
-		return (IJobStore) (this.registry.lookup(IJobStore.NAME));
-	} catch (AccessException e) {
-		e.printStackTrace();
-	} catch (RemoteException e) {
-		e.printStackTrace();
-	} catch (NotBoundException e) {
-		e.printStackTrace();
-	}
-	return null;
-}
+  public IJobStore getJobStore() {
+    try {
+
+      return (IJobStore) (this.registry.lookup(IJobStore.NAME));
+    } catch (AccessException e) {
+      e.printStackTrace();
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    } catch (NotBoundException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }

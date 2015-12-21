@@ -28,9 +28,8 @@ public class PrepareLoginData {
 
     Map<Object, Object> userNameReqMap = userNameReqMap(userInfo);
 
-    Map<String, Object> allFirstRequest =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userNameReqMap, REQUEST_TYPES.RETRIEVE_FIRST_REQUEST);
+    Map<String, Object> allFirstRequest = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userNameReqMap, REQUEST_TYPES.RETRIEVE_FIRST_REQUEST);
 
     populateSession(session, userInfo);
 
@@ -60,19 +59,16 @@ public class PrepareLoginData {
     }
     resmap.put(VARIABLES.REQ_SENT, (allFirstRequest.get(VARIABLES.REQ_SENT)));
 
-    Map<String, Object> interviewMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userNameReqMap, REQUEST_TYPES.GET_INTERVIEW);
+    Map<String, Object> interviewMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userNameReqMap, REQUEST_TYPES.GET_INTERVIEW);
     resmap.put(VARIABLES.MY_INTERVIEW, (interviewMap));
 
-    Map<String, Object> bidMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userNameReqMap, REQUEST_TYPES.GET_MY_BIDS);
+    Map<String, Object> bidMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userNameReqMap, REQUEST_TYPES.GET_MY_BIDS);
     resmap.put(VARIABLES.MY_BIDS, (bidMap));
 
-    Map<String, Object> availableUsers =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userNameReqMap, REQUEST_TYPES.AVAILABLE_USERS);
+    Map<String, Object> availableUsers = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userNameReqMap, REQUEST_TYPES.AVAILABLE_USERS);
     Iterator<String> itUsers = availableUsers.keySet().iterator();
     while (itUsers.hasNext()) {
       String availableUser = itUsers.next();
@@ -80,15 +76,13 @@ public class PrepareLoginData {
         availableUsers.put(availableUser, "1");
     }
     resmap.put(VARIABLES.AVAILABLE_USERS, (availableUsers));
-    Map<String, Object> disputes =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userNameReqMap, REQUEST_TYPES.DISPUTES_RETRIEVE_ALL);
+    Map<String, Object> disputes = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userNameReqMap, REQUEST_TYPES.DISPUTES_RETRIEVE_ALL);
     resmap.put(VARIABLES.DISPUTES, (disputes));
 
     userNameReqMap.put(REQUEST_TYPES.SUB_REQ, CHAT_HISTORY_SUB_REQ.GET_OFFLINE_CHAT_COUNT);
-    Map<String, Object> offlineChatCount =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userNameReqMap, REQUEST_TYPES.CHAT_HISTORY);
+    Map<String, Object> offlineChatCount = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userNameReqMap, REQUEST_TYPES.CHAT_HISTORY);
     resmap.put(VARIABLES.OFFLINE_CHAT_COUNT, offlineChatCount);
     return resmap;
   }
@@ -164,9 +158,8 @@ public class PrepareLoginData {
   }
 
   private Map<String, Object> getUserInformation(String userEmailId) {
-    Map<String, Object> userInfo =
-        Services.getInstance().getUserDataService()
-            .getUserData(userEmailId, REQUEST_TYPES.USER_INFO);
+    Map<String, Object> userInfo = Services.getInstance().getUserDataService()
+        .getUserData(userEmailId, REQUEST_TYPES.USER_INFO);
     return userInfo;
   }
 }

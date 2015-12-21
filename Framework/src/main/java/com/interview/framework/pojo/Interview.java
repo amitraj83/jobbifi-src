@@ -7,9 +7,9 @@ import java.util.List;
 import org.apache.solr.client.solrj.beans.Field;
 
 public class Interview implements Serializable {
-	
+
   private static final long serialVersionUID = 1L;
-	
+
   @Field("id")
   private String id;
   @Field("title")
@@ -33,23 +33,24 @@ public class Interview implements Serializable {
   private String budget;
   private int bidcount;
   private String price;
+
   public String getPrice() {
-	return price;
-}
+    return price;
+  }
 
-public void setPrice(String price) {
-	this.price = price;
-}
+  public void setPrice(String price) {
+    this.price = price;
+  }
 
-public int getBidcount() {
-	return bidcount;
-}
+  public int getBidcount() {
+    return bidcount;
+  }
 
-public void setBidcount(int bidcount) {
-	this.bidcount = bidcount;
-}
+  public void setBidcount(int bidcount) {
+    this.bidcount = bidcount;
+  }
 
-public String getIndustry() {
+  public String getIndustry() {
     return industry;
   }
 
@@ -76,15 +77,15 @@ public String getIndustry() {
   private double eb;
   private String file;
 
-  public String getFile()  {
+  public String getFile() {
     return file;
   }
 
   public void setFile(String file) {
-	  if(file!=null)
-    this.file = file;
-	  else
-	this.file=""; 
+    if (file != null)
+      this.file = file;
+    else
+      this.file = "";
   }
 
   public double getEb() {
@@ -175,43 +176,34 @@ public String getIndustry() {
   }
 
   /**
-   *  Get the status string from the status of interview
-   * */
-  public String getStatusString(){
-	  if(this.getStatus() == 0){
-			return "OPEN";
-		}
-		else if(this.getStatus() == 1){
-			return "IN PROGRESS";
-		}
-		else if(this.getStatus() == 2){
-			return "IN PROGRESS";
-		}
-		else if(this.getStatus() == 3){
-			return "IN PROGRESS";
-		}
-		else if(this.getStatus() == 4){
-			return "APPROVAL PENDING";
-		}
-		else if(this.getStatus() == 5){
-			return "COMPLETED";
-		}
-		else if(this.getStatus() == 6){
-			return "CANCELLED";
-		}
-		else if(this.getStatus() == 7){
-			return "REPOSTED";
-		}
-		else if(this.getStatus() == 8){
-			return "USER RATED";
-		}
-		else if(this.getStatus() == 9){
-			return "DISPUTE";
-		}
-	 return"OPEN";
-	  
+   * Get the status string from the status of interview
+   */
+  public String getStatusString() {
+    if (this.getStatus() == 0) {
+      return "OPEN";
+    } else if (this.getStatus() == 1) {
+      return "IN PROGRESS";
+    } else if (this.getStatus() == 2) {
+      return "IN PROGRESS";
+    } else if (this.getStatus() == 3) {
+      return "IN PROGRESS";
+    } else if (this.getStatus() == 4) {
+      return "APPROVAL PENDING";
+    } else if (this.getStatus() == 5) {
+      return "COMPLETED";
+    } else if (this.getStatus() == 6) {
+      return "CANCELLED";
+    } else if (this.getStatus() == 7) {
+      return "REPOSTED";
+    } else if (this.getStatus() == 8) {
+      return "USER RATED";
+    } else if (this.getStatus() == 9) {
+      return "DISPUTE";
+    }
+    return "OPEN";
+
   }
-  
+
   @Field("description")
   public void setDescription(String description) {
     this.description = description;

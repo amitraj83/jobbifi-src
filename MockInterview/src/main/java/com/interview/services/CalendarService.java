@@ -45,7 +45,8 @@ public class CalendarService {
   }
 
   public Map<String, Object> updateDetailedCalendar(String id, long st, long et, String subject,
-      boolean isAllDayEvent, String description, String location, String colorValue, String timeZone) {
+      boolean isAllDayEvent, String description, String location, String colorValue,
+      String timeZone) {
     Map<String, Object> res = new HashMap<String, Object>();
 
 

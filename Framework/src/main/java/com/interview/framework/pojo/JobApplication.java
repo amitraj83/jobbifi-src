@@ -4,125 +4,124 @@ import java.io.Serializable;
 
 public class JobApplication implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	private String id;
-	
-	private String jobId;
-	
-	private String coverLetter;
-	
-	private String cvFileId;
-	
-	private long dt;
-	
-	private String status;
+  private String id;
 
-	private UploadedFile uploadedFile;
-	
-	private String applicantId;
-	
-	private int reviewCount;
-	
-	private double rating;
-	
-	private String profilePic;
-	
-	public JobApplication(){}
+  private String jobId;
 
-	public String getId() {
-		return id;
-	}
+  private String coverLetter;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  private String cvFileId;
 
-	public String getJobId() {
-		return jobId;
-	}
+  private long dt;
 
-	public void setJobId(String jobId) {
-		this.jobId = jobId;
-	}
+  private String status;
 
-	public String getCoverLetter() {
-		return coverLetter;
-	}
+  private UploadedFile uploadedFile;
 
-	public void setCoverLetter(String coverLetter) {
-		this.coverLetter = coverLetter;
-	}
+  private String applicantId;
 
-	public String getCvFileId() {
-		return cvFileId;
-	}
+  private int reviewCount;
 
-	public void setCvFileId(String cvFileId) {
-		this.cvFileId = cvFileId;
-	}
+  private double rating;
 
-	public long getDt() {
-		return dt;
-	}
+  private String profilePic;
 
-	public void setDt(long dt) {
-		this.dt = dt;
-	}
+  public JobApplication() {}
 
-	public String getApplicantId() {
-		return applicantId;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public void setApplicantId(String applicantId) {
-		this.applicantId = applicantId;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public String getStatus() {
-		return status;
-	}
+  public String getJobId() {
+    return jobId;
+  }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+  public void setJobId(String jobId) {
+    this.jobId = jobId;
+  }
 
-	public UploadedFile getUploadedFile() {
-		return uploadedFile;
-	}
+  public String getCoverLetter() {
+    return coverLetter;
+  }
 
-	public void setUploadedFile(UploadedFile uploadedFile) {
-		this.uploadedFile = uploadedFile;
-	}
-	
-	public int getReviewCount() {
-		return reviewCount;
-	}
+  public void setCoverLetter(String coverLetter) {
+    this.coverLetter = coverLetter;
+  }
 
-	public void setReviewCount(int reviewCount) {
-		this.reviewCount = reviewCount;
-	}
+  public String getCvFileId() {
+    return cvFileId;
+  }
 
-	public double getRating() {
-		return rating;
-	}
+  public void setCvFileId(String cvFileId) {
+    this.cvFileId = cvFileId;
+  }
 
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
+  public long getDt() {
+    return dt;
+  }
 
-	public String getProfilePic() {
-		return profilePic;
-	}
+  public void setDt(long dt) {
+    this.dt = dt;
+  }
 
-	public void setProfilePic(String profilePic) {
-		this.profilePic = profilePic;
-	}
+  public String getApplicantId() {
+    return applicantId;
+  }
 
-	@Override
-	public String toString() {
-		return "JobApplication [id=" + id + ", jobId=" + jobId
-				+ ", coverLetter=" + coverLetter + ", cvFileId=" + cvFileId
-				+ ", dt=" + dt + ", applicantId=" + applicantId + ", status="
-				+ status + "]";
-	}	
+  public void setApplicantId(String applicantId) {
+    this.applicantId = applicantId;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  public UploadedFile getUploadedFile() {
+    return uploadedFile;
+  }
+
+  public void setUploadedFile(UploadedFile uploadedFile) {
+    this.uploadedFile = uploadedFile;
+  }
+
+  public int getReviewCount() {
+    return reviewCount;
+  }
+
+  public void setReviewCount(int reviewCount) {
+    this.reviewCount = reviewCount;
+  }
+
+  public double getRating() {
+    return rating;
+  }
+
+  public void setRating(double rating) {
+    this.rating = rating;
+  }
+
+  public String getProfilePic() {
+    return profilePic;
+  }
+
+  public void setProfilePic(String profilePic) {
+    this.profilePic = profilePic;
+  }
+
+  @Override
+  public String toString() {
+    return "JobApplication [id=" + id + ", jobId=" + jobId + ", coverLetter=" + coverLetter
+        + ", cvFileId=" + cvFileId + ", dt=" + dt + ", applicantId=" + applicantId + ", status="
+        + status + "]";
+  }
 }

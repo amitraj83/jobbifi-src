@@ -31,9 +31,8 @@ public class LinkedInUserRegistrationController {
 
     Interviewer interviewer = new Interviewer();
     try {
-      List<Skill> skillList =
-          Services.getInstance().getJSONUtilityService()
-              .readValue(req.getParameter("skills"), new TypeReference<List<Skill>>() {});
+      List<Skill> skillList = Services.getInstance().getJSONUtilityService()
+          .readValue(req.getParameter("skills"), new TypeReference<List<Skill>>() {});
       interviewer.setSkillList(skillList);
       if (skillList != null && skillList.size() > 0) {
         String[] skills = new String[skillList.size()];
@@ -47,18 +46,16 @@ public class LinkedInUserRegistrationController {
     }
 
     try {
-      List<Education> educations =
-          Services.getInstance().getJSONUtilityService()
-              .readValue(req.getParameter("educations"), new TypeReference<List<Education>>() {});
+      List<Education> educations = Services.getInstance().getJSONUtilityService()
+          .readValue(req.getParameter("educations"), new TypeReference<List<Education>>() {});
       interviewer.setEducations(educations);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
     try {
-      List<Position> positions =
-          Services.getInstance().getJSONUtilityService()
-              .readValue(req.getParameter("positions"), new TypeReference<List<Position>>() {});
+      List<Position> positions = Services.getInstance().getJSONUtilityService()
+          .readValue(req.getParameter("positions"), new TypeReference<List<Position>>() {});
       interviewer.setPositions(positions);
       if (positions != null && positions.size() > 0) {
         String[] companies = new String[positions.size()];
@@ -78,8 +75,8 @@ public class LinkedInUserRegistrationController {
     interviewer.setId(req.getParameter("useremail"));
     interviewer.setType(req.getParameter("type"));
     interviewer.setUsername(req.getParameter("username"));
-    interviewer.setIndustries(null != req.getParameter("industry") ? new String[] {req
-        .getParameter("industry")} : new String[] {});
+    interviewer.setIndustries(null != req.getParameter("industry")
+        ? new String[] {req.getParameter("industry")} : new String[] {});
 
     interviewer.setProfilePic(req.getParameter("profilepic"));
 
@@ -89,13 +86,12 @@ public class LinkedInUserRegistrationController {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("user", interviewer);
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.LINKEDIN_USER_REG);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.LINKEDIN_USER_REG);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
-    
- 
+
+
 }

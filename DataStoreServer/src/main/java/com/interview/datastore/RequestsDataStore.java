@@ -24,6 +24,11 @@ import com.mongodb.WriteResult;
 
 public class RequestsDataStore extends UnicastRemoteObject implements IRequestDataStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -1697158246990554825L;
+
   protected RequestsDataStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }
@@ -112,10 +117,8 @@ public class RequestsDataStore extends UnicastRemoteObject implements IRequestDa
     DBObject query = new BasicDBObject();
     query.put(FIRST_REQUESTS.ID, id);
     BasicDBObject uo = new BasicDBObject();
-    uo.append(
-        "$set",
-        new BasicDBObject().append(FIRST_REQUESTS.STATUS, status.ordinal()).append(
-            FIRST_REQUESTS.UPDATE_DATE, new Date().toString()));
+    uo.append("$set", new BasicDBObject().append(FIRST_REQUESTS.STATUS, status.ordinal())
+        .append(FIRST_REQUESTS.UPDATE_DATE, new Date().toString()));
     WriteResult result = collection.update(query, uo);
     CommandResult cr = result.getLastError();
     if (cr.ok()) {

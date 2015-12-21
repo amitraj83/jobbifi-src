@@ -29,15 +29,16 @@ public class OpLogReader implements Runnable {
 
   @Override
   public void run() {
-	  
+
     DB local = mongoConnection.getDB("local");
     DBCollection oplog = local.getCollection("oplog.$main");
     DBObject last = null;
-    
+
     {
       DBCursor lastCursor = oplog.find().sort(new BasicDBObject("$natural", -1)).limit(1);
       if (!lastCursor.hasNext()) {
-        log.fatal("no oplog configured for this connection. Please restart mongo with the --master option.");
+        log.fatal(
+            "no oplog configured for this connection. Please restart mongo with the --master option.");
         return;
       }
       last = lastCursor.next();

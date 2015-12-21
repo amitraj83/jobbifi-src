@@ -18,9 +18,14 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 
-public class DisputeMessageDataStore extends UnicastRemoteObject implements
-    IDisputeMessageDataStore {
+public class DisputeMessageDataStore extends UnicastRemoteObject
+    implements IDisputeMessageDataStore {
 
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -3336287847882180604L;
 
   protected DisputeMessageDataStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
@@ -61,8 +66,8 @@ public class DisputeMessageDataStore extends UnicastRemoteObject implements
       DBObject row = cursor.next();
       DisputeMessage msg = new DisputeMessage();
       msg.setDisputeId(disputeId);
-      msg.setFid(row.get(DATASTORES.DISPUTE_MESSAGE.FID) == null ? "" : row.get(
-          DATASTORES.DISPUTE_MESSAGE.FID).toString());
+      msg.setFid(row.get(DATASTORES.DISPUTE_MESSAGE.FID) == null ? ""
+          : row.get(DATASTORES.DISPUTE_MESSAGE.FID).toString());
       msg.setId(row.get("_id").toString());
       msg.setMessage(row.get(DATASTORES.DISPUTE_MESSAGE.MESSAGE).toString());
       msg.setMessageBy(row.get(DATASTORES.DISPUTE_MESSAGE.MESSAGEBY).toString());

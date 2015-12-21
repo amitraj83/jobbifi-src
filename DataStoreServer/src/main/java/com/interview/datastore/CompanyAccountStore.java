@@ -16,6 +16,11 @@ import com.mongodb.DBObject;
 
 public class CompanyAccountStore extends UnicastRemoteObject implements ICompanyAccountStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 2929875881033321724L;
+
   protected CompanyAccountStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }

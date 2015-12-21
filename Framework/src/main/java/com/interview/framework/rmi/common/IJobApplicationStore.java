@@ -9,16 +9,17 @@ import org.bson.types.ObjectId;
 import com.interview.framework.pojo.JobApplication;
 
 public interface IJobApplicationStore extends Remote {
-	  
-	String NAME = "jobapplicationstore";
-	  
-	public ObjectId saveJobApplication(JobApplication jobApplication) throws RemoteException;
 
-	public JobApplication getJobApplication(String _id) throws RemoteException;
+  String NAME = "jobapplicationstore";
 
-	public List<JobApplication> getJobApplicationsByJobId(String jobId) throws RemoteException;
-	
-	public List<JobApplication> getJobApplicationsByJobIdAndUserId(String jobId, String userId) throws RemoteException;
+  public ObjectId saveJobApplication(JobApplication jobApplication) throws RemoteException;
 
-	public boolean updateStatus(String id, String status) throws RemoteException;
+  public JobApplication getJobApplication(String _id) throws RemoteException;
+
+  public List<JobApplication> getJobApplicationsByJobId(String jobId) throws RemoteException;
+
+  public List<JobApplication> getJobApplicationsByJobIdAndUserId(String jobId, String userId)
+      throws RemoteException;
+
+  public boolean updateStatus(String id, String status) throws RemoteException;
 }

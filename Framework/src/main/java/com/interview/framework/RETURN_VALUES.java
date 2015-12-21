@@ -67,16 +67,15 @@ public class RETURN_VALUES {
     returnMessages.put(RELEASE_FUNDS_SUCCESS,
         "Your funds have been successfully transferred to the interviewer");
     returnMessages.put(COMPLETE_INTERVIEW_FAIL, "Your interview cannot be completed at the moment");
-    returnMessages
-        .put(COMPLETE_INTERVIEW_SUCCESS, "Your interview has been successfully completed");
+    returnMessages.put(COMPLETE_INTERVIEW_SUCCESS,
+        "Your interview has been successfully completed");
     returnMessages.put(INSUFFICIENT_BALANCE, "You have insufficient balance");
     returnMessages.put(RATING_SAVED_SUCCESS, "Your ratings have been successfully saved");
     returnMessages.put(RATING_SAVED_FAILURE, "Failure while rating the user");
     returnMessages.put(RATING_FAILURE_INVALID_STATE,
         "At this state, you are not allowed to rate the user");
-    returnMessages
-        .put(REVERT_FUNDS_SUCCESS,
-            "Your funds have been successfully reverted to you account. A processing charge may be applied.");
+    returnMessages.put(REVERT_FUNDS_SUCCESS,
+        "Your funds have been successfully reverted to you account. A processing charge may be applied.");
     returnMessages.put(REVERT_FUNDS_FAILURE,
         "Your funds are not reverted at the moment. Please contact the helpdesk.");
 

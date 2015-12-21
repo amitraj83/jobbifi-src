@@ -38,9 +38,10 @@ public class RegistrationController {
   private Properties myProps;
 
   private static final Logger logger = Logger.getLogger(RegistrationController.class);
-  
+
   @RequestMapping(value = "/register.do", method = RequestMethod.POST)
-  public ModelAndView processRequest(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView processRequest(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
 
     Interviewer interviewer = new Interviewer();
@@ -81,16 +82,16 @@ public class RegistrationController {
     interviewer.setCv(null != req.getParameter("cv") ? req.getParameter("cv") : "");
     interviewer.setEmail(req.getParameter("useremail"));
     interviewer.setId(req.getParameter("useremail"));
-    interviewer.setIndustries(null != req.getParameter("industry") ? new String[] {req
-        .getParameter("industry")} : new String[] {});
-    interviewer.setSkills(null != req.getParameter("skills") ? req.getParameter("skills")
-        .split(",") : new String[] {});
+    interviewer.setIndustries(null != req.getParameter("industry")
+        ? new String[] {req.getParameter("industry")} : new String[] {});
+    interviewer.setSkills(null != req.getParameter("skills") ? req.getParameter("skills").split(",")
+        : new String[] {});
     interviewer.setType(req.getParameter("type"));
     interviewer.setUsername(req.getParameter("username"));
 
     if (req.getParameter("type").equals("INTERVIEWER")) {
-      interviewer.setRate(null != req.getParameter("rate") ? new Integer(req.getParameter("rate"))
-          : 0);
+      interviewer
+          .setRate(null != req.getParameter("rate") ? new Integer(req.getParameter("rate")) : 0);
     }
 
     String fileExtension = null;
@@ -100,10 +101,9 @@ public class RegistrationController {
 
     if (null != req.getParameter(USER.PROFILE_PIC)
         && !"".equals(req.getParameter(USER.PROFILE_PIC))) {
-      fileExtension =
-          req.getParameter(USER.PROFILE_PIC).substring(
-              req.getParameter(USER.PROFILE_PIC).lastIndexOf(".") + 1,
-              req.getParameter(USER.PROFILE_PIC).length());
+      fileExtension = req.getParameter(USER.PROFILE_PIC).substring(
+          req.getParameter(USER.PROFILE_PIC).lastIndexOf(".") + 1,
+          req.getParameter(USER.PROFILE_PIC).length());
       random = new SecureRandom();
       secToken = new BigInteger(130, random).toString(32);
       dir_uuid = UUID.randomUUID().toString();
@@ -113,31 +113,27 @@ public class RegistrationController {
     } else {
       interviewer.setProfilePic("");
     }
-    
- // TODO: need to to empty should have the client side validation
-    interviewer.setProfilePic("resources/images/face.png");     
-    
+
+    // TODO: need to to empty should have the client side validation
+    interviewer.setProfilePic("resources/images/face.png");
+
     Map<Object, Object> requestMap = new HashMap<Object, Object>();
     requestMap.put("user", interviewer);
     requestMap.put("baseURL", Util.getbBaseURLpath(req));
-    Map<String, Object> responseMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(requestMap, REQUEST_TYPES.INTERVIEWER_REGISTRATION);
+    Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(requestMap, REQUEST_TYPES.INTERVIEWER_REGISTRATION);
 
-    if (null != req.getParameter(USER.PROFILE_PIC)
-        && !"".equals(req.getParameter(USER.PROFILE_PIC))
+    if (null != req.getParameter(USER.PROFILE_PIC) && !"".equals(req.getParameter(USER.PROFILE_PIC))
         && responseMap.get("response").toString().equals("1")) {
       try {
-        File userDir =
-            new File(myProps.getProperty("mediapath") + File.separator + dir_uuid + File.separator
-                + req.getParameter(USER.USERNAME));
-        if (!userDir.exists()){
+        File userDir = new File(myProps.getProperty("mediapath") + File.separator + dir_uuid
+            + File.separator + req.getParameter(USER.USERNAME));
+        if (!userDir.exists()) {
           userDir.mkdirs();
         }
 
-        InputStream is =
-            new FileInputStream(new File(myProps.getProperty("homedir") + File.separator
-                + req.getParameter(USER.PROFILE_PIC)));
+        InputStream is = new FileInputStream(new File(
+            myProps.getProperty("homedir") + File.separator + req.getParameter(USER.PROFILE_PIC)));
         File targetFile =
             new File(userDir.getAbsolutePath() + File.separator + secToken + "." + fileExtension);
         if (!targetFile.exists())
@@ -147,11 +143,11 @@ public class RegistrationController {
         outputpic.flush();
 
       } catch (Exception e) {
-    	  logger.error("Exception occured : ",e);        
+        logger.error("Exception occured : ", e);
       }
     }
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(responseMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(responseMap));
   }
 }

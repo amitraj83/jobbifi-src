@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Ticket implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 2063499229833674558L;
   private String _id;
   private String servicetype;
   private String description;

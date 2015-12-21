@@ -25,8 +25,8 @@ public class SearchResponseSerializer implements Serializer<Search.Query, Search
 
   public Search.Response responseFromBytes(byte[] bytes) {
     try {
-      System.out.println("Search response Docs list: "
-          + Search.Response.parseFrom(bytes).getDocsList());
+      System.out
+          .println("Search response Docs list: " + Search.Response.parseFrom(bytes).getDocsList());
       return Search.Response.parseFrom(bytes);
     } catch (InvalidProtocolBufferException e) {
       e.printStackTrace();

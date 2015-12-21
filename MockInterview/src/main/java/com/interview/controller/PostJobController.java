@@ -21,12 +21,12 @@ import com.interview.framework.pojo.Job;
 import com.interview.services.Services;
 
 @Controller
-public class PostJobController extends BaseController{
+public class PostJobController extends BaseController {
 
-	@RequestMapping(value="/postjob.do", method=RequestMethod.GET)
-	  public String getdepositfunds(){
-		  return "postjob";
-	 }
+  @RequestMapping(value = "/postjob.do", method = RequestMethod.GET)
+  public String getdepositfunds() {
+    return "postjob";
+  }
 
   @RequestMapping(value = "/postjob.do", method = RequestMethod.POST)
   public ModelAndView postJob(ModelMap model, HttpServletRequest req) {
@@ -43,16 +43,15 @@ public class PostJobController extends BaseController{
     job.setIndustry(req.getParameter(VARIABLES.POST_JOB.INDUSTRY));
     job.setExperience(req.getParameter(VARIABLES.POST_JOB.EXPERIENCE));
     job.setLocation(req.getParameter(VARIABLES.POST_JOB.LOCATION));
-    String[] skills =
-        null != req.getParameter(VARIABLES.POST_JOB.SKILLS) ? req.getParameter(
-            VARIABLES.POST_JOB.SKILLS).split(",") : new String[] {};
+    String[] skills = null != req.getParameter(VARIABLES.POST_JOB.SKILLS)
+        ? req.getParameter(VARIABLES.POST_JOB.SKILLS).split(",") : new String[] {};
     List<String> skillList = new ArrayList<String>();
     for (int i = 0; i < skills.length; i++) {
       skillList.add(skills[i]);
     }
     job.setSkills(skillList);
     job.setDt(new Date().getTime());
-    String user =getLoginUser();
+    String user = getLoginUser();
     job.setInterviewer(user);
     if (req.getParameter(DATASTORES.JOB.FILE) != null) {
       job.setFile(req.getParameter(DATASTORES.JOB.FILE));
@@ -62,8 +61,8 @@ public class PostJobController extends BaseController{
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.POST_JOB);
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService().handleRequest(reqMap, REQUEST_TYPES.JOB);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
   @RequestMapping(value = "/getJobsOffered.do", method = RequestMethod.GET)
@@ -74,8 +73,8 @@ public class PostJobController extends BaseController{
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.GET_JOBS_OFFERED);
     Map<String, Object> resMap =
         Services.getInstance().getRequestHandlerService().handleRequest(reqMap, REQUEST_TYPES.JOB);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 }

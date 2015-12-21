@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Education implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -8967039446384532599L;
   private String _id;
   private String degree;
   private String fieldOfStudy;

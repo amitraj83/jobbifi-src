@@ -26,11 +26,10 @@ public class AutoCompleteController {
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("term", searchTerm);
     reqMap.put("type", "SKILLS");
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.AUTO_COMPLETE);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.AUTO_COMPLETE);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 }

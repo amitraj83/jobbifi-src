@@ -16,6 +16,11 @@ import com.mongodb.DBObject;
 
 public class EducationStore extends UnicastRemoteObject implements IEducationStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -8975036524312082663L;
+
   protected EducationStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }

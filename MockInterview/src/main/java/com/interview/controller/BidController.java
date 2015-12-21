@@ -13,19 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.interview.framework.REQUEST_TYPES;
-import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.services.Services;
 import com.interview.util.Util;
 
 @Controller
-public class BidController extends BaseController{
+public class BidController extends BaseController {
 
   @RequestMapping(value = "/makebid.do", method = RequestMethod.GET)
   public ModelAndView makeBid(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
 
-	// TODO : allowed bid only if open or reposted  
-	  
+    // TODO : allowed bid only if open or reposted
+
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(VARIABLES.Bid.BIDDER, getLoginUser());
     reqMap.put(VARIABLES.Bid.INTERVIEW_ID, req.getParameter(VARIABLES.Bid.INTERVIEW_ID));
@@ -34,22 +33,21 @@ public class BidController extends BaseController{
     reqMap.put(VARIABLES.Bid.BID_FID, req.getParameter("bidfid"));
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.BID_SUB_REQ.MAKE_BID);
     reqMap.put("baseURL", Util.getbBaseURLpath(req));
-    
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.BID_REQ);
+
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.BID_REQ);
     String bidId = resMap.get(VARIABLES.Bid.BID_ID).toString();
-    
+
     if (!req.getParameter("bidfid").equals("")) {
-    	
+
       Map<Object, Object> fReqMap = new HashMap<Object, Object>();
       fReqMap.put(VARIABLES.Bid.BID_FID, req.getParameter("bidfid"));
       fReqMap.put(VARIABLES.Bid.BID_ID, bidId);
-      Services.getInstance().getRequestHandlerService()
-          .handleRequest(fReqMap, REQUEST_TYPES.FILESERVER_UPDATE_BID_FILE);
+      Services.getInstance().getRequestHandlerService().handleRequest(fReqMap,
+          REQUEST_TYPES.FILESERVER_UPDATE_BID_FILE);
     }
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 }

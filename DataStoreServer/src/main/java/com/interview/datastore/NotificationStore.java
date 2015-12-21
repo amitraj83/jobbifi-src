@@ -28,6 +28,10 @@ import com.mongodb.WriteResult;
 // @DependsOn("rmiserver")
 public class NotificationStore extends UnicastRemoteObject implements INotificationStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -8610963478891611010L;
   private int defaultMaxNotification = 30;
   private final boolean UNREAD = true;
   private final boolean ALL = false;
@@ -37,9 +41,8 @@ public class NotificationStore extends UnicastRemoteObject implements INotificat
   }
 
   public ObjectId save(Notification notif) throws RemoteException {
-    DBCollection COLLECTION =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(VARIABLES.NOTIFICATION.DATASTORE.COLLECTION);
+    DBCollection COLLECTION = Services.getInstance().getBaseDataStore().db
+        .getCollection(VARIABLES.NOTIFICATION.DATASTORE.COLLECTION);
     ObjectId _id = new ObjectId();
     DBObject notifObject = new BasicDBObject();
     notifObject.put(VARIABLES.NOTIFICATION.DATASTORE.CONTENT, notif.getContent());
@@ -71,18 +74,16 @@ public class NotificationStore extends UnicastRemoteObject implements INotificat
   private List<Notification> getNotifications(String user, int max, boolean unread)
       throws RemoteException {
 
-    DBCollection COLLECTION =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(VARIABLES.NOTIFICATION.DATASTORE.COLLECTION);
+    DBCollection COLLECTION = Services.getInstance().getBaseDataStore().db
+        .getCollection(VARIABLES.NOTIFICATION.DATASTORE.COLLECTION);
 
     BasicDBObject query = new BasicDBObject(VARIABLES.NOTIFICATION.DATASTORE.RECEPIENTS_USER, user);
     if (unread)
       query.append(VARIABLES.NOTIFICATION.DATASTORE.HAS_READ, 0);
 
     // new BasicDBObject("$in", user));
-    DBCursor cursor =
-        COLLECTION.find(query)
-            .sort(new BasicDBObject(VARIABLES.NOTIFICATION.DATASTORE.ENTRY_DATE, -1)).limit(max);
+    DBCursor cursor = COLLECTION.find(query)
+        .sort(new BasicDBObject(VARIABLES.NOTIFICATION.DATASTORE.ENTRY_DATE, -1)).limit(max);
     List<Notification> list = new ArrayList<Notification>();
     List<ObjectId> nIds = new ArrayList<ObjectId>();
     while (cursor.hasNext()) {
@@ -94,10 +95,10 @@ public class NotificationStore extends UnicastRemoteObject implements INotificat
       notification.setContent(contentMap);
       notification.setCreatedBy(row.get(VARIABLES.NOTIFICATION.DATASTORE.CREATEDBY).toString());
       notification.setEntryDate((Long) row.get(VARIABLES.NOTIFICATION.DATASTORE.ENTRY_DATE));
-      notification.setNotificationId(row.get(VARIABLES.NOTIFICATION.DATASTORE.NOTIFICATIONID)
-          .toString());
-      notification.setRecepientUser(row.get(VARIABLES.NOTIFICATION.DATASTORE.RECEPIENTS_USER)
-          .toString());
+      notification
+          .setNotificationId(row.get(VARIABLES.NOTIFICATION.DATASTORE.NOTIFICATIONID).toString());
+      notification
+          .setRecepientUser(row.get(VARIABLES.NOTIFICATION.DATASTORE.RECEPIENTS_USER).toString());
       notification.setType(row.get(VARIABLES.NOTIFICATION.DATASTORE.TYPE).toString());
       list.add(notification);
       nIds.add(new ObjectId(row.get(VARIABLES.NOTIFICATION.DATASTORE.NOTIFICATIONID).toString()));
@@ -114,14 +115,13 @@ public class NotificationStore extends UnicastRemoteObject implements INotificat
   }
 
   private void markNotificationsAsRead(List<ObjectId> nIds) {
-    DBCollection COLLECTION =
-        Services.getInstance().getBaseDataStore().db
-            .getCollection(VARIABLES.NOTIFICATION.DATASTORE.COLLECTION);
+    DBCollection COLLECTION = Services.getInstance().getBaseDataStore().db
+        .getCollection(VARIABLES.NOTIFICATION.DATASTORE.COLLECTION);
 
     for (ObjectId nId : nIds) {
       DBObject query = new BasicDBObject(VARIABLES.NOTIFICATION.DATASTORE.NOTIFICATIONID, nId);
-      DBObject updateDoc =
-          new BasicDBObject("$set", new BasicDBObject(VARIABLES.NOTIFICATION.DATASTORE.HAS_READ, 1));
+      DBObject updateDoc = new BasicDBObject("$set",
+          new BasicDBObject(VARIABLES.NOTIFICATION.DATASTORE.HAS_READ, 1));
       COLLECTION.update(query, updateDoc);
     }
   }

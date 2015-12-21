@@ -4,103 +4,104 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *  Test class represent the test(exam).
- * */
+ * Test class represent the test(exam).
+ */
 public class Test implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	private String id;	
-	private String title;
-	private String description;
-	private int difficultyLevel;
-	private List<String> skills;
-	private long createdDate;
-	private int duration;
-	private int noOfQuestions;
-	private boolean publish;
-	
-	public Test(){}
+  private String id;
+  private String title;
+  private String description;
+  private int difficultyLevel;
+  private List<String> skills;
+  private long createdDate;
+  private int duration;
+  private int noOfQuestions;
+  private boolean publish;
 
-	public String getId() {
-		return id;
-	}
+  public Test() {}
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public String getTitle() {
+    return title;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public List<String> getSkills() {
-		return skills;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setSkills(List<String> skills) {
-		this.skills = skills;
-	}
+  public List<String> getSkills() {
+    return skills;
+  }
 
-	public long getCreatedDate() {
-		return createdDate;
-	}
+  public void setSkills(List<String> skills) {
+    this.skills = skills;
+  }
 
-	public void setCreatedDate(long createdDate) {
-		this.createdDate = createdDate;
-	}
+  public long getCreatedDate() {
+    return createdDate;
+  }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+  public void setCreatedDate(long createdDate) {
+    this.createdDate = createdDate;
+  }
 
-	public int getDifficultyLevel() {
-		return difficultyLevel;
-	}
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
 
-	public void setDifficultyLevel(int difficultyLevel) {
-		this.difficultyLevel = difficultyLevel;
-	}
-	
-	public int getDuration() {
-		return duration;
-	}
+  public int getDifficultyLevel() {
+    return difficultyLevel;
+  }
 
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
+  public void setDifficultyLevel(int difficultyLevel) {
+    this.difficultyLevel = difficultyLevel;
+  }
 
-	public int getNoOfQuestions() {
-		return noOfQuestions;
-	}
+  public int getDuration() {
+    return duration;
+  }
 
-	public void setNoOfQuestions(int noOfQuestions) {
-		this.noOfQuestions = noOfQuestions;
-	}	
-	public boolean isPublish() {
-		return publish;
-	}
+  public void setDuration(int duration) {
+    this.duration = duration;
+  }
 
-	public void setPublish(boolean publish) {
-		this.publish = publish;
-	}
+  public int getNoOfQuestions() {
+    return noOfQuestions;
+  }
 
-	@Override
-	public String toString() {
-		return "Test [id=" + id + ", title=" + title + ", description="
-				+ description + ", difficultyLevel=" + difficultyLevel
-				+ ", skills=" + skills + ", createdDate=" + createdDate + "]";
-	}	
+  public void setNoOfQuestions(int noOfQuestions) {
+    this.noOfQuestions = noOfQuestions;
+  }
+
+  public boolean isPublish() {
+    return publish;
+  }
+
+  public void setPublish(boolean publish) {
+    this.publish = publish;
+  }
+
+  @Override
+  public String toString() {
+    return "Test [id=" + id + ", title=" + title + ", description=" + description
+        + ", difficultyLevel=" + difficultyLevel + ", skills=" + skills + ", createdDate="
+        + createdDate + "]";
+  }
 }

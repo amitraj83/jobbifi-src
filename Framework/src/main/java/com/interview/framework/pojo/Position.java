@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Position implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 2391557588818737280L;
   private String _id;
   private String companyName;
   private String description;

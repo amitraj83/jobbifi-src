@@ -3,10 +3,10 @@ package com.interview.framework;
 
 public interface DATASTORES {
 
-	// for the pagination purpose
+  // for the pagination purpose
   String PAGE_SIZE = "PAGE_SIZE";
-  String PAGE_NO = "PAGE_NO";  
-	
+  String PAGE_NO = "PAGE_NO";
+
   interface INTERVIEW {
     String TITLE = "title";
     String INTERVIEWEE = "interviewee";
@@ -22,7 +22,7 @@ public interface DATASTORES {
     String INDUSTRY = "industry";
     String BUDGET = "budget";
     String EXPERIENCE = "experience";
-    String ID="_id";
+    String ID = "_id";
   }
 
   interface BID {
@@ -89,54 +89,54 @@ public interface DATASTORES {
     String COLLECTION = "skills";
     String SKILLS_FIELD = "sk";
   }
-  
+
   interface WITHDRAW_FUND {
-	  
-	  String ID = "_id";
-	  String USERNAME = "username";
-	  String AMOUNT = "amount";
-	  String PAYPAL_ADDRESS = "paypaladdress";
-	  String REQUESTED_DATE = "requesteddate";
-	  String PROCESSED_DATE = "processeddate";
-	  String STATUS = "status";
-	  
-	  String COLLECTION = "withdrawfund";
-	  
-	  String STATUS_PENDING = "PENDING";
-	  String STATUS_DONE = "DONE";
+
+    String ID = "_id";
+    String USERNAME = "username";
+    String AMOUNT = "amount";
+    String PAYPAL_ADDRESS = "paypaladdress";
+    String REQUESTED_DATE = "requesteddate";
+    String PROCESSED_DATE = "processeddate";
+    String STATUS = "status";
+
+    String COLLECTION = "withdrawfund";
+
+    String STATUS_PENDING = "PENDING";
+    String STATUS_DONE = "DONE";
   }
-  
+
   interface BANK_WITHDRAW_FUND_REQUEST {
-	  
-	  String DBCollection = "bankwithdrawfundrequests";
-	  
-	  String ID = "_id";
-	  String ACCOUNT_NAME = "accountname";
-	  String ACCOUNT_NUMBER = "accountnumber";
-	  String IFSC_CODE = "ifsecode";
-	  String ACCOUNT_TYPE = "accounttype";
-	  String BANK_NAME = "bankname";
-	  String BANK_BRANCH = "bankbranch";
-	  String BANK_CITY = "bankcity";
-	  
-	  String USERNAME = "username";
-	  String AMOUNT = "amount";
-	  String REQUESTED_DATE = "requesteddate";
-	  String PROCESSED_DATE = "processeddate";
-	  String STATUS = "status";
-	  
-	  interface status {
-		  String PENDING = "PENDING";
-		  String PROCESSED = "PROCESSED";
-		  String COMPLETED = "COMPLETED";
-	  }	  
+
+    String DBCollection = "bankwithdrawfundrequests";
+
+    String ID = "_id";
+    String ACCOUNT_NAME = "accountname";
+    String ACCOUNT_NUMBER = "accountnumber";
+    String IFSC_CODE = "ifsecode";
+    String ACCOUNT_TYPE = "accounttype";
+    String BANK_NAME = "bankname";
+    String BANK_BRANCH = "bankbranch";
+    String BANK_CITY = "bankcity";
+
+    String USERNAME = "username";
+    String AMOUNT = "amount";
+    String REQUESTED_DATE = "requesteddate";
+    String PROCESSED_DATE = "processeddate";
+    String STATUS = "status";
+
+    interface status {
+      String PENDING = "PENDING";
+      String PROCESSED = "PROCESSED";
+      String COMPLETED = "COMPLETED";
+    }
   }
-  
-  interface CONTACT_LIST{
-	  String ID = "_id";
-	  String COLLECTION ="contactlist";
-	  String USER="user";
-	  String CONTACT="contact";
+
+  interface CONTACT_LIST {
+    String ID = "_id";
+    String COLLECTION = "contactlist";
+    String USER = "user";
+    String CONTACT = "contact";
   }
 
   interface UPLOAD_FILE {
@@ -200,33 +200,33 @@ public interface DATASTORES {
     String TIME = "time";
 
   }
-  interface MESSAGE{
-	  String Collection="message";
-	  
-	  String TYPE = "type";
-	  String TITLE = "title";
-	  String REF_ID = "ref_id";
-	  String MESSAGE = "message";
-	  String FROM = "from";
-	  String TO = "to";
-	  String PARENTMESSAGEID = "parentMessageId";
-	  String STATUS = "status";
-	  String REFENTITY = "refentity";
-	  String CREATIONDATE = "creationdate";
-	  String LASTREPLYTODATE = "lastReplyToDate";
-	  String ID = "_id";
-	  
-	  interface MESSAGE_STATUS {
-		  String READ = "READ";
-		  String UNREAD = "UNREAD";
-	  }
-	  
-	  interface MESSAGE_TYPE {
-		  String ORIGINAL = "ORIGINAL";
-		  String REPLY = "REPLY";
-	  }	  
+  interface MESSAGE {
+    String Collection = "message";
+
+    String TYPE = "type";
+    String TITLE = "title";
+    String REF_ID = "ref_id";
+    String MESSAGE = "message";
+    String FROM = "from";
+    String TO = "to";
+    String PARENTMESSAGEID = "parentMessageId";
+    String STATUS = "status";
+    String REFENTITY = "refentity";
+    String CREATIONDATE = "creationdate";
+    String LASTREPLYTODATE = "lastReplyToDate";
+    String ID = "_id";
+
+    interface MESSAGE_STATUS {
+      String READ = "READ";
+      String UNREAD = "UNREAD";
+    }
+
+    interface MESSAGE_TYPE {
+      String ORIGINAL = "ORIGINAL";
+      String REPLY = "REPLY";
+    }
   }
-  
+
   interface USER_TRANSACTION {
     String ID = "_id";
     String USERNAME = "username";
@@ -392,69 +392,69 @@ public interface DATASTORES {
     String SALARY = "salary";
     String COMPANY_NAME = "companyname";
     String COMPANY_DESCRIPTION = "companydescription";
-    String COMPANY_VIDEO = "companyvideo";    
+    String COMPANY_VIDEO = "companyvideo";
     String APPLY_URL = "applyurl";
     String INDUSTRY = "industry";
     String FILE = "ifile";
     String EXPERIENCE = "experience";
     String LOCATION = "location";
-    String ID = "id";    
+    String ID = "id";
   }
-  
+
   interface JOB_APPLICATION {
-	  String DBCollection = "jobapplications";
-	  String ID = "_id";
-	  String JOB_ID = "jobId";
-	  String COVER_LETTER = "coverLetter";
-	  String CV_FILE_ID = "cvFileId";
-	  String DATE = "dt";
-	  String APPLICANT_ID = "applicantId";
-	  String STATUS = "status";
-	  
-	  interface Status {
-		  String APPLIED = "Applied";
-		  String SHORTLISTED = "Shortlisted";
-		  String INTERVIEWED = "Interviewed";
-		  String RECRUITED = "Recruited";
-	  }
+    String DBCollection = "jobapplications";
+    String ID = "_id";
+    String JOB_ID = "jobId";
+    String COVER_LETTER = "coverLetter";
+    String CV_FILE_ID = "cvFileId";
+    String DATE = "dt";
+    String APPLICANT_ID = "applicantId";
+    String STATUS = "status";
+
+    interface Status {
+      String APPLIED = "Applied";
+      String SHORTLISTED = "Shortlisted";
+      String INTERVIEWED = "Interviewed";
+      String RECRUITED = "Recruited";
+    }
   }
-  
+
   interface TEST {
-	String DBCollection = "test";
-    String TITLE = "title";    
+    String DBCollection = "test";
+    String TITLE = "title";
     String SKILLS = "skills";
     String DESCRIPTION = "description";
     String CREATED_DATE = "createdDate";
-    String DIFFICULTY_LEVEL= "difficultyLevel";
+    String DIFFICULTY_LEVEL = "difficultyLevel";
     String DURATION = "duration";
     String NO_OF_QUESTIONS = "noOfQuestions";
     String PUBLISH = "publish";
     String ID = "id";
   }
-  
+
   interface QUESTION {
-	  String DBCollection = "question";
-	  String QUESTION = "question";
-	  String QUESTION_TYPE = "questionType";
-	  String ANSWER_1 = "answer1";
-	  String ANSWER_2 = "answer2";
-	  String ANSWER_3 = "answer3";
-	  String ANSWER_4 = "answer4";
-	  String CORRECT_ANSWERS = "correctAnswers";
-	  String TEST_ID = "testId";
-	  String ID = "_id";
-  } 
-  
+    String DBCollection = "question";
+    String QUESTION = "question";
+    String QUESTION_TYPE = "questionType";
+    String ANSWER_1 = "answer1";
+    String ANSWER_2 = "answer2";
+    String ANSWER_3 = "answer3";
+    String ANSWER_4 = "answer4";
+    String CORRECT_ANSWERS = "correctAnswers";
+    String TEST_ID = "testId";
+    String ID = "_id";
+  }
+
   interface USER_TEST {
-	  String DBCollection = "usertest";	  	
-	  String USER_ID =  "userId";		
-	  String START_TIME =  "startTime";
-	  String END_TIME = "endTime";		
-	  String DURATION = "duration";
-	  String TOTAL_QUESTIONS = "totalQuestions";
-	  String MARKS_PER_QUESTION = "marksPerQuestion";
-	  String MARKS_OBTAINED = "marksObtained";	  
-	  String TEST_ID = "testId";
-	  String ID = "_id";
-  } 
+    String DBCollection = "usertest";
+    String USER_ID = "userId";
+    String START_TIME = "startTime";
+    String END_TIME = "endTime";
+    String DURATION = "duration";
+    String TOTAL_QUESTIONS = "totalQuestions";
+    String MARKS_PER_QUESTION = "marksPerQuestion";
+    String MARKS_OBTAINED = "marksObtained";
+    String TEST_ID = "testId";
+    String ID = "_id";
+  }
 }

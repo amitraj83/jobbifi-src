@@ -28,9 +28,9 @@ public class CalendarController extends BaseController {
     long end = new Long(req.getParameter("end"));
     int recurdays = new Integer(req.getParameter("recur"));
 
-    String userid =getLoginUser();
-       
-    
+    String userid = getLoginUser();
+
+
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(DATASTORES.CALENDAR_EVENT.TITLE, title);
     reqMap.put(DATASTORES.CALENDAR_EVENT.START_TIME, start);
@@ -41,16 +41,15 @@ public class CalendarController extends BaseController {
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.CALENDAR_SUB_REQ.SAVE_EVENT);
 
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.CALENDAR_EVENTS);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.CALENDAR_EVENTS);
 
     System.out.println("Title:" + title);
     System.out.println("Start:" + new Date(start));
     System.out.println("End:" + new Date(end));
     System.out.println("REcuring days : " + recurdays);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 
@@ -69,13 +68,12 @@ public class CalendarController extends BaseController {
     reqMap.put(DATASTORES.CALENDAR_EVENT.USERID, userid);
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.CALENDAR_SUB_REQ.GET_EVENTS);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.CALENDAR_EVENTS);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.CALENDAR_EVENTS);
 
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 
@@ -91,14 +89,13 @@ public class CalendarController extends BaseController {
       reqMap.put(DATASTORES.CALENDAR_EVENT.ID, eventId);
       reqMap.put(DATASTORES.CALENDAR_EVENT.USERID, userid);
       reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.CALENDAR_SUB_REQ.DELETE_EVENT);
-      resMap =
-          Services.getInstance().getRequestHandlerService()
-              .handleRequest(reqMap, REQUEST_TYPES.CALENDAR_EVENTS);
+      resMap = Services.getInstance().getRequestHandlerService().handleRequest(reqMap,
+          REQUEST_TYPES.CALENDAR_EVENTS);
     } else {
       resMap.put("status", "2");
     }
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 
@@ -118,13 +115,12 @@ public class CalendarController extends BaseController {
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.CALENDAR_SUB_REQ.UPDATE_EVENT);
 
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.CALENDAR_EVENTS);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.CALENDAR_EVENTS);
 
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 

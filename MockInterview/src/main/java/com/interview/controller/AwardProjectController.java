@@ -23,33 +23,32 @@ import com.interview.util.Util;
 public class AwardProjectController extends BaseController {
 
   @RequestMapping(value = "/awardinterview.do", method = RequestMethod.GET)
-  public ModelAndView awardProject(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView awardProject(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("iid", req.getParameter("iid"));
     reqMap.put("bid", req.getParameter("bid"));
     reqMap.put("baseURL", Util.getbBaseURLpath(req));
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.AWARD_INTERVIEW);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.AWARD_INTERVIEW);
 
-    String user = getLoginUser();         
+    String user = getLoginUser();
     Map<Object, Object> userName = new HashMap<Object, Object>();
     userName.put(USER.USERNAME, user);
 
-    Map<String, Object> bidMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userName, REQUEST_TYPES.GET_MY_BIDS);
+    Map<String, Object> bidMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userName, REQUEST_TYPES.GET_MY_BIDS);
 
     // resMap.putAll(bidMap);
     try {
-      resMap.put(VARIABLES.MY_BIDS, Services.getInstance().getJSONUtilityService()
-          .writeValueAsString(bidMap));
+      resMap.put(VARIABLES.MY_BIDS,
+          Services.getInstance().getJSONUtilityService().writeValueAsString(bidMap));
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 }

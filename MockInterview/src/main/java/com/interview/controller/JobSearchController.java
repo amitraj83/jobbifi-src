@@ -18,7 +18,7 @@ import com.interview.services.Services;
 public class JobSearchController {
 
   private static final int NO_OF_RESULTS = 10;
-  
+
   @RequestMapping(value = "/searchjobs.do", method = RequestMethod.GET)
   public ModelAndView searchJob(HttpServletRequest req, HttpServletResponse res) {
 
@@ -26,22 +26,21 @@ public class JobSearchController {
     requestMap.put("searchkey", req.getParameter("searchkey"));
     requestMap.put("start", Integer.parseInt(req.getParameter("start")));
     requestMap.put("rows", Integer.parseInt(req.getParameter("rows")));
-    //requestMap.put("rows", NO_OF_RESULTS);
+    // requestMap.put("rows", NO_OF_RESULTS);
 
-    Map<String, Object> responseMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(requestMap, REQUEST_TYPES.SEARCH_JOBS);
-    
+    Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(requestMap, REQUEST_TYPES.SEARCH_JOBS);
+
     /** Get additional data */
     requestMap = new HashMap<Object, Object>();
     Map<String, Object> result = (Map<String, Object>) responseMap.get("JSON_DOC_LIST");
     requestMap.put("result", result);
-    requestMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.SEARCH_JOB_INFO);    
-    result = Services.getInstance().getRequestHandlerService()
-    		.handleRequest(requestMap, REQUEST_TYPES.JOB);            
+    requestMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.SEARCH_JOB_INFO);
+    result = Services.getInstance().getRequestHandlerService().handleRequest(requestMap,
+        REQUEST_TYPES.JOB);
     responseMap.put("JSON_DOC_LIST", result.get("result"));
-    
-    return new ModelAndView("searchResult", "message", Services.getInstance()
-        .getJSONUtilityService().getJSONStringOfMap(responseMap));
+
+    return new ModelAndView("searchResult", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(responseMap));
   }
 }

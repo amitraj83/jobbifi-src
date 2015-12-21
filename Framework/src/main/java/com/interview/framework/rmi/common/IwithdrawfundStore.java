@@ -6,9 +6,9 @@ import java.rmi.RemoteException;
 import com.interview.framework.pojo.Transactions;
 
 
-public interface IwithdrawfundStore extends Remote{
-	
-	String NAME = "withdrawfundstore";
-	
-	public void insertWithdrawFund(Transactions transactions) throws RemoteException;
+public interface IwithdrawfundStore extends Remote {
+
+  String NAME = "withdrawfundstore";
+
+  public void insertWithdrawFund(Transactions transactions) throws RemoteException;
 }

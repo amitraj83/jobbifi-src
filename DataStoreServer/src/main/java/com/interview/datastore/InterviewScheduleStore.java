@@ -17,6 +17,12 @@ import com.mongodb.DBObject;
 public class InterviewScheduleStore extends UnicastRemoteObject implements IInterviewScheduleStore {
 
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -398291193816041935L;
+
+
   protected InterviewScheduleStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }
@@ -92,14 +98,14 @@ public class InterviewScheduleStore extends UnicastRemoteObject implements IInte
     schedule.setIid(row.get(DATASTORES.INTERVIEW_SCHEDULE.IID).toString());
     schedule
         .setOth_opted(new Boolean(row.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTED).toString()));
-    schedule.setOth_option1(new Boolean(row.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION1)
-        .toString()));
-    schedule.setOth_option2(new Boolean(row.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION2)
-        .toString()));
-    schedule.setOth_option3(new Boolean(row.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION3)
-        .toString()));
-    schedule.setFinal_option(new Integer(row.get(DATASTORES.INTERVIEW_SCHEDULE.FINAL_OPTION)
-        .toString()));
+    schedule.setOth_option1(
+        new Boolean(row.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION1).toString()));
+    schedule.setOth_option2(
+        new Boolean(row.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION2).toString()));
+    schedule.setOth_option3(
+        new Boolean(row.get(DATASTORES.INTERVIEW_SCHEDULE.OTHER_OPTION3).toString()));
+    schedule.setFinal_option(
+        new Integer(row.get(DATASTORES.INTERVIEW_SCHEDULE.FINAL_OPTION).toString()));
     schedule.setTime(new Long(row.get(DATASTORES.INTERVIEW_SCHEDULE.TIME).toString()));
     return schedule;
   }

@@ -30,10 +30,9 @@ public class BackendClient {
      * 
      * Future<Response> responseFuture = this.nc.sendRequest(request, new ResponseSerializer());
      * 
-     * Response appendResp = null; try { appendResp = responseFuture.get();
-     * log.debug("got search response: " + appendResp); return appendResp; } catch
-     * (InterruptedException e) { e.printStackTrace(); } catch (ExecutionException e) {
-     * e.printStackTrace(); }
+     * Response appendResp = null; try { appendResp = responseFuture.get(); log.debug(
+     * "got search response: " + appendResp); return appendResp; } catch (InterruptedException e) {
+     * e.printStackTrace(); } catch (ExecutionException e) { e.printStackTrace(); }
      */
     return Response.newBuilder().setData("ERROR!").build();
   }

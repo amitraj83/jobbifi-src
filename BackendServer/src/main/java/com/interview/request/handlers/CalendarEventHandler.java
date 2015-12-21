@@ -16,7 +16,6 @@ import com.interview.rmi.DataStoreRegistry;
 
 @Service
 public class CalendarEventHandler extends RequestHandler {
-
   public CalendarEventHandler() {
     addHandler(this, REQUEST_TYPES.CALENDAR_EVENTS);
   }
@@ -24,27 +23,21 @@ public class CalendarEventHandler extends RequestHandler {
   @Override
   public Map<String, Object> handleRequest(Map<Object, Object> data) {
     Map<String, Object> res = new HashMap<String, Object>();
-
     String sub_req = data.get(REQUEST_TYPES.SUB_REQ).toString();
     try {
       if (sub_req.equals(REQUEST_TYPES.CALENDAR_SUB_REQ.SAVE_EVENT)) {
         Date start = new Date((Long) data.get(DATASTORES.CALENDAR_EVENT.START_TIME));
         Date end = new Date((Long) data.get(DATASTORES.CALENDAR_EVENT.END_TIME));
-
         CalendarEvent event = new CalendarEvent();
-
         Calendar calendarA = Calendar.getInstance();
         calendarA.setTime(start);
         event.setDayofyear(calendarA.get(Calendar.DAY_OF_YEAR));
-
         event.setEndtime(end.getTime());
-
         String eventTypeSymbol = data.get(DATASTORES.CALENDAR_EVENT.EVENT_TYPE).toString();
         if (eventTypeSymbol.equals("A"))
           event.setEventtype(DATASTORES.CALENDAR_EVENT.EVENT_TYPES.AVAILABLE);
         else if (eventTypeSymbol.equals("B"))
           event.setEventtype(DATASTORES.CALENDAR_EVENT.EVENT_TYPES.INTERVIEW);
-
         int recurDays = (Integer) data.get(DATASTORES.CALENDAR_EVENT.RECUR_DAYS);
         if (recurDays == 0) {
           event.setIsrecursive(false);
@@ -57,7 +50,6 @@ public class CalendarEventHandler extends RequestHandler {
         event.setTitle(data.get(DATASTORES.CALENDAR_EVENT.TITLE).toString());
         event.setUserid(data.get(DATASTORES.CALENDAR_EVENT.USERID).toString());
         event.setYear(calendarA.get(Calendar.YEAR));
-
         try {
           String eventId = DataStoreRegistry.getInstance().getCalendarEventStore().saveEvent(event);
           if (eventId != null) {
@@ -72,21 +64,17 @@ public class CalendarEventHandler extends RequestHandler {
         long start = (Long) data.get(DATASTORES.CALENDAR_EVENT.START_TIME);
         long end = (Long) data.get(DATASTORES.CALENDAR_EVENT.END_TIME);
         String userid = data.get(DATASTORES.CALENDAR_EVENT.USERID).toString();
-
         try {
           List<CalendarEvent> events =
               DataStoreRegistry.getInstance().getCalendarEventStore().getEvents(userid, start, end);
           res.put("status", "1");
           res.put("list", events);
         } catch (RemoteException e) {
-          // TODO Auto-generated catch block
           e.printStackTrace();
         }
-
       } else if (sub_req.equals(REQUEST_TYPES.CALENDAR_SUB_REQ.DELETE_EVENT)) {
         String _id = data.get(DATASTORES.CALENDAR_EVENT.ID).toString();
         String userid = data.get(DATASTORES.CALENDAR_EVENT.USERID).toString();
-
         CalendarEvent event = DataStoreRegistry.getInstance().getCalendarEventStore().getEvent(_id);
         if (event.getUserid().equals(userid)) {
           boolean deleted =
@@ -98,7 +86,6 @@ public class CalendarEventHandler extends RequestHandler {
         } else
           res.put("status", "2");
       } else if (sub_req.equals(REQUEST_TYPES.CALENDAR_SUB_REQ.UPDATE_EVENT)) {
-
         String userid = data.get(DATASTORES.CALENDAR_EVENT.USERID).toString();
         String _id = data.get(DATASTORES.CALENDAR_EVENT.ID).toString();
         CalendarEvent event = DataStoreRegistry.getInstance().getCalendarEventStore().getEvent(_id);
@@ -115,7 +102,6 @@ public class CalendarEventHandler extends RequestHandler {
           changes.put(DATASTORES.CALENDAR_EVENT.IS_RECURSIVE, recdays == 0 ? false : true);
           changes.put(DATASTORES.CALENDAR_EVENT.EVENT_TYPE,
               (String) data.get(DATASTORES.CALENDAR_EVENT.EVENT_TYPE));
-
           boolean result =
               DataStoreRegistry.getInstance().getCalendarEventStore().updateEvent(_id, changes);
           if (result) {
@@ -125,23 +111,10 @@ public class CalendarEventHandler extends RequestHandler {
         } else {
           res.put("status", "3");
         }
-
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
-
     return res;
   }
-
-  public static void main(String[] args) {
-    Calendar calendar = Calendar.getInstance();
-    Date date = new Date();
-    date.setMonth(2);
-    System.out.println(date);
-    calendar.setTime(date);
-    System.out.println("Year :" + calendar.get(Calendar.YEAR));
-    System.out.println(calendar.get(Calendar.DAY_OF_YEAR));
-  }
-
 }

@@ -4,11 +4,9 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.interview.framework.DATASTORES;
@@ -25,8 +23,6 @@ import com.interview.services.Services;
 
 @Service("fundsdeposit")
 public class FundsDepositService {
-  @Autowired
-  private Properties myProps;
   private Logger log = Logger.getLogger(FundsDepositService.class);
 
   public int deposit(String user, double amount, String thirdPartyId) {
@@ -125,7 +121,6 @@ public class FundsDepositService {
   public int withdrawDeposit(Transactions transactions, String thirdPartyId) {
     String user = transactions.getOwner();
     double amount = new Double(transactions.getAmount());
-    String transactionid = "";
     double balance = 0.0;
     try {
       double prev_bal = new Double(DataStoreRegistry.getInstance().getInterviewerDataStore()

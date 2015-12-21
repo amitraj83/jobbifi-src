@@ -1,10 +1,8 @@
 package com.interview.lifecycle;
 
 import java.rmi.RemoteException;
-import java.util.Properties;
 
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.interview.framework.INTERVIEW_STATUS;
 import com.interview.framework.RETURN_VALUES;
@@ -13,9 +11,6 @@ import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;
 
 public class ReleaseFunds {
-  @Autowired
-  private Properties myProps;
-
   public int releaseFunds(ObjectId iid, double amount) throws RemoteException {
     Interview interview = DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(iid);
     if (interview.getStatus() == INTERVIEW_STATUS.IN_PROGRESS

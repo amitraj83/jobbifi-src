@@ -7,8 +7,6 @@ import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 
 import com.interview.framework.REQUEST_TYPES;
-import com.interview.framework.USER;
-import com.interview.framework.pojo.Message;
 import com.interview.framework.pojo.Transactions;
 import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;

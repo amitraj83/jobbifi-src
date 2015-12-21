@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.math.*;
+
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
@@ -35,7 +35,6 @@ public class EscrowRevertService {
     try {
 
       if (eb >= amount) {
-        double newEB = eb - amount;
         Map<String, Object> userInfo = DataStoreRegistry.getInstance().getInterviewerDataStore()
             .getUserInfo(interview.getInterviewee());
         prevBalance = new Double(userInfo.get(USER.BALANCE).toString());

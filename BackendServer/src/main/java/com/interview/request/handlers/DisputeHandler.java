@@ -7,11 +7,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.interview.framework.DATASTORES;
@@ -31,8 +29,6 @@ import com.interview.services.Services;
 @Service
 public class DisputeHandler extends RequestHandler {
   Logger log = Logger.getLogger(DisputeHandler.class);
-  @Autowired
-  private Properties myProps;
 
   public DisputeHandler() {
     addHandler(this, REQUEST_TYPES.DISPUTE);
@@ -194,7 +190,7 @@ public class DisputeHandler extends RequestHandler {
         String user = data.get(USER.USERNAME).toString();
         List<Dispute> list = DataStoreRegistry.getInstance().getDisputeStore().getDisputelist(user);
         if (list != null) {
-          Iterator it = list.iterator();
+          Iterator<Dispute> it = list.iterator();
           while (it.hasNext()) {
             Dispute dispute = (Dispute) it.next();
             dispute.setTitle(DataStoreRegistry.getInstance().getInterviewDataStore()
@@ -207,7 +203,7 @@ public class DisputeHandler extends RequestHandler {
         List<Dispute> list =
             DataStoreRegistry.getInstance().getDisputeStore().getClosedDisputelist(user);
         if (list != null) {
-          Iterator it = list.iterator();
+          Iterator<Dispute> it = list.iterator();
           while (it.hasNext()) {
             Dispute dispute = (Dispute) it.next();
             dispute.setTitle(DataStoreRegistry.getInstance().getInterviewDataStore()

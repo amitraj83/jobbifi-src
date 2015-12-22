@@ -200,10 +200,10 @@
         var skills = job.skills;
         var skillsHTML = "";
         for (var i = 0; i < skills.length; i++) {
-            skillsHTML += '<span class="job_search_result_skill">' + skills[i] + '</span>';
-            if (i != skills.length - 1) {
-                skillsHTML += ' | '
-            }
+            skillsHTML += '<span class="label label-info">' + skills[i] + '</span>&nbsp';
+            // if (i != skills.length - 1) {
+            //     skillsHTML += ' | '
+            // }
         }
 
         var description = job.description;

@@ -107,7 +107,7 @@
             var resultsFound = false;
             var allResultsView = "";
             for (var i = 0; i < Object.keys(json).length; i++) {
-
+                
                 var profilepic = "resources/images/face.png";
                 if ("" != wholeJSON.pics[json[i].interviewee]) {
                     profilepic = wholeJSON.pics[json[i].interviewee];
@@ -160,8 +160,8 @@
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<div><i class="fa fa-tags"></i><strong class="grey-heading">Skills:</strong> {{{ skills }}}</div>' +
-                        '<div><span class="mock-budget "><i class="fa fa-credit-card"></i><strong class="grey-heading">Budget:</strong> <span style="color:#454545;">{{ budget }}</span></span>' +
-                        '<span><i class="fa fa-briefcase"></i><strong  class="grey-heading">Experience:</strong> <span style="color:#454545;">{{{ experience }}}</span></span></div>' +
+                        '<div><span class="mock-budget "><i class="fa fa-credit-card"></i><strong class="grey-heading">Budget:</strong> <span style="color:#454545;">$ {{ budget }}</span></span>' +
+                        '<span><i class="fa fa-briefcase"></i><strong  class="grey-heading">Experience:</strong> <span style="color:#454545;">{{{ experience }}} yr</span></span></div>' +
                         '</div>' +
                         '</div>' +
                         '<div class="row"><div class="col-md-12">' +
@@ -172,8 +172,8 @@
 
                 var mockData = {
                     'id': json[i].id,
-                    'budget': 'USD 1000', // json[i].budget,
-                    'experience': '4 years', // json[i].experience,
+                    'budget': wholeJSON[json[i].id ].budget, // json[i].budget,
+                    'experience': wholeJSON[json[i].id ].experience, // json[i].experience,
                     'title': json[i].title,
                     'interviewee': json[i].interviewee,
                     'image': profilepic,
@@ -186,28 +186,6 @@
 
                 };
                 var oneresult = Mustache.to_html(mockTemplate, mockData);
-
-                // var oneresult ='<div class="candidates-item">'+
-                //     '<div class="photo"><a target="_blank" href="'+BASE_URL + 'userprofile.do?name='+json[i].interviewee+'"> '+
-                //     '<div class="thumb"><img alt="" src="'+profilepic+'"></div></a> <br/>'
-                //     +'<div id="bidb_'+json[i].id+'" >'+ bidHtml + '</div></div>' +
-                //     '<h6 class="title"><a href="'+BASE_URL+'mock/details.do?mid='+json[i].id+'">'+json[i].title+'</a></h6>'+
-                //     '<ul class="top-btns">'+
-                //     '    <li><i class="fa fa-calendar"></i> '+prettyDate(new Date(Number(json[i].dt)))+' </li>'+
-                //     '</ul>'+
-                //     '<p class="skills"><b>Skills</b> ' + skillsHTML + '</p>'+
-                //     '<p class="description descLess">' + getDescriptionLess(description, 155) + ' <a class="read-more" href="#">plase take mock interview</a></p>'+
-                //     '<div class="content">'+
-                //     '<p>'+description + attachment +'</p>' +
-                //     '<ul class="list-unstyled">'+
-                //     '        <li><strong>Status:</strong> '+getInterviewStatusLiteral(json[i].status)+'</li>'+
-                //     '</ul>'+
-                //     '<hr>'+
-                //     '<div class="clearfix">'+
-                //     '<a class="pull-right toggle" href="javascript:void(0)">Read Less</a>'+
-                //     '</div>'+
-                //     '</div>'+
-                //     '</a></div>';
 
                 allResultsView = allResultsView + oneresult;
                 resultsFound = true;
@@ -303,7 +281,8 @@
                 "<input name='bidfid' type='hidden' value='' />" +
                 "<div class='form-group'><input class='form-control input-sm' type='text' name='price' placeholder='Bid Amount' /></div>" +
                 "<div class='form-group'><textarea class='form-control input-sm' name='msg' placeholder='Message'></textarea></div>" +
-                "<button onclick='placeBid(\"" + iid + "\",\"" + interviewee + "\")' class='btn btn-default' type='button'>Bid</button>" +
+                // "<button id='placebid_"+iid+"'  onclick='placeBid(\"" + iid + "\",\"" + interviewee + "\")' class='btn btn-default' type='button'>Bid</button>" +
+            "<button id='placebid_"+iid+"' iid='"+iid+"' interviewee='"+interviewee+"'  class='btn btn-default' type='button'>Bid</button>" +
                 "</form>";
         var options = {
             title: 'Place Bid <a class="close" style="float:right" onclick="hideBidPopUp()">&times;</a>',
@@ -313,30 +292,40 @@
         };
         $(btn).popover(options);
         $(btn).popover("show");
+
+        $("#placebid_"+iid).one("click", function(){
+            console.log("clicked  --   "+$(this).attr("iid")+"   --  "+$(this).attr("interviewee"));
+            var iid = $(this).attr("iid");
+            var interviewee = $(this).attr("interviewee");
+
+            $.ajax({
+                type: "GET",
+                url: "<c:url value='/makebid.do'/>",
+                data: $("#pop_" + iid).serialize(),
+            }).done(function (msg) {
+                var json = jQuery.parseJSON(msg);
+                if (json.success == 1) {
+                    showSuccess("Your bid placed successfully.");
+                    /*$("#bidb_" + iid).html("<button class='btn btn-sm btn-default'><i class='fa fa-gavel'></i> $" +$("#pop_"+iid + " input[name='price']").val() + "</button>");*/
+                    $("#bidb_" + iid).html('<span class="label label-success">Bid Placed</span>');
+                } else {
+                    showError("Request failed to bid on the Mock.");
+                }
+                hideBidPopUp(iid);
+            });
+
+        addToContactList(interviewee);
+
+        });
+
     }
 
     function hideBidPopUp() {
         $(".popover").popover("hide");
     }
 
-    function placeBid(iid, interviewee) {
-        $.ajax({
-            type: "GET",
-            url: "<c:url value='/makebid.do'/>",
-            data: $("#pop_" + iid).serialize(),
-        }).done(function (msg) {
-            var json = jQuery.parseJSON(msg);
-            if (json.success == 1) {
-                showSuccess("Your bid placed successfully.");
-                /*$("#bidb_" + iid).html("<button class='btn btn-sm btn-default'><i class='fa fa-gavel'></i> $" +$("#pop_"+iid + " input[name='price']").val() + "</button>");*/
-                $("#bidb_" + iid).html('<span class="label label-success">Bid Placed</span>');
-            } else {
-                showError("Request failed to bid on the Mock.");
-            }
-            hideBidPopUp(iid);
-        });
-
-        addToContactList(interviewee);
+    function placeBid() {
+        
     }
 
     function addToContactList(interviewee) {

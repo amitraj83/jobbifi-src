@@ -109,6 +109,7 @@
 	                			<div class="panel panel-default" id="jobApplicationPanel">
 	                			<span id ="errorDoc" name = "errorDoc"><code>Please select Resume.</code><br /></span>
 	                			<span id="errorTCover" name = "errorTCover"> <code>Please enter details in Cover letter.</code></span>
+	                			<span id="coverlettererror" name = "errorTCover"> <code>Cover letter must be alteast 100 characters long.</code></span>
 			                        <span id="coverTextSize" name = "coverTextSize"><code> Cover letter is to small,At least  contains more than 250 words. </code></span> 
 									<span id="errorFileType" name = "errorFileType" ><code>Please select proper file (.doc,docx,pdf will be accepted).</code></span>
 									
@@ -146,7 +147,7 @@
 			                                    </div>
 			                                    <div class="form-group">
 			                                        <div class="col-md-offset-2 col-md-10">
-			                                            <button type="submit" class="btn btn-default pull-right">Apply</button>
+			                                            <div id="applyexception"></div><button type="submit" class="btn btn-default pull-right">Apply</button>
 			                                        </div>
 			                                    </div>
 			                                </form>
@@ -194,6 +195,7 @@
 
 	$('#errorDoc').hide();
 	$('#errorTCover').hide();
+	$("#coverlettererror").hide();
 	
 	$("#errorFileType").hide();
 	$("#coverTextSize").hide();
@@ -242,6 +244,9 @@
 
     function submitForm() {    	    	
         var  coverLetterVal = $('#coverLetter').val(); 
+
+        
+
 		if(jobapplicationdocVal==''){ 
         	$('#errorDoc').show();
     	}else{
@@ -254,6 +259,14 @@
     		$('#errorTCover').hide();
     	} 
         
+		if(coverLetterVal.length > 0 && coverLetterVal.length < 100)
+        {
+        	$("#coverlettererror").show();
+        }
+        else
+        	$("#coverlettererror").hide();
+
+
 		if(coverLetterVal != '' &&  jobapplicationdocVal != ''){
 			//check for the file extension.
 			var ext = jobapplicationdocVal.split('.').pop().toLowerCase();

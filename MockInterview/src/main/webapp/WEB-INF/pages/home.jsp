@@ -560,84 +560,66 @@
 				</div>
 			</div>
 			<div class="pricing-table">
+			<center>
 				<div class="row">
+				<div class="col-md-1"></div>
 					<div class="col-sm-3">
 						<div class="single-table wow zoomIn" data-wow-duration="700ms"
 							data-wow-delay="300ms">
-							<h2>Job Post - Basic</h2>
+							<h2>Silver</h2>
 
 							<p class="price">
-								<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>0</span>
-								monthly
+								<span>Free</span>
 							</p>
 							<ul>
-								<li>10 posting</li>
-								<li>Response Management</li>
-								<li>Valid for first 3 months</li>
-								<li>24/7 Support</li>
+								<li>100 CV Access</li>
+								<li>10 Job postings</li>
+								<li>Hiring Management</li>
+								<li>Limited Support</li>
 							</ul>
-							<a href="#" class="btn-signup">Sign-up</a>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="single-table featured-table wow zoomIn"
 							data-wow-duration="700ms" data-wow-delay="400ms">
-							<h2>Job Post - Full</h2>
+							<h2>Gold</h2>
 
 							<p class="price">
 								<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>3500</span>
+									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>3000</span>
 								monthly
 							</p>
 							<ul>
-								<li>50 job posting</li>
-								<li>Response Management</li>
+								<li>500 CV Access</li>
+								<li>50 Job postings</li>
 								<li>Hiring Management</li>
-								<li>24/7 Support</li>
+								<li>Dedicated Support</li>
 							</ul>
-							<a href="#" class="btn-signup">Sign-up</a>
+							
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="single-table wow zoomIn" data-wow-duration="700ms"
 							data-wow-delay="500ms">
-							<h2>CV Search - Basic</h2>
+							<h2>Platinum</h2>
 
 							<p class="price">
 								<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>0</span>
-								monthly
-							</p>
-							<ul>
-								<li>200 CV Access</li>
-								<li>Free Communication</li>
-								<li>Valid for first 3 months</li>
-								<li>24/7 Support</li>
-							</ul>
-							<a href="#" class="btn-signup">Sign-up</a>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="single-table featured-table  wow zoomIn"
-							data-wow-duration="700ms" data-wow-delay="600ms">
-							<h2>CV Search - Full</h2>
-
-							<p class="price">
-								<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>4000</span>
+									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>5000</span>
 								monthly
 							</p>
 							<ul>
 								<li>Unlimited CV Access</li>
-								<li>Free Communication</li>
+								<li>Unlimited Job postings</li>
 								<li>Hiring Management</li>
-								<li>24/7 Support</li>
+								<li>Dedicated Support</li>
 							</ul>
-							<a href="#" class="btn-signup">Sign-up</a>
+							
 						</div>
 					</div>
+					<div class="col-md-1"></div>
 				</div>
+				</center>
 			</div>
 		</div>
 	</div>

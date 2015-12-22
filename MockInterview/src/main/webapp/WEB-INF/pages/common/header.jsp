@@ -133,31 +133,27 @@
 
 						<div class="row">
 							<div class="col-md-12 login-form-content">
-
-								<script>
-									function checkForWhichButtonClicked() {
-										if ($('#interviewerId').is(':checked')) {
-											$('#intervieweeSignUpForm').css({
-												'display' : 'none'
-											});
-										}
-									}
-								</script>
+							
+							
 								<form id="signupform" class="form-horizontal">
 									<div class="form-group row">
 										<label class="col-sm-4 col-md-4 control-label">User type</label>
 										<div class="col-sm-8 col-md-8">
-											<label class="pull-left radio-inline"> <input
+											 <label class="pull-left radio-inline"> 
+												<input
 												name="usertype" checked="checked" id="intervieweeId"
-												value="INTERVIEWEE" type="radio"> Interviewee
-											</label> <label class="radio-inline"> <input name="usertype"
-												id="interviewerId" value="INTERVIEWER" type="radio">
+												value="INTERVIEWEE" type="radio"/> 
+												Interviewee
+											</label> 
+											<label class="radio-inline"> 
+												<input name="usertype"
+												id="interviewerId" value="INTERVIEWER" type="radio"/>
 												Interviewer
 											</label>
 										</div>
 									</div>
 									<!-- start intervieweeSignUpForm-->
-									<div id="intervieweeSignUpForm">
+									<div id="userSignUpForm" >
 										<div class="form-group row">
 											<label for="email" class="col-sm-4 col-md-4 control-label">Email</label>
 
@@ -206,6 +202,8 @@
 									<!-- End intervieweeSignUpForm-->
 
 									<!-- Start interviewerSignUpForm-->
+									
+									
 									<!-- End interviewerSignUpForm-->
 								</form>
 							</div>
@@ -243,12 +241,6 @@
 						<img class="img-responsive" src="images/logo.png" alt="logo">
 					</h1>
 				</a>
-			</div>
-			<div class="top-bar">
-				<span> <a href="mailto:support@jobbifi.com"><i
-						class="fa fa-envelope"></i>support@jobbifi.com </a>
-				</span>
-				<!-- <span><i class="fa fa-phone"></i> (123) 456-7890</span> -->
 			</div>
 			<nav class="collapse navbar-collapse navbar-right">
 				<ul class="nav navbar-nav">

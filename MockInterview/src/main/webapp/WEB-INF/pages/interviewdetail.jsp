@@ -383,7 +383,7 @@
         });
     }
 
-    $("#createescrowbutton").click(function () {
+    $("#createescrowbutton").one("click", function () {
 
         var escrowamount = $("#interviewee_interview_escrowamount").val();
         if (theBID != null && theBID != undefined) {

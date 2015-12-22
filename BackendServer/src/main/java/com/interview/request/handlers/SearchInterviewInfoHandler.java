@@ -95,7 +95,17 @@ public class SearchInterviewInfoHandler extends RequestHandler {
               uploadedFileMap.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, null);
             }
             iidFiles.put(key, uploadedFileMap);
+            
+            
+            
           }
+          Interview userinfo =
+                  DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(key);
+          Map<String, Object> additionalData = new HashMap<String, Object>();
+          additionalData.put("budget", userinfo.getBudget());
+          additionalData.put("description", userinfo.getDescription());
+          additionalData.put("experience", userinfo.getExperience());
+          resMap.put(key, additionalData);  
         }
         resMap.put("iidFiles", iidFiles);
 

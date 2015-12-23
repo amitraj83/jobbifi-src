@@ -99,7 +99,7 @@ $(document).ready(function ($) {
 
     $(window).scroll(function (event) {
         Scroll();
-        $('.navbar-collapse li.scroll').hide().fadeIn('fast');
+        // $('.navbar-collapse li.scroll').hide().fadeIn('fast');
         if($(window).scrollTop()<32){
             $('.navbar-collapse li.scroll')
                     .removeClass('active')

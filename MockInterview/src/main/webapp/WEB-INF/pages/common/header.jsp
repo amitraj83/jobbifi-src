@@ -251,8 +251,8 @@
 						<li class="scroll"><a class="scroll" href="#services">Services</a></li>
 						<li class="scroll"><a class="scroll" href="#about-us">About
 								us</a></li>
-						<li class="scroll"><a class="scroll" href="#pricing-tables">For
-								Employers</a></li>
+						<li class="scroll"><a class="scroll" href="#candidate-workflow">Job Seekers</a></li>
+						<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>
 						<li class="scroll"><a class="scroll" href="#contact-us">Contact</a></li>
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>

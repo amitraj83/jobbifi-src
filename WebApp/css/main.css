@@ -2622,10 +2622,10 @@ body.error.error-404 div.jumbotron {
     z-index: 100;
     position: absolute;
     left: 50%;
-    border: 7px solid #3b5998;
+    border: 7px solid #0072bc;
     border-radius: 100%;
-    background-color: #3b5998;
-    box-shadow: 0 0 5px #4582ec;
+    background-color: #0072bc;
+    box-shadow: 0 0 5px #0072bc;
     width: 200px;
     height: 200px;
     margin-left: -100px;
@@ -2690,11 +2690,11 @@ body.error.error-404 div.jumbotron {
     left: 690px;
     width: 4px;
     height:340px;
-    background-color: #3b5998;
+    background-color: #0072bc;
     -ms-transform: rotate(-44deg); /* IE 9 */
     -webkit-transform: rotate(-44deg); /* Safari */
     transform: rotate(-44deg);
-    box-shadow: 0 0 5px #4582ec;
+    box-shadow: 0 0 5px #0072bc;
 }
 /*Style for odd div.line*/
 #candidate-workflow .timeline>li:nth-child(even) .line:before  {
@@ -2705,11 +2705,11 @@ body.error.error-404 div.jumbotron {
     left: 450px;
     width: 4px;
     height:340px;
-    background-color: #3b5998;
+    background-color: #0072bc;
     -ms-transform: rotate(44deg); /* IE 9 */
     -webkit-transform: rotate(44deg); /* Safari */
     transform: rotate(44deg);
-    box-shadow: 0 0 5px #4582ec;
+    box-shadow: 0 0 5px #0072bc;
 }
 /* Medium Devices, .visible-md-* */
 @media (min-width: 992px) and (max-width: 1199px) {

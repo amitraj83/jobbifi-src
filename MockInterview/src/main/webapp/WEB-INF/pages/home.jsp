@@ -326,7 +326,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="http://lorempixel.com/250/250/cats/1" alt="">
+									src="images/candidate-workflow/1.jpg" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -344,7 +344,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="http://lorempixel.com/250/250/cats/2" alt="">
+									src="images/candidate-workflow/2.jpg" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -364,7 +364,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="http://lorempixel.com/250/250/cats/3" alt="">
+									src="images/candidate-workflow/3.jpg" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -383,7 +383,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="http://lorempixel.com/250/250/cats/4" alt="">
+									src="images/candidate-workflow/4.jpg" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">

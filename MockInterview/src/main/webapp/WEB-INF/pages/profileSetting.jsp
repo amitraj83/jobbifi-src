@@ -187,7 +187,7 @@
 
 
      var positionHTML = '<div class="form-group" id="positionDiv">' +
-            '  <label class="col-md-12">Position</label>' +
+            '  <label>Position</label> <span class="removePosition" style="cursor:pointer"><i class="fa fa-trash-o"></i></span>' +
             '  <div class="col-md-12">' +
             '      <div class="row form-group">' +
             '          <label class="col-md-2 control-label">Role/Title</label>' +
@@ -197,9 +197,9 @@
             '     </div>  ' +
             '     <div class="row form-group">' +
             '          <label class="col-md-2 control-label">Start Date</label>' +
-            '          <div class="col-md-4"><select class="form-control">$syui$</select></div>' +
+            '          <div class="col-md-4"><select class="form-control" name="startyear">$syui$</select></div>' +
             '          <label class="col-md-2 control-label">End Date</label>' +
-            '          <div class="col-md-4"><select class="form-control">$eyui$</select></div>' +
+            '          <div class="col-md-4"><select class="form-control" name="endyear">$eyui$ </select></div>' +
             '      </div>  ' +
             '     <div class="row form-group">' +
             '          <label class="col-md-2 control-label">Description</label>' +
@@ -210,7 +210,7 @@
 
 
     var educationHTML = ' <div class="form-group" id="edudiv">' +
-            '<label class="col-md-12">Education</label>' +
+            '<label>Education</label><span class="removeEducation" style="cursor:pointer"><i class="fa fa-trash-o"></i></span>' +
             '<div class="col-md-12">' +
             '      <div class="row form-group">' +
             '           <label class="col-md-2 control-label">Degree</label>' +
@@ -256,13 +256,24 @@
             }
         });
 
+
+        $(document).on("click", ".removePosition", function(){
+            $(this).parent().remove();
+        });
+        
+        $(document).on("click", ".removeEducation", function(){
+            $(this).parent().remove();
+        });
+
+        
+
 // btn click event
         $('#update_addskill').click(function () {
 
 
             if($("#update_skill").val() == null || $("#update_skill").val() == "")            
             { 
-                $("#skillerror").html("Enter an skill");              
+                $("#skillerror").html("Please enter skill.");              
              
             }
             else
@@ -276,7 +287,7 @@
 
             var sel = "";
             for(var y = 1990; y < 2020; y++){
-                sel += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+                sel += '<option value="'+y+'" >'+y+'</option>';
             }
 
             var screen = educationHTML.split("$degree$").join("")
@@ -291,7 +302,7 @@
 
                 var sel = "";
                 for(var y = 1990; y < 2020; y++){
-                    sel += '<option value="'+y+'" '+selected+'>'+y+'</option>';
+                    sel += '<option value="'+y+'" >'+y+'</option>';
                 }
 
 
@@ -429,12 +440,13 @@
         for (var i = 0; i < edudiv.length; i++) {
             var adiv = edudiv[i];
             var inputs = $(adiv).find("input");
+            var selects = $(adiv).find("select");
             var edu = {};
             edu.degree = $(inputs[0]).val();
             edu.fieldOfStudy = $(inputs[1]).val();
             edu.schoolname = $(inputs[2]).val();
-            edu.startYear = $(inputs[3]).val();
-            edu.endYear = $(inputs[4]).val();
+            edu.startYear = $(selects[0]).val();
+            edu.endYear = $(selects[1]).val();
             educations.push(edu);
         }
         param += "&educations=" + JSON.stringify(educations);
@@ -446,9 +458,14 @@
             var position = {};
             position.title = $(adiv).find("input[name='title']").val();
             position.companyName = $(adiv).find("input[name='companyName']").val();
-            position.startYear = $(adiv).find("input[name='startyear']").val();
-            position.endYear = $(adiv).find("input[name='endyear']").val();
+            position.startYear = $(adiv).find("select[name='startyear']").val();
+            position.endYear = $(adiv).find("select[name='endyear']").val();
             position.description = $(adiv).find("textarea[name='description']").val();
+            console.log("Char length:"+position.description.length);
+            if(position.description.length < 100){
+              message("Position description must be at least 100 characters.","danger");  
+              return;
+            }
             positions.push(position);
         }
         param += "&positions=" + JSON.stringify(positions);

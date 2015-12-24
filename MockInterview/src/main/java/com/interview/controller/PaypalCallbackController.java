@@ -13,14 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.interview.framework.DATASTORES.TRANSACTION;
 import com.interview.framework.REQUEST_TYPES;
+import com.interview.framework.USER;
 import com.interview.services.Services;
 import com.paypal.api.payments.Payment;
 import com.paypal.api.payments.PaymentExecution;
+import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
 
 @Controller
-public class PaypalCallbackController {
+public class PaypalCallbackController extends BaseController{
 	
 	private Logger log = Logger.getLogger(PaypalCallbackController.class);
 	
@@ -45,11 +48,18 @@ public class PaypalCallbackController {
 			
 			log.info(" Paypal Payment ({}) " +  payment);
 
-			Map<Object, Object> reqMap = new HashMap<Object, Object>();
-			reqMap.put("transactionid", req.getSession().getAttribute("transactionid"));
+			for(Transaction transaction : payment.getTransactions()){
+				Map<Object, Object> reqMap = new HashMap<Object, Object>();
+				reqMap.put("transactionid", payment.getId());
+				reqMap.put(USER.USERNAME, getLoginUser());
+				reqMap.put(TRANSACTION.NETAMOUNT, transaction.getAmount().getTotal());
+				
+				
+				Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+						.handleRequest(reqMap, REQUEST_TYPES.DEPOSIT_FUNDS);
+			}
 			
-			Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
-					.handleRequest(reqMap, REQUEST_TYPES.DEPOSIT_FUNDS);
+			
 			
 		} catch (Exception e) {
 			log.debug("Exception : ", e);

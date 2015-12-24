@@ -279,8 +279,9 @@
 						<li><a title="Message" href="<c:url value='/message.do'/>">Messages
 								<span id="messageCount"></span>
 						</a></li>
-						<li id="user-dropdown-menu" class="dropdown"><a
-							class="dropdown-toggle" data-toggle="dropdown"> <i
+						<li id="user-dropdown-menu" class="dropdown">
+						<a
+							class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer;"> <i
 								class="fa fa-user"></i> <sec:authentication
 									property="principal.username" /> <b class="caret"></b>
 						</a>

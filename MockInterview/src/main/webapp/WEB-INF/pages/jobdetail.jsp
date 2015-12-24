@@ -108,10 +108,10 @@
 	                		<c:otherwise>
 	                			<div class="panel panel-default" id="jobApplicationPanel">
 	                			<span id ="errorDoc" name = "errorDoc"><code>Please select Resume.</code><br /></span>
-	                			<span id="errorTCover" name = "errorTCover"> <code>Please enter details in Cover letter.</code></span>
-	                			<span id="coverlettererror" name = "errorTCover"> <code>Cover letter must be alteast 100 characters long.</code></span>
-			                        <span id="coverTextSize" name = "coverTextSize"><code> Cover letter is to small,At least  contains more than 250 words. </code></span> 
-									<span id="errorFileType" name = "errorFileType" ><code>Please select proper file (.doc,docx,pdf will be accepted).</code></span>
+	                			<span id="errorTCover" name = "errorTCover"> <code>Please enter details in Cover letter.<br /></code></span>
+	                			<span id="coverlettererror" name = "errorTCover"> <code>Cover letter must be alteast 250 characters long.<br /></code></span>
+			                        <span id="coverTextSize" name = "coverTextSize"><code> Cover letter is to small,At least  contains more than 250 words. <br /></code></span> 
+									<span id="errorFileType" name = "errorFileType" ><code>Please select proper file (.doc,docx,pdf will be accepted).<br /></code></span>
 									
 			                        <div class="panel-heading">
 			                            <h1 class="panel-title" style="font-size:18px;">Apply for this job</h1>
@@ -132,12 +132,13 @@
 			                                        <div class="col-md-8">
 			                                            <div class="form-inline">
 			                                                <div class="form-group" style="padding-left:16px;">
-			                                                    <input id="jobapplicationdoc" type="file" name="file"
+			                                                	<div id="selectedfile" style="clear:both"></div>
+								                                <input id="jobapplicationdoc" type="file" name="file"
 								                                       data-url="<c:url value='/aauth/fileupload.do?type=jobapplicationdoc&jobid=${jobid}' />" multiple style="opacity:0;
 														      		filter:alpha(opacity: 0);" class="pull-left hide">
 								                                <button id="attachfile" type="button" class="btn btn-sm btn-info">Upload Resume</button>
+								                                <span>(.doc, .docx, .pdf)</span>
 								                                <img id="fileloader" style="display: none;" alt="Processing..." src="<c:url value="/resources/img/loading.gif" />">				
-								                                <div id="selectedfile" style="clear:both"></div>
 								                                <input type="hidden" name="cvFileId" id="jobapplicationid">
 			                                                </div>
 			                                            </div>
@@ -210,7 +211,7 @@
                 var jsonResponse = jQuery.parseJSON(data.jqXHR.responseText);
                 if (jsonResponse && jsonResponse._id) {
                     var html = "<a target='_blank' href='" + BASE_URL + jsonResponse.url + "' >" + jsonResponse.originalfn + "</a><br/>";
-                    $("#selectedfile").html(html);
+                    $("#selectedfile").html(jsonResponse.originalfn);
                     $("#jobapplicationid").val(jsonResponse._id);
                 } else {
                     showError("Unable to upload the file.");
@@ -259,7 +260,7 @@
     		$('#errorTCover').hide();
     	} 
         
-		if(coverLetterVal.length > 0 && coverLetterVal.length < 100)
+		if(coverLetterVal.length > 0 && coverLetterVal.length < 250)
         {
         	$("#coverlettererror").show();
         }

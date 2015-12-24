@@ -75,9 +75,13 @@ public class SolrService {
     Map<String, Object> results = new HashMap<String, Object>();
     try {
       SolrQuery query = new SolrQuery();
-      String[] keys = key.split("\\s+");
+      
 //      query.setQuery("{!q.op=AND} *" + key + "* AND {!df=doctype}=INTERVIEWER");
-      query.setQuery("(cv:*"+key+"* OR country:*"+key+"* OR skills:*"+key+"* OR position:*"+key+"*) AND {!df=doctype}=INTERVIEWER");
+      query.setQuery("(cv:*"+key+"* "
+      		+ "OR country:*"+key+"* "
+			+ "OR skills:*"+key+"* "
+			+ "OR position:*"+key+"*) "
+			+ "AND {!df=doctype}=INTERVIEWER");
       query.setFacet(true).setFacetMinCount(1).setFacetLimit(8);
 
       
@@ -103,6 +107,20 @@ public class SolrService {
         count++;
       }
 
+      
+//      String[] keys = key.split("\\s+");
+//      String ORQuery = "";
+//      if(keys.length > 1){
+//    	  for(String aKey : keys){
+//    		  ORQuery += " cv:*"+aKey+"* "
+//			      		+ "OR country:*"+aKey+"* "
+//						+ "OR skills:*"+aKey+"* "
+//						+ "OR position:*"+aKey+"* ";
+//    	  }
+//    	  
+//      }
+      
+      
       results.put("JSON_DOC_LIST", jsonDocList);
       results.put("NUM_OF_RESULTS", rsp.getResults().getNumFound());
 
@@ -139,6 +157,10 @@ public class SolrService {
 	        count++;
 	      }
 
+	      
+	      
+	      
+	      
 	      results.put("JSON_DOC_LIST", jsonDocList);
 	      results.put("NUM_OF_RESULTS", rsp.getResults().getNumFound());
 
@@ -163,8 +185,16 @@ public class SolrService {
 	  }
     Map<String, Object> results = new HashMap<String, Object>();
     try {
+    	Map<String, Object> jsonDocList = new HashMap<String, Object>();
       SolrQuery query = new SolrQuery();
-      query.setQuery("{!q.op=AND}" + key + " AND {!df=doctype}=JOB");
+//      query.setQuery("{!q.op=AND}" + key + " AND {!df=doctype}=JOB");
+      query.setQuery("(title:*"+key+"* "
+      		+ "OR skills:*"+key+"* "
+      		+ "OR description:*"+key+"* "
+      		+ "OR location:*"+key+"* "
+			+ "OR companyname:*"+key+"*) "
+			+ "AND {!df=doctype}=JOB");
+      
       query.setSort(SortClause.desc(DATASTORES.JOB.DATE));
       query.setFacet(true).setFacetMinCount(1).setFacetLimit(8);
       query.setStart(start);
@@ -174,7 +204,7 @@ public class SolrService {
       SolrDocumentList outdocs = rsp.getResults();
       Iterator<SolrDocument> it = outdocs.iterator();
       int count = 0;
-      Map<String, Object> jsonDocList = new HashMap<String, Object>();
+      
       while (it.hasNext()) {
         SolrDocument doc = it.next();
         Map<String, Object> jsonDoc = new HashMap<String, Object>();
@@ -182,12 +212,53 @@ public class SolrService {
         while (iit.hasNext()) {
           Entry<String, Object> entry = iit.next();
           jsonDoc.put(entry.getKey(), entry.getValue());
+          System.out.println(entry.getKey() +" -- "+ entry.getValue());
         }
 
         jsonDocList.put("" + count, jsonDoc);
         count++;
       }
 
+      
+      String[] keys = key.split("\\s+");
+      String ORQuery = "";
+      if(keys.length > 1){
+    	  for(String aKey : keys){
+    		  ORQuery += " title:*"+aKey+"* "
+			      		+ "OR skills:*"+aKey+"* "
+			      		+ "OR description:*"+aKey+"* "
+			      		+ "OR location:*"+aKey+"* "
+						+ "OR companyname:*"+aKey+"* ";
+    	  }
+    	  
+      
+      
+      query.setQuery("( "+ORQuery+" ) "
+  			+ "AND {!df=doctype}=JOB");
+
+      query.setSort(SortClause.desc(DATASTORES.JOB.DATE));
+      query.setFacet(true).setFacetMinCount(1).setFacetLimit(8);
+
+      rsp = this.server.query(query);
+      outdocs = rsp.getResults();
+      it = outdocs.iterator();
+      
+      while (it.hasNext()) {
+        SolrDocument doc = it.next();
+        Map<String, Object> jsonDoc = new HashMap<String, Object>();
+        Iterator<Entry<String, Object>> iit = doc.iterator();
+        while (iit.hasNext()) {
+          Entry<String, Object> entry = iit.next();
+          jsonDoc.put(entry.getKey(), entry.getValue());
+          System.out.println(entry.getKey() +" -- "+ entry.getValue());
+        }
+
+        jsonDocList.put("" + count, jsonDoc);
+        count++;
+      }
+
+      }
+      
       results.put("JSON_DOC_LIST", jsonDocList);
       results.put("NUM_OF_RESULTS", rsp.getResults().getNumFound());
 

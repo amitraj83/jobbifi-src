@@ -1,3 +1,4 @@
+
 package com.interview.request.handlers;
 
 import java.util.HashMap;
@@ -7,9 +8,13 @@ import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 
 import com.interview.framework.REQUEST_TYPES;
+import com.interview.framework.USER;
+import com.interview.framework.DATASTORES.TRANSACTION;
+import com.interview.framework.pojo.Message;
 import com.interview.framework.pojo.Transactions;
 import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;
+import com.interview.transaction.FundsDepositService;
 
 public class DepositFundsHandler extends RequestHandler {
 
@@ -61,8 +66,16 @@ public class DepositFundsHandler extends RequestHandler {
     } else {
       try {
         String thirdPartyTID = new ObjectId().toString();
-        int status = Services.getInstance().getFundsDepositService()
-            .funddeposit(data.get("transactionid").toString(), thirdPartyTID);
+        FundsDepositService depositService = Services.getInstance().getFundsDepositService();
+        String transID = data.get("transactionid").toString();
+        
+//        reqMap.put("transactionid", transaction.getInvoiceNumber());
+//		reqMap.put(USER.USERNAME, getLoginUser());
+//		reqMap.put(TRANSACTION.NETAMOUNT, transaction.getAmount().getTotal());
+//		
+        int status = depositService.deposit(String.valueOf(data.get(USER.USERNAME)), Double.valueOf(String.valueOf(data.get(TRANSACTION.NETAMOUNT))), transID);
+        
+//        int status = depositService.funddeposit(transID, thirdPartyTID);
         res.put("status", status);
 
       } catch (Exception e) {
@@ -73,3 +86,4 @@ public class DepositFundsHandler extends RequestHandler {
   }
 
 }
+

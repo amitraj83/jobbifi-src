@@ -17,13 +17,18 @@
 
                     <div class="clearfix white-container">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-9">
+                                <div class="row">
+                                <div class="col-md-9">
                                 <h3 class="title">
                                     <a style="padding-right: 90px;" href="javascript:void(0);"
                                        id="interviewee_interview_title">${title}</a>
                                 </h3>
-                                <h4 class="interview-status">${status_string}</h4>
-
+                                </div>
+                                <div class="col-md-3" style="margin-top:5px;">
+                                    <h3><span class="label label-success">${status_string}</span></h3> <!--<h4 class="interview-status">${status_string}</h4> -->
+                                </div>
+                                </div>
                                 <p><i class="fa fa-clock-o"></i> Posted on <span id="date"></span></p>
                                 <hr>
                                 <p><b>Skills Required:</b>
@@ -36,7 +41,7 @@
 
                                 <p>${ifile}</p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="well well-default">
                                     <div class="row">
                                         <div class="col-md-6">

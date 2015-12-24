@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Company Video</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="companyvideo" placeholder="Only youtube video">
+                                <input type="text" id="companyvideo" class="form-control" name="companyvideo" placeholder="Only youtube video">
                             </div>
                         </div>
                         <div class="form-group">

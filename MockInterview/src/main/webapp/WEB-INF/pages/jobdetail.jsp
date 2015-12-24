@@ -328,7 +328,7 @@
     
     <c:if test="${not empty job.companyVideo}">
     	var v = gupurl("v", '${job.companyVideo}');    
-    	var html = '<iframe width="420" height="315" src="http://www.youtube.com/embed/'+v+'"></iframe>';
+    	var html = '<iframe width="420" height="315" src="https://www.youtube.com/embed/'+v+'"></iframe>';
     	$("#youTubeVideo").html(html);
    	</c:if>
 </script>

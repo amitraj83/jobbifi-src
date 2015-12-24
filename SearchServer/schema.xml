@@ -306,7 +306,7 @@
    <copyField source="position" dest="text"/>
    
    
-   <!-- Copy the price into a currency enabled field (default USD) -->
+   <!-- Copy the price into a currency enabled field (default INR) -->
    <copyField source="price" dest="price_c"/>
 
    <!-- Text fields from SolrCell to search by default in our catch-all field -->
@@ -755,7 +755,7 @@
 
    <!-- Money/currency field type. See http://wiki.apache.org/solr/MoneyFieldType
         Parameters:
-          defaultCurrency: Specifies the default currency if none specified. Defaults to "USD"
+          defaultCurrency: Specifies the default currency if none specified. Defaults to "INR"
           precisionStep:   Specifies the precisionStep for the TrieLong field used for the amount
           providerClass:   Lets you plug in other exchange provider backend:
                            solr.FileExchangeRateProvider is the default and takes one parameter:
@@ -764,7 +764,7 @@
                              ratesFileLocation: URL or path to rates JSON file (default latest.json on the web)
                              refreshInterval: Number of minutes between each rates fetch (default: 1440, min: 60)
    -->
-    <fieldType name="currency" class="solr.CurrencyField" precisionStep="8" defaultCurrency="USD" currencyConfig="currency.xml" />
+    <fieldType name="currency" class="solr.CurrencyField" precisionStep="8" defaultCurrency="INR" currencyConfig="currency.xml" />
              
 
 

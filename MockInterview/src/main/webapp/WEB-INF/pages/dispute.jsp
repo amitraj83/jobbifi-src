@@ -87,7 +87,7 @@
                             </div>
                             <!-- Dispute Tab -->
 
-                            <!-- Current Dispute List -->
+                            <!-- Current Dispute L<i class="fa fa-inr"></i>ist -->
                             <div class="tab-pane fade in active" id="currentdisputes">
                                 <br/>
                                 <table class="table table-hover">
@@ -186,7 +186,7 @@
         $.ajax({
             type: "GET",
             url: BASE_URL + "getDisputeList.do",
-            async: false
+            async: false<i class="fa fa-inr"></i>
         }).done(function (res) {
             var resData = jQuery.parseJSON(res);
             if (resData.disputeList.length > 0) {
@@ -195,7 +195,7 @@
                             '<td><a href="javascript:void(0)"># ' + resData.disputeList[i].visibleID + '</a></td>' +
                             '<td>' + resData.disputeList[i].title + '</td>' +
                             '<td>' + resData.disputeList[i].with + '</td>' +
-                            '<td>' + resData.disputeList[i].amount + '</td>' +
+                            '<td><i class="fa fa-inr"></i>' + resData.disputeList[i].amount + '</td>' +
                             '<td>' + resData.disputeList[i].result + '</td>' +
                             '</tr>';
                     $("#currentdisputestable").append(html);
@@ -239,7 +239,7 @@
                                     '            <td><a href="javascript:void(0)"># ' + resData.closed_dispute_List[i].visibleID + '</a> </td>' +
                                     '            <td> ' + resData.closed_dispute_List[i].title + ' </td>' +
                                     '            <td> ' + resData.closed_dispute_List[i].with + ' </td>' +
-                                    '            <td> ' + resData.closed_dispute_List[i].amount + ' </td>' +
+                                    '            <td><i class="fa fa-inr"></i> ' + resData.closed_dispute_List[i].amount + ' </td>' +
                                     '            <td> ' + result + '</td>' +
                                     '            <td> ' + prettyDate(new Date(resData.closed_dispute_List[i].timeclosed)) + ' </td>' +
                                     '        </tr>'
@@ -265,7 +265,7 @@
             type: "POST",
             url: BASE_URL + "createdispute.do",
             data: "iid=" + iid + "&fileid=" + disputefileid + "&msg=" + disputeMessage + "&amount=" + eb
-        }).done(function (msg) {
+        }).done(function (msg) {<i class="fa fa-inr"></i>
             var jsonResponse = jQuery.parseJSON(msg);
             if (jsonResponse.status == "1") {
                 $("#currentdisputestable").append(
@@ -273,7 +273,7 @@
                         '<td><a href="javascript:void(0)"># ' + jsonResponse.vid + '</a></td>' +
                         '<td>' + jsonResponse.interview + '</td>' +
                         '<td>' + jsonResponse.disputewith + '</td>' +
-                        '<td>' + jsonResponse.amount + '</td>' +
+                        '<td><i class="fa fa-inr"></i>' + jsonResponse.amount + '</td>' +
                         '<td>PENDING</td>' +
                         '<td>-</td>' +
                         '</tr>');
@@ -428,11 +428,11 @@
                 '<div class="panel panel-primary">' +
                 '<div class="panel-heading" >';
         if (actionbutton != "") {
-            _dispute = _dispute + '<h3 class="panel-title">Dispute Amount : ' + damount +
+            _dispute = _dispute + '<h3 class="panel-title">Dispute Amount: <i class="fa fa-inr"></i>' + damount +
                     '<br><br>Result: <span id="disputesidebosresult">' + dresult + '</span><br><br><button did="' + did +
                     '" id="' + closedispute + '" type="button" class="btn btn-success" >Close and Release Funds</button></h3>';
         } else {
-            _dispute = _dispute + '<h3 class="panel-title">Dispute Amount : ' + damount + '<br><br>Result: <span id="disputesidebosresult">' + dresult + '</span></h3>';
+            _dispute = _dispute + '<h3 class="panel-title">Dispute Amount : <i class="fa fa-inr"></i>' + damount + '<br><br>Result: <span id="disputesidebosresult">' + dresult + '</span></h3>';
         }
         _dispute = _dispute + '</div>' +
                 '</div>' +

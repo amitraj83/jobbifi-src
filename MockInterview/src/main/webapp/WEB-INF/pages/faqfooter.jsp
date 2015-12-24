@@ -54,7 +54,7 @@
             </div>
             <div id="collapseEleven" class="panel-collapse collapse">
                 <div class="panel-body">
-                    All prices for themes, templates and other items, including each seller's or buyer's account balance are in <strong>USD</strong>
+                    All prices for themes, templates and other items, including each seller's or buyer's account balance are in <strong>INR</strong>
                 </div>
             </div>
         </div>
@@ -141,7 +141,7 @@
             <div id="collapseNine" class="panel-collapse collapse">
                 <div class="panel-body">
                     Our standard payment plan provides for monthly payments. At the end of each month, all accumulated funds are transfered to your account. 
-                    The minimum amount of your balance should be at least 70 USD. 
+                    The minimum amount of your balance should be at least 5000 INR. 
                 </div>
             </div>
         </div>

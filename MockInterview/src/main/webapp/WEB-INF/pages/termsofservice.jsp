@@ -1043,7 +1043,7 @@
 					to time and such competitions will be subject to the terms and
 					conditions as published by us on the Website.</p>
 
-				<p>Prizes awarded will be denominated in USD unless stated
+				<p>Prizes awarded will be denominated in INR unless stated
 					otherwise. Competition winners will be determined by us in
 					accordance with the applicable terms and conditions at our absolute
 					discretion. All decisions made us in respect of competition are

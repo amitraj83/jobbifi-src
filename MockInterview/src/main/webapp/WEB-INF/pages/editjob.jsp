@@ -103,7 +103,7 @@
 
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon">$</span>
+                                    <span class="input-group-addon"><i class="fa fa-inr"></i></span>
                                     <input type="text" placeholder="Job Salary" name="salary" class="form-control" value="${job.salary}">
                                 </div>
                             </div>
@@ -188,28 +188,25 @@
         });
     });
 
-    function submitPostJobForm() {
-
-        $("#submitloader").show();
-        $.ajax({
-            type: "POST",
-            url: "<c:url value='/editjob.do'/>",
-            data: $("#postJobForm").serialize(),
-            async: false
-        }).done(function (res) {
-            var resData = jQuery.parseJSON(res);
-            if (resData.status == 1) {
-                showSuccess("Your job is updated successfully.");
-                //$('#postJobForm').trigger("reset");
-                //$("#selectedfile").html("");
-
-            } else {
-                showError("Your job was not updated. Please try again.");
-            }
-        }).always(function (jqXHR, textStatus) {
-            $("#submitloader").hide();
-        });
-    };
+    
+	function submitPostJobForm() {
+		$("#submitloader").show();
+		$.ajax({
+			type : "POST",
+			url : "<c:url value='/editjob.do'/>",
+			data : $("#postJobForm").serialize(),
+			async : false
+		}).done(function(res) {
+			var resData = jQuery.parseJSON(res);
+			if (resData.status == 1) {
+				showSuccess("Your job is updated successfully.");
+			} else {
+				showError("Your job was not updated. Please try again.");
+			}
+		}).always(function(jqXHR, textStatus) {
+			$("#submitloader").hide();
+		});
+	};
 </script>
 </body>
 </html>

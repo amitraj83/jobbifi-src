@@ -10,203 +10,161 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
-<div id="wrapper">
-    <div id="page-content">
-        <div class="container">
-            <div class="row">
+	<div id="wrapper">
+		<div id="page-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="list-group list-default">
+							<a href="<c:url value='/profilesetting.do'/>"
+								class="list-group-item active">Update Profile</a> <a
+								href="<c:url value='/changepassword.do'/>"
+								class="list-group-item">Change Password</a>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col-md-12">
+								<h2>Your Profile</h2>
+							</div>
+							<div class="col-md-12" id="message"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">Update Your Profile Picture</h3>
+									</div>
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-4 text-center">
+												<img src="http://placehold.it/150" id="update_img"
+													class="avatar img-square" alt="avatar" width="150px"
+													height="150px"> <input id="uploadphoto" type="file"
+													name="file"
+													data-url="aauth/fileupload.do?type=profilepicupdate"
+													style="opacity: 0; filter: alpha(opacity : 0);">
+												<button type="button" id="uploadphotobtn"
+													class="btn btn-sm btn-default">Upload Photo</button>
+											</div>
+											<div class="col-md-8 text-center">
+												<textarea rows="9" class="form-control" id="update_shortcv"
+													placeholder="Short CV"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">General Information</h3>
+									</div>
+									<div class="panel-body">
+										<form id="editgeneralinfo" class="form-horizontal" role="form">
+											<div class="form-group">
+												<label class="col-lg-3 control-label">Rate (per
+													hour)</label>
+												<div class="col-lg-9">
+													<div class="input-group">
+														<span class="input-group-addon"><i
+															class="fa fa-inr"></i></span> <input type="text"
+															id="perhourrate" name="perhourrate" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-3 control-label">Present
+													Country</label>
+												<div class="col-lg-9">
+													<select class="form-control" id="updatecountries"></select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-3 control-label">Skills</label>
+												<div class="col-lg-9">
+													<div class="row">
+														<div class="col-md-12 form-inline">
+															<input id="update_skill" class="form-control" type="text"
+																value="" placeholder="Skill"> <label
+																for="update_skillexp">Experience</label> <select
+																id="update_skillexp" class="form-control">
+																<option value="1">1 years</option>
+																<option value="2">2 years</option>
+																<option value="3">3 years</option>
+																<option value="4">4 years</option>
+																<option value="5">5 years</option>
+																<option value="6">6 years</option>
+																<option value="7">7 years</option>
+																<option value="8">8 years</option>
+																<option value="9">9 years</option>
+																<option value="10">10 years</option>
+																<option value="11">11 years</option>
+																<option value="12">12 years</option>
+																<option value="13">13 years</option>
+																<option value="14">14 years</option>
+																<option value="15">15 years</option>
+																<option value="16">16 years</option>
+																<option value="17">17 years</option>
+																<option value="18">18 years</option>
+																<option value="19">19 years</option>
+																<option value="20">20 years</option>
+															</select>
+															<button type="button" class="btn btn-success "
+																id="update_addskill">Add</button>
+															<span id="skillerror"></span> <br />
+														</div>
+														<div class="col-md-12">
+															<ul class="nav nav-pills" id="update_skills"></ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group"></div>
+										</form>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">Update Your Professional Details</h3>
+									</div>
+									<div class="panel-body">
+										<form class="form-horizontal" role="form"
+											id="update_allpositions"></form>
+										<a href="javascript:void(0)"
+											class="btn btn-default pull-right"
+											id="update_addmoreposition">Add Position</a>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">Update Your Education Details</h3>
+									</div>
+									<div class="panel-body">
+										<form class="form-horizontal" role="form"
+											id="update_alleducations"></form>
+										<a href="javascript:void(0)"
+											class="btn btn-default pull-right"
+											id="update_addmoreeducation">Add Education</a>
+									</div>
+								</div>
+								<div id="buttonPanel" style="text-align: center;">
+									<button type="submit" class="btn btn-success"
+										id="edit_profile_button">Update Details</button>
+									<button type="button" class="btn btn-danger"
+										id="edit_profile_cancel">Cancel</button>
+								</div>
+								<br />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                <div class="col-md-3">
-                    <div class="list-group list-default">
-                        <a href="<c:url value='/profilesetting.do'/>" class="list-group-item active">Update Profile</a>
-                        <a href="<c:url value='/changepassword.do'/>" class="list-group-item">Change Password</a>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Your Profile</h2>
-                        </div>
-                        <div class="col-md-12" id="message"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Update Your Profile Picture</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-4 text-center">
-                                            <img src="http://placehold.it/150" id="update_img" class="avatar img-square"
-                                                 alt="avatar" width="150px" height="150px">
-                                            <input id="uploadphoto" type="file" name="file"
-                                                   data-url="aauth/fileupload.do?type=profilepicupdate"
-                                                   style="opacity:0;  filter:alpha(opacity: 0);">
-                                            <button type="button" id="uploadphotobtn" class="btn btn-sm btn-default">
-                                                Upload Photo
-                                            </button>
-                                        </div>
-                                        <div class="col-md-8 text-center">
-
-                                            
-                                                <textarea rows="9" class="form-control" id="update_shortcv" placeholder="Short CV"></textarea>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">General Information</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <form id="editgeneralinfo" class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Rate(per hour)</label>
-
-                                            <div class="col-lg-9">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                    <input type="text" id="perhourrate" name="perhourrate"
-                                                           class="form-control">
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Present Country</label>
-
-                                            <div class="col-lg-9">
-                                                <select class="form-control" id="updatecountries"></select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Skills</label>
-
-                                            <div class="col-lg-9">
-                                                <div class="row">
-                                                    
-                                                    <div class="col-md-12 form-inline">
-                                                        <input id="update_skill" class="form-control" type="text"
-                                                               value="" placeholder="Skill">
-                                                        <label for="update_skillexp">Experience</label>
-                                                        <select id="update_skillexp" class="form-control">
-                                                            <option value="1">1 years</option>
-                                                            <option value="2">2 years</option>
-                                                            <option value="3">3 years</option>
-                                                            <option value="4">4 years</option>
-                                                            <option value="5">5 years</option>
-                                                            <option value="6">6 years</option>
-                                                            <option value="7">7 years</option>
-                                                            <option value="8">8 years</option>
-                                                            <option value="9">9 years</option>
-                                                            <option value="10">10 years</option>
-                                                            <option value="11">11 years</option>
-                                                            <option value="12">12 years</option>
-                                                            <option value="13">13 years</option>
-                                                            <option value="14">14 years</option>
-                                                            <option value="15">15 years</option>
-                                                            <option value="16">16 years</option>
-                                                            <option value="17">17 years</option>
-                                                            <option value="18">18 years</option>
-                                                            <option value="19">19 years</option>
-                                                            <option value="20">20 years</option>
-                                                        </select>
-                                                        <button type="button" class="btn btn-success "
-                                                                id="update_addskill">Add
-                                                        </button>
-                                                        <span id="skillerror"></span>
-                                                         <br/>
-                                                    </div>
-
-                                                    <div class="col-md-12">
-                                                        <ul class="nav nav-pills" id="update_skills"></ul>
-                                                       
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Update Your Professional Details</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <form class="form-horizontal" role="form" id="update_allpositions"></form>
-                                    <a href="javascript:void(0)" class="btn btn-default pull-right"
-                                       id="update_addmoreposition">Add Position</a>
-                                </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Update Your Education Details</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <form class="form-horizontal" role="form" id="update_alleducations"></form>
-                                    <a href="javascript:void(0)" class="btn btn-default pull-right"
-                                       id="update_addmoreeducation">Add Education</a>
-                                </div>
-                            </div>
-                            <div id="buttonPanel" style="text-align:center; ">
-                                <button type="submit" class="btn btn-success" id="edit_profile_button">Update Details
-                                </button>
-                                <button type="button" class="btn btn-danger" id="edit_profile_cancel">Cancel</button>
-                            </div>
-                            <br/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<%@ include file="/WEB-INF/pages/common/footer.jsp" %>
+	<%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 
-<script type="text/javascript">
-    var username = '<sec:authentication property="principal.username" />';
-
-
-    $("#edit_profile_cancel").click(function(){
-        window.location = BASE_URL+'profile.do';
-    });
-
-
-     var positionHTML = '<div class="form-group" id="positionDiv">' +
-            '  <label>Position</label> <span class="removePosition" style="cursor:pointer"><i class="fa fa-trash-o"></i></span>' +
-            '  <div class="col-md-12">' +
-            '      <div class="row form-group">' +
-            '          <label class="col-md-2 control-label">Role/Title</label>' +
-            '          <div class="col-md-4"><input name="title" class="form-control" type="text" value="$title$"></div>' +
-            '          <label class="col-md-2 control-label">Company Name</label>' +
-            '          <div class="col-md-4"><input name="companyName" class="form-control" type="text" value="$cn$"></div>' +
-            '     </div>  ' +
-            '     <div class="row form-group">' +
-            '          <label class="col-md-2 control-label">Start Date</label>' +
-            '          <div class="col-md-4"><select class="form-control" name="startyear">$syui$</select></div>' +
-            '          <label class="col-md-2 control-label">End Date</label>' +
-            '          <div class="col-md-4"><select class="form-control" name="endyear">$eyui$ </select></div>' +
-            '      </div>  ' +
-            '     <div class="row form-group">' +
-            '          <label class="col-md-2 control-label">Description</label>' +
-            '          <div class="col-md-10"><textarea name="description" rows="3" class="form-control">$desc$</textarea></div>' +
-            '      </div>  ' +
-            '  </div>' +
-            '</div>';       
+<script type="text/javascript"> var username = '<sec:authentication property="principal.username" />';   $("#edit_profile_cancel").click(function(){ window.location = BASE_URL+'profile.do'; });   var positionHTML = '<div class="form-group" id="positionDiv">' + '  <label>Position</label> <span class="removePosition" style="cursor:pointer"><i class="fa fa-trash-o"></i></span>' + '  <div class="col-md-12">' + '      <div class="row form-group">' + '          <label class="col-md-2 control-label">Role/Title</label>' + '          <div class="col-md-4"><input name="title" class="form-control" type="text" value="$title$"></div>' + '          <label class="col-md-2 control-label">Company Name</label>' + '          <div class="col-md-4"><input name="companyName" class="form-control" type="text" value="$cn$"></div>' + '     </div>  ' + '     <div class="row form-group">' + '          <label class="col-md-2 control-label">Start Date</label>' + '          <div class="col-md-4"><select class="form-control" name="startyear">$syui$</select></div>' + '          <label class="col-md-2 control-label">End Date</label>' + '          <div class="col-md-4"><select class="form-control" name="endyear">$eyui$ </select></div>' + '      </div>  ' + '     <div class="row form-group">' + '          <label class="col-md-2 control-label">Description</label>' + '          <div class="col-md-10"><textarea name="description" rows="3" class="form-control">$desc$</textarea></div>' + '      </div>  ' + '  </div>' + '</div>';
 
 
     var educationHTML = ' <div class="form-group" id="edudiv">' +

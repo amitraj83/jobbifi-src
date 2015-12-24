@@ -85,9 +85,9 @@
                 for (var i = 0; i < myinterview.length; i++) {
                     var html = '<tr onclick="interviewdetail(\'' + myinterview[i].id + '\');" style="cursor: pointer;">' +
                             '<td>' + myinterview[i].title + '</td>' +
-                            '<td>$' + myinterview[i].budget + '</td>' +
+                            '<td><i class="fa fa-inr"></i>' + myinterview[i].budget + '</td>' +
                             '<td>' + myinterview[i].statusString + '</td>' +
-                            '<td>$' + myinterview[i].price + '</td>' +
+                            '<td><i class="fa fa-inr"></i>' + myinterview[i].price + '</td>' +
                             '<td>' + prettyDate(new Date(myinterview[i].dt)) + '</td>' +
                             '</tr>';
                     $("#bid_allbody").append(html);

@@ -95,7 +95,7 @@
 
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon">$</span>
+                                    <span class="input-group-addon"><i class="fa fa-inr"></i></span>
                                     <input type="text" placeholder="Job Salary" name="salary" class="form-control">
                                 </div>
                             </div>

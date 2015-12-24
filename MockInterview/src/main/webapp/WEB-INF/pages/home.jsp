@@ -290,23 +290,8 @@
 			</ul>
 		</div>
 	</div>
-	<!--/#portfolio-->
-	<div id="promo-one" class="parallax-section">
-		<div class="parallax-content">
-			<div class="container text-center wow zoomIn"
-				data-wow-duration="700ms" data-wow-delay="300ms">
-				<h1>If I hadn't had mentors, I wouldn't be here today. I'm a
-					product of great mentoring, great coaching... Coaches or mentors
-					are very important. They could be anyone - your husband, other
-					family members, or your boss.</h1>
-
-				<h2>
-					Indra Nooyi <span>CEO, PepsiCo</span>
-				</h2>
-			</div>
-		</div>
-	</div>
-	<!--/parallax-section-->
+	<br />
+	<br />
 	<div id="candidate-workflow">
 		<div class="container">
 			<div class="row">
@@ -405,6 +390,23 @@
 	
 	<br />
 	<br />
+	<!--/#portfolio-->
+	<div id="promo-one" class="parallax-section">
+		<div class="parallax-content">
+			<div class="container text-center wow zoomIn"
+				data-wow-duration="700ms" data-wow-delay="300ms">
+				<h1>If I hadn't had mentors, I wouldn't be here today. I'm a
+					product of great mentoring, great coaching... Coaches or mentors
+					are very important. They could be anyone - your husband, other
+					family members, or your boss.</h1>
+
+				<h2>
+					Indra Nooyi <span>CEO, PepsiCo</span>
+				</h2>
+			</div>
+		</div>
+	</div>
+	<!--/parallax-section-->
 	<br />
 	
 	<div id="about-us">

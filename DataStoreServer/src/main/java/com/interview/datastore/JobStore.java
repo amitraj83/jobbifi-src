@@ -46,20 +46,21 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
       job.setDt(new Date((Long) row.get(DATASTORES.JOB.DATE)).getTime());
       job.setStatus(new Integer(row.get(DATASTORES.JOB.STATUS).toString()));
       job.setCompanyName(row.get(DATASTORES.JOB.COMPANY_NAME).toString());
-      job.setCompanyDescription(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_DESCRIPTION));
-      job.setCompanyVideo(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO));      
+      job.setCompanyDescription(
+          MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_DESCRIPTION));
+      job.setCompanyVideo(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO));
       job.setApplyUrl(row.get(DATASTORES.JOB.APPLY_URL).toString());
       job.setIndustry(row.get(DATASTORES.JOB.INDUSTRY).toString());
       job.setFile(row.get(DATASTORES.JOB.FILE).toString());
       if (row.get(DATASTORES.JOB.SALARY) != null) {
         job.setSalary(row.get(DATASTORES.JOB.SALARY).toString());
       }
-      
+
       if (row.get(DATASTORES.JOB.LOCATION) != null) {
-    	  job.setLocation(row.get(DATASTORES.JOB.LOCATION).toString());
+        job.setLocation(row.get(DATASTORES.JOB.LOCATION).toString());
       }
       if (row.get(DATASTORES.JOB.EXPERIENCE) != null) {
-    	  job.setExperience(row.get(DATASTORES.JOB.EXPERIENCE).toString());
+        job.setExperience(row.get(DATASTORES.JOB.EXPERIENCE).toString());
       }
 
       List<String> skills = new ArrayList<String>();
@@ -130,7 +131,8 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
       job.setStatus(new Integer(row.get(DATASTORES.JOB.STATUS).toString()));
       job.setTitle(row.get(DATASTORES.JOB.TITLE).toString());
       job.setCompanyName(row.get(DATASTORES.JOB.COMPANY_NAME).toString());
-      job.setCompanyDescription(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_DESCRIPTION));
+      job.setCompanyDescription(
+          MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_DESCRIPTION));
       job.setCompanyVideo(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO));
 
       if (row.get(DATASTORES.JOB.APPLY_URL) != null) {
@@ -150,44 +152,44 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
       if (row.get(DATASTORES.JOB.INDUSTRY) != null) {
         job.setIndustry(row.get(DATASTORES.JOB.INDUSTRY).toString());
       }
-      
+
       if (row.get(DATASTORES.JOB.LOCATION) != null) {
-    	  job.setLocation(row.get(DATASTORES.JOB.LOCATION).toString());
+        job.setLocation(row.get(DATASTORES.JOB.LOCATION).toString());
       }
       if (row.get(DATASTORES.JOB.EXPERIENCE) != null) {
-    	  job.setExperience(row.get(DATASTORES.JOB.EXPERIENCE).toString());
+        job.setExperience(row.get(DATASTORES.JOB.EXPERIENCE).toString());
       }
-      
+
       list.add(job);
     }
     return list;
   }
 
-@Override
-public void updateJob(String jid, Job job) throws RemoteException {
-	try{
-	DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.JOB.DBCollection);
-	DBObject query = new BasicDBObject("_id", new ObjectId(jid));
-    BasicDBObject updateDoc = new BasicDBObject();
-    updateDoc.append(DATASTORES.JOB.TITLE, job.getTitle());
-    updateDoc.append(DATASTORES.JOB.DESCRIPTION, job.getDescription());
-    updateDoc.append(DATASTORES.JOB.SALARY, job.getSalary());
-    updateDoc.append(DATASTORES.JOB.COMPANY_NAME, job.getCompanyName());
-    updateDoc.append(DATASTORES.JOB.COMPANY_DESCRIPTION, job.getCompanyDescription());
-    updateDoc.append(DATASTORES.JOB.COMPANY_VIDEO, job.getCompanyVideo());
-    updateDoc.append(DATASTORES.JOB.APPLY_URL, job.getApplyUrl());
-    updateDoc.append(DATASTORES.JOB.INDUSTRY, job.getIndustry());
-    updateDoc.append(DATASTORES.JOB.LOCATION, job.getLocation());
-    updateDoc.append(DATASTORES.JOB.EXPERIENCE, job.getExperience());
-    updateDoc.append(DATASTORES.JOB.SKILLS, job.getSkills());
-    updateDoc.append(DATASTORES.JOB.DATE, job.getDt());
-    updateDoc.append(DATASTORES.JOB.FILE, job.getFile());
-    updateDoc.append(DATASTORES.JOB.INTERVIEWER, job.getInterviewer());
-    BasicDBObject update = new BasicDBObject().append("$set", updateDoc);
-    collection.update(query, update);
-	}catch(Exception e){
-		System.out.println(""+e);
-	}
-}
+  @Override
+  public void updateJob(String jid, Job job) throws RemoteException {
+    try {
+      DBCollection collection =
+          Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.JOB.DBCollection);
+      DBObject query = new BasicDBObject("_id", new ObjectId(jid));
+      BasicDBObject updateDoc = new BasicDBObject();
+      updateDoc.append(DATASTORES.JOB.TITLE, job.getTitle());
+      updateDoc.append(DATASTORES.JOB.DESCRIPTION, job.getDescription());
+      updateDoc.append(DATASTORES.JOB.SALARY, job.getSalary());
+      updateDoc.append(DATASTORES.JOB.COMPANY_NAME, job.getCompanyName());
+      updateDoc.append(DATASTORES.JOB.COMPANY_DESCRIPTION, job.getCompanyDescription());
+      updateDoc.append(DATASTORES.JOB.COMPANY_VIDEO, job.getCompanyVideo());
+      updateDoc.append(DATASTORES.JOB.APPLY_URL, job.getApplyUrl());
+      updateDoc.append(DATASTORES.JOB.INDUSTRY, job.getIndustry());
+      updateDoc.append(DATASTORES.JOB.LOCATION, job.getLocation());
+      updateDoc.append(DATASTORES.JOB.EXPERIENCE, job.getExperience());
+      updateDoc.append(DATASTORES.JOB.SKILLS, job.getSkills());
+      updateDoc.append(DATASTORES.JOB.DATE, job.getDt());
+      updateDoc.append(DATASTORES.JOB.FILE, job.getFile());
+      updateDoc.append(DATASTORES.JOB.INTERVIEWER, job.getInterviewer());
+      BasicDBObject update = new BasicDBObject().append("$set", updateDoc);
+      collection.update(query, update);
+    } catch (Exception e) {
+      System.out.println("" + e);
+    }
+  }
 }

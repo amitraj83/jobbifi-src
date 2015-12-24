@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class DisputeMessage implements Serializable {
 
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 4975721003715580413L;
   private String id;
   private String disputeId;
   private String messageBy;

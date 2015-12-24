@@ -18,7 +18,8 @@ public class UserInfoController extends BaseController {
 
 
   @RequestMapping(value = "/getuserinfo.do", method = RequestMethod.POST)
-  public ModelAndView processRequest(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView processRequest(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
 
     UserSession us =

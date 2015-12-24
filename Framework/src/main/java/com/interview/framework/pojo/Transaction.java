@@ -3,7 +3,7 @@ package com.interview.framework.pojo;
 import java.io.Serializable;
 
 public class Transaction implements Serializable {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
   private String id;
   private long time;
   private String type;
@@ -16,42 +16,44 @@ public class Transaction implements Serializable {
   private double netamount;
   private double balance;
   private double amount;
+
   public double getAmount() {
-	return amount;
-}
+    return amount;
+  }
 
-public void setAmount(double amount) {
-	this.amount = amount;
-}
+  public void setAmount(double amount) {
+    this.amount = amount;
+  }
 
-private String paypal_address;
+  private String paypal_address;
   private long process_date;
   private long request_date;
+
   public String getPaypal_address() {
-	return paypal_address;
-}
+    return paypal_address;
+  }
 
-public void setPaypal_address(String paypal_address) {
-	this.paypal_address = paypal_address;
-}
+  public void setPaypal_address(String paypal_address) {
+    this.paypal_address = paypal_address;
+  }
 
-public long getProcess_date() {
-	return process_date;
-}
+  public long getProcess_date() {
+    return process_date;
+  }
 
-public void setProcess_date(long process_date) {
-	this.process_date = process_date;
-}
+  public void setProcess_date(long process_date) {
+    this.process_date = process_date;
+  }
 
-public long getRequest_date() {
-	return request_date;
-}
+  public long getRequest_date() {
+    return request_date;
+  }
 
-public void setRequest_date(long request_date) {
-	this.request_date = request_date;
-}
+  public void setRequest_date(long request_date) {
+    this.request_date = request_date;
+  }
 
-public String getId() {
+  public String getId() {
     return id;
   }
 

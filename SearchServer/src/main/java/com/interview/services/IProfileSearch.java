@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public interface IProfileSearch {
 
-	
-	public JSONObject getProfiles(String key);
-	
+
+  public JSONObject getProfiles(String key);
+
 }

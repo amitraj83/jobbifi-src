@@ -29,18 +29,18 @@ public class DeleteInterviewController {
     reqMap.put("_id", req.getParameter("iid"));
     reqMap.put("baseURL", Util.getbBaseURLpath(req));
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.DELETE_INTERVIEW);
-    //TODO need to ask that how to call this because it gives null pointer exception
-    /*if (new Integer(resMap.get("code").toString()) == 0) {
-      Services.getInstance().getRequestHandlerService()
-          .handleRequest(reqMap, REQUEST_TYPES.DELETE_INTERVIEW_SOLR);
-    }*/
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.DELETE_INTERVIEW);
+    // TODO need to ask that how to call this because it gives null pointer exception
+    /*
+     * if (new Integer(resMap.get("code").toString()) == 0) {
+     * Services.getInstance().getRequestHandlerService() .handleRequest(reqMap,
+     * REQUEST_TYPES.DELETE_INTERVIEW_SOLR); }
+     */
 
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 }

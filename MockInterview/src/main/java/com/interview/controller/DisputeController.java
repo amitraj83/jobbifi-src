@@ -23,12 +23,13 @@ import com.interview.services.Services;
 public class DisputeController extends BaseController {
 
   @RequestMapping(value = "/createdispute.do", method = RequestMethod.POST)
-  public ModelAndView createDispute(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView createDispute(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
     String iid = req.getParameter("iid");
     String fid = req.getParameter("fileid");
     String msg = req.getParameter("msg");
-    
+
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(USER.USERNAME, getLoginUser());
     reqMap.put(DATASTORES.DISPUTE_MESSAGE.FID, fid);
@@ -39,10 +40,10 @@ public class DisputeController extends BaseController {
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.CREATE_DISPUTE);
 
     Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
+        .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
 
   }
 
@@ -54,32 +55,31 @@ public class DisputeController extends BaseController {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(DATASTORES.DISPUTE.ID, did);
-    String user = getLoginUser();       
+    String user = getLoginUser();
     reqMap.put(USER.USERNAME, user);
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.RETRIEVE_DISPUTE);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
 
 
   }
 
-  @RequestMapping(value="/getDisputeList.do", method=RequestMethod.GET)
-  public ModelAndView getDisputeList(){
-	
-	  Map<Object, Object> reqMap = new HashMap<Object, Object>();
-	  reqMap.put(USER.USERNAME,getLoginUser());	  
-	  reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.GET_DISPUTE_LIST);
-	  Map<String, Object> resMap =
-		        Services.getInstance().getRequestHandlerService()
-		            .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);	
-	  resMap.put("userRole", getUserRole());
-     return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-	            .getJSONStringOfMap(resMap));
+  @RequestMapping(value = "/getDisputeList.do", method = RequestMethod.GET)
+  public ModelAndView getDisputeList() {
+
+    Map<Object, Object> reqMap = new HashMap<Object, Object>();
+    reqMap.put(USER.USERNAME, getLoginUser());
+    reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.GET_DISPUTE_LIST);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
+    resMap.put("userRole", getUserRole());
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
+
   @RequestMapping(value = "/senddisputemessage.do", method = RequestMethod.GET)
   public ModelAndView sendDisputeMessage(ModelMap model, HttpServletRequest req,
       HttpServletResponse res) {
@@ -88,7 +88,7 @@ public class DisputeController extends BaseController {
     String fid = req.getParameter("fid");
     String msg = req.getParameter("msg");
     String user = getLoginUser();
-       
+
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(DATASTORES.DISPUTE_MESSAGE.DISPUTEID, did);
     reqMap.put(DATASTORES.DISPUTE_MESSAGE.FID, fid);
@@ -97,11 +97,10 @@ public class DisputeController extends BaseController {
     reqMap.put(DATASTORES.DISPUTE_MESSAGE.TIME, new Date().getTime());
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.SEND_DISPUTE_MSG);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
 
 
   }
@@ -113,18 +112,17 @@ public class DisputeController extends BaseController {
       HttpServletResponse res) {
 
     String did = req.getParameter("did");
-    String user =getLoginUser();
+    String user = getLoginUser();
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(DATASTORES.DISPUTE.ID, did);
     reqMap.put(DATASTORES.DISPUTE.CLOSEDBY, user);
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.DISPUTE_CLOSED_BY_INTERVIEWER);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
 
 
   }
@@ -134,18 +132,17 @@ public class DisputeController extends BaseController {
       HttpServletResponse res) {
 
     String did = req.getParameter("did");
-    String user =getLoginUser();
+    String user = getLoginUser();
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(DATASTORES.DISPUTE.ID, did);
     reqMap.put(DATASTORES.DISPUTE.CLOSEDBY, user);
     reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.DISPUTE_CLOSED_BY_INTERVIEWEE);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.DISPUTE);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
 
 
   }

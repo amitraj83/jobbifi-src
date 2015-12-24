@@ -24,7 +24,7 @@ public interface USER {
   public static final String CHATPASS = "chatpass";
   public static final String ROLE = "role";
   public static final String NEW_PASSWORD = "newpassword";
-  public static final String PAYPAL_ADDRESS="paypaladdress";
+  public static final String PAYPAL_ADDRESS = "paypaladdress";
   public static final String DBCollection = "interviewer";
 
 

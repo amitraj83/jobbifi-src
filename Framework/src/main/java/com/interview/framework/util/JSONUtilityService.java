@@ -34,7 +34,7 @@ public class JSONUtilityService extends ObjectMapper {
   }
 
   public String getJSONStringOfMap(Map map) {
-    try {    	
+    try {
       return writeValueAsString(map);
     } catch (JsonGenerationException e) {
       e.printStackTrace();
@@ -60,22 +60,23 @@ public class JSONUtilityService extends ObjectMapper {
   }
 
   /**
-   * Use to 
-   * */
-  public Map<String, Object> getMapOfJsonString(String json){
-	  
-	Map<String, Object> map = null;
-	TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
+   * Use to
+   */
+  public Map<String, Object> getMapOfJsonString(String json) {
+
+    Map<String, Object> map = null;
+    TypeReference<HashMap<String, Object>> typeRef =
+        new TypeReference<HashMap<String, Object>>() {};
     try {
-		map = readValue(json, typeRef);
-	} catch (JsonMappingException j) {		
-		j.printStackTrace();
-	} catch (JsonParseException e) {		
-		e.printStackTrace();
-	} catch (IOException e) {		
-		e.printStackTrace();
-	}
-	return map;
+      map = readValue(json, typeRef);
+    } catch (JsonMappingException j) {
+      j.printStackTrace();
+    } catch (JsonParseException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return map;
   }
 
 }

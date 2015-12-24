@@ -20,15 +20,15 @@ import com.interview.services.Services;
 public class ChatHistoryController {
 
   @RequestMapping(value = "/chathistory.do", method = RequestMethod.GET)
-  public ModelAndView getChatHistory(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView getChatHistory(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("otheruser", req.getParameter("otheruser"));
     reqMap.put("user", req.getParameter("user"));
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.CHAT_HISTORY);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.CHAT_HISTORY);
 
     /*
      * List<ChatMessage> list = (List<ChatMessage>)resMap.get("data"); JSONObject json = new
@@ -41,8 +41,8 @@ public class ChatHistoryController {
      */
 
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 }

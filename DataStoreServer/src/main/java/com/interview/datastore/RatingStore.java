@@ -19,12 +19,12 @@ import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 
 public class RatingStore extends UnicastRemoteObject implements IRatingStore {
-  
-	private static final long serialVersionUID = 1L;
 
-	protected RatingStore() throws RemoteException {
-		Services.getInstance().getRMIServer().bind(NAME, this);
-   }
+  private static final long serialVersionUID = 1L;
+
+  protected RatingStore() throws RemoteException {
+    Services.getInstance().getRMIServer().bind(NAME, this);
+  }
 
   @Override
   public ObjectId save(Rating r) throws RemoteException {
@@ -64,11 +64,11 @@ public class RatingStore extends UnicastRemoteObject implements IRatingStore {
     while (cursor.hasNext()) {
       DBObject row = cursor.next();
       total += new Double(row.get(DATASTORES.RATING.AVERAGE).toString());
-    }    
-    
+    }
+
     double average = 0;
-    if(cursor.count() != 0){
-    	average = total / cursor.count();
+    if (cursor.count() != 0) {
+      average = total / cursor.count();
     }
     return average;
   }

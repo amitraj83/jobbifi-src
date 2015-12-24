@@ -11,6 +11,10 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class IVSpecService implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -2318914632663268542L;
   private IvParameterSpec ivSpec;
   private Cipher cipher;
 

@@ -12,7 +12,7 @@ public class BootStrapper {
           new ClassPathXmlApplicationContext("applicationContext.xml");
       context.registerShutdownHook();
       Runtime.getRuntime().addShutdownHook(new BootstrapperShutdownHook(context));
-      
+
     } catch (Exception ex) {
       ex.printStackTrace();
     }

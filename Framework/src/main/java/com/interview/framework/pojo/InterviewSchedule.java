@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class InterviewSchedule implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -5447401239388808059L;
   String _id;
   String iid;
   long date1;

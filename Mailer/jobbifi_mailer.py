@@ -11,6 +11,7 @@ import mailer_pb2
 
 from templates import *
 
+
 def parse_email(email_message):
     email = mailer_pb2.Email()
     email.ParseFromString(email_message)
@@ -23,10 +24,11 @@ def callback(ch, method, properties, body):
     for kv in email.data:
         emailData[mailer_pb2._ATTRIBUTETYPE.values_by_number[kv.type].name] = kv.value
 
+    print "emailData: ", emailData
     try:
         templates[email.type].send(render=emailData,
                   to=email.recipient,
-                  smtp={"host": SMTP_HOST, "port": SMTP_PORT})
+                  smtp={"host": SMTP_HOST, "port": SMTP_PORT, 'ssl': True, 'user': SMTP_USERNAME, 'password': SMTP_PASSWORD})
         print "[INFO] Sent mail to %s" % (email.recipient)
     except Exception as e:
         print "Basic Exception:", str(e)

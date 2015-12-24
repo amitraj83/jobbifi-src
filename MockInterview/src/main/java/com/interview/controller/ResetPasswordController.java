@@ -23,7 +23,8 @@ public class ResetPasswordController {
 
 
   @RequestMapping(value = "/resetpassword.do", method = RequestMethod.POST)
-  public ModelAndView resetPassword(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView resetPassword(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(REQUEST_TYPES.SUB_REQ_RESET_PASSWORD, "3");
@@ -32,16 +33,16 @@ public class ResetPasswordController {
     reqMap.put(VARIABLES.RESET_PASS.AUTH_TOKEN, req.getParameter("authtoken"));
     reqMap.put(USER.PASSWORD, req.getParameter("password"));
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.RESET_PASSWORD);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.RESET_PASSWORD);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
   @RequestMapping(value = "/resetpasswordscreen.do", method = RequestMethod.GET)
-  public String resetPasswordScreen(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public String resetPasswordScreen(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(REQUEST_TYPES.SUB_REQ_RESET_PASSWORD, "2");
@@ -49,28 +50,28 @@ public class ResetPasswordController {
     reqMap.put(VARIABLES.RESET_PASS.AUTH_INSTANCE, req.getParameter("authinstance"));
     reqMap.put(VARIABLES.RESET_PASS.AUTH_TOKEN, req.getParameter("authtoken"));
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.RESET_PASSWORD);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.RESET_PASSWORD);
     int result = new Integer(resMap.get("response").toString());
     model.addAttribute("status", result);
-    model.addAttribute("authid", req.getParameter("authid")); 
-    model.addAttribute("authinstance", req.getParameter("authinstance")); 
-    model.addAttribute("authtoken", req.getParameter("authtoken")); 
-   
+    model.addAttribute("authid", req.getParameter("authid"));
+    model.addAttribute("authinstance", req.getParameter("authinstance"));
+    model.addAttribute("authtoken", req.getParameter("authtoken"));
+
     return "resetpasswordscreen";
   }
 
   @RequestMapping(value = "/resetpasswordemail.do", method = RequestMethod.GET)
-  public ModelAndView resetPasswordEmail(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
-    
+  public ModelAndView resetPasswordEmail(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
+
     String useremail = req.getParameter("useremail");
-    Map<Object, Object> reqMap = new HashMap<Object, Object>();    
+    Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put(REQUEST_TYPES.SUB_REQ_RESET_PASSWORD, "1");
     reqMap.put(USER.EMAIL, useremail);
     Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
-    		.handleRequest(reqMap, REQUEST_TYPES.RESET_PASSWORD);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+        .handleRequest(reqMap, REQUEST_TYPES.RESET_PASSWORD);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 }

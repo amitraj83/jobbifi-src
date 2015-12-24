@@ -42,36 +42,42 @@ public class DownloadInterviewFileHandler extends RequestHandler {
     UploadedFile uploadedFile = null;
     try {
       uploadedFile = DataStoreRegistry.getInstance().getUploadedFileDataStore()
-              .getUploadedFile(new ObjectId(fileID));
-    } catch (RemoteException e1) {      
+          .getUploadedFile(new ObjectId(fileID));
+    } catch (RemoteException e1) {
       e1.printStackTrace();
     }
-    
+
     String accessgingUser = data.get(USER.USERNAME).toString();
     if (uploadedFile != null) {
       try {
         if (isUserAllowed(accessgingUser, uploadedFile)) {
           String filePath = "";
-          if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.INTERVIEW_DOCUMENT)) {
+          if (uploadedFile.getClasstype()
+              .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.INTERVIEW_DOCUMENT)) {
             filePath = myProps.getProperty("interviewDocDir") + uploadedFile.getPath_on_Disk();
-            
-          } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.BID_DOCUMENT)){
+
+          } else if (uploadedFile.getClasstype()
+              .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.BID_DOCUMENT)) {
             filePath = myProps.getProperty("bidDocDir") + uploadedFile.getPath_on_Disk();
-            
-          } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.CHAT_DOCUMENT)) {
+
+          } else if (uploadedFile.getClasstype()
+              .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.CHAT_DOCUMENT)) {
             filePath = myProps.getProperty("chatDocDir") + uploadedFile.getPath_on_Disk();
-            
-          } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.DISPUTE_DOCUMENT)){
+
+          } else if (uploadedFile.getClasstype()
+              .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.DISPUTE_DOCUMENT)) {
             filePath = myProps.getProperty("disputeDocDir") + uploadedFile.getPath_on_Disk();
-            
-          } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_DOCUMENT)){
-              filePath = myProps.getProperty("jobDocDir") + uploadedFile.getPath_on_Disk();
-          } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_APPLICATION_DOCUMENT)){
-              filePath = myProps.getProperty("jobApplicationDocDir") + uploadedFile.getPath_on_Disk();
+
+          } else if (uploadedFile.getClasstype()
+              .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_DOCUMENT)) {
+            filePath = myProps.getProperty("jobDocDir") + uploadedFile.getPath_on_Disk();
+          } else if (uploadedFile.getClasstype()
+              .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_APPLICATION_DOCUMENT)) {
+            filePath = myProps.getProperty("jobApplicationDocDir") + uploadedFile.getPath_on_Disk();
           }
-          
+
           InputStream is = new FileInputStream(new File(filePath));
-          resMap.put("BYTES",  new String(IOUtils.toByteArray(is)));
+          resMap.put("BYTES", new String(IOUtils.toByteArray(is)));
           resMap.put(DATASTORES.UPLOAD_FILE.MIMETYPE, uploadedFile.getMimeType());
           resMap.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, uploadedFile.getOriginalFileName());
         }
@@ -87,8 +93,9 @@ public class DownloadInterviewFileHandler extends RequestHandler {
     if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.INTERVIEW_DOCUMENT)) {
       return true;
     } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_DOCUMENT)) {
-        return true;
-    } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.CHAT_DOCUMENT)) {
+      return true;
+    } else if (uploadedFile.getClasstype()
+        .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.CHAT_DOCUMENT)) {
       if (accessgingUser.equals(uploadedFile.getArtifactid()))
         return true;
       else if (accessgingUser.equals(uploadedFile.getOwner()))
@@ -99,29 +106,27 @@ public class DownloadInterviewFileHandler extends RequestHandler {
 
       Interview interview = null;
       try {
-        Bid bid =
-            DataStoreRegistry.getInstance().getBidStore()
-                .getBid(new ObjectId(uploadedFile.getArtifactid()));
+        Bid bid = DataStoreRegistry.getInstance().getBidStore()
+            .getBid(new ObjectId(uploadedFile.getArtifactid()));
 
-        interview =
-            DataStoreRegistry.getInstance().getInterviewDataStore()
-                .getInterview(new ObjectId(bid.getIid()));
+        interview = DataStoreRegistry.getInstance().getInterviewDataStore()
+            .getInterview(new ObjectId(bid.getIid()));
       } catch (RemoteException e) {
         e.printStackTrace();
       }
 
       if (accessgingUser.equals(interview.getInterviewee()))
         return true;
-    } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.DISPUTE_DOCUMENT)) {
+    } else if (uploadedFile.getClasstype()
+        .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.DISPUTE_DOCUMENT)) {
       if (accessgingUser.equals(uploadedFile.getOwner()))
         return true;
 
       String artifactid = uploadedFile.getArtifactid();
       if (artifactid != null && !artifactid.trim().equals("")) {
         try {
-          Dispute dispute =
-              DataStoreRegistry.getInstance().getDisputeDataStore()
-                  .getDispute(new ObjectId(artifactid));
+          Dispute dispute = DataStoreRegistry.getInstance().getDisputeDataStore()
+              .getDispute(new ObjectId(artifactid));
           String iid = dispute.getIID();
           Interview interview =
               DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(iid);
@@ -132,22 +137,24 @@ public class DownloadInterviewFileHandler extends RequestHandler {
           e.printStackTrace();
         }
       }
-    } else if (uploadedFile.getClasstype().equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_APPLICATION_DOCUMENT)) {
-    	 if (accessgingUser.equals(uploadedFile.getOwner())){
-    		 return true;
-    	 } else {
-    		 try {
-				Job job = DataStoreRegistry.getInstance().getJobStore().getJob(uploadedFile.getArtifactid());
-				if(job.getInterviewer().equals(accessgingUser)){
-					return true;
-				}
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			}
-    		return false;
-    	 }
-        
-    } 
+    } else if (uploadedFile.getClasstype()
+        .equals(DATASTORES.UPLOAD_FILE.CLASS_TYPE.JOB_APPLICATION_DOCUMENT)) {
+      if (accessgingUser.equals(uploadedFile.getOwner())) {
+        return true;
+      } else {
+        try {
+          Job job =
+              DataStoreRegistry.getInstance().getJobStore().getJob(uploadedFile.getArtifactid());
+          if (job.getInterviewer().equals(accessgingUser)) {
+            return true;
+          }
+        } catch (RemoteException e) {
+          e.printStackTrace();
+        }
+        return false;
+      }
+
+    }
     return false;
   }
 

@@ -16,6 +16,11 @@ import com.mongodb.DBObject;
 
 public class SkillDataStore extends UnicastRemoteObject implements ISkillDataStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1001269397809510720L;
+
   protected SkillDataStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }

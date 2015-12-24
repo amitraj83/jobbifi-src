@@ -20,8 +20,8 @@ public final class Backend {
 
     String getData();
   }
-  public static final class Request extends com.google.protobuf.GeneratedMessage implements
-      RequestOrBuilder {
+  public static final class Request extends com.google.protobuf.GeneratedMessage
+      implements RequestOrBuilder {
     // Use Request.newBuilder() to construct.
     private Request(Builder builder) {
       super(builder);
@@ -179,14 +179,14 @@ public final class Backend {
 
     public static com.interview.framework.proto.Backend.Request parseFrom(
         com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
 
     public static com.interview.framework.proto.Backend.Request parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
@@ -197,7 +197,7 @@ public final class Backend {
 
     public static com.interview.framework.proto.Backend.Request parseFrom(byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
@@ -206,9 +206,8 @@ public final class Backend {
       return newBuilder().mergeFrom(input).buildParsed();
     }
 
-    public static com.interview.framework.proto.Backend.Request parseFrom(
-        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static com.interview.framework.proto.Backend.Request parseFrom(java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry).buildParsed();
     }
 
@@ -224,7 +223,7 @@ public final class Backend {
 
     public static com.interview.framework.proto.Backend.Request parseDelimitedFrom(
         java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+            throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
         return builder.buildParsed();
@@ -520,8 +519,8 @@ public final class Backend {
 
     String getData();
   }
-  public static final class Response extends com.google.protobuf.GeneratedMessage implements
-      ResponseOrBuilder {
+  public static final class Response extends com.google.protobuf.GeneratedMessage
+      implements ResponseOrBuilder {
     // Use Response.newBuilder() to construct.
     private Response(Builder builder) {
       super(builder);
@@ -634,14 +633,14 @@ public final class Backend {
 
     public static com.interview.framework.proto.Backend.Response parseFrom(
         com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
 
     public static com.interview.framework.proto.Backend.Response parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
@@ -652,18 +651,18 @@ public final class Backend {
 
     public static com.interview.framework.proto.Backend.Response parseFrom(byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry).buildParsed();
     }
 
-    public static com.interview.framework.proto.Backend.Response parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static com.interview.framework.proto.Backend.Response parseFrom(
+        java.io.InputStream input) throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
 
     public static com.interview.framework.proto.Backend.Response parseFrom(
         java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+            throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry).buildParsed();
     }
 
@@ -679,7 +678,7 @@ public final class Backend {
 
     public static com.interview.framework.proto.Backend.Response parseDelimitedFrom(
         java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+            throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
         return builder.buildParsed();
@@ -919,12 +918,12 @@ public final class Backend {
   }
 
   private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
-    java.lang.String[] descriptorData =
-        {"\n\027src/proto/backend.proto\022\005proto\"%\n\007Requ"
-            + "est\022\014\n\004type\030\001 \002(\t\022\014\n\004data\030\002 \002(\t\"\030\n\010Respo"
-            + "nse\022\014\n\004data\030\001 \002(\tB(\n\035com.interview.frame"
-            + "work.protoB\007Backend"};
+    java.lang.String[] descriptorData = {"\n\027src/proto/backend.proto\022\005proto\"%\n\007Requ"
+        + "est\022\014\n\004type\030\001 \002(\t\022\014\n\004data\030\002 \002(\t\"\030\n\010Respo"
+        + "nse\022\014\n\004data\030\001 \002(\tB(\n\035com.interview.frame"
+        + "work.protoB\007Backend"};
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
           public com.google.protobuf.ExtensionRegistry assignDescriptors(
@@ -933,8 +932,9 @@ public final class Backend {
             internal_static_proto_Request_descriptor = getDescriptor().getMessageTypes().get(0);
             internal_static_proto_Request_fieldAccessorTable =
                 new com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-                    internal_static_proto_Request_descriptor, new java.lang.String[] {"Type",
-                        "Data",}, com.interview.framework.proto.Backend.Request.class,
+                    internal_static_proto_Request_descriptor,
+                    new java.lang.String[] {"Type", "Data",},
+                    com.interview.framework.proto.Backend.Request.class,
                     com.interview.framework.proto.Backend.Request.Builder.class);
             internal_static_proto_Response_descriptor = getDescriptor().getMessageTypes().get(1);
             internal_static_proto_Response_fieldAccessorTable =

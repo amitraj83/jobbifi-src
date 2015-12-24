@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Dispute implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 14196072739732478L;
   private String id;
   private String createdBy;
   private String IID;
@@ -19,22 +23,22 @@ public class Dispute implements Serializable {
   private String closedBy;
 
   public String getClosedBy() {
-	return closedBy;
-}
+    return closedBy;
+  }
 
-public void setClosedBy(String closedBy) {
-	this.closedBy = closedBy;
-}
+  public void setClosedBy(String closedBy) {
+    this.closedBy = closedBy;
+  }
 
-public String getTitle() {
-	return title;
-}
+  public String getTitle() {
+    return title;
+  }
 
-public void setTitle(String title) {
-	this.title = title;
-}
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-public String getId() {
+  public String getId() {
     return id;
   }
 

@@ -10,7 +10,6 @@ import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import com.interview.framework.DATASTORES;
-import com.interview.framework.INTERVIEW_STATUS;
 import com.interview.framework.RETURN_VALUES;
 import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
@@ -40,8 +39,6 @@ public class EscrowReleaseService {
 
         // Here we should use the transaction service.
         // This code is temporary
-
-        double newEB = eb - amount;
 
         Map<String, Object> userInfo = DataStoreRegistry.getInstance().getInterviewerDataStore()
             .getUserInfo(interview.getInterviewee());
@@ -209,7 +206,6 @@ public class EscrowReleaseService {
       DataStoreRegistry.getInstance().getInterviewDataStore()
           .updateInterviewStatus(new ObjectId(interview.getId()), interviewPrevStatus);
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
@@ -223,7 +219,6 @@ public class EscrowReleaseService {
           raiseUserTransactionDeleteTicket(userTransactionStage5.get_id());
       }
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
@@ -254,7 +249,6 @@ public class EscrowReleaseService {
           raiseTransactionDeleteTicket(transactionStage4);
       }
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
@@ -285,7 +279,6 @@ public class EscrowReleaseService {
           raiseTicketToDelteCompanyTransaction(cAccountId);
         }
       } catch (RemoteException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
     }
@@ -326,7 +319,6 @@ public class EscrowReleaseService {
       DataStoreRegistry.getInstance().getInterviewDataStore()
           .updateInterview(new ObjectId(interview.getId()), changes);
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }

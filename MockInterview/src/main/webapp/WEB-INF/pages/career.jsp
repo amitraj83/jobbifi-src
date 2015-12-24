@@ -10,9 +10,9 @@
 
 <div id="wrapper">
 
-<div class="container">
+<div id="timeline" class="container">
     <div class="page-header">
-        <h1 id="timeline">Jobs @ Jobbifi</h1>
+        <h1>Jobs @ Jobbifi</h1>
     </div>
     <ul class="timeline">
         <li>

@@ -85,8 +85,9 @@ public class PostInterviewHandler extends RequestHandler {
         // Services.getInstance().getEmailService().sendMailChannelOnEvent("4", params, receivers,
         // "Your Jobbify Password has been changed!");
 
-      } else
+      } else {
         resMap.put("status", -1);
+      }
     } catch (RemoteException e) {
       e.printStackTrace();
     }

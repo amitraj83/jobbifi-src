@@ -4,126 +4,126 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class BankWithdrawFundRequest implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 
-	private String id;
-	private String username;
-	private String accountName;
-	private String accountNumber;
-	private String accountType;
-	private String ifscCode;
-	private String bankName;
-	private String bankBranch;
-	private String bankCity;
-	private long requestDate;
-	private long processedDate;
-	private String status;
-	private BigDecimal amount;
-	
-	public BankWithdrawFundRequest(){}
+  private static final long serialVersionUID = 1L;
 
-	public String getId() {
-		return id;
-	}
+  private String id;
+  private String username;
+  private String accountName;
+  private String accountNumber;
+  private String accountType;
+  private String ifscCode;
+  private String bankName;
+  private String bankBranch;
+  private String bankCity;
+  private long requestDate;
+  private long processedDate;
+  private String status;
+  private BigDecimal amount;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  public BankWithdrawFundRequest() {}
 
-	public String getUsername() {
-		return username;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public String getAccountName() {
-		return accountName;
-	}
+  public String getUsername() {
+    return username;
+  }
 
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
-	}
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-	public String getAccountNumber() {
-		return accountNumber;
-	}
+  public String getAccountName() {
+    return accountName;
+  }
 
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+  public void setAccountName(String accountName) {
+    this.accountName = accountName;
+  }
 
-	public String getAccountType() {
-		return accountType;
-	}
+  public String getAccountNumber() {
+    return accountNumber;
+  }
 
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
+  public void setAccountNumber(String accountNumber) {
+    this.accountNumber = accountNumber;
+  }
 
-	public String getIfscCode() {
-		return ifscCode;
-	}
+  public String getAccountType() {
+    return accountType;
+  }
 
-	public void setIfscCode(String ifscCode) {
-		this.ifscCode = ifscCode;
-	}
+  public void setAccountType(String accountType) {
+    this.accountType = accountType;
+  }
 
-	public String getBankName() {
-		return bankName;
-	}
+  public String getIfscCode() {
+    return ifscCode;
+  }
 
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
+  public void setIfscCode(String ifscCode) {
+    this.ifscCode = ifscCode;
+  }
 
-	public String getBankBranch() {
-		return bankBranch;
-	}
+  public String getBankName() {
+    return bankName;
+  }
 
-	public void setBankBranch(String bankBranch) {
-		this.bankBranch = bankBranch;
-	}
+  public void setBankName(String bankName) {
+    this.bankName = bankName;
+  }
 
-	public String getBankCity() {
-		return bankCity;
-	}
+  public String getBankBranch() {
+    return bankBranch;
+  }
 
-	public void setBankCity(String bankCity) {
-		this.bankCity = bankCity;
-	}
+  public void setBankBranch(String bankBranch) {
+    this.bankBranch = bankBranch;
+  }
 
-	public long getRequestDate() {
-		return requestDate;
-	}
+  public String getBankCity() {
+    return bankCity;
+  }
 
-	public void setRequestDate(long requestDate) {
-		this.requestDate = requestDate;
-	}
+  public void setBankCity(String bankCity) {
+    this.bankCity = bankCity;
+  }
 
-	public long getProcessedDate() {
-		return processedDate;
-	}
+  public long getRequestDate() {
+    return requestDate;
+  }
 
-	public void setProcessedDate(long processedDate) {
-		this.processedDate = processedDate;
-	}
+  public void setRequestDate(long requestDate) {
+    this.requestDate = requestDate;
+  }
 
-	public String getStatus() {
-		return status;
-	}
+  public long getProcessedDate() {
+    return processedDate;
+  }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+  public void setProcessedDate(long processedDate) {
+    this.processedDate = processedDate;
+  }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+  public String getStatus() {
+    return status;
+  }
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}		
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  public BigDecimal getAmount() {
+    return amount;
+  }
+
+  public void setAmount(BigDecimal amount) {
+    this.amount = amount;
+  }
 }

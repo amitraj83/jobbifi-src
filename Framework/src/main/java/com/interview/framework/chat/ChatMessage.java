@@ -5,6 +5,10 @@ import java.util.Date;
 
 public class ChatMessage implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -9019800160324751776L;
   private String rid;
   private String from;
   private String to;

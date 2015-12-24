@@ -290,6 +290,108 @@
 			</ul>
 		</div>
 	</div>
+	<br />
+	<br />
+	<div id="candidate-workflow">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row text-center section-title">
+						<div class="col-sm-8 col-sm-offset-2">
+							<br /> <br />
+							<h3 class="wow fadeInDown" data-wow-duration="700ms"
+								data-wow-delay="300ms">How it works for Candidates</h3>
+							<hr class="title-border">
+							<p class="wow fadeInUp" data-wow-duration="700ms"
+								data-wow-delay="300ms">We've made it amazingly simple for
+								job seekers to manage their hunt for that dream job.</p>
+						</div>
+					</div>
+					<ul class="timeline">
+						<li>
+							<div class="timeline-image">
+								<img class="img-circle img-responsive"
+									src="images/candidate-workflow/1.jpg" alt="">
+							</div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h4>Search for a job</h4>
+									<h4 class="subheading">Your dream job</h4>
+								</div>
+								<div class="timeline-body">
+									<p class="text-muted">With our regularly updated job
+										listings and excellent search tools, taking that best step
+										forward in your career path is now as easy as a few clicks.</p>
+								</div>
+							</div>
+							<div class="line"></div>
+						</li>
+						<li class="timeline-inverted">
+							<div class="timeline-image">
+								<img class="img-circle img-responsive"
+									src="images/candidate-workflow/2.jpg" alt="">
+							</div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h4>Find an Advisor</h4>
+									<h4 class="subheading">The right Advisor</h4>
+								</div>
+								<div class="timeline-body">
+									<p class="text-muted">Giving your career or interview an
+										always needed push has traditionally been an ordeal. With
+										Jobbifi's advisor search and recommendation engine, getting in
+										touch with a mentor, career guidance professional or even
+										advisors in your target company is a breeze.</p>
+								</div>
+							</div>
+							<div class="line"></div>
+						</li>
+						<li>
+							<div class="timeline-image">
+								<img class="img-circle img-responsive"
+									src="images/candidate-workflow/3.jpg" alt="">
+							</div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h4>Prep for your interview</h4>
+									<h4 class="subheading"></h4>
+								</div>
+								<div class="timeline-body">
+									<p class="text-muted">Get that confidence boost for your
+										upcoming interview by arranging for a mock interview conducted
+										by seasoned industry experts and professionals who judge
+										candidate resumes and profiles on a regular basis.</p>
+								</div>
+							</div>
+							<div class="line"></div>
+						</li>
+						<li class="timeline-inverted">
+							<div class="timeline-image">
+								<img class="img-circle img-responsive"
+									src="images/candidate-workflow/4.jpg" alt="">
+							</div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h4>Get hired!</h4>
+									<h4 class="subheading"></h4>
+								</div>
+								<div class="timeline-body">
+									<p class="text-muted">With Jobbifi on your side to connect
+										you to the best advisors and interviewers, improving your
+										career is now a matter of engineer your own luck!</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<br />
+	<br />
+	<br />
+	<br />
 	<!--/#portfolio-->
 	<div id="promo-one" class="parallax-section">
 		<div class="parallax-content">
@@ -307,6 +409,8 @@
 		</div>
 	</div>
 	<!--/parallax-section-->
+	<br />
+	
 	<div id="about-us">
 		<div class="container">
 			<div class="row text-center section-title">
@@ -351,101 +455,6 @@
 						with the right persons and help them grow in their career.</p>
 				</div>
 			</div>
-			<!--/about-content
-        <div class="our-team padding-bottom wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
-            <h2 class="text-center heading">Meet Our Team</h2>
-
-            <div id="team-carousel" class="carousel slide" data-ride="carousel">
-                <a class="team-carousel-left" href="#team-carousel" data-slide="prev"><i
-                        class="fa fa- fa-chevron-left"></i></a>
-                <a class="team-carousel-right" href="#team-carousel" data-slide="next"><i
-                        class="fa fa- fa-chevron-right"></i></a>
-
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="team-member">
-                                    <div class="member-image">
-                                        <img class="img-responsive" src="images/about-us/member1.jpg" alt="Team member">
-                                    </div>
-                                    <div class="overlay">
-                                        <h4>Sayandeep Purkayasth</h4>
-
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod. Praesent faucibus</p>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="team-member">
-                                    <div class="member-image">
-                                        <img class="img-responsive" src="images/about-us/member2.jpg" alt="Team member">
-                                    </div>
-                                    <div class="overlay">
-                                        <h4>Vivek Saini</h4>
-
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod. Praesent faucibus</p>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="team-member">
-                                    <div class="member-image">
-                                        <img class="img-responsive" src="images/about-us/member3.jpg" alt="Team member">
-                                    </div>
-                                    <div class="overlay">
-                                        <h4>Pushkar Murkute</h4>
-
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod. Praesent faucibus</p>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="team-member">
-                                    <div class="member-image">
-                                        <img class="img-responsive" src="images/about-us/member4.jpg" alt="Team member">
-                                    </div>
-                                    <div class="overlay">
-                                        <h4>Manisha Singh</h4>
-
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod. Praesent faucibus</p>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-			<!--/our-team-->
 		</div>
 	</div>
 	<!--/about-us-->
@@ -560,82 +569,83 @@
 				</div>
 			</div>
 			<div class="pricing-table">
-			<center>
-				<div class="row">
-				<div class="col-md-1"></div>
-					<div class="col-sm-3">
-						<div class="single-table wow zoomIn" data-wow-duration="700ms"
-							data-wow-delay="300ms">
-							<h2>Silver</h2>
+				<center>
+					<div class="row">
+						<div class="col-md-1"></div>
+						<div class="col-sm-3">
+							<div class="single-table wow zoomIn" data-wow-duration="700ms"
+								data-wow-delay="300ms">
+								<h2>Silver</h2>
 
-							<p class="price">
-								<span>Free</span>
-							</p>
-							<ul>
-								<li>100 CV Access</li>
-								<li>10 Job postings</li>
-								<li>Hiring Management</li>
-								<li>Limited Support</li>
-							</ul>
+								<p class="price">
+									<span>Free</span>
+								</p>
+								<ul>
+									<li>100 CV Access</li>
+									<li>10 Job postings</li>
+									<li>Hiring Management</li>
+									<li>Limited Support</li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="single-table featured-table wow zoomIn"
-							data-wow-duration="700ms" data-wow-delay="400ms">
-							<h2>Gold</h2>
+						<div class="col-sm-3">
+							<div class="single-table featured-table wow zoomIn"
+								data-wow-duration="700ms" data-wow-delay="400ms">
+								<h2>Gold</h2>
 
-							<p class="price">
-								<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>3000</span>
-								monthly
-							</p>
-							<ul>
-								<li>500 CV Access</li>
-								<li>50 Job postings</li>
-								<li>Hiring Management</li>
-								<li>Dedicated Support</li>
-							</ul>
-							
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="single-table wow zoomIn" data-wow-duration="700ms"
-							data-wow-delay="500ms">
-							<h2>Platinum</h2>
+								<p class="price">
+									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
+										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>3000</span>
+									monthly
+								</p>
+								<ul>
+									<li>500 CV Access</li>
+									<li>50 Job postings</li>
+									<li>Hiring Management</li>
+									<li>Dedicated Support</li>
+								</ul>
 
-							<p class="price">
-								<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-									style="vertical-align: -31%; padding-right: 5px;"></i></span><span>5000</span>
-								monthly
-							</p>
-							<ul>
-								<li>Unlimited CV Access</li>
-								<li>Unlimited Job postings</li>
-								<li>Hiring Management</li>
-								<li>Dedicated Support</li>
-							</ul>
-							
+							</div>
 						</div>
+						<div class="col-sm-3">
+							<div class="single-table wow zoomIn" data-wow-duration="700ms"
+								data-wow-delay="500ms">
+								<h2>Platinum</h2>
+
+								<p class="price">
+									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
+										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>5000</span>
+									monthly
+								</p>
+								<ul>
+									<li>Unlimited CV Access</li>
+									<li>Unlimited Job postings</li>
+									<li>Hiring Management</li>
+									<li>Dedicated Support</li>
+								</ul>
+
+							</div>
+						</div>
+						<div class="col-md-1"></div>
 					</div>
-					<div class="col-md-1"></div>
-				</div>
 				</center>
 			</div>
 		</div>
 	</div>
 	<!--/#pricing-tables-->
 	<!--
-<div id="twitter" class="text-center parallax-section">
-<div class="parallax-content">
-<div class="container">
-    <div class="text-center wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
-        <i class="fa fa-twitter"></i>
-        <h1>PASSION LEADS TO DESIGN, DESIGN LEADS TO PERFORMANCE, PERFORMANCE LEADS TO SUCCESS!</h1>
-        <p>@<a href="#">ThemeRegion</a>- August 13th, 2014</p>
-    </div>
-</div>
-</div>
-</div><!--/parallax-section-->
+	<div id="twitter" class="text-center parallax-section">
+	<div class="parallax-content">
+	<div class="container">
+	    <div class="text-center wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
+	        <i class="fa fa-twitter"></i>
+	        <h1>PASSION LEADS TO DESIGN, DESIGN LEADS TO PERFORMANCE, PERFORMANCE LEADS TO SUCCESS!</h1>
+	        <p>@<a href="#">ThemeRegion</a>- August 13th, 2014</p>
+	    </div>
+	</div>
+	</div>
+	</div>
+	<!--/parallax-section-->
 	<div id="contact-us" class="padding-top padding-bottom">
 		<div class="container">
 			<!-- <div class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
@@ -672,11 +682,11 @@
 
 						<div class="business-time">
 							<p>
-								<i class="fa fa-phone"></i> Phone : +91-9036928424
+								<i class="fa fa-phone"></i> Phone: +91-9036928424
 							</p>
 
 							<p>
-								<i class="fa fa-envelope"></i> Email : support@jobbifi.com
+								<i class="fa fa-envelope"></i> Email: support@jobbifi.com
 							</p>
 
 							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
@@ -705,6 +715,9 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-default">Submit</button>
 							</div>
+							<div class="alert alert-success" style="display: none;"
+								role="alert" id="contact-form-submitted-alert">Thanks for
+								your query. We'll get back to you soon!</div>
 						</form>
 					</div>
 				</div>
@@ -717,153 +730,185 @@
 	<%@ include file="/WEB-INF/pages/common/footer.jsp"%>
 	<%@ include file="/WEB-INF/pages/common/js.jsp"%>
 	<script type="text/javascript">
-    $(document).ready(function () {
+	
+		$(document).ready(function() {
+			$("#contact-form").submit(function(e) {
+				var url = "/support.do";
+				$.ajax({
+					type : "POST",
+					url : url,
+					data : $("#contact-form").serialize(),
+					success : function(data) {
+						alert(data);
+					}
+				});
+				e.preventDefault();
+				$("#contact-form")[0].reset();
+				$("#contact-form-submitted-alert").show();			
+			});
+		});
 
-    	
-    	$(".btn-signup").on("click",function(){
-    		$('#myModal').modal('show');
-    		$('#loginbox').hide(); 
-    		$('#signupbox').show();    		
-    	});
+		$(document)
+				.ready(
+						function() {
+							$(".btn-signup").on("click", function() {
+								$('#myModal').modal('show');
+								$('#loginbox').hide();
+								$('#signupbox').show();
+							});
+							$("#front-search-button")
+									.on(
+											"click",
+											function() {
+												var urlToAppend = '';
+												switch ($(
+														"#front-search-dropdown")
+														.next().find("button")
+														.attr("title")) {
+												case "Jobs":
+													urlToAppend = 'jobs.do?searchKey='
+															+ $
+																	.trim($(
+																			"#front-search-key")
+																			.val());
+													break;
+												case "Advisors":
+													urlToAppend = 'advisors.do?searchKey='
+															+ $
+																	.trim($(
+																			"#front-search-key")
+																			.val());
+													break;
 
-        $("#front-search-button").on("click", function () {
-            var urlToAppend = '';
-            switch ($("#front-search-dropdown").next().find("button").attr("title")) {
-                case "Jobs":
-                    urlToAppend = 'jobs.do?searchKey=' + $.trim($("#front-search-key").val());
-                    break;
-                case "Advisors":
-                    urlToAppend = 'advisors.do?searchKey=' + $.trim($("#front-search-key").val());
-                    break;
+												case "Mock Interviews":
+													urlToAppend = 'mocks.do?searchKey='
+															+ $
+																	.trim($(
+																			"#front-search-key")
+																			.val());
+													break;
+												}
+												window.location = BASE_URL
+														+ urlToAppend;
+											})
 
-                case "Mock Interviews":
-                    urlToAppend = 'mocks.do?searchKey=' + $.trim($("#front-search-key").val());
-                    break;
+							$('#services div.portfolio-content').on(
+									'click',
+									function(event) {
+										console.log("click: " + event.target);
+										window.location = BASE_URL
+												+ $(this).attr('data-target');
+									});
 
+							$("#front-search-key").on("keypress", function(e) {
+								if (e.which == 13) {
+									$("#front-search-button").trigger("click");
+								}
+							});
 
-            }
-            window.location = BASE_URL + urlToAppend;
-        })
+							var items = [ "PERFECT CAREER ADVISOR",
+									"NEXT AWESOME RECRUIT", "DREAM JOB" ], $text = $('#search-form-title-changer'), delay = 4; //seconds
 
-        $('#services div.portfolio-content').on('click', function (event) {
-            console.log("click: " + event.target);
-            window.location = BASE_URL + $(this).attr('data-target');
-        });
+							function loop(delay) {
+								$.each(items, function(i, elm) {
+									$text.delay(delay * 1E3).fadeOut();
+									$text.queue(function() {
+										$text.html(items[i]);
+										$text.dequeue();
+									});
+									$text.fadeIn();
+									$text.queue(function() {
+										if (i == items.length - 1) {
+											loop(delay);
+										}
+										$text.dequeue();
+									});
+								});
+							}
 
-        $("#front-search-key").on("keypress", function (e) {
-        	if (e.which == 13) {
-        		$( "#front-search-button" ).trigger( "click" );
-			}
-        });
-        
-        var items = ["PERFECT CAREER ADVISOR", "NEXT AWESOME RECRUIT", "DREAM JOB"],
-                $text = $('#search-form-title-changer'),
-                delay = 4; //seconds
+							loop(delay);
 
-        function loop(delay) {
-            $.each(items, function (i, elm) {
-                $text.delay(delay * 1E3).fadeOut();
-                $text.queue(function () {
-                    $text.html(items[i]);
-                    $text.dequeue();
-                });
-                $text.fadeIn();
-                $text.queue(function () {
-                    if (i == items.length - 1) {
-                        loop(delay);
-                    }
-                    $text.dequeue();
-                });
-            });
-        }
+						});
 
-        loop(delay);
+		//Google Map Customization
+		$(function() {
+			var map;
+			map = new GMaps({
+				el : '#gmap',
+				lat : 45.995447,
+				lng : -73.5697587,
+				scrollwheel : false,
+				zoom : 10,
+				zoomControl : true,
+				panControl : false,
+				streetViewControl : false,
+				mapTypeControl : false,
+				overviewMapControl : false,
+				clickable : false
+			});
 
-    });
-    //Google Map Customization
-    $(function () {
+			var image = '';
 
-        var map;
+			map.addMarker({
+				lat : 45.995447,
+				lng : -73.5697587,
+				icon : image,
+				animation : google.maps.Animation.DROP,
+				verticalAlign : 'bottom',
+				horizontalAlign : 'center',
+				backgroundColor : '#d3cfcf',
+			});
 
-        map = new GMaps({
-            el: '#gmap',
-            lat: 45.995447,
-            lng: -73.5697587,
-            scrollwheel: false,
-            zoom: 10,
-            zoomControl: true,
-            panControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            overviewMapControl: false,
-            clickable: false
-        });
+			var styles = [ {
+				"featureType" : "road",
+				"stylers" : [ {
+					"color" : "#005b96"
+				} ]
+			}, {
+				"featureType" : "water",
+				"stylers" : [ {
+					"color" : "#99b3cc"
+				} ]
+			}, {
+				"featureType" : "landscape",
+				"stylers" : [ {
+					"color" : "#ffffff"
+				} ]
+			}, {
+				"elementType" : "labels.text.fill",
+				"stylers" : [ {
+					"color" : "#d3cfcf"
+				} ]
+			}, {
+				"featureType" : "poi",
+				"stylers" : [ {
+					"color" : "#0a446a"
+				} ]
+			}, {
+				"elementType" : "labels.text",
+				"stylers" : [ {
+					"saturation" : 1
+				}, {
+					"weight" : 0.1
+				}, {
+					"color" : "#000000"
+				} ]
+			} ];
 
-        var image = '';
-        map.addMarker({
-            lat: 45.995447,
-            lng: -73.5697587,
-            icon: image,
-            animation: google.maps.Animation.DROP,
-            verticalAlign: 'bottom',
-            horizontalAlign: 'center',
-            backgroundColor: '#d3cfcf',
-        });
+			map.addStyle({
+				styledMapName : "Styled Map",
+				styles : styles,
+				mapTypeId : "map_style"
+			});
 
+			map.setStyle("map_style");
+		}());
 
-        var styles = [
-
-            {
-                "featureType": "road",
-                "stylers": [{
-                    "color": "#005b96"
-                }]
-            }, {
-                "featureType": "water",
-                "stylers": [{
-                    "color": "#99b3cc"
-                }]
-            }, {
-                "featureType": "landscape",
-                "stylers": [{
-                    "color": "#ffffff"
-                }]
-            }, {
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                    "color": "#d3cfcf"
-                }]
-            }, {
-                "featureType": "poi",
-                "stylers": [{
-                    "color": "#0a446a"
-                }]
-            }, {
-                "elementType": "labels.text",
-                "stylers": [{
-                    "saturation": 1
-                }, {
-                    "weight": 0.1
-                }, {
-                    "color": "#000000"
-                }]
-            }
-
-        ];
-
-        map.addStyle({
-            styledMapName: "Styled Map",
-            styles: styles,
-            mapTypeId: "map_style"
-        });
-
-        map.setStyle("map_style");
-    }());
-    
-    function activeHome(){
-    	$('.navbar-collapse li.scroll').removeClass('active').eq(0).addClass('active');
-    }
-</script>
+		function activeHome() {
+			$('.navbar-collapse li.scroll').removeClass('active').eq(0)
+					.addClass('active');
+		}
+	</script>
 </body>
 
 </html>

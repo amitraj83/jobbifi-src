@@ -16,6 +16,11 @@ import com.mongodb.DBObject;
 
 public class TicketStore extends UnicastRemoteObject implements ITicketStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -6027514074940440844L;
+
   protected TicketStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }

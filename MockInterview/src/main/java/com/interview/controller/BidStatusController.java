@@ -18,10 +18,11 @@ import com.interview.framework.VARIABLES;
 import com.interview.services.Services;
 
 @Controller
-public class BidStatusController extends BaseController{
+public class BidStatusController extends BaseController {
 
   @RequestMapping(value = "/statuschange.do", method = RequestMethod.GET)
-  public ModelAndView changeStatus(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView changeStatus(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
@@ -30,28 +31,25 @@ public class BidStatusController extends BaseController{
     reqMap.put(VARIABLES.Bid.STATUS, req.getParameter(VARIABLES.Bid.STATUS));
 
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.STATUS_CHANGE);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.STATUS_CHANGE);
 
     Map<Object, Object> userName = new HashMap<Object, Object>();
     userName.put(USER.USERNAME, getLoginUser());
 
 
-    Map<String, Object> interviewMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userName, REQUEST_TYPES.GET_INTERVIEW);
-    resMap.put(VARIABLES.MY_INTERVIEW, Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(interviewMap));
+    Map<String, Object> interviewMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userName, REQUEST_TYPES.GET_INTERVIEW);
+    resMap.put(VARIABLES.MY_INTERVIEW,
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(interviewMap));
 
-    Map<String, Object> bidMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userName, REQUEST_TYPES.GET_MY_BIDS);
-    resMap.put(VARIABLES.MY_BIDS, Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(bidMap));
+    Map<String, Object> bidMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userName, REQUEST_TYPES.GET_MY_BIDS);
+    resMap.put(VARIABLES.MY_BIDS,
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(bidMap));
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 

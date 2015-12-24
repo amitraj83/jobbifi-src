@@ -12,8 +12,15 @@ import com.interview.framework.REQUEST_TYPES;
 import com.interview.rmi.common.ReceiveMessageInterface;
 import com.interview.services.Services;
 
-public class RmiServer extends java.rmi.server.UnicastRemoteObject implements
-    ReceiveMessageInterface {
+public class RmiServer extends java.rmi.server.UnicastRemoteObject
+    implements ReceiveMessageInterface {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -7930656332830183067L;
+
+
 
   public RmiServer(String host, int port) throws RemoteException {
     String address = "";
@@ -39,26 +46,22 @@ public class RmiServer extends java.rmi.server.UnicastRemoteObject implements
     String result = "default";
     if (reqType.equals(REQUEST_TYPES.SEARCH_INTERVIEWER)) {
 
-      map.put("result",
-          Services.getInstance().getInterviewerSearchHandler()
-              .search((String) req.get("searchkey")));
+      map.put("result", Services.getInstance().getInterviewerSearchHandler()
+          .search((String) req.get("searchkey")));
 
     } else if (reqType.equals(REQUEST_TYPES.SEARCH_INTERVIEWS)) {
-      map.put(
-          "result",
-          Services.getInstance().getSolrService()
-              .searchInterviews((String) req.get("searchkey"), 0, 50));
+      map.put("result", Services.getInstance().getSolrService()
+          .searchInterviews((String) req.get("searchkey"), 0, 50));
     } else if (reqType.equals(REQUEST_TYPES.DELETE_INTERVIEW_SOLR)) {
-      result =
-          Services.getInstance().getDeleteInterviewHandler()
-              .deleteInterviewFromSolr(req.get("_id").toString());
+      result = Services.getInstance().getDeleteInterviewHandler()
+          .deleteInterviewFromSolr(req.get("_id").toString());
       map.put("result", result);
-    }else if (reqType.equals(REQUEST_TYPES.SEARCH_JOBS)){
-      String searchKey = (String)req.get("searchkey");
-      int start = (Integer)req.get("start");
-      int rows = (Integer)req.get("rows");
+    } else if (reqType.equals(REQUEST_TYPES.SEARCH_JOBS)) {
+      String searchKey = (String) req.get("searchkey");
+      int start = (Integer) req.get("start");
+      int rows = (Integer) req.get("rows");
       map.put("result", Services.getInstance().getSolrService().searchJobs(searchKey, start, rows));
-  }
+    }
 
     System.out.println("REceived at server : " + req);
     return map;

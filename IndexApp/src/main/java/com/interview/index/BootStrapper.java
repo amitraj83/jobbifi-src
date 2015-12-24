@@ -12,30 +12,30 @@ import com.interview.util.conversion.MongoDBService;
 
 public class BootStrapper {
 
-	private static Logger log = Logger.getLogger(BootStrapper.class);
+  private static Logger log = Logger.getLogger(BootStrapper.class);
 
-	private static Properties properties = new Properties();
+  private static Properties properties = new Properties();
 
-	public static void main(String[] args) {
-		try {
+  public static void main(String[] args) {
+    try {
 
-			Thread.sleep(10000);
+      Thread.sleep(10000);
 
-			String propFilePath = args[0];
-			System.out.println("Path:" + propFilePath);
-			InputStream inputFile = new FileInputStream(new File(propFilePath));
-			properties.load(inputFile);
+      String propFilePath = args[0];
+      System.out.println("Path:" + propFilePath);
+      InputStream inputFile = new FileInputStream(new File(propFilePath));
+      properties.load(inputFile);
 
-			MongoDBService.init(properties.getProperty("mongohost"),
-					new Integer(properties.getProperty("mongoport")));
-			SolrIndexingService.init(properties.getProperty("solrHost"),
-					new Integer(properties.getProperty("solrPort")));
+      MongoDBService.init(properties.getProperty("mongohost"),
+          new Integer(properties.getProperty("mongoport")));
+      SolrIndexingService.init(properties.getProperty("solrHost"),
+          new Integer(properties.getProperty("solrPort")));
 
-			OpLogReaderManager oplogManager = new OpLogReaderManager();
-			oplogManager.start(properties.getProperty("mongohost"),
-					new Integer(properties.getProperty("mongoport")));
-		} catch (Exception e) {
-			log.debug("Problem while starting:" + e.getMessage());
-		}
-	}
+      OpLogReaderManager oplogManager = new OpLogReaderManager();
+      oplogManager.start(properties.getProperty("mongohost"),
+          new Integer(properties.getProperty("mongoport")));
+    } catch (Exception e) {
+      log.debug("Problem while starting:" + e.getMessage());
+    }
+  }
 }

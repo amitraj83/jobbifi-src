@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.interview.services.Services;
 
 @Controller
@@ -33,7 +34,8 @@ public class LoginController {
 
 
   @RequestMapping(value = "/welcome.do", method = RequestMethod.GET)
-  public ModelAndView printWelcome(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView printWelcome(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
     ServletRequestAttributes attr =
         (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
@@ -43,46 +45,47 @@ public class LoginController {
     Map<String, Object> resmap =
         Services.getInstance().getPrepareLoginDataService().prepareLoginData(req);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resmap));  
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resmap));
   }
 
   @RequestMapping(value = "/isloggedin.do", method = RequestMethod.GET)
-  public ModelAndView checkLoggedIn(ModelMap model, HttpServletRequest req, HttpServletResponse res) {    
-	Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
-	if (!(authentication instanceof AnonymousAuthenticationToken)) {	
-		return new ModelAndView("response", "message", "LI");
-    } else {     
+  public ModelAndView checkLoggedIn(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    if (!(authentication instanceof AnonymousAuthenticationToken)) {
+      return new ModelAndView("response", "message", "LI");
+    } else {
       return new ModelAndView("response", "message", "NL");
     }
   }
 
   @RequestMapping(value = "/login.do", method = RequestMethod.GET)
   public String login(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
-	  return "login";
+    return "login";
   }
 
   @RequestMapping(value = "/loginsuccess.do", method = RequestMethod.GET)
   public ModelAndView loginsuccess(ModelMap model, HttpServletRequest req, HttpServletResponse res,
-		  Principal principal) {    
-	  Map<String, Object> resMap = new HashMap<String, Object>();
-	  resMap.put("RESULT", "SUCCESS");
-	  Collection<GrantedAuthority> gAuthorities = ((Authentication) principal).getAuthorities();
-	  for(GrantedAuthority g : gAuthorities){
-		  if(g.getAuthority().equals("ROLE_ADMIN")){
-			  resMap.put("REDIRECT", "admin/tests.do");
-		  }
-	  }
-	  return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-		        .getJSONStringOfMap(resMap));
+      Principal principal) {
+    Map<String, Object> resMap = new HashMap<String, Object>();
+    resMap.put("RESULT", "SUCCESS");
+    Collection<GrantedAuthority> gAuthorities = ((Authentication) principal).getAuthorities();
+    for (GrantedAuthority g : gAuthorities) {
+      if (g.getAuthority().equals("ROLE_ADMIN")) {
+        resMap.put("REDIRECT", "admin/tests.do");
+      }
+    }
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
-  
+
   @RequestMapping(value = "/loginfailed.do", method = RequestMethod.GET)
-  public ModelAndView loginerror(ModelMap model, HttpServletRequest req, HttpServletResponse res) {    
-	  Map<String, Object> resMap = new HashMap<String, Object>();
-	  resMap.put("RESULT", "ERROR");
-	  return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-		        .getJSONStringOfMap(resMap));
+  public ModelAndView loginerror(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+    Map<String, Object> resMap = new HashMap<String, Object>();
+    resMap.put("RESULT", "ERROR");
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
   @RequestMapping(value = "/logout.do", method = RequestMethod.GET)

@@ -32,25 +32,21 @@ public class SearchServerRMIClient {
   public Map<String, Object> executeRequest(Map<Object, Object> req, String type) {
     JSONUtilityService jsonService = Services.getInstance().getJSONUtilityService();
     com.interview.framework.proto.Search.Response response = null;
-    if(type.equals(REQUEST_TYPES.SEARCH_INTERVIEWER))
-        response =
-            Services.getInstance().getSearchServerClient()
-                .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEWER);// executeRequest(requestBuilder.build());
-    if(type.equals(REQUEST_TYPES.SEARCH_JOBS))
-        response =
-            Services.getInstance().getSearchServerClient()
-                .runQuery(jsonService.getJSONStringOfMap(req), SearchType.JOB);// executeRequest(requestBuilder.build());
-   
-    if(type.equals(REQUEST_TYPES.SEARCH_INTERVIEWS))
-        response =
-            Services.getInstance().getSearchServerClient()
-                .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEW);// executeRequest(requestBuilder.build());
-        
-    if(type.equals(REQUEST_TYPES.SEARCH_INTERVIEWEE))
-    	response =
-        Services.getInstance().getSearchServerClient()
-            .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEWEE); 
-    
+    if (type.equals(REQUEST_TYPES.SEARCH_INTERVIEWER))
+      response = Services.getInstance().getSearchServerClient()
+          .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEWER);// executeRequest(requestBuilder.build());
+    if (type.equals(REQUEST_TYPES.SEARCH_JOBS))
+      response = Services.getInstance().getSearchServerClient()
+          .runQuery(jsonService.getJSONStringOfMap(req), SearchType.JOB);// executeRequest(requestBuilder.build());
+
+    if (type.equals(REQUEST_TYPES.SEARCH_INTERVIEWS))
+      response = Services.getInstance().getSearchServerClient()
+          .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEW);// executeRequest(requestBuilder.build());
+
+    if (type.equals(REQUEST_TYPES.SEARCH_INTERVIEWEE))
+      response = Services.getInstance().getSearchServerClient()
+          .runQuery(jsonService.getJSONStringOfMap(req), SearchType.INTERVIEWEE);
+
     System.out.println(response);
 
     String jsonSearchResponse = response.getDocs(0);

@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class UserTransaction implements Serializable {
 
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 2391729710814528442L;
   String _id;
   String username;
   String tid;

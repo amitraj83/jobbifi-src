@@ -33,19 +33,16 @@ import com.interview.services.Services;
 public class PostLoginFileAccessController extends BaseController {
 
   private static final Logger logger = Logger.getLogger(PostLoginFileAccessController.class);
-  
+
   @Autowired
   private Properties myProps;
-  
+
   private static final String PROFILE_PIC_DIRECTORY = "profilepic";
-	
+
   @RequestMapping(value = "/aauth/testfileserver.do", method = RequestMethod.GET)
   public ModelAndView testfileupload() {
-    Services
-        .getInstance()
-        .getRequestHandlerService()
-        .handleRequest(new HashMap<Object, Object>(),
-            REQUEST_TYPES.FILESERVER_UPDATE_INTERVIEW_FILE);
+    Services.getInstance().getRequestHandlerService().handleRequest(new HashMap<Object, Object>(),
+        REQUEST_TYPES.FILESERVER_UPDATE_INTERVIEW_FILE);
     return new ModelAndView();
   }
 
@@ -54,128 +51,131 @@ public class PostLoginFileAccessController extends BaseController {
       HttpServletRequest request, HttpServletResponse response) {
 
     Map<String, Object> res = null;
-    
+
     if (request.getParameter("type").equals("profilepicupdate")) {
-      
+
       SecureRandom random = new SecureRandom();
       String secToken = new BigInteger(130, random).toString(32);
       String uuid = UUID.randomUUID().toString();
       String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-             
-      //  myProps.getProperty("profilepicpath") 
-      String path = request.getSession().getServletContext().getRealPath("/") + PROFILE_PIC_DIRECTORY 
-    		  + File.separatorChar + secToken;
+
+      // myProps.getProperty("profilepicpath")
+      String path = request.getSession().getServletContext().getRealPath("/")
+          + PROFILE_PIC_DIRECTORY + File.separatorChar + secToken;
       logger.info("Path : " + path);
       File profilePicDir = new File(path);
-      if(!profilePicDir.exists()){
-        if(!profilePicDir.mkdir()){
-        	logger.info("Unable to create the directory. Check the permissions. Path : " + path);
+      if (!profilePicDir.exists()) {
+        if (!profilePicDir.mkdir()) {
+          logger.info("Unable to create the directory. Check the permissions. Path : " + path);
         }
       }
-      
+
       try {
-    	  	File myfile = new File(path + File.separator + uuid + "." + extension);
-    	  	if (!myfile.exists()) {
-    		  	myfile.createNewFile();
-    	    }
-        
-	        boolean fileWritten = Services.getInstance().getFileUtilities().copyMultipartFile(file, myfile);
-	        if (fileWritten) {         	 
-	      	  String profilePicUrl = request.getContextPath() + File.separatorChar + PROFILE_PIC_DIRECTORY + File.separatorChar +
-	      			  secToken + File.separatorChar + uuid  + "." + extension;    	  
-	      	  Map<Object, Object> data = new HashMap<Object, Object>();
-	      	  data.put(USER.USERNAME, getLoginUser());    	  
-	      	  data.put(USER.PROFILE_PIC, profilePicUrl);
-	      	  data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.UPDATE_USER_PROFILE_PIC);
-	      	  Services.getInstance().getRequestHandlerService().handleRequest(data, REQUEST_TYPES.UPDATE_USER_PROFILE);
-	      	  
-	          res = new HashMap<String, Object>();
-	          res.put("st", secToken);
-	          res.put("fn", uuid + "." + extension);
-	          res.put("mime", file.getContentType());
-	          res.put("path", profilePicUrl);
-	        } else {
-	          logger.info("Writing file failed: " + myfile.getAbsolutePath());
-	          res = new HashMap<String, Object>();
-	          res.put("error", "1");
-	        }
-          
-      } catch (IOException e) {
-    	  logger.error("IO Exception : Update profile picture.  ", e);
-    	  res = new HashMap<String, Object>();
+        File myfile = new File(path + File.separator + uuid + "." + extension);
+        if (!myfile.exists()) {
+          myfile.createNewFile();
+        }
+
+        boolean fileWritten =
+            Services.getInstance().getFileUtilities().copyMultipartFile(file, myfile);
+        if (fileWritten) {
+          String profilePicUrl =
+              request.getContextPath() + File.separatorChar + PROFILE_PIC_DIRECTORY
+                  + File.separatorChar + secToken + File.separatorChar + uuid + "." + extension;
+          Map<Object, Object> data = new HashMap<Object, Object>();
+          data.put(USER.USERNAME, getLoginUser());
+          data.put(USER.PROFILE_PIC, profilePicUrl);
+          data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.UPDATE_USER_PROFILE_PIC);
+          Services.getInstance().getRequestHandlerService().handleRequest(data,
+              REQUEST_TYPES.UPDATE_USER_PROFILE);
+
+          res = new HashMap<String, Object>();
+          res.put("st", secToken);
+          res.put("fn", uuid + "." + extension);
+          res.put("mime", file.getContentType());
+          res.put("path", profilePicUrl);
+        } else {
+          logger.info("Writing file failed: " + myfile.getAbsolutePath());
+          res = new HashMap<String, Object>();
           res.put("error", "1");
+        }
+
+      } catch (IOException e) {
+        logger.error("IO Exception : Update profile picture.  ", e);
+        res = new HashMap<String, Object>();
+        res.put("error", "1");
       }
-      
-    } else if (request.getParameter("type").equals("interviewdoc")) {           
-      try {     
+
+    } else if (request.getParameter("type").equals("interviewdoc")) {
+      try {
         Map<Object, Object> data = new HashMap<Object, Object>();
-        String content = new String(file.getBytes()); 
-        data.put("IS", content);       
+        String content = new String(file.getBytes());
+        data.put("IS", content);
         data.put("FN", file.getOriginalFilename());
         data.put("EXT", FilenameUtils.getExtension(file.getOriginalFilename()));
         data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
         data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
         data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
-        
+
         String userName = getLoginUser();
         data.put(USER.USERNAME, userName);
-        res = Services.getInstance().getRequestHandlerService()
-                .handleRequest(data, REQUEST_TYPES.FILESERVER_SAVE_INTERVIEW_FILE);        
+        res = Services.getInstance().getRequestHandlerService().handleRequest(data,
+            REQUEST_TYPES.FILESERVER_SAVE_INTERVIEW_FILE);
         logger.info("Resposne : " + res);
-        
+
         res.put("originalfn", file.getOriginalFilename());
       } catch (IOException e) {
-    	  logger.error("IO EXCEPTION : ", e);        
+        logger.error("IO EXCEPTION : ", e);
       }
-      
-    } else if (request.getParameter("type").equals("jobdoc")) {           
-        try {     
-            Map<Object, Object> data = new HashMap<Object, Object>();
-            String content = new String(file.getBytes()); 
-            data.put("IS", content);       
-            data.put("FN", file.getOriginalFilename());
-            data.put("EXT", FilenameUtils.getExtension(file.getOriginalFilename()));
-            data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
-            data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
-            data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
-            
-            String userName = getLoginUser();
-            data.put(USER.USERNAME, userName);            
-            data.put(REQUEST_TYPES.SUB_REQ,REQUEST_TYPES.FILESERVER_SAVE_JOB_FILE);
-            
-            res = Services.getInstance().getRequestHandlerService()
-                    .handleRequest(data, REQUEST_TYPES.FILESERVER_JOB_FILE);        
-            logger.info("Resposne : " + res);
-            
-            res.put("originalfn", file.getOriginalFilename());
-          } catch (IOException e) {
-        	  logger.error("IO EXCEPTION : ", e);
-          }
-          
-    } else if (request.getParameter("type").equals("jobapplicationdoc")) {           
-        try {     
-            Map<Object, Object> data = new HashMap<Object, Object>();
-            String content = new String(file.getBytes()); 
-            data.put("IS", content);       
-            data.put("FN", file.getOriginalFilename());
-            data.put("EXT", FilenameUtils.getExtension(file.getOriginalFilename()));
-            data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
-            data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
-            data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
-            String userName = getLoginUser();
-            data.put(USER.USERNAME, userName);            
-            data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.FILESERVER_SAVE_JOB_APPLICATION_FILE);
-            data.put(DATASTORES.JOB_APPLICATION.JOB_ID, request.getParameter("jobid"));
-            
-            res = Services.getInstance().getRequestHandlerService()
-                    .handleRequest(data, REQUEST_TYPES.FILESERVER_JOB_APPLICATION_FILE);        
-            logger.info("Resposne : " + res);
-            
-            res.put("originalfn", file.getOriginalFilename());
-          } catch (IOException e) {
-        	  logger.error("IO EXCEPTION : ", e);
-          }
-          
+
+    } else if (request.getParameter("type").equals("jobdoc")) {
+      try {
+        Map<Object, Object> data = new HashMap<Object, Object>();
+        String content = new String(file.getBytes());
+        data.put("IS", content);
+        data.put("FN", file.getOriginalFilename());
+        data.put("EXT", FilenameUtils.getExtension(file.getOriginalFilename()));
+        data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
+        data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
+        data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
+
+        String userName = getLoginUser();
+        data.put(USER.USERNAME, userName);
+        data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.FILESERVER_SAVE_JOB_FILE);
+
+        res = Services.getInstance().getRequestHandlerService().handleRequest(data,
+            REQUEST_TYPES.FILESERVER_JOB_FILE);
+        logger.info("Resposne : " + res);
+
+        res.put("originalfn", file.getOriginalFilename());
+      } catch (IOException e) {
+        logger.error("IO EXCEPTION : ", e);
+      }
+
+    } else if (request.getParameter("type").equals("jobapplicationdoc")) {
+      try {
+        Map<Object, Object> data = new HashMap<Object, Object>();
+        String content = new String(file.getBytes());
+        data.put("IS", content);
+        data.put("FN", file.getOriginalFilename());
+        data.put("EXT", FilenameUtils.getExtension(file.getOriginalFilename()));
+        data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
+        data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
+        data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
+        String userName = getLoginUser();
+        data.put(USER.USERNAME, userName);
+        data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.FILESERVER_SAVE_JOB_APPLICATION_FILE);
+        data.put(DATASTORES.JOB_APPLICATION.JOB_ID, request.getParameter("jobid"));
+
+        res = Services.getInstance().getRequestHandlerService().handleRequest(data,
+            REQUEST_TYPES.FILESERVER_JOB_APPLICATION_FILE);
+        logger.info("Resposne : " + res);
+
+        res.put("originalfn", file.getOriginalFilename());
+      } catch (IOException e) {
+        logger.error("IO EXCEPTION : ", e);
+      }
+
     } else if (request.getParameter("type").equals("chatdocument")) {
       String targetUser = request.getParameter("targetuser");
       try {
@@ -191,12 +191,11 @@ public class PostLoginFileAccessController extends BaseController {
         data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
         data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
         data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
-        String userName =getLoginUser();
+        String userName = getLoginUser();
         data.put(USER.USERNAME, userName);
 
-        res =
-            Services.getInstance().getRequestHandlerService()
-                .handleRequest(data, REQUEST_TYPES.FILESERVER_SAVE_CHAT_FILE);
+        res = Services.getInstance().getRequestHandlerService().handleRequest(data,
+            REQUEST_TYPES.FILESERVER_SAVE_CHAT_FILE);
         res.put("originalfn", file.getOriginalFilename());
       } catch (IOException e) {
         e.printStackTrace();
@@ -213,12 +212,11 @@ public class PostLoginFileAccessController extends BaseController {
         data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
         data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
         data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
-        String userName =getLoginUser();
+        String userName = getLoginUser();
         data.put(USER.USERNAME, userName);
 
-        res =
-            Services.getInstance().getRequestHandlerService()
-                .handleRequest(data, REQUEST_TYPES.FILESERVER_SAVE_BID_FILE);
+        res = Services.getInstance().getRequestHandlerService().handleRequest(data,
+            REQUEST_TYPES.FILESERVER_SAVE_BID_FILE);
         res.put("originalfn", file.getOriginalFilename());
       } catch (IOException e) {
         e.printStackTrace();
@@ -226,7 +224,7 @@ public class PostLoginFileAccessController extends BaseController {
     } else if (request.getParameter("type").equals("disputedocument")) {
       try {
         Map<Object, Object> data = new HashMap<Object, Object>();
-        String content = new String(file.getBytes()); 
+        String content = new String(file.getBytes());
         data.put("IS", content);
         data.put(DATASTORES.UPLOAD_FILE.FILENAME, file.getOriginalFilename());
         data.put(DATASTORES.UPLOAD_FILE.EXTENSION,
@@ -236,19 +234,18 @@ public class PostLoginFileAccessController extends BaseController {
         data.put(DATASTORES.UPLOAD_FILE.SIZE, file.getSize());
         data.put(DATASTORES.UPLOAD_FILE.MIMETYPE, file.getContentType());
         data.put(DATASTORES.UPLOAD_FILE.ORIGINAL_FN, file.getOriginalFilename());
-        String userName =getLoginUser();
+        String userName = getLoginUser();
         data.put(USER.USERNAME, userName);
 
-        res =
-            Services.getInstance().getRequestHandlerService()
-                .handleRequest(data, REQUEST_TYPES.FILESERVER_SAVE_DISPUTE_FILE);
+        res = Services.getInstance().getRequestHandlerService().handleRequest(data,
+            REQUEST_TYPES.FILESERVER_SAVE_DISPUTE_FILE);
         res.put("originalfn", file.getOriginalFilename());
       } catch (IOException e) {
         e.printStackTrace();
       }
     }
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(res));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(res));
 
   }
 
@@ -277,22 +274,21 @@ public class PostLoginFileAccessController extends BaseController {
   public void joApplicationfileDownload(HttpServletRequest request, HttpServletResponse response) {
     downloadFile(request, response);
   }
-  
+
   private void downloadFile(HttpServletRequest request, HttpServletResponse response) {
     Map<Object, Object> reqmap = new HashMap<Object, Object>();
     reqmap.put(VARIABLES.ENCRYPTED_FILE_ID, request.getParameter("fileid"));
-    reqmap.put(USER.USERNAME,getLoginUser());
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqmap, REQUEST_TYPES.FILESERVER_DOWNLOAD_INTERVIEW_FILE);
+    reqmap.put(USER.USERNAME, getLoginUser());
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqmap, REQUEST_TYPES.FILESERVER_DOWNLOAD_INTERVIEW_FILE);
     try {
       String mime = resMap.get(DATASTORES.UPLOAD_FILE.MIMETYPE).toString();
       String originalFileName = resMap.get(DATASTORES.UPLOAD_FILE.ORIGINAL_FN).toString();
-      byte[] data = ((String)resMap.get("BYTES")).getBytes();
+      byte[] data = ((String) resMap.get("BYTES")).getBytes();
       response.setContentType(mime);
       response.setContentLength(new String(data).length());
-      response
-          .setHeader("Content-Disposition", "attachment; filename=\"" + originalFileName + "\"");
+      response.setHeader("Content-Disposition",
+          "attachment; filename=\"" + originalFileName + "\"");
       ServletOutputStream oos = response.getOutputStream();
       oos.write(data);
       response.flushBuffer();

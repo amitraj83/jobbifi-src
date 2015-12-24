@@ -32,21 +32,21 @@ public class SaveInterviewFileHandler extends RequestHandler {
   }
 
   private static final Logger logger = Logger.getLogger(SaveInterviewFileHandler.class);
-  
+
   @Override
   public Map<String, Object> handleRequest(Map<Object, Object> data) {
     Map<String, Object> resMap = new HashMap<String, Object>();
-    byte[] is = ((String)data.get("IS")).getBytes(); 
+    byte[] is = ((String) data.get("IS")).getBytes();
     String extension = data.get("EXT").toString();
-    logger.info("Uploading doc for user : " + data.get(USER.USERNAME));    
+    logger.info("Uploading doc for user : " + data.get(USER.USERNAME));
     if (data.get(USER.USERNAME) != null) {
       String username = data.get(USER.USERNAME).toString();
       String id = new ObjectId().toString();
       String fileNameWithExtension = id + "." + extension;
-      Services.getInstance().getFileUtilities()
-          .copyFile(username, is, myProps.getProperty("interviewDocDir"), fileNameWithExtension);
+      Services.getInstance().getFileUtilities().copyFile(username, is,
+          myProps.getProperty("interviewDocDir"), fileNameWithExtension);
 
-      UploadedFile uploadFileDAO = new UploadedFile();      
+      UploadedFile uploadFileDAO = new UploadedFile();
       uploadFileDAO.setID(id);
       uploadFileDAO.setClasstype(DATASTORES.UPLOAD_FILE.CLASS_TYPE.INTERVIEW_DOCUMENT);
       uploadFileDAO.setExtension(extension);
@@ -56,15 +56,14 @@ public class SaveInterviewFileHandler extends RequestHandler {
       uploadFileDAO.setPath_on_Disk(username + File.separator + id + "." + extension);
       uploadFileDAO.setSize(new Long(data.get(DATASTORES.UPLOAD_FILE.SIZE).toString()));
       uploadFileDAO.setThumbnailURL("");
-      uploadFileDAO.setTime(new Date().getTime());      
+      uploadFileDAO.setTime(new Date().getTime());
       uploadFileDAO.setURL("aauth/interviewfiles/ifiledownload.do?fileid=" + id);
       uploadFileDAO.setOriginalFileName(data.get(DATASTORES.UPLOAD_FILE.ORIGINAL_FN).toString());
       ObjectId _id = null;
       try {
-        _id =
-            DataStoreRegistry.getInstance().getUploadedFileDataStore()
-                .saveUploadedFile(uploadFileDAO);
-      } catch (RemoteException e) {        
+        _id = DataStoreRegistry.getInstance().getUploadedFileDataStore()
+            .saveUploadedFile(uploadFileDAO);
+      } catch (RemoteException e) {
         e.printStackTrace();
       }
       if (_id != null) {

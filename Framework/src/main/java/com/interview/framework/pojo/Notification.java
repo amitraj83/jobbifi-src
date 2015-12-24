@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class Notification implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -8926940152515277831L;
   private String notificationId;
   // private ObjectId interviewId;
   private String createdBy;

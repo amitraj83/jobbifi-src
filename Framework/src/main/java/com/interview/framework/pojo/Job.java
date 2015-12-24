@@ -19,9 +19,9 @@ public class Job implements Serializable {
   private String description;
 
   private String companyVideo;
-  
+
   private String companyDescription;
-  
+
   private long dt;
 
   private int status;
@@ -37,11 +37,11 @@ public class Job implements Serializable {
   private String file;
 
   private String experience;
-  
+
   private String location;
-  
+
   private List<JobApplication> jobApplications = new ArrayList<JobApplication>(0);
-  
+
   public String getId() {
     return id;
   }
@@ -138,43 +138,43 @@ public class Job implements Serializable {
     this.salary = salary;
   }
 
-	public String getExperience() {
-		return experience;
-	}
-	
-	public void setExperience(String experience) {
-		this.experience = experience;
-	}
+  public String getExperience() {
+    return experience;
+  }
 
-	public String getLocation() {
-		return location;
-	}
+  public void setExperience(String experience) {
+    this.experience = experience;
+  }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+  public String getLocation() {
+    return location;
+  }
 
-	public List<JobApplication> getJobApplications() {
-		return jobApplications;
-	}
+  public void setLocation(String location) {
+    this.location = location;
+  }
 
-	public void setJobApplications(List<JobApplication> jobApplications) {
-		this.jobApplications = jobApplications;
-	}
+  public List<JobApplication> getJobApplications() {
+    return jobApplications;
+  }
 
-	public String getCompanyVideo() {
-		return companyVideo;
-	}
+  public void setJobApplications(List<JobApplication> jobApplications) {
+    this.jobApplications = jobApplications;
+  }
 
-	public void setCompanyVideo(String companyVideo) {
-		this.companyVideo = companyVideo;
-	}
+  public String getCompanyVideo() {
+    return companyVideo;
+  }
 
-	public String getCompanyDescription() {
-		return companyDescription;
-	}
+  public void setCompanyVideo(String companyVideo) {
+    this.companyVideo = companyVideo;
+  }
 
-	public void setCompanyDescription(String companyDescription) {
-		this.companyDescription = companyDescription;
-	} 		
+  public String getCompanyDescription() {
+    return companyDescription;
+  }
+
+  public void setCompanyDescription(String companyDescription) {
+    this.companyDescription = companyDescription;
+  }
 }

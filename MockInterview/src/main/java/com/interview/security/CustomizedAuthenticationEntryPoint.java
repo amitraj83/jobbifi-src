@@ -12,8 +12,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 public class CustomizedAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
   @Override
-  public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException arg2)
-      throws IOException, ServletException {
+  public void commence(HttpServletRequest req, HttpServletResponse res,
+      AuthenticationException arg2) throws IOException, ServletException {
     res.sendError(HttpServletResponse.SC_FORBIDDEN);
   }
 

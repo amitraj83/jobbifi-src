@@ -13,7 +13,6 @@ import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
-import com.interview.framework.pojo.Bid;
 import com.interview.framework.pojo.Interview;
 import com.interview.framework.pojo.UploadedFile;
 import com.interview.framework.rmi.common.IInterviewDataStore;
@@ -50,7 +49,7 @@ public class GetInterviewHandler extends RequestHandler {
         List<Interview> list =
             iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWEE, pageNumber, status);
         if (list != null) {
-          Iterator it = list.iterator();
+          Iterator<Interview> it = list.iterator();
           while (it.hasNext()) {
             Interview interview = (Interview) it.next();
             logger.info("Interview ID : " + interview.getId());
@@ -73,7 +72,7 @@ public class GetInterviewHandler extends RequestHandler {
 
         list = iStore.getInterviewsWhereIBid(user);
         if (list != null) {
-          Iterator it = list.iterator();
+          Iterator<Interview> it = list.iterator();
           while (it.hasNext()) {
             Interview interview = (Interview) it.next();
             interview.setPrice(DataStoreRegistry.getInstance().getBidStore()
@@ -91,7 +90,7 @@ public class GetInterviewHandler extends RequestHandler {
         Map<String, Map<String, String>> fileMap = new HashMap<String, Map<String, String>>();
         List<Interview> list = iStore.getInterviews(user, DATASTORES.INTERVIEW.INTERVIEWEE);
         if (list != null) {
-          Iterator it = list.iterator();
+          Iterator<Interview> it = list.iterator();
           while (it.hasNext()) {
             Interview interview = (Interview) it.next();
             logger.info("Interview ID : " + interview.getId());
@@ -111,7 +110,7 @@ public class GetInterviewHandler extends RequestHandler {
 
         list = iStore.getInterviewsWhereIBid(user);
         if (list != null) {
-          Iterator it = list.iterator();
+          Iterator<Interview> it = list.iterator();
           while (it.hasNext()) {
             Interview interview = (Interview) it.next();
             interview.setPrice(DataStoreRegistry.getInstance().getBidStore()

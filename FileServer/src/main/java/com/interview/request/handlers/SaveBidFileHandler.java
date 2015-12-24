@@ -38,9 +38,8 @@ public class SaveBidFileHandler extends RequestHandler {
     String extension = data.get(DATASTORES.UPLOAD_FILE.EXTENSION).toString();
     String fileNameWithExtension = _id + "." + extension;
     byte[] is = (byte[]) data.get("IS");
-    int status =
-        Services.getInstance().getFileUtilities()
-            .copyFile(owner, is, myProps.getProperty("bidDocDir"), fileNameWithExtension);
+    int status = Services.getInstance().getFileUtilities().copyFile(owner, is,
+        myProps.getProperty("bidDocDir"), fileNameWithExtension);
     if (status == 1) {
       UploadedFile file = new UploadedFile();
       // file.setArtifactid(data.get(DATASTORES.UPLOAD_FILE.ARTIFACT_ID).toString());

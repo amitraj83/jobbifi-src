@@ -99,7 +99,7 @@ $(document).ready(function ($) {
 
     $(window).scroll(function (event) {
         Scroll();
-        $('.navbar-collapse li.scroll').hide().fadeIn('fast');
+        // $('.navbar-collapse li.scroll').hide().fadeIn('fast');
         if($(window).scrollTop()<32){
             $('.navbar-collapse li.scroll')
                     .removeClass('active')
@@ -119,6 +119,24 @@ $(document).ready(function ($) {
     	
         try {
             $('html, body').animate({scrollTop: $(this.hash).offset().top - 79}, 1000);
+        } catch (err) {
+            console.log("JS error: " + err.message);
+        }
+        return false;
+    });
+
+    $('#footer ul li a.scroll').click(function () {
+
+        console.debug(window.location.pathname);
+        var pageUrl = window.location.pathname;
+        var menuitem = this;
+    
+        if( pageUrl != '/'){
+            document.location.href = "/?menuitem="+menuitem.hash;
+        }
+        
+        try {
+            $('html, body').animate({scrollTop: $(this.hash).offset().top - 110}, 1000);
         } catch (err) {
             console.log("JS error: " + err.message);
         }

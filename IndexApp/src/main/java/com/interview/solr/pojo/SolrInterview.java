@@ -8,28 +8,28 @@ public class SolrInterview {
 
   @Field("id")
   private String id;
-  
+
   @Field("title")
   private String title;
-  
+
   @Field("interviewee")
   private String interviewee;
-  
+
   @Field("skills")
   private List<String> skills;
-  
+
   @Field("description")
   private String description;
-  
+
   @Field("dt")
   private long dt;
-  
+
   @Field("doctype")
   private String doctype;
-  
+
   @Field("status")
   private int status;
-  
+
   public String getId() {
     return id;
   }
@@ -93,13 +93,13 @@ public class SolrInterview {
     this.doctype = doctype;
   }
 
-	public int getStatus() {
-		return status;
-	}
-	
-	@Field("status")
-	public void setStatus(int status) {
-		this.status = status;
-	}
+  public int getStatus() {
+    return status;
+  }
+
+  @Field("status")
+  public void setStatus(int status) {
+    this.status = status;
+  }
 
 }

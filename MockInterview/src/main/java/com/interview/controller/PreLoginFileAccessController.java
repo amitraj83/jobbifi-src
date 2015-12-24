@@ -34,7 +34,7 @@ public class PreLoginFileAccessController {
 
   @Autowired
   private Properties myProps;
-  
+
   private static final String PROFILE_PIC_DIRECTORY = "profilepic";
 
   @RequestMapping(value = "/pauth/fileupload", method = RequestMethod.POST)
@@ -71,7 +71,8 @@ public class PreLoginFileAccessController {
     if (fileWritten) {
       System.out.println("[Pre Login]Writing file to disk...done " + myfile.getAbsolutePath());
       res = new HashMap<String, Object>();
-      String profilePicUrl =  request.getContextPath() + "/" + PROFILE_PIC_DIRECTORY + "/" + secToken + "/" + uuid  + "." + extension;
+      String profilePicUrl = request.getContextPath() + "/" + PROFILE_PIC_DIRECTORY + "/" + secToken
+          + "/" + uuid + "." + extension;
       res.put("st", secToken);
       res.put("fn", uuid + "." + extension);
       res.put("mime", file.getContentType());
@@ -79,8 +80,8 @@ public class PreLoginFileAccessController {
     } else {
       System.out.println("[Pre Login]Writing file failed: " + myfile.getAbsolutePath());
     }
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(res));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(res));
 
   }
 

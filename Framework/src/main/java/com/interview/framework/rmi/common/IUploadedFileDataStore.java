@@ -2,7 +2,6 @@ package com.interview.framework.rmi.common;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.Collection;
 import java.util.Map;
 
 import org.bson.types.ObjectId;

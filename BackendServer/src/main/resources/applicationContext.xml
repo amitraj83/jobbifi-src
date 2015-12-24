@@ -42,8 +42,8 @@
 	<bean id="ReleaseFunds" class="com.interview.lifecycle.ReleaseFunds" />
 	<bean id="RepostInterview" class="com.interview.lifecycle.RepostInterview" />
 	<bean id="rating" class="com.interview.lifecycle.RatingService" />
-	<bean id="norbertbackendserver" class="com.interview.norbert.server.BackendServer"/>
-	
+	<bean id="norbertbackendserver" class="com.interview.norbert.server.BackendServer" />
+
 	<bean id="rmiserver" class="com.interview.rmi.RmiServer">
 		<constructor-arg type="java.lang.String" name="host"
 			value="${rmiServerName}"></constructor-arg>

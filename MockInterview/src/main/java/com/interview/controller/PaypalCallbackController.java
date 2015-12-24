@@ -23,6 +23,7 @@ import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
 
 @Controller
+
 public class PaypalCallbackController extends BaseController{
 	
 	private Logger log = Logger.getLogger(PaypalCallbackController.class);
@@ -85,3 +86,4 @@ public class PaypalCallbackController extends BaseController{
 		return new ModelAndView("redirect:/dashboard.html?ps=2");		
 	}
 }
+

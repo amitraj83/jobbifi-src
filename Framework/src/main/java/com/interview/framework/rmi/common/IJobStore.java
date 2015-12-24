@@ -17,7 +17,7 @@ public interface IJobStore extends Remote {
   public Job getJob(String _id) throws RemoteException;
 
   public List<Job> getJobsOffered(String interviewer) throws RemoteException;
-  
+
   public void updateJob(String id, Job job) throws RemoteException;
 
 }

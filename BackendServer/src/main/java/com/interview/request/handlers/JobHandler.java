@@ -18,7 +18,6 @@ import com.interview.rmi.DataStoreRegistry;
 
 @Service
 public class JobHandler extends RequestHandler {
-
   public JobHandler() {
     addHandler(this, REQUEST_TYPES.JOB);
   }
@@ -64,26 +63,22 @@ public class JobHandler extends RequestHandler {
         e.printStackTrace();
         resMap.put("jobs", null);
       }
-
     } else if (null != SUB_REQ && REQUEST_TYPES.SEARCH_JOB_INFO.equals(SUB_REQ)) {
       try {
         Map<String, Object> result = (Map<String, Object>) data.get("result");
-        Iterator it = result.keySet().iterator();
+        Iterator<String> it = result.keySet().iterator();
         while (it.hasNext()) {
           Map<String, Object> obj = (Map<String, Object>) result.get(it.next());
           Job job = DataStoreRegistry.getInstance().getJobStore().getJob((String) obj.get("id"));
           obj.put("salary", null == job ? "" : job.getSalary());
           obj.put("experience", null == job ? "" : job.getExperience());
           obj.put("location", null == job ? "" : job.getLocation());
-
           Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
               .getUserInfo((String) obj.get("interviewer"));
           obj.put("rating", idata.get(USER.RATING));
           obj.put("profilepic", idata.get(USER.PROFILE_PIC));
-
         }
         resMap.put("result", result);
-
       } catch (Exception e) {
         e.printStackTrace();
         resMap.put("result", null);
@@ -92,7 +87,6 @@ public class JobHandler extends RequestHandler {
       try {
         String jobid = (String) data.get(DATASTORES.JOB.ID);
         Job job = DataStoreRegistry.getInstance().getJobStore().getJob(jobid);
-
         if (null != job) {
           resMap.put("job", job);
           Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
@@ -102,7 +96,6 @@ public class JobHandler extends RequestHandler {
         } else {
           resMap.put("job", null);
         }
-
       } catch (Exception e) {
         e.printStackTrace();
         resMap.put("job", null);
@@ -117,7 +110,6 @@ public class JobHandler extends RequestHandler {
         } catch (RemoteException e) {
           resMap.put("status", -1);
         }
-
       } catch (Exception e) {
         e.printStackTrace();
         resMap.put("job", null);

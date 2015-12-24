@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class UploadedFile implements Serializable {
 
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -155771705415443875L;
   String ID;
   String fileName;
   String path_on_Disk;

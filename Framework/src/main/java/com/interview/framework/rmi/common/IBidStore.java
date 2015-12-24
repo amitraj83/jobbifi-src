@@ -38,14 +38,15 @@ public interface IBidStore extends Remote {
   public int getBidCount(String iid) throws RemoteException;
 
   public Bid getBidByBidderAndInterview(String bidder, String iid) throws RemoteException;
-  
-  public List<Bid> getBidsIPosted(String username,int pageNumber) throws RemoteException;
-  
+
+  public List<Bid> getBidsIPosted(String username, int pageNumber) throws RemoteException;
+
   public int getBidsIPostedCount(String username) throws RemoteException;
- 
-  public List<Bid> getBidsForInterviewsByUser(String username, Collection<String> iids) throws RemoteException;
-  
+
+  public List<Bid> getBidsForInterviewsByUser(String username, Collection<String> iids)
+      throws RemoteException;
+
   public int getMaxBidOfInterview(String iid) throws RemoteException;
-  
+
   public List<String> getBidderForInterview(String _id) throws RemoteException;
 }

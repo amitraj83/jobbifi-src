@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class CompanyAccount implements Serializable {
 
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -7317708828062662808L;
   private String _id;
   private String purpose;
   private String debitOrCredit;

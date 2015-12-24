@@ -40,11 +40,10 @@ public class SaveDisputeFile extends RequestHandler {
     String fileNameWithExtension = _id + "." + extension;
     String isdata = (String) data.get("IS");
     byte[] is = (byte[]) isdata.getBytes();
-    int status =
-        Services.getInstance().getFileUtilities()
-            .copyFile(owner, is, myProps.getProperty("disputeDocDir"), fileNameWithExtension);
+    int status = Services.getInstance().getFileUtilities().copyFile(owner, is,
+        myProps.getProperty("disputeDocDir"), fileNameWithExtension);
     if (status == 1) {
-      UploadedFile file = new UploadedFile();     
+      UploadedFile file = new UploadedFile();
       file.setClasstype(data.get(DATASTORES.UPLOAD_FILE.CLASSIFICATION).toString());
       file.setExtension(data.get(DATASTORES.UPLOAD_FILE.EXTENSION).toString());
       file.setFileName(fileNameWithExtension);

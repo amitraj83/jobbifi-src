@@ -15,7 +15,7 @@ public class Update {
     this.data = data;
     this.author = author;
     this.recipients = recipients;
-    //Services.getInstance().getLiveQueueService().insertUpdate(author, this);
+    // Services.getInstance().getLiveQueueService().insertUpdate(author, this);
   }
 
 

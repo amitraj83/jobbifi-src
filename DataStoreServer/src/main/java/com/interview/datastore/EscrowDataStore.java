@@ -21,6 +21,11 @@ import com.mongodb.WriteResult;
 public class EscrowDataStore extends UnicastRemoteObject implements IEscrowDataStore {
 
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 4860283829096742430L;
+
   protected EscrowDataStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }
@@ -78,9 +83,8 @@ public class EscrowDataStore extends UnicastRemoteObject implements IEscrowDataS
     DBCollection collection = Services.getInstance().getBaseDataStore().db.getCollection(NAME);
     DBObject query = new BasicDBObject();
     query.put(DATASTORES.ESCROW.OBJECT_ID, new ObjectId(escrowId));
-    BasicDBObject updateDoc =
-        new BasicDBObject("$set", new BasicDBObject(DATASTORES.ESCROW.STATUS,
-            DATASTORES.ESCROW.STATUSES.RELEASED));
+    BasicDBObject updateDoc = new BasicDBObject("$set",
+        new BasicDBObject(DATASTORES.ESCROW.STATUS, DATASTORES.ESCROW.STATUSES.RELEASED));
     WriteResult wr = collection.update(query, updateDoc);
     if (wr.getCachedLastError().ok())
       return true;

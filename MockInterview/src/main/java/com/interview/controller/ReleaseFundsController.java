@@ -22,7 +22,8 @@ public class ReleaseFundsController {
 
 
   @RequestMapping(value = "/releasefunds.do", method = RequestMethod.POST)
-  public ModelAndView escrowDeposit(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+  public ModelAndView escrowDeposit(ModelMap model, HttpServletRequest req,
+      HttpServletResponse res) {
 
 
     String iid = req.getParameter("iid");
@@ -34,12 +35,11 @@ public class ReleaseFundsController {
     reqMap.put(VARIABLES.AMOUNT, amount);
     reqMap.put(DATASTORES.ESCROW.OBJECT_ID, escid);
 
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.RELEASE_FUNDS);
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.RELEASE_FUNDS);
 
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 

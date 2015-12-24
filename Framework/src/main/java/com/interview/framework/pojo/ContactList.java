@@ -1,26 +1,31 @@
 package com.interview.framework.pojo;
 
 import java.io.Serializable;
-public class ContactList implements Serializable{
-	
-	private String user;
-	
-	public String getUser() {
-		return user;
-	}
 
-	public void setUser(String user) {
-		this.user = user;
-	}
+public class ContactList implements Serializable {
 
-	public String getContact() {
-		return contact;
-	}
+  /**
+  * 
+  */
+  private static final long serialVersionUID = 569578033532112285L;
+  private String user;
 
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
+  public String getUser() {
+    return user;
+  }
 
-	private String contact;
+  public void setUser(String user) {
+    this.user = user;
+  }
+
+  public String getContact() {
+    return contact;
+  }
+
+  public void setContact(String contact) {
+    this.contact = contact;
+  }
+
+  private String contact;
 
 }

@@ -2412,12 +2412,12 @@ body.modal-open {
 
 /**  career page css **/
 
-.timeline {
+#timeline .timeline {
   list-style: none;
   padding: 20px 0 20px;
   position: relative;
 }
-.timeline:before {
+#timeline .timeline:before {
   top: 0;
   bottom: 0;
   position: absolute;
@@ -2427,27 +2427,27 @@ body.modal-open {
   left: 50%;
   margin-left: -1.5px;
 }
-.timeline > li {
+#timeline .timeline > li {
   margin-bottom: 20px;
   position: relative;
 }
-.timeline > li:before,
-.timeline > li:after {
+#timeline .timeline > li:before,
+#timeline .timeline > li:after {
   content: " ";
   display: table;
 }
-.timeline > li:after {
+#timeline .timeline > li:after {
   clear: both;
 }
-.timeline > li:before,
-.timeline > li:after {
+#timeline .timeline > li:before,
+#timeline .timeline > li:after {
   content: " ";
   display: table;
 }
-.timeline > li:after {
+#timeline .timeline > li:after {
   clear: both;
 }
-.timeline > li > .timeline-panel {
+#timeline .timeline > li > .timeline-panel {
   width: 50%;
   float: left;
   border: 1px solid #d4d4d4;
@@ -2457,19 +2457,19 @@ body.modal-open {
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
-.timeline > li.timeline-inverted + li:not(.timeline-inverted),
-.timeline > li:not(.timeline-inverted) + li.timeline-inverted {
+#timeline .timeline > li.timeline-inverted + li:not(.timeline-inverted),
+#timeline .timeline > li:not(.timeline-inverted) + li.timeline-inverted {
 margin-top: -60px;
 }
 
-.timeline > li:not(.timeline-inverted) {
+#timeline .timeline > li:not(.timeline-inverted) {
 padding-right:90px;
 }
 
-.timeline > li.timeline-inverted {
+#timeline .timeline > li.timeline-inverted {
 padding-left:90px;
 }
-.timeline > li > .timeline-panel:before {
+#timeline .timeline > li > .timeline-panel:before {
   position: absolute;
   top: 26px;
   right: -15px;
@@ -2480,7 +2480,7 @@ padding-left:90px;
   border-bottom: 15px solid transparent;
   content: " ";
 }
-.timeline > li > .timeline-panel:after {
+#timeline .timeline > li > .timeline-panel:after {
   position: absolute;
   top: 27px;
   right: -14px;
@@ -2491,7 +2491,7 @@ padding-left:90px;
   border-bottom: 14px solid transparent;
   content: " ";
 }
-.timeline > li > .timeline-badge {
+#timeline .timeline > li > .timeline-badge {
   color: #fff;
   width: 50px;
   height: 50px;
@@ -2509,44 +2509,312 @@ padding-left:90px;
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
 }
-.timeline > li.timeline-inverted > .timeline-panel {
+#timeline .timeline > li.timeline-inverted > .timeline-panel {
   float: right;
 }
-.timeline > li.timeline-inverted > .timeline-panel:before {
+#timeline .timeline > li.timeline-inverted > .timeline-panel:before {
   border-left-width: 0;
   border-right-width: 15px;
   left: -15px;
   right: auto;
 }
-.timeline > li.timeline-inverted > .timeline-panel:after {
+#timeline .timeline > li.timeline-inverted > .timeline-panel:after {
   border-left-width: 0;
   border-right-width: 14px;
   left: -14px;
   right: auto;
 }
-.timeline-badge.primary {
+#timeline .timeline-badge.primary {
   background-color: #2e6da4 !important;
 }
-.timeline-badge.success {
+#timeline .timeline-badge.success {
   background-color: #3f903f !important;
 }
-.timeline-badge.warning {
+#timeline .timeline-badge.warning {
   background-color: #f0ad4e !important;
 }
-.timeline-badge.danger {
+#timeline .timeline-badge.danger {
   background-color: #d9534f !important;
 }
-.timeline-badge.info {
+#timeline .timeline-badge.info {
   background-color: #5bc0de !important;
 }
-.timeline-title {
+#timeline .timeline-title {
   margin-top: 0;
   color: inherit;
 }
-.timeline-body > p,
-.timeline-body > ul {
+#timeline .timeline-body > p,
+#timeline .timeline-body > ul {
   margin-bottom: 0;
 }
-.timeline-body > p + p {
+#timeline .timeline-body > p + p {
   margin-top: 5px;
+}
+
+/*************
+  ERROR PAGES
+*************/
+
+body.error.error-404 div.jumbotron {
+    background-color: rgba(255,255,255,0.8);
+}
+
+
+/*******************************************
+ * ZIG ZAG TIMELIME FOR CANDIDATE WORKFLOW *
+ *******************************************/
+
+#candidate-workflow .timeline {
+    position: relative;
+    padding:4px 0 0 0;
+    margin-top:22px;
+    list-style: none;
+}
+
+#candidate-workflow .timeline>li:nth-child(even) {
+    position: relative;
+    margin-bottom: 50px;
+    height: 180px;
+    right:-100px;
+}
+
+#candidate-workflow .timeline>li:nth-child(odd) {
+    position: relative;
+    margin-bottom: 50px;
+    height: 180px;
+    left:-100px;
+}
+
+#candidate-workflow .timeline>li:before,
+#candidate-workflow .timeline>li:after {
+    content: " ";
+    display: table;
+}
+
+#candidate-workflow .timeline>li:after {
+    clear: both;
+    min-height: 170px;
+}
+
+#candidate-workflow .timeline > li .timeline-panel {
+  position: relative;
+  float: left;
+  width: 41%;
+  padding: 0 20px 20px 30px;
+  text-align: right;
+}
+
+#candidate-workflow .timeline>li .timeline-panel:before {
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+}
+
+#candidate-workflow .timeline>li .timeline-panel:after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+}
+
+#candidate-workflow .timeline>li .timeline-image {
+    z-index: 100;
+    position: absolute;
+    left: 50%;
+    border: 7px solid #0072bc;
+    border-radius: 100%;
+    background-color: #0072bc;
+    box-shadow: 0 0 5px #0072bc;
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+}
+
+#candidate-workflow .timeline>li .timeline-image h4 {
+    margin-top: 12px;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+#candidate-workflow .timeline>li.timeline-inverted>.timeline-panel {
+    float: right;
+    padding: 0 30px 20px 20px;
+    text-align: left;
+}
+
+#candidate-workflow .timeline>li.timeline-inverted>.timeline-panel:before {
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+}
+
+#candidate-workflow .timeline>li.timeline-inverted>.timeline-panel:after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+}
+
+#candidate-workflow .timeline>li:last-child {
+    margin-bottom: 0;
+}
+
+#candidate-workflow .timeline .timeline-heading h4 {
+  margin-top:22px;
+    margin-bottom: 4px;
+    padding:0;
+    color: #b3b3b3;
+}
+
+#candidate-workflow .timeline .timeline-heading h4.subheading {
+  margin:0;
+  padding:0;
+    text-transform: none;
+    font-size:18px;
+    color:#333333;
+}
+
+#candidate-workflow .timeline .timeline-body>p,
+#candidate-workflow .timeline .timeline-body>ul {
+    margin-bottom: 0;
+    color:#808080;
+}
+/*Style for even div.line*/
+#candidate-workflow .timeline>li:nth-child(odd) .line:before {
+    content: "";
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 690px;
+    width: 4px;
+    height:340px;
+    background-color: #0072bc;
+    -ms-transform: rotate(-44deg); /* IE 9 */
+    -webkit-transform: rotate(-44deg); /* Safari */
+    transform: rotate(-44deg);
+    box-shadow: 0 0 5px #0072bc;
+}
+/*Style for odd div.line*/
+#candidate-workflow .timeline>li:nth-child(even) .line:before  {
+    content: "";
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 450px;
+    width: 4px;
+    height:340px;
+    background-color: #0072bc;
+    -ms-transform: rotate(44deg); /* IE 9 */
+    -webkit-transform: rotate(44deg); /* Safari */
+    transform: rotate(44deg);
+    box-shadow: 0 0 5px #0072bc;
+}
+/* Medium Devices, .visible-md-* */
+@media (min-width: 992px) and (max-width: 1199px) {
+#candidate-workflow .timeline > li:nth-child(even) {
+    margin-bottom: 0px;
+    min-height: 0px;
+    right: 0px;
+  }
+#candidate-workflow .timeline > li:nth-child(odd) {
+    margin-bottom: 0px;
+    min-height: 0px;
+    left: 0px;
+  }
+#candidate-workflow .timeline>li:nth-child(even) .timeline-image {
+    left: 0;
+    margin-left: 0px;
+  }
+#candidate-workflow .timeline>li:nth-child(odd) .timeline-image {
+    left: 690px;
+    margin-left: 0px;
+  }
+#candidate-workflow .timeline > li:nth-child(even) .timeline-panel {
+    width: 76%;
+    padding: 0 0 20px 0px;
+    text-align: left;
+  }
+#candidate-workflow .timeline > li:nth-child(odd) .timeline-panel {
+    width: 70%;
+    padding: 0 0 20px 0px;
+    text-align: right;
+  }
+#candidate-workflow .timeline > li .line {
+    display: none;
+  }
+}
+/* Small Devices, Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+#candidate-workflow .timeline > li:nth-child(even) {
+    margin-bottom: 0px;
+    min-height: 0px;
+    right: 0px;
+  }
+#candidate-workflow .timeline > li:nth-child(odd) {
+    margin-bottom: 0px;
+    min-height: 0px;
+    left: 0px;
+  }
+#candidate-workflow .timeline>li:nth-child(even) .timeline-image {
+    left: 0;
+    margin-left: 0px;
+  }
+#candidate-workflow .timeline>li:nth-child(odd) .timeline-image {
+    left: 520px;
+    margin-left: 0px;
+  }
+#candidate-workflow .timeline > li:nth-child(even) .timeline-panel {
+    width: 70%;
+    padding: 0 0 20px 0px;
+    text-align: left;
+  }
+#candidate-workflow .timeline > li:nth-child(odd) .timeline-panel {
+    width: 70%;
+    padding: 0 0 20px 0px;
+    text-align: right;
+  }
+#candidate-workflow .timeline > li .line {
+    display: none;
+  }
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 767px) {
+#candidate-workflow .timeline > li:nth-child(even) {
+    margin-bottom: 0px;
+    min-height: 0px;
+    right: 0px;
+  }
+#candidate-workflow .timeline > li:nth-child(odd) {
+    margin-bottom: 0px;
+    min-height: 0px;
+    left: 0px;
+  }
+#candidate-workflow .timeline>li .timeline-image {
+    position: static;
+    width: 150px;
+    height: 150px;
+    margin-bottom:0px;
+  }
+#candidate-workflow .timeline>li:nth-child(even) .timeline-image {
+    left: 0;
+    margin-left: 0;
+  }
+#candidate-workflow .timeline>li:nth-child(odd) .timeline-image {
+    float:right;
+    left: 0px;
+    margin-left:0;
+  }
+#candidate-workflow .timeline > li:nth-child(even) .timeline-panel {
+    width: 100%;
+    padding: 0 0 20px 14px;
+  }
+#candidate-workflow .timeline > li:nth-child(odd) .timeline-panel {
+    width: 100%;
+    padding: 0 14px 20px 0px;
+  }
+#candidate-workflow .timeline > li .line {
+    display: none;
+  }
 }

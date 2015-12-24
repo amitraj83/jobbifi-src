@@ -97,12 +97,12 @@ public class SolrJob {
     this.companyName = companyName;
   }
 
-	public String getLocation() {
-		return location;
-	}
-	
-	@Field("location")
-	public void setLocation(String location) {
-		this.location = location;
-	}
+  public String getLocation() {
+    return location;
+  }
+
+  @Field("location")
+  public void setLocation(String location) {
+    this.location = location;
+  }
 }

@@ -32,11 +32,11 @@ import com.mongodb.util.JSON;
 
 public class InterviewerDataStore extends UnicastRemoteObject implements IInterviewerDataStore {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	public InterviewerDataStore() throws RemoteException {
-		Services.getInstance().getRMIServer().bind(NAME, this);
-    }
+  public InterviewerDataStore() throws RemoteException {
+    Services.getInstance().getRMIServer().bind(NAME, this);
+  }
 
   public void insertInterviewer(Map<String, String> interviewerMap) throws RemoteException {}
 
@@ -90,7 +90,8 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     dbObject.put(USER.TIME, new Date().getTime());
 
     int isExistUserNameOrEmail = isExistUserNameOrEmail(dbObject);
-    if (isExistUserNameOrEmail == 3 || isExistUserNameOrEmail == 4 || isExistUserNameOrEmail == -1) {
+    if (isExistUserNameOrEmail == 3 || isExistUserNameOrEmail == 4
+        || isExistUserNameOrEmail == -1) {
       return isExistUserNameOrEmail;
     } else {
       collection.insert(dbObject);
@@ -188,24 +189,22 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
   }
 
   public boolean setPasswordForUserName(String username, String pass) throws RemoteException {
-	    DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
-	    DBObject query = new BasicDBObject(USER.USERNAME, username);
-	    DBObject updateDoc = new BasicDBObject("$set", new BasicDBObject(USER.PASSWORD, pass));
-	    WriteResult wr = collection.update(query, updateDoc);
-	    CommandResult cr = wr.getCachedLastError();
-	    return cr.ok();
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+    DBObject query = new BasicDBObject(USER.USERNAME, username);
+    DBObject updateDoc = new BasicDBObject("$set", new BasicDBObject(USER.PASSWORD, pass));
+    WriteResult wr = collection.update(query, updateDoc);
+    CommandResult cr = wr.getCachedLastError();
+    return cr.ok();
   }
 
   public boolean isExist(DBObject data) throws RemoteException {
-	  System.out.println("12345678901234567890");
+    System.out.println("12345678901234567890");
     DBCollection collection =
         Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
     if (!((String) data.get("username")).isEmpty()) {
-      long countForEmail =
-          collection.count(new BasicDBObject("id", data.get("id")));
-      long countForUserName =
-              collection.count(new BasicDBObject("username",data.get("username")));
+      long countForEmail = collection.count(new BasicDBObject("id", data.get("id")));
+      long countForUserName = collection.count(new BasicDBObject("username", data.get("username")));
       if (countForEmail > 0 || countForUserName > 0)
         return true;
       else
@@ -213,21 +212,19 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     } else
       return false;
   }
-  
+
   public int isExistUserNameOrEmail(DBObject data) throws RemoteException {
     DBCollection collection =
         Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
     if (!((String) data.get("username")).isEmpty()) {
-      long countForEmail =
-          collection.count(new BasicDBObject("id", data.get("id")));
-      long countForUserName =
-              collection.count(new BasicDBObject("username",data.get("username")));
+      long countForEmail = collection.count(new BasicDBObject("id", data.get("id")));
+      long countForUserName = collection.count(new BasicDBObject("username", data.get("username")));
       if (countForEmail > 0)
         return 3;
       else if (countForUserName > 0)
-    	  return 4;
-      else 
-    	  return 1;
+        return 4;
+      else
+        return 1;
     }
     return -1;
   }
@@ -301,7 +298,7 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     orList.add(new BasicDBObject(USER.EMAIL, emailID));
     orList.add(new BasicDBObject(USER.USERNAME, emailID));
     BasicDBObject clause = new BasicDBObject("$or", orList);
-    
+
     Map<String, Object> responseMap = new HashMap<String, Object>();
     DBObject obj = collection.findOne(clause);
     responseMap.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
@@ -341,14 +338,17 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     }
   }
 
-  public void updateUserPaypaladdress(String username,String paypaladdress) throws RemoteException{
-	  DBCollection collection =
-		        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
-		    DBObject query = new BasicDBObject();
-		    query.put(USER.USERNAME, username);
-		    DBObject updateDoc = new BasicDBObject("$set", new BasicDBObject(USER.PAYPAL_ADDRESS, paypaladdress));
-		    collection.update(query, updateDoc);
+  public void updateUserPaypaladdress(String username, String paypaladdress)
+      throws RemoteException {
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+    DBObject query = new BasicDBObject();
+    query.put(USER.USERNAME, username);
+    DBObject updateDoc =
+        new BasicDBObject("$set", new BasicDBObject(USER.PAYPAL_ADDRESS, paypaladdress));
+    collection.update(query, updateDoc);
   }
+
   public void setRating(String user, double currentAvgRating) {
     DBCollection collection =
         Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
@@ -401,11 +401,11 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     List<String> usersList = new ArrayList<String>();
     BasicDBList orList = new BasicDBList();
 
-    if (skills!=null && skills.size() > 0) {
+    if (skills != null && skills.size() > 0) {
       DBObject skillsQuery = new BasicDBObject(USER.SKILLS, new BasicDBObject("$in", skills));
       orList.add(skillsQuery);
     }
-    if (companies!=null && companies.size() > 0) {
+    if (companies != null && companies.size() > 0) {
       DBObject companyQuery =
           new BasicDBObject(USER.COMPANIES, new BasicDBObject("$in", companies));
       orList.add(companyQuery);
@@ -425,26 +425,26 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
   }
 
   @Override
-  public Map<String,String> getEmailListFromUsersList(List<String> users) throws RemoteException {
-	    DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+  public Map<String, String> getEmailListFromUsersList(List<String> users) throws RemoteException {
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
 
-	    Map<String,String> userEmailMap = new HashMap<String,String>();
-	    BasicDBList userList = new BasicDBList();
-	    if (users.size() > 0) {
-	      DBObject usersQuery = new BasicDBObject(USER.USERNAME, new BasicDBObject("$in", users));
-	      userList.add(usersQuery);
-	    }
-	    DBCursor cursor = collection.find(userList);
-	    while (cursor.hasNext()) {
-	      DBObject row = cursor.next();
-	      userEmailMap.put(row.get("username").toString(), row.get("id").toString());
-	    }
+    Map<String, String> userEmailMap = new HashMap<String, String>();
+    BasicDBList userList = new BasicDBList();
+    if (users.size() > 0) {
+      DBObject usersQuery = new BasicDBObject(USER.USERNAME, new BasicDBObject("$in", users));
+      userList.add(usersQuery);
+    }
+    DBCursor cursor = collection.find(userList);
+    while (cursor.hasNext()) {
+      DBObject row = cursor.next();
+      userEmailMap.put(row.get("username").toString(), row.get("id").toString());
+    }
 
-	    return userEmailMap;
-	  }
-  
-  
+    return userEmailMap;
+  }
+
+
   @Override
   public String getUserEmail(String username) throws RemoteException {
 
@@ -600,81 +600,82 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
       map.put("message", rating.getMessage());
       map.put("ratedby", rating.getRatedBy());
       map.put("dt", rating.getTime() + "");
-      map.put("ititle", Services.getInstance().getInterviewDataStore()
-          .getInterview(rating.getIid()).getTitle());
+      map.put("ititle",
+          Services.getInstance().getInterviewDataStore().getInterview(rating.getIid()).getTitle());
 
       ratingmap.add(map);
     }
     return ratingmap;
   }
-  
+
   public void updateProfilePic(String interviewer, String profilePic) throws RemoteException {
-	  	DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
-	    DBObject query = new BasicDBObject();
-	    query.put(USER.USERNAME, interviewer);
-	
-	    DBObject row = collection.findOne(query);
-	    if (row.get(USER.USERNAME).toString().equals(interviewer)) {
-	      DBObject updateDoc = new BasicDBObject("$set", new BasicDBObject(USER.PROFILE_PIC, profilePic));
-	      collection.update(query, updateDoc);	      
-	    }	  
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+    DBObject query = new BasicDBObject();
+    query.put(USER.USERNAME, interviewer);
+
+    DBObject row = collection.findOne(query);
+    if (row.get(USER.USERNAME).toString().equals(interviewer)) {
+      DBObject updateDoc =
+          new BasicDBObject("$set", new BasicDBObject(USER.PROFILE_PIC, profilePic));
+      collection.update(query, updateDoc);
+    }
   }
 
-	@Override
-	public String getUserPassword(String username) throws RemoteException {
-		DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
-	    DBObject query = new BasicDBObject();
-	    query.put(USER.USERNAME, username);
-	
-	    DBObject row = collection.findOne(query);
-	    return row.get(USER.PASSWORD).toString();		
-	}
+  @Override
+  public String getUserPassword(String username) throws RemoteException {
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+    DBObject query = new BasicDBObject();
+    query.put(USER.USERNAME, username);
 
-	@Override
-	public List<Object> getTopAdvisorList(int noOfResult) throws RemoteException {
-		DBCollection collection =
-		        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
-		
-	    List<Object> result = new ArrayList<Object>();
-	    DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWER"))
-	    		.sort(new BasicDBObject(USER.RATING, -1)).limit(noOfResult);
-	    while (cursor.hasNext()) {
-	    	DBObject obj = cursor.next();
-	    	Map<String, Object> responseMap = new HashMap<String, Object>();
-		      responseMap.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
-		      responseMap.put(USER.SKILLS, obj.get(USER.SKILLS).toString());
-		      responseMap.put(USER.RATE, obj.get(USER.RATE).toString());
-		      responseMap.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
-		      responseMap.put(USER.BALANCE, obj.get(USER.BALANCE).toString());
-		      responseMap.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
-		      responseMap.put(USER.RATING, obj.get(USER.RATING).toString());
-		      responseMap.put(USER.CV, obj.get(USER.CV).toString());
-		      responseMap.put(USER.TYPE, obj.get(USER.TYPE).toString());
-		      responseMap.put(USER.EMAIL, obj.get(USER.EMAIL).toString());
-		      if (obj.get(USER.CHATPASS) != null)
-		        responseMap.put(USER.CHATPASS, obj.get(USER.CHATPASS).toString());
-		      responseMap.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
-		      if (obj.get(USER.SOCIAL_NETWORK) != null)
-		        responseMap.put(USER.SOCIAL_NETWORK, obj.get(USER.SOCIAL_NETWORK).toString());
-		      else
-		        responseMap.put(USER.SOCIAL_NETWORK, Interviewer.SOCIALNETWORKS.DIRECT);
-	
-		      List<Map<String, Object>> ratingmap = getAllReviews(obj);
-		      responseMap.put(VARIABLES.ALLREVIEWS, ratingmap);
-	
-		      List<Education> educations = getAllEducations(obj);
-		      responseMap.put(USER.EDUCATIONS, educations);
-	
-		      List<Position> positions = getAllPositions(obj);
-		      responseMap.put(USER.POSITIONS, positions);
-	
-		      List<Skill> skills = getAllSkills(obj);
-		      responseMap.put(USER.SKILL_LIST, skills);
-		      result.add(responseMap);
-	    }
-	    return result;		
-	}
-  
+    DBObject row = collection.findOne(query);
+    return row.get(USER.PASSWORD).toString();
+  }
+
+  @Override
+  public List<Object> getTopAdvisorList(int noOfResult) throws RemoteException {
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+
+    List<Object> result = new ArrayList<Object>();
+    DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWER"))
+        .sort(new BasicDBObject(USER.RATING, -1)).limit(noOfResult);
+    while (cursor.hasNext()) {
+      DBObject obj = cursor.next();
+      Map<String, Object> responseMap = new HashMap<String, Object>();
+      responseMap.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+      responseMap.put(USER.SKILLS, obj.get(USER.SKILLS).toString());
+      responseMap.put(USER.RATE, obj.get(USER.RATE).toString());
+      responseMap.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+      responseMap.put(USER.BALANCE, obj.get(USER.BALANCE).toString());
+      responseMap.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+      responseMap.put(USER.RATING, obj.get(USER.RATING).toString());
+      responseMap.put(USER.CV, obj.get(USER.CV).toString());
+      responseMap.put(USER.TYPE, obj.get(USER.TYPE).toString());
+      responseMap.put(USER.EMAIL, obj.get(USER.EMAIL).toString());
+      if (obj.get(USER.CHATPASS) != null)
+        responseMap.put(USER.CHATPASS, obj.get(USER.CHATPASS).toString());
+      responseMap.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+      if (obj.get(USER.SOCIAL_NETWORK) != null)
+        responseMap.put(USER.SOCIAL_NETWORK, obj.get(USER.SOCIAL_NETWORK).toString());
+      else
+        responseMap.put(USER.SOCIAL_NETWORK, Interviewer.SOCIALNETWORKS.DIRECT);
+
+      List<Map<String, Object>> ratingmap = getAllReviews(obj);
+      responseMap.put(VARIABLES.ALLREVIEWS, ratingmap);
+
+      List<Education> educations = getAllEducations(obj);
+      responseMap.put(USER.EDUCATIONS, educations);
+
+      List<Position> positions = getAllPositions(obj);
+      responseMap.put(USER.POSITIONS, positions);
+
+      List<Skill> skills = getAllSkills(obj);
+      responseMap.put(USER.SKILL_LIST, skills);
+      result.add(responseMap);
+    }
+    return result;
+  }
+
 }

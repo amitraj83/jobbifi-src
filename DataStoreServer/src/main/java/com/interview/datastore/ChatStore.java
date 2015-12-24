@@ -19,6 +19,11 @@ import com.mongodb.WriteResult;
 
 public class ChatStore extends UnicastRemoteObject implements IChatStore {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -3933224087003969415L;
+
   protected ChatStore() throws RemoteException {
     Services.getInstance().getRMIServer().bind(NAME, this);
   }
@@ -89,9 +94,8 @@ public class ChatStore extends UnicastRemoteObject implements IChatStore {
   public long getOfflineCount(String username) throws RemoteException {
     DBCollection collection =
         Services.getInstance().getBaseDataStore().db.getCollection(CHAT.COLLECTION_NAME);
-    long count =
-        collection.count(new BasicDBObject(CHAT.TO, username).append(CHAT.TYPE,
-            CHAT.Type.OFFLINE.toString()));
+    long count = collection.count(
+        new BasicDBObject(CHAT.TO, username).append(CHAT.TYPE, CHAT.Type.OFFLINE.toString()));
     return count;
   }
 }

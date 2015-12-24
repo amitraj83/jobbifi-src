@@ -25,11 +25,10 @@ public class CancelInterviewController {
 
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     reqMap.put("_id", req.getParameter("iid"));
-    Map<String, Object> resMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(reqMap, REQUEST_TYPES.CANCEL_INTERVIEW);
-    return new ModelAndView("response", "message", Services.getInstance().getJSONUtilityService()
-        .getJSONStringOfMap(resMap));
+    Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(reqMap, REQUEST_TYPES.CANCEL_INTERVIEW);
+    return new ModelAndView("response", "message",
+        Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
 
 }

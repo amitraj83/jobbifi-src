@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.interview.framework.DATASTORES;
@@ -19,9 +17,6 @@ import com.interview.rmi.DataStoreRegistry;
 
 @Service
 public class RetrieveAllDisputes extends RequestHandler {
-
-  @Autowired
-  private Properties myProps;
 
   public RetrieveAllDisputes() {
     addHandler(this, REQUEST_TYPES.DISPUTES_RETRIEVE_ALL);

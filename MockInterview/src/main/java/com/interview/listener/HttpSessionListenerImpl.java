@@ -20,7 +20,7 @@ public class HttpSessionListenerImpl implements HttpSessionListener {
     Services.getInstance().getUserSessionManager().UnregisterUserSession(sessionId);
     // sessionEvent.getSession().putValue("sessionLoggedIn", "false");
     // System.out.println("Session Destroyed: "+sessionId+
-    // "  Value: "+sessionEvent.getSession().getValue("sessionLoggedIn"));
+    // " Value: "+sessionEvent.getSession().getValue("sessionLoggedIn"));
     // sessionEvent.getSession().invalidate();
 
   }

@@ -21,18 +21,17 @@ import com.interview.services.Services;
 
 
 @Controller
-public class WallController extends BaseController{
+public class WallController extends BaseController {
 
   @RequestMapping(value = "/wall.do", method = RequestMethod.GET)
   public ModelAndView getWall(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
 
-    String user =getLoginUser();
+    String user = getLoginUser();
     Map<Object, Object> userName = new HashMap<Object, Object>();
     userName.put(USER.USERNAME, user);
 
-    Map<String, Object> wallMap =
-        Services.getInstance().getRequestHandlerService()
-            .handleRequest(userName, REQUEST_TYPES.GET_WALL);
+    Map<String, Object> wallMap = Services.getInstance().getRequestHandlerService()
+        .handleRequest(userName, REQUEST_TYPES.GET_WALL);
 
     String response = "";
     try {

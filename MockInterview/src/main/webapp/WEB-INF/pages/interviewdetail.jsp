@@ -101,7 +101,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span>
+                                                        <span class="input-group-addon"><i class="fa fa-inr"></i></span>
                                                         <input id="interviewee_interview_escrowamount" type="text"
                                                                class="form-control">
                                                     </div>
@@ -118,7 +118,7 @@
                                             <div class="well" style="padding:10px;text-align:center">
                                                 <b>Account Balance</b>
 
-                                                <div id="accountBalance">$${User_Balance}</div>
+                                                <div id="accountBalance"><i class="fa fa-inr"></i>${User_Balance}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -283,7 +283,7 @@
                                 '<input class="rating-display" type="number" value="' + allbid[i].reputation + '"/></div>' +
                                 allbid[i].bidderreviewcount + ' Reviews</div></div></td>' +
                                 '<td class="col-md-4">' + allbid[i].msg + '</td>' +
-                                '<td class="col-md-2">$' + allbid[i].price + '</td>' +
+                                '<td class="col-md-2"><i class="fa fa-inr"></i>' + allbid[i].price + '</td>' +
                                 '<td class="col-md-3">' + prettyDate(new Date(Number(allbid[i].dt))) + '</td>' +
                                 '<td class="col-md-3">' + action + '</td>' +
                                 '</tr>';
@@ -326,7 +326,7 @@
 
                     allrows = allrows + '<tr>' +
                             '<td class="col-md-3">' + resData.escrowlist[i].visibleId + '</td>' +
-                            '<td class="col-md-3">$' + resData.escrowlist[i].amount + '</td>' +
+                            '<td class="col-md-3"><i class="fa fa-inr"></i>' + resData.escrowlist[i].amount + '</td>' +
                             '<td class="col-md-3">' + statusButton + '</td>' +
                             '<td class="col-md-3">' + prettyDate(new Date(Number(resData.escrowlist[i].date))) + '</td>' +
                             '</tr>';
@@ -336,9 +336,9 @@
             }
 
             $("#interviewee_interview_allescrows").append(allrows);
-            $("#escrow_screen_totalescrow").html("$" + ecsrowbalance);
-            $("#escrow_screen_totalreleased").html("$" + totalReleased);
-            $("#escrow_screen_totalbudget").html("$" + budget);
+            $("#escrow_screen_totalescrow").html("<i class=\"fa fa-inr\"></i>" + ecsrowbalance);
+            $("#escrow_screen_totalreleased").html("<i class=\"fa fa-inr\"></i>" + totalReleased);
+            $("#escrow_screen_totalbudget").html("<i class=\"fa fa-inr\"></i>" + budget);
         });
     }
 
@@ -417,16 +417,16 @@
                             }
                             allrows = allrows + '<tr>' +
                                     '<td class="col-md-3">' + resData.escrowlist[i].visibleId + '</td>' +
-                                    '<td class="col-md-3">$' + resData.escrowlist[i].amount + '</td>' +
+                                    '<td class="col-md-3"><i class="fa fa-inr"></i>' + resData.escrowlist[i].amount + '</td>' +
                                     '<td class="col-md-3">' + statusButton + '</td>' +
                                     '<td class="col-md-3">' + prettyDate(new Date(Number(resData.escrowlist[i].date))) + '</td>' +
                                     '</tr>';
                         }
 
                         $("#interviewee_interview_allescrows").html(allrows);
-                        $("#escrow_screen_totalescrow").html("$" + resData.eb);
-                        $("#escrow_screen_totalreleased").html("$" + totalReleased);
-                        $("#accountBalance").html("$" + resData.bal);
+                        $("#escrow_screen_totalescrow").html("<i class=\"fa fa-inr\"></i>" + resData.eb);
+                        $("#escrow_screen_totalreleased").html("<i class=\"fa fa-inr\"></i>" + totalReleased);
+                        $("#accountBalance").html("<i class=\"fa fa-inr\"></i>" + resData.bal);
                         $("#interviewee_interview_escrowamount").html("");
 
                     } else {
@@ -483,8 +483,8 @@
                     var resData = jQuery.parseJSON(res);
                     if (resData.code == 19) {
                         $(element).parent().html('<span class="label label-success">Released</span>');
-                        $("#escrow_screen_totalescrow").html("$" + resData.eb);
-                        $("#escrow_screen_totalreleased").html("$" + resData.totalreleased);
+                        $("#escrow_screen_totalescrow").html("<i class=\"fa fa-inr\"></i>" + resData.eb);
+                        $("#escrow_screen_totalreleased").html("<i class=\"fa fa-inr\"></i>" + resData.totalreleased);
                         showSuccess(resData.message);
                     } else {
                         showError(resData.message);
@@ -515,7 +515,7 @@
 
                     var resData = jQuery.parseJSON(res);
                     $("#interview_status").html('IN PROGRESS');
-                    $("#escrow_screen_totalbudget").html('$' + price);
+                    $("#escrow_screen_totalbudget").html('<i class="fa fa-inr"></i>' + price);
                 });
             }
         });

@@ -64,7 +64,7 @@
 
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon">$</span>
+                                    <span class="input-group-addon"></span>
                                     <input type="text" class="form-control" name="budget"
                                            placeholder="Price you want to pay">
                                 </div>

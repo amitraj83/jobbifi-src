@@ -1,89 +1,93 @@
-<%@ include file="/WEB-INF/pages/common/taglib.jsp" %>
+<%@ include file="/WEB-INF/pages/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="/WEB-INF/pages/common/css.jsp" %>
-    <title>Job Detail</title>
+<%@ include file="/WEB-INF/pages/common/css.jsp"%>
+<title>Job Detail</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/pages/common/header.jsp" %>
-<div id="wrapper">
-    <div id="page-content">
-        <div class="container">
+	<%@ include file="/WEB-INF/pages/common/header.jsp"%>
+	<div id="wrapper">
+		<div id="page-content">
+			<div class="container">
 
-            <div class="row">
-                <div class="col-md-9">
-                    <div>
-                    <div class="alert alert-success" id="successJobApply" name = "successJobApply"> Your application received.</div>
-                        <div class="row pull-right">
-                            <div class="col-md-6 jobdetail-userpic">
-                                <a target="_blank"
-                                   href="<c:url value='/userprofile.do?name=${job.interviewer}'/>">
+				<div class="row">
+					<div class="col-md-9">
+						<div>
+							<div class="alert alert-success" id="successJobApply"
+								name="successJobApply">Your application received.</div>
+							<div class="row pull-right">
+								<div class="col-md-6 jobdetail-userpic">
+									<a target="_blank"
+										href="<c:url value='/userprofile.do?name=${job.interviewer}'/>">
 
-                                    <img class="img-responsive img-hover img-thumbnail" src="${profilepic}"
-                                         alt="User Pic"
-                                         v style="height:100px;"/>
-                                </a>
-                            </div>
-                            <div class="col-md-6 jobdetail-postedby">
-                                Posted By
-								<span style="padding-top:5px;">
-									
-										<a href="<c:url value='/userprofile.do?name=${job.interviewer}'/>"
-                                           target="_blank" style="color:#0072bc">${job.interviewer}</a>
-									
-								</span>
+										<img class="img-responsive img-hover img-thumbnail"
+										src="${profilepic}" alt="User Pic" v style="height: 100px;" />
+									</a>
+								</div>
+								<div class="col-md-6 jobdetail-postedby">
+									Posted By <span style="padding-top: 5px;"> <a
+										href="<c:url value='/userprofile.do?name=${job.interviewer}'/>"
+										target="_blank" style="color: #0072bc">${job.interviewer}</a>
 
-                                <div>
-                                    <i class="fa fa-clock-o"></i><span id="date"></span>
-                                    <!--<input data-showCaption="false" data-showClear="false" data-size="xs"
+									</span>
+
+									<div>
+										<i class="fa fa-clock-o"></i><span id="date"></span>
+										<!--<input data-showCaption="false" data-showClear="false" data-size="xs"
 								    data-readonly="true" data-min="0" data-max="5" data-step="0.5" value="${rating}" 
 								    id="postedByRating" type="number" class="rating" />-->
-                                </div>
+									</div>
 
-                            </div>
-                        </div>
-                        <h1 class="title"> ${job.title} <br>
-                            <small> ${job.companyName}</small>
-                        </h1>
+								</div>
+							</div>
+							<h1 class="title">
+								${job.title} <br> <small> ${job.companyName}</small>
+							</h1>
 
-                    </div>
-                    <div>
-						<span class="job-location">
-						<i class="fa fa-map-marker"></i>&nbsp; ${job.location} | Industry : ${job.industry} | Exp. : ${job.experience} yr | Salary : ${job.salary}
+						</div>
+						<div>
+							<span class="job-location"> <i class="fa fa-map-marker"></i>&nbsp;
+								${job.location} | Industry: ${job.industry} | Experience:
+								${job.experience} yr | Salary: <i class="fa fa-inr"></i>${job.salary}
+							</span> <span> </span>
+						</div>
 
-						</span>
-						<span>
-							
-						</span>
-                    </div>
-
-                    <div style="padding-top: 15px;">
-                        <p>
-                            Skills:
-                            <c:forEach var="skill" items="${job.skills}">
-                                <span class="label label-info">${skill}</span> &nbsp;
+						<div style="padding-top: 15px;">
+							<p>
+								Skills:
+								<c:forEach var="skill" items="${job.skills}">
+									<span class="label label-info">${skill}</span> &nbsp;
                             </c:forEach>
-                        </p>
-                        <hr>
-                    </div>
-                    <h3>Job Description</h3>
-                    <p>${job.description}</p>
+							</p>
+							<hr>
+						</div>
+						<h3>Job Description</h3>
+						<p>${job.description}</p>
 
-					<c:if test="${not empty job.companyDescription or not empty job.companyVideo}">
-						<h3>Company Description</h3>
-						<p>${job.companyDescription}</p>						
-						<c:if test="${not empty job.companyVideo}">
-							<div id="youTubeVideo"></div>						 	
-						 </c:if> 
-					</c:if>
-                    <hr/>
-                </div>
-                <div class="col-md-3">
+						<c:if
+							test="${not empty job.companyDescription or not empty job.companyVideo}">
+							<h3>Company Description</h3>
+							<p>${job.companyDescription}</p>
+							<c:if test="${not empty job.companyVideo}">
+								<div id="youTubeVideo"></div>
+							</c:if>
+						</c:if>
+						<hr />
+					</div>
+					<div class="col-md-3"></div>
+				</div>
 
 
-                </div>
-            </div>
+				<div class="row">
+					<div class="col-md-9 page-content">
+						<div class="clearfix white-container" id="msgdetail">
+
+							<sec:authorize access="isAuthenticated()">
+								<c:choose>
+									<c:when test="${not empty jobApplication}">
+										<div class="alert alert-success">You have already sent
+											the application.</div>
 
 
             <div class="row">
@@ -166,6 +170,7 @@
             <div class="col-md-4 page-sidebar">
                 <div class="widget sidebar-widget white-container ">
                     <!-- <div class="row">
+
 								<div class="col-md-6">
 									<a href="<c:url value='/userprofile.do?name=${job.interviewer}'/>" target="_blank"><img class="img-responsive img-hover" src="${profilepic}" alt="User Pic" style="height:100px;"></a>
 								</div>
@@ -176,16 +181,16 @@
 									</span>									
 								</div>								
 							</div> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<%@ include file="/WEB-INF/pages/common/footer.jsp" %>
-<%@ include file="/WEB-INF/pages/common/js.jsp" %>
-<script type="text/javascript">
+	<%@ include file="/WEB-INF/pages/common/footer.jsp"%>
+	<%@ include file="/WEB-INF/pages/common/js.jsp"%>
+	<script type="text/javascript">
 	var jobapplicationdocVal = '';
 
 	$("#successJobApply").hide();

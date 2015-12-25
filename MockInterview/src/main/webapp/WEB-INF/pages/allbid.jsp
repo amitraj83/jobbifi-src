@@ -79,7 +79,7 @@
             }
 
             $("#bid_allbody").html("");
-            if (myinterview.length > 0) {
+            if (myinterview.length > 0) { 
                 for (var i = 0; i < myinterview.length; i++) {
                     var html = '<tr">' +
                             '<td><a href="' + BASE_URL + 'mock/details.do?mid=' + myinterview[i].id + '" target="_blank"> ' + myinterview[i].title + ' </td>' +

@@ -33,7 +33,37 @@
                 </div>
                 <div class="col-md-4 page-sidebar">
                 	<div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
-                	
+                	   
+                       <div>
+                        <center>
+                            <h3>What's Next?</h3>    
+                            <div class="stepwizard" style="height:190px;">
+                            <div class="stepwizard-row">
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-info btn-square">Apply Job in Company X</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Find Advisor in X</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-warning btn-square">Mock interview with Advisor</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Rock in real interview with X</button>
+                                </div>
+                            </div>
+                            </div>
+                        </center>
+                        </div>
+
+                       
+                       <hr/>
                 		<div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
                 			<h3>Need to talk with advisor ?</h3>
                 			<p>Post your Mock interview and invite advisor to train you and for job referrals</p>
@@ -46,7 +76,8 @@
                 	
                 	
 						<h3 style="font-weight: bold;margin: 30px 0;">Top Advisor</h3>
-						<div id="topadvisorlist"></div>                
+						<div id="topadvisorlist"></div>  
+                    </div>              
                     </div>
                 </div>
             </div>
@@ -217,7 +248,8 @@
                 '<div class="row">' +
                 '<div class="col-md-2 text-center" style="padding:0px;">' +
                 '<a target="_blank" href="' + BASE_URL + 'userprofile.do?name=' + job.interviewer + '">' +
-                '<img class="img-thumb" alt="" src="' + BASE_URL + job.profilepic + '">' +
+                /*'<img class="img-thumb" alt="" src="' + BASE_URL + job.profilepic + '">' +*/
+                '<img class="img-thumb" alt="" src="' + BASE_URL +'images/face.jpg">' +
                 '<span class="job_search_result_employer_img">' + job.interviewer + '</span>' +
                 '</a>' +
                 '<button onclick="showContactMeScreen(\'' + job.interviewer + '\');" class="btn btn-default btn-xs" type="button"><i class="fa fa-envelope-o"></i> Contact me</button>' +

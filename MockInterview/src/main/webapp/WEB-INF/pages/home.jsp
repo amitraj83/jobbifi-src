@@ -578,7 +578,7 @@
 								<h2>Silver</h2>
 
 								<p class="price">
-									<span>Free</span>
+									<span>Free</span> &nbsp; monthly
 								</p>
 								<ul>
 									<li>100 CV Access</li>

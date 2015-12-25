@@ -18,6 +18,9 @@
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
+
+	
+
 </script>
 </body>
 </html>

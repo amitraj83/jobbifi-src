@@ -14,10 +14,10 @@
     <div id="page-content">
         <div class="container">
             <div class="row">
-            	<div class="col-md-3">
+            	<div id="leftmenu" class="col-md-3"> 
             		<%@ include file="/WEB-INF/pages/myInterviewSidebar.jsp" %>
-            	</div>
-                <div class="col-md-9">
+            	</div> 
+                <div id="centersearch" class="col-md-6">
                     <div class="row">
                         <div class="col-md-12">
                             <sec:authorize access="hasRole('ROLE_INTERVIEWEE')" var="isInterviewee"></sec:authorize>
@@ -30,11 +30,39 @@
                                 </span>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="row" style="margin-top: 30px;">
                         <div id="searchMockResult" class="col-md-12"></div>
                     </div>
-                </div>                               
+                </div> 
+                <div class="col-md-3 page-sidebar">
+                    <div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
+                            <div>
+                            <center>
+                                <h3>What's Next?</h3>    
+                                <div class="stepwizard" style="height:160px;">
+                                <div class="stepwizard-row">
+                                    <div class="stepwizard-step">
+                                        <button type="button" class="btn btn-success btn-square">Support a candidate</button>
+                                    </div>
+                                </div>
+                                <div class="stepwizard-row">   
+                                    <div class="stepwizard-step">
+                                        <button type="button" class="btn btn-info btn-square">Provide a mock interview</button>
+                                    </div>
+                                </div>
+                                <div class="stepwizard-row">   
+                                    <div class="stepwizard-step">
+                                        <button type="button" class="btn btn-warning btn-square">Get paid and increase rating!</button>
+                                    </div>
+                                </div>
+                                
+                            </center>
+                            </div>
+                    </div>        
+                    
+                </div>                              
             </div>
         </div>
     </div>
@@ -52,6 +80,10 @@
     $(function () {
     	if(${isAuthenticated} == false){
     		$(".scroll.active").removeClass("active");
+            $("#leftmenu").remove();
+            $("#centersearch").removeClass("col-md-6");
+            $("#centersearch").addClass("col-md-9");
+
     	}
         $("#sidenav_searchMock").addClass("active");        
         $("#searchMockBtn").click(function (e) {
@@ -116,7 +148,7 @@
                 var attachment = "";
                 var bidHtml = "";
                 if(${isInterviewee} == false){
-                bidHtml = "<button class='btn btn-xs btn-default' onclick='showBidPopUp(\"" + json[i].id + "\", this, \"" + json[i].interviewee + "\")'><i class='fa fa-share-square' style='color:white'></i> Place Bid</button>";
+                bidHtml = "<button class='btn btn-xs btn-default' onclick='showBidPopUp(\"" + json[i].id + "\", this, \"" + json[i].interviewee + "\")'><i class='fa fa-share-square' style='color:white'></i> Support me</button>";
                 }
                 if (LOGIN_USER != null) {
 
@@ -176,7 +208,8 @@
                     'experience': wholeJSON[json[i].id ].experience, // json[i].experience,
                     'title': json[i].title,
                     'interviewee': json[i].interviewee,
-                    'image': profilepic,
+                    /*'image': profilepic,*/
+                    'image': "images/face.jpg",
                     'skills': skillsHTML,
                     'BASE_URL': BASE_URL,
                     'datePosted': prettyDate(new Date(Number(json[i].dt))),

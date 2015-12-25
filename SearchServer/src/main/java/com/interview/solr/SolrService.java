@@ -134,7 +134,11 @@ public class SolrService {
 	    Map<String, Object> results = new HashMap<String, Object>();
 	    try {
 	      SolrQuery query = new SolrQuery();
-	      query.setQuery("{!q.op=AND} " + key + " AND {!df=doctype}=INTERVIEWEE");
+	      query.setQuery(" (cv:*"+key+"* "
+			      		+ "OR country:*"+key+"* "
+						+ "OR skills:*"+key+"* "
+						+ "OR position:*"+key+"*) "
+						+ "AND {!df=doctype}=INTERVIEWEE");
 	      query.setFacet(true).setFacetMinCount(1).setFacetLimit(8);
 
 	      query.setStart(start);
@@ -152,6 +156,9 @@ public class SolrService {
 	        while (iit.hasNext()) {
 	          Entry<String, Object> entry = iit.next();
 	          jsonDoc.put(entry.getKey().toString(), entry.getValue().toString());
+	          
+	          System.out.println(entry.getKey().toString() +"  --  "+ entry.getValue().toString());
+	          
 	        }
 	        jsonDocList.put("" + count, jsonDoc);
 	        count++;

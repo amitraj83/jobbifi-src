@@ -38,6 +38,34 @@
                 <div class="col-md-4 page-sidebar">
                 	<div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
                 	
+
+                        <div>
+                        <center>
+                            <h3>What's Next?</h3>    
+                            <div class="stepwizard" style="height:160px;">
+                            <div class="stepwizard-row">
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Ask Advisor for Referrals</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-info btn-square">Mock interview with Advisor</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-warning btn-square">Succeed in real interview!</button>
+                                </div>
+                            </div>
+                            
+                        </center>
+                        </div>
+
+
+
+
+                    
                 		<div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
                 			<h3>Need to talk with advisor ?</h3>
                 			<p>Post your Mock interview and invite advisor to train you and for job referrals</p>
@@ -268,7 +296,8 @@
 	                    'skills': skills,
 	                    'rate' : json[i].rate,
 	                    'educations': educations,
-	                    'image': BASE_URL + json[i].profilepic,
+	                    /*'image': BASE_URL + json[i].profilepic,*/
+                        'image': BASE_URL + "images/face.jpg",
 	                }
 	                
 	                searchItem = Mustache.to_html(searchItem, templateData);

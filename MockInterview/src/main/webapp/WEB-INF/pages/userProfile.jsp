@@ -116,7 +116,58 @@
                 </div>
 
 
-                <div class="col-md-3"></div>
+                <div class="col-md-3 page-sidebar">
+                    
+
+                    <div id="userprofilesidebar" class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
+                       
+                       <div>
+                        <center>
+                            <h3>What's Next?</h3>    
+                            <div class="stepwizard" style="height:190px;">
+                            <div class="stepwizard-row">
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-info btn-square">Contact this Advisor/Employer</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Ask for referrals/jobs</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-warning btn-square">Mock interview with Advisor</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Succeed in real interview and get hired!</button>
+                                </div>
+                            </div>
+                            </div>
+                        </center>
+                        </div>
+
+                       
+                       <hr/>
+                        <div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
+                            <h3>Need to talk with advisor ?</h3>
+                            <p>Post your Mock interview and invite advisor to train you and for job referrals</p>
+                            <div style="text-align:center">
+                            
+                                <a onclick="showPostAMockScreen()" class="btn btn-success">Post a Mock</a>
+                                <!--<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>-->
+                            </div>
+                        </div>
+                     
+                    </div> 
+
+
+
+
+
+                </div>
             </div>
 
 
@@ -130,6 +181,7 @@
 <script type="text/javascript">
     username = "${name}";
     $(function () {
+        $("#userprofilesidebar").hide();
         getProfileDetails();
     });
 
@@ -141,6 +193,7 @@
             success: function (res) {
                 var user = jQuery.parseJSON(res);
                 if (user.type == "INTERVIEWER") {
+                    $("#userprofilesidebar").show();
                     $("#profiletabs")
                             .append('<li><a href="#interviewoffered" role="tab" data-toggle="tab">' +
                             '<i class="fa fa-book"></i> &nbsp;Jobs Offered</a></li>');
@@ -205,7 +258,7 @@
         				$("#user_position").html("User  Position information not available.");
         			}
                 } else {
-                    $("#workexperience").html("<div>Work experience information not available.</div>");
+                    $("#workexperience").html("<div>Work experience information not available.</div><br/>");
                 }
 
                 var alleducations = user.educations;
@@ -259,6 +312,7 @@
                                 + '<div class="col-md-8"><span class="panel-title">'
                                 + allReviews[i].ititle + '</span> </div>'
                                 + '<div class="col-md-4"><span style="pull-right">'
+                                + ' <span style="display:inline-block;"><input type="number" id="userRating-' + i + '" /> </span> '
                                 + ' (' + allReviews[i].average + '/5)'
                                 + '	</span></div></div></div>'
                                 + '<div class="panel-body">' + '<i>' + allReviews[i].message + '</i>'
@@ -269,6 +323,14 @@
                                 + prettyDate(new Date(Number(allReviews[i].dt))) + '</small></span></div>'
                                 + '  </div>' + '  </div>' + '</div>';
                         $("#reviews").append(areview);
+                        $("#userRating-" + i + "").val(allReviews[i].average).rating({
+                            'min': 0,
+                            'max': 5,
+                            'step': 1,
+                            'readonly': true,
+                            'showClear': false,
+                            'showCaption': false
+                        });
                     }
                 } else {
                     $("#reviews").html("<div>No reviews available.</div>");

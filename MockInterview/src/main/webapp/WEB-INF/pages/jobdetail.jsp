@@ -74,13 +74,9 @@
 							</c:if>
 						</c:if>
 						<hr />
-					</div>
-					<div class="col-md-3"></div>
-				</div>
 
 
-				<div class="row">
-					<div class="col-md-9 page-content">
+
 						<div class="clearfix white-container" id="msgdetail">
 
 							<sec:authorize access="isAuthenticated()">
@@ -88,11 +84,12 @@
 									<c:when test="${not empty jobApplication}">
 										<div class="alert alert-success">You have already sent
 											the application.</div>
+									</c:when>		
+								</c:choose>	
+							</sec:authorize>	
+						</div>
 
-
-            <div class="row">
-                <div class="col-md-9 page-content">                    
-                    <div class="clearfix white-container" id="msgdetail">
+						 <div class="clearfix white-container" id="msgdetail">
 					
                      <sec:authorize access="isAuthenticated()">                
 	                	<c:choose>
@@ -164,26 +161,69 @@
 	                	</c:choose>
 	                    
 	                </sec:authorize> 	
-                </div>                
-            </div>
-            
-            <div class="col-md-4 page-sidebar">
-                <div class="widget sidebar-widget white-container ">
-                    <!-- <div class="row">
+                </div> 
 
-								<div class="col-md-6">
-									<a href="<c:url value='/userprofile.do?name=${job.interviewer}'/>" target="_blank"><img class="img-responsive img-hover" src="${profilepic}" alt="User Pic" style="height:100px;"></a>
-								</div>
-								<div class="col-md-6" style="padding:0px 0px 0px 2px">
-									Posted By<br><span><a target="_blank" href="<c:url value='/userprofile.do?name=${job.interviewer}'/>">${job.interviewer}</a></span><br>
-									<span>
-									    <input data-showCaption="false" data-showClear="false" data-size="xs" data-readonly="true" data-min="0" data-max="5" data-step="0.5" value="${rating}" id="postedByRating" type="number" class="rating" >
-									</span>									
-								</div>								
-							</div> -->
-						</div>
+
+
+
+
+
+
 					</div>
-				</div>
+					 
+
+					 <div class="col-md-3 page-sidebar">
+                		<!-- <div class="widget sidebar-widget white-container "> -->
+                   
+                	<div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
+                	   
+                       <div>
+                        <center>
+                            <h3>What's Next?</h3>    
+                            <div class="stepwizard" style="height:190px;">
+                            <div class="stepwizard-row">
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-info btn-square">Apply Job in Company X</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Find Advisor in X</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-warning btn-square">Mock interview with Advisor</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Rock in real interview with X</button>
+                                </div>
+                            </div>
+                            </div>
+                        </center>
+                        </div>
+
+                       
+                       <hr/>
+                		
+                	
+                	
+						<h3 style="font-weight: bold;margin: 30px 0;">Top Advisor</h3>
+						<div id="topadvisorlist"></div>  
+                    </div>
+					</div>
+
+
+			
+
+
+		</div>
+
+
+
+
 			</div>
 		</div>
 	</div>
@@ -246,6 +286,54 @@
                 return false;
             }
         });
+
+
+        var topAdvisor =
+					    '<div class="row">' +
+					    '<div class="col-md-3">' +
+					    '<img src="{{ image }}" class="img-thumbnail">' +        
+					    '</div>' +
+					    '<div class="col-md-9">' +
+					    '<div><a style="color:#454545;font-weight:bold" href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
+					    '<div class="advisor-skills">{{skills}}</div>' +
+					    '<div><input type="number" value="{{rating}}" class="userRating" /> <span class="rating-span"> ({{rating}}/5) </span></div>' +
+					    '</div>' +
+					    '</div><hr class="advisor-hr" />'; 
+
+        $.ajax({
+	        type: "POST",
+	        url: BASE_URL + "gettopadvisor.do",
+	        data: "noOfResult=5",
+	    }).done(function (res) {
+	        var jsonResult = jQuery.parseJSON(res); 
+	        var json = jsonResult.advisorList;
+	        $("#topadvisorlist").html("");
+	        for(var i = 0; i< json.length; i++) {
+	        	var skills = json[i].skills.replace(/\[/,'').replace(/\]/,'').split(",");
+			    var templateData = {
+			        'username': json[i].username,		        
+			        'rating': parseFloat(json[i].rating).toFixed(1),
+			        'image': BASE_URL + json[i].profilepic,
+			        'skills' : skills.join(",").replaceAll('"','')
+			    }		    		  
+			    var html = Mustache.to_html(topAdvisor, templateData);
+			    $("#topadvisorlist").append(html);
+	        }      
+	        
+	        $("input.userRating").rating({
+	            'min': 0,
+	            'max': 5,
+	            'step': 1,
+	            'readonly': true,
+	            'showClear': false,
+	            'showCaption': false
+	        });
+	        
+	    });
+
+
+
+
     });
 
     function submitForm() {    	    	

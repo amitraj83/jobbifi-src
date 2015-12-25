@@ -60,6 +60,61 @@
                    
 
                 </div>
+
+
+                <div class="col-md-3 page-sidebar">
+                    <div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
+                       
+                       <div>
+                        <center>
+                            <h3>What's Next?</h3>    
+                            <div class="stepwizard" style="height:160px;">
+                            <div class="stepwizard-row">
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-info btn-square">Provide mock interview</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-success btn-square">Refer candidate in your company</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step">
+                                    <button type="button" class="btn btn-warning btn-square">Get paid while supporting community !</button>
+                                </div>
+                            </div>
+                            
+                        </center>
+                        </div>
+
+                       
+                       <hr/>
+                        <div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
+                            <h3>Looking for a right candidate ?</h3>
+                            <p>Post your job and let millions of candidates find your job and you select the right candidate for your job.</p>
+                            <div style="text-align:center">
+                            
+                                <a onclick="showPostJobScreen()" class="btn btn-success">Post a Job</a>
+                                <!--<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>-->
+                            </div>
+                        </div>
+                    
+                     
+                    </div>              
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
 
         </div>
@@ -89,6 +144,11 @@
         checkRatingAllowed();
         $("#date").html(prettyDate(new Date(Number(${dt}))));
     });
+
+
+    function showPostJobScreen(){
+        window.location = BASE_URL+"postjob.do";
+    }
 
     function showUserRating() {
         $.ajax({

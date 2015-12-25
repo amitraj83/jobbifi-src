@@ -156,8 +156,8 @@
 														'positions' : positions,
 														'skills' : skills,
 														'educations' : educations,
-														'image' : BASE_URL
-																+ json[i].additional.profilepic,
+														/*'image' : BASE_URL+ json[i].additional.profilepic,*/
+														'image' : BASE_URL+ "images/face.jpg",
 													}
 													console.log(templateData);
 													searchItem = Mustache

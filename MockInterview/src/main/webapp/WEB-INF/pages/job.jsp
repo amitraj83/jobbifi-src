@@ -144,6 +144,7 @@
     	}
         $("#nav_jobs").addClass("active");
         $("#searchJobBtn").click(function () {
+            $("#searchJobResult").html('<center><i class="fa fa-spinner fa-spin"></i></center>');
             var searchKey = $("#searchKey").val();
             if (searchKey == "") {
                 searchJobMessage();
@@ -159,6 +160,7 @@
                     searchJobMessage()
                     return;
                 }
+                $("#searchJobResult").html('<center><i class="fa fa-spinner fa-spin"></i></center>');
                 searchJobs(searchKey, 1, 10);
                 return false;
             }

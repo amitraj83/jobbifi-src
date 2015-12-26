@@ -1,6 +1,7 @@
 package com.interview.request.handlers;
 
 import java.rmi.RemoteException;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.interview.framework.REQUEST_TYPES;
@@ -15,7 +16,7 @@ public class SearchAdditionalDataHandler extends RequestHandler {
   @Override
   public Map<String, Object> handleRequest(Map<Object, Object> users) {
 
-    Map<String, Object> resMap = null;
+    Map<String, Object> resMap = new HashMap<String, Object>();
     try {
       resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getAdditionalData(users);
 

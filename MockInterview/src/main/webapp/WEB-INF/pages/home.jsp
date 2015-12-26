@@ -519,38 +519,31 @@
 						resources.</p>
 				</div>
 				<div class="row funs">
-					<div class="col-xs-3 wow zoomIn" data-wow-duration="700ms"
+					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="500ms">
 						<i class="fa fa-group"></i>
 
 						<h2>Jobs</h2>
 
-						<h3 class="timer">1245</h3>
+						<h3 class="timer" id="jobscount">1245</h3>
 					</div>
-					<div class="col-xs-3 wow zoomIn" data-wow-duration="700ms"
+					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="700ms">
 						<i class="fa fa-gift"></i>
 
 						<h2>Candidates</h2>
 
-						<h3 class="timer">986</h3>
+						<h3 class="timer" id="candidatescount">986</h3>
 					</div>
-					<div class="col-xs-3 wow zoomIn" data-wow-duration="700ms"
+					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="900ms">
 						<i class="fa fa-trophy"></i>
 
-						<h3>Advisors</h3>
+						<h3>Advisors/Employers</h3>
 
-						<h3 class="timer">23</h3>
+						<h3 class="timer" id="employerscount">23</h3>
 					</div>
-					<div class="col-xs-3 wow zoomIn" data-wow-duration="700ms"
-						data-wow-delay="900ms">
-						<i class="fa fa-trophy"></i>
-
-						<h3>Employers</h3>
-
-						<h3 class="timer">23</h3>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -732,6 +725,27 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
+
+
+			$.ajax({
+					type : "GET",
+					url : "/stats.do",
+					data : "",
+					success : function(data) {
+						var jresponse = jQuery.parseJSON(data);
+            			var jobscount = jresponse.jobs;
+			            var candidatescount = jresponse.candidates;
+			            var employerscount = jresponse.employers;
+			            
+			            $("#jobscount").html(jobscount);
+						$("#candidatescount").html(candidatescount);
+						$("#employerscount").html(employerscount);
+
+					}
+				});
+
+
+
 			$("#contact-form").submit(function(e) {
 				var url = "/support.do";
 				$.ajax({

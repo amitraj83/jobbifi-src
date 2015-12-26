@@ -678,4 +678,24 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     return result;
   }
 
+@Override
+public long getCandidatesCount() throws RemoteException {
+	
+	DBCollection collection =
+	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+
+	DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWEE"));
+	return Long.valueOf(cursor.count());
+	
+}
+
+@Override
+public long getInterviewerCount() throws RemoteException {
+	DBCollection collection =
+	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+
+	DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWER"));
+	return Long.valueOf(cursor.count());
+}
+
 }

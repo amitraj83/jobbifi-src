@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="row" style="padding-top:20px;">
-                        <div id="searchJobResult" class="col-md-12"></div>
+                        <div id="searchJobResult" class="col-md-12"><center><i class="fa fa-spinner fa-spin"></i></center></div>
                     </div>
                 </div>
                 <div class="col-md-4 page-sidebar">

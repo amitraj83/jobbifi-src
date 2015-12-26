@@ -113,6 +113,8 @@
                         </div>
                     </div>
 
+                    
+
                 </div>
 
 
@@ -151,8 +153,43 @@
 
                        
                        <hr/>
+
+                       <sec:authorize access="!isAuthenticated()">
+                           <center><span>Login to send message !</span> </center>
+                       </sec:authorize>
+
+                       <sec:authorize access="hasRole('ROLE_INTERVIEWEE')">
+                       <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Contact Me</h3>
+                          </div>
+                          <div class="panel-body">
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control textarea" rows="3" name="Message" id="inputmessage" placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row">
+                             
+                                <div class="col-md-6"><span id="status" class="pull-right"></span></div>
+                                <div class="col-md-6">
+                                    <button id="contactme" type="button" class="btn btn-success pull-right btn-sm">Send a message</button>
+                                </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+                        </sec:authorize>
+                         <hr/>
+
+
                         <div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
-                            <h3>Need to talk with advisor ?</h3>
+                            <h3>Need Consulatation ?</h3>
                             <p>Post your Mock interview and invite advisor to train you and for job referrals</p>
                             <div style="text-align:center">
                             
@@ -160,6 +197,11 @@
                                 <!--<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>-->
                             </div>
                         </div>
+
+                       
+
+
+                         
                      
                     </div> 
 
@@ -183,6 +225,11 @@
     $(function () {
         $("#userprofilesidebar").hide();
         getProfileDetails();
+
+
+       
+
+
     });
 
     function getProfileDetails() {
@@ -335,6 +382,53 @@
                 } else {
                     $("#reviews").html("<div>No reviews available.</div>");
                 }
+
+
+
+
+
+
+                 $(document).on("click", "#contactme", function(){
+                    $("#status").html('<i class="fa fa-spinner fa-spin"></i>');
+                    var to = user.username;
+                    var message = $("#inputmessage").val();
+
+                    var jobid = "";
+                    var jobtitle = "Need Consulatation";
+                    var parentMessageId = "";
+                    var refentity = "JOB";
+
+                    $.ajax({
+                        type: 'POST',
+                        url: BASE_URL + 'sendnewmessage.do',
+                        data: "to=" + to + "&message=" + message + "&jobid=" + jobid + "&jobtitle=" + jobtitle +
+                        "&parentMessageId=" + parentMessageId + "&refentity=" + refentity,
+                        async: false
+                    }).done(function (res) {
+                        
+
+                         $.ajax({
+                            type: 'POST',
+                            url: BASE_URL + 'addcontactlist.do',
+                            data: "to=" + to 
+                        }).done(function (res) {
+                            
+                        });                        
+
+                        $("#inputmessage").val("");
+                        $("#status").html('<i class="fa fa-check" style="color: #5cb85c;"></i>');
+
+
+
+                    });
+                });
+
+
+
+
+
+
+
             }
         });
     }

@@ -51,6 +51,7 @@ public class OpLogReaderManager {
               } else if (line.getNameSpace().equals(MongoCollections.JOB)) {
                 processJobDocument(line);
               }
+              log.info("line.getNameSpace().toString(): " + line.getNameSpace().toString());
               SolrIndexingService.getInstance().reload();
             }
           }
@@ -78,11 +79,16 @@ public class OpLogReaderManager {
   }
 
   private void processInterviewerDocument(OplogLine line) {
+    log.info(
+        "com.interview.mongo.connector.OpLogReaderManager.processInterviewerDocument(OplogLine)");
+    log.info(line.getOperation().toString());
     if (line.getOperation() == MongoOplogOperation.Insert) {
       SolrInterviewer solrInterviewer =
           InterviewerConversion.getInterviewerForInsert(line.getData());
       SolrIndexingService.getInstance().addPojo(solrInterviewer);
     } else if (line.getOperation() == MongoOplogOperation.Update) {
+      log.info(
+          "com.interview.mongo.connector.OpLogReaderManager.processInterviewerDocument(OplogLine)");
       SolrInterviewer solrInterviewer =
           InterviewerConversion.getInterviewerForUpdate(line.getData());
       SolrIndexingService.getInstance().deletePojo(line.getData().getString("_id"));

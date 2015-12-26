@@ -58,6 +58,15 @@ public class UpdateProfileHandler extends RequestHandler {
             interviewer.setRate(0);
           }
         }
+        if (data.get(USER.PHONE_NUMBER) != null) {
+          Integer phoneNumber =
+              NumberUtils.parseNumber((String) data.get(USER.PHONE_NUMBER), Integer.class);
+          if (null != phoneNumber) {
+            interviewer.setPhoneNumber(phoneNumber);
+          } else {
+            interviewer.setPhoneNumber(null);
+          }
+        }
         if (data.get(USER.CV) != null)
           interviewer.setCv(data.get(USER.CV).toString());
         if (data.get(USER.COUNTRY) != null)

@@ -123,17 +123,19 @@ public class ProfileController extends BaseController {
 
     boolean needToUpdateProfilePic = false;
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
-    // reqMap.put(USER.PROFILE_PIC, req.getParameter("profilepic"));
-
     Map<Object, Object> reqMap2 = new HashMap<Object, Object>();
+
     reqMap2.put(USER.USERNAME, getLoginUser());
     Map<String, Object> userInfo = Services.getInstance().getRequestHandlerService()
         .handleRequest(reqMap2, REQUEST_TYPES.USER_INFO);
     String existingProfilepic = userInfo.get(USER.PROFILE_PIC).toString();
     if (!existingProfilepic.equals(req.getParameter("profilepic")))
       needToUpdateProfilePic = true;
+    else
+      needToUpdateProfilePic = false;
 
     reqMap.put(USER.RATE, req.getParameter("rate"));
+    reqMap.put(USER.PHONE_NUMBER, req.getParameter("phonenumber"));
     reqMap.put(USER.CV, req.getParameter("cv"));
     reqMap.put(USER.COUNTRY, req.getParameter("country"));
     reqMap.put(USER.USERNAME, getLoginUser());
@@ -181,14 +183,6 @@ public class ProfileController extends BaseController {
 
     Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
         .handleRequest(reqMap, REQUEST_TYPES.UPDATE_USER_PROFILE);
-
-    /*
-     * if(needToUpdateProfilePic && resMap.get("status").toString().equals("1")){ File
-     * existingProfilePicFile = new File(".\\..\\webapps\\interviewbackend\\"+existingProfilepic);
-     * File newProfilePic = new
-     * File(".\\..\\webapps\\interviewbackend\\"+req.getParameter("profilepic"));
-     * Services.getInstance().getFileUtilities().copyFile(newProfilePic, existingProfilePicFile); }
-     */
 
     return new ModelAndView("response", "message",
         Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));

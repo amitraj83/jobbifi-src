@@ -152,7 +152,7 @@
 											id="update_alleducations"></form>
 										<a href="javascript:void(0)"
 											class="btn btn-default pull-right"
-										Please input a valid phone number	id="update_addmoreeducation">Add Education</a>
+										id="update_addmoreeducation">Add Education</a>
 									</div>
 								</div>
 								<div id="buttonPanel" style="text-align: center;">

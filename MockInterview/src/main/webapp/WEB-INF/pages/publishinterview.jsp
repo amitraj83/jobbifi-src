@@ -56,7 +56,7 @@
                             <label class="col-sm-3 control-label">Description</label>
 
                             <div class="col-sm-9">
-                                <textarea class="form-control" rows="5" name="description"></textarea>
+                                <textarea class="form-control" rows="5" name="description" id="mock-description"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -64,7 +64,7 @@
 
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon"></span>
+                                    <span class="input-group-addon"><i class="fa fa-inr"></i></span>
                                     <input type="text" class="form-control" name="budget"
                                            placeholder="Price you want to pay">
                                 </div>
@@ -119,6 +119,7 @@
 <script type="text/javascript">
     $(function () {
         $("#publishinterview").addClass("active");
+        $('#mock-description').ckeditor();
 
         $("#publishInterviewForm").validate({
             rules: {

@@ -63,6 +63,9 @@ LOGIN_USER = '<sec:authentication property="principal.username" />';
 <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="<c:url value='js/gmaps.js' />"></script>
 
+<!--  CKEDITOR -->
+<script type="text/javascript" src="<c:url value='libraries/ckeditor/ckeditor.js' />"></script>
+<script type="text/javascript" src="<c:url value='libraries/ckeditor/adapters/jquery.js' />"></script>
 
 <script type="text/javascript"> 
 console.log(BASE_URL)

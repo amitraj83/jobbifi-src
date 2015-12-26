@@ -1,7 +1,6 @@
 package com.interview.framework;
 
 public interface USER {
-
   public static final String USERNAME = "username";
   public static final String PASSWORD = "password";
   public static final String EMAIL = "id";
@@ -26,6 +25,5 @@ public interface USER {
   public static final String NEW_PASSWORD = "newpassword";
   public static final String PAYPAL_ADDRESS = "paypaladdress";
   public static final String DBCollection = "interviewer";
-
-
+  public static final String PHONE_NUMBER = "phonenumber";
 }

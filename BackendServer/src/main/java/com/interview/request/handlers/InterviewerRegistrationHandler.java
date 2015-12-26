@@ -35,7 +35,7 @@ public class InterviewerRegistrationHandler extends RequestHandler {
       if (success_status == 2) {
         map.put("response", "2");
         return map;
-      } else {
+      } else if (success_status == 1) {
         Map<AttributeType, String> params = new HashMap<AttributeType, String>();
         params.put(AttributeType.USER_NAME, interviewer.getUsername());
         params.put(AttributeType.USER_TYPE, "INTERVIEWER");

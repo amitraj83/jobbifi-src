@@ -90,5 +90,7 @@
 	<bean id="messageHandler" class="com.interview.request.handlers.MessageHandler" />
 	<bean id="contactlistHandler" class="com.interview.request.handlers.ContactListHandler" />
 	<bean id="supportRequestHandler" class="com.interview.request.handlers.SupportRequestHandler" />
+	<bean id="statsHandler" class="com.interview.request.handlers.StatsHandler" />
+	
 	<!-- Define DataStore Services Ends here -->
 </beans>

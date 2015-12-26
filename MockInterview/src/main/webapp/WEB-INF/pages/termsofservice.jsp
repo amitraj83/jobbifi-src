@@ -25,6 +25,29 @@
 				<p></p>
 				<h2>In This User Agreement:</h2>
 				<p></p>
+				
+				
+				<p><b>"Jobbifi", "we", "our", or "us"</b> means Jobbifi Technologies LLP, India (Registration No. – AAE 4842)</p>
+				<p><b>"Website"</b> means the websites operated by Jobbifi and available at: www.jobbifi.com and any related Jobbifi services, tools or applications.</p>
+				<p><b>"Account"</b> means the account you open when you register on the Website.</p>
+				<p><b>"User", "you" or "your"</b> means an individual who visits or uses the website</p>
+				<p><b>"Candidate"</b> means the Website’s users who use the Website to find jobs or for other career related services.</p>
+				<p><b>"Advisor"</b> means the Website’s users who use the Website to provide career consultation.</p>
+				<p><b>"Employer"</b> means the users who use the Website to post their job requirements and to search suitable candidates for the jobs.</p>
+				<p><b>"Dispute Resolution Process"</b> means the process to be followed between two users in accordance with the Website’s Dispute Resolution Services.</p>
+				<p><b>"Intellectual Property Rights"</b> means any and all intellectual property rights, existing worldwide and the subject matter of such rights, including: (a) patents, copyright, rights in circuit layouts (or similar rights), registered designs, registered and unregistered trade marks, and any right to have confidential information kept confidential; and (b) any application or right to apply for registration of any of the rights referred to in paragraph (a), whether or not such rights are registered or capable of being registered and whether existing under any laws, at common law or in equity.</p>
+				<p><b>"Escrow Payment"</b> means a prepayment made by a candidate for the provision of Advisor’s Services under a User Contract and which will be released in accordance with the section "Escrow Payments" below.</p>
+				<p><b>"Listing"</b> means a job offered or mock interview by a user via the Website.</p>
+				<p><b>"Seller"</b> means a User that offers and provides services or identifies as a Seller through the Website.</p>
+				<p><b>"Seller Services"</b> means all services provided by Sellers.</p>
+				<p><b>"Buyer"</b> means a User that consumes the Seller Services provided by a Seller through the Website.</p>
+
+				
+				
+				
+				
+				
+				<!--
 				<p>
 					<b>"Account"</b> means the account you open when you register on
 					the Website.
@@ -138,8 +161,8 @@
 					available at: <a href="http://www.jobbifi.co.uk">Jobbifi</a> and
 					any related Jobbifi service, tool or application.
 				</p>
-
-
+				-->
+				
 				<p></p>
 				<h2>1. Overview</h2>
 				<p></p>

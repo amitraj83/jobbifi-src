@@ -2,6 +2,10 @@ package com.interview.framework;
 
 public class REQUEST_TYPES {
 
+
+	public static final String STATS = "STATS";
+	
+	
   public static final String USER_CREDENTIALS = "USER_CREDENTIALS";
   public static final String USER_INFO = "USER_INFO";
 

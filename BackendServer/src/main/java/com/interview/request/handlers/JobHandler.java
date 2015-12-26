@@ -64,24 +64,28 @@ public class JobHandler extends RequestHandler {
         resMap.put("jobs", null);
       }
     } else if (null != SUB_REQ && REQUEST_TYPES.SEARCH_JOB_INFO.equals(SUB_REQ)) {
-      try {
-        Map<String, Object> result = (Map<String, Object>) data.get("result");
+    	Map<String, Object> result = (Map<String, Object>) data.get("result");
+    	try {
         Iterator<String> it = result.keySet().iterator();
-        while (it.hasNext()) {
-          Map<String, Object> obj = (Map<String, Object>) result.get(it.next());
-          Job job = DataStoreRegistry.getInstance().getJobStore().getJob((String) obj.get("id"));
-          obj.put("salary", null == job ? "" : job.getSalary());
-          obj.put("experience", null == job ? "" : job.getExperience());
-          obj.put("location", null == job ? "" : job.getLocation());
-          Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
-              .getUserInfo((String) obj.get("interviewer"));
-          obj.put("rating", idata.get(USER.RATING));
-          obj.put("profilepic", idata.get(USER.PROFILE_PIC));
+        try{
+          while (it.hasNext()) {
+        	
+	          Map<String, Object> obj = (Map<String, Object>) result.get(it.next());
+	          Job job = DataStoreRegistry.getInstance().getJobStore().getJob((String) obj.get("id"));
+	          obj.put("salary", null == job ? "" : job.getSalary());
+	          obj.put("experience", null == job ? "" : job.getExperience());
+	          obj.put("location", null == job ? "" : job.getLocation());
+	          Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
+	              .getUserInfo((String) obj.get("interviewer"));
+	          obj.put("rating", idata.get(USER.RATING));
+	          obj.put("profilepic", idata.get(USER.PROFILE_PIC));
+         }
         }
+        catch(Exception ex){}
         resMap.put("result", result);
       } catch (Exception e) {
         e.printStackTrace();
-        resMap.put("result", null);
+        resMap.put("result", result);
       }
     } else if (null != SUB_REQ && REQUEST_TYPES.GET_JOB.equals(SUB_REQ)) {
       try {

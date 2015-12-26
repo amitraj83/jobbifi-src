@@ -187,9 +187,9 @@ public class SolrService {
   public Map<String, Object> searchJobs(String key, int start, int rows) {
 
 
-	  if(!key.equals("''")){
-		  key="*"+key+"*";
-	  }
+//	  if(!key.equals("''")){
+//		  key="*"+key+"*";
+//	  }
     Map<String, Object> results = new HashMap<String, Object>();
     try {
     	Map<String, Object> jsonDocList = new HashMap<String, Object>();

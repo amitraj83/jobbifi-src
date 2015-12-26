@@ -62,5 +62,9 @@ public interface IInterviewerDataStore extends Remote {
 
   public List<Object> getTopAdvisorList(int noOfResult) throws RemoteException;
 
+  public long getCandidatesCount() throws RemoteException;
+  
+  public long getInterviewerCount() throws RemoteException;
+  
 
 }

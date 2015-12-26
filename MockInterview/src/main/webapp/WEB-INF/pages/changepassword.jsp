@@ -80,6 +80,9 @@
                 newPassword: {required: true, minlength: 8, nowhitespace: true},
                 confirmNewPassword: {required: true, minlength: 8, equalTo: "#newPassword"}
             },
+            messages:{
+              confirmNewPassword:"New Password and Confirm Password are not matched"  
+            },
             submitHandler: function (form) {
                 changePassword();
                 return false;

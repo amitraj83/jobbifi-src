@@ -192,4 +192,22 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
       System.out.println("" + e);
     }
   }
+
+
+
+@Override
+public long getJobsCount() throws RemoteException {
+	
+	long count = 1;
+	  try {
+	      DBCollection collection =
+	          Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.JOB.DBCollection);
+	      count = collection.count();
+	      
+	    } catch (Exception e) {
+	      System.out.println("" + e);
+	    }
+	
+	return count;
+}
 }

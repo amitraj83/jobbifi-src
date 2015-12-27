@@ -44,14 +44,18 @@ public class JobStore extends UnicastRemoteObject implements IJobStore {
       job.setInterviewer(row.get(DATASTORES.JOB.INTERVIEWER).toString());
       job.setDescription(row.get(DATASTORES.JOB.DESCRIPTION).toString());
       job.setDt(new Date((Long) row.get(DATASTORES.JOB.DATE)).getTime());
-      job.setStatus(new Integer(row.get(DATASTORES.JOB.STATUS).toString()));
+      if(row.get(DATASTORES.JOB.STATUS) != null)
+    		  job.setStatus(new Integer(row.get(DATASTORES.JOB.STATUS).toString()));
       job.setCompanyName(row.get(DATASTORES.JOB.COMPANY_NAME).toString());
       job.setCompanyDescription(
           MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_DESCRIPTION));
-      job.setCompanyVideo(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO));
-      job.setApplyUrl(row.get(DATASTORES.JOB.APPLY_URL).toString());
+      if(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO) != null)
+    	  job.setCompanyVideo(MongoDataHelper.getStringValue(row, DATASTORES.JOB.COMPANY_VIDEO));
+      if(row.get(DATASTORES.JOB.APPLY_URL) != null)
+    	  job.setApplyUrl(row.get(DATASTORES.JOB.APPLY_URL).toString());
       job.setIndustry(row.get(DATASTORES.JOB.INDUSTRY).toString());
-      job.setFile(row.get(DATASTORES.JOB.FILE).toString());
+      if(row.get(DATASTORES.JOB.FILE) != null)
+    	  job.setFile(row.get(DATASTORES.JOB.FILE).toString());
       if (row.get(DATASTORES.JOB.SALARY) != null) {
         job.setSalary(row.get(DATASTORES.JOB.SALARY).toString());
       }

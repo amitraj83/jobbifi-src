@@ -33,7 +33,7 @@
                         
                     </div>
                     <div class="row" style="margin-top: 30px;">
-                        <div id="searchMockResult" class="col-md-12"></div>
+                        <div id="searchMockResult" class="col-md-12"><center><i class="fa fa-spinner fa-spin"></i></center></div>
                     </div>
                 </div> 
                 <div class="col-md-3 page-sidebar">

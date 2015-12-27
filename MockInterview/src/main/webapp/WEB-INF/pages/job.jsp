@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="row" style="padding-top:20px;">
-                        <div id="searchJobResult" class="col-md-12"></div>
+                        <div id="searchJobResult" class="col-md-12"><center><i class="fa fa-spinner fa-spin"></i></center></div>
                     </div>
                 </div>
                 <div class="col-md-4 page-sidebar">
@@ -144,6 +144,7 @@
     	}
         $("#nav_jobs").addClass("active");
         $("#searchJobBtn").click(function () {
+            $("#searchJobResult").html('<center><i class="fa fa-spinner fa-spin"></i></center>');
             var searchKey = $("#searchKey").val();
             if (searchKey == "") {
                 searchJobMessage();
@@ -159,6 +160,7 @@
                     searchJobMessage()
                     return;
                 }
+                $("#searchJobResult").html('<center><i class="fa fa-spinner fa-spin"></i></center>');
                 searchJobs(searchKey, 1, 10);
                 return false;
             }

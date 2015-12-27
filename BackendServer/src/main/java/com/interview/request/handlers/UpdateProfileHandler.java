@@ -58,7 +58,7 @@ public class UpdateProfileHandler extends RequestHandler {
             interviewer.setRate(0);
           }
         }
-        if (data.get(USER.PHONE_NUMBER) != null) {
+        if ((data.get(USER.PHONE_NUMBER) != null) && (!data.get(USER.PHONE_NUMBER).equals(""))) {
           Integer phoneNumber =
               NumberUtils.parseNumber((String) data.get(USER.PHONE_NUMBER), Integer.class);
           if (null != phoneNumber) {

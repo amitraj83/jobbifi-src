@@ -35,7 +35,6 @@ public class OpLogReaderManager {
       executor.shutdown();
       try {
         while (!executor.isTerminated()) {
-
           OplogLine line = queue.poll(10, TimeUnit.SECONDS);
           System.out.println("Line info: " + line);
           if (line != null) {
@@ -48,11 +47,11 @@ public class OpLogReaderManager {
               if (line.getNameSpace().equals(MongoCollections.INTERVIEW)) {
                 processInterviewDocument(line);
               } else if (line.getNameSpace().equals(MongoCollections.INTERVIEWER)) {
-
                 processInterviewerDocument(line);
               } else if (line.getNameSpace().equals(MongoCollections.JOB)) {
                 processJobDocument(line);
               }
+              log.info("line.getNameSpace().toString(): " + line.getNameSpace().toString());
               SolrIndexingService.getInstance().reload();
             }
           }
@@ -65,7 +64,6 @@ public class OpLogReaderManager {
     } catch (MongoException e) {
       e.printStackTrace();
     }
-
   }
 
   private void processJobDocument(OplogLine line) {
@@ -81,13 +79,19 @@ public class OpLogReaderManager {
   }
 
   private void processInterviewerDocument(OplogLine line) {
+    log.info(
+        "com.interview.mongo.connector.OpLogReaderManager.processInterviewerDocument(OplogLine)");
+    log.info(line.getOperation().toString());
     if (line.getOperation() == MongoOplogOperation.Insert) {
       SolrInterviewer solrInterviewer =
           InterviewerConversion.getInterviewerForInsert(line.getData());
       SolrIndexingService.getInstance().addPojo(solrInterviewer);
     } else if (line.getOperation() == MongoOplogOperation.Update) {
+      log.info(
+          "com.interview.mongo.connector.OpLogReaderManager.processInterviewerDocument(OplogLine)");
       SolrInterviewer solrInterviewer =
           InterviewerConversion.getInterviewerForUpdate(line.getData());
+      SolrIndexingService.getInstance().deletePojo(line.getData().getString("_id"));
       SolrIndexingService.getInstance().addPojo(solrInterviewer);
     } else if (line.getOperation() == MongoOplogOperation.Delete) {
       SolrIndexingService.getInstance().deletePojo(line.getData().getString("_id"));

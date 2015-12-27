@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Job Description</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="description" rows="5" >${job.description}</textarea>
+                                <textarea class="form-control" id="job-description" name="description" rows="5" >${job.description}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -135,7 +135,7 @@
 
 <script type="text/javascript">
     $(function () {
-//         $("#sidenav_postjob").addClass("active");
+    	$('#job-description').ckeditor();
 
         $("#postJobForm").validate({
             rules: {

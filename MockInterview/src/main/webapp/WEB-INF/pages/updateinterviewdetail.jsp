@@ -63,7 +63,7 @@
                             <label class="col-sm-3 control-label">Description</label>
 
                             <div class="col-sm-9">
-                                <textarea class="form-control" rows="5" name="description">${description}</textarea>
+                                <textarea class="form-control" rows="5" id="mock-description" name="description">${description}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -126,7 +126,7 @@
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
     $(function () {
-        //$("#publishinterview").addClass("active");
+        $('#mock-description').ckeditor();
 
         $("#publishInterviewForm").validate({
             rules: {

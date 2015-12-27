@@ -45,12 +45,8 @@ public class ResetPasswordHandler extends RequestHandler {
           params.put(AttributeType.PASSWORD_RESET_URL, url);
           Services.getInstance().getEmailService().sendMail(Mailer.EmailType.FORGOT_PASSWORD,
               params, useremail.toString());
-          // Services.getInstance().getEmailService().sendMailChannelOnEvent("2", params, resEmail,
-          // "mail.resetpasswordlink.subject");
-
           resMap.put("response", "1");
         } else {
-
           resMap.put("response", "0");
         }
       } else if (subrequest == 2) {
@@ -101,7 +97,7 @@ public class ResetPasswordHandler extends RequestHandler {
         long currTime = new Date().getTime();
         long entryTime = entity.getDt();
         long diffInSec = (currTime - entryTime) / 1000;
-        if (diffInSec > 3600) {
+        if (entity.isExpired() || diffInSec > 3600) {
           resMap.put("status", "0");
         } else {
           if ((username.equals(entity.getUsername()))
@@ -118,7 +114,6 @@ public class ResetPasswordHandler extends RequestHandler {
               resMap.put("status", "2");
           }
         }
-
       }
     } catch (RemoteException e) {
       logger.error("Remote Exception : ", e);

@@ -109,26 +109,28 @@
 
             if (null != jobs && jobs.length > 0) {
                 length = Number(jobs.length);
-                jobsHtml = '<table class="table table-striped"><thead><tr><th>From</th><th>To</th><th>Message</th><th>Date</th></tr></thead><tbody>';
+                jobsHtml = '<table class="table table-striped"><thead><tr><th>With</th><th>Message</th><th>Date</th></tr></thead><tbody>';
                 for (var i = 0; i < jobs.length; i++) {
-
+                	var messageWith = null;
                     var to = jobs[i].to;
                     var from = jobs[i].from;
                     var message = jobs[i].message;
                     var labelNew = "";
                     if (LOGIN_USER == to) {
                         to = "Me";
+                        messageWith = from;
                         if (jobs[i].status == "UNREAD") {
                             labelNew = "&nbsp;&nbsp;<label class='label label-success'>New</label>";
                             message='<strong>'+message+'</strong>';
                         }
-                    }
-                    if (LOGIN_USER == from) {
+                    } 
+					if (LOGIN_USER == from) {
                         from = "Me";
+                        messageWith = to; 
                     }
 					var from1="'"+jobs[i].from+"'";
 					var to1="'"+jobs[i].to+"'";
-                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + from +labelNew+ '</td><td>' + to + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
+                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + messageWith +labelNew + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
                 }
                 jobsHtml += '</tbody></table>';
             } else {

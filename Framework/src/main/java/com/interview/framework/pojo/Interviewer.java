@@ -24,7 +24,7 @@ public class Interviewer implements Serializable {
   private String[] industries;
   String password;
   String password2;
-  int phoneNumber;
+  Long phoneNumber;
   private List<Position> positions = new ArrayList<Position>();
   String profilePic;
   int rate;
@@ -170,8 +170,8 @@ public class Interviewer implements Serializable {
     this.password2 = password2;
   }
 
-  public void setPhoneNumber(Integer phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setPhoneNumber(Long l) {
+    this.phoneNumber = l;
   }
 
   public void setPositions(List<Position> positions) {
@@ -204,5 +204,9 @@ public class Interviewer implements Serializable {
 
   public void setUserSocialNetwork(String userSocialNetwork) {
     this.userSocialNetwork = userSocialNetwork;
+  }
+
+  public Long getPhoneNumber() {
+    return phoneNumber;
   }
 }

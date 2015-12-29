@@ -66,7 +66,6 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
 
 
   public List<Interview> getInterviews(String user, String role) throws RemoteException {
-
     DBCollection collection = Services.getInstance().getBaseDataStore().db
         .getCollection(DATASTORES.INTERVIEW.DBCollection);
     List<Interview> list = new ArrayList<Interview>();
@@ -106,13 +105,9 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
 
       if (row.get(DATASTORES.INTERVIEW.INDUSTRY) != null)
         interview.setIndustry(row.get(DATASTORES.INTERVIEW.INDUSTRY).toString());
-
-
       list.add(interview);
     }
     return list;
-
-
   }
 
   public List<Interview> getInterviews(String user, String role, int pageNum, int status)
@@ -318,12 +313,8 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
 
       if (row.get(DATASTORES.INTERVIEW.INDUSTRY) != null)
         interview.setIndustry(row.get(DATASTORES.INTERVIEW.INDUSTRY).toString());
-
-
     }
     return interview;
-
-
   }
 
   public Interview getInterview(String _id) throws RemoteException {
@@ -471,8 +462,6 @@ public class InterviewDataStore extends UnicastRemoteObject implements IIntervie
       if (key.equals(DATASTORES.INTERVIEW.EXPERIENCE))
         updateDoc.append(DATASTORES.INTERVIEW.EXPERIENCE,
             changes.get(DATASTORES.INTERVIEW.EXPERIENCE));
-
-
     }
     updateDoc.append(DATASTORES.INTERVIEW.DATE, new Date().getTime());
     BasicDBObject update = new BasicDBObject().append("$set", updateDoc);

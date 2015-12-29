@@ -164,6 +164,9 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
       fieldSet.put(USER.RATE, interviewer.getRate());
     if (interviewer.getProfilePic() != null)
       fieldSet.put(USER.PROFILE_PIC, interviewer.getProfilePic());
+    if (interviewer.getPhoneNumber() != null) {
+      fieldSet.put(USER.PHONE_NUMBER, interviewer.getPhoneNumber());
+    }
 
     fieldSet.put(USER.EDUCATIONS, educationIds);
     fieldSet.put(USER.POSITIONS, posIds);
@@ -199,7 +202,6 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
   }
 
   public boolean isExist(DBObject data) throws RemoteException {
-    System.out.println("12345678901234567890");
     DBCollection collection =
         Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
     if (!((String) data.get("username")).isEmpty()) {
@@ -267,6 +269,8 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
       responseMap.put(USER.CV, obj.get(USER.CV).toString());
       responseMap.put(USER.TYPE, obj.get(USER.TYPE).toString());
       responseMap.put(USER.EMAIL, obj.get(USER.EMAIL).toString());
+      if (obj.get(USER.PHONE_NUMBER) != null)
+        responseMap.put(USER.PHONE_NUMBER, obj.get(USER.PHONE_NUMBER));
       if (obj.get(USER.CHATPASS) != null)
         responseMap.put(USER.CHATPASS, obj.get(USER.CHATPASS).toString());
       responseMap.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
@@ -531,6 +535,8 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
       responseMap.put(USER.TYPE, obj.get(USER.TYPE).toString());
       responseMap.put(USER.BALANCE, obj.get(USER.BALANCE).toString());
       responseMap.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+      if (obj.get(USER.PHONE_NUMBER) != null)
+        responseMap.put(USER.PHONE_NUMBER, obj.get(USER.PHONE_NUMBER));
 
       List<Map<String, Object>> ratingmap = getAllReviews(obj);
       responseMap.put(VARIABLES.ALLREVIEWS, ratingmap);
@@ -678,24 +684,24 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     return result;
   }
 
-@Override
-public long getCandidatesCount() throws RemoteException {
-	
-	DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+  @Override
+  public long getCandidatesCount() throws RemoteException {
 
-	DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWEE"));
-	return Long.valueOf(cursor.count());
-	
-}
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
 
-@Override
-public long getInterviewerCount() throws RemoteException {
-	DBCollection collection =
-	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+    DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWEE"));
+    return Long.valueOf(cursor.count());
 
-	DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWER"));
-	return Long.valueOf(cursor.count());
-}
+  }
+
+  @Override
+  public long getInterviewerCount() throws RemoteException {
+    DBCollection collection =
+        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+
+    DBCursor cursor = collection.find(new BasicDBObject(USER.TYPE, "INTERVIEWER"));
+    return Long.valueOf(cursor.count());
+  }
 
 }

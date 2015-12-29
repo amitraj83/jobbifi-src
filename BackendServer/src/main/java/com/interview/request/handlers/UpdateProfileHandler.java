@@ -8,6 +8,9 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.util.NumberUtils;
 
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.pojo.Education;
@@ -59,12 +62,11 @@ public class UpdateProfileHandler extends RequestHandler {
           }
         }
         if ((data.get(USER.PHONE_NUMBER) != null) && (!data.get(USER.PHONE_NUMBER).equals(""))) {
-          Integer phoneNumber =
-              NumberUtils.parseNumber((String) data.get(USER.PHONE_NUMBER), Integer.class);
-          if (null != phoneNumber) {
-            interviewer.setPhoneNumber(phoneNumber);
-          } else {
-            interviewer.setPhoneNumber(null);
+          PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+          String phoneNumberString = (String) data.get(USER.PHONE_NUMBER);
+          PhoneNumber phoneNumber = phoneUtil.parse(phoneNumberString, "IN");
+          if (phoneUtil.isValidNumber(phoneNumber)) {
+            interviewer.setPhoneNumber((Long) phoneNumber.getNationalNumber());
           }
         }
         if (data.get(USER.CV) != null)
@@ -91,6 +93,9 @@ public class UpdateProfileHandler extends RequestHandler {
         } else
           resMap.put("status", 0);
       } catch (RemoteException e) {
+        e.printStackTrace();
+      } catch (NumberParseException e) {
+        resMap.put("status", 1);
         e.printStackTrace();
       }
     }

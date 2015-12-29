@@ -306,6 +306,7 @@
 									BASE_URL + user.profilepic);
 							$("#updatecountries").html(allCountriesOption);
 							$("#perhourrate").val(user.rate);
+							$("#phonenumber").val(user.phonenumber);
 
 							var allskills = user.skilllist;
 							for (var i = 0; i < allskills.length; i++) {

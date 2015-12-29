@@ -15,6 +15,8 @@ import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Bid;
 import com.interview.framework.pojo.Escrow;
 import com.interview.framework.pojo.Interview;
+import com.interview.proto.Mailer;
+import com.interview.proto.Mailer.AttributeType;
 import com.interview.rmi.DataStoreRegistry;
 import com.interview.services.Services;
 
@@ -60,6 +62,33 @@ public class EscrowHandler extends RequestHandler {
               .getUserInfo(i.getInterviewee()).get(USER.BALANCE).toString());
           Services.getInstance().getNotificationService().processNotification(i,
               VARIABLES.NOTIFICATION.TYPE.ESCROW_NOTIFICATION);
+          if(status == 16){
+        	  Map<AttributeType, String> params = new HashMap<AttributeType, String>();
+        	  params.put(AttributeType.USER_NAME, username);
+        	  params.put(AttributeType.INTERVIEW_INTERVIEWEE, i.getInterviewee());
+        	  params.put(AttributeType.INTERVIEW_INTERVIEWEE, i.getInterviewee());
+        	  params.put(AttributeType.INTERVIEW_TITLE,i.getTitle());
+        	  params.put(AttributeType.INTERVIEW_URL,
+        	            (String) data.get("baseURL") + "/interviewdetail.do?iid=" + iid);
+        	  params.put(AttributeType.ESCROW_AMOUNT, String.valueOf(amount));
+        	  
+        	  Services.getInstance().getEmailService().sendMail(Mailer.EmailType.ESCROW_DEPOSITE,
+                      params, DataStoreRegistry.getInstance()
+                      .getInterviewerDataStore().getUserEmail(username));
+        	  
+        	  //send mail to interviewee
+        	  Map<AttributeType, String> param = new HashMap<AttributeType, String>();
+        	  param.put(AttributeType.USER_NAME, i.getInterviewee());
+        	  param.put(AttributeType.ADVISOR, username);
+        	  param.put(AttributeType.INTERVIEW_TITLE,i.getTitle());
+        	  param.put(AttributeType.INTERVIEW_URL,
+        	            (String) data.get("baseURL") + "/interviewdetail.do?iid=" + iid);
+        	  param.put(AttributeType.ESCROW_AMOUNT, String.valueOf(amount));
+        	  
+        	  Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_ESCROW,
+                      param, DataStoreRegistry.getInstance()
+                      .getInterviewerDataStore().getUserEmail(i.getInterviewee()));
+          }
 
           res.put("message", message);
           res.put("code", status);

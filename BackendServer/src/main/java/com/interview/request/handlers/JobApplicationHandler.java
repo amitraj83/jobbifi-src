@@ -12,9 +12,13 @@ import org.springframework.stereotype.Service;
 import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
+import com.interview.framework.pojo.Job;
 import com.interview.framework.pojo.JobApplication;
 import com.interview.framework.pojo.UploadedFile;
+import com.interview.proto.Mailer;
+import com.interview.proto.Mailer.AttributeType;
 import com.interview.rmi.DataStoreRegistry;
+import com.interview.services.Services;
 
 @Service
 public class JobApplicationHandler extends RequestHandler {
@@ -34,6 +38,16 @@ public class JobApplicationHandler extends RequestHandler {
       JobApplication jobApplication = (JobApplication) data.get("jobApplication");
       try {
         DataStoreRegistry.getInstance().getJobApplicationStore().saveJobApplication(jobApplication);
+        Job job = DataStoreRegistry.getInstance().getJobStore().getJob(jobApplication.getJobId());
+        Map<AttributeType, String> param = new HashMap<AttributeType, String>();
+        param.put(AttributeType.USER_NAME, job.getInterviewer());
+	    param.put(AttributeType.JOB_TITLE,job.getTitle());
+	    param.put(AttributeType.JOB_URL,
+	    		(String) data.get("baseURL") + "/jobdetail.do?jid=" + job.getId());
+	    Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_JOB_APPLICATION,
+  				param, DataStoreRegistry.getInstance()
+  				.getInterviewerDataStore().getUserEmail(job.getInterviewer()));
+        
         resMap.put("status", 1);
       } catch (RemoteException e) {
         logger.error("Exception thrown while saving the Job Application : ", e);

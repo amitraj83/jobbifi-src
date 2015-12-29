@@ -15,7 +15,10 @@ import com.interview.framework.USER;
 import com.interview.framework.pojo.Job;
 import com.interview.framework.pojo.JobApplication;
 import com.interview.framework.rmi.common.IJobStore;
+import com.interview.proto.Mailer;
+import com.interview.proto.Mailer.AttributeType;
 import com.interview.rmi.DataStoreRegistry;
+import com.interview.services.Services;
 
 @Service
 public class JobHandler extends RequestHandler {
@@ -31,6 +34,23 @@ public class JobHandler extends RequestHandler {
 			Job job = (Job) data.get("job");
 			try {
 				DataStoreRegistry.getInstance().getJobStore().saveJob(job);
+				
+				List<String>receivers =DataStoreRegistry.getInstance().getInterviewerDataStore().getMatchingUsersList(job.getSkills(), null, null);
+				
+				
+				  Map<AttributeType, String> param = new HashMap<AttributeType, String>();
+				    param.put(AttributeType.JOB_TITLE,job.getTitle());
+				    param.put(AttributeType.JOB_URL,
+				    		(String) data.get("baseURL") + "/jobdetail.do?jid=" + job.getId());
+				  	for (String receiver : receivers) {
+						
+				  		param.put(AttributeType.USER_NAME, receiver);
+				  		Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_JOB,
+				  				param, DataStoreRegistry.getInstance()
+				  				.getInterviewerDataStore().getUserEmail(receiver));
+					}
+				
+				
 				resMap.put("status", 1);
 			} catch (RemoteException e) {
 				e.printStackTrace();

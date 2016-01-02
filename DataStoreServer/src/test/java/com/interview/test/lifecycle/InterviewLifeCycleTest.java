@@ -41,8 +41,8 @@ public class InterviewLifeCycleTest {
      * iids.add("5411dd5544aeb4e69a4b6432");
      * 
      * Map<String, String> map = ids.getInterviewsStatuses(iids); Iterator<String> it =
-     * map.keySet().iterator(); while(it.hasNext()){ String key = it.next();
-     * System.out.println(key+" - "+map.get(key)); }
+     * map.keySet().iterator(); while(it.hasNext()){ String key = it.next(); System.out.println(key+
+     * " - "+map.get(key)); }
      * 
      * } catch (RemoteException e) { // TODO Auto-generated catch block e.printStackTrace(); }
      */
@@ -75,8 +75,8 @@ public class InterviewLifeCycleTest {
      * ResetPasswordDataStore ds = new ResetPasswordDataStore(); ResetPasswordEntity entity =
      * ds.getResetPasswordEntity(new ObjectId(authInstance)); String secKey = entity.getSecretKey();
      * // System.out.println("ObjectId : "+authInstance); // System.out.println("userid : "+authId);
-     * // System.out.println("authToken : "+authToken); //
-     * System.out.println("secretKey : "+secKey);
+     * // System.out.println("authToken : "+authToken); // System.out.println("secretKey : "
+     * +secKey);
      * 
      * assertEquals(authInstance, entity.getId());
      * 

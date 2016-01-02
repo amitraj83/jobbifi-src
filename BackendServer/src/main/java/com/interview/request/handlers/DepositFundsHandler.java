@@ -68,14 +68,15 @@ public class DepositFundsHandler extends RequestHandler {
         String thirdPartyTID = new ObjectId().toString();
         FundsDepositService depositService = Services.getInstance().getFundsDepositService();
         String transID = data.get("transactionid").toString();
-        
-//        reqMap.put("transactionid", transaction.getInvoiceNumber());
-//		reqMap.put(USER.USERNAME, getLoginUser());
-//		reqMap.put(TRANSACTION.NETAMOUNT, transaction.getAmount().getTotal());
-//		
-        int status = depositService.deposit(String.valueOf(data.get(USER.USERNAME)), Double.valueOf(String.valueOf(data.get(TRANSACTION.NETAMOUNT))), transID);
-        
-//        int status = depositService.funddeposit(transID, thirdPartyTID);
+
+        // reqMap.put("transactionid", transaction.getInvoiceNumber());
+        // reqMap.put(USER.USERNAME, getLoginUser());
+        // reqMap.put(TRANSACTION.NETAMOUNT, transaction.getAmount().getTotal());
+        //
+        int status = depositService.deposit(String.valueOf(data.get(USER.USERNAME)),
+            Double.valueOf(String.valueOf(data.get(TRANSACTION.NETAMOUNT))), transID);
+
+        // int status = depositService.funddeposit(transID, thirdPartyTID);
         res.put("status", status);
 
       } catch (Exception e) {

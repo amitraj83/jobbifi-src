@@ -192,7 +192,7 @@
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<div><i class="fa fa-tags"></i><strong class="grey-heading">Skills:</strong> {{{ skills }}}</div>' +
-                        '<div><span class="mock-budget "><i class="fa fa-credit-card"></i><strong class="grey-heading">Budget:</strong> <span style="color:#454545;"><i class="fa fa-inr"></i> {{ budget }}</span></span>' +
+                        '<div><span class="mock-budget "><i class="fa fa-credit-card"></i><strong class="grey-heading">Budget:</strong> <span style="color:#454545;">$ {{ budget }}</span></span>' +
                         '<span><i class="fa fa-briefcase"></i><strong  class="grey-heading">Experience:</strong> <span style="color:#454545;">{{{ experience }}} yr</span></span></div>' +
                         '</div>' +
                         '</div>' +

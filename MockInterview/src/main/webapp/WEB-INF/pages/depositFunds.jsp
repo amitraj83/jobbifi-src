@@ -47,7 +47,7 @@
 
                                                     <div class="col-sm-6">
                                                     	<div class="input-group">
-                                                        	<span class="input-group-addon"><i class="fa fa-inr"></i></span>
+                                                        	<span class="input-group-addon">$</span>
                                                         	<input type="text" class="form-control" name="amount"
                                                             	   id="amounttodeposit">
                                                         </div>

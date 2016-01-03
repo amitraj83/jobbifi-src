@@ -83,9 +83,9 @@
                 for (var i = 0; i < myinterview.length; i++) {
                     var html = '<tr">' +
                             '<td><a href="' + BASE_URL + 'mock/details.do?mid=' + myinterview[i].id + '" target="_blank"> ' + myinterview[i].title + ' </td>' +
-                            '<td><i class="fa fa-inr"></i>' + myinterview[i].budget + '</td>' +
+                            '<td>$' + myinterview[i].budget + '</td>' +
                             '<td>' + getStatusString(myinterview[i].status) + '</td>' +
-                            '<td><i class="fa fa-inr"></i>' + myinterview[i].price + '</td>' +
+                            '<td>$' + myinterview[i].price + '</td>' +
                             '<td>' + prettyDate(new Date(myinterview[i].dt)) + '</td>' +
                             '</tr>';
                     $("#bid_allbody").append(html);

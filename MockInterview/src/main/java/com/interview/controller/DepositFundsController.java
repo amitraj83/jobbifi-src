@@ -133,11 +133,11 @@ public class DepositFundsController extends BaseController {
       apiContext.setConfigurationMap(sdkConfig);
 
       Amount fundamount = new Amount();
-      fundamount.setCurrency("INR"); // check later
+      fundamount.setCurrency("USD"); // check later
       fundamount.setTotal(amount);
 
       Transaction transaction = new Transaction();
-      transaction.setDescription("Deposit Fund in Your Account " + amount + " INR");
+      transaction.setDescription("Deposit Fund in Your Account " + amount + " USD");
       transaction.setAmount(fundamount);
 
       List<Transaction> transactions = new ArrayList<Transaction>();

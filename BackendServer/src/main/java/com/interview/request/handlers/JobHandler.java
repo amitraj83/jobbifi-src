@@ -22,9 +22,10 @@ import com.interview.services.Services;
 
 @Service
 public class JobHandler extends RequestHandler {
-	public JobHandler() {
-		addHandler(this, REQUEST_TYPES.JOB);
-	}
+  public JobHandler() {
+    addHandler(this, REQUEST_TYPES.JOB);
+  }
+
 
 	@Override
 	public Map<String, Object> handleRequest(Map<Object, Object> data) {
@@ -112,43 +113,67 @@ public class JobHandler extends RequestHandler {
 					}
 				}
 
-				resMap.put("result", result);
-			} catch (Exception e) {
-				e.printStackTrace();
-				resMap.put("result", result);
-			}
-		} else if (null != SUB_REQ && REQUEST_TYPES.GET_JOB.equals(SUB_REQ)) {
-			try {
-				String jobid = (String) data.get(DATASTORES.JOB.ID);
-				Job job = DataStoreRegistry.getInstance().getJobStore().getJob(jobid);
-				if (null != job) {
-					resMap.put("job", job);
-					Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
-							.getUserInfo(job.getInterviewer());
-					resMap.put("rating", idata.get(USER.RATING));
-					resMap.put("profilepic", idata.get(USER.PROFILE_PIC));
-				} else {
-					resMap.put("job", null);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				resMap.put("job", null);
-			}
-		} else if (null != SUB_REQ && REQUEST_TYPES.UPDATE_JOB.equals(SUB_REQ)) {
-			try {
-				Job job = (Job) data.get("job");
-				String jobid = (String) job.getId();
-				try {
-					DataStoreRegistry.getInstance().getJobStore().updateJob(jobid, job);;
-					resMap.put("status", 1);
-				} catch (RemoteException e) {
-					resMap.put("status", -1);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				resMap.put("job", null);
-			}
-		}
-		return resMap;
-	}
+
+
+        IJobStore jobStore = DataStoreRegistry.getInstance().getJobStore();
+
+        while (it.hasNext()) {
+          Map<String, Object> obj = (Map<String, Object>) result.get(it.next());
+          try {
+
+            Job job = jobStore.getJob((String) obj.get("id"));
+            if (job != null) {
+              obj.put("salary", job.getSalary());
+              obj.put("experience", job.getExperience());
+              /* obj.put("location", null == job ? "" : job.getLocation()); */
+              Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
+                  .getUserInfo((String) obj.get("interviewer"));
+              obj.put("rating", idata.get(USER.RATING));
+              obj.put("profilepic", idata.get(USER.PROFILE_PIC));
+            }
+          } catch (Exception ex) {
+            System.out.println("Job not found in database: job id -  " + obj.get("id"));
+            ex.printStackTrace();
+          }
+        }
+
+        resMap.put("result", result);
+      } catch (Exception e) {
+        e.printStackTrace();
+        resMap.put("result", result);
+      }
+    } else if (null != SUB_REQ && REQUEST_TYPES.GET_JOB.equals(SUB_REQ)) {
+      try {
+        String jobid = (String) data.get(DATASTORES.JOB.ID);
+        Job job = DataStoreRegistry.getInstance().getJobStore().getJob(jobid);
+        if (null != job) {
+          resMap.put("job", job);
+          Map<String, Object> idata = DataStoreRegistry.getInstance().getInterviewerDataStore()
+              .getUserInfo(job.getInterviewer());
+          resMap.put("rating", idata.get(USER.RATING));
+          resMap.put("profilepic", idata.get(USER.PROFILE_PIC));
+        } else {
+          resMap.put("job", null);
+        }
+      } catch (Exception e) {
+        e.printStackTrace();
+        resMap.put("job", null);
+      }
+    } else if (null != SUB_REQ && REQUEST_TYPES.UPDATE_JOB.equals(SUB_REQ)) {
+      try {
+        Job job = (Job) data.get("job");
+        String jobid = (String) job.getId();
+        try {
+          DataStoreRegistry.getInstance().getJobStore().updateJob(jobid, job);;
+          resMap.put("status", 1);
+        } catch (RemoteException e) {
+          resMap.put("status", -1);
+        }
+      } catch (Exception e) {
+        e.printStackTrace();
+        resMap.put("job", null);
+      }
+    }
+    return resMap;
+  }
 }

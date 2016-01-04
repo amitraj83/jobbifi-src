@@ -7,6 +7,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
+<<<<<<< HEAD
 	<div id="wrapper">
 		<div id="page-content">
 			<div class="container">
@@ -42,6 +43,9 @@
 								</strong> <br>
 								<div class="profile-balance">
 									Balance <i class="fa fa-inr"></i><span id="profile_balance"></span>
+								</div>
+								<div class="profile-phonenumber">
+									Phone number <span id="profile_phonenumber"></span>
 								</div>
 								<div class="profile-country">
 									Country <span id="profile_country"></span>
@@ -106,6 +110,126 @@
 	</div>
 
 	<%@ include file="/WEB-INF/pages/common/footer.jsp" %>
+=======
+
+<div id="wrapper">
+    <div id="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 profile-page">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-thumbnail profile_img" src="<c:url value='/resources/images/face.jpg'/>"
+                                 id="profile_userpic"/>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="pull-right">
+                                <center>
+                                    <h1 class="rating-num" style="margin-top: 0px;margin-bottom: 0px;">
+                                        <span id="profile_rating">4.0</span>
+                                    </h1>
+                                    <input type="number" id="userRating"/>
+
+                                    <div>
+                                        <span class="glyphicon glyphicon-user"></span>&nbsp;<span
+                                            id="reviewcount">1,050,008</span> Reviews
+                                    </div>
+                                </center>
+                            </div>
+                            <strong>
+
+                                <h1 style="margin-top:0px;text-transform:capitalize;font-weight:bold;">
+                                    <div id="profile_username"></div>
+                                    <div id="user_position" style="font-size:41%;margin-top:5px;"></div>
+                                </h1>
+                            </strong>
+
+                            <br>
+
+                            <div class="profile-balance">Balance <span id="profile_balance"></span></div>
+                            <div class="profile-country">Country <span id="profile_country"></span></div>
+                            <div id="usershortcv"></div>
+
+
+                        </div>
+
+                    </div>
+                    <hr/>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <i class="fa fa-2x fa-suitcase"></i> &nbsp;<span
+                                style="font-size:24px;">Work Experience</span>
+
+                            <div id="workexperience"></div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-2x fa-graduation-cap"></i> &nbsp;<span
+                                style="font-size:26px;">Education</span>
+
+                            <div id="education">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>University</th>
+                                        <th>Degree</th>
+                                        <th>Major</th>
+                                        <th>Year</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="userprofileeducation"></tbody>
+                                </table>
+                            </div>
+                            <hr/>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-2x fa-tags"></i> &nbsp;<span style="font-size:28px;">Skills</span>
+
+                            <div id="skills"></div>
+                            <hr/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-2x fa-comments"></i> &nbsp;<span style="font-size:28px;">Reviews</span>
+
+                            <div class="tab-pane" id="reviews"></div>
+                            <hr/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="interviewoffered">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3"></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<%@ include file="/WEB-INF/pages/common/footer.jsp" %>
+>>>>>>> parent of 9a9b5d8... resolves #139
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 
 <script type="text/javascript">
@@ -126,6 +250,7 @@
                 
                 $("#reviewcount").html(user.reviewCount);
                 $("#profile_balance").html(Number(user.balance).toFixed(2));
+                $("#profile_phonenumber").html("+91 " + Number(user.phonenumber));
                 $("#profile_username").html(user.username);
 
                 $("#profile_userpic").attr({'src': BASE_URL + user.profilepic});
@@ -170,7 +295,7 @@
                 var cv = $.trim(user.cv);
                 if (cv.length > 280) {
                     cv = cv.substring(0, 280);
-                    cv = cv + '...&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Show More </a>';
+                    cv = cv + '...&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Show More</a>';
                 }
                 $("#usershortcv").html(cv);
 
@@ -193,7 +318,6 @@
                     			}else{
                     				$("#user_position").html("User  Position information not available.");
                     			}
-                    			
                 } else {
                     $("#workexperience").html("<div>Work experience information not available.</div>");
                 }

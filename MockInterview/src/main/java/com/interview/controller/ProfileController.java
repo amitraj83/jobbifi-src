@@ -187,6 +187,4 @@ public class ProfileController extends BaseController {
     return new ModelAndView("response", "message",
         Services.getInstance().getJSONUtilityService().getJSONStringOfMap(resMap));
   }
-
-
 }

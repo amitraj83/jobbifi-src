@@ -153,9 +153,9 @@
                             '<td>' + (new Date(Number(allRows[i].time)).format("d mmm, yyyy ") ) + '</td>' +
                             '<td>' + allRows[i].owner + '</td>' +
                             '<td>' + allRows[i].otherParty + '</td>' +
-                            '<td><i class="fa fa-inr"></i>' + allRows[i].gross + '' + star + '</td>' +
-                            '<td><i class="fa fa-inr"><i>' + allRows[i].fee + '</td>' +
-                            '<td><i class="fa fa-inr"><i>' + (allRows[i].balance).toFixed(2) + '</td>' +
+                            '<td>$' + allRows[i].gross + '' + star + '</td>' +
+                            '<td>$' + allRows[i].fee + '</td>' +
+                            '<td>$' + (allRows[i].balance).toFixed(2) + '</td>' +
                             '</tr>';
                     $("#finance_transactionbody").append(row);
                 }

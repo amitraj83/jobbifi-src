@@ -19,6 +19,7 @@ public class BidAccept {
 
   public int acceptBid(ObjectId iid, ObjectId bid_id) throws RemoteException {
 
+	  
     Interview interview = DataStoreRegistry.getInstance().getInterviewDataStore().getInterview(iid);
     if (interview.getStatus() == INTERVIEW_STATUS.PENDING) {
 

@@ -2865,6 +2865,25 @@ body.error.error-404 div.jumbotron {
 
 
 
+/***********************************************
+ *           JOB APPLICATION POSTING          *
+ **********************************************/
 
+div.job-applications.job {
+    border-bottom: 1px solid #bbb;
+    margin: 0px 5px;
+    padding: 14px 0px;
+}
 
+div.job-applications.job div.job-title {
+    font-size: 20px;
+    font-weight: bold;
+}
 
+div.job-applications.job div.job-location {
+    color: #888;
+}
+
+div.job-applications.job a.job-view-btn {
+    margin-top: 10px;
+}

@@ -1,83 +1,79 @@
 package com.interview.test.lifecycle;
 
-//import org.junit.After;
-//import org.junit.Before;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.test.context.ContextConfiguration;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+// import org.junit.After;
+// import org.junit.Before;
+// import org.junit.Test;
+// import org.junit.runner.RunWith;
+// import org.springframework.test.context.ContextConfiguration;
+// import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration("classpath:applicationContext.xml")
+// @RunWith(SpringJUnit4ClassRunner.class)
+// @ContextConfiguration("classpath:applicationContext.xml")
 public class InterviewLifeCycleTest {
 
-/*  String encData = "";
-
-  @Before
-  public void initializeTest() {}
-
-  @Test
-  public void testDelete() {
-
-  }
-
-  @Test
-  public void testDecrypt() {
-
-    
-     * String store; try { store = DataStoreRegistry.getInstance().getInterviewDataStore
-     * ().getInterview("52320928a6a64a29b0250ca4").getInterviewee();
-     * System.out.println("Interviewer : "+store); } catch (RemoteException e) { // TODO
-     * Auto-generated catch block e.printStackTrace(); }
-     
-
-    
-     * ResetPasswordDataStore ds = new ResetPasswordDataStore(); ds.setExprired(new
-     * ObjectId("525ebc45a6a6e885ca37d610"), true); ResetPasswordEntity entity =
-     * ds.getResetPasswordEntity(new ObjectId("525ebc45a6a6e885ca37d610")); assertEquals(true,
-     * entity.isExpired());
-     
-  }
-
-  @Test
-  public void testEncrypt() {
-
-    
-     * GenerateResetPasswordURLService gen = new GenerateResetPasswordURLService(); String url =
-     * gen.generateURL("adam", "adam@tcd.ie"); String[] parts = url.split("[?]")[1].split("&");
-     * String authInstance = ""; String authId = ""; String authToken = "";
-     * 
-     * for (String part : parts) { String[] kv = part.split("=");
-     * if(kv[0].equals(VARIABLES.RESET_PASS.AUTH_ID)) authId = kv[1];
-     * if(kv[0].equals(VARIABLES.RESET_PASS.AUTH_INSTANCE)) authInstance = kv[1];
-     * if(kv[0].equals(VARIABLES.RESET_PASS.AUTH_TOKEN)) authToken = kv[1];
-     * 
-     * }
-     * 
-     * 
-     * ResetPasswordDataStore ds = new ResetPasswordDataStore(); ResetPasswordEntity entity =
-     * ds.getResetPasswordEntity(new ObjectId(authInstance)); String secKey = entity.getSecretKey();
-     * // System.out.println("ObjectId : "+authInstance); // System.out.println("userid : "+authId);
-     * // System.out.println("authToken : "+authToken); //
-     * System.out.println("secretKey : "+secKey);
-     * 
-     * assertEquals(authInstance, entity.getId());
-     * 
-     * ConversionService con = new ConversionService();
-     * 
-     * DecryptionService decService = new DecryptionService(); String decryptedUserName =
-     * decService.decrypt(new String(con.hexStringToByteArray(authId)), secKey);
-     * assertEquals(decryptedUserName, entity.getUsername()); assertEquals(authToken,
-     * entity.getSectoken());
-     * 
-     * 
-     * 
-     * ds.delete(new ObjectId( entity.getId()));
-     
-
-  }
-
-  
+  /*
+   * String encData = "";
+   * 
+   * @Before public void initializeTest() {}
+   * 
+   * @Test public void testDelete() {
+   * 
+   * }
+   * 
+   * @Test public void testDecrypt() {
+   * 
+   * 
+   * String store; try { store = DataStoreRegistry.getInstance().getInterviewDataStore
+   * ().getInterview("52320928a6a64a29b0250ca4").getInterviewee(); System.out.println(
+   * "Interviewer : "+store); } catch (RemoteException e) { // TODO Auto-generated catch block
+   * e.printStackTrace(); }
+   * 
+   * 
+   * 
+   * ResetPasswordDataStore ds = new ResetPasswordDataStore(); ds.setExprired(new
+   * ObjectId("525ebc45a6a6e885ca37d610"), true); ResetPasswordEntity entity =
+   * ds.getResetPasswordEntity(new ObjectId("525ebc45a6a6e885ca37d610")); assertEquals(true,
+   * entity.isExpired());
+   * 
+   * }
+   * 
+   * @Test public void testEncrypt() {
+   * 
+   * 
+   * GenerateResetPasswordURLService gen = new GenerateResetPasswordURLService(); String url =
+   * gen.generateURL("adam", "adam@tcd.ie"); String[] parts = url.split("[?]")[1].split("&"); String
+   * authInstance = ""; String authId = ""; String authToken = "";
+   * 
+   * for (String part : parts) { String[] kv = part.split("=");
+   * if(kv[0].equals(VARIABLES.RESET_PASS.AUTH_ID)) authId = kv[1];
+   * if(kv[0].equals(VARIABLES.RESET_PASS.AUTH_INSTANCE)) authInstance = kv[1];
+   * if(kv[0].equals(VARIABLES.RESET_PASS.AUTH_TOKEN)) authToken = kv[1];
+   * 
+   * }
+   * 
+   * 
+   * ResetPasswordDataStore ds = new ResetPasswordDataStore(); ResetPasswordEntity entity =
+   * ds.getResetPasswordEntity(new ObjectId(authInstance)); String secKey = entity.getSecretKey();
+   * // System.out.println("ObjectId : "+authInstance); // System.out.println("userid : "+authId);
+   * // System.out.println("authToken : "+authToken); // System.out.println("secretKey : "+secKey);
+   * 
+   * assertEquals(authInstance, entity.getId());
+   * 
+   * ConversionService con = new ConversionService();
+   * 
+   * DecryptionService decService = new DecryptionService(); String decryptedUserName =
+   * decService.decrypt(new String(con.hexStringToByteArray(authId)), secKey);
+   * assertEquals(decryptedUserName, entity.getUsername()); assertEquals(authToken,
+   * entity.getSectoken());
+   * 
+   * 
+   * 
+   * ds.delete(new ObjectId( entity.getId()));
+   * 
+   * 
+   * }
+   * 
+   * 
    * 
    * private ObjectId iid; private ObjectId bid_id; private Interview interview; private Bid bid;
    * InterviewerDataStore iids = new InterviewerDataStore();
@@ -240,9 +236,8 @@ public class InterviewLifeCycleTest {
    * InterviewDataStore ids = new InterviewDataStore(); ids.deleteInterivew(iid);
    * 
    * BidStore bs = new BidStore(); bs.deleteBid(bid_id); }
-   
-  @After
-  public void remove() {
-
-  }
-*/}
+   * 
+   * @After public void remove() {
+   * 
+   * }
+   */}

@@ -115,7 +115,7 @@ public class JobHandler extends RequestHandler {
 
 
 
-        IJobStore jobStore = DataStoreRegistry.getInstance().getJobStore();
+        //IJobStore jobStore1 = DataStoreRegistry.getInstance().getJobStore();
 
         while (it.hasNext()) {
           Map<String, Object> obj = (Map<String, Object>) result.get(it.next());

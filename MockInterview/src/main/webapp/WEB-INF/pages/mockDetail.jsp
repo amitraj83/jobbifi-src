@@ -54,6 +54,59 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <sec:authorize access="isAuthenticated()">
+	                       	<sec:authorize access="hasRole('ROLE_INTERVIEWER')">
+	                        <c:choose>
+	                        	<c:when test="${isBidPlaced eq 'N'}">
+											                        <div class="row" id="BIDDIV">
+		                        	<div class="col-md-12">
+		                        		<div class="panel panel-default" id="jobApplicationPanel">
+											
+					                        <div class="panel-heading" style="color: #333;background-color: #f5f5f5;border-color: #ddd;">
+					                            <h1 class="panel-title" style="font-size:18px;">Place Bid</h1>
+					                        </div>
+					                        <div class="panel-body">
+					                            <div class="clearfix white-container">
+					                                <form class="form form-horizontal" id="bidForm">
+					                                	<input type="hidden" name="bidfid" value="">
+					                                	<input type="hidden" name="iid" value="${iid}">                                	
+					                                    <div class="form-group">
+					                                        <label class="col-md-2">Amount</label>
+					                                        <div class="col-md-10">
+					                                            <input type="text" name="price"></input>
+					                                        </div>                                        
+					                                    </div>
+					                                    <div class="form-group">
+					                                        <label class="col-md-2">Message</label>
+					                                        <div class="col-md-10">
+					                                            <textarea name='msg'  rows="5" cols="80"
+					                                                      class="form-control"></textarea>
+					                                        </div>                                        
+					                                    </div>
+					                                    
+					                                    
+					                                    <div class="form-group">
+					                                        <div class="col-md-offset-2 col-md-10">
+					                                            <div id="applyexception"></div><button type="button" class="btn btn-default pull-right" id="placebid">Bid</button>
+					                                        </div>
+					                                    </div>
+					                                </form>
+					                            </div>
+					
+					                        </div>
+					                    </div>
+		                        	</div>
+		                        </div>
+										                        	
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		<div><span class="label label-success">Bid Placed</span></div>
+	                        	</c:otherwise>
+	                        </c:choose>
+	                        
+	                        </sec:authorize>
+                        </sec:authorize>
                     </div>
 
 
@@ -138,6 +191,26 @@
         'showCaption': false
     };
 
+    $("#placebid").one("click", function(){
+        console.log("clicked  --   "+$(this).attr("iid")+"   --  "+$(this).attr("interviewee"));
+
+        $.ajax({
+            type: "GET",
+            url: "<c:url value='/makebid.do'/>",
+            data: $("#bidForm").serialize(),
+        }).done(function (msg) {
+            var json = jQuery.parseJSON(msg);
+            if (json.success == 1) {
+                showSuccess("Your bid placed successfully.");
+                $("#BIDDIV").html('<span class="label label-success">Bid Placed</span>');
+            } else {
+                showError("Request failed to bid on the Mock.");
+            }
+        });
+    });
+    
+    
+    
     $(function () {
         loadEscrowList();
         showUserRating();

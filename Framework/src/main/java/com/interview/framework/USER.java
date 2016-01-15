@@ -26,4 +26,6 @@ public interface USER {
   public static final String PAYPAL_ADDRESS = "paypaladdress";
   public static final String DBCollection = "interviewer";
   public static final String PHONE_NUMBER = "phonenumber";
+  public static final String EMAILHASH = "emailhash";
+  public static final String ACTIVE = "active";
 }

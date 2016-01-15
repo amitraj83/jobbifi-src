@@ -66,6 +66,7 @@ enum AttributeType {
     WITHDRAW_DATE = 35; 
     ACCOUNT_TYPE = 36;
     ACCOUNT = 37;
+    EMAIL_VARIFICATION_URL = 38;
 }
 
 message Attribute {

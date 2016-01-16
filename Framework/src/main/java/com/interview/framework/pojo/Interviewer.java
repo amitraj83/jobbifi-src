@@ -32,6 +32,8 @@ public class Interviewer implements Serializable {
   String[] skills;
   String type;
   String username;
+  String emailHash;
+  String active;
 
   private String userSocialNetwork;
 
@@ -209,4 +211,32 @@ public class Interviewer implements Serializable {
   public Long getPhoneNumber() {
     return phoneNumber;
   }
+
+/**
+ * @return the emailHash
+ */
+public String getEmailHash() {
+	return emailHash;
+}
+
+/**
+ * @param emailHash the emailHash to set
+ */
+public void setEmailHash(String emailHash) {
+	this.emailHash = emailHash;
+}
+
+/**
+ * @return the active
+ */
+public String getActive() {
+	return active;
+}
+
+/**
+ * @param active the active to set
+ */
+public void setActive(String active) {
+	this.active = active;
+}
 }

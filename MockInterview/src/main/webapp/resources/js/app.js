@@ -138,10 +138,10 @@ function registerUser(){
         	showWarning("This username already exist. Please try with another username.");
         }else if(json.response == 1){
             $("#myModal").modal("hide");
-            showSuccess("You have been registered successfully.");
+            showSuccess("You have been registered successfully.Please check your email for email verificaton!!");
             $("#j_username").val(username) ;
             $("#j_password").val(password);
-            login();
+            //login();
 
         } else if(json.response == -1){
             showError("Error occured while registration.");                      

@@ -116,7 +116,8 @@ public class RegistrationController {
 
     // TODO: need to to empty should have the client side validation
     interviewer.setProfilePic("resources/images/face.png");
-
+    interviewer.setEmailHash(UUID.randomUUID().toString());
+    interviewer.setActive("0");
     Map<Object, Object> requestMap = new HashMap<Object, Object>();
     requestMap.put("user", interviewer);
     requestMap.put("baseURL", Util.getbBaseURLpath(req));

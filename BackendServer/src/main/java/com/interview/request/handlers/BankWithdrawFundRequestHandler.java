@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.pojo.BankWithdrawFundRequest;
+import com.interview.proto.Mailer;
+import com.interview.proto.Mailer.AttributeType;
 import com.interview.rmi.DataStoreRegistry;
+import com.interview.services.Services;
 
 @Service
 public class BankWithdrawFundRequestHandler extends RequestHandler {
@@ -38,7 +41,18 @@ public class BankWithdrawFundRequestHandler extends RequestHandler {
         ObjectId id = DataStoreRegistry.getInstance().getBankWithdrawFundRequestStore()
             .saveBankWithdrawFundRequest(fundRequest);
         if (null != id) {
-          resMap.put("status", 1);
+	        resMap.put("status", 1);
+	        Map<AttributeType, String> param = new HashMap<AttributeType, String>();
+	        param.put(AttributeType.USER_NAME, fundRequest.getUsername());
+	        param.put(AttributeType.WITHDRAW_DATE, new Date(fundRequest.getRequestDate()).toString());
+  	    	param.put(AttributeType.ACCOUNT_TYPE,fundRequest.getAccountType());
+  	    	param.put(AttributeType.ACCOUNT,fundRequest.getAccountName());
+  	    	
+  	    Services.getInstance().getEmailService().sendMail(Mailer.EmailType.WITHDRAW_FUND,
+    				param, DataStoreRegistry.getInstance()
+    				.getInterviewerDataStore().getUserEmail(fundRequest.getUsername()));
+          
+          
         } else {
           resMap.put("status", -1);
         }

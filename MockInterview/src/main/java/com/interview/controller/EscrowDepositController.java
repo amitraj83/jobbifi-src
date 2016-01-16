@@ -16,6 +16,7 @@ import com.interview.framework.DATASTORES;
 import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.services.Services;
+import com.interview.util.Util;
 
 
 @Controller
@@ -36,6 +37,7 @@ public class EscrowDepositController extends BaseController {
     reqMap.put(REQUEST_TYPES.SUB_REQ, "DEPOSIT");
     String username = getLoginUser();
     reqMap.put(USER.USERNAME, username);
+    reqMap.put("baseURL", Util.getbBaseURLpath(req));
 
     Map<String, Object> resMap = Services.getInstance().getRequestHandlerService()
         .handleRequest(reqMap, REQUEST_TYPES.ESCROW_DEPOSIT);

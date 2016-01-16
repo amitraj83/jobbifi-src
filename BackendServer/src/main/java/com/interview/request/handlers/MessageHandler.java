@@ -11,7 +11,10 @@ import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Message;
+import com.interview.proto.Mailer;
+import com.interview.proto.Mailer.AttributeType;
 import com.interview.rmi.DataStoreRegistry;
+import com.interview.services.Services;
 
 @Service
 public class MessageHandler extends RequestHandler {
@@ -46,6 +49,15 @@ public class MessageHandler extends RequestHandler {
         msg = (Message) (data.get("Message"));
         DataStoreRegistry.getInstance().getMessageStore().saveMessage(msg);
 
+        Map<AttributeType, String> param = new HashMap<AttributeType, String>();
+        param.put(AttributeType.MESSAGE_RECEIVER, msg.getTo());
+	    param.put(AttributeType.MESSAGE_SENDER,msg.getFrom());
+	    param.put(AttributeType.MESSAGE_URL,(String) data.get("baseURL")+"/message.do");
+	  	  
+	  	Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_MESSAGE,
+	  			param, DataStoreRegistry.getInstance()
+	  			.getInterviewerDataStore().getUserEmail(msg.getTo()));
+        
         logger.info("Message Type : " + msg.getType());
 
         if (msg.getType() != null && !msg.getType().equals("original")) {

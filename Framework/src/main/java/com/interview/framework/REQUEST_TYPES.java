@@ -24,6 +24,10 @@ public class REQUEST_TYPES {
 
   public static final String LINKEDIN_USER_REG = "LINKEDIN_USER_REG";
   public static final String INTERVIEWER_REGISTRATION = "INTERVIEWER_REGISTRATION";
+  
+  public interface INTERVIEWER_REGISTRATION_SUB_REQ {
+	    String EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
+  }
 
   public static final String INTERVIEWER = "INTERVIEWER";
 

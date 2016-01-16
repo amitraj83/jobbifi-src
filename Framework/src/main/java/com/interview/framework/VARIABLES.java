@@ -133,4 +133,5 @@ public interface VARIABLES {
   final String SUPPORT_REQUEST_MESSAGE = "SUPPORT_REQUEST_MESSAGE";
   final String SUPPORT_REQUEST_EMAIL = "SUPPORT_REQUEST_EMAIL";
   final String SUPPORT_EMAIL = "support@jobbifi.com";
+  final String EMAIL_HASH="emailhash";
 }

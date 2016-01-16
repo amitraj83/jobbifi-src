@@ -22,6 +22,8 @@ public interface IInterviewerDataStore extends Remote {
   public int insertInterviewer(String interviewerJSON) throws RemoteException;
 
   public boolean setPasswordForUserName(String username, String pass) throws RemoteException;
+  
+  public boolean setActiveAfterEmailVrification(String emailHash) throws RemoteException ;
 
   public boolean isExist(DBObject data) throws RemoteException;
 

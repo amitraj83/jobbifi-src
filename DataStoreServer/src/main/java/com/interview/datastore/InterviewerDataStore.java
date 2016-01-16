@@ -58,7 +58,9 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     dbObject.put(USER.PROFILE_PIC, interviewer.getProfilePic());
     dbObject.put(USER.CHATPASS, interviewer.getChatPass());
     dbObject.put(USER.INDUSTRY, interviewer.getIndustries());
-
+    dbObject.put(USER.EMAILHASH, interviewer.getEmailHash());
+    dbObject.put(USER.ACTIVE, interviewer.getActive());
+    
     List<Education> educations = interviewer.getEducations();
     String[] educationIds = new String[educations.size()];
     for (int i = 0; i < educations.size(); i++) {
@@ -200,6 +202,21 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
     CommandResult cr = wr.getCachedLastError();
     return cr.ok();
   }
+  
+  public boolean setActiveAfterEmailVrification(String emailHash) throws RemoteException {
+	    DBCollection collection =
+	        Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+	    DBObject query = new BasicDBObject(USER.EMAILHASH, emailHash);
+	    int count = collection.find(query).count();
+	    if (count == 1){
+		    DBObject updateDoc = new BasicDBObject("$set", new BasicDBObject(USER.ACTIVE, "1"));
+		    WriteResult wr = collection.update(query, updateDoc);
+		    CommandResult cr = wr.getCachedLastError();
+		    return cr.ok();
+	    }else{
+	    	return false;
+	    }
+	  }
 
   public boolean isExist(DBObject data) throws RemoteException {
     DBCollection collection =

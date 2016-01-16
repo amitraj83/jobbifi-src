@@ -64,11 +64,8 @@
 
                             <div class="col-sm-9">
                                 <div class="input-group">
-<<<<<<< HEAD
                                     <span class="input-group-addon"><i class="fa fa-inr"></i></span>
-=======
-                                    <span class="input-group-addon">$</span>
->>>>>>> parent of 9a9b5d8... resolves #139
+
                                     <input type="text" class="form-control" name="budget"
                                            placeholder="Price you want to pay">
                                 </div>

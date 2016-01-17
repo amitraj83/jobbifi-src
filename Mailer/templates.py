@@ -18,30 +18,39 @@ templates = {}
 
 logo_file = os.path.join(pwd, "logo.png")
 
-m = emails.Message(html=T("""Hello {{ USER_NAME }},
- 
-Welcome and thanks for registering with Jobbifi!
+m = emails.Message(html=T("""Hello {{ USER_NAME }},\r\n
 
-You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.
+Welcome and thanks for registering with Jobbifi! \r\n
 
+You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.\r\n
+
+However, your account is not yet active. Please click on the following url to activate your account.\r\n
+
+{{EMAIL_VERIFICATION_URL}}
+
+\r\n
 If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.
- 
-Best regards
-<img src='cid:logo.png' />
+
+Best regards\r\n
 Jobbifi Support
 """),
-                   text=T("""Hello {{ USER_NAME }},
- 
-Welcome and thanks for registering with Jobbifi!
+                   text=T("""Hello {{ USER_NAME }},\r\n
 
-You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.
- 
-If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.
- 
-Best regards
-<img src='cid:logo.png' />
+Welcome and thanks for registering with Jobbifi!\r\n
+
+You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.\r\n
+
+However, your account is not yet active. Please click on the following url to activate your account.\r\n
+
+{{EMAIL_VERIFICATION_URL}}
+
+\r\n
+If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.\r\n
+
+Best regards\r\n
 Jobbifi Support
 """),
+
                    subject=T("Welcome to Jobbifi"),
                    mail_from=(SMTP_SENDER_NAME, SMTP_USERNAME))
 m.attach(filename="logo.png", content_disposition="inline", data=open(logo_file, "rb"))

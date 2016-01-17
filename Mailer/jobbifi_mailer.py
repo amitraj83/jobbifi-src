@@ -28,7 +28,7 @@ def callback(ch, method, properties, body):
     try:
         templates[email.type].send(render=emailData,
                   to=email.recipient,
-                  smtp={"host": SMTP_HOST, "port": SMTP_PORT, 'ssl': True, 'user': SMTP_USERNAME, 'password': SMTP_PASSWORD})
+                   smtp={"host": "server15.hostingraja.in", "port": 465, 'ssl': True, 'user': 'support@jobbifi.com', 'password': 'password123'})
         print "[INFO] Sent mail to %s" % (email.recipient)
     except Exception as e:
         print "Basic Exception:", str(e)

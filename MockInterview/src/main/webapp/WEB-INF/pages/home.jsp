@@ -660,13 +660,12 @@
 						<h2>Visit Our Office</h2>
 						<address>
 							<p>
-								<i class="fa fa-map-marker"></i> #20,13th Cross,4th Main
+								<i class="fa fa-map-marker"></i> #117/346, Block-O
 							</p>
 
-							<p style="padding-left: 20px;">Sampangiramnagar,Near BSNL
-								Office</p>
+							<p style="padding-left: 20px;">Geeta Nagar, Kanpur - 208025</p>
 
-							<p style="padding-left: 20px;">Bangalore 5600 027</p>
+							<p style="padding-left: 20px;">UP, India</p>
 						</address>
 					</div>
 					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"

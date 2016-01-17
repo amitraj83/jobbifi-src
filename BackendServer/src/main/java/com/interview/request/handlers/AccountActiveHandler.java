@@ -35,10 +35,21 @@ public class AccountActiveHandler extends RequestHandler implements DisposableBe
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		try{
 			String userid = String.valueOf(data.get(USER.EMAIL));
+			
+			if(DataStoreRegistry.getInstance().getInterviewerDataStore().isUserEmailExist(userid)){
+				boolean active = DataStoreRegistry.getInstance().getInterviewerDataStore().isUserAccountActive(userid);
+				if(active)
+					resMap.put("active", 1);
+				else
+					resMap.put("active", 2);
+			}
+			else{
+				resMap.put("active", 3);	
+			}
+			
+			
 
-			boolean active = DataStoreRegistry.getInstance().getInterviewerDataStore().isUserAccountActive(userid);
-
-			resMap.put("active", active);
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

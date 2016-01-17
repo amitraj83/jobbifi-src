@@ -230,7 +230,7 @@ function login(){
       'data': "emailid="+$("#j_username").val(),
       'dataType': 'json',
        success:function(response){
-           if(response.active == true) {
+           if(response.active == 1) {
            	
            	
 			  $.ajax({
@@ -274,8 +274,11 @@ function login(){
 
 
            }
-           else{
-			showError("Your account is not active. Check your email to activate your account.");
+           else if(response.active == 2){
+           		showError("Your account is not active. Check your email to activate your account.");
+           }
+           else if(response.active == 3){
+			showError("This user account does not exist. Please register!");
            }
        }, 
        error : function(){

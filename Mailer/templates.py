@@ -18,20 +18,20 @@ templates = {}
 
 logo_file = os.path.join(pwd, "logo.png")
 
-m = emails.Message(html=T("""Hello {{ USER_NAME }},\r\n
+m = emails.Message(html=T("""Hello {{ USER_NAME }},<br>
 
-Welcome and thanks for registering with Jobbifi! \r\n
+Welcome and thanks for registering with Jobbifi! <br>
 
-You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.\r\n
+You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a unique online workplace that connects Job Seekers and Job Providers.<br>
 
-However, your account is not yet active. Please click on the following url to activate your account.\r\n
+However, your account is not yet active. Please click on the following url to activate your account.<br>
 
-{{EMAIL_VERIFICATION_URL}}
+{{EMAIL_VARIFICATION_URL}}
 
-\r\n
-If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.
+<br>
+If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.<br>
 
-Best regards\r\n
+Best regards<br>
 Jobbifi Support
 """),
                    text=T("""Hello {{ USER_NAME }},\r\n
@@ -42,7 +42,7 @@ You have successfully signed up as a {{ USER_TYPE }} on www.jobbifi.com, a uniqu
 
 However, your account is not yet active. Please click on the following url to activate your account.\r\n
 
-{{EMAIL_VERIFICATION_URL}}
+{{EMAIL_VARIFICATION_URL}}
 
 \r\n
 If you have any questions or encounter any problems logging in, please contact Jobbifi support at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.\r\n

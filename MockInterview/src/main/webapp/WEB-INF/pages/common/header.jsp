@@ -2,7 +2,7 @@
 
 <div class="modal fade bs-example-modal-sm" id="myModal" role="dialog"
 	aria-hidden="true">
-	<div class="modal-dialog login-modal" style="width: 400px;">
+	<div class="modal-dialog login-modal" style="width: 500px;">
 		<div class="modal-content">
 			<div class="modal-body text-center">
 				<div id="loginbox" class="row">
@@ -121,7 +121,7 @@
 					</div>
 				</div>
 				<div id="signupbox" style="display: none;" class="row">
-					<div class="col-md-10 col-md-offset-1">
+					<div class="col-md-12">
 						<h3 class="clearfix">
 							<span><strong>Signup with Jobbifi</strong>
 								<button type="button" class="close" data-dismiss="modal"
@@ -137,7 +137,7 @@
 							
 								<form id="signupform" class="form-horizontal">
 									<div class="form-group row">
-										<label class="col-sm-4 col-md-4 control-label">User type</label>
+										<label class="col-sm-3 col-md-3 control-label">User type</label>
 										<div class="col-sm-8 col-md-8">
 											 <label class="pull-left radio-inline"> 
 												<input
@@ -150,12 +150,18 @@
 												id="interviewerId" value="INTERVIEWER" type="radio"/>
 												Interviewer
 											</label>
+											<label class="radio-inline"> 
+												<input name="usertype"
+												id="employerId" value="EMPLOYER" type="radio"/>
+												Employer
+											</label>
+
 										</div>
 									</div>
 									<!-- start intervieweeSignUpForm-->
 									<div id="userSignUpForm" >
 										<div class="form-group row">
-											<label for="email" class="col-sm-4 col-md-4 control-label">Email</label>
+											<label for="email" class="col-sm-3 col-md-3 control-label">Email</label>
 
 											<div class="col-sm-8 col-md-8">
 												<input type="text" class="form-control" id="email"
@@ -163,7 +169,7 @@
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="firstname" class="col-sm-4 col-md-4 control-label">Username</label>
+											<label for="firstname" class="col-sm-3 col-md-3 control-label">Username</label>
 
 											<div class="col-sm-8 col-md-8">
 												<input type="text" class="form-control" id="username"
@@ -171,31 +177,23 @@
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="lastname" class="col-sm-4 col-md-4 control-label">Password</label>
+											<label for="lastname" class="col-sm-3 col-md-3 control-label">Password</label>
 
 											<div class="col-sm-8 col-md-8">
 												<input type="password" class="form-control" id="password"
 													name="password" placeholder="Password">
 											</div>
 										</div>
-										<div class="form-group row">
-											<label for="password" class="col-sm-4 col-md-4 control-label">Repeat
-												Password </label>
-
-											<div class="col-sm-8 col-md-8">
-												<input type="password" class="form-control"
-													id="confirmpassword" name="confirmpassword"
-													placeholder="Confirm Password">
-											</div>
-										</div>
+										
 
 										<div class="form-group row">
 											<div class="col-md-12">
 												<button type="submit" class="btn btn-default">Sign
 													Up</button>
-												<img id="signupbtnloader" style="display: none;"
+													<img id="signupbtnloader" style="display: none;"
 													alt="Processing..."
 													src="<c:url value=" /resources/img/loading.gif " />">
+												
 											</div>
 										</div>
 									</div>
@@ -270,6 +268,8 @@
 					<sec:authorize access="hasRole('ROLE_INTERVIEWER')">
 						<li id="nav_advisors"><a title="Advisors"
 							href="<c:url value='/mocks.do'/>">Advisors</a></li>
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_EMPLOYER')">
 						<li><a title="Employer"
 							href="<c:url value='/jobapplications.do'/>">Employer</a></li>
 					</sec:authorize>

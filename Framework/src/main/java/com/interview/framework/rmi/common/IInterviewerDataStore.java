@@ -68,5 +68,9 @@ public interface IInterviewerDataStore extends Remote {
 
   public long getInterviewerCount() throws RemoteException;
 
+  public boolean isUserAccountActive(String username) throws RemoteException;
 
+
+  
+  
 }

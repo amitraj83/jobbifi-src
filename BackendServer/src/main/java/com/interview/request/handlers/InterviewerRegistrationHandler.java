@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.interview.framework.REQUEST_TYPES;
+import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Interviewer;
 import com.interview.proto.Mailer;
@@ -33,15 +34,29 @@ public class InterviewerRegistrationHandler extends RequestHandler {
     int success_status = -1;
     if(null != SUB_REQ && REQUEST_TYPES.INTERVIEWER_REGISTRATION_SUB_REQ.EMAIL_VERIFICATION.equals(SUB_REQ)){
     	try{
-    		String emailHash = (String) reqMap.get(VARIABLES.EMAIL_HASH);
-    		boolean result =
-    				DataStoreRegistry.getInstance().getInterviewerDataStore().setActiveAfterEmailVrification(emailHash);
-    		if(result){
-    			//map.put("response", "1");
-    			success_status = 1;
-    		}else{
-    			success_status = -1;
-    		}
+    		
+    		String encodedUserName = String.valueOf(reqMap.get("authid"));
+    		String authToken = String.valueOf(reqMap.get("authtoken"));
+    		
+    		byte[] encodedUserNamebytes =
+    	            Services.getInstance().getConversionService().hexStringToByteArray(encodedUserName);
+	        String username =
+	            Services.getInstance().getDecryptionService().decrypt(encodedUserNamebytes, "KJH9876JHDGF8976KJHGJ897");
+
+	        if(DataStoreRegistry.getInstance().getInterviewerDataStore().isUserNameExist(username)){
+	        	Map<String, Object> info = DataStoreRegistry.getInstance().getInterviewerDataStore().getUserInfo(username);
+	        	String hash = String.valueOf(info.get(USER.EMAILHASH));
+	        	if(authToken.equalsIgnoreCase(hash)){
+	        		boolean result = DataStoreRegistry.getInstance().getInterviewerDataStore().setActiveAfterEmailVrification(hash);
+	        		if(result){
+	        			//map.put("response", "1");
+	        			success_status = 1;
+	        		}else{
+	        			success_status = -1;
+	        		}
+	        	}
+	        }
+    		
     	}catch (Exception e) {
   	      logger.error("Exception : INTERVIEWER REGISTRATION : ", e);
   	      map.put("response", "-1");
@@ -52,6 +67,10 @@ public class InterviewerRegistrationHandler extends RequestHandler {
 	      final Interviewer interviewer = (Interviewer) reqMap.get("user");
 	      interviewer.setUserSocialNetwork(Interviewer.SOCIALNETWORKS.DIRECT);
 	      interviewer.setChatPass(Services.getInstance().getPasswordGenerator().generatePassword());
+	      
+	      String accountActivationToken = Services.getInstance().getSecurityTokenGenerator().getToken();
+	      interviewer.setEmailHash(accountActivationToken);
+	      
 	      success_status =
 	          DataStoreRegistry.getInstance().getInterviewerDataStore().insertInterviewer(interviewer);
 	
@@ -62,8 +81,21 @@ public class InterviewerRegistrationHandler extends RequestHandler {
 	        Map<AttributeType, String> params = new HashMap<AttributeType, String>();
 	        params.put(AttributeType.USER_NAME, interviewer.getUsername());
 	        params.put(AttributeType.USER_TYPE, "INTERVIEWER");
-	        params.put(AttributeType.EMAIL_VARIFICATION_URL, (String) reqMap.get("baseURL") 
-	        		+ "/emailverification.do?hash=" + interviewer.getEmailHash());
+	        
+	        
+	        
+	        String secretKey = Services.getInstance().getSecurityTokenGenerator().getToken();
+	        byte[] encodedUserNamebytes =
+	                Services.getInstance().getEncryptionService().encrypt(interviewer.getUsername(), "KJH9876JHDGF8976KJHGJ897");
+
+	        String encodedUserName =
+	                Services.getInstance().getConversionService().bytesToHex(encodedUserNamebytes);
+	        
+	        String verificationURL = (String) reqMap.get("baseURL") 
+	        		+ "/emailverification.do?authid=" + encodedUserName+"&authtoken="+interviewer.getEmailHash();
+	        
+	        params.put(AttributeType.EMAIL_VARIFICATION_URL, verificationURL);
+	        System.out.println("Activation url for "+interviewer.getUsername()+" : "+verificationURL);
 	        Services.getInstance().getEmailService().sendMail(Mailer.EmailType.NEW_REGISTRATION, params,
 	            interviewer.getEmail());
 	        // Services.getInstance().getEmailService().sendMailChannelOnEvent("1", param, recList,

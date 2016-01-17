@@ -39,6 +39,37 @@ public class RegistrationController {
 
   private static final Logger logger = Logger.getLogger(RegistrationController.class);
 
+  
+  
+
+
+	@RequestMapping(value = "/emailverification.do", method = RequestMethod.GET)
+	public ModelAndView activateUser(HttpServletRequest req, HttpServletResponse res) {
+
+		
+		HashMap<Object, Object> reqMap = new HashMap<Object, Object>();
+		reqMap.put("authid", String.valueOf(req.getParameter("authid")));
+		reqMap.put("authtoken", String.valueOf(req.getParameter("authtoken")));
+		reqMap.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.INTERVIEWER_REGISTRATION_SUB_REQ.EMAIL_VERIFICATION);
+		
+		Map<String, Object> result = Services.getInstance().getRequestHandlerService()
+				.handleRequest(reqMap, REQUEST_TYPES.INTERVIEWER_REGISTRATION);
+
+		String resp = String.valueOf(result.get("response"));
+		if(resp.equals("1")){
+			return new ModelAndView("response", "message","<html><center>Your account is active. Click <a href=\""+myProps.getProperty("domainurl")+"\">here</a> to login. </center></html>");	
+		}
+		else{
+			return new ModelAndView("response", "message","<html><center>Your details are not valid. Make sure you clicked on the correct activation link. </center></html>");
+		}
+		
+	}
+  
+  
+  
+  
+  
+  
   @RequestMapping(value = "/register.do", method = RequestMethod.POST)
   public ModelAndView processRequest(ModelMap model, HttpServletRequest req,
       HttpServletResponse res) {
@@ -99,23 +130,10 @@ public class RegistrationController {
     String secToken = null;
     String dir_uuid = null;
 
-    if (null != req.getParameter(USER.PROFILE_PIC)
-        && !"".equals(req.getParameter(USER.PROFILE_PIC))) {
-      fileExtension = req.getParameter(USER.PROFILE_PIC).substring(
-          req.getParameter(USER.PROFILE_PIC).lastIndexOf(".") + 1,
-          req.getParameter(USER.PROFILE_PIC).length());
-      random = new SecureRandom();
-      secToken = new BigInteger(130, random).toString(32);
-      dir_uuid = UUID.randomUUID().toString();
-      interviewer.setProfilePic("media/" + dir_uuid + "/" + req.getParameter(USER.USERNAME) + "/"
-          + secToken + "." + fileExtension);
-      // requestMap.put(USER.PROFILE_PIC,"media/"+dir_uuid+"/"+req.getParameter(USER.USERNAME)+"/"+secToken+"."+fileExtension);
-    } else {
-      interviewer.setProfilePic("");
-    }
+    
 
     // TODO: need to to empty should have the client side validation
-    interviewer.setProfilePic("resources/images/face.png");
+    interviewer.setProfilePic("images/face.jpg");
     interviewer.setEmailHash(UUID.randomUUID().toString());
     interviewer.setActive("0");
     Map<Object, Object> requestMap = new HashMap<Object, Object>();
@@ -124,7 +142,7 @@ public class RegistrationController {
     Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
         .handleRequest(requestMap, REQUEST_TYPES.INTERVIEWER_REGISTRATION);
 
-    if (null != req.getParameter(USER.PROFILE_PIC) && !"".equals(req.getParameter(USER.PROFILE_PIC))
+    /*if (null != req.getParameter(USER.PROFILE_PIC) && !"".equals(req.getParameter(USER.PROFILE_PIC))
         && responseMap.get("response").toString().equals("1")) {
       try {
         File userDir = new File(myProps.getProperty("mediapath") + File.separator + dir_uuid
@@ -146,7 +164,7 @@ public class RegistrationController {
       } catch (Exception e) {
         logger.error("Exception occured : ", e);
       }
-    }
+    }*/
 
     return new ModelAndView("response", "message",
         Services.getInstance().getJSONUtilityService().getJSONStringOfMap(responseMap));

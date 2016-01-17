@@ -3,7 +3,8 @@ package com.interview.framework;
 public class REQUEST_TYPES {
 
 
-  public static final String STATS = "STATS";
+	public static final String STATS = "STATS";
+	public static final String CHECK_USERACCOUNT_ACTIVE = "CHECK_USERACCOUNT_ACTIVE";
 
 
   public static final String USER_CREDENTIALS = "USER_CREDENTIALS";

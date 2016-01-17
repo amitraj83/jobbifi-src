@@ -110,11 +110,12 @@ function getURLParameter(name) {
 
 function registerUser(){	
 	
+
 	$("#signupbtnloader").show();
     var username = $("#username").val();   
     var email = $("#email").val();    
     var password = $("#password").val();    
-    var password2 = $("#confirmpassword").val();    
+    var password2 = password
     var usertype = $("#signupform input[name='usertype']:checked").val();    
     if(typeof usertype == 'undefined'){ 
         alert("Please select your user type");
@@ -137,10 +138,12 @@ function registerUser(){
         }else if(json.response == 4){
         	showWarning("This username already exist. Please try with another username.");
         }else if(json.response == 1){
-            $("#myModal").modal("hide");
-            showSuccess("You have been registered successfully.Please check your email for email verificaton!!");
-            $("#j_username").val(username) ;
-            $("#j_password").val(password);
+            //$("#myModal").modal("hide");
+            
+            //$("#j_username").val(username) ;
+            //$("#j_password").val(password);
+            $("#signupbox").html("You have been registered successfully. Please check your email "+email+" to vefiry your account!!");
+            //showSuccess("You have been registered successfully.Please check your email for email verificaton!!");
             //login();
 
         } else if(json.response == -1){
@@ -223,40 +226,68 @@ function login(){
   var data = "j_username=" + $("#j_username").val() + "&j_password=" + $("#j_password").val();    
   $.ajax({
       'type': 'POST',
-      'url': BASE_URL + "j_spring_security_check",      
-      'data': data,
+      'url': BASE_URL + "isuseraccountactive.do",      
+      'data': "emailid="+$("#j_username").val(),
       'dataType': 'json',
        success:function(response){
-            if(response.RESULT != null && response.RESULT == "SUCCESS"){
-               if(response.REDIRECT){
-            	   // admin
-                  window.top.location = BASE_URL + response.REDIRECT;
-                  return;
-               }
-               
-               var callback = "";
-               if($("#callback").val() != ""){
-            	   if(window.location.href.indexOf("?") > 0 ){
-            		   callback = "&callbackj=" + $("#callback").val();
-            	   } else {
-            		   callback = "?callbackj=" + $("#callback").val();
-            	   }
-               }
-               
-               window.top.location.href = window.top.location.href + callback; 
-               location.reload();
-               $("#myModal").modal("hide");
+           if(response.active == true) {
+           	
+           	
+			  $.ajax({
+			      'type': 'POST',
+			      'url': BASE_URL + "j_spring_security_check",      
+			      'data': data,
+			      'dataType': 'json',
+			       success:function(response){
+			            if(response.RESULT != null && response.RESULT == "SUCCESS"){
+			               if(response.REDIRECT){
+			            	   // admin
+			                  window.top.location = BASE_URL + response.REDIRECT;
+			                  return;
+			               }
+			               
+			               var callback = "";
+			               if($("#callback").val() != ""){
+			            	   if(window.location.href.indexOf("?") > 0 ){
+			            		   callback = "&callbackj=" + $("#callback").val();
+			            	   } else {
+			            		   callback = "?callbackj=" + $("#callback").val();
+			            	   }
+			               }
+			               
+			               window.top.location.href = window.top.location.href + callback; 
+			               location.reload();
+			               $("#myModal").modal("hide");
 
-            } else {
-            	showError("Email or password is wrong.");                
-            }
-            $("#loginbtnloader").hide();
+			            } else {
+			            	showError("Email or password is wrong.");                
+			            }
+			            $("#loginbtnloader").hide();
+			       }, 
+			       error : function(){
+			    	   showError("Unable to process the rquest.");
+			    	   $("#loginbtnloader").hide();
+			       }
+			    });
+
+
+
+
+           }
+           else{
+			showError("Your account is not active. Check your email to activate your account.");
+           }
        }, 
        error : function(){
-    	   showError("Unable to process the rquest.");
-    	   $("#loginbtnloader").hide();
+    	   showError("Unable to process the rquest. Please try again later.");
+    	   
        }
     });
+
+
+$("#loginbtnloader").hide();
+
+  
 }
 
 

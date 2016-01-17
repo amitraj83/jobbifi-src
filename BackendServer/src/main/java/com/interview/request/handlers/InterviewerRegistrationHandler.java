@@ -91,7 +91,7 @@ public class InterviewerRegistrationHandler extends RequestHandler {
 	        String encodedUserName =
 	                Services.getInstance().getConversionService().bytesToHex(encodedUserNamebytes);
 	        
-	        String verificationURL = (String) reqMap.get("baseURL") 
+	        String verificationURL = "www.jobbifi.com" 
 	        		+ "/emailverification.do?authid=" + encodedUserName+"&authtoken="+interviewer.getEmailHash();
 	        
 	        params.put(AttributeType.EMAIL_VARIFICATION_URL, verificationURL);

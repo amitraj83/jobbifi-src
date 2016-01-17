@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/pages/common/css.jsp" %>
-    <title>Post Your Job</title>
+    <title>Edit Job</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>

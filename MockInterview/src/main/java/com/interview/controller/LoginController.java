@@ -94,7 +94,7 @@ public class LoginController {
 		Collection<GrantedAuthority> gAuthorities = ((Authentication) principal).getAuthorities();
 		for (GrantedAuthority g : gAuthorities) {
 			if (g.getAuthority().equals("ROLE_ADMIN")) {
-				resMap.put("REDIRECT", "admin/tests.do");
+				resMap.put("REDIRECT", "admin.do");
 			}
 		}
 		return new ModelAndView("response", "message",

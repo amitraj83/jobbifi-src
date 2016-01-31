@@ -273,6 +273,26 @@
 						<li><a title="Employer"
 							href="<c:url value='/jobapplications.do'/>">Employer</a></li>
 					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<li><a title="Admin"
+							href="<c:url value='/admin.do'/>">Admin</a></li>
+						<li id="user-dropdown-menu" class="dropdown">
+						<a
+							class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer;"> <i
+								class="fa fa-user"></i> <sec:authentication
+									property="principal.username" /> <b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a title="Profile" href="<c:url value='/profile.do'/>"><i
+										class="fa fa-user"></i> Profile</a></li>
+								<li><a title="Settings"
+									href="<c:url value='/profilesetting.do'/>"><i
+										class="fa fa-cog"></i> Settings</a></li>
+								<li><a href="javascript:void(0)" onclick="logout();"
+									id="signout"><span class="fa fa-sign-out"></span> Sign out</a>
+								</li>
+							</ul></li>
+					</sec:authorize>
 					<!-- ANY LOGGED IN USER -->
 					<sec:authorize access="hasRole('ROLE_USER')">
 						<li><a title="Finance" href="<c:url value='/finance.do'/>">Finance</a></li>

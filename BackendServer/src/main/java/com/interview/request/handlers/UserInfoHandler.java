@@ -39,12 +39,18 @@ public class UserInfoHandler extends RequestHandler {
       String id = (String) data.get(USER.USERNAME);
       try {
         resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getUserExternalInfo(id);
+        if(resMap.isEmpty()){
+        	resMap.put("result", 0);
+        }else{
+        	
         resMap.put("avgRating", DataStoreRegistry.getInstance().getRatingStore().getAvgRating(id));
         resMap.put("reviewCount",
             DataStoreRegistry.getInstance().getRatingStore().getReviewsCount(id));
         Map<String, Integer> individualRating = getIndividualRating(id);
 
         resMap.put("individualratings", individualRating);
+        resMap.put("result", 1);
+        }
 
       } catch (RemoteException e) {
         e.printStackTrace();

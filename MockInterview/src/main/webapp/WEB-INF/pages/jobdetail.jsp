@@ -42,7 +42,7 @@
 								</div>
 							</div>
 							<h1 class="title">
-								${job.title} &nbsp;&nbsp;&nbsp;<a href="editjob.do?jid=${job.id}">edit</a><br> <small> ${job.companyName}</small>
+								${job.title} &nbsp;&nbsp;&nbsp;<a href="editjob.do?jid=${job.id}"><i class="fa fa-edit"></i></a><br> <small> ${job.companyName}</small>
 							</h1>
 
 						</div>

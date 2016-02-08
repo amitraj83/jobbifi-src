@@ -20,6 +20,7 @@
                     <h1 class="title">Update Your Job</h1>
                     <hr>
                     <form class="form-horizontal" role="form" id="postJobForm">
+                    	<input type="hidden" name="jid" value="${job.id}"/>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Job Title</label>
 

@@ -31,7 +31,7 @@
 <body>
 	<%@ include file="/WEB-INF/pages/common/header.jsp"%>
 	<div id="carousel-wrapper"
-		style="background-image: url(images/home/home.jpg); background-size: cover;">
+		style="background-image: url(images/home/home-page.jpg); background-size: cover;">
 		<div id="home-carousel" class="carousel slide" data-ride="carousel">
 			<div class="container">
 				<div class="carousel-arrows">
@@ -51,23 +51,32 @@
 						<br />
 
 						<div id="home-search-form" class="text-center">
-							<select id="front-search-dropdown" class="selectpicker"
+                        <input id="front-search-key" type="text" class="form-control"
+								aria-label="Search term" placeholder="Skills, company name or keywords"	>    
+                         <input name="" type="text" class="form-control state-input" placeholder="Location">
+                         <!--<select id="front-search-dropdown" class="selectpicker"
 								data-width="170px" data-size='auto'>
 								<option selected>Jobs</option>
 								<option>Advisors</option>
 								<option>Mock Interviews</option>
-							</select> <input id="front-search-key" type="text" class="form-control"
-								aria-label="Search term"
-								placeholder="Skills, company name or keywords">
-							<button id="front-search-button"
-								class="form-control btn btn-default" type="button">Search
-							</button>
+                        </select> --> 
+                       <div id="front-search-dropdown" class="wrapper-dropdown-3" tabindex="1">
+						<span>Search Type</span>
+						<ul class="dropdown">
+							<li><a href="#"><i class="icon-envelope icon-large"></i>Jobs</a></li>
+							<li><a href="#"><i class="icon-truck icon-large"></i>Advisors</a></li>
+							<li><a href="#"><i class="icon-plane icon-large"></i>Mock Interviews</a></li>
+						</ul>
+						</div> 
+                        <button id="front-search-button"
+                            class="form-control btn btn-default" type="button"><i class="fa fa-search"></i> Search
+                        </button>
 						</div>
 						<!-- /input-group -->
 					</div>
 				</div>
 			</div>
-			<div class="brand-promotion">
+			<!-- <div class="brand-promotion">
 				<div class="container">
 					<div class="media row">
 						<div class="col-sm-4">
@@ -105,191 +114,18 @@
 
 								<div class="media-body">
 									<h2>Stand out</h2>
-
 									<p>Promote your skills and professional experience</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!--/#brand-promotion-->
 		</div>
 		<!--/#home-carousel-->
 	</div>
 	<!--/#carousel-wrapper-->
-	<div id="services" class="padding-top padding-bottom off-white">
-		<div class="container">
-			<div class="row text-center section-title">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h3 class="wow fadeInDown" data-wow-duration="700ms"
-						data-wow-delay="300ms">Our Services</h3>
-					<hr class="title-border">
-					<p class="wow fadeInUp" data-wow-duration="700ms"
-						data-wow-delay="300ms">The Jobbifi ecosystem provides tools to
-						job seekers, advisors and employers to accomplish their goals.</p>
-				</div>
-			</div>
-		</div>
-		<div class="portfolio-wrapper wow fadeInUp" data-wow-duration="700ms"
-			data-wow-delay="300ms">
-			<ul class="filter text-center">
-				<li><a class="active" href="#" data-filter="*">All</a></li>
-				<li><a href="#" data-filter=".seekers">Job seekers</a></li>
-				<li><a href="#" data-filter=".advisors">Advisors</a></li>
-				<li><a href="#" data-filter=".employers">Employers</a></li>
-				<!--
-    <li><a href="#" data-filter=".web">Web</a></li>
-    <li><a href="#" data-filter=".package">Package</a></li>
-    -->
-			</ul>
-			<!--/#portfolio-filter-->
-			<ul class="portfolio-items">
-				<li class="seekers">
-					<div class="portfolio-content" data-target="jobs.do">
-						<img class="img-responsive" src="images/services/jobsearch.jpeg"
-							alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/services/js1.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Find a Job</h2>
-
-							<p>Our intelligent search help you reach your career goals
-								and become visible to employers.</p>
-							<a class="folio-link" href="jobs.do"><i
-								class="fa fa-long-arrow-right link-forward"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="seekers">
-					<div class="portfolio-content" data-target="advisors.do">
-						<img class="img-responsive" src="images/services/findadvisor.jpeg"
-							alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/portfolio/port-full2.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Find an advisor</h2>
-
-							<p>Network with professionals from top companies with
-								extensive experience in their fields.</p>
-							<a class="folio-link" href="advisors.do"><i
-								class="fa fa-long-arrow-right link-forward"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="employers">
-					<div class="portfolio-content" data-target="post_job.html">
-						<img class="img-responsive" src="images/services/postjob.jpeg"
-							alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/portfolio/port-full4.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Post jobs</h2>
-
-							<p>Post your jobs and find candidates suitable for your job
-								opening</p>
-							<a class="folio-link" href="#"><i
-								class="fa fa-long-arrow-right"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="seekers advisors employers">
-					<div class="portfolio-content" data-target="message.html">
-						<img class="img-responsive" src="images/services/chat.jpg" alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/portfolio/port-full3.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Realtime chat</h2>
-
-							<p>Job seekers, advisors and employers are encouraged to
-								interact with each other via our realtime chat network.</p>
-							<a class="folio-link" href="#"><i
-								class="fa fa-long-arrow-right"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="seekers advisors">
-					<div class="portfolio-content" data-target="cv.html">
-						<img class="img-responsive" src="images/services/resume.jpeg"
-							alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/portfolio/port-full5.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Resume services</h2>
-
-							<p>Get expert advise on building and improving your CV to
-								maximise your chances.</p>
-							<a class="folio-link" href="#"><i
-								class="fa fa-long-arrow-right"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="employers">
-					<div class="portfolio-content" data-target="candidate_search.html">
-						<img class="img-responsive"
-							src="images/services/searchcandidate.jpeg" alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/portfolio/port-full6.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Candidate search</h2>
-
-							<p>Our intelligent search and recommendation engine gets you
-								the perfect candidate.</p>
-							<a class="folio-link" href="#"><i
-								class="fa fa-long-arrow-right"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="advisors">
-					<div class="portfolio-content" data-target="mocks.do">
-						<img class="img-responsive" src="images/services/mock.jpg" alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/portfolio/port-full7.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Find mock interviews</h2>
-
-							<p>Find and bid to conduct mock interviews matched with your
-								profile</p>
-							<a class="folio-link" href="mocks.do"><i
-								class="fa fa-long-arrow-right link-forward"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="seekers">
-					<div class="portfolio-content" data-target="request_mock.html">
-						<img class="img-responsive" src="images/services/request.jpeg"
-							alt="">
-
-						<div class="overlay">
-							<a class="folio-detail" href="images/portfolio/port-full8.jpg"
-								data-gallery="prettyPhoto"><i class="fa fa-camera"></i></a>
-
-							<h2>Request a Mock</h2>
-
-							<p>Publish your interview requirements and invite our experts
-								to test your skills</p>
-							<a class="folio-link" href="#"><i
-								class="fa fa-long-arrow-right"></i></a>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
 	<br />
 	<br />
 	<div id="candidate-workflow">
@@ -301,7 +137,7 @@
 							<br /> <br />
 							<h3 class="wow fadeInDown" data-wow-duration="700ms"
 								data-wow-delay="300ms">How it works for Candidates</h3>
-							<hr class="title-border">
+							<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 							<p class="wow fadeInUp" data-wow-duration="700ms"
 								data-wow-delay="300ms">We've made it amazingly simple for
 								job seekers to manage their hunt for that dream job.</p>
@@ -311,7 +147,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/1.jpg" alt="">
+									src="images/candidate-workflow/job_search.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -329,7 +165,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/2.jpg" alt="">
+									src="images/candidate-workflow/advisor.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -349,7 +185,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/3.jpg" alt="">
+									src="images/candidate-workflow/interview.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -368,7 +204,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/4.jpg" alt="">
+									src="images/candidate-workflow/hire.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -416,8 +252,8 @@
 			<div class="row text-center section-title">
 				<div class="col-sm-8 col-sm-offset-2">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
-						data-wow-delay="300ms">About Us</h3>
-					<hr class="title-border">
+						data-wow-delay="300ms">Advisior</h3>
+					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
 						data-wow-delay="300ms">We are career experts. Our network of
 						job seekers, career advisors and employer helps you to find the
@@ -464,7 +300,7 @@
 				<div class="col-sm-6 col-sm-offset-3">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
 						data-wow-delay="300ms">Trending Employers</h3>
-					<hr class="title-border">
+					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
 						data-wow-delay="300ms">Schedule job interviews with top
 						employers and get trained by our career advisors to increase your
@@ -503,7 +339,8 @@
 				<a class="client-left" href="#clients-carousel" data-slide="prev"><i
 					class="fa fa-angle-left"></i></a> <a class="client-right"
 					href="#clients-carousel" data-slide="next"><i
-					class="fa fa-angle-right"></i></a>
+					class="fa fa-angle-right"></i>
+                </a>
 			</div>
 		</div>
 	</div>
@@ -530,9 +367,7 @@
 					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="700ms">
 						<i class="fa fa-gift"></i>
-
 						<h2>Candidates</h2>
-
 						<h3 class="timer" id="candidatescount">986</h3>
 					</div>
 					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
@@ -540,22 +375,20 @@
 						<i class="fa fa-trophy"></i>
 
 						<h3>Advisors/Employers</h3>
-
 						<h3 class="timer" id="employerscount">23</h3>
-					</div>
-					
+					</div>					
 				</div>
 			</div>
 		</div>
 	</div>
 	<!--/parallax-section-->
-	<div id="pricing-tables" class="padding-top padding-bottom">
+	<div id="pricing-tables" class="padding-top padding-bottom white-section">
 		<div class="container">
 			<div class="row text-center section-title">
 				<div class="col-sm-6 col-sm-offset-3">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
-						data-wow-delay="300ms">Pricing</h3>
-					<hr class="title-border">
+						data-wow-delay="300ms">Employers</h3>
+					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
 						data-wow-delay="300ms">We offer unbeatable packages for the
 						employers to post jobs and to find the right candidate</p>
@@ -625,21 +458,7 @@
 			</div>
 		</div>
 	</div>
-	<!--/#pricing-tables-->
-	<!--
-	<div id="twitter" class="text-center parallax-section">
-	<div class="parallax-content">
-	<div class="container">
-	    <div class="text-center wow zoomIn" data-wow-duration="700ms" data-wow-delay="300ms">
-	        <i class="fa fa-twitter"></i>
-	        <h1>PASSION LEADS TO DESIGN, DESIGN LEADS TO PERFORMANCE, PERFORMANCE LEADS TO SUCCESS!</h1>
-	        <p>@<a href="#">ThemeRegion</a>- August 13th, 2014</p>
-	    </div>
-	</div>
-	</div>
-	</div>
-	<!--/parallax-section-->
-	<div id="contact-us" class="padding-top padding-bottom">
+    	<div id="contact-us" class="padding-top padding-bottom">
 		<div class="container">
 			<!-- <div class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
             <img class="img-responsive" src="images/monitor.png" alt="">
@@ -648,7 +467,7 @@
 				<div class="col-sm-6 col-sm-offset-3">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
 						data-wow-delay="300ms">Contact Us</h3>
-					<hr class="title-border">
+					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
 						data-wow-delay="300ms"></p>
 				</div>
@@ -716,7 +535,8 @@
 			</div>
 		</div>
 	</div>
-	<!--/#contact-us-->
+	<!--/#contact-us-->   
+    
 	<div id="gmap"></div>
 	<!--/#gmap-->
 	<%@ include file="/WEB-INF/pages/common/footer.jsp"%>
@@ -922,6 +742,55 @@
 					.addClass('active');
 		}
 	</script>
+    
+    
+    		<script type="text/javascript">
+			
+			function DropDown(el) {
+				this.dd = el;
+				this.placeholder = this.dd.children('span');
+				this.opts = this.dd.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						return false;
+					});
+
+					obj.opts.on('click',function(){
+						var opt = $(this);
+						obj.val = opt.text();
+						obj.index = opt.index();
+						obj.placeholder.text(obj.val);
+					});
+				},
+				getValue : function() {
+					return this.val;
+				},
+				getIndex : function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#front-search-dropdown') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-3').removeClass('active');
+				});
+
+			});
+
+		</script>
+    
 </body>
 
 </html>

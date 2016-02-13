@@ -15,7 +15,6 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-12">
                             <h2>Search Jobs</h2>
 							<div id="searchJobMessage"></div>
                             <div class="input-group">
@@ -25,7 +24,7 @@
 									<button id="searchJobBtn" class="btn btn-default" type="button">Search</button>
 									</span>
                             </div>
-                        </div>
+
                     </div>
                     <div class="row" style="padding-top:20px;">
                         <div id="searchJobResult" class="col-md-12"><center><i class="fa fa-spinner fa-spin"></i></center></div>
@@ -37,19 +36,19 @@
                        <div>
                         <center>
                             <h3>What's Next?</h3>    
-                            <div class="stepwizard" style="height:190px;">
+                            <div class="stepwizard">
                             <div class="stepwizard-row">
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step first-button">
                                     <button type="button" class="btn btn-info btn-square">Apply Job in Company X</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step second-button">
                                     <button type="button" class="btn btn-success btn-square">Find Advisor in X</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step third-button">
                                     <button type="button" class="btn btn-warning btn-square">Mock interview with Advisor</button>
                                 </div>
                             </div>
@@ -240,28 +239,28 @@
         }
 
         var description = job.description;
-        var descLess = description.substring(0, 180);
-        if (description.length > 180) {
+        var descLess = description.substring(0, 170);
+        if (description.length > 170) {
             descLess += "...";
         }
 
         var d = new Date(Number(job.dt));
         var html =
-                '<div class="row">' +
+                '<div class="row white-bg">' +
                 '<div class="col-md-2 text-center" style="padding:0px;">' +
                 '<a target="_blank" href="' + BASE_URL + 'userprofile.do?name=' + job.interviewer + '">' +
                 /*'<img class="img-thumb" alt="" src="' + BASE_URL + job.profilepic + '">' +*/
-                '<img class="img-thumb" alt="" src="' + BASE_URL +'images/face.jpg">' +
+                '<img class="img-thumb circle-pic" alt="" src="' + BASE_URL +'images/face.jpg">' +
                 '<span class="job_search_result_employer_img">' + job.interviewer + '</span>' +
                 '</a>' +
-                '<button onclick="showContactMeScreen(\'' + job.interviewer + '\');" class="btn btn-default btn-xs" type="button"><i class="fa fa-envelope-o"></i> Contact me</button>' +
+                '<button onclick="showContactMeScreen(\'' + job.interviewer + '\');" class="btn btn-default blue-button btn-xs" type="button"><i class="fa fa-envelope-o"></i> Contact me</button>' +
                 '</div>' +
                 '<div class="col-md-10">' +
                 '<div class="row" style="padding:4px;">' +
                 '<div class="col-md-12">' +
                 '<span class="job_search_result_title"><a target="_blank" href="' + joburl + '">' + job.title + '</a></span>' +
                 '<span class="job_search_result_date pull-right">' + prettyDate(d) + '</span>' +
-                '<span class="job_search_result_employer">' + job.companyname + '</span><br />' +
+                '<span class="job_search_result_employer">' + job.companyname + '</span>' +
                 '</div>' +
                 '</div>' +
                 '<div class="row" style="padding:4px;">' +
@@ -273,18 +272,17 @@
 
                 '</div>' +
                 '</div>' +
-                '<div class="row"  style="padding:4px;"><div class="col-md-12">' +
-                '<span class="job_search_result_skill_header"><dl class="dl-horizontal"><dt>Skills</dt><dd>' +
-                skillsHTML +
-                '</dd></dl></span></div></div>' +
                 '<div class="row" style="padding:4px;">' +
                 '<div class="col-md-12">' +
-                '<span class="job_search_result_description"><dl class="dl-horizontal"><dt>Description</dt><dd>' + descLess + '</dd></dl></span>' +
-                '<a class="job_search_result_description_read_more pull-right" href="' + joburl + '">Read more</a>' +
+                '<span class="job_search_result_description"><dl class="dl-horizontal"><dd>' + descLess + '</dd></dl></span>' +
                 '</div>' +
                 '</div>' +
+				'<div class="row"  style="padding:4px;"><div class="col-md-12">' +
+                '<span class="job_search_result_skill_header"><dl class="dl-horizontal"><dd>' +
+                skillsHTML +
+                '</dd></dl></span></div></div>' +
                 '</div>' +
-                '</div><hr />';
+                '</div>';
         return html;
     }
 
@@ -423,5 +421,6 @@ function loadTopAdvisor(){
     });
 }    
 </script>
+
 </body>
 </html>

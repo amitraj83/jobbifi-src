@@ -2,36 +2,25 @@
 
 <div class="modal fade bs-example-modal-sm" id="myModal" role="dialog"
 	aria-hidden="true">
-	<div class="modal-dialog login-modal" style="width: 500px;">
+	<div class="modal-dialog login-modal">
 		<div class="modal-content">
 			<div class="modal-body text-center">
-				<div id="loginbox" class="row">
-					<div class="col-md-10 col-md-offset-1">
-
-						<h3 class="clearfix">
-							<span> <strong>Welcome to Jobbifi</strong>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</span>
-						</h3>
-
-						<div class="row">
-							<div class="col-md-12 login-form-content">
-								<!-- LOGIN W/ LINKEDIN -->
-								<!--
-                                <br />
-                                <br />
-                                <button class="btn btn-default btn-block lowercase" onclick="linkedinLogin();">Login with LinkedIn</button>
-                                <br />
-                                <div class="clearfix small muted">or</div>
-                                <br />
-                                -->
-								<br /> <br />
-
-								<!-- LOGIN W/O LINKEDIN -->
-								<form id="loginform" role="form" name="f"
+				<div id="loginbox">
+                    <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title text-center">Welcome to Jobbifi
+                        <div class="pull-right">
+                        <button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                        </div>
+                    </div>     
+                    <div style="padding-top:30px" class="panel-body">
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                             <form id="loginform" role="form" name="f"
 									action="j_spring_security_check" method="POST">
 									<div class="form-group email-field">
 										<input type="email" class="form-control text-center"
@@ -52,94 +41,109 @@
 									</div>
 									<input type="hidden" id="callback" />
 								</form>
-							</div>
-						</div>
-						<div class="row">
-							<div style="display: none;" id="login-alert"
+                             
+                             
+                             <div style="display: none;" id="login-alert"
 								class="alert alert-danger col-md-12"></div>
-						</div>
-
-						<div class="row login-form-content-footer">
+                                
+                                
+                             
+                             <div class="row login-form-content-footer">
 							<div class="col-sm-6 col-md-6 text-left">
 								<a href="#" class="small muted"
 									onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot
-									password</a>
+									password?</a>
 							</div>
 							<div class="col-sm-6 col-md-6 text-right">
 								<a href="#" class="small muted"
-									onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign
-									up now</a>
+									onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign up now</a>
 							</div>
-						</div>
-						<br />
-					</div>
+						</div>   
+                                
+                                
+                             
+                             
+                        </div>                     
+                    </div>
+
+
 				</div>
 
 				<div id="forgotpasswordbox" style="display: none;" class="mainbox">
-					<h3 class="clearfix">
-						<span> <strong>Forgot your password?</strong>
-							<button type="button" class="close" data-dismiss="modal"
+                
+                
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title text-center">Forgot your password?
+                        <div class="pull-right">
+                        <button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-						</span>
-					</h3>
-					<br /> <br />
+                        </div>
+                    </div>
+                    </div>     
 
-					<div class="row">
-						<div class="col-md-12 login-form-content">
-							<form accept-charset="UTF-8" id="login-recordar" method="post">
+                    <div style="padding-top:30px" class="panel-body">
+                           <form accept-charset="UTF-8" id="login-recordar" method="post">
 								<fieldset>
 									<p class="clearfix">
 										Email address you use to log in to your account.<br /> We'll
 										send you an email with instructions to choose a new password.
 									</p>
 
-									<div class="form-group input-group">
-										<span class="input-group-addon">@</span> <input
-											id="forgotpass_email" class="form-control"
+									<div class="form-group">
+										<input
+											id="forgotpass_email" class="form-control text-center"
 											placeholder="Email" name="email" type="email" />
 									</div>
 									<label id="forgotpass_email-error" class="error"
 										for="forgotpass_email" style="display: inline-block;"></label>
 									<br />
-									<button type="submit" class="btn btn-default">Continue</button>
+									<button type="submit" class="btn btn-success btn-block lowercase">Continue</button>
 									<img id="passwordbtnloader" style="display: none;"
 										alt="Processing..."
 										src="<c:url value="/resources/img/loading.gif" />">
 								</fieldset>
 							</form>
-						</div>
-					</div>
-
-					<div class="row login-form-content-footer">
-						<div class="col-sm-12 col-md-12 text-center">
-							<a href="#" class="small muted"
-								onClick="$('#forgotpasswordbox').hide(); $('#loginbox').show()">or
-								sign in</a>
-						</div>
-					</div>
+                                         
+                          
+                          <div class="login-form-content-footer">
+                            <div class="text-center">
+                                <a href="#" class="small muted"
+                                    onClick="$('#forgotpasswordbox').hide(); $('#loginbox').show()">or
+                                    sign in</a>
+                                </div>
+                            </div>
+                          
+                            
+                            
+                        </div>                     
+                    </div>
+                
 				</div>
-				<div id="signupbox" style="display: none;" class="row">
-					<div class="col-md-12">
-						<h3 class="clearfix">
-							<span><strong>Signup with Jobbifi</strong>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button> </span>
-						</h3>
-						<br /> <br />
+				<div id="signupbox" style="display: none;" >
+                
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                    
+                    <div class="panel-title text-center">Signup with Jobbifi
+                        <div class="pull-right">
+                        <button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                    </div>
+                    
+                    </div>     
 
-						<div class="row">
-							<div class="col-md-12 login-form-content">
-							
-							
-								<form id="signupform" class="form-horizontal">
+                    <div style="padding-top:30px" class="panel-body">
+                           
+                       	<form id="signupform" class="form-horizontal">
 									<div class="form-group row">
-										<label class="col-sm-3 col-md-3 control-label">User type</label>
-										<div class="col-sm-8 col-md-8">
-											 <label class="pull-left radio-inline"> 
+										<div class="col-sm-12 col-md-12">
+											 <label class="radio-inline"> 
 												<input
 												name="usertype" checked="checked" id="intervieweeId"
 												value="INTERVIEWEE" type="radio"/> 
@@ -161,35 +165,27 @@
 									<!-- start intervieweeSignUpForm-->
 									<div id="userSignUpForm" >
 										<div class="form-group row">
-											<label for="email" class="col-sm-3 col-md-3 control-label">Email</label>
-
-											<div class="col-sm-8 col-md-8">
-												<input type="text" class="form-control" id="email"
+											<div class="col-sm-12 col-md-12">
+												<input type="text" class="form-control text-center" id="email"
 													name="email" placeholder="Email Address">
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="firstname" class="col-sm-3 col-md-3 control-label">Username</label>
-
-											<div class="col-sm-8 col-md-8">
-												<input type="text" class="form-control" id="username"
+											<div class="col-sm-12 col-md-12">
+												<input type="text" class="form-control text-center" id="username"
 													name="username" placeholder="Choose a username">
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="lastname" class="col-sm-3 col-md-3 control-label">Password</label>
-
-											<div class="col-sm-8 col-md-8">
-												<input type="password" class="form-control" id="password"
+											<div class="col-sm-12 col-md-12">
+												<input type="password" class="form-control text-center" id="password"
 													name="password" placeholder="Password">
 											</div>
 										</div>
 										
-
 										<div class="form-group row">
 											<div class="col-md-12">
-												<button type="submit" class="btn btn-default">Sign
-													Up</button>
+												<button type="submit" class="btn btn-success btn-block lowercase">Sign Up</button>
 													<img id="signupbtnloader" style="display: none;"
 													alt="Processing..."
 													src="<c:url value=" /resources/img/loading.gif " />">
@@ -204,17 +200,19 @@
 									
 									<!-- End interviewerSignUpForm-->
 								</form>
-							</div>
-						</div>
-						<div class="row login-form-content-footer">
-							<div class="col-sm-12 col-md-12 text-center">
+                        <div class="login-form-content-footer">
+							<div class="text-center">
 								<a href="#" class="small muted"
 									onClick="$('#signupbox').hide(); $('#loginbox').show()">Already
 									have an account?</a>
 							</div>
-						</div>
-						<br />
-					</div>
+						</div>      
+
+
+
+                        </div>                     
+                    </div>
+                
 				</div>
 			</div>
 		</div>
@@ -246,12 +244,9 @@
 					<sec:authorize access="!isAuthenticated()">
 						<li class="scroll active"><a href="#navigation"
 							onclick="activeHome()">Home</a></li>
-						<li class="scroll"><a class="scroll" href="#services">Services</a></li>
-						<li class="scroll"><a class="scroll" href="#about-us">About
-								us</a></li>
-						<li class="scroll"><a class="scroll" href="#candidate-workflow">Job Seekers</a></li>
+						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
+						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
 						<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>
-						<li class="scroll"><a class="scroll" href="#contact-us">Contact</a></li>
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>
 						<!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->

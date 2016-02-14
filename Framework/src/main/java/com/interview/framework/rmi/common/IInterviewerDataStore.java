@@ -70,7 +70,7 @@ public interface IInterviewerDataStore extends Remote {
 
   public boolean isUserAccountActive(String username) throws RemoteException;
 
-
+  public Map<String, Object> searchAdvisors(String key) throws RemoteException;
   
   
 }

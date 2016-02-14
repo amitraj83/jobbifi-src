@@ -142,9 +142,9 @@ function registerUser(){
             
             //$("#j_username").val(username) ;
             //$("#j_password").val(password);
-            $("#signupbox").html("You have been registered successfully. Please check your email "+email+" to vefiry your account!!");
+            //$("#signupbox").html("You have been registered successfully. Please check your email "+email+" to vefiry your account!!");
             //showSuccess("You have been registered successfully.Please check your email for email verificaton!!");
-            //login();
+             login(email, password, true);
 
         } else if(json.response == -1){
             showError("Error occured while registration.");                      
@@ -220,17 +220,21 @@ function showLoginBox(){
 	$("#myModal").modal("show");
 }
 
-function login(){	 
+function login(email, password, automaticLoginAfterSignup){	 
 
   $("#loginbtnloader").show();
-  var data = "j_username=" + $("#j_username").val() + "&j_password=" + $("#j_password").val();    
-  $.ajax({
-      'type': 'POST',
-      'url': BASE_URL + "isuseraccountactive.do",      
-      'data': "emailid="+$("#j_username").val(),
-      'dataType': 'json',
-       success:function(response){
-           if(response.active == 1) {
+  var data = "";
+  if(automaticLoginAfterSignup == true)
+  	data = "j_username=" + email + "&j_password=" + password;
+  else    
+  	data = "j_username=" + $("#j_username").val() + "&j_password=" + $("#j_password").val();    
+  // $.ajax({
+  //     'type': 'POST',
+  //     'url': BASE_URL + "isuseraccountactive.do",      
+  //     'data': "emailid="+$("#j_username").val(),
+  //     'dataType': 'json',
+  //      success:function(response){
+  //          if(response.active == 1) {
            	
            	
 			  $.ajax({
@@ -273,19 +277,19 @@ function login(){
 
 
 
-           }
-           else if(response.active == 2){
-           		showError("Your account is not active. Check your email to activate your account.");
-           }
-           else if(response.active == 3){
-			showError("This user account does not exist. Please register!");
-           }
-       }, 
-       error : function(){
-    	   showError("Unable to process the rquest. Please try again later.");
+   //         }
+   //         else if(response.active == 2){
+   //         		showError("Your account is not active. Check your email to activate your account.");
+   //         }
+   //         else if(response.active == 3){
+			// showError("This user account does not exist. Please register!");
+   //         }
+   //     }, 
+   //     error : function(){
+   //  	   showError("Unable to process the rquest. Please try again later.");
     	   
-       }
-    });
+   //     }
+   //  });
 
 
 $("#loginbtnloader").hide();

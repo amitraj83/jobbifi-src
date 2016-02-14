@@ -215,19 +215,19 @@ public class MessageStore extends UnicastRemoteObject implements IMessageStore {
     DBCollection collection =
         Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.MESSAGE.Collection);
     DBObject queryAnd1 = new BasicDBObject(DATASTORES.MESSAGE.TO, user1);
-    DBObject queryAnd2 = new BasicDBObject(DATASTORES.MESSAGE.FROM, user2);
+    //DBObject queryAnd2 = new BasicDBObject(DATASTORES.MESSAGE.FROM, user2);
     DBObject query3 = new BasicDBObject(DATASTORES.MESSAGE.TYPE, "ORIGINAL");
     BasicDBList andList = new BasicDBList();
     andList.add(queryAnd1);
-    andList.add(queryAnd2);
+//    andList.add(queryAnd2);
     andList.add(query3);
     BasicDBObject andQuery1 = new BasicDBObject("$and", andList);
 
 
-    DBObject queryAnd_1 = new BasicDBObject(DATASTORES.MESSAGE.TO, user2);
+//    DBObject queryAnd_1 = new BasicDBObject(DATASTORES.MESSAGE.TO, user2);
     DBObject queryAnd_2 = new BasicDBObject(DATASTORES.MESSAGE.FROM, user1);
     BasicDBList andList1 = new BasicDBList();
-    andList1.add(queryAnd_1);
+//    andList1.add(queryAnd_1);
     andList1.add(queryAnd_2);
     andList1.add(query3);
     BasicDBObject andQuery2 = new BasicDBObject("$and", andList1);

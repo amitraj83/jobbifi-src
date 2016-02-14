@@ -19,6 +19,7 @@ import com.interview.framework.REQUEST_TYPES;
 import com.interview.framework.USER;
 import com.interview.framework.pojo.Education;
 import com.interview.framework.pojo.Position;
+import com.interview.framework.pojo.Skill;
 import com.interview.services.Services;
 import com.interview.util.AdvisorSearchItem;
 
@@ -52,73 +53,61 @@ public class SearchController {
 
     List<AdvisorSearchItem> items = new ArrayList<AdvisorSearchItem>();
 
-
-    Map<String, Object> data = (Map<String, Object>) responseMap.get("JSON_DOC_LIST");
-    if (data.values() != null && data.values().size() > 0) {
-
-      Map<Object, Object> usersList = getAdvisorsNames(data);
-
-      /* get additional data for the user */
-      Map<String, Object> additionalMap = Services.getInstance().getRequestHandlerService()
-          .handleRequest(usersList, REQUEST_TYPES.SEARCH_ADDITIONAL_DATA);
-
-      Iterator<String> it = data.keySet().iterator();
-      while (it.hasNext()) {
-
-        AdvisorSearchItem item = new AdvisorSearchItem();
-
-        Map<String, Object> interviewer = (Map<String, Object>) data.get(it.next());
+    Iterator<String> it = responseMap.keySet().iterator();
+    while(it.hasNext()){
+    	String username = it.next();
+    	Map<String, Object> interviewer = (Map<String, Object>)responseMap.get(username);
+    	AdvisorSearchItem item = new AdvisorSearchItem();
+    	item.setUsername(username);
         Iterator<String> infoIterator = interviewer.keySet().iterator();
         while (infoIterator.hasNext()) {
           String dataname = infoIterator.next();
           Object value = interviewer.get(dataname);
 
-          if (dataname.equalsIgnoreCase("id"))
+          if (dataname.equalsIgnoreCase("_id"))
             item.setAid(String.valueOf(value));
 
-          if (dataname.equalsIgnoreCase("username")) {
+          if (dataname.equalsIgnoreCase(USER.RATING))
+                item.setAvgRating(String.valueOf(value));
+          
+          if(dataname.equalsIgnoreCase(USER.PROFILE_PIC))
+            item.setProfilepic(String.valueOf(value));
 
-            String username = String.valueOf(value);
-            item.setUsername(username);
-
-            Map<String, Object> userAdditionalData =
-                (Map<String, Object>) additionalMap.get(username);
-            item.setAvgRating(String.valueOf(userAdditionalData.get(USER.RATING)));
-            item.setProfilepic(String.valueOf(userAdditionalData.get(USER.PROFILE_PIC)));
-
-
-            List<Education> educations = (List<Education>) userAdditionalData.get(USER.EDUCATIONS);
+          if(dataname.equalsIgnoreCase(USER.EDUCATIONS)){
+            List<Education> educations = (List<Education>) value;
             item.setEducations(educations);
-
-            List<Position> positions = (List<Position>) userAdditionalData.get(USER.POSITIONS);
-            item.setPositions(positions);
-
+          }
+          
+          if(dataname.equalsIgnoreCase(USER.POSITIONS)){
+        	  List<Position> positions = (List<Position>) value;
+              item.setPositions(positions);
           }
 
-          if (dataname.equalsIgnoreCase("skills")) {
-            String parsedSkill =
-                String.valueOf(value).substring(1, String.valueOf(value).length() - 1);
-            String[] tokenizedSkill = parsedSkill.split(",");
-            List<String> skills = new ArrayList<String>();
-            for (String token : tokenizedSkill) {
-              skills.add(token);
+          if (dataname.equalsIgnoreCase(USER.SKILLS)) {
+//            String parsedSkill =
+//                String.valueOf(value).substring(1, String.valueOf(value).length() - 1);
+//            String[] tokenizedSkill = parsedSkill.split(",");
+        	  List<Skill>  skills = (List<Skill> )value;
+        	  List<String> skillsString = new ArrayList<String>();
+            for (Skill skill : skills) {
+              skillsString.add(skill.getSkill());
             }
-            item.setSkills(skills);
+            item.setSkills(skillsString);
           }
 
-          if (dataname.equalsIgnoreCase("country"))
+          if (dataname.equalsIgnoreCase(USER.COUNTRY))
             item.setCountry(String.valueOf(value));
 
-          if (dataname.equalsIgnoreCase("rate"))
-            item.setRatePerHour(String.valueOf(value));
+//          if (dataname.equalsIgnoreCase("rate"))
+//            item.setRatePerHour(String.valueOf(value));
 
-          if (dataname.equalsIgnoreCase("cv"))
+          if (dataname.equalsIgnoreCase(USER.CV))
             item.setCv(String.valueOf(value));
 
         }
         items.add(item);
-      }
     }
+ 
 
 
     java.util.Collections.sort(items);

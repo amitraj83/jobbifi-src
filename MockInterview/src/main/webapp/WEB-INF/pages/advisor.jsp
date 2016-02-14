@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding-left:2px">
                             <h2>Search Advisors</h2>
 							<div id="searchJobMessage"></div>
                             <div class="input-group">
@@ -44,12 +44,12 @@
                             <h3>What's Next?</h3>    
                             <div class="stepwizard" style="height:160px;">
                             <div class="stepwizard-row">
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step first-button">
                                     <button type="button" class="btn btn-success btn-square">Ask Advisor for Referrals</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step second-button">
                                     <button type="button" class="btn btn-info btn-square">Mock interview with Advisor</button>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
 
 
                     
-                		<div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
+                		<div style="display:none; border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
                 			<h3>Need to talk with advisor ?</h3>
                 			<p>Post your Mock interview and invite advisor to train you and for job referrals</p>
   							<div style="text-align:center">
@@ -75,9 +75,10 @@
                				</div>
                 		</div>
                 	
-                	
+                	   <div style="display:none;">
 						<h3 style="font-weight: bold;margin: 30px 0 15px;">Latest Jobs</h3>
 						<div id="latestjoblist"></div>                
+                        </div>
                     </div>
                 </div>
                 
@@ -87,16 +88,16 @@
 </div>
 <!-- Contact Me Modal -->
 <div class="modal fade bs-example-modal-sm" id="contactmeModal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog login-modal" style="width: 400px;">
+    <div class="modal-dialog login-modal" style="width: 450px;">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #0072bc;padding: 8px;color: white;">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Send Message</h4>
+                <h4 class="modal-title" id="myModalLabel" style="margin-left: 23px;">Message </h4>
             </div>
             <div class="modal-body">
-                <div class="row">
+                <div class="row" style="padding: 15px;">
                     <div class="col-md-12">
                         <div id="contactme" class="mainbox col-md-12">
                             <form class="form form-horizontal" id="newmessageForm">
@@ -107,16 +108,17 @@
                                 <input type="hidden" name="to"/>
 
                                 <div class="form-group">
-                                    <label class="col-md-2">Message</label>
-
-                                    <div class="col-md-8">
+                                    
+                                    <div class="col-md-12">
                                         <textarea name="message" id="inputmessage" rows="5" cols="80"
-                                                  class="form-control"></textarea>
+                                                  class="form-control" style="font-size: 11px;height: 200px;">
+
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-8">
-                                        <button type="submit" id="newmessage" class="btn btn-default">Send</button>
+                                    <div class="col-md-12">
+                                        <button type="submit" id="newmessage" class="btn btn-success" style="width:100%">Send Message</button>
                                         <img id="contactMeloader" style="display: none;" alt="Processing..."
                                              src="<c:url value=" /resources/img/loading.gif " />">
                                     </div>
@@ -155,7 +157,7 @@
             searchAdvisors(null, 1);
         }
         
-        loadLatestJob(searchKey);
+        //loadLatestJob(searchKey);
         
         $("#searchAdvisorBtn").click(function (e) {
         	var searchKey = $("#searchKey").val();
@@ -212,118 +214,260 @@
 
         $("#searchAdvisorResult").html("");
         if (searchKey == null || searchKey=="") {
-            searchKey = "''";
+            $.ajax({
+                type: "POST",
+                url: BASE_URL + "gettopadvisor.do",
+                data: "noOfResult=5",
+            }).done(function (res) {
+                var jsonResult = jQuery.parseJSON(res); 
+                var json = jsonResult.advisorList;
+        
+                    for(var i =0; i < json.length; i++)    
+                    {   
+                        var j = json[i];
+                        var skills=j.skills;
+                        var positions = [];
+                        for(var j=0; j < json[i].positions.length; j++){
+                            var icon =  (j == 0) ? true : false;
+                            positions.push({ position:json[i].positions[j].title ,
+                                company : json[i].positions[j].companyName, icon:icon});
+                        }
+                        
+                        var educations = [];
+                        for(var j=0; j < json[i].educations.length; j++){
+                            var icon =  (j == 0) ? true : false;
+                            educations.push({ education :json[i].educations[j].degree,
+                                field : json[i].educations[j].fieldOfStudy,
+                                school : json[i].educations[j].schoolname,icon:icon});
+                        }
+                        
+                        var description = json[i].cv;
+                        var descLess = description.substring(0, 170);
+                        if (description.length > 170) {
+                            descLess += "...";
+                        }
+
+                        var searchItem =
+                                    '<div class="row white-bg">' +
+                                    '<div class="col-md-2 text-center" style="padding:0px;">' +
+                                    '<a target="_blank" href="userprofile.do?name={{ username }}" style="font-weight: bold;">' +
+                                    /*'<img class="img-thumb" alt="" src="' + BASE_URL + job.profilepic + '">' +*/
+                                    '<img class="img-thumb circle-pic" alt="" src="{{ image }}">' +
+                                    '</a>' +
+                                    '<a onclick="showContactMeScreen(\'{{ username }}\');" href="#"><i class="fa fa-envelope-o"></i> <span style=" style="color: #0072bc; !important">Contact me</span></a>'+
+                                    /*'<button onclick="showContactMeScreen(\'{{ username }}\');" class="btn btn-default blue-button btn-xs" type="button"><i class="fa fa-envelope-o"></i> Contact me</button>' +*/
+                                    '</div>' +
+                                    '<div class="col-md-10">' +
+                                    '<div class="row" style="padding:4px;font-size: 20px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<span class="job_search_result_title"><a target="_blank" href="userprofile.do?name='+json[i].username+'">{{ username }}</a></span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row" style="padding:4px; font-size: 12px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<span class="job_search_result_location"><i class="fa fa-map-marker"></i> {{ country }}</span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row" style="padding:4px;font-size: 12px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<table class="advisor-result-table">' +
+                                    '{{ #positions }}' +
+                                    '<tr>' +
+                                    '<td><i {{#icon}}class="fa fa-suitcase"{{/icon}} style="margin-right:15px"></i></td>' +
+                                    '<td>{{ position }} at {{company}}</td>' +
+                                    '</tr>' +
+                                    '{{ /positions }}' +
+                                    '<tr>' +
+                                    '{{ #educations }}' +
+                                    '<td><i {{ #icon }} class="fa fa-graduation-cap"{{ /icon }} style="margin-right:15px"></i></td>' +
+                                    '<td>{{ education }}, {{ field}} , {{school}}</td>' +
+                                    '</tr>' +
+                                    '{{ /educations }}' +
+                                    '</table>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row" style="padding:4px;font-size: 12px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<span class="job_search_result_description"><dl class="dl-horizontal"><dd>'+descLess+' </dd></dl></span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row"  style="padding:4px;font-size: 12px;"><div class="col-md-12">' +
+                                    '<div class="advisor-title"> {{ #skills }}<span class="label label-info">{{ . }}</span> {{ /skills }}</div>' +
+                                    '</div></div>' +
+                                    '</div>' +
+                                    '</div>';
+
+                         var thisUser = json[i].username.replace(/\b[a-z]/g, function(letter) {
+                                            return letter.toUpperCase();
+                                        })           
+                        templateData = {
+                            'username': thisUser,
+                            'country': json[i].country,
+                            'rating': parseFloat(json[i].avgRating).toFixed(1),
+                            'positions': positions,
+                            'skills': skills,
+                            'rate' : json[i].rate,
+                            'educations': educations,
+                            /*'image': BASE_URL + json[i].profilepic,*/
+                            'image': BASE_URL + "images/face.jpg",
+                        }
+                        
+                        searchItem = Mustache.to_html(searchItem, templateData);
+                        $("#searchAdvisorResult").append(searchItem);
+                        
+                        $("input.userRating").rating({
+                            'min': 0,
+                            'max': 5,
+                            'step': 1,
+                            'readonly': true,
+                            'showClear': false,
+                            'showCaption': false
+                        });
+                        
+                    }
+                    //);
+                
+                var totalRecords = jresponse.NUM_OF_RESULTS;
+                var html = getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, "INTERVIEWER");
+                $("#paginationdiv").html(html);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                
+            });
         }
+        else{
         $(".pagination").hide();
         var start = ((currentPage - 1) * 10);
-        $.ajax({
-            type: "POST",
-            url: BASE_URL + "search.do",
-            data: "searchkey=" + searchKey + "&start=" + start,
-            //async: false
-        }).done(function (msg) {
-        	
-            var jresponse = jQuery.parseJSON(msg);
-            var json = jresponse.data;
-            // if(jresponse.NUM_OF_RESULTS > 0) 
-            // {            
-	            //$.each(json, function (i) 
-
-            if(json.length == 0)
+            $.ajax({
+                type: "POST",
+                url: BASE_URL + "search.do",
+                data: "searchkey=" + searchKey + "&start=" + start,
+                //async: false
+            }).done(function (msg) 
             {
-                $("#searchAdvisorResult").html("<div class='alert alert-info'>No results found.</div>");
-                $(".pagination").hide();
-            }                    
-            else
-            {   
-                for(var i =0; i < json.length; i++)    
-                {	
-                    var j = json[i];
-                    var skills=j.skills;
-              //       console.log(skills[0])
-	            	// if(typeof json[i].skills != "undefined"){
-		            // 	skills = json[i].skills.replace(/\[/,'').replace(/\]/,'').split(",");
-	            	// }
-	            	var positions = [];
-	            	for(var j=0; j < json[i].positions.length; j++){
-	            		var icon =  (j == 0) ? true : false;
-	            		positions.push({ position:json[i].positions[j].title ,
-	            			company : json[i].positions[j].companyName, icon:icon});
-	            	}
-	            	
-	            	var educations = [];
-	            	for(var j=0; j < json[i].educations.length; j++){
-	            		var icon =  (j == 0) ? true : false;
-	            		educations.push({ education :json[i].educations[j].degree,
-	            			field : json[i].educations[j].fieldOfStudy,
-	            			school : json[i].educations[j].schoolname,icon:icon});
-	            	}
-	            	
-	                var searchItem =
-	                        '<div class="row">' +
-	                        '<div class="col-md-3">' +
-	                        '<img src="{{ image }}" style="width:100%;height:150px;" alt="..." class="img-thumbnail">' +
-	                        '<center><input type="number" value="{{rating}}" class="userRating" /> <span>( {{ rating }} / 5)</span></center>' +
-	                        '<button onclick="showContactMeScreen(\'{{ username }}\');" class="btn btn-default btn-xs" type="button"><i style="color:white;" class="fa fa-envelope-o"></i> Contact me</button>' +
-	                        '</div>' +
-	                        '<div class="col-md-9">' +
-	                        '<div class="advisor-name"><a target="_blank" href="userprofile.do?name={{ username }}">{{ username }}</a></div>' +
-	                        '<div class="advisor-title"><strong>Skills</strong> {{ #skills }}<span class="label label-info">{{ . }}</span> {{ /skills }}</div>' +
-	                        '<div><span class="advisor-rate"><strong>Rate:&nbsp;&nbsp;</strong><i class="fa fa-inr"></i> {{rate}} /hr</span><span></div>' +
-	
-	                        '<table class="advisor-result-table">' +
-	                        '{{ #positions }}' +
-	                        '<tr>' +
-	                        '<td><i {{#icon}}class="fa fa-suitcase"{{/icon}} style="margin-right:15px"></i></td>' +
-	                        '<td>{{ position }} at {{company}}</td>' +
-	                        '</tr>' +
-	                        '{{ /positions }}' +
-	                        '<tr>' +
-	                        '{{ #educations }}' +
-	                        '<td><i {{ #icon }} class="fa fa-graduation-cap"{{ /icon }} style="margin-right:15px"></i></td>' +
-	                        '<td>{{ education }}, {{ field}} , {{school}}</td>' +
-	                        '</tr>' +
-	                        '{{ /educations }}' +
-	                        '</table>' +
-	                        '</div>' +
-	                        '</div><hr />';
-	                   
-                    templateData = {
-	                    'username': json[i].username,
-	                    'country': json[i].country,
-	                    'rating': parseFloat(json[i].avgRating).toFixed(1),
-	                    'positions': positions,
-	                    'skills': skills,
-	                    'rate' : json[i].rate,
-	                    'educations': educations,
-	                    /*'image': BASE_URL + json[i].profilepic,*/
-                        'image': BASE_URL + "images/face.jpg",
-	                }
-	                
-	                searchItem = Mustache.to_html(searchItem, templateData);
-	                $("#searchAdvisorResult").append(searchItem);
-	                
-	                $("input.userRating").rating({
-	                    'min': 0,
-	                    'max': 5,
-	                    'step': 1,
-	                    'readonly': true,
-	                    'showClear': false,
-	                    'showCaption': false
-	                });
-	                
-	            }
-                //);
-            } 
-            // else {
-            // 
-            // }
+            	
+                var jresponse = jQuery.parseJSON(msg);
+                var json = jresponse.data;
+                
+                if(json.length == 0)
+                {
+                    $("#searchAdvisorResult").html("<div class='alert alert-info'>No results found.</div>");
+                    $(".pagination").hide();
+                }                    
+                else
+                {   
+                    for(var i =0; i < json.length; i++)    
+                    {	
+                        var j = json[i];
+                        var skills=j.skills;
+                    	var positions = [];
+    	            	for(var j=0; j < json[i].positions.length; j++){
+    	            		var icon =  (j == 0) ? true : false;
+    	            		positions.push({ position:json[i].positions[j].title ,
+    	            			company : json[i].positions[j].companyName, icon:icon});
+    	            	}
+    	            	
+    	            	var educations = [];
+    	            	for(var j=0; j < json[i].educations.length; j++){
+    	            		var icon =  (j == 0) ? true : false;
+    	            		educations.push({ education :json[i].educations[j].degree,
+    	            			field : json[i].educations[j].fieldOfStudy,
+    	            			school : json[i].educations[j].schoolname,icon:icon});
+    	            	}
+    	            	
+    	                var description = json[i].cv;
+                        var descLess = description.substring(0, 170);
+                        if (description.length > 170) {
+                            descLess += "...";
+                        }
 
-            var totalRecords = jresponse.NUM_OF_RESULTS;
-            var html = getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, "INTERVIEWER");
-            $("#paginationdiv").html(html);
-            $('html, body').animate({ scrollTop: 0 }, 'slow');
-        });
+                        var searchItem =
+                                    '<div class="row white-bg">' +
+                                    '<div class="col-md-2 text-center" style="padding:0px;">' +
+                                    '<a target="_blank" href="userprofile.do?name={{ username }}" style="font-weight: bold;">' +
+                                    /*'<img class="img-thumb" alt="" src="' + BASE_URL + job.profilepic + '">' +*/
+                                    '<img class="img-thumb circle-pic" alt="" src="{{ image }}">' +
+                                    '</a>' +
+                                    '<a onclick="showContactMeScreen(\''+json[i].username+'\');" href="#"><i class="fa fa-envelope-o"></i> <span style=" style="color: #0072bc; !important">Contact me</span></a>'+
+                                    /*'<button onclick="showContactMeScreen(\'{{ username }}\');" class="btn btn-default blue-button btn-xs" type="button"><i class="fa fa-envelope-o"></i> Contact me</button>' +*/
+                                    '</div>' +
+                                    '<div class="col-md-10">' +
+                                    '<div class="row" style="padding:4px;font-size: 20px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<span class="job_search_result_title"><a target="_blank" href="userprofile.do?name='+json[i].username+'">{{ username }}</a></span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row" style="padding:4px; font-size: 12px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<span class="job_search_result_location"><i class="fa fa-map-marker"></i> {{ country }}</span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row" style="padding:4px;font-size: 12px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<table class="advisor-result-table">' +
+                                    '{{ #positions }}' +
+                                    '<tr>' +
+                                    '<td><i {{#icon}}class="fa fa-suitcase"{{/icon}} style="margin-right:15px"></i></td>' +
+                                    '<td>{{ position }} at {{company}}</td>' +
+                                    '</tr>' +
+                                    '{{ /positions }}' +
+                                    '<tr>' +
+                                    '{{ #educations }}' +
+                                    '<td><i {{ #icon }} class="fa fa-graduation-cap"{{ /icon }} style="margin-right:15px"></i></td>' +
+                                    '<td>{{ education }}, {{ field}} , {{school}}</td>' +
+                                    '</tr>' +
+                                    '{{ /educations }}' +
+                                    '</table>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row" style="padding:4px;font-size: 12px;">' +
+                                    '<div class="col-md-12">' +
+                                    '<span class="job_search_result_description"><dl class="dl-horizontal"><dd>'+descLess+' </dd></dl></span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="row"  style="padding:4px;font-size: 12px;"><div class="col-md-12">' +
+                                    '<div class="advisor-title"> {{ #skills }}<span class="label label-info">{{ . }}</span> {{ /skills }}</div>' +
+                                    '</div></div>' +
+                                    '</div>' +
+                                    '</div>';
+
+                         var thisUser = json[i].username.replace(/\b[a-z]/g, function(letter) {
+                                            return letter.toUpperCase();
+                                        })           
+                        templateData = {
+    	                    'username': thisUser,
+    	                    'country': json[i].country,
+    	                    'rating': parseFloat(json[i].avgRating).toFixed(1),
+    	                    'positions': positions,
+    	                    'skills': skills,
+    	                    'rate' : json[i].rate,
+                            'educations': educations,
+    	                    /*'image': BASE_URL + json[i].profilepic,*/
+                            'image': BASE_URL + "images/face.jpg",
+    	                }
+    	                
+    	                searchItem = Mustache.to_html(searchItem, templateData);
+    	                $("#searchAdvisorResult").append(searchItem);
+    	                
+    	                $("input.userRating").rating({
+    	                    'min': 0,
+    	                    'max': 5,
+    	                    'step': 1,
+    	                    'readonly': true,
+    	                    'showClear': false,
+    	                    'showCaption': false
+    	                });
+    	                
+    	            }
+                    //);
+                } 
+                
+                var totalRecords = jresponse.NUM_OF_RESULTS;
+                var html = getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, "INTERVIEWER");
+                $("#paginationdiv").html(html);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            });
+
+        }
     }
 
     function getPaginationHTMLForAdvisor(totalRecords, currentPage, searchKey, searchFor) {
@@ -388,6 +532,9 @@
 
         $('input:hidden[name="to"]').val(interviewer);
         $("#contactmeModal").modal("show");
+        $("#myModalLabel").html("Message to "+interviewer);
+        $("#inputmessage").val("Dear "+interviewer+",\r\n\r\nI found you as the  best advisor for me. Can you please help me to"+
+            "\r\n1. Prepare my CV\r\n2. CV Referrals\r\n3. Mock Interviews.\r\n\r\nLooking forward for your reply.\r\n\r\nRegards,\r\n"+LOGIN_USER);
     }
     function submitForm() {
         $("#contactMeloader").show();

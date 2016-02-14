@@ -13,7 +13,7 @@
     <div id="page-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-9 profile-page">
+                <div class="col-md-8 profile-page">
                     <div class="row">
                         <div class="col-md-4">
                             <img class="img-thumbnail profile_img" src="<c:url value='/resources/images/face.jpg'/>"
@@ -118,7 +118,7 @@
                 </div>
 
 
-                <div class="col-md-3 page-sidebar">
+                <div class="col-md-4 page-sidebar">
                     
 
                     <div id="userprofilesidebar" class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
@@ -128,23 +128,23 @@
                             <h3>What's Next?</h3>    
                             <div class="stepwizard" style="height:190px;">
                             <div class="stepwizard-row">
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step first-button">
                                     <button type="button" class="btn btn-info btn-square">Contact this Advisor/Employer</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step  second-button">
                                     <button type="button" class="btn btn-success btn-square">Ask for referrals/jobs</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
-                                <div class="stepwizard-step">
+                                <div class="stepwizard-step  third-button">
                                     <button type="button" class="btn btn-warning btn-square">Mock interview with Advisor</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
                                 <div class="stepwizard-step">
-                                    <button type="button" class="btn btn-success btn-square">Succeed in real interview and get hired!</button>
+                                    <button type="button" class="btn btn-success btn-square">Perform better in real interviews!</button>
                                 </div>
                             </div>
                             </div>
@@ -152,7 +152,7 @@
                         </div>
 
                        
-                       <hr/>
+                       <hr style="    margin-top: 83px;margin-bottom: 40px;" />
 
                        <sec:authorize access="!isAuthenticated()">
                            <center><span>Login to send message !</span> </center>
@@ -187,17 +187,16 @@
                         </sec:authorize>
                          <hr/>
 
-
+                        <!-- 
                         <div style="border: 5px solid rgb(255, 158, 40); padding: 0px 15px 10px;">
                             <h3>Need Consulatation ?</h3>
                             <p>Post your Mock interview and invite advisor to train you and for job referrals</p>
                             <div style="text-align:center">
                             
                                 <a onclick="showPostAMockScreen()" class="btn btn-success">Post a Mock</a>
-                                <!--<a href="/publishinterview.do" class="btn btn-success">Post a Mock</a>-->
                             </div>
                         </div>
-
+                        -->
                        
 
 

@@ -92,6 +92,7 @@
 	<bean id="supportRequestHandler" class="com.interview.request.handlers.SupportRequestHandler" />
 	<bean id="statsHandler" class="com.interview.request.handlers.StatsHandler" />
 	<bean id="AccountActiveHandler" class="com.interview.request.handlers.AccountActiveHandler" />
+	<bean id="SearchAdvisors" class="com.interview.request.handlers.SearchAdvisors" />
 	
 	
 	

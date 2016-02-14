@@ -57,7 +57,7 @@ ul {
 }
 
 a {
-    color: #fff;
+    color: #0072bc;
     text-decoration: none;
     -webkit-transition: 300ms;
     -moz-transition: 300ms;
@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-    padding-bottom: 85px;
+    padding-bottom: 15px;
 }
 
 .section-title h3 {
@@ -2206,7 +2206,7 @@ File Upload from Jobs apply section
 
 #home-search-form input {
     display: inline-block;
-    width: 500px;
+    width: 70%;
     position: relative;
     left: -3px;
     padding-top: 5px !important;
@@ -2264,7 +2264,7 @@ File Upload from Jobs apply section
 }
 
 #home-search-form > button {
-    background-color: rgba(0, 114, 188, 0.5);
+    background-color: rgba(0, 114, 188, 1.0);
     color: #fff;
     letter-spacing: 1px;
     position: relative;
@@ -2329,7 +2329,7 @@ File Upload from Jobs apply section
 }
 
 #home-carousel > div.carousel-inner > div > div > h2 > span {
-    font-size: 50px;
+    font-size: 33px;
     font-weight: 100;
 }
 
@@ -2925,7 +2925,7 @@ body.error.error-404 div.jumbotron {
     width: 2px;
     height: 27px;
     background-color: #ccc;
-    margin-left: 20px;
+    margin-left: 50%;
 }
 .second-button:before{
 	position: absolute;
@@ -2934,7 +2934,7 @@ body.error.error-404 div.jumbotron {
     width: 2px;
     height: 27px;
     background-color: #ccc;
-    margin-left: 20px;
+    margin-left: 50%;
 }
 .third-button:before{
 	position: absolute;
@@ -2943,7 +2943,7 @@ body.error.error-404 div.jumbotron {
     width: 2px;
     height: 27px;
     background-color: #ccc;
-    margin-left: 20px;
+    margin-left: 50%;
 }
 .stepwizard-step {   
     display: table-cell;
@@ -3037,7 +3037,7 @@ div.job-applications.job a.job-view-btn {
 	color:#0072BC !important;
 }*/
 .modal-content{
-	border-radius:5px;
+	border-radius:0px;
 }
 
 
@@ -3754,8 +3754,8 @@ div.job-applications.job a.job-view-btn {
 
 @media (min-width: 768px) {
 .modal-dialog {
-    width: 550px;
-    margin: 50px auto;
+    width: 400px;
+    margin: 150px auto;
 }
 }
 
@@ -3779,7 +3779,7 @@ div.job-applications.job a.job-view-btn {
 }
 .panel {
 	margin-bottom:0px !important;
-	border-radius: 4px !important;
+	border-radius: 0px !important;
 }
 .modal-body {
 	padding:0px !important;

@@ -45,29 +45,28 @@
 				<div class="item active">
 					<div class="carousel-caption container text-center">
 						<h2 class="text-center">
-							FIND YOUR<br /> <span id="search-form-title-changer">DREAM
-								JOB</span>&nbsp;
+							FIND YOUR ADVISOR<br /> <span id="search-form-title-changer">FOR YOUR CV, REFERRALS AND MOCK INTERVIEWS</span>&nbsp;
 						</h2>
 						<br />
 
 						<div id="home-search-form" class="text-center">
                         <input id="front-search-key" type="text" class="form-control"
 								aria-label="Search term" placeholder="Skills, company name or keywords"	>    
-                         <input name="" type="text" class="form-control state-input" placeholder="Location">
+                        <!-- <input name="" type="text" class="form-control state-input" placeholder="Location">-->
                          <!--<select id="front-search-dropdown" class="selectpicker"
 								data-width="170px" data-size='auto'>
 								<option selected>Jobs</option>
 								<option>Advisors</option>
 								<option>Mock Interviews</option>
                         </select> --> 
-                       <div id="front-search-dropdown" class="wrapper-dropdown-3" tabindex="1">
+                      <!-- <div id="front-search-dropdown" class="wrapper-dropdown-3" tabindex="1">
 						<span>Search Type</span>
 						<ul class="dropdown">
 							<li><a href="#"><i class="icon-envelope icon-large"></i>Jobs</a></li>
 							<li><a href="#"><i class="icon-truck icon-large"></i>Advisors</a></li>
 							<li><a href="#"><i class="icon-plane icon-large"></i>Mock Interviews</a></li>
 						</ul>
-						</div> 
+						</div> -->
                         <button id="front-search-button"
                             class="form-control btn btn-default" type="button"><i class="fa fa-search"></i> Search
                         </button>
@@ -137,9 +136,8 @@
 							<br /> <br />
 							<h3 class="wow fadeInDown" data-wow-duration="700ms"
 								data-wow-delay="300ms">How it works for Candidates</h3>
-							<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 							<p class="wow fadeInUp" data-wow-duration="700ms"
-								data-wow-delay="300ms">We've made it amazingly simple for
+								data-wow-delay="300ms" style="margin-top:15px;">We've made it amazingly simple for
 								job seekers to manage their hunt for that dream job.</p>
 						</div>
 					</div>
@@ -151,13 +149,15 @@
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h4>Search for a job</h4>
-									<h4 class="subheading">Your dream job</h4>
+									<h4>Find an Advisor</h4>
+									
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">With our regularly updated job
-										listings and excellent search tools, taking that best step
-										forward in your career path is now as easy as a few clicks.</p>
+									<p class="text-muted">Giving your career or upcoming interview an
+										always needed push has traditionally been an ordeal. With
+										Jobbifi's advisor search and recommendation engine, getting in
+										touch with a company insider, career guidance professional or even
+										advisors in your target company is a breeze.</p>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -169,15 +169,11 @@
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h4>Find an Advisor</h4>
-									<h4 class="subheading">The right Advisor</h4>
+									<h4>Avail Advisor Support</h4>
+									
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">Giving your career or interview an
-										always needed push has traditionally been an ordeal. With
-										Jobbifi's advisor search and recommendation engine, getting in
-										touch with a mentor, career guidance professional or even
-										advisors in your target company is a breeze.</p>
+									<p class="text-muted">Ask your advisor to help you prepare a strong CV, referrals and mock interviews. An advisor is the only person who can guide in a right and targeted way to land in your dream job. Advisors can push your CVs to the right place with right recommendations. </p>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -189,14 +185,11 @@
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h4>Prep for your interview</h4>
+									<h4>Mock Interviews</h4>
 									<h4 class="subheading"></h4>
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">Get that confidence boost for your
-										upcoming interview by arranging for a mock interview conducted
-										by seasoned industry experts and professionals who judge
-										candidate resumes and profiles on a regular basis.</p>
+									<p class="text-muted">Ask your advisors to take your mock interviews to help you prepare for our next upcoming job interview. Advisors can tell you perfectly what a company is looking into the candidates. How to behave and answer in real job interviews. They can help you to analyze your weaknesses, which you can overcome with right guidance.</p>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -212,9 +205,7 @@
 									<h4 class="subheading"></h4>
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">With Jobbifi on your side to connect
-										you to the best advisors and interviewers, improving your
-										career is now a matter of engineer your own luck!</p>
+									<p class="text-muted">With right advices from your advisors, you can perform better in your upcoming job interviews and increase your chances to get hired. </p>
 								</div>
 							</div>
 						</li>
@@ -253,97 +244,34 @@
 				<div class="col-sm-8 col-sm-offset-2">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
 						data-wow-delay="300ms">Advisior</h3>
-					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
-						data-wow-delay="300ms">We are career experts. Our network of
-						job seekers, career advisors and employer helps you to find the
-						right person who can help you to grow in your career path. We
-						connect job seeking candidates with the right career advisor who
-						can help you to prepare for your upcoming interview and do the job
-						referrals. Our intelligent search engine helps employers to find
-						the right candidate for their requirements.</p>
+						data-wow-delay="300ms" style="margin-top:15px;">As an advisor, you can contribute to your fellow colleagues and students from your college towards their next career move.</p>
 				</div>
 			</div>
-			<div class="row about-content">
-				<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
-					data-wow-delay="300ms">
-					<h2>Our Vision</h2>
+			<div class="row" style="margin-bottom:80px">
+				<div class="col-md-6"><img src="images/advisor/help.jpg" style="width:465px;height:auto;"></div>
+				<div class="col-md-6"><h2 style="margin-top:1px">Talk to Job Seekers</h2>
 
-					<p>Our vision is to break the communication gap between fresh
-						job seeking candidates and experienced professionals who
-						potentially can be career advisors or recruiters in the top
-						companies.</p>
-				</div>
-				<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
-					data-wow-delay="400ms">
-					<h2>Our History</h2>
-
-					<p>History We are backed-up by several talented career advisors
-						who desire to train job seeking candidates for their upcoming
-						dream job interview.</p>
-				</div>
-				<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
-					data-wow-delay="500ms">
-					<h2>Our Values</h2>
-
-					<p>We are driven by our core value that a job seeking candidate
-						is a precious talent. We are committed to connect such candidates
-						with the right persons and help them grow in their career.</p>
+					<p>
+						Jobbifi provides a great place where career advisors can help job seeking candidates in the prepration of their upcoming job interviews. Job seeking candidates are sometimes confused and stressed. Advisors' little help will greatly support job seekers to fulfil their dreams. As an advisor, you will feel immense pleasure and proud in yourself after helping such candidate. These candidate may be from the same college where you graduated. In other terms, you are supporting your college as well.
+					</p>
 				</div>
 			</div>
+			<div class="row" style="margin-bottom:180px">
+				
+				<div class="col-md-6"><h2 style="margin-top:1px">Contribute to the society</h2>
+
+					<p>
+						It is a chance to help and support the community and society from where you are coming. Today, an advisor is a well established and experienced person in his life. However, he owes to the college, community and other. Just giving an hour or two from your busy life, will be highly helpful to your fellow job seekers.
+					</p>
+				</div>
+				<div class="col-md-6"><img src="images/services/request.jpeg" style="width:465px;height:auto;"></div>
+			</div>
+			
 		</div>
 	</div>
 	<!--/about-us-->
-	<div id="clients" class="padding-top padding-bottom">
-		<div class="container">
-			<div class="row text-center section-title">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h3 class="wow fadeInDown" data-wow-duration="700ms"
-						data-wow-delay="300ms">Trending Employers</h3>
-					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
-					<p class="wow fadeInUp" data-wow-duration="700ms"
-						data-wow-delay="300ms">Schedule job interviews with top
-						employers and get trained by our career advisors to increase your
-						chances to succeed in that dream job interview.</p>
-				</div>
-			</div>
-			<div id="clients-carousel" class="carousel slide"
-				data-ride="carousel">
-				<div class="carousel-inner wow zoomIn" data-wow-duration="700ms"
-					data-wow-delay="300ms">
-					<div class="item active">
-						<ul>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client1.png" alt="" /></a></li>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client2.png" alt="" /></a></li>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client3.png" alt="" /></a></li>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client4.png" alt="" /></a></li>
-						</ul>
-					</div>
-					<div class="item">
-						<ul>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client1.png" alt="" /></a></li>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client2.png" alt="" /></a></li>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client3.png" alt="" /></a></li>
-							<li><a class="img-responsive" href="#"><img
-									src="images/client/client4.png" alt="" /></a></li>
-						</ul>
-					</div>
-				</div>
-				<a class="client-left" href="#clients-carousel" data-slide="prev"><i
-					class="fa fa-angle-left"></i></a> <a class="client-right"
-					href="#clients-carousel" data-slide="next"><i
-					class="fa fa-angle-right"></i>
-                </a>
-			</div>
-		</div>
-	</div>
+	
 	<!--/#clients-->
 	<div id="fun-fact" class="text-center parallax-section">
 		<div class="parallax-content">
@@ -382,13 +310,13 @@
 		</div>
 	</div>
 	<!--/parallax-section-->
+	<!--
 	<div id="pricing-tables" class="padding-top padding-bottom white-section">
 		<div class="container">
 			<div class="row text-center section-title">
 				<div class="col-sm-6 col-sm-offset-3">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
 						data-wow-delay="300ms">Employers</h3>
-					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
 						data-wow-delay="300ms">We offer unbeatable packages for the
 						employers to post jobs and to find the right candidate</p>
@@ -457,7 +385,7 @@
 				</center>
 			</div>
 		</div>
-	</div>
+	</div> -->
     	<div id="contact-us" class="padding-top padding-bottom">
 		<div class="container">
 			<!-- <div class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
@@ -467,7 +395,6 @@
 				<div class="col-sm-6 col-sm-offset-3">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
 						data-wow-delay="300ms">Contact Us</h3>
-					<div class="title-border-pic"><img src="images/bottom-icon.png" alt="" /></div>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
 						data-wow-delay="300ms"></p>
 				</div>
@@ -594,10 +521,7 @@
 											"click",
 											function() {
 												var urlToAppend = '';
-												switch ($(
-														"#front-search-dropdown")
-														.next().find("button")
-														.attr("title")) {
+												switch ("Advisors") {
 												case "Jobs":
 													urlToAppend = 'jobs.do?searchKey='
 															+ $
@@ -639,8 +563,9 @@
 								}
 							});
 
-							var items = [ "PERFECT CAREER ADVISOR",
-									"NEXT AWESOME RECRUIT", "DREAM JOB" ], $text = $('#search-form-title-changer'), delay = 4; //seconds
+							//var items = [ "PERFECT CAREER ADVISOR",
+							//		"NEXT AWESOME RECRUIT", "DREAM JOB" ], $text = $('#search-form-title-changer'), delay = 40000000; //seconds
+							var items = [ "FOR YOUR CV, REFERRALS AND MOCK INTERVIEWS"], $text = $('#search-form-title-changer'), delay = 40000000; //seconds
 
 							function loop(delay) {
 								$.each(items, function(i, elm) {

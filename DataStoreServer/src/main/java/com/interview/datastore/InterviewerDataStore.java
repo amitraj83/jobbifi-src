@@ -21,6 +21,7 @@ import com.interview.framework.pojo.Rating;
 import com.interview.framework.pojo.Skill;
 import com.interview.framework.rmi.common.IInterviewerDataStore;
 import com.interview.services.Services;
+import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.CommandResult;
@@ -385,6 +386,57 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 		}
 	}
 
+	
+	public Map<String, Object> searchAdvisors(String searchKey) throws RemoteException {
+		Map<String, Object> responseMap = new HashMap<String, Object>();
+		DBCollection collection =
+				Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
+		AggregationOutput output = collection.aggregate(
+				new BasicDBObject("$match", new BasicDBObject("skills",searchKey)), 
+				new BasicDBObject("$sort", new BasicDBObject("rating", 1)));
+		
+		/**
+		 *  String aid;
+			  String username;
+			  String profilepic;
+			  String avgRating;
+			  List<String> skills;
+			  String ratePerHour;
+			  List<Education> educations;
+			  List<Position> positions;
+			  String cv;
+			  String country;
+		 */
+		
+		for (DBObject obj : output.results()) {
+			Map<String, Object> response = new HashMap<String, Object>();
+			
+			response.put("_id", String.valueOf(obj.get("_id")));
+			response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+			response.put(USER.RATE, obj.get(USER.RATE).toString());
+			response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+			response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+			response.put(USER.RATING, obj.get(USER.RATING).toString());
+			response.put(USER.CV, obj.get(USER.CV).toString());
+			response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+			
+			List<Map<String, Object>> ratingmap = getAllReviews(obj);
+			response.put(VARIABLES.ALLREVIEWS, ratingmap);
+
+			List<Education> educations = getAllEducations(obj);
+			response.put(USER.EDUCATIONS, educations);
+
+			List<Position> positions = getAllPositions(obj);
+			response.put(USER.POSITIONS, positions);
+
+			List<Skill> skills = getAllSkills(obj);
+			response.put(USER.SKILLS, skills);
+			responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+		}
+		return responseMap;
+	}
+	
+	
 	public Map<String, Object> getAdditionalData(Map<Object, Object> users) throws RemoteException {
 
 		Map<String, Object> response = new HashMap<String, Object>();

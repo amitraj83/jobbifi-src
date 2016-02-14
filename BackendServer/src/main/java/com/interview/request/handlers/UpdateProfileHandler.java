@@ -67,7 +67,7 @@ public class UpdateProfileHandler extends RequestHandler {
         		ex.printStackTrace();
         	}
         }
-        if ((data.get(USER.PHONE_NUMBER) != null) && (!String.valueOf(data.get(USER.PHONE_NUMBER)).equals(""))) {
+        if (data.get(USER.PHONE_NUMBER) != null)  {
         	try{
 	          PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 	          String phoneNumberString = (String) data.get(USER.PHONE_NUMBER);

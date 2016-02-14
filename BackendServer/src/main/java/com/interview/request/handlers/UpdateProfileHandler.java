@@ -53,7 +53,7 @@ public class UpdateProfileHandler extends RequestHandler {
           interviewer.setCompanies((String[]) data.get(USER.COMPANIES));
         if (data.get(USER.SKILLS) != null)
           interviewer.setSkills((String[]) data.get(USER.SKILLS));
-        if (data.get(USER.RATE) != null) {
+        /*if (data.get(USER.RATE) != null) {
         	try{
 	          Integer rate = NumberUtils.parseNumber((String) data.get(USER.RATE), Integer.class);
 	          if (null != rate) {
@@ -79,7 +79,7 @@ public class UpdateProfileHandler extends RequestHandler {
         	catch(Exception ex){
         		ex.printStackTrace();
         	}
-        }
+        }*/
         if (data.get(USER.CV) != null)
           interviewer.setCv(data.get(USER.CV).toString());
         if (data.get(USER.COUNTRY) != null)

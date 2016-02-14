@@ -18,7 +18,22 @@ public class SearchAdditionalDataHandler extends RequestHandler {
 
     Map<String, Object> resMap = new HashMap<String, Object>();
     try {
-      resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getAdditionalData(users);
+    	
+    String SUB_REQ = String.valueOf(users.get(REQUEST_TYPES.SUB_REQ));
+    
+    if(SUB_REQ.equals("FIND_ADVISOR")){
+    	String searchKey = String.valueOf(users.get("searchkey"));
+		if(searchKey == null || searchKey.trim().length() == 0)
+			return resMap;
+		else{
+			resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().searchAdvisors(searchKey);
+		}
+    }
+    else{
+    	resMap = DataStoreRegistry.getInstance().getInterviewerDataStore().getAdditionalData(users);
+    }
+    
+      
 
     } catch (RemoteException e) {
       e.printStackTrace();

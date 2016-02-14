@@ -47,9 +47,10 @@ public class SearchController {
     requestMap.put("searchkey", req.getParameter("searchkey"));
     requestMap.put("start", Integer.parseInt(req.getParameter("start")));
     requestMap.put("rows", NO_OF_RESULTS);
+    requestMap.put(REQUEST_TYPES.SUB_REQ, "FIND_ADVISOR");
 
     Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
-        .handleRequest(requestMap, "FIND_ADVISORS");
+        .handleRequest(requestMap, REQUEST_TYPES.SEARCH_ADDITIONAL_DATA);
 
     List<AdvisorSearchItem> items = new ArrayList<AdvisorSearchItem>();
 

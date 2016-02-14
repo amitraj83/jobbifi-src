@@ -10,7 +10,7 @@ import com.interview.rmi.DataStoreRegistry;
 public class SearchAdvisors extends RequestHandler {
 
 	public SearchAdvisors() {
-		addHandler(this, REQUEST_TYPES.SEARCH_INTERVIEWER);
+		addHandler(this, "FIND_ADVISORS");
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public class SearchController {
     requestMap.put("rows", NO_OF_RESULTS);
 
     Map<String, Object> responseMap = Services.getInstance().getRequestHandlerService()
-        .handleRequest(requestMap, REQUEST_TYPES.SEARCH_INTERVIEWER);
+        .handleRequest(requestMap, "FIND_ADVISORS");
 
     List<AdvisorSearchItem> items = new ArrayList<AdvisorSearchItem>();
 

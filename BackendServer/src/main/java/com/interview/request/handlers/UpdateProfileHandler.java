@@ -54,20 +54,31 @@ public class UpdateProfileHandler extends RequestHandler {
         if (data.get(USER.SKILLS) != null)
           interviewer.setSkills((String[]) data.get(USER.SKILLS));
         if (data.get(USER.RATE) != null) {
-          Integer rate = NumberUtils.parseNumber((String) data.get(USER.RATE), Integer.class);
-          if (null != rate) {
-            interviewer.setRate(rate);
-          } else {
-            interviewer.setRate(0);
-          }
+        	try{
+	          Integer rate = NumberUtils.parseNumber((String) data.get(USER.RATE), Integer.class);
+	          if (null != rate) {
+	            interviewer.setRate(rate);
+	          } else {
+	            interviewer.setRate(0);
+	          }
+        	}
+        	catch(Exception ex){
+        		interviewer.setRate(0);
+        		ex.printStackTrace();
+        	}
         }
-        if ((data.get(USER.PHONE_NUMBER) != null) && (!data.get(USER.PHONE_NUMBER).equals(""))) {
-          PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-          String phoneNumberString = (String) data.get(USER.PHONE_NUMBER);
-          PhoneNumber phoneNumber = phoneUtil.parse(phoneNumberString, "IN");
-          if (phoneUtil.isValidNumber(phoneNumber)) {
-            interviewer.setPhoneNumber((Long) phoneNumber.getNationalNumber());
-          }
+        if ((data.get(USER.PHONE_NUMBER) != null) && (!String.valueOf(data.get(USER.PHONE_NUMBER)).equals(""))) {
+        	try{
+	          PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+	          String phoneNumberString = (String) data.get(USER.PHONE_NUMBER);
+	          PhoneNumber phoneNumber = phoneUtil.parse(phoneNumberString, "IN");
+	          if (phoneUtil.isValidNumber(phoneNumber)) {
+	            interviewer.setPhoneNumber((Long) phoneNumber.getNationalNumber());
+	          }
+        	}
+        	catch(Exception ex){
+        		ex.printStackTrace();
+        	}
         }
         if (data.get(USER.CV) != null)
           interviewer.setCv(data.get(USER.CV).toString());
@@ -93,9 +104,6 @@ public class UpdateProfileHandler extends RequestHandler {
         } else
           resMap.put("status", 0);
       } catch (RemoteException e) {
-        e.printStackTrace();
-      } catch (NumberParseException e) {
-        resMap.put("status", 1);
         e.printStackTrace();
       }
     }

@@ -395,7 +395,7 @@
                                     '<div class="col-md-10">' +
                                     '<div class="row" style="padding:4px;font-size: 20px;">' +
                                     '<div class="col-md-12">' +
-                                    '<span class="job_search_result_title"><a target="_blank" href="userprofile.do?name='+json[i].username+'">{{ username }}</a></span>' +
+                                    '<span class="job_search_result_title"><a style="font-weight: bold;" target="_blank" href="userprofile.do?name='+json[i].username+'">{{ username }}</a></span>' +
                                     '</div>' +
                                     '</div>' +
                                     '<div class="row" style="padding:4px; font-size: 12px;">' +
@@ -443,8 +443,8 @@
     	                    'skills': skills,
     	                    'rate' : json[i].rate,
                             'educations': educations,
-    	                    /*'image': BASE_URL + json[i].profilepic,*/
-                            'image': BASE_URL + "images/face.jpg",
+    	                    'image': BASE_URL + json[i].profilepic,
+                            /*'image': BASE_URL + "images/face.jpg",*/
     	                }
     	                
     	                searchItem = Mustache.to_html(searchItem, templateData);

@@ -118,7 +118,8 @@ public class RegistrationController {
     interviewer.setSkills(null != req.getParameter("skills") ? req.getParameter("skills").split(",")
         : new String[] {});
     interviewer.setType(req.getParameter("type"));
-    interviewer.setUsername(req.getParameter("username"));
+    String username = String.valueOf(req.getParameter("username")).replaceAll(" ", "");
+    interviewer.setUsername(username);
 
     if (req.getParameter("type").equals("INTERVIEWER")) {
       interviewer

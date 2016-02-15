@@ -41,14 +41,14 @@
 											style="font-size: 41%; margin-top: 5px;"></div>
 									</h1>
 								</strong> <br>
-								<div class="profile-balance">
+								<!--<div class="profile-balance">
 									Balance <i class="fa fa-inr"></i><span id="profile_balance"></span>
 								</div>
 								<div class="profile-phonenumber">
 									Phone number <span id="profile_phonenumber"></span>
-								</div>
+								</div>-->
 								<div class="profile-country">
-									Country <span id="profile_country"></span>
+									Location: <span id="profile_country"></span>
 								</div>
 								<div id="usershortcv"></div>
 							</div>
@@ -130,8 +130,8 @@
                 var user = jQuery.parseJSON(res);
                 
                 $("#reviewcount").html(user.reviewCount);
-                $("#profile_balance").html(Number(user.balance).toFixed(2));
-                $("#profile_phonenumber").html("+91 " + Number(user.phonenumber));
+                //$("#profile_balance").html(Number(user.balance).toFixed(2));
+                //$("#profile_phonenumber").html("+91 " + Number(user.phonenumber));
                 $("#profile_username").html(user.username);
 
                 $("#profile_userpic").attr({'src': BASE_URL + user.profilepic});
@@ -174,10 +174,10 @@
                 }
 
                 var cv = $.trim(user.cv);
-                if (cv.length > 280) {
-                    cv = cv.substring(0, 280);
-                    cv = cv + '...&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Show More</a>';
-                }
+                // if (cv.length > 280) {
+                //     cv = cv.substring(0, 280);
+                //     cv = cv + '...&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Show More</a>';
+                // }
                 $("#usershortcv").html(cv);
 
                 var workexp = "";

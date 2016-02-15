@@ -391,26 +391,26 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 		Map<String, Object> responseMap = new HashMap<String, Object>();
 		DBCollection collection =
 				Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
-		AggregationOutput output = collection.aggregate(
-				new BasicDBObject("$match", new BasicDBObject("skills",searchKey)), 
-				new BasicDBObject("$sort", new BasicDBObject("rating", 1)));
+	
 		
-		/**
-		 *  String aid;
-			  String username;
-			  String profilepic;
-			  String avgRating;
-			  List<String> skills;
-			  String ratePerHour;
-			  List<Education> educations;
-			  List<Position> positions;
-			  String cv;
-			  String country;
-		 */
-		
-		for (DBObject obj : output.results()) {
-			Map<String, Object> response = new HashMap<String, Object>();
-			
+		final DBObject textSearchCommand = new BasicDBObject();
+	    textSearchCommand.put("text", USER.DBCollection);
+	    textSearchCommand.put("search", searchKey);
+	    final CommandResult commandResult = Services.getInstance().getBaseDataStore().db.command(textSearchCommand);
+	    
+	    BasicDBList results = (BasicDBList)commandResult.get("results");
+
+	    if(results  == null)
+	    	return responseMap;
+	    
+	    for (Iterator<Object> it = results.iterator();it.hasNext();)
+	    {
+	    	BasicDBObject res  = (BasicDBObject) it.next();
+	        BasicDBObject obj = (BasicDBObject)res.get("obj");
+	        String score = String.valueOf(res.get("score"));
+	        
+	        Map<String, Object> response = new HashMap<String, Object>();
+	        
 			response.put("_id", String.valueOf(obj.get("_id")));
 			response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
 			response.put(USER.RATE, obj.get(USER.RATE).toString());
@@ -419,6 +419,7 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 			response.put(USER.RATING, obj.get(USER.RATING).toString());
 			response.put(USER.CV, obj.get(USER.CV).toString());
 			response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+			response.put("score", score);
 			
 			List<Map<String, Object>> ratingmap = getAllReviews(obj);
 			response.put(VARIABLES.ALLREVIEWS, ratingmap);

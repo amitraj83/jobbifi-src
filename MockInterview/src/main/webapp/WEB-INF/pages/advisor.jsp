@@ -247,6 +247,10 @@
                             descLess += "...";
                         }
 
+                        var visibleName = json[i].username.replace(/\b[a-z]/g, function(letter) {
+                                            return letter.toUpperCase();
+                                        })  
+
                         var searchItem =
                                     '<div class="row white-bg">' +
                                     '<div class="col-md-2 text-center" style="padding:0px;">' +
@@ -260,7 +264,7 @@
                                     '<div class="col-md-10">' +
                                     '<div class="row" style="padding:4px;font-size: 20px;">' +
                                     '<div class="col-md-12">' +
-                                    '<span class="job_search_result_title"><a target="_blank" href="userprofile.do?name='+json[i].username+'">{{ username }}</a></span>' +
+                                    '<span class="job_search_result_title"><a target="_blank" href="userprofile.do?name={{ username }}">'+visibleName+'</a></span>' +
                                     '</div>' +
                                     '</div>' +
                                     '<div class="row" style="padding:4px; font-size: 12px;">' +
@@ -297,11 +301,9 @@
                                     '</div>' +
                                     '</div>';
 
-                         var thisUser = json[i].username.replace(/\b[a-z]/g, function(letter) {
-                                            return letter.toUpperCase();
-                                        })           
+                                  
                         templateData = {
-                            'username': thisUser,
+                            'username': json[i].username,
                             'country': json[i].country,
                             'rating': parseFloat(json[i].avgRating).toFixed(1),
                             'positions': positions,

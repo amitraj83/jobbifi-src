@@ -60,7 +60,7 @@
 									</div>
 									<div class="panel-body">
 										<form id="editgeneralinfo" class="form-horizontal" role="form">
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<label class="col-lg-3 control-label">Rate (per
 													hour)</label>
 												<div class="col-lg-9">
@@ -70,15 +70,15 @@
 															id="perhourrate" name="perhourrate" class="form-control">
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<div class="form-group">
 												<label class="col-lg-3 control-label">Present
-													Country</label>
+													Location</label>
 												<div class="col-lg-9">
-													<select class="form-control" id="updatecountries"></select>
+													<input type="text" class="form-control" id="updatecountries"></input>
 												</div>
 											</div>
-											<div class="form-group">
+											<!--<div class="form-group">
 												<label class="col-lg-3 control-label">Contact number</label>
 												<div class="col-lg-9">
 													<div class="input-group">
@@ -87,7 +87,7 @@
 															class="form-control">
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<div class="form-group">
 												<label class="col-lg-3 control-label">Skills</label>
 												<div class="col-lg-9">
@@ -261,7 +261,10 @@
 							$("#skillerror").html("Please enter skill.");
 						} else {
 							$("#skillerror").html("");
-							editSkillSet($("#update_skill").val(), $(
+							var skillText = $("#update_skill").val();
+							if(skillText.indexOf("#") != -1)
+								skillText = skillText.replace("#","sharp");
+							editSkillSet(skillText, $(
 									"#update_skillexp").val());
 						}
 					});
@@ -293,10 +296,8 @@
 						$("#update_allpositions").append(screen);
 					});
 
-			$
-					.ajax({
-						url : BASE_URL + "getProfileDetails.do?username="
-								+ username,
+			$.ajax({
+						url : BASE_URL + "getProfileDetails.do?username="+ username,
 						type : 'GET',
 						async : false,
 						success : function(res) {
@@ -306,7 +307,7 @@
 							$("#update_img").attr("src",
 									BASE_URL + user.profilepic);
 							$("#updatecountries").html(allCountriesOption);
-							$("#perhourrate").val(user.rate);
+							//$("#perhourrate").val(user.rate);
 							$("#phonenumber").val(user.phonenumber);
 
 							var allskills = user.skilllist;
@@ -391,26 +392,7 @@
 		// Validate profile
 		$(function() {
 			$("#editgeneralinfo").validate({
-				rules : {
-					perhourrate: {
-						required : true
-					},
-					phonenumber: {
-						regex : "[0-9]+",
-						minlength : 10,
-						maxlength : 10
-					}
-				},
-				messages : {
-					perhourrate : {
-						required : "Please input a value here."
-					},
-					phonenumber : {
-						regex : "Please input a valid phone number.",
-						minlength : "Please input a valid phone number.",
-						maxLength : "Please input a valid phone number."
-					}
-				},
+				
 				submitHandler : function(form) {
 					submitForm();
 				}
@@ -447,8 +429,8 @@
 								skills.push(skill);
 							}
 							param += "&skills=" + JSON.stringify(skills);
-							param += "&rate=" + $("#perhourrate").val();
-							param += "&phonenumber=" + $("#phonenumber").val();
+							//param += "&rate=" + $("#perhourrate").val();
+							//param += "&phonenumber=" + $("#phonenumber").val();
 							param += "&cv=" + $("#update_shortcv").val();
 
 							var edudiv = $("#update_alleducations").children(

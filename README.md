@@ -15,3 +15,13 @@ Directories
 
 Run MongoServer
 sudo /usr/bin/mongod --config /etc/mongod.conf
+Also, create indexes and set text search enabled
+
+To create indexes:
+db.interviewer.ensureIndex({"companies":"text", "country":"text","cv":"text","skills":"text"})
+
+To enable text search:
+mongo
+use admin
+db.runCommand( { setParameter: 1, textSearchEnabled: true } );
+

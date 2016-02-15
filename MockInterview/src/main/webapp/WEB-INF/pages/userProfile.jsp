@@ -42,8 +42,8 @@
 
                             <br>
 
-                            <div id="user-balance-div"></div>
-                            <div class="profile-country">Country <span id="profile_country"></span></div>
+                            <!-- <div id="user-balance-div"></div>-->
+                            <div class="profile-country"><i class="fa fa-map-marker"></i> <span id="profile_country"></span></div>
                             <div id="usershortcv"></div>
 
 
@@ -274,16 +274,16 @@
                 });
 
                 var cv = $.trim(user.cv);
-                if (cv.length > 280) {
-                    cv = cv.substring(0, 280);
-                    cv = cv + '...&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Show More </a>';
-                }
+                // if (cv.length > 280) {
+                //     cv = cv.substring(0, 280);
+                //     cv = cv + '...&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Show More </a>';
+                // }
                 $("#usershortcv").html(cv);
                 console.log("Loggedin user:" + user.username);
                 console.log("showing user: " + username);
                 if (user.username == username) {
-                    $("#user-balance-div").html('<div class="profile-balance">Balance' +
-                            '<span id="profile_balance"></span></div>');
+                    //$("#user-balance-div").html('<div class="profile-balance">Balance' +
+                     //       '<span id="profile_balance"></span></div>');
                 }
                 var workexp = "";
                 var allpositions = user.positions;

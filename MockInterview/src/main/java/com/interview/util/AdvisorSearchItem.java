@@ -18,10 +18,19 @@ public class AdvisorSearchItem implements Serializable, Comparable<AdvisorSearch
   List<Position> positions;
   String cv;
   String country;
+  double score;
 
 
 
-  public String getCountry() {
+  public double getScore() {
+	return score;
+}
+
+public void setScore(double score) {
+	this.score = score;
+}
+
+public String getCountry() {
     return country;
   }
 
@@ -106,9 +115,9 @@ public class AdvisorSearchItem implements Serializable, Comparable<AdvisorSearch
   @Override
   public int compareTo(AdvisorSearchItem other) {
 
-    if (Double.valueOf(this.avgRating) > Double.valueOf(other.avgRating))
+    if (Double.valueOf(this.score) > Double.valueOf(other.score))
       return -1;
-    else if (Double.valueOf(this.avgRating) == Double.valueOf(other.avgRating))
+    else if (Double.valueOf(this.score) == Double.valueOf(other.score))
       return 0;
     else
       return 1;

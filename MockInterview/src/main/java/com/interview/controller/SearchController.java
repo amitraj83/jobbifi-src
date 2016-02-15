@@ -58,9 +58,12 @@ public class SearchController {
     while(it.hasNext()){
     	String username = it.next();
     	Map<String, Object> interviewer = (Map<String, Object>)responseMap.get(username);
+    	
     	AdvisorSearchItem item = new AdvisorSearchItem();
+    	
     	item.setUsername(username);
-        Iterator<String> infoIterator = interviewer.keySet().iterator();
+        
+    	Iterator<String> infoIterator = interviewer.keySet().iterator();
         while (infoIterator.hasNext()) {
           String dataname = infoIterator.next();
           Object value = interviewer.get(dataname);
@@ -70,6 +73,9 @@ public class SearchController {
 
           if (dataname.equalsIgnoreCase(USER.RATING))
                 item.setAvgRating(String.valueOf(value));
+          
+          if(dataname.equalsIgnoreCase("score"))
+        	  item.setScore(new Double(String.valueOf(value)));
           
           if(dataname.equalsIgnoreCase(USER.PROFILE_PIC))
             item.setProfilepic(String.valueOf(value));

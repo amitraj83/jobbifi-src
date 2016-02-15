@@ -392,7 +392,6 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 	
 	public Map<String, Object> searchAdvisors(String searchKey) throws RemoteException {
 		Map<String, Object> responseMap = new HashMap<String, Object>();
-		try {
 			
 		DBCollection collection =
 				Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
@@ -444,10 +443,6 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 			List<Skill> skills = getAllSkills(obj);
 			response.put(USER.SKILLS, skills);
 			responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
-		}
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		return responseMap;
 	}

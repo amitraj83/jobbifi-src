@@ -14,6 +14,7 @@ import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Education;
 import com.interview.framework.pojo.Position;
 import com.interview.framework.pojo.Skill;
+import com.interview.services.Services;
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
@@ -34,17 +35,29 @@ public class Test {
 	 */
 	public static void main(String[] args) throws UnknownHostException {
 		
-		MongoClient mongo = new MongoClient( "jobbifi.com" , 27017 );
+		MongoClient mongo = new MongoClient( "127.0.0.1" , 27017 );
 		DB db = mongo.getDB("interviewbackend");
 		DBCollection collection = db.getCollection("interviewer");
 
+		String searchKey = "java";
+		
 		final DBObject textSearchCommand = new BasicDBObject();
 	    textSearchCommand.put("text", "interviewer");
-	    textSearchCommand.put("search", "java business");
+	    textSearchCommand.put("search", searchKey);
 	    final CommandResult commandResult = db.command(textSearchCommand);
+//	    
+//	    BasicDBList results = (BasicDBList)commandResult.get("results");
+
+		
+		
+//		final DBObject textSearchCommand = new BasicDBObject();
+//	    textSearchCommand.put("text", USER.DBCollection);
+//	    textSearchCommand.put("search", searchKey);
+//	    final CommandResult commandResult = db.command(textSearchCommand);
 	    
 	    BasicDBList results = (BasicDBList)commandResult.get("results");
 
+		
 	    for (Iterator<Object> it = results.iterator();it.hasNext();)
 	    {
 	    	Map<String, Object> responseMap = new HashMap<String, Object>();

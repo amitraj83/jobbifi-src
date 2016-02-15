@@ -94,11 +94,17 @@ public class SearchController {
 //            String parsedSkill =
 //                String.valueOf(value).substring(1, String.valueOf(value).length() - 1);
 //            String[] tokenizedSkill = parsedSkill.split(",");
+        	  
         	  List<Skill>  skills = (List<Skill> )value;
         	  List<String> skillsString = new ArrayList<String>();
-            for (Skill skill : skills) {
-              skillsString.add(skill.getSkill());
-            }
+        	  try{
+		            for (Skill skill : skills) {
+		              skillsString.add(skill.getSkill());
+		            }
+        	  }
+	          catch(Exception ex){
+	            	
+	          }
             item.setSkills(skillsString);
           }
 

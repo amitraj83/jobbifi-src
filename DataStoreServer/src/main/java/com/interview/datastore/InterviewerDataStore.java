@@ -1,5 +1,6 @@
 package com.interview.datastore;
 
+import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -25,9 +26,11 @@ import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.CommandResult;
+import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 import com.mongodb.WriteResult;
 import com.mongodb.util.JSON;
 
@@ -389,14 +392,22 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 	
 	public Map<String, Object> searchAdvisors(String searchKey) throws RemoteException {
 		Map<String, Object> responseMap = new HashMap<String, Object>();
+		try {
+			
 		DBCollection collection =
 				Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
 	
+		
+		
+//		DB db = mongo.getDB("interviewbackend");
+//		DBCollection collection = db.getCollection("interviewer");
+
 		
 		final DBObject textSearchCommand = new BasicDBObject();
 	    textSearchCommand.put("text", USER.DBCollection);
 	    textSearchCommand.put("search", searchKey);
 	    final CommandResult commandResult = Services.getInstance().getBaseDataStore().db.command(textSearchCommand);
+//	    final CommandResult commandResult = db.command(textSearchCommand);
 	    
 	    BasicDBList results = (BasicDBList)commandResult.get("results");
 
@@ -433,6 +444,10 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 			List<Skill> skills = getAllSkills(obj);
 			response.put(USER.SKILLS, skills);
 			responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+		}
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return responseMap;
 	}

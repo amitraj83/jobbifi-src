@@ -48,6 +48,10 @@ ul {
     padding: 0;
 }
 
+#navigation > div > div > nav > ul{
+    width: 500px;
+}
+
 .navbar-nav li a:hover,
 .navbar-nav li a:focus {
     outline: none;
@@ -2380,7 +2384,6 @@ body.modal-open {
 
 #navigation.otherview > div.main-nav
 {
-    top: 0px;
 }
 
 #loginform .form-control {

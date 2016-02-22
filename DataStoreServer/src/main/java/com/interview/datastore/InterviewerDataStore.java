@@ -415,34 +415,39 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 	    
 	    for (Iterator<Object> it = results.iterator();it.hasNext();)
 	    {
+	    	
 	    	BasicDBObject res  = (BasicDBObject) it.next();
 	        BasicDBObject obj = (BasicDBObject)res.get("obj");
 	        String score = String.valueOf(res.get("score"));
 	        
-	        Map<String, Object> response = new HashMap<String, Object>();
+	        if(String.valueOf(obj.get(USER.TYPE)).equals(VARIABLES.INTERVIEWER)){
 	        
-			response.put("_id", String.valueOf(obj.get("_id")));
-			response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
-			response.put(USER.RATE, obj.get(USER.RATE).toString());
-			response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
-			response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
-			response.put(USER.RATING, obj.get(USER.RATING).toString());
-			response.put(USER.CV, obj.get(USER.CV).toString());
-			response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
-			response.put("score", score);
-			
-			List<Map<String, Object>> ratingmap = getAllReviews(obj);
-			response.put(VARIABLES.ALLREVIEWS, ratingmap);
-
-			List<Education> educations = getAllEducations(obj);
-			response.put(USER.EDUCATIONS, educations);
-
-			List<Position> positions = getAllPositions(obj);
-			response.put(USER.POSITIONS, positions);
-
-			List<Skill> skills = getAllSkills(obj);
-			response.put(USER.SKILLS, skills);
-			responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+		        Map<String, Object> response = new HashMap<String, Object>();
+		        
+				response.put("_id", String.valueOf(obj.get("_id")));
+				response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+				response.put(USER.RATE, obj.get(USER.RATE).toString());
+				response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+				response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+				response.put(USER.RATING, obj.get(USER.RATING).toString());
+				response.put(USER.CV, obj.get(USER.CV).toString());
+				response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+				response.put("score", score);
+				
+				List<Map<String, Object>> ratingmap = getAllReviews(obj);
+				response.put(VARIABLES.ALLREVIEWS, ratingmap);
+	
+				List<Education> educations = getAllEducations(obj);
+				response.put(USER.EDUCATIONS, educations);
+	
+				List<Position> positions = getAllPositions(obj);
+				response.put(USER.POSITIONS, positions);
+	
+				List<Skill> skills = getAllSkills(obj);
+				response.put(USER.SKILLS, skills);
+				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+				
+	        }
 		}
 		return responseMap;
 	}

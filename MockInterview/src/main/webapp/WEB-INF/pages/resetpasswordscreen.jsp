@@ -133,7 +133,7 @@
 			$('#forgotpasswordbox').show()
 		}
 		function loginLink(){
-			$('#myModal').modal('show');
+			window.location = BASE_URL;
 		}
 	</script>
 </body>

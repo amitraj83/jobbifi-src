@@ -138,7 +138,7 @@
 								data-wow-delay="300ms">How it works for Candidates</h3>
 							<p class="wow fadeInUp" data-wow-duration="700ms"
 								data-wow-delay="300ms" style="margin-top:15px;">We've made it amazingly simple for
-								job seekers to manage their hunt for that dream job.</p>
+								job seekers to succeed in their dream job interview.</p>
 						</div>
 					</div>
 					<ul class="timeline">
@@ -189,7 +189,7 @@
 									<h4 class="subheading"></h4>
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">Ask your advisors to take your mock interviews to help you prepare for our next upcoming job interview. Advisors can tell you perfectly what a company is looking into the candidates. How to behave and answer in real job interviews. They can help you to analyze your weaknesses, which you can overcome with right guidance.</p>
+									<p class="text-muted">Ask your advisors to take your mock interviews to help you prepare for your next upcoming job interview. Advisors can tell you perfectly what a company is looking into the candidates. How to behave and answer in real job interviews. They can help you to analyze your weaknesses, which you can overcome with right guidance.</p>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -243,7 +243,7 @@
 			<div class="row text-center section-title">
 				<div class="col-sm-8 col-sm-offset-2">
 					<h3 class="wow fadeInDown" data-wow-duration="700ms"
-						data-wow-delay="300ms">Advisior</h3>
+						data-wow-delay="300ms">Advisor</h3>
 					<p class="wow fadeInUp" data-wow-duration="700ms"
 						data-wow-delay="300ms" style="margin-top:15px;">As an advisor, you can contribute to your fellow colleagues and students from your college towards their next career move.</p>
 				</div>
@@ -288,22 +288,21 @@
 						data-wow-delay="500ms">
 						<i class="fa fa-group"></i>
 
-						<h2>Jobs</h2>
-
-						<h3 class="timer" id="jobscount">1245</h3>
-					</div>
-					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
-						data-wow-delay="700ms">
-						<i class="fa fa-gift"></i>
 						<h2>Candidates</h2>
 						<h3 class="timer" id="candidatescount">986</h3>
 					</div>
 					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
-						data-wow-delay="900ms">
-						<i class="fa fa-trophy"></i>
-
-						<h3>Advisors/Employers</h3>
+						data-wow-delay="700ms">
+						<i class="fa fa-user-secret"></i>
+						<h3>Advisors</h3>
 						<h3 class="timer" id="employerscount">23</h3>
+					</div>
+					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
+						data-wow-delay="900ms">
+						<i class="fa fa-comments"></i>
+						<h3>Mock Interviews</h3>
+						<h3 class="timer" id="mocksCount">23</h3>
+						
 					</div>					
 				</div>
 			</div>
@@ -666,6 +665,27 @@
 			$('.navbar-collapse li.scroll').removeClass('active').eq(0)
 					.addClass('active');
 		}
+
+		$(function(){
+			$("#myModal").on("hidden.bs.modal", function () {
+				 $("#j_username").val("");
+				 $("#j_password").val(""); 
+
+    
+
+			});
+
+			$("#mysignupModal").on("hidden.bs.modal", function () {
+				$("#headersignuplink").removeClass('active');
+				$("#userSignUpForm username").val("");   
+			    $("#userSignUpForm email").val("");    
+			    $("#userSignUpForm password").val("");    
+			    
+
+			});
+
+		});
+
 	</script>
     
     

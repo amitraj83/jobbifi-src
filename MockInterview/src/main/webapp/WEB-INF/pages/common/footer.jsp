@@ -6,12 +6,12 @@
                 <ul class="pull-left">
                     <li><a href="termsofservice.do">Terms of Service</a></li>
                     <li><a href="privacy.do">Privacy</a></li>
-                    <li><a class="scroll" href="#about-us">About</a></li>
+                    <li><a href="about.do">About</a></li>
                     <li><a href="faqfooter.do">FAQ</a></li>
                     <li><a href="career.do">Careers</a></li>
                     <li><a class="scroll" href="#contact-us">Contact</a></li>
                 </ul>
-                <span class="pull-right">&copy; 2015 Jobbifi Technologies LLP</span>
+                <span class="pull-right">&copy; 2016 Jobbifi Technologies LLP</span>
             </div>
         </div>
     </div>

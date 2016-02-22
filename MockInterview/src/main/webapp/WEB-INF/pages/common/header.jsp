@@ -218,6 +218,184 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+<div class="modal fade bs-example-modal-sm" id="mysignupModal" role="dialog"
+	aria-hidden="true">
+	<div class="modal-dialog login-modal">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div id="loginbox" style="display: none;" >
+                    <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title text-center">Welcome to Jobbifi
+                        <div class="pull-right">
+                        <button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                        </div>
+                    </div>     
+                    <div style="padding-top:30px" class="panel-body">
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                             <form id="loginform" role="form" name="f"
+									action="j_spring_security_check" method="POST">
+									<div class="form-group email-field">
+										<input type="email" class="form-control text-center"
+											required="required" placeholder="someone@example.com"
+											id="j_username" name='j_username'>
+									</div>
+									<div class="form-group password-field">
+										<input type="password" class="form-control text-center"
+											required="required" placeholder="Password" id="j_password"
+											name='j_password'>
+									</div>
+									<div class="form-group">
+										<button type="submit" id="login-submit-button"
+											class="btn btn-success btn-block lowercase">Login</button>
+										<img id="loginbtnloader" style="display: none;"
+											alt="Processing..."
+											src="<c:url value=" /resources/img/loading.gif " />" />
+									</div>
+									<input type="hidden" id="callback" />
+								</form>
+                             
+                             
+                             <div style="display: none;" id="login-alert"
+								class="alert alert-danger col-md-12"></div>
+                                
+                                
+                             
+                             <div class="row login-form-content-footer">
+							<div class="col-sm-6 col-md-6 text-left">
+								<a href="#" class="small muted"
+									onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot
+									password?</a>
+							</div>
+							<div class="col-sm-6 col-md-6 text-right">
+								<a href="#" class="small muted"
+									onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign up now</a>
+							</div>
+						</div>   
+                                
+                                
+                             
+                             
+                        </div>                     
+                    </div>
+
+
+				</div>
+
+				
+				<div id="signupbox" >
+                
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                    
+                    <div class="panel-title text-center">Signup with Jobbifi
+                        <div class="pull-right">
+                        <button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                    </div>
+                    
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body">
+                           
+                       	<form id="signupform" class="form-horizontal">
+									<div class="form-group row">
+										<div class="col-sm-12 col-md-12">
+											 <label class="radio-inline"> 
+												<input
+												name="usertype" checked="checked" id="intervieweeId"
+												value="INTERVIEWEE" type="radio"/> 
+												Job Seeker
+											</label> 
+											<label class="radio-inline"> 
+												<input name="usertype"
+												id="interviewerId" value="INTERVIEWER" type="radio"/>
+												Career Advisor
+											</label>
+											<!--<label class="radio-inline"> 
+												<input name="usertype"
+												id="employerId" value="EMPLOYER" type="radio"/>
+												Employer
+											</label> -->
+
+										</div>
+									</div>
+									<!-- start intervieweeSignUpForm-->
+									<div id="userSignUpForm" >
+										<div class="form-group row">
+											<div class="col-sm-12 col-md-12">
+												<input type="text" class="form-control text-center" id="email"
+													name="email" placeholder="Email Address">
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-sm-12 col-md-12">
+												<input type="text" class="form-control text-center" id="username"
+													name="username" placeholder="Choose a username">
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-sm-12 col-md-12">
+												<input type="password" class="form-control text-center" id="password"
+													name="password" placeholder="Password">
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<div class="col-md-12">
+												<button type="submit" class="btn btn-success btn-block lowercase">Sign Up</button>
+													<img id="signupbtnloader" style="display: none;"
+													alt="Processing..."
+													src="<c:url value=" /resources/img/loading.gif " />">
+												
+											</div>
+										</div>
+									</div>
+									<!-- End intervieweeSignUpForm-->
+
+									<!-- Start interviewerSignUpForm-->
+									
+									
+									<!-- End interviewerSignUpForm-->
+								</form>
+                           
+
+
+
+                        </div>                     
+                    </div>
+                
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Page Loader -->
 <div class="preloader">
 	<div id="loaderImage"></div>
@@ -242,15 +420,15 @@
 				<ul class="nav navbar-nav">
 					<!-- IF USER IS NOT AUTHENTICATED -->
 					<sec:authorize access="!isAuthenticated()">
-						<!-- <li class="scroll "><a href="#navigation"
-							onclick="activeHome()">Home</a></li>-->
+						<li class="scroll active"><a href="#navigation"
+							onclick="activeHome()">Home</a></li>
 						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
 						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
 						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>
-						<li class="scroll active"><a href="#navigation" data-toggle="modal"
-							data-target="#myModal">Sign Up</a></li>	
+						<li class="scroll"><a id="headersignuplink" href="#navigation" data-toggle="modal"
+							data-target="#mysignupModal">Sign Up</a></li>	
 						<!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->
 					</sec:authorize>
 					<!-- IF USER IS AN INTERVIEWEE -->

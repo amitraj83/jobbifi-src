@@ -8,226 +8,246 @@
 <body>
 	<%@ include file="/WEB-INF/pages/common/header.jsp"%>
 	<div class="container">
-		<div class="col-md-12">
+	<div class="col-md-2"></div>
+		<div class="col-md-8">
 			<div class="row">
-				<h1>Privacy</h1>
-				<p>Jobbifi has created this privacy policy in order to
-					demonstrate our firm commitment to privacy. The following discloses
-					the information gathering and dissemination practices for the
-					Jobbifi site.</p>
-
-				<p>By using the Jobbifi site and accepting the User Agreement
-					you also agree to this Privacy Policy. If you do not agree to this
-					Privacy Policy, you must not use the Jobbifi site. The terms
-					"We," "Us," "Our," or "Jobbifi" includes Jobbifi
-					International Pty Ltd and our affiliates.</p>
-
-				<h3>1. What information do we collect?</h3>
-				<ol class="termslist">
-					<li>Jobbifi collects your information when you register on
-						the Jobbifi site and when you visit Jobbifi pages.</li>
-					<li>Personal Information: We may collect the following types
-						of personal information in order to provide you with the use and
-						access to the Jobbifi site, services and tools, and for any
-						additional purposes set out in this Privacy Policy:
-						<ul>
-							<li>Name, and contact information, such as email address,
-								phone number, mobile telephone number, physical address, and
-								(depending on the service used) sometimes financial information,
-								such as bank account numbers;</li>
-							<li>transactional information based on your activities on
-								the sites (such as bidding, buying, selling, item and content
-								you generate or that relates to your account), billing and other
-								information you provide to purchase an item;</li>
-							<li>personal information you provide to us through
-								correspondence, chats, dispute resolution, or shared by you from
-								other social applications, services or websites;</li>
-							<li>additional personal information we ask you to submit to
-								authenticate yourself if we believe you are violating site
-								policies (for example, we may ask you to send us an ID to answer
-								additional questions online to help verify your identity);</li>
-							<li>information from your interaction with our sites,
-								services, content and advertising, including, but not limited
-								to, device ID, device type, location, geo-location information,
-								computer and connection information, statistics on page views,
-								traffic to and from the sites, ad data, IP address and standard
-								web log information.</li>
-						</ul>
-					</li>
-					<li>Aggregate Information: Jobbifi collects
-						non-identifying, general, generic and aggregate information to
-						better design our Web site and services.</li>
-					<li>Non-Personal Information: Jobbifi may collect
-						non-personal information as you use Jobbifi. When you use the
-						site, Jobbifi, third-party service providers (e.g. Google
-						Analytics), and partners may receive and record non-personal
-						information from cookies, server logs, and similar technology from
-						your browser or mobile device, including your IP address.</li>
-					<li>We may combine some Non-Personal Information with the
-						Personal Information we collect. Where we do so, we will treat the
-						combined information as Personal Information if the resulting
-						combination may be used to readily identify or locate you in the
-						same manner as Personal Information alone.</li>
-				</ol>
-
-
-				<h3>2. How do we store your information?</h3>
-				<p>We use hosting provider Amazon Web Services, therefore your
-					information may be transferred to and stored on servers in various
-					locations both in and outside of Australia. Jobbifi maintains
-					control of your information. We protect your information using
-					technical and administrative security measures to reduce the risks
-					of loss, misuse, unauthorised access, disclosure and alteration.
-					Some of the safeguards we use are firewalls and data encryption,
-					physical access controls to our data centres, and information
-					access authorisation controls.</p>
-
-
-				<h3>3. How do we use your Information?</h3>
-
-				<ol class="termslist">
-					<li>When you use the Jobbifi site, we may request certain
-						information. Jobbifi does not share any of your personally
-						identifiable or transactional information with any person or
-						entity, other than as set out in this policy. No other third party
-						receives your personally identifiable information or other
-						transactional data except for approximate location / geo-location
-						information when you use the Local jobs service and those with
-						whom you have transactions and share that information. The
-						information we collect is used to improve the content of our web
-						site, used to notify consumers about updates to our web site and
-						for communications, such as customer service.</li>
-					<li>Communications: We may send you a welcome email to verify
-						your account and other transactional emails for operational
-						purposes, such as billing, account management, or system
-						maintenance. You may only stop those emails by terminating your
-						account. We may also send you promotions, product announcements,
-						surveys, newsletters, developer updates, product evaluations, and
-						event information or other marketing or commercial e-mails. You
-						can opt out of receiving these email communications from
-						Jobbifi at any time by unsubscribing using the unsubscribe link
-						within each email, updating your e-mail preferences on your
-						Jobbifi account or emailing us to have your contact information
-						removed from our email list or registration database.</li>
-					<li>Marketing: You agree that we may use your personal
-						information to tell you about our services and tools, deliver
-						targeted marketing and promotional offers based on your
-						communication preferences, and customise measure and improve our
-						advertising. You can unsubscribe from emails at any time by
-						clicking the unsubscribe link contained in the email.</li>
-					<li>We do not rent, sell, or share Personal Information about
-						you with other people or non- affiliated companies for marketing
-						purposes (including direct marketing purposes) without your
-						permission. We may use and share Non-Personal Information for our
-						marketing purposes, including, without limitation, marketing on
-						other websites. For example, we may use the information to control
-						the number of times you have seen an ad, deliver ads tailored to
-						your interests, and measure the effectiveness of ad campaigns. You
-						can prevent us from tailoring our ads to you on other websites by
-						deleting your cookies (see below).</li>
-				</ol>
-
-				<h3>4. Sharing your Information</h3>
-
-				<ol class="termslist">
-					<li>We disclose personal information to respond to legal
-						requirements, enforce our policies, respond to claims that a
-						listing or other content violates the rights of others, or protect
-						anyone's rights, property, or safety. Such information will be
-						disclosed in accordance with applicable laws and regulations. As
-						stated above, we do not disclose your personal information to
-						third parties for their marketing purposes without your explicit
-						consent.</li>
-					<li>We may disclose personal information to our related bodies
-						corporate and third party suppliers and service providers located
-						overseas for some of the purposes listed above. We take reasonable
-						steps to ensure that the overseas recipients of your personal
-						information do not breach the privacy obligations relating to your
-						personal information.</li>
-					<li>We may disclose your personal information upon a business
-						transition; At the sale or transfer of Jobbifi and/or all or
-						part of its assets, your personal information may be among the
-						items sold or transferred.</li>
-					<li>We may disclose your personal information to entities
-						located outside of Australia, including our related bodies
-						corporate, located in the Philippines, Singapore, Switzerland,
-						Canada and the UK.</li>
-					<li>We may share aggregate data with advertisers and other
-						third parties. Jobbifi uses industry-standard encryption
-						technologies when transferring and receiving consumer and
-						transaction data exchanged with our site.</li>
-				</ol>
-
-				<h3>5. Cookies</h3>
-
-				<ol class="termslist">
-					<li>Cookies are pieces of data assigned by a web server that
-						uniquely identify the browser on your PC. Jobbifi uses cookies
-						called "persistent" cookies to enable the site to remember you on
-						subsequent visits, speeding up or enhancing your experience of
-						services or functions offered. Cookies also enable our systems to
-						gather information about your navigational patterns through the
-						site. You have the option to disable cookies at any time through
-						your browsers. We may also store your website activity in cookies
-						which may be used by third party vendors, including Google, to
-						serve ads based on your behaviour on our website.</li>
-					<li>The third party vendors (e.g. Google Analytics) may
-						receive and record non-personal information from cookies, server
-						logs, and similar technology from your browser or mobile device,
-						including your IP address. You may opt out of Google's use of
-						cookies by visiting the Google advertising <a
-						href="http://www.google.com/privacy_ads.html">opt-out page</a>
-					</li>
-					<li>If you access our Services with your login credentials
-						from a social networking site (e.g., Facebook or Twitter) or if
-						you otherwise agree to associate your Jobbifi account with a
-						social networking account, we may receive personal information
-						about you from such social networking site, in accordance with the
-						terms of use and privacy policy of the social networking site. For
-						example, Facebook may share with us your friend list, birthday,
-						information about the interests of you or your friends or other
-						personal information, in order to help us establish your account,
-						tailor services to you and find other current or potential site
-						users that you know. We may add this information to the
-						information we have already collected from you via other aspects
-						of the Site. You are also subject to the social networking site's
-						terms of use and privacy policy. We use the OAuth (open
-						authorisation) protocol to enable us to access this information
-						without collecting your password when you agree allow another
-						application to access your account information.</li>
-				</ol>
-
-				<h3>6. Accessing and updating your Information</h3>
-				<p>You can update your information through your account profile
-					settings. If you believe that personal information we hold about
-					you is incorrect, incomplete or inaccurate, then you may request us
-					to amend it.</p>
-				<p>
-					Additionally, You may request access to any personal information we
-					hold about you at any time by contacting us at <a
-						href="mailto:privacy@jobbifi.com">privacy@jobbifi.com</a>.
-					Where we hold information that you are entitled to access, we will
-					try to provide you with suitable means of accessing it (for
-					example, by mailing or emailing it to you). We may charge you a fee
-					to cover our administrative and other reasonable costs in providing
-					the information to you. We will not charge for simply making the
-					request and will not charge for making any corrections to your
-					personal information.
-				</p>
-				<p>There may be instances where we cannot grant you access to
-					the personal information we hold. For example, we may need to
-					refuse access if granting access would interfere with the privacy
-					of others or if it would result in a breach of confidentiality. If
-					that happens, we will give you written reasons for any refusal.</p>
-
-				<h3>Changes to our privacy policy</h3>
-				<p>We may change this privacy policy from time to time. Any
-					updated versions of this privacy policy will be posted on our
-					website. Please review it regularly.</p>
-				<p>This privacy policy was last updated on 1st July 2015.</p>
-
-			</div>
+			<br/><br/><br/>
+			<center>
+				<h1>PRIVACY POLICY</h1>
+			</center>
+<p>
+This document is an electronic record in terms of Information Technology Act, 2000 and rules there under as applicable and the provisions pertaining to electronic records in various statutes as amended by the Information Technology Act, 2000. This electronic record is generated by a computer system and does not require any physical or digital signatures to make the terms of this policy binding.
+</p>
+<p>
+At www.jobbifi.com, data protection is a matter of trust and your privacy is very important to us. We use your personal information only in the manner set out in this Privacy Policy. Please read this privacy policy to learn more about our information gathering and dissemination practices.
+</p>
+<p>
+This Privacy Policy explains how we gather personal information, classified as mandatory or optional as part of the normal operation of our services; and use, disclose and protect such information through the Site. This detailed privacy policy enables you to take informed decisions in dealings with us. Our parent, subsidiaries and joint ventures operate under similar privacy practices subject to the requirements of applicable law.
+</p>
+<p>
+By registering with us, you acknowledge your acceptance of the terms of this Privacy Policy, expressly consent to our use and disclosure of your personal information in accordance with this Privacy Policy and that any personal information provided by you through us is provided under a lawful contract. This Privacy Policy is incorporated into and subject to the terms of the User Agreement. 
+</p>
+<p>
+We are extremely proud of our commitment to protect your privacy. We value your trust in us. We work hard to earn your confidence so that you can enthusiastically use our services and recommend your friends and family to participate in dealing with us. Please read the following policy to understand how your personal information will be treated as you make full use of our Site.
+</p>
+<p>
+Our privacy policy is subject to change at any time without notice. To make sure you are aware of any changes, please review this policy periodically.
+</p>
+<p>
+1. INFORMATION WE COLLECT:
+</p>
+<p>
+1.1 When you register with us, you provide us information about yourself - your username, email address, password etc. If you correspond with us by e-mail, we may retain the content of your e-mail messages, your e-mail address, and our responses. Additionally, we store information about users' contacts when users manually enter contact e-mail addresses or transfer contact information from other online social networks. We also collect general information about your use of our services.
+</p>
+<p>
+2. INFORMATION WE COLLECT AUTOMATICALLY WHEN YOU USE OUR SERVICES:
+</p>
+<p>
+2.1 When you access or use our Services, we automatically collect information about you, including:
+</p>
+<p>
+a) Usage Information: When you send or receive messages via our Services, we collect information about these messages, including the time, date, sender and recipient. We also collect information about the number of messages sent and received between you and your friends and which friends you exchange messages with most frequently. If you choose to post messages on our message boards, chat rooms or other message areas or leave feedback for other users, we retain this information as necessary to resolve disputes, provide customer support and troubleshoot problems as permitted by law. If you send us personal correspondence, such as emails or letters, or if other users or third parties send us correspondence about your activities or postings on the Site, we may collect such information into a file specific to you.
+</p>
+<p>
+b) Log Information: We log information about your use of our website, including your browser type and language, access times, pages viewed, your IP address and the website you visited before navigating to our website.
+</p>
+<p>
+c) Device Information: We may collect information about the device you use to access our Services, including the hardware model, operating system and version, unique device identifier, phone number, International Mobile Equipment Identity ("IMEI") and mobile network information. 
+</p>
+<p>
+d) Location Information: With your consent, we may collect information about the location of your device to facilitate your use of certain features of our Services, determine the speed at which your device is traveling, add location-based filters (such as local weather), and for any other purposes.
+</p>
+<p>
+e) Information Collected by Cookies and Other Tracking Technologies: We use various technologies to collect information, and this may include sending cookies to you. A "cookie" is a small data file transferred to your computer's hard drive that allows a Website to respond to you as an individual, gathering and remembering information about your preferences in order to tailor its operation to your needs, likes and dislikes. Overall, cookies are safe, as they only identify your computer to customize your Web experience. Accepting a cookie does not provide us access to your computer or any Personally Identifiable Information about you, other than the information you choose to share. Other servers cannot read them, nor can they be used to deliver a virus. Most browsers automatically accept cookies, but you can usually adjust yours (Microsoft Internet Explorer, Firefox or Google Chrome) to notify you of cookie placement requests, refuse certain cookies, or decline cookies completely. If you turn off cookies completely, there may be some website features that will not be available to you, and some Web pages may not display properly. To support the personalized features of our website (such as your country and language codes and browsing functions) we must send a cookie to your computer's hard drive and/or use cookie-based authentication to identify you as a registered website user. We do not, however, use so-called "surveillance" cookies that track your activity elsewhere on the Web. We may also collect information using web beacons (also known as "tracking pixels"). 
+</p>
+<p>
+3. INFORMATION SHARED DURING TRANSACTION:
+</p>
+<p>
+3.1 You agree that you will enter into transactions with third parties through our website and will share your personally identifiable information with them for easy completion of the transaction. You hereby expressly agree that we shall not be involved or held liable for any breach of the privacy or security of that data. The said breach, if any, shall be a matter of dispute between you and the third party and we shall not be held liable or be issued a notice for the same.  
+</p>
+<p>
+3.2 We STRONGLY recommend that you should be careful and vigilant while disclosing your personally identifiable details with your transaction partner. Please do not disclose your bank and account details to anyone through our website or to any individual whom you have met through our website.  
+</p>
+<p>
+4. HOW WE USE YOUR INFORMATION:
+</p>
+<p>
+4.1 We use the personal information we collect to fulfill your requests for services, improve our services, contact you, conduct research, and provide anonymous reporting for internal and external clients.
+</p>
+<p>
+4.2 By providing us your e-mail address, you consent to us using the e-mail address to send you our website and services related notices, including any notices required by law, in lieu of communication by postal mail. You also agree that we may send notifications of activity on our website to the e-mail address you give us, in accordance with any applicable privacy settings. We may use your e-mail address to send you other messages, such as newsletters, changes to our features, or other information. If you do not want to receive optional e-mail messages, you may modify your settings to opt out.
+</p>
+<p>
+4.3 Our settings may also allow you to adjust your communications preferences. If you do not wish to receive promotional email messages from us, you may opt out by following the unsubscribe instructions in those emails. If you opt out, you will still receive non-promotional emails from us about your account and our Services.
+</p>
+<p>
+4.4 All messages you record or send using our services will be stored on our server and will be downloaded to a temporary cache on the recipient's device for playback. When a sender of a message marks a message for deletion, that message will no longer be available to recipients via our website server, but it may still be accessible in the temporary caches of recipients who have already received the message. Messages marked for deletion will not be deleted immediately from our server, but will instead be deleted upon the next deletion event, which will be scheduled on a periodic basis.
+</p>
+<p>
+4.5 Following termination or deactivation of your services, we may (but is under no obligation to) retain your information for archival purposes. Furthermore, after termination or deactivation of your services, messages that you have not deleted may be retained so that recipients may continue to access them. We will not publicly disclose any of your personally identifiable information other than as described in this Privacy Policy.
+</p>
+<p>
+4.6 We do not, as a matter of course, access or monitor messages recorded or sent using our service. However, we reserve the right (but have no obligation) to access, review, and/or monitor the content you record or send using our website, at our sole discretion, for any reason or no reason at all, and we reserve the right to remove any such content or messages in our sole discretion, including, but not limited to, if we believe such action is necessary (a) to conform to the law, comply with legal process served on us or our affiliates, or investigate, prevent, or take action regarding suspected or actual illegal activities; (b) to enforce this policy, to take precautions against liability, to investigate and defend ourselves against any third-party claims or allegations, to assist government enforcement agencies, or to protect the security or integrity of our website; or (c) to exercise or protect the rights, property, or personal safety of the website, our users, or others.
+</p>
+<p>
+5. HOW WE SHARE YOUR INFORMATION:
+</p>
+<p>
+5.1 As a matter of policy, we will not sell or rent information about you and we will not disclose information about you in a manner inconsistent with this Privacy Policy except as required by law or government regulation. We cooperate with law enforcement inquiries, as well as other third parties, to enforce laws such as those regarding intellectual property rights, fraud and other personal rights.
+</p>
+<p>
+5.2 We will not share the personal information we collect about you with any third party for their own marketing purposes without your consent. We may share your data with our services providers who process your personal information to provide services to us or on our behalf. We have contracts with our service providers that prohibit them from sharing the information about you that they collect or that we provide to them with anyone else, or using it for other purposes.
+</p>
+<p>
+5.3 You may decline to submit Personally Information through the Services, in which case we may not be able to provide certain services to you. If you do not agree with our Privacy Policy or Terms of Service, please discontinue use of our Service; your continued usage of the Service will signify your assent to and acceptance of our Privacy Policy and Terms of Use.
+</p>
+<p>
+5.4 WE CAN (AND YOU AUTHORIZE US TO) DISCLOSE ANY INFORMATION ABOUT YOU TO LAW ENFORCEMENT, OTHER GOVERNMENT OFFICIALS, ANY LAWSUIT OR ANY OTHER THIRD PARTY THAT WE, IN OUR SOLE DISCRETION, BELIEVE NECESSARY OR APPROPRIATE IN CONNECTION WITH AN INVESTIGATION OF FRAUD, INTELLECTUAL PROPERTY INFRINGEMENT, OR OTHER ACTIVITY THAT IS ILLEGAL OR MAY EXPOSE US, OR YOU, TO LIABILITY.
+</p>
+<p>
+6. ENSURING INFORMATION IS ACCURATE AND UP-TO-DATE
+</p>
+<p>
+6.1 We take reasonable precautions to ensure that the Personal Information we Collect, Use and Disclose is complete, relevant and up-to-date. However, the accuracy of that information depends to a large extent on the information you provide. That's why we recommend that you:
+</p>
+<p>
+a) Let us know if there are any errors in your Personal Information; and
+</p>
+<p>
+b) Keep us up-to-date with changes to your Personal Information such as your name or address. 
+</p>
+<p>
+7. HOW WE PROTECT YOUR INFORMATION:
+</p>
+<p>
+7.1 We are very concerned about safeguarding the confidentiality of your personally identifiable information. We employ administrative, physical and electronic measures designed to protect your information from unauthorized access.
+</p>
+<p>
+7.2 By using this website or the Services or providing Personal Information to us, you agree that we can communicate with you electronically regarding security, privacy, and administrative issues relating to your use of this website or Services.
+</p>
+<p>
+7.3 We use commercially reasonable physical, managerial, and technical safeguards to preserve the integrity and security of your Personal Information. We cannot, however, ensure or warrant the security of any information you transmit to us and you do so at your own risk. Using unsecured wi-fi or other unprotected networks to submit messages through the Service is never recommended. Once we receive your transmission of information, we make commercially reasonable efforts to ensure the security of our systems. However, please note that this is not a guarantee that such information may not be accessed, disclosed, altered, or destroyed by breach of any of our physical, technical, or managerial safeguards. If we learn of a security systems breach, then we may attempt to notify you electronically so that you can take appropriate protective steps.
+</p>
+<p>
+7.4 Notwithstanding anything to the contrary in this Policy, we may preserve or disclose your information if we believe that it is reasonably necessary to comply with a law, regulation or legal request; to protect the safety of any person; to address fraud, security or technical issues; or to protect our rights or property. However, nothing in this Policy is intended to limit any legal defenses or objections that you may have to a third party, including a government's, request to disclose your information.
+</p>
+<p>
+8. YOUR CHOICES ABOUT YOUR INFORMATION:
+</p>
+<p>
+8.1 You have several choices regarding use of information on our Services:
+</p>
+<p>
+(a) Email Communications: We will periodically send you free newsletters and e- mails that directly promote the use of our website, or Services. When you receive newsletters or promotional communications from us, you may indicate a preference to stop receiving further communications from us and you will have the opportunity to “opt-out” by following the unsubscribe instructions provided in the e-mail you receive or by contacting us directly. Despite your indicated e-mail preferences, we may send you service related communications, including notices of any updates to our Terms of Use or Privacy Policy.
+</p>
+<p>
+(b) Changing or Deleting Your Personal Information: You may change any of your personal information in your Account by emailing us at support@jobbifi.com or by visiting the website and following the directions therein. You may request deletion of your personal information by us, and we will use commercially reasonable efforts to honor your request, but please note that we may be required to keep such information and not delete it (or to keep this information for a certain time, in which case we will comply with your deletion request only after we have fulfilled such requirements). When we delete any information, it will be deleted from the active database, but may remain in our archives. We may also retain your information for fraud prevention or similar purposes.
+</p>
+<p>
+8.2 You may, of course, decline to submit personally identifiable information through the website, in which case, we may not be able to provide certain services to you. You can review and correct the information about you that we keep on file by editing your account settings or by contacting us directly at support@jobbifi.com
+</p>
+<p>
+9. CHILDREN'S PRIVACY:
+</p>
+<p>
+ Our services are available only to persons who can form a legally binding contract under the Indian Contract Act, 1872. Protecting the privacy of young children is especially important. Thus, we do not knowingly collect or solicit personal information from anyone under the age of 18 or knowingly allow such persons to register. If you are under 18, please do not attempt to register for the Service or send any information about yourself to us, including your name, address, telephone number, or email address. No one under the age of 18 may provide any personal information for accessing the Service. If an individual under the age of 18 wishes to purchase or sell a product/item on the Site then such purchase or sale may be made by their legal guardian or parents who have registered as users of the Site and who can form legally binding contract under the Indian Contract Act, 1872. In the event that we learn that we have collected personal information from a child under age 18, we will delete that information as quickly as possible. If you believe that we might have any information from or about a child under 18, please contact us through our privacy help page.
+</p>
+<p>
+10. MERGER AND ACQUISITIONS:
+</p>
+<p>
+In case of a merger or acquisition, we reserve the right to transfer all the information, including personally identifiable information, stored with us to the new entity or company thus formed. Any change in the website's policies and standing will be notified to you through email. 
+</p>
+<p>
+11. LINKS TO THIRD PARTY WEBSITES:
+</p>
+<p>
+Our website contains links to other websites. The fact that we link to a website is not an endorsement, authorization or representation of our affiliation with that third party. We do not exercise control over third party websites. These other websites may place their own cookies or other files on your computer, collect data or solicit personally identifiable information from you. Other sites follow different rules regarding the use or disclosure of the personally identifiable information you submit to them. We encourage you to read the privacy policies or statements of the other websites you visit.
+</p>
+<p>
+12. ADVERTISING:
+</p>
+<p>
+Advertisers and advertising networks place ads (including sponsored links in search results) on our website. These companies, as well as data analytics companies who service them, may use cookies, pixel tags, mobile device IDs and other similar technologies to collect data about you when you visit our website. They use the data to enable them to track your activity across various sites where they display ads and record your activities, so they can show ads that they consider relevant to you. You may opt-out of receiving targeted online advertising from advertising networks that is delivered on our website. 
+</p>
+<p>
+13. NOTIFICATION PROCEDURES:
+</p>
+<p>
+It is our policy to provide notifications, whether such notifications are required by law or are for marketing or other business related purposes, to you via e-mail notice, written or hard copy notice, or through conspicuous posting of such notice on the website, as determined by us in our sole discretion. We reserve the right to determine the form and means of providing notifications to you, provided that you may opt out of certain means of notification as described in this Privacy Policy.
+</p>
+<p>
+14. SURVEYS:
+</p>
+<p>
+We also use surveys to collect information about our users. From time to time, we request users' input in order to evaluate potential features and services. The decision to answer a survey is completely yours. We use information gathered from surveys to improve our services.
+</p>
+<p>
+15. OPTING OUT OF INFORMATION SHARING:
+</p>
+<p>
+15.1 We understand and respect that not all users may want to allow us to share their information with other select users or companies. If you do not want us to share your information, please contact us through the Contact Us page, and we will remove your name from lists we share with other users or companies as soon as reasonably practicable or you can also click on unsubscribe. When contacting us, please clearly state your request, including your name, mailing address, email address and phone number.
+</p>
+<p>
+15.2 However, under the following circumstances, we may still be required to share your personal information:
+</p>
+<p>
+a) If we respond to court orders or legal process, or if we need to establish or exercise our legal rights or defend against legal claims.
+</p>
+<p>
+b) If we believe it is necessary to share information in order to investigate, prevent or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of our Terms of Use or as otherwise required by law.
+</p>
+<p>
+c) If we believe it is necessary to restrict or inhibit any user from using any of our Site, including, without limitation, by means of "hacking" or defacing any portion thereof.
+</p>
+<p>
+16. INVITATION SERVICES:
+</p>
+<p>
+We may offer you the opportunity to use our invitation services so that you can tell your family members and friends about us. The service will enable you to import at your direction your contact list from certain email services that you may be using and to send an email on your behalf from your email address, inviting your family member and friends to try the services offered by our website. The information you provide will be used solely to facilitate your sending of the invitation and will not be stored or used by us for any other purpose. If you are a recipient of an invitation and have elected to opt out from receiving any further invitations from us, we will retain your email address solely for the purposes of honoring your opt-out further invitations.
+</p>
+<p>
+17. PHISHING OR FALSE EMAILS:
+</p>
+<p>
+If you receive an unsolicited email that appears to be from us or one of our members that requests personal information (such as your credit card, login, or password), or that asks you to verify or confirm your account or other personal information by clicking on a link, that email was likely to have been sent by someone trying to unlawfully obtain your information, sometimes referred to as a "phisher" or "spoofer." We do not ask for this type of information in an email. Do not provide the information or click on the link. Please contact us at support@jobbifi.com if you get an email like this.
+</p>
+<p>
+18. CHANGES TO OUR PRIVACY POLICY:
+</p>
+<p>
+18.1 We may update this Privacy Policy and information security procedures from time to time. If these privacy and/or information security procedures materially change at any time in the future, we will post the new changes conspicuously on the website to notify you and provide you with the ability to opt out in accordance with the provisions set forth above.
+</p>
+<p>
+18.2 Continued use of our website and Service, following notice of such changes shall indicate your acknowledgement of such changes and agreement to be bound by the terms and conditions of such changes.
+</p>
+<p>
+19. BREACH OF PRIVACY POLICY:
+</p>
+<p>
+We reserve the right to terminate or suspend any account or delete certain contents from any profile or public domain within the ambit of this website if the said account or content is found to be in violation of our privacy policy. We sincerely request you to respect privacy and secrecy concerns of others. The jurisdiction of any breach or dispute shall be determined in accordance with the terms of use of the website.
+</p>
+<p>
+20. NO RESERVATIONS:
+</p>
+<p>
+We do not accept any reservation or any type of limited acceptance of our privacy policy. You expressly agree to each and every term and condition as stipulated in this policy without any exception whatsoever. 
+</p>
+<p>
+21. NO CONFLICT:
+</p>
+<p>
+The policy constitutes a part of the user terms. We have taken utmost care to avoid any inconsistency or conflict of this policy with any other terms, agreements or guidelines available on our website. In case there exists a conflict, we request you to kindly contact us for the final provision and interpretation.  
+</p>
+<p>
+22. CONTACT US:
+</p>
+<p>
+If you have any questions about this Privacy Policy, our practices relating to the website, or your dealings with us, please contact us at support@jobbifi.com.
+					</div>
 		</div>
+		<div class="col-md-2"></div>
 	</div>
 	<%@ include file="/WEB-INF/pages/common/footer.jsp"%>
 	<%@ include file="/WEB-INF/pages/common/js.jsp"%>

@@ -8,1466 +8,663 @@
 <body>
 	<%@ include file="/WEB-INF/pages/common/header.jsp"%>
 	<div class="container">
-		<div class="col-md-12">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
 			<div class="row">
-				<p></p>
-				<h1>Terms of Service</h1>
-				<p></p>
-				<h1>User Agreement</h1>
-				<p></p>
 
-				<p>This Agreement was last modified on 20th April 2015.</p>
-
-
-				<p>This User Agreement describes the terms and conditions on
-					which you are allowed to use our Website and our Services. We have
-					incorporated by reference all linked information.</p>
-				<p></p>
-				<h2>In This User Agreement:</h2>
-				<p></p>
-				
-				
-				<p><b>"Jobbifi", "we", "our", or "us"</b> means Jobbifi Technologies LLP, India (Registration No. – AAE 4842)</p>
-				<p><b>"Website"</b> means the websites operated by Jobbifi and available at: www.jobbifi.com and any related Jobbifi services, tools or applications.</p>
-				<p><b>"Account"</b> means the account you open when you register on the Website.</p>
-				<p><b>"User", "you" or "your"</b> means an individual who visits or uses the website</p>
-				<p><b>"Candidate"</b> means the Website’s users who use the Website to find jobs or for other career related services.</p>
-				<p><b>"Advisor"</b> means the Website’s users who use the Website to provide career consultation.</p>
-				<p><b>"Employer"</b> means the users who use the Website to post their job requirements and to search suitable candidates for the jobs.</p>
-				<p><b>"Dispute Resolution Process"</b> means the process to be followed between two users in accordance with the Website’s Dispute Resolution Services.</p>
-				<p><b>"Intellectual Property Rights"</b> means any and all intellectual property rights, existing worldwide and the subject matter of such rights, including: (a) patents, copyright, rights in circuit layouts (or similar rights), registered designs, registered and unregistered trade marks, and any right to have confidential information kept confidential; and (b) any application or right to apply for registration of any of the rights referred to in paragraph (a), whether or not such rights are registered or capable of being registered and whether existing under any laws, at common law or in equity.</p>
-				<p><b>"Escrow Payment"</b> means a prepayment made by a candidate for the provision of Advisor’s Services under a User Contract and which will be released in accordance with the section "Escrow Payments" below.</p>
-				<p><b>"Listing"</b> means a job offered or mock interview by a user via the Website.</p>
-				<p><b>"Seller"</b> means a User that offers and provides services or identifies as a Seller through the Website.</p>
-				<p><b>"Seller Services"</b> means all services provided by Sellers.</p>
-				<p><b>"Buyer"</b> means a User that consumes the Seller Services provided by a Seller through the Website.</p>
-
-				
-				
-				
-				
-				
-				<!--
-				<p>
-					<b>"Account"</b> means the account you open when you register on
-					the Website.
-				</p>
-
-				<p>
-					<b>"Buyer"</b> means a User that investigates and purchases Seller
-					Services or items from Sellers or identifies a Seller through the
-					Website.
-				</p>
-
-				<p>
-					<b>"Contest"</b> means a contest that is solely promoted by a Buyer
-					and in respect of which a Seller can submit an entry via the
-					Website.
-				</p>
-
-				<p>
-					<b>"Contest Brief"</b> means the document setting out the terms and
-					conditions which are to apply to a Contest.
-				</p>
-
-				<p>
-					<b>"Contest Handover"</b>, in respect of a Contest, means the
-					agreement between the Buyer and winning Seller under which the
-					Seller will transfer to the Buyer ownership of the winning entry.
-				</p>
-
-				<p>
-					<b>"Dispute Resolution Process"</b> means the process to be
-					followed by Buyers and Sellers in accordance with the Dispute
-					Resolution Services.
-				</p>
-
-				<p>
-					<b>"Entrant"</b> means an eligible Seller who has entered into a
-					Contest.
-				</p>
-
-				<p>
-					<b>"Jobbifi"</b>, <b>"we"</b>, <b>"our"</b>, or <b>"us"</b> means
-					Jobbifi International Pty Limited (ACN 134 845 748).
-				</p>
-
-				<p>
-					<b>"Inactive Account"</b> means a User Account that has not been
-					logged into for a continuous 6 month period.
-				</p>
-
-				<p>
-					<b>"Intellectual Property Rights"</b> means any and all
-					intellectual property rights, existing worldwide and the subject
-					matter of such rights, including: (a) patents, copyright, rights in
-					circuit layouts (or similar rights), registered designs, registered
-					and unregistered trade marks, and any right to have confidential
-					information kept confidential; and (b) any application or right to
-					apply for registration of any of the rights referred to in
-					paragraph (a), whether or not such rights are registered or capable
-					of being registered and whether existing under any laws, at common
-					law or in equity.
-				</p>
-
-				<b>"Local Jobs"</b> means a service we provide to match a Buyer who
-				has tasks that need doing with a Seller who will provide the service
-				based on the location of the Seller.
-				<p></p>
-
-				<p>
-					<b>"Milestone Payment"</b> means a prepayment made by the Buyer for
-					the provision of Seller Services under a User Contract and which
-					will be released in accordance with the section "Milestone
-					Payments" below.
-				</p>
-
-				<p>
-					<b>"Project"</b> or <b>"Listing"</b> means a job offered or awarded
-					by a Buyer via the Website, which may include a Project or Contest
-					listed by a Buyer, a project awarded by a Buyer (for example
-					through HireMe), a service bought by a Buyer from a Seller, and
-					service awarded by a Buyer to a Seller as a result of a Contest or
-					competition hosted via the Website.
-				</p>
-
-				<p>
-					<b>"Seller"</b> means a User that offers and provides services or
-					identifies as a Seller through the Website.
-				</p>
-
-				<p>
-					<b>"Seller Services"</b> means all services provided by Sellers.
-				</p>
-
-				<p>
-					<b>"User"</b>, <b>"you"</b> or <b>"your"</b> means an individual
-					who visits or uses the website
-				</p>
-
-				<p>
-					<b>"User Contract"</b> means : (1) this User Agreement; (2) the <a
-						href="/info/codeofconduct.php">Code of Conduct</a> as amended from
-					time to time; (3) any other contractual provisions accepted by both
-					the Seller and Buyer uploaded to the Website, to the extent not
-					inconsistent with the User Agreement and the Code of Conduct; and
-					(4) the Project terms as awarded and accepted on the Website, to
-					the extent not inconsistent with the User Agreement and the Code of
-					Conduct.
-				</p>
-
-				<p>
-					<b>"Website"</b> means the websites operated by Jobbifi and
-					available at: <a href="http://www.jobbifi.co.uk">Jobbifi</a> and
-					any related Jobbifi service, tool or application.
-				</p>
-				-->
-				
-				<p></p>
-				<h2>1. Overview</h2>
-				<p></p>
-				<p>By accessing and/or using the Website, you agree to the
-					following terms with Jobbifi.</p>
-
-				<p>We may amend this User Agreement and any linked information
-					from time to time by posting amended terms on the Website.</p>
-				<p>The Website is an online venue where Users buy and sell
-					Seller Services and items. Buyers and Sellers must register for an
-					Account in order to buy or sell Seller Services and/or items. The
-					Website enables Users to work together online to complete and pay
-					for Projects, buy and sell items and to use the services that we
-					provide.</p>
-
-				<p></p>
-				<h2>2. Scope</h2>
-				<p></p>
-				<p>Before using the Jobbifi Website, we recommend that you read
-					the whole User Agreement, the Website policies and all linked
-					information.</p>
-				<p>
-					You must read and accept all of the terms in, and linked to, this
-					User Agreement, the <a href="/info/codeofconduct.php">Code of
-						Conduct</a>, the Jobbifi <a href="/about/privacy">Privacy Policy</a>
-					and all Website policies. We strongly recommend that, as you read
-					this User Agreement, you also access and read the hyperlinked
-					information. By accepting this User Agreement, you agree that this
-					User Agreement will apply whenever you use the Jobbifi Website, or
-					when you use the tools we make available to interact with the
-					Jobbifi Website. Some Jobbifi Websites may have additional or other
-					terms that we provide to you when you use those services.
-				</p>
-				<p></p>
-				<h2>3. Eligibility</h2>
-				<p></p>
-				<p>You will not use the Jobbifi Website if you:</p>
-				<ol class="termslist">
-					<li>are not able to form legally binding contracts; or</li>
-					<li>are under the age of 16; or</li>
-					<li>a person barred from receiving and rendering services
-						under the laws of Australia or other applicable jurisdiction; or</li>
-					<li>are suspended from using the Jobbifi Website.</li>
-				</ol>
-				<p></p>
-				<p>Subject to your local laws, a person over 15 but under 18 can
-					use an adult's account with the permission of the account holder.
-					However, the account holder is responsible for everything done with
-					that account.</p>
-				<p>Users may provide a business name or a company name, which is
-					to be associated with the User's Account. Users acknowledge and
-					agree that where a business name or company name is associated with
-					their Account, this User Agreement is a contract with the User as
-					an individual (not the business or company) and Users remain solely
-					responsible for all activity undertaken in respect of their
-					Account.</p>
-				<p>We may, at our absolute discretion, refuse to register a
-					person or corporate entity as a User.</p>
-
-				<p></p>
-				<h2>4. Using Jobbifi</h2>
-				<p></p>
-				<p>While using the Jobbifi Website, you will not:</p>
-				<ol class="termslist">
-					<li>post content or items in inappropriate categories or areas
-						on our websites and services;</li>
-					<li>infringe any laws, third party rights or our policies,
-						such as the <a href="/info/codeofconduct.php">Code of Conduct</a>;
-					</li>
-					<li>fail to deliver payment for services delivered to you,
-						unless the Seller has materially changed the Seller Service
-						provided from the bid or a clear typographical error is made;</li>
-					<li>fail to deliver Seller Services purchased from you, unless
-						the Buyer fails to meet the terms, materially alters the terms of
-						the Seller Services from the listing;</li>
-					<li>circumvent or manipulate our fee structure, the billing
-						process, or fees owed to Jobbifi;</li>
-					<li>post false, inaccurate, misleading, defamatory or
-						offensive content (including personal information);</li>
-					<li>take any action that may undermine the feedback or
-						reputation systems (such as displaying, importing or exporting
-						feedback information or using it for purposes unrelated to the
-						Jobbifi Website);</li>
-					<li>transfer your Jobbifi account (including feedback) and
-						Username to another party without our consent;</li>
-					<li>distribute or post spam, unsolicited, or bulk electronic
-						communications, chain letters, or pyramid schemes;</li>
-					<li>distribute viruses or any other technologies that may harm
-						Jobbifi, the Website, or the interests or property of Jobbifi
-						users (including their Intellectual Property Rights, privacy and
-						publicity rights) or is unlawful, threatening, abusive,
-						defamatory, invasive of privacy, vulgar, obscene, profane or which
-						may harass or cause distress or inconvenience to, or incite hatred
-						of, any person;</li>
-					<li>download and aggregate listings from our website for
-						display with listings from other websites without our express
-						written permission, "frame", "mirror" or otherwise incorporate any
-						part of the Website into any other website without our prior
-						written authorisation;</li>
-					<li>attempt to modify, translate, adapt, edit, decompile,
-						disassemble, or reverse engineer any software programs used by us
-						in connection with the Jobbifi Website;</li>
-					<li>copy, modify or distribute rights or content from the
-						Jobbifi Website or Jobbifi's copyrights and trademarks; or</li>
-					<li>harvest or otherwise collect information about Users,
-						including email addresses, without their consent.</li>
-				</ol>
-				<p></p>
-
-				<p></p>
-				<h2>5. Intellectual Property Rights infringement</h2>
-				<p></p>
-				<p>
-					It is our policy to respond to clear notices of alleged
-					intellectual property rights infringement. Our <a href="/dmca">Copyright
-						Infringement Policy</a> is designed to make submitting notices of
-					alleged infringement to us as straightforward as possible while
-					reducing the number of notices that we receive that are fraudulent
-					or difficult to understand or verify. If you believe that your
-					Intellectual Property Rights have been violated, please notify us
-					via <a href="/dmca">this link</a> on our Website and we will
-					investigate.
-				</p>
-				<p></p>
-				<h2>6. Fees And Services</h2>
-				<p></p>
-				<p>
-					We charge fees for certain services, such as introduction fees for
-					Projects, listing upgrades and memberships. When you use a service
-					that has a fee, you have an opportunity to review and accept the
-					fees that you will be charged based on our schedule of <a
-						href="/feesandcharges">Fees and Charges</a>, which we may change
-					from time to time and will update you by placing on our Website. We
-					may choose to temporarily change the fees for our services for
-					promotional events (for example, discounts on memberships) or new
-					services, and such changes are effective when we post the temporary
-					promotional event or new service on the Websites.
-				</p>
-				<p>Unless otherwise stated, all fees are quoted in United States
-					Dollars.</p>
-				<p></p>
-				<h2>7. Taxes</h2>
-				<p></p>
-				<p>You are responsible for paying any taxes, including any goods
-					and services or value added taxes, which may be applicable
-					depending on the jurisdiction of the services provided. These taxes
-					will be added to fees billed to you, if applicable.</p>
-				<p>As we are a company incorporated in Australia, all fees
-					earned by us from Australian Users will be subject to a 10% Goods
-					and Services Tax (GST) on all fees, which will be shown separately
-					on all invoices.</p>
-				<p>You must also comply with your obligations under income tax
-					provisions in your jurisdiction.</p>
-				<p></p>
-				<h2>8. Payment Administration Agent</h2>
-				<p></p>
-				<p>You acknowledge and agree that we may in our sole discretion,
-					from time to time, appoint our related bodies corporate or a third
-					party as our agent to accept or make payments (including merchant
-					facilities) from or to Users on our behalf. Such a third party will
-					have the same rights, powers and privileges that we have under this
-					User Agreement and will be entitled to exercise or enforce their
-					rights, powers and privileges as our agent or in their own name. In
-					no event shall we be liable to any User for any loss, damage or
-					liability resulting from the Payment Administration Agent's
-					negligence and/or acts beyond the authority given by Jobbifi.</p>
-				<p></p>
-				<h2>9. Promotion</h2>
-				<p></p>
-				<p>We may display your company or business name, logo, images or
-					other media, and public description of your Projects and profile as
-					part of the Jobbifi Services and/or other marketing materials
-					relating to the Jobbifi Website, except where you have explicitly
-					requested that we do not do this and we have agreed to such
-					request.</p>
-
-				<p></p>
-				<h2>10. Content</h2>
-				<p></p>
-				<p>When you give us content, you grant us a non-exclusive,
-					worldwide, perpetual, irrevocable, royalty-free, sublicensable
-					(through multiple tiers) right to exercise any and all copyright,
-					trademark, publicity, and database rights (but no other rights) you
-					have in the content, in any media known now or in the future.</p>
-				<p>You acknowledge and agree that: (1) we only act as a portal
-					for the online distribution and publication of User content. We
-					make no warranty that User content is actually made available on
-					the Website. We have the right (but not the obligation) to take any
-					action deemed appropriate by us with respect to your User content;
-					(2) we have no responsibility or liability for the deletion or
-					failure to store any content, whether or not the content was
-					actually made available on the Website; and (3) any and all content
-					submitted to the Website is subject to our approval. We may reject,
-					approve or modify your User content at our sole discretion.</p>
-				<p>You represent and warrant that your content:</p>
-				<ol class="termslist">
-					<li>will not infringe upon or misappropriate any copyright,
-						patent, trademark, trade secret, or other intellectual property
-						right or proprietary right or right of publicity or privacy of any
-						person;</li>
-					<li>will not violate any law or regulation;</li>
-					<li>will not be defamatory or trade libellous;</li>
-					<li>will not be obscene or contain child pornography;</li>
-					<li>will not contain the development, design, manufacture or
-						production of missiles, or nuclear, chemical or biological weapons
-					</li>
-					<li>will not contain material linked to terrorist activities</li>
-					<li>will not include incomplete, false or inaccurate
-						information about User or any other individual; and</li>
-					<li>will not contain any viruses or other computer programming
-						routines that are intended to damage, detrimentally interfere
-						with, surreptitiously intercept or expropriate any system, data or
-						personal information.</li>
-				</ol>
-				<p></p>
-				<p>You acknowledge and agree that we may transfer your personal
-					information to a related body corporate and your information may be
-					transferred outside of Australia and the EEC-area. If you wish to
-					withdraw your consent, you acknowledge and agree that we may be
-					unable to provide you with access to the Website and Jobbifi
-					Services and may close your Account.</p>
-				<p>Information on the Website may contain general information
-					about legal, financial, health and other matters. The information
-					is not advice, and should not be treated as such. You must not rely
-					on the information on the Website as an alternative to professional
-					advice. If you have specific questions about any matter you should
-					consult your professional adviser.</p>
-				<p>We provide unmonitored access to third party content,
-					including User feedback and articles with original content and
-					opinions (or links to such third party content). We only act as a
-					portal and have no liability based on, or related to, third party
-					content on the Website, whether arising under the laws of copyright
-					or other intellectual property, defamation, libel, privacy,
-					obscenity, or any other legal discipline.</p>
-				<p>The Website may contain links to other third party websites.
-					We do not control the websites to which we link from the Website.
-					We do not endorse the content, products, services, practices,
-					policies or performance of the websites we link to from the
-					Website. Use of third party content, links to third party content
-					and/or websites is at your risk.</p>
-				<p></p>
-				<h2>11. Feedback, Reputation And Reviews</h2>
-				<p></p>
-				<p>You acknowledge that you transfer copyright of the feedback,
-					reputation and reviews you leave consisting of comments and a
-					multidimensional rating (e.g. quality, communication etc.) together
-					with a composite rating by us. You acknowledge that such feedback,
-					reputation and reviews belong solely to us, notwithstanding that we
-					permit you to use it on our Website while you remain a User. You
-					must not use, or deal with, such feedback, reputation and reviews
-					in any way inconsistent with our policies as posted on the Website
-					from time to time without our prior written permission.</p>
-				<p>You may not do (or omit to do) anything that may undermine
-					the integrity of the Jobbifi feedback system. We are entitled to
-					suspend or terminate your Account at any time if we, in our sole
-					and absolute discretion, are concerned by any feedback about you,
-					or your feedback rating, where we believe our feedback system may
-					be subverted.</p>
-				<p>Our feedback ratings belong to us and may not be used for any
-					purpose other than facilitating the provision of Seller Services
-					via the Website. You may not use your Seller or Buyer feedback
-					(including, but not limited to, marketing or exporting your any or
-					all of your composite rating or feedback comments) in any real or
-					virtual venue other than a website operated by Jobbifi or its
-					related entities without our written permission.</p>
-				<p></p>
-				<h2>12. Advertising</h2>
-				<p></p>
-				<p>Unless otherwise agreed with us, you must not advertise an
-					external website, product or service on the Website. Any website
-					address posted on the Website, including in a listing, bid, listing
-					description, clarification board or the message board, must relate
-					to a project, contest, item listed, user or service being performed
-					on the Website. An example of a permissible website address would
-					be a portfolio of work.</p>
-				<p>We may display sponsor advertisements and promotions on the
-					Website. You acknowledge and agree that we shall not be responsible
-					for any loss or damage of any kind incurred by you as as result of
-					the presence of such advertisements/ promotions in the Website or
-					your subsequent dealings with the Advertisers. Furthermore, you
-					acknowledge and agree that content of sponsor advertisements or
-					promotions is protected by copyrights, trademarks, service marks,
-					patents or other intellectual property or proprietary rights and
-					laws. Unless expressly authorised by Jobbifi or third party right
-					holders, you agree not to modify, sell, distribute, appropriate or
-					create derivative works based on such advertisement/promotions.</p>
-				<p></p>
-				<h2>13. Communication With Other Users</h2>
-				<p></p>
-				<p>You must not post your email address or other contact
-					information on the Website, except in the "email" field of the
-					signup form, at our request or as otherwise permitted by us on the
-					Website.</p>
-				<p>Unless you have a prior relationship with a User, you must
-					only communicate with Users via the Website, including by using the
-					Project message board, inbox private messaging or chat facilities
-					including Video Chat. Unless we provide a User's contact
-					information through a feature or function available through the
-					Website, you must not, and must not attempt to, communicate with
-					other Users in respect of Projects through any other means such as
-					email, telephone, Skype, ICQ, AIM, MSN Messenger, GTalk and Yahoo.
-				</p>
-				<p></p>
-				<h2>14. Right To Review</h2>
-				<p></p>
-				<p>We may read all correspondence posted to the Website and
-					download or access, and test (if necessary), all uploaded files,
-					programs and websites related to your use of the Website for the
-					purpose of investigating fraud and for risk management and related
-					purposes.</p>
-				<p></p>
-				<h2>15. Identity / Know Your Customer</h2>
-				<p></p>
-				<p>You authorise us, directly or through third parties, to make
-					any inquiries we consider necessary to validate your identity. You
-					must, at our request: (1) provide further information to us, which
-					may include your date of birth and other information that will
-					allow us to reasonably identify you; (2) take steps to confirm
-					ownership of your email address or financial instruments; or (3)
-					verify your information against third party databases or through
-					other sources.</p>
-				<p>You must also, at our request, provide copies of
-					identification documents (such as your drivers' licence). We may
-					also ask you to provide photographic identification holding a sign
-					with a code that we provide as an additional identity verification
-					step.</p>
-				<p>We reserve the right to close, suspend, or limit access to
-					your Account, the Website and/or Jobbifi Services in the event we
-					are unable to obtain or verify to our satisfaction the information
-					which we request under this section.</p>
-				<p>
-					If you are not Jobbifi verified you may not be able to withdraw
-					funds from your Jobbifi account, and other restrictions may apply.
-					See the <a href="/page.php?p=info/kyc_policy">Know Your
-						Customer and Identity Verification Policy</a> for more details.
-				</p>
-
-				<p></p>
-				<h2>16. User Services</h2>
-				<p></p>
-				<p>Upon the Buyer awarding a project or contest to the Seller,
-					and the Seller's acceptance on the Website, or the purchase of an
-					item by a Buyer from the Seller, the Buyer and Seller will be
-					deemed to have entered into a User Contract under which the Buyer
-					agrees to purchase, and the Seller agrees to deliver the Seller
-					Services. You agree not to enter into any contractual provisions in
-					conflict with the User Agreement.</p>
-
-				<p>You are solely responsible for ensuring that you comply with
-					your obligations to other Users. If you do not, you may become
-					liable to that User. You must ensure that you are aware of any
-					domestic laws (including common law), international laws, statutes,
-					ordinances and regulations relevant to you as a Buyer or Seller, or
-					in any other uses you make of the Website.</p>
-
-				<p>If another User breaches any obligation to you, you are
-					solely responsible for enforcing any rights that you may have. For
-					the avoidance of doubt, we have no responsibility for enforcing any
-					rights under a User Contract.</p>
-
-				<p>Depending on their jurisdiction, Sellers and Buyers may have
-					rights under statutory warranties that cannot lawfully be excluded.
-					Nothing in this User Agreement is intended to override a right that
-					by applicable law may not be excluded.</p>
-
-				<p>Each User acknowledges and agrees that the relationship
-					between Buyers and Sellers is that of an independent contractor.
-					Nothing in this User Agreement creates a partnership, joint
-					venture, agency or employment relationship between Users. Nothing
-					in this User Agreement shall in any way be construed as forming a
-					joint venture, partnership or an employer-employee relationship
-					between Jobbifi and the User.</p>
-
-				<p></p>
-				<h2>17. Special provisions for Local Jobs</h2>
-				<p></p>
-				<p>Each User acknowledges:</p>
-				<ol class="termslist">
-					<li>Jobbifi may from time to time include a map feature and
-						Jobbifi may display the location of Users to persons browsing the
-						Website on that map. Every Buyer seeking services for Local jobs
-						will be asked to provide the location where the Local job is to be
-						performed or the goods are to be delivered. A User must never
-						disclose, in any Project posted, personal details such as the
-						User's name, street number, phone number or the email address in
-						any Project description for a Local job or in any other public
-						communication on the Jobbifi Website.</li>
-					<li>Once a Seller's bid has been accepted by a Buyer seeking
-						Local jobs services or tasks then the Seller providing the service
-						or task is obliged to complete the transaction, unless the service
-						or task, goods or transaction is prohibited by law, by this
-						Agreement or by any of our Policies.</li>
-					<li>If a Buyer updates a Local job after it has been published
-						on the Website, then all bids for that Local job made prior to the
-						update will be automatically cancelled and the bidding process
-						will restart. When a Seller has provided the goods or services or
-						completed the task requested by a Buyer seeking services for Local
-						job, the User must log on to the Website and click the "Complete"
-						button for that Local job. Failure to complete the service or task
-						will constitute a breach of this User Agreement.</li>
-					<li>Our fees are applied to the amount of the awarded Seller's
-						bid to perform the services for the Local job. Any items purchased
-						by the Seller as part of performing the service are between the
-						Buyer and Seller.</li>
-				</ol>
-				<p></p>
-
-				<p></p>
-				<h2>18. Funds</h2>
-				<p></p>
-				<p>You may have funds in your Account if you have prepaid for
-					fees or charges or for services to be provided to you via the
-					Website. If you are a Seller, you may have funds if you have
-					successfully completed a Project, or sold an item, and funds have
-					been released to you. There are also circumstances where funds will
-					have been credited to your Account in relation to an affiliate
-					program or a referral program.</p>
-				<p>Funds in your Account are held by us in our operating
-					accounts held with reputable financial institutions. Funds in your
-					Account are not held separately by us and may be commingled with
-					our general operating funds and funds of other User's Accounts.</p>
-				<p>You are not entitled to any interest, or other earnings for
-					funds that are in your Account.</p>
-				<p>We may receive interest on funds held by us in our operating
-					accounts (which may include funds in your Account) from financial
-					institutions with whom we hold our operating accounts. Any such
-					interest earned belongs to us and we will not be liable to any User
-					for any imputed interest on such funds.</p>
-				<p>If your Account has a negative amount of funds, we may:</p>
-				<ol class="termslist">
-					<li>set-off the negative amount of funds with funds that you
-						subsequently receive into your Account;</li>
-					<li>if you have funds in multiple currencies in your Account
-						and one of the currencies becomes negative for any reason, we may
-						set-off the negative amount against funds you maintain in a
-						different currency balance (at an exchange rate applied by us);</li>
-					<li>reverse payments you have made from your Account to other
-						User Accounts on the Website;</li>
-					<li>deduct amounts you owe us from money you subsequently add
-						or receive into your Account; or</li>
-					<li>immediately suspend or limit your Account until such time
-						as your Account no longer has a negative amount.</li>
-				</ol>
-				<p></p>
-				<p>In the event that we offset a negative amount of funds
-					pursuant to this section, it may be bundled with another debit
-					coming out of your Account.</p>
-				<p>We reserve the right to collect any funds owed to us by any
-					other legal means.</p>
-				<p>You acknowledge and agree that:</p>
-				<ol class="termslist">
-					<li>we are not a bank or other licensed financial institution
-						and do not provide banking services or any financial services to
-						you;</li>
-					<li>the funds shown in your Account (which may include
-						Milestone Payments and/or any prepayment of fees and charges which
-						you owe to us) represents our unsecured obligations to you with
-						respect to your rights to direct us to make payment in relation to
-						the purchase and sale of Seller Services through the Website and
-						provision of the Jobbifi Services;</li>
-					<li>to the extent that we are required to release funds from
-						your Account to you, you will become our unsecured creditor until
-						such funds are paid to you;</li>
-					<li>we are not acting as a trustee or fiduciary with respect
-						to such funds or payments;</li>
-					<li>the amount of funds showing in your Account is not insured
-						and is not a guaranteed deposit;</li>
-					<li>funds may only loaded into your Account, or released from
-						your Account, by us and you must only use the mechanisms available
-						on the Website to pay for, or receive funds in respect of Seller
-						Services;</li>
-					<li>we will hold funds in respect of the amount of your
-						Account (including Milestone Payments) in an account held by us
-						with a financial institution (or in any manner that we decide in
-						our sole discretion from time to time) and such funds are not
-						segregated into a separate account; and</li>
-					<li>we may commingle your funds with funds of other User's and
-						our own funds and such commingled funds could be used to pay other
-						Users or for our general corporate purposes or otherwise, however,
-						we will remain obliged to release or refund funds at your
-						direction in accordance with this User Agreement.</li>
-				</ol>
-				<p></p>
-				<p></p>
-				<h2>19. Limits &amp; Fraud Prevention</h2>
-				<p></p>
-				<p>We reserve the right to suspend a User withdrawal request if
-					the source of the funds is suspected to be fraudulent.</p>
-				<p>If we become aware that any funds received into an Account
-					from another Account as a result of a fraudulent transaction (e.g.
-					paid a Milestone Payment using a stolen credit card) it will be
-					reversed immediately. If those funds have already been released to
-					you, you must pay the funds into your Account. If you do not do so,
-					we may suspend, limit or cancel your account, or take action
-					against you to recover those funds.</p>
-				<p>We may, in our sole discretion, place a limit on any or all
-					of the funds in your Account (thereby preventing any use of the
-					funds) if:</p>
-				<ol class="termslist">
-					<li>we believe there may be a high level of risk associated
-						with you, your Account, or any or all of your transactions,
-						including if we believe that there is a risk that such funds will
-						be subject to reversal or chargeback;</li>
-					<li>we believe that the beneficiary of the payment is someone
-						other than you;</li>
-					<li>we believe that the payment is being made to a country
-						where we do not offer our Service; or</li>
-					<li>we are required to do so by law.</li>
-				</ol>
-				<p></p>
-				<p>If you are involved in a dispute, we may (in certain
-					circumstances) place a temporary limit on the funds in your Account
-					to cover the amount of any potential liability. If the dispute is
-					resolved in your favour, we will lift the limit on your funds and
-					those funds may be released to you. If the dispute is not resolved
-					in your favour, we may remove the funds from your Account.</p>
-				<p></p>
-				<h2>20. Refunds</h2>
-				<p></p>
-				<p>You may ask for a refund at any time for any funds that you
-					have paid into your Account except if the amount to refund relates
-					to a Milestone Payment or relates to fees or charges payable to us.
-				</p>
-				<p>If the amount the User has asked to refund relates to: (1) a
-					Milestone Payment, the Dispute Resolution Process may be followed;
-					or (2) our fees and charges, the process set out in the Clause
-					"Disputes with Us" must be followed.</p>
-				<p>If we agree to the refund, the funds will be received by the
-					User via the same payment method(s) that the User used to make the
-					original payment to us. We may, in our sole discretion, use an
-					alternative payment method in exceptional circumstances.</p>
-				<p>We may refund funds to Users irrespective of whether a User
-					has requested funds be refunded if: (1) we are required by law or
-					consider that we are required by law to do so; (2) we determine
-					that refunding funds to the User will avoid any dispute or an
-					increase in our costs; (3) we refund funds to the User in
-					accordance with any refund policy specified by us from time to
-					time; (4) we find out that the original payment made by the User is
-					fraudulent; (5) the User made a duplicate payment in error; or (6)
-					we consider, in our sole opinion, that it is likely that the refund
-					of funds is necessary to avoid a credit card chargeback.</p>
-				<p>
-					You can request a refund by using our <a href="/users/helpdesk.php">customer
-						support website</a> or emailing us at <a
-						href="mailto:support@jobbifi.com">support@jobbifi.com</a>. If you
-					have done so, you must not initiate a chargeback request with your
-					credit card issuer until such time as all reasonable efforts have
-					been exhausted with us to resolve your request.
-				</p>
-				<p>If you have already initiated a chargeback request with your
-					credit card issuer, you must not request a refund of funds by
-					contacting us and must not seek double recovery.</p>
-				<p>If we reasonably determine, having considered all the
-					relevant circumstances, that you have made an excessive or
-					unreasonable number of requests to refund funds back to you or
-					chargebacks, we may suspend, limit or close your Account.</p>
-				<p>There is no minimum amount for a refund.</p>
-
-				<p></p>
-				<h2>21. Withdrawals</h2>
-				<p></p>
-
-				<p>Your first withdrawal of funds earned will be delayed for
-					fifteen days for security and fraud purposes.</p>
-
-				<p>Subsequent withdrawals may be delayed for up to fifteen days
-					where our fraud prevention policies dictate that a delay is
-					required.</p>
-
-				<p>
-					We impose a minimum withdrawal amount for funds earned. This is set
-					out in our schedule of <a href="/feesandcharges">Fees and
-						Charges</a>.
-				</p>
-
-				<p>
-					We may require you to be Jobbifi Verified before you can withdraw
-					funds from your Jobbifi account, irrespective of whether or not a
-					delay has been enforced. For details of how to become verified
-					please read the <a href="/page.php?p=info/kyc_policy">Know your
-						Customer and Identity Verification Policy</a>.
-				</p>
-
-				<p>
-					You acknowledge and agree that we may seek to verify your identity
-					or request additional information from you as part of our
-					anti-fraud and Know Your Customer policy, as outlined in the
-					section on "Identity / Know Your Customer" in this agreement. For
-					more information see the <a href="/page.php?p=info/kyc_policy">Know
-						your Customer and Identity Verification Policy</a>.
-				</p>
-
-				<p></p>
-				<h2>22. Chargebacks</h2>
-				<p></p>
-				<p>A chargeback (being a challenge to a payment that a Buyer
-					files directly with their credit card issuer) and a reversal
-					instruction is made by the payment product issuer or third parties
-					(such as payment processors) and not by us. We are bound to follow
-					their instructions.</p>
-				<p>You acknowledge and agree that we will be entitled to recover
-					chargebacks and reversals that may be imposed on us by a payment
-					product issuer or third parties (such as payment processors) on
-					funds paid to you by Buyers through the Website.</p>
-				<p>You agree that we may reverse any such payments made to you,
-					which are subject to chargeback or reversal instruction via your
-					payment product issuer or third parties (such as payment
-					processors).</p>
-
-				<p></p>
-				<h2>23. Inactive Accounts</h2>
-				<p></p>
-				<p>User Accounts that have not been logged into for a continuous
-					period will incur a maintenance fee per month, until either the
-					account is closed or reactivated, for storage, bandwidth, support
-					and management costs of providing hosting of the User's profile,
-					portfolio storage, listing in directories, promotion of your
-					profile on the website and elsewhere, provision of the HireMe
-					service, file storage, message transmission and message storage.</p>
-				<p>
-					The length of the continuous period and the amount of the
-					maintenance fee is set out in our schedule of <a
-						href="/feesandcharges">Fees and Charges</a>.
-				</p>
-				<p>We reserve the right to close an Inactive Account.</p>
-				<p>We reserve the right to close an account with nil or negative
-					funds.</p>
-				<p></p>
-				<h2>24. Right To Refuse Service</h2>
-				<p></p>
-				<p>We may close, suspend or limit your access to your Account
-					without reason. Without limiting the foregoing, we may close,
-					suspend or limit your access to your Account:</p>
-				<ol class="termslist">
-					<li>if we determine that you have breached, or are acting in
-						breach of, this User Agreement;</li>
-					<li>if you under-bid on any Project in an attempt to
-						renegotiate the actual price privately, avoiding fees;</li>
-					<li>if we determine that you have breached legal liabilities
-						(actual or potential), including infringing someone else's
-						Intellectual Property Rights;</li>
-					<li>if we determine that you have engaged, or are engaging, in
-						fraudulent, or illegal activities;</li>
-					<li>you do not respond to account verification requests;</li>
-					<li>you do not complete account verification when requested
-						within 3 months of the date of request;</li>
-					<li>you are the subject of a United Nations, Australian, EU or
-						USA sanctions regime, or our banking and payment relationships
-						otherwise preclude us from conducting business with you;</li>
-					<li>to manage any risk of loss to us, a User, or any other
-						person; or</li>
-					<li>for other similar reasons.</li>
-				</ol>
-				<p></p>
-
-				<p>If we close your Account due to your breach of this User
-					Agreement, you may also become liable for certain fees as described
-					in this User Agreement.</p>
-
-				<p>Without limiting our other remedies, to the extent you have
-					breached this User Agreement, you must pay us all fees owed to us
-					and reimburse us for all losses and costs (including any and all of
-					our employee time) and reasonable expenses (including legal fees)
-					related to investigating such breach and collecting such fees.</p>
-
-				<p>You acknowledge and agree that: (1) the damages that we will
-					sustain as a result of your breach of this User Agreement will be
-					substantial and will potentially include (without limitation) fines
-					and other related expenses imposed on us by our payment processors
-					and Users and that those damages may be extremely difficult and
-					impracticable to ascertain; (2) if you breach this User Agreement,
-					we may fine you up to US$3,000 for each breach and/or we may take
-					legal action against you to recover losses that are in excess of
-					the fine amount; (3) a fine of up to US$3,000 is a presently
-					reasonable pre-estimate or minimum estimate of our damages,
-					considering all currently existing circumstances, including
-					(without limitation) the relationship of the sum to the range of
-					harm to us that reasonably could be anticipated and the
-					anticipation that proof of actual damages may be impractical or
-					extremely difficult; and (4) we may release the entire (or part of
-					the) amount of the fine from your Account to us.</p>
-
-				<p>If we close your Account for a reason other than as a result
-					of your breach of this User Agreement, unless as otherwise
-					specified in this User Agreement, you will be entitled to receive
-					any payment due from us to you.</p>
-
-				<p>In the event that we close your Account, you will have no
-					claim whatsoever against us in respect of any such suspension or
-					termination of your Account.</p>
-
-				<p></p>
-				<h2>25. Milestone Payments</h2>
-				<p></p>
-				<p>We do not operate an escrow service. We do however, provide a
-					service which allows controlled payments to be made with respect to
-					a service called Milestone Payments.</p>
-
-				<p>Subject to the User Contract, the Buyer can make a Milestone
-					Payment, which will be locked from the Buyer's Account and cannot
-					be claimed by the Seller until:</p>
-				<ol class="termslist">
-					<li>the Buyer and Seller agree that the funds can be claimed
-						by the Seller;</li>
-					<li>if there is a dispute, the Buyer and Seller have concluded
-						the Dispute Resolution Process and the Dispute is resolved in the
-						Seller's favour;</li>
-					<li>the Buyer instructs us to pay a Seller for services
-						performed by the Seller in respect of a project or contest; or</li>
-					<li>the Buyer acknowledges that the Seller has completed the
-						services fully and satisfactory.</li>
-				</ol>
-				<p></p>
-				<p>If a Buyer does not approve of the Seller's work product, the
-					parties may elect to resolve the issue under the Dispute Resolution
-					Process.</p>
-				<p>If we have not received any instructions from a Buyer in
-					respect of a Milestone Payment within twelve months after the day
-					that the Milestone Payment was paid and the Buyer has not logged
-					into their Account during that time, the Milestone Payment will be
-					unlocked and released back to the Buyer.</p>
-				<p></p>
-				<h2>26. Milestone Dispute Resolution Services</h2>
-				<p></p>
-				<p>Jobbifi offers the Milestone Dispute Resolution Services to
-					Users who have elected to use the Milestone Payment feature. You
-					agree and acknowledge that: (i) Jobbifi is not providing legal
-					services; (ii) Jobbifi will not advise you regarding any legal
-					matters; and (iii) if you desire to have legal counsel, you will
-					seek an independent legal counsel from those licensed to practice
-					law in your jurisdiction. You will not rely on Jobbifi for any such
-					counsel.</p>
-				<p>
-					In the event of a dispute between a Buyer and a Seller regarding a
-					return or release of Milestone Payments, either Buyer or Seller may
-					elect to use the Milestone Dispute Resolution Services offered by
-					Jobbifi as set out in the <a href="/page.php?p=info/dispute_policy">Milestone
-						Disputes Policy</a>. The Buyer and Seller will then be notified that
-					the matter will be addressed through the Milestone Dispute
-					Resolution Services.
-				</p>
-				<p>You agree to indemnify and (to the maximum extent permitted
-					by law) hold Jobbifi and any of our affiliates harmless against any
-					damages or liability you may suffer as a result of using the
-					Milestone Payments and/or Milestone Dispute Resolution Services.</p>
-				<p>
-					Jobbifi will respond to disputes initiated by a Seller or a Buyer
-					in accordance with the Milestone Dispute Resolution Services as set
-					out in this clause and the <a
-						href="/page.php?p=info/dispute_policy">Milestone Disputes
-						Policy</a> and in relation to disputes that arise in relation to the
-					provision of the venue, and the hosting of the Website by Jobbifi
-					as set out in the clause entitled Disputes with Us.
-				</p>
-				<p></p>
-				<h2>27. Other Disputes With Users</h2>
-				<p></p>
-				<p>You acknowledge and agree that in the event that a dispute
-					arises between you and another User in relation to any project that
-					you will first attempt to resolve any differences that you have in
-					relation to such Project, including in relation to the quality of
-					the services provided.</p>
-				<p>If you continue to have any difficulties or problems in
-					relation to a dispute with another User in relation to a project we
-					encourage you to contact us as set out in the Clause entitled
-					"Contacting us".</p>
-				<p>
-					You agree that any dispute that is not related to a Milestone
-					Payment (which must be dealt with in accordance with the <a
-						href="/page.php?p=info/dispute_policy">Milestone Disputes
-						Policy</a>) arising between you and another User will be handled in
-					accordance with this clause. Jobbifi will have full rights and
-					powers to make a determination for all such disputes. Upon receipt
-					of a dispute, Jobbifi shall have the right to request the Seller
-					and the Buyer to provide documentation in support of their claim or
-					position in relation to the dispute. You agree that Jobbifi has
-					absolute discretion to accept or reject any document provided. You
-					also acknowledge that Jobbifi is not a judicial or alternative
-					dispute resolution institution and that we will make the
-					determinations only as an ordinary reasonable person. In addition,
-					we do not warrant that the documents provided by the parties to the
-					dispute will be true, complete or correct and you agree to
-					indemnify and (to the maximum extent permitted by law) hold Jobbifi
-					and any of our affiliates harmless against any damages or liability
-					you may suffer as a result of any documentation or material
-					subsequently being found to be false or misleading.
-				</p>
-				<p>In relation to disputes with any other users of the Website,
-					you hereby agree to indemnify Jobbifi from any and all claims,
-					demands, and damages, actual and consequential, of every kind and
-					nature, known and unknown, that is related to such a dispute, our
-					determinations or the use of the Milestone Dispute Resolution
-					Services for Milestone Payments and/or for Other Disputes.</p>
-				<p></p>
-				<h2>28. Dispute Resolution Services Code Of Conduct</h2>
-				<p></p>
-				<p>
-					The Jobbifi <a href="/info/codeofconduct.php">Code of Conduct</a>
-					applies to all the services offered by Jobbifi, including, but not
-					limited to, the Milestone Dispute Resolution Services. It is agreed
-					by you that you will make every endeavour at fair play and post
-					reasonable and fair demands/offers on your dispute.
-				</p>
-				<p>
-					A User found to be in breach of the <a
-						href="/info/codeofconduct.php">Code of Conduct</a> during the
-					Milestone Dispute Resolution Service process may automatically lose
-					the dispute in favour of the other party involved, regardless of
-					the origin of the dispute. The User who breached the Code of
-					Conduct may also incur further disciplinary action. For more
-					information, read the <a href="/info/codeofconduct.php">Code of
-						Conduct</a>.
-				</p>
-				<p></p>
-				<h2>29. Disputes With Us</h2>
-				<p></p>
-				<p>
-					If a dispute arises between you and Jobbifi, our goal is to address
-					your concerns and, if we are unable to do so to your satisfaction,
-					to provide you with a means of resolving the dispute quickly. We
-					strongly encourage you to first contact us directly to seek a
-					resolution by using our <a href="/users/helpdesk.php">customer
-						support website</a> or emailing us at <a
-						href="mailto:support@jobbifi.com">support@jobbifi.com</a>.
-				</p>
-
-				<p>For any claim, Jobbifi may elect to resolve the dispute in a
-					cost effective manner through binding non-appearance-based
-					arbitration. If Jobbifi elects arbitration, such arbitration will
-					be initiated through an established alternative dispute resolution
-					(ADR) provider, which is to be selected by you from a panel of ADR
-					providers that Jobbifi will provide to you. The ADR provider and
-					the parties must comply with the following rules: a) the
-					arbitration shall be conducted by telephone, online and/or be
-					solely based on written submissions, the specific manner shall be
-					chosen by the party initiating the arbitration; b) the arbitration
-					shall not involve any personal appearance by the parties or
-					witnesses unless otherwise mutually agreed by the parties; and c)
-					any judgment on the award rendered by the arbitrator may be entered
-					in any court of competent jurisdiction.</p>
-
-				<p>All claims you bring against Jobbifi must be resolved in
-					accordance with the terms of this Agreement. All claims filed or
-					brought contrary to this Agreement shall be considered improperly
-					filed and a breach of this Agreement. Should you file a claim
-					contrary to the terms of this Agreement, Jobbifi may recover its
-					legal fees and costs (including in-house lawyers and paralegals),
-					provided that Jobbifi has notified you in writing of the improperly
-					filed claim, and you have failed to promptly withdraw the claim.</p>
-
-				<p>If any proceeding by or against you is commenced under any
-					provision of any bankruptcy or insolvency law, Jobbifi will be
-					entitled to recover all reasonable costs or expenses (including
-					reasonable legal fees and expenses) incurred in connection with the
-					enforcement of this Agreement.</p>
-
-				<p>Jobbifi's failure to act with respect to a breach by you or
-					others does not waive our right to act with respect to subsequent
-					or similar breaches.</p>
-
-				<p></p>
-				<h2>30. Currencies</h2>
-				<p></p>
-				<p>Some of the Websites will display rates in the local currency
-					of that Website, in addition to the actual amount. These rates are
-					based on a conversion from the originating currency using
-					indicative market exchange rates. You understand and agree that
-					these rates are only indicative and the amount specified in the
-					origin currency is the actual amount.</p>
-
-				<p>As a convenience service, you may withdraw funds from the
-					Website in another currency. If you wish to do so, you will be
-					quoted an exchange rate which will be available for the time
-					specified, which you may choose to accept. We may charge a fee for
-					effecting the currency conversion transactions. This fee will be
-					embedded within the rate provided to you and the currency exchange
-					will be settled immediately.</p>
-
-				<p>We reserve the right to reject any request for a conversion
-					of currency at any time.</p>
-
-				<p>You are responsible for all risks associated with converting
-					and maintaining funds in various available currencies, including
-					but not limited to the risk that the value of these funds will
-					fluctuate as exchange rates change, which could result in decreases
-					in the value of your funds in aggregate. You must not use (or
-					attempt to use) the Website to engage in speculative trading, which
-					could result in substantial losses. We are not a financial services
-					provider.</p>
-
-				<p>All information included on the Website in respect of
-					currency conversion is general information only. Use of currency
-					conversion is at your own risk. Currency conversions are final and
-					irreversible.</p>
-
-
-				<p></p>
-				<h2>31. Competitions</h2>
-				<p></p>
-				<p>We may run and promote competitions on the Website from time
-					to time and such competitions will be subject to the terms and
-					conditions as published by us on the Website.</p>
-
-				<p>Prizes awarded will be denominated in USD unless stated
-					otherwise. Competition winners will be determined by us in
-					accordance with the applicable terms and conditions at our absolute
-					discretion. All decisions made us in respect of competition are
-					final and we will not enter into any correspondence in relation to
-					the prize or the promotion.</p>
-
-				<p></p>
-				<h2>32. Contests</h2>
-				<p></p>
-				<p>Buyers can promote a Contest hosted on the Website by
-					providing a Contest Brief and paying the Contest Prize in
-					accordance to our instructions provided on the Website. A Buyer
-					which promotes a Contest acknowledges and agrees that it is solely
-					responsible for the operation and promotion of the Contest and
-					warrants that it will comply with all applicable law in respect of
-					the operation and promotion of the Contest. We have no liability
-					for loss suffered by a User in connection with a Contest including
-					but not limited to loss suffered (or penalties imposed) in
-					connection with a contravention of law.</p>
-				<p>
-					Entrants may submit their entries in image, video, text or other
-					format as specified on the Website. All entries must comply with
-					the Contest Brief and must not infringe any Intellectual Property
-					Rights. Any entry which infringes any Intellectual Property Rights
-					will be an ineligible entry and subject to removal either by the
-					Buyer or us and subject to action as per our <a href="/dmca">Copyright
-						Infringement Policy</a>.
-				</p>
-
-				<p>Buyers can promote either: (1) a regular prepaid Contest,
-					under which a Buyer may select one or more winning Entrant(s) and
-					Buyers may request that the Contest Prize be released to them if a
-					winner has not been chosen within 30 days of the contest closing
-					date; or (2) a guaranteed Contest, under which a Buyer may select
-					one or more winning Seller(s) and if no winner is selected, we will
-					release the Contest Prize to Entrants of the guaranteed Contest and
-					charge the appropriate fees and the Buyer will have no rights to
-					have the Contest Prize released to them or to use any entries that
-					have been submitted. After 30 days of the contest closing date, we
-					reserve the right to distribute the contest prize to the
-					participating jobbifis.</p>
-
-				<p>After awarding a Contest Prize, the Buyer and winning
-					Entrant(s) will enter into a Contest Handover and when the winning
-					Entrant(s) has uploaded the winning entry (including all related
-					files) to the Buyer, the Contest Prize will be released to the
-					winner of the Contest unless disputed by the Buyer in which case
-					the dispute must be resolved between the Buyer and winning
-					Entrant(s) before we can release the Contest Prize to the winning
-					Entrant(s).</p>
-
-				<p>For avoidance of doubt, the Buyer has no right or licence to
-					use any entries other than the winning entry/entries. The Buyer may
-					not: (1) promote a Contest via the Website if the Buyer is hosting
-					a similar contest through another service; (2) allow or request
-					Sellers to submit entries to the Buyer via other means than the
-					Website; and (3) award another Account that might be deemed as
-					collusion or awarding another Account owned by the Buyer.</p>
-
-
-				<p></p>
-				<h2>33. Release</h2>
-				<p></p>
-				<p>If you have a dispute with one or more Users, you release us
-					(and our officers, directors, agents, subsidiaries, joint ventures
-					and employees) from claims, demands and damages (actual and
-					consequential) of every kind and nature, known and unknown, arising
-					out of or in any way connected with such disputes.</p>
-
-				<p></p>
-				<h2>34. Access And Interference</h2>
-				<p></p>
-				<p>You agree that you will not use any robot, spider, scraper or
-					other automated means to access the Jobbifi Website for any purpose
-					without our express written permission.</p>
-
-				<p>Additionally, you agree that you will not:</p>
-				<ol class="termslist">
-					<li>take any action that imposes or may impose (in our sole
-						discretion, exercised reasonably) an unreasonable or
-						disproportionately large load on our infrastructure;</li>
-					<li>interfere with, damage, manipulate, disrupt, disable,
-						modify, overburden, or impair any device, software system or
-						network connected to or used (by you or us) in relation to the
-						Jobbifi Website or your Account, or assist any other person to do
-						any of these things, or take any action that imposes, or may
-						impose, in our discretion, an unreasonable or disproportionately
-						large load on our infrastructure;</li>
-					<li>copy, reproduce, modify, create derivative works from,
-						distribute, or publicly display any content (except for your
-						information) from the website's without the prior express written
-						permission of Jobbifi and the appropriate third party, as
-						applicable;</li>
-					<li>interfere or attempt to interfere with the proper working
-						of the website's, services or tools, or any activities conducted
-						on or with the website's, services or tools; or</li>
-					<li>bypass our robot exclusion headers or other measures we
-						may use to prevent or restrict access to the Website.</li>
-				</ol>
-				<p></p>
-
-				<p></p>
-				<h2>35. Closing Your Account</h2>
-				<p></p>
-
-				<p>
-					You may close your Account at any time. The option is located in
-					the <a href="/users/settings.php#/AccountSettings">Account
-						Settings</a>.
-				</p>
-				<p>Account closure is subject to:</p>
-				<ol class="termslist">
-					<li>not having any outstanding listings on the Website; and</li>
-					<li>resolving any outstanding matters (such as a suspension or
-						restriction on your Account); and</li>
-					<li>paying any outstanding fees owing on the Account.</li>
-				</ol>
-				<p></p>
-				<p></p>
-				<h2>36. Privacy</h2>
-				<p></p>
-				<p>
-					We use your information as described in the Jobbifi <a
-						href="/about/privacy">Privacy Policy</a>. If you object to your
-					information being transferred or used in this way then you may not
-					use our services.
-				</p>
-
-				<p></p>
-				<h2>37. Indemnity</h2>
-				<p></p>
-				<p>You will indemnify us (and our officers, directors, agents,
-					subsidiaries, joint venturers and employees) against any claim or
-					demand, including legal fees and costs, made against us by any
-					third party due to or arising out of your breach of this Agreement,
-					or your infringement of any law or the rights of a third party in
-					the course of using the Jobbifi Website and Jobbifi Services.</p>
-
-				<p>In addition, we can apply any funds in your Account against
-					any liabilities you owe to us or loss suffered by us as a result of
-					your non-performance or breach of this User Agreement.</p>
-
-				<p></p>
-				<h2>38. Security</h2>
-				<p></p>
-
-				<p>You must immediately notify us upon becoming aware of any
-					unauthorised access or any other security breach to the Website,
-					your Account or the Jobbifi Services and do everything possible to
-					mitigate the unauthorised access or security breach (including
-					preserving evidence and notifying appropriate authorities). You are
-					solely responsible for securing your password. We will not be
-					liable for any loss or damage arising from unathourised access of
-					your account resulting from your failure to secure your password.</p>
-
-				<p></p>
-				<h2>39. No Insurance Or Warranty</h2>
-				<p></p>
-				<p>We do not offer any form of insurance, or other Buyer or
-					Seller protection.</p>
-
-				<p></p>
-				<h2>40. No Warranty As To Each User's Purported Identity</h2>
-				<p></p>
-				<p>Because User identification on the internet is difficult, we
-					cannot and do not confirm each User's purported identity. We may
-					provide information about a User, such as a strength or risk score,
-					geographical location, or third party background check or
-					verification of identity or credentials. However, such information
-					is based solely on data that the User submits and we provide such
-					information solely for the convenience of Users and the provision
-					of such information is not an introduction, endorsement or
-					recommendation by us.</p>
-
-				<p></p>
-				<h2>41. No Warranty As To Content On The Website</h2>
-				<p></p>
-				<p>The Website is a dynamic time-sensitive website. As such,
-					information on the Website will change frequently. It is possible
-					that some information could be considered offensive, harmful,
-					inaccurate or misleading or mislabelled or deceptively labelled
-					accidently by us or accidentally or purposefully by a third party.
-				</p>
-
-				<p>Our Services, the Website and all content on it are provided
-					on an 'as is', 'with all faults' and 'as available' basis and
-					without warranties of any kind either express or implied. Without
-					limiting the foregoing, we make no representation or warranty
-					about:</p>
-				<ol class="termslist">
-					<li>the Website or any Seller Services or Jobbifi Services;</li>
-					<li>the accuracy, reliability, availability, veracity,
-						timeliness or content of the Website or any Seller Services or
-						Jobbifi Services;</li>
-					<li>whether the Website or Seller Services or Jobbifi Services
-						will be up-to-date, uninterrupted, secure, error-free or
-						non-misleading;</li>
-					<li>whether defects in the Website will be corrected;</li>
-					<li>whether the Website, the Seller Services or the Jobbifi
-						Services or any data, content or material will be backed up or
-						whether business continuity arrangements are in place in respect
-						of the Website, Seller Services or Jobbifi Services;</li>
-					<li>any third party agreements or any guarantee of business
-						gained by you through the Website, Seller Services or Jobbifi
-						Services or us; or</li>
-					<li>the Website, Seller Services or Jobbifi Services or
-						infrastructure on which they are based, being error or malicious
-						code free, secure, confidential or performing at any particular
-						standard or having any particular function.</li>
-				</ol>
-				<p></p>
-				<p>To the extent permitted by law, we specifically disclaim any
-					implied warranties of title, merchantability, fitness for a
-					particular purpose, quality, suitability and non-infringement.</p>
-
-				<p></p>
-				<h2>42. Limitation Of Liability</h2>
-				<p></p>
-				<p>In no event shall we, our related entities, our affiliates or
-					staff be liable, whether in contract, warranty, tort (including
-					negligence), or any other form of liability, for:</p>
-				<ol class="termslist">
-					<li>any indirect, special, incidental or consequential damages
-						that may be incurred by you;</li>
-					<li>any loss of income, business or profits (whether direct or
-						indirect) that may be incurred by you;</li>
-					<li>any claim, damage, or loss which may be incurred by you as
-						a result of any of your transactions involving the Website.</li>
-				</ol>
-				<p></p>
-				<p>The limitations on our liability to you above shall apply
-					whether or not we, our related entities, our affiliates or staff
-					have been advised of the possibility of such losses or damages
-					arising.</p>
-
-				<p>Notwithstanding the above provisions, nothing in this User
-					Agreement is intended to limit or exclude any liability on the part
-					of us and our affiliates and related entities where and to the
-					extent that applicable law prohibits such exclusion or limitation
-					including those within the Competition and Consumer Act 2010 (Cth)
-					and relevant state fair trading legislation.</p>
-
-				<p>To the extent that we are able to limit the remedies
-					available under this User Agreement, we expressly limit our
-					liability for breach of a non-excludable condition or warranty
-					implied by virtue of any legislation to the following remedies (the
-					choice of which is to be at our sole discretion) to the supply of
-					the Jobbifi services again or the payment of the cost of having the
-					Jobbifi services supplied again.</p>
-
-				<p></p>
-				<h2>43. Jurisdiction Limitations</h2>
-				<p></p>
-				<p>As some jurisdictions do not allow some of the exclusions or
-					limitations as established above, some of these exclusions or
-					limitations may not apply to you. In that event, the liability will
-					be limited as far as legally possible under the applicable
-					legislation.</p>
-
-				<p></p>
-				<h2>44. Bar To Action</h2>
-				<p></p>
-				<p>We may plead this User Agreement in bar to any claim, action,
-					proceeding or suit brought by you, against us for any matter
-					arising out of any transaction or otherwise in respect of this User
-					Agreement.</p>
-
-				<p></p>
-				<h2>45. No Class Actions</h2>
-				<p></p>
-				<p>You and we agree that you and we will only be permitted to
-					bring claims against the other only on an individual basis and not
-					as a plaintiff or class member in any purported class or
-					representative action or proceeding. Unless both you and we agree
-					otherwise, the arbitrator may not consolidate or join more than one
-					person's or party's claims and may not otherwise preside over any
-					form of a consolidated, representative, or class proceeding. In
-					addition, the arbitrator may award relief (including monetary,
-					injunctive, and declaratory relief) only in favour of the
-					individual party seeking relief and only to the extent necessary to
-					provide relief necessitated by that party's individual claim(s).
-					Any relief awarded cannot affect other Users.</p>
-
-				<p></p>
-				<h2>46. Notices</h2>
-				<p></p>
-				<p>Legal notices must be served on Jobbifi (in the case of
-					Jobbifi) or to the email address you provide to Jobbifi during the
-					registration process (in your case). Notice will be deemed given 24
-					hours after email is sent, unless the sending party is notified
-					that the email address is invalid or that the email has not been
-					delivered. Alternatively, we may give you legal notice by mail to
-					the address provided by you during the registration process. In
-					such case, notice will be deemed given three days after the date of
-					mailing.</p>
-
-				<p>Any notices to Jobbifi must be given by registered ordinary
-					post (or if posted to or from a place outside Australia, by
-					registered airmail).</p>
-
-				<p></p>
-				<h2>47. Law And Forum For Legal Disputes</h2>
-				<p></p>
-				<p>This Agreement will be governed in all respects by the laws
-					of New South Wales, Australia. We encourage you to try and resolve
-					disputes using certified mediation (such as online dispute
-					resolution processes). If a dispute cannot be resolved then you and
-					Jobbifi irrevocably submit to the non-exclusive jurisdiction of the
-					courts of New South Wales, Australia.</p>
-
-				<p></p>
-				<h2>48. Severability</h2>
-				<p></p>
-				<p>The provisions of this User Agreement are severable, and if
-					any provision of this User Agreement is held to be invalid or
-					unenforceable, such provision may be removed and the remaining
-					provisions will be enforced. This Agreement may be assigned by us
-					to an associated entity at any time, or to a third party without
-					your consent in the event of a sale or other transfer of some or
-					all of our assets. In the event of any sale or transfer you will
-					remain bound by this User Agreement.</p>
-
-				<p></p>
-				<h2>49. Interpretation</h2>
-				<p></p>
-				<p>Headings are for reference purposes only and in no way
-					define, limit, construe or describe the scope or extent of such
-					section.</p>
-
-				<p></p>
-				<h2>50. No Waiver</h2>
-				<p></p>
-				<p>Our failure to act with respect to an anticipated or actual
-					breach by you or others does not waive our right to act with
-					respect to subsequent or similar breaches. Nothing in this section
-					shall exclude or restrict your liability arising out of fraud or
-					fraudulent misrepresentation.</p>
-
-				<p></p>
-				<h2>51. Communications</h2>
-				<p></p>
-				<p>You consent to receive notices and information from us in
-					respect of the Website and Services by electronic communication.
-					You may withdraw this consent at any time, but if you do so we may
-					choose to suspend or close your Account.</p>
-
-				<p></p>
-				<h2>52. Additional Terms</h2>
-				<p></p>
-				<p>It is important to read and understand all our policies as
-					they provide the rules for trading on the Jobbifi website. In
-					addition there may be specific policies or rules that apply, and it
-					is your responsibility to check our Help pages and policies to make
-					sure you comply. Our policies, including all policies referenced in
-					them, are part of this Agreement and provide additional terms and
-					conditions related to specific services offered on our websites,
-					including but not limited to:</p>
-				<ul>
-					<li><a href="/about/privacy">Privacy Policy</a></li>
-					<li><a href="/info/codeofconduct.php">Code of Conduct</a></li>
-					<li><a href="/page.php?p=info/dispute_policy">Milestone
-							Dispute Resolution Policy</a></li>
-					<li><a href="/page.php?p=info/kyc_policy">Know Your
-							Customer and ID Verification Policy</a></li>
-					<li><a href="/dmca">Copyright Infringement Policy</a></li>
-					<li><a href="/feesandcharges">Fees and Charges</a></li>
-				</ul>
-				<p></p>
-
-				<p>Each of these policies may be changed from time to time.
-					Changes take effect when we post them on the Jobbifi website. When
-					using particular services on our website, you are subject to any
-					posted policies or rules applicable to services you use through the
-					website, which may be posted from time to time. All such policies
-					or rules are incorporated into this User Agreement.</p>
-
-				<p></p>
-				<h2>53. General</h2>
-				<p></p>
-				<p>Jobbifi International Pty Limited is located at Level 20,
-					World Square, 680 George Street, Sydney NSW 2000, Australia.</p>
-
-				<p>This Agreement contains the entire understanding and
-					agreement between you and Jobbifi. The following Sections survive
-					any termination of this Agreement: Fees And Services (with respect
-					to fees owed for our services), Release, Content, No Warranty As To
-					Content, Limitation Of Liability, Indemnity, Bar To Action, No
-					Class Actions, and Disputes With Us.</p>
-
-				<p></p>
-				<h2>54. Feedback</h2>
-				<p></p>
-				<p>
-					If you have any questions about this User Agreement or if you wish
-					to report breaches of this User Agreement, please contact us by
-					using our <a href="/users/helpdesk.php">customer support
-						website</a> or emailing us at <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>.
-				</p>
+			<br/><br/><br/>	
+			<center>
+			<h1>TERMS OF USE</h1>
+			</center>
+
+<p>
+Welcome to www.jobbifi.com (hereinafter referred to as "Jobbifi", "Website", "Site", "We", "Us", "Our"), owned and operated by Jobbifi Technologies LLP. The websiteis offered to you conditioned on your acceptance without modification of the terms, conditions, and notices contained herein (the "Terms"). 
+</p>
+<p>
+BY CLICKING ON THE "ACCEPT" BUTTON AT THE END OF THE AGREEMENT ACCEPTANCE FORM, USERS AGREE TO BE BOUND BY THE TERMS AND CONDITIONS OF THIS AGREEMENT. PLEASE READ THIS ENTIRE AGREEMENT CAREFULLY BEFORE ACCEPTING ITS TERMS. YOUR USAGE OF THIS WEBSITE SIGNIFIES YOUR ASSENT TO THE FOLLOWING BINDING AGREEMENT.
+</p>
+<p>
+Our website provides an online job platform which connects job seekers, experienced professionals/H.R (also referred to as "Mentors") and employers (hereinafter collectively be referred to as "Users" or "You" or "Your"). Jobbifi allows the employers to post jobs on our website which can be searched by job seekers in order to get a job and also connects job seekers with mentors who can train job seekers for their upcoming interview through mock interview, and consultations (collectively the "Services"). Our website acts as a facilitator and all commercial / contractual terms are offered by and agreed to between Users alone. You understand and agree that we are not a party to any agreement entered into between Users. We have no control over the conduct of Users using our site and services, and disclaim all liability in this regard.
+</p>
+<p>
+By using the Site, you agree to comply with and be legally bound by the terms and conditions of these Terms of Service ("Terms"). These Terms govern your access to and use of the Site and Services and all Collective Content, and constitute a binding legal agreement between you and us. 
+</p>
+<p>
+Please read carefully these Terms and our <a href="privacy.do">Privacy Policy</a>, which is incorporated by reference into these Terms. If you do not agree to these Terms, you have no right to obtain information from or otherwise continue using the Site. Failure to use the Site in accordance with these Terms may subject you to civil and criminal penalties. This website reserves the right to recover the cost of services, collection charges and lawyers fees from persons using the Site fraudulently. This website reserves the right to initiate legal proceedings against such persons for fraudulent use of the Site and any other unlawful acts or acts or omissions in breach of these terms and conditions.
+</p>
+<p>
+The use of this Website constitutes your consent to, and agreement to, abide by the most current version of these terms and conditions (the "Terms"). We may at any time revise these terms and conditions by updating the Terms. You agree to be bound by subsequent revisions and agree to review the Terms periodically for changes to the terms and conditions. The most up to date version of the Terms will always be available for your review under the "Terms of Use" link that appears at the bottom of the Website.
+</p>
+<p>
+PLEASE READ THESE TERMS OF USE AND CAREFULLY AS THEY CONTAIN IMPORTANT INFORMATION REGARDING YOUR LEGAL RIGHTS, REMEDIES AND OBLIGATIONS. THESE INCLUDE VARIOUS LIMITATIONS AND EXCLUSIONS, AND A CLAUSE THAT GOVERNS THE JURISDICTION AND VENUE OF DISPUTES.
+</p>
+
+
+<p>
+IN USING THIS WEBSITE YOU ARE DEEMED TO HAVE READ AND AGREED TO THE FOLLOWING TERMS AND CONDITIONS SET FORTH HEREIN. ANY INCIDENTAL DOCUMENTS AND LINKS MENTIONED SHALL BE CONSIDERED TO BE ACCEPTED JOINTLY WITH THESE TERMS. YOU AGREE TO USE THE WEBSITE ONLY IN STRICT INTERPRETATION AND ACCEPTANCE OF THESE TERMS AND ANY ACTIONS OR COMMITMENTS MADE WITHOUT REGARD TO THESE TERMS SHALL BE AT YOUR OWN RISK. THESE TERMS AND CONDITIONS FORM PART OF THE AGREEMENT BETWEEN THE USERS AND US. BY ACCESSING THIS WEBSITE, AND/OR UNDERTAKING TO PERFORM A SERVICE BY US INDICATES YOUR UNDERSTANDING, AGREEMENT TO AND ACCEPTANCE, OF THE DISCLAIMER NOTICE AND THE FULL TERMS AND CONDITIONS CONTAINED HEREIN.
+</p>
+<p>
+1. OUR LEGAL COMPLIANCES:
+</p>
+<p>
+1.1 This agreement is an electronic record in terms of Information Technolog. Act, 2000 and rules there under as applicable and the amended provisions pertaining to electronic records in various statutes as amended by th. Information Technology Act, 2000. This electronic record is generate. by a computer system and does not require any physical or digita. signatures.
+</p>
+<p>
+1.2 This document is published in accordance with the provisions of Rule . (1) of the Information Technology (Intermediaries guidelines) Rules. 2011 that require publishing the rules and regulations, privacy policy an. Terms of Use for access or usage of our website.
+</p>
+<p>
+2. DEFINITIONS:
+</p>
+<p>
+2.1 "Agreement" means the terms and conditions as detailed herein including all schedules, appendices, annexures, privacy policy, other policies mentioned on the website and will include the references to this agreement as amended, negated, supplemented, varied or replaced from time to time.
+</p>
+<p>
+2.2 "www.jobbifi.com" means the online career platform and the services provided by it and its affiliates owned and operated by Jobbifi Technologies LLP which provides a venue / platform to the User. to interact with each other via the website.
+</p>
+<p>
+2.3 "Employers. shall mean the person or any legal entity who offers/lists/posts a job on the website for the job seekers. 
+</p>
+<p>
+2.4 "Mentors. shall mean the experienced professionals/H.R who train/prepare job seekers for their upcoming interview through mock interview, and consultation. They shall also be referred to as "Interviewers". 
+</p>
+<p>
+2.5 "Job seekers" shall mean individuals who are actively searching for jobs, or changing jobs for which they try to reach some mentor/experienced professional from related field who can guide him/her for his/her career through consulting, mock interview, forwarding CV, etc. The shall also be referred to as "Interviewees". 
+</p>
+<p>
+2.6 "Users. shall mean and include Employers, Mentors and Job seekerswho create an account on our website in order to use or access the services provided on this Site.
+</p>
+<p>
+2.7 "Listings/Postings" shall mean the jobs, profiles etc. listed/posted by the Employers and Mentors on our website.
+</p>
+<p>
+2.8 "Account" shall mean the accounts created by the Users on our website in order to use the Services provided by us and require information such as User type (interviewee, interviewer, employer), email address, username and password. 
+</p>
+<p>
+2.9 "Content" shall mean text, graphics, images, music, audio, video, information or other materials.
+</p>
+<p>
+2.10 "User content" shall mean all Content that a user posts, uploads, publishes, submits or transmits to be made available through our website.
+</p>
+<p>
+2.11 "www.jobbifi.com" content shall mean all Content that our website makes available through the site or Services, including any Content licensed from a third party, but excluding user Content. 
+</p>
+<p>
+2.12 "SNS" shall mean Social Networking Site such as Facebook, twitter etc.
+</p>
+<p>
+2.13 "Third parties" shall mean any outside parties which are not a part of our website.
+</p>
+<p>
+3. ELIGIBILITY:
+</p>
+<p>
+3.1 Our Services are available only to, and may only be used by, individuals who are 18 years and older who can form legally binding contracts under the Indian Contract Act, 1872. You represent and warrant that you are at least 18 years old. Persons who are "incompetent to contract" within the meaning of the Indian Contract Act, 1872 including minors, un-discharged insolvents etc. are not eligible to use the Website. Individuals who are minors i.e. under the age of 18 must at all times use our Services only in conjunction with and under the supervision of a parent or legal guardian who is at least 18 years of age. In such cases, the adult is the user and is responsible for any and all activities.
+</p>
+<p>
+3.2 Our website reserves the right to terminate your membership and refuse to provide you with access to the Site if we discover that you are under the age of 18 years. The Site is not available to persons whose membership has been suspended or terminated by us for any reason whatsoever. 
+</p>
+<p>
+3.3 If you are registering as a business entity, you represent that you have the authority to bind the entity to this User Agreement.
+</p>
+<p>
+4. REGISTRATION:
+</p>
+<p>
+4.1 It is mandatory for the Users to create an account on our website in order to use our services. 
+</p>
+<p>
+4.2 In order to create an account and register with us you shall either create an account with us or you may register with us by using your valid account on the social networking service ("SNS") such as Facebook or twitter or Google accounts (each such account, . "third-party  Account"). If you access the Services through a SNS, you may link your Account with third-party  Accounts, by allowing us to access your third-party Account, as is permitted under the applicable terms and conditions that govern your use of each third-party Account. You represent that you are entitled to disclose your third-party Account login information to us and/or grant us access to your third-party Account (including, but not limited to, for use for the purposes described herein) without breach by you of any of the terms and conditions that govern your use of the applicable third-party Account and without obligating us to pay any fees or making us subject to any usage limitations imposed by such third-party service providers. You have the ability to disable the connection between your Account and your third-party Accounts at any time by accessing the "Settings" section of the website. Please note that your relationship with the third-party service providers associated with your third-party accounts is governed solely by your agreement(s) with such third-party service providers, and we disclaim any liability for personally identifiable information that may be provided to it by such third-party service providers in violation of the privacy settings that you have set in such third-party accounts.
+</p>
+<p>
+A. Accounts:
+</p>
+<p>
+a) In order to use the Website or the Services, you must register for an account with us (an "Account") and provide certain personal information including personal information such as user type, username, email address and password.
+</p>
+<p>
+b) You represent and warrant that all required registration information you submit is truthful and accurate, and you will maintain the accuracy of such information. You are responsible for maintaining the confidentiality of your Account login information and are fully responsible for all activities that occur under your Account. You agree to immediately notify us of any unauthorized use, or suspected unauthorized use of your Account or any other breach of security. Source-wave website cannot and will not be liable for any loss or damage arising from your failure to comply with the above requirements. You must not share your password or other access credentials with any other person or entity that is not authorized to access your account. Without limiting the foregoing, you are solely responsible for any activities or actions that occur under your website account access credentials. We encourage you to use a "strong" password (a password that includes a combination of upper and lower case letters, numbers, and symbols) with your account. We cannot and will not be liable for any loss or damage arising from your failure to comply with any of the above.
+</p>
+<p>
+4.3 You agree to provide and maintain accurate, current and complete information about your Account. Without limiting the foregoing, in the event you change any of your personal information as mentioned above in this Agreement, you will update your Account information promptly.
+</p>
+<p>
+4.4 When creating an Account, don't:
+</p>
+<p>
+a) Provide any false personal information to us (including without limitation a false username) or create any Account for anyone other than yourself without such other person's permission;
+</p>
+<p>
+b) Use a username that is the name of another person with the intent to impersonate that person;
+</p>
+<p>
+c) Use a username that is subject to rights of another person without appropriate authorization; or
+</p>
+<p>
+d) Use a username that is offensive, vulgar or obscene or otherwise in bad taste.
+</p>
+<p>
+4.5 We reserve the right to suspend or terminate your Account if any information provided during the registration process or thereafter proves to be inaccurate, false or misleading or to reclaim any username that you create through the Service that violates our Terms. If you have reason to believe that your Account is no longer secure, then you must immediately notify us at support@jobbifi.com.
+</p>
+<p>
+4.6 You may not transfer or sell your www.jobbifi.com account and User ID to another party. If you are registering as a business entity, you personally guarantee that you have the authority to bind the entity to this Agreement.
+</p>
+<p>
+4.7 Our Services are not available to temporarily or indefinitely suspended Users. Our website reserves the right, in its sole discretion, to cancel unconfirmed or inactive accounts. Our website reserves the right to refuse service to anyone, for any reason, at any time.
+</p>
+<p>
+4.8 One individual/entity can own only one account in his/her/its name.
+</p>
+<p>
+4.9 You agree to comply with all local laws regarding online conduct and acceptable content. You are responsible for all applicable taxes. In addition, you must abide by our website's policies as stated in the Agreement and the website policy documents listed on the Website as well as all other operating rules, policies and procedures that may be published from time to time on the Website by Company.
+</p>
+<p>
+5. SERVICES:
+</p>
+<p>
+5.1 Our website provides tools to job seekers, mentors and employers to accomplish their goals.
+</p>
+<p>
+5.2 Our website allows Employers to post jobs and find candidates suitable for their job openings. Our intelligent search and recommendation engine gets employers the perfect candidates. 
+</p>
+<p>
+5.3 Our website provides a list of mentors who can coach the job seekers for a specific job opportunity. The communication is extremely streamlined, and at the same time we maintain individual privacy. Our website connects job seekers with mentors who are willing to guide job seekers for their career through consulting, conducting mock interviews, forwarding their resume, etc. Mentors shall give their expert advise on building and improving job seeker's CV in order to maximise their chances of getting employed by employers. Mentors benefit directly by being able to access job seeker's profile for a job opening in their own company via our powerful search engine and also give back to the community by training Job seekers for job interviews while getting paid for their consultation.Mentors shall provide all the services to the Job seekers for which job seekers are paying the Mentor.It is the Mentor's responsibility to call the job seekers for consultations etc. and all the expenses incurred in communicating with the job seekers shall be borne by the Mentors only. We shall not be liable for any such expenses. 
+</p>
+<p>
+5.4 Our website helps job seekers search for jobs and reach their career goals and become visible to employers. Job seekers shall find Mentors/advisors from the network of professionals from top companies with extensive experience in their fields via our website. Job seekers shall get expert advise on building and improving their CV via our website and they shall also publish their interview requirements and invite mentors/experts to test their skills.
+</p>
+<p>
+5.5 Our website allows Users to interact with each other via our realtime chat network.
+</p>
+<p>
+5.6 Any job/profiles posted on the website: 
+</p>
+<p>
+(a) shall not be fraudulent; 
+</p>
+<p>
+(b) shall not infringe any third party's copyright, patent, trademark, trade secret or other proprietary rights or rights of publicity or privacy; 
+</p>
+<p>
+(c) shall not violate any law, statute, ordinance or regulation (including without limitation those governing export control, consumer protection, unfair competition, anti-discrimination or false advertising); 
+</p>
+<p>
+(d) shall not be defamatory, trade libelous, unlawfully threatening or unlawfully harassing;
+</p>
+<p>
+(e) shall not be obscene or contain child pornography; and 
+</p>
+<p>
+(f) shall not contain any viruses, Trojan horses, worms, time bombs, cancelbots or other computer programming routines that are intended to damage, detrimentally interfere with, surreptitiously intercept or expropriate any system, data or personal information.
+</p>
+<p>
+6. JOBBIFI AS A PLATFORM:
+</p>
+<p>
+6.1 Our website does not make any representation or warranty as to the attributes (such as legal title, creditworthiness, identity, etc.) of any of its Users. Users are advised to independently verify the bona fides of any particular User that they choose to deal with on the Website and use their best judgment in that behalf. 
+</p>
+<p>
+6.2 The Website is only a venue through which Users can reach a larger base to post jobs, search for jobs, get expert assistance/guidance etc. We are only providing a platform for communication 
+</p>
+<p>
+6.3 We neither guarantee any employment to job seekers nor assure employers of finding their required candidates. We shall not guarantee, refer, endorse, recommend, verify, evaluate any advice, information or other services provided by Mentors. We not guarantee the validity, accuracy, completeness, safety, legality, quality or applicability of the content on the Site and anything spoken or written by Mentors, including any information contained in a Mentor listing. We shall not be liable for any damages sustained due to reliance by job seeker on information or advice provided by any Mentor. The advice or information provided by mentors is for informational purposes only and cannot be considered a substitute for professional advice.
+</p>
+<p>
+6.4 You release and indemnify us and/or any of our shareholders, directors, officers, employees and representatives from any cost, damage, liability or other consequence of any of the actions of the Users of the Website and specifically waive any claims that you may have in this behalf under any applicable law. Notwithstanding its reasonable efforts in that behalf, our website cannot control the information provided by other Users which is made available on the Website. You may find other User's information to be offensive, harmful, inaccurate, or deceptive. Please use caution and practice safe trading when using the Website. Please note that there may be risks in dealing with foreign nationals, underage persons or people acting under false pretense. 
+</p>
+<p>
+6.5 You acknowledge and undertake that you are accessing the services on the Website and transacting at your own risk and are using your best and prudent judgment before availing any services through the Website. 
+</p>
+<p>
+7. NO RESPONSIBILITY:
+</p>
+<p>
+7.1 We shall not be involved in any transactions between Users. 
+</p>
+<p>
+7.2 We do not control or verify the quality, relevance or accuracy of the advice, whether the mentor is qualified to provide the specific advice, whether the mentor is categorized correctly or in the most appropriate category to provide the advice sought by the job seeker, the accuracy of any job postings or employer on the site, any assurance of getting employedvia the Site or any transmissions through it by Users.
+</p>
+<p>
+8. OBLIGATIONS OF USERS:
+</p>
+<p>
+8.1 Users shall not make arrangements outside of this platform in order to have any paid relations or any contact with each other contacted through our website. Users agrees that any information or content that he or she or it posts, transmits or receives through our website shall not be considered confidential. 
+</p>
+<p>
+8.2 Users grant us an unlimited, irrevocable, royalty­free license to use, reproduce, display, edit, copy, transmit, publicly perform, create derivative works, or communicate to the public any such information and content on a world­wide basis. 
+</p>
+<p>
+8.3 Users shall not take any actions that may undermine, disrupt or manipulate the integrity of the User feedback system on the Site.
+</p>
+<p>
+9. PAYMENTS:
+</p>
+<p>
+9.1 Registration on our website is free for Job seekers, employers and Mentors. 
+</p>
+<p>
+9.2 Employers shall have to subscribe to any one of the subscription package from various packages that have been mentioned on the website in detail. Employers shall pay for subscription plans via their valid debit or credit cards.
+</p>
+<p>
+9.3 Mentors shall get paid by the Job seekers for advises, consultations etc. they give the job seekers in order to prepare them for interviews and help them get hired by employers. Such payments to mentors shall be made via our website. 
+</p>
+<p>
+9.4 The Job seeker shall make payments to Mentor via our website by using their valid debit or credit cards which may be held in our Escrow account till the time services have not been provided to the Job seeker. Once the mentor provides his services to job seeker then we shall release the payment from our Escrow account to Mentor’s account after deducting 10 % as our commission. 
+</p>
+<p>
+9.5 If mentor is based abroad then the mentor shall be required to open an Indian bank account in order to receive payments from us. 
+</p>
+<p>
+9.6 Our website uses third party payment providers to receive payments from Employers and Job seekers. We are not responsible for delays or erroneous transaction execution or cancellation of services/orders due to payment issues. 
+</p>
+<p>
+9.7 We take utmost care to work with 3rd party payment providers, but does not control their systems, processes, technology and work flows, hence cannot be held responsible for any fault at the end of payment providers. 
+</p>
+<p>
+9.8 Job seekers and Employers understand and expressly authorize us to collect payment from or charge the credit card for availing our services.
+</p>
+<p>
+9.9 Our website reserves the right to change or replace the payment gateway at its sole discretion without any reservation whatsoever. Our site stores bank information of the job seekers and employers in order to make it easier for them to just click and pay without entering the details every time they avail our services. All transactions are completed through secure third party payment gateways and at no point of time we assume any liability for any loss of data or wrongful payment or invalid payment processing by such a third party. Job seeker and employer acknowledge that we will not be liable for any damages, interests or claims etc. resulting from not processing a Transaction/Transaction Price or any delay in processing a Transaction/Transaction Price which is beyond our control.
+</p>
+<p>
+10. FRAUDULENT/DECLINED TRANSACTIONS:
+</p>
+<p>
+10.1 Our website reserves the right to recover the cost of services, collection charges and lawyers' fees from persons using the Site fraudulently. We reserve the right to initiate legal proceedings against such persons for fraudulent use of the Site and any other unlawful act or acts or omissions in breach of these terms and conditions.
+</p>
+<p>
+10.2 We shall be under no liability whatsoever in respect of any loss or damage arising directly or indirectly out of the decline of authorization for any Transaction, on Account of the Cardholder having exceeded the preset limit mutually agreed by us with our acquiring bank from time to time.
+</p>
+<p>
+11. USE OF THE WEBSITE:
+</p>
+<p>
+11.1 You understand and agree that the Website merely provides hosting services to its Users. All jobs, profiles etc. posted/advertised / listed and the contents therein are posted, advertised and listed by Users. Our website neither originates nor initiates the transmission nor selects the sender and receiver of the transmission nor selects nor modifies the information contained in the transmission. We have no control over such contents and do not provide any guarantee with respect to any such content and our website shall not be held liable for any loss suffered based on your reliance on or use of such data/content. 
+</p>
+<p>
+11.2 You shall not post, host, display, upload, modify, publish, transmit, update or share any information which:
+</p>
+<p>
+(a) belongs to another person and to which You do not have any right;
+</p>
+<p>
+(b) is grossly harmful, harassing, blasphemous, defamatory, obscene, pornographic, paedophilic, libellous, invasive of another's privacy, hateful, or racially, ethnically objectionable, disparaging, relating or encouraging money laundering or gambling, or otherwise unlawful in any manner whatever; or unlawfully threatening or unlawfully harassing including but not limited to "indecent representation of women” within the meaning of the Indecent Representation of Women (Prohibition) Act, 1986;
+</p>
+<p>
+(c) is misleading in any way;
+</p>
+<p>
+(d) is patently offensive to the online community, such as sexually explicit content, or content that promotes obscenity, paedophilia, racism, bigotry, hatred or physical harm of any kind against any group or individual;
+</p>
+<p>
+(e) harasses or advocates harassment of another person;
+</p>
+<p>
+(f) involves the transmission of "junk mail", "chain letters", or unsolicited mass mailing or "spamming";
+</p>
+<p>
+(g) promotes illegal activities or conduct that is abusive, threatening, obscene, defamatory or libellous;
+</p>
+<p>
+(h) infringes upon or violates any third party's rights [including, but not limited to, intellectual property rights, rights of privacy (including without limitation unauthorized disclosure of a person's name, email address, physical address or phone number) or rights of publicity];
+</p>
+<p>
+(i) promotes an illegal or unauthorized copy of another person's copyrighted work (see "Copyright complaint" below for instructions on how to lodge a complaint about uploaded copyrighted material), such as providing pirated computer programs or links to them, providing information to circumvent manufacture-installed copy-protect devices, or providing pirated music or links to pirated music files;
+</p>
+<p>
+(j) contains restricted or password-only access pages, or hidden pages or images (those not linked to or from another accessible page);
+</p>
+<p>
+(k) provides material that exploits people in a sexual, violent or otherwise inappropriate manner or solicits personal information from anyone;
+</p>
+<p>
+(l) provides instructional information about illegal activities such as making or buying illegal weapons, violating someone's privacy, or providing or creating computer viruses;
+</p>
+<p>
+(m) contains video, photographs, or images of another person (with a minor or an adult).
+</p>
+<p>
+(n) tries to gain unauthorized access or exceeds the scope of authorized access to the Website or to profiles, blogs, communities, account information, bulletins, friend request, or other areas of the Website or solicits passwords or personal identifying information for commercial or unlawful purposes from other users;
+</p>
+<p>
+(o) engages in commercial activities and/or sales without our prior written consent such as contests, sweepstakes, barter, advertising and pyramid schemes, or the buying or selling of "virtual" products related to the Website;
+</p>
+<p>
+(p) solicits gambling or engages in any gambling activity which we, in our sole discretion, believe is or could be construed as being illegal;
+</p>
+<p>
+(q) interferes with another User's use and enjoyment of the Website and enjoyment of similar services;
+</p>
+<p>
+(r) refers to any website or URL that, in Our sole discretion, contains material that is inappropriate for the Website or any other website, contains content that would be prohibited or violates the letter or spirit of these Terms of Use.
+</p>
+<p>
+(s) harm minors in any way;
+</p>
+<p>
+(t) infringes any patent, trademark, copyright or other proprietary rights or third party's trade secrets or rights of publicity or privacy or shall not be fraudulent or involve the sale of counterfeit or stolen products;
+</p>
+<p>
+(u) violates any law for the time being in force;
+</p>
+<p>
+(v) deceives or misleads the addressee/ users about the origin of such messages or communicates any information which is grossly offensive or menacing innature;
+</p>
+<p>
+(w) impersonate another person;
+</p>
+<p>
+(x) contains software viruses or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer resource; or contains any trojan horses, worms, time bombs, cancelbots, easter eggs or other computer programming routines that may damage, detrimentally interfere with, diminish value of, surreptitiously intercept or expropriate any system, data or personal information;
+</p>
+<p>
+(y) threatens the unity, integrity, defence, security, sovereignty of India, friendly relations with foreign states, or public order or causes incitement to the commission of any cognizable offence or prevents investigation of any offence or is insulting any other nation.
+</p>
+<p>
+(z) shall not be false, inaccurate or misleading;
+</p>
+<p>
+11.3 You shall not, directly or indirectly, offer, attempt to offer, trade or attempt to trade in any item, the dealing of which is prohibited or restricted in any manner under the provisions of any applicable law, rule, regulation or guideline for the time being in force.
+</p>
+<p>
+11.4 You shall not create liability for us or cause us to lose (in whole or in part) the services of our internet service provider ("ISPs") or other suppliers;
+</p>
+<p>
+11.5 You shall not use any "deep-link", "page-scrape", "robot", "spider" or other automatic device, program, algorithm or methodology, or any similar or equivalent manual process, to access, acquire, copy or monitor any portion of the Website or any Content, or in any way reproduce or circumvent the navigational structure or presentation of the Website or any Content, to obtain or attempt to obtain any materials, documents or information through any means not purposely made available through the Website. We reserve our right to bar any such activity.
+</p>
+<p>
+11.6 You shall not attempt to gain unauthorized access to any portion or feature of the Website, or any other systems or networks connected to the Website or to any server, computer, network, or to any of the services offered on or through the Website, by hacking, password "mining" or any other illegitimate means.
+</p>
+<p>
+11.7 You shall not probe, scan or test the vulnerability of the Website or any network connected to the Website nor breach the security or authentication measures on the Website or any network connected to the Website. You may not reverse look-up, trace or seek to trace any information on any other User of or visitor to Website, or any other customer, including any account on the Website not owned by You, to its source, or exploit the Website or any service or information made available or offered by or through the Website, in any way where the purpose is to reveal any information, including but not limited to personal identification or information, other than Your own information, as provided for by the Website.
+</p>
+<p>
+11.8 You shall not make any negative, denigrating or defamatory statement(s) or comment(s) about Us or the brand name or domain name used by Us, or otherwise engage in any conduct or action that might tarnish the image or reputation, of our website or sellers on platform or otherwise tarnish or dilute any of our trade or service marks, trade name and/or goodwill associated with such trade or service marks, trade name as may be owned or used by us. You agree that you will not take any action that imposes an unreasonable or disproportionately large load on the infrastructure of the Website or our systems or networks, or any systems or networks connected to us.
+</p>
+<p>
+11.9 You agree not to use any device, software or routine to interfere or attempt to interfere with the proper working of the Website or any transaction being conducted on the Website, or with any other person's use of the Website.
+</p>
+<p>
+11.10 You may not forge headers or otherwise manipulate identifiers in order to disguise the origin of any message or transmittal you send to us on or through the Website or any service offered on or through the Website. You may not pretend that you are, or that you represent, someone else, or impersonate any other individual or entity.
+</p>
+<p>
+11.11 You may not use the Website or any content for any purpose that is unlawful or prohibited by these Terms of Use, or to solicit the performance of any illegal activity or other activity which infringes the rights of our website and / or others.
+</p>
+<p>
+11.12 You shall at all times ensure full compliance with the applicable provisions of the Information Technology Act, 2000 and rules there under as applicable and as amended from time to time and also all applicable Domestic laws, rules and regulations (including the provisions of any applicable Exchange Control Laws or Regulations in Force) and International Laws, Foreign Exchange Laws, Statutes, Ordinances and Regulations (including, but not limited to Sales Tax/VAT, Income Tax, Octroi, Service Tax, Central Excise, Custom Duty, Local Levies) regarding Your use of Our service and Your listing, purchase, solicitation of offers to purchase, and sale of services.
+</p>
+<p>
+11.13 You shall solely enable us to use the information you supply us with, so that we are not violating any rights you might have in your Information, you agree to grant Us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sub-licensable (through multiple tiers) right to exercise the copyright, publicity, database rights or any other rights you have in your Information, in any media now known or not currently known, with respect to your Information. We will only use your information in accordance with the Terms of Use and Privacy Policy applicable to use of the Website.
+</p>
+<p>
+11.14 We reserve the right, but have no obligation, to monitor the materials posted on the Website. Our website shall have the right to remove or edit any content that in its sole discretion violates, or is alleged to violate, any applicable law or either the spirit or letter of these Terms of Use. Notwithstanding this right, you remain solely responsible for the content of the materials you post on the website and in your private messages. Please be advised that such Content posted does not necessarily reflect our views. In no event shall our website assume or have any responsibility or liability for any Content posted or for any claims, damages or losses resulting from use of Content and/or appearance of Content on the Website. You hereby represent and warrant that you have all necessary rights in and to all Content which you provide and all information it contains and that such Content shall not infringe any proprietary or other rights of third parties or contain any libellous, tortious, or otherwise unlawful information.
+</p>
+<p>
+11.15 It is possible that any of the user (including unauthorized users or "hackers") may post or transmit offensive or obscene materials on the Website and that other users may be involuntarily exposed to such offensive and obscene materials. It also is possible for others to obtain personal information about you due to your use of the Website, and that the recipient may use such information to harass or injure you. We do not approve of such unauthorized uses, but by using the Website, you acknowledge and agree that we are not responsible for the use of any personal information that you publicly disclose or share with others on the Website. Please carefully select the type of information that you publicly disclose or share with others on the Website.
+</p>
+<p>
+11.16 We shall have all the rights to take necessary action and claim damages that may occur due to your involvement/participation in any way on your own or through group/s of people, intentionally or unintentionally in DoS/DDoS (Distributed Denial of Services).
+</p>
+<p>
+12. OWNERSHIP:
+</p>
+<p>
+All right, title, and interest in and to the website (excluding postings/content provided by the users) is and will remain the exclusive property of Jobbifi and our licensors. The website service is protected by copyright, trademark, and other laws of India. Nothing in these Terms gives you a right to use the name of the website or website’s trademark or logo, or any other trademarks, logos, domain names, or other distinctive brand features relating to the website or located on the website. Any feedback, comments, and suggestions you may provide regarding the website (“Feedback”) are entirely voluntary and you grant us a perpetual, irrevocable, worldwide, royalty-free license (with the right to sublicense) to use, reproduce, modify, create derivative works of, commercialize, and otherwise freely exploit such Feedback (including, but not limited to, all Rights therein) as we see fit and without any payment or other obligation to you.
+</p>
+<p>
+13. INTELLECTUAL PROPERTY RIGHTS:
+</p>
+<p>
+13.1 Our website, its suppliers and licensors expressly reserve all intellectual property rights in all text, programs, products, processes, technology, content and other materials, which appear on this Site. Access to this Site does not confer and shall not be considered as conferring upon anyone any license under any of Jobbifi's or any third party's intellectual property rights. All rights, including copyright, in this website are owned by or licensed to us or third party suppliers. Any use of this website or its contents, including copying or storing it or them in whole or part, other than for your own personal, non-commercial use is prohibited without the permission of our website. You cannot modify, distribute or re-post anything on this website for any purpose.
+</p>
+<p>
+13.2 The www.jobbifi.com names and logos and all related product and service and our slogans are the trademarks or service marks ofwww.jobbifi.com. All other marks are the property of their respective companies. No trademark or service mark license is granted in connection with the materials contained on this Site. Access to this Site does not authorize anyone to use any name, logo or mark in any manner.
+</p>
+<p>
+13.3 All materials, including images, text, illustrations, designs, icons, photographs, programs, videos, music, written and other materials that are part of this Site (collectively, the "Contents") are intended solely for personal, non-commercial use. You may download or copy the Contents and other downloadable materials displayed on the Site for your personal use only. No right, title or interest in any downloaded materials or software is transferred to you as a result of any such downloading or copying. You may not reproduce (except as noted above), publish, transmit, distribute, display, modify, create derivative works from, sell or participate in any sale of or exploit in any way, in whole or in part, any of the Contents, the Site or any related software. All software used on this Site is the property of our website or its suppliers and protected by copyright laws of India. Any other use, including the reproduction, modification, distribution, transmission, republication, display, or performance, of the Contents on this Site is strictly prohibited. Unless otherwise noted, all Contents are copyrights, trademarks and/or other intellectual property owned, controlled or licensed by our website, one of its affiliates or by third parties who have licensed their materials to us and are protected by copyright laws of India. The compilation (meaning the collection, arrangement, and assembly) of all Contents on this Site is the exclusive property of our website and is also protected by Copyright laws of India.
+</p>
+<p>
+13.4 We respect the intellectual property of others. If you believe that your work has been copied in a way that constitutes copyright infringement, please contact us immediately at support@jobbifi.com.
+</p>
+<p>
+14. REVIEWS, FEEDBACK, SUBMISSIONS:
+</p>
+<p>
+14.1 All reviews, comments, feedback, postcards, suggestions, ideas, and other submissions disclosed, submitted or offered to us on or by this Site or otherwise disclosed, submitted or offered in connection with your use of this Site (collectively, the "Comments") shall be and remain our property. Such disclosure, submission or offer of any Comments shall constitute an assignment to us of all worldwide rights, titles and interests in all copyrights and other intellectual properties in the Comments. Thus, we exclusively own all such rights, titles and interests and shall not be limited in any way in its use, commercial or otherwise, of any Comments. We will be entitled to use, reproduce, disclose, modify, adapt, create derivative works from, publish, display and distribute any Comments you submit for any purpose whatsoever, without restriction and without compensating you in any way. 
+</p>
+<p>
+14.2 We are and shall be under no obligation (1) to maintain any Comments in confidence; (2) to pay you any compensation for any Comments; or (3) to respond to any Comments. You agree that any Comments submitted by you to the Site will not violate this policy or any right of any third party, including copyright, trademark, privacy or other personal or proprietary right(s), and will not cause injury to any person or entity. You further agree that no Comments submitted by you to the Site will be or contain libelous or otherwise unlawful, threatening, abusive or obscene material, or contain software viruses, political campaigning, commercial solicitation, chain letters, mass mailings or any form of "spam".
+</p>
+<p>
+14.3 Our website does not regularly review posted Comments, but does reserve the right (but not the obligation) to monitor and edit or remove any Comments submitted to the Site. You grant us the right to use the name that you submit in connection with any Comments. You agree not to use a false email address, impersonate any person or entity, or otherwise mislead as to the origin of any Comments you submit. You are and shall remain solely responsible for the content of any Comments you make and you agree to indemnify us and our affiliates for all claims resulting from any Comments you submit. We and our affiliates take no responsibility and assume no liability for any Comments submitted by you or any third party.
+</p>
+<p>
+15. INDEMNITY:
+</p>
+<p>
+Users agree to defend, indemnify and hold harmless our website, its employees, directors, officers, agents and their successors and assigns from and against any and all claims, liabilities, damages, losses, costs and expenses, including attorney's fees, caused by or arising out of claims based upon your actions or inactions, which may result in any loss or liability to our website or any third party including but not limited to breach of any warranties, representations or undertakings or in relation to the non-fulfillment of any of your obligations under this User Agreement or arising out of your violation of any applicable laws, regulations including but not limited to Intellectual Property Rights, payment of statutory dues and taxes, claim of libel, defamation, violation of rights of privacy or publicity, loss of service by other subscribers and infringement of intellectual property or other rights. This clause shall survive the expiry or termination of this User Agreement.
+</p>
+<p>
+16. TERMINATION:
+</p>
+<p>
+This User Agreement is effective unless and until terminated by either you or us. You may terminate this User Agreement at any time, provided that you discontinue any further use of this Site. We may terminate this User Agreement at any time and may do so immediately without notice, and accordingly deny you access to the Site, such termination will be without any liability to us. Upon any termination of the User Agreement by either you or us, you must promptly destroy all materials downloaded or otherwise obtained from this Site, as well as all copies of such materials, whether made under the User Agreement or otherwise. Our rights to any Comments shall survive any termination of this User Agreement. 
+</p>
+<p>
+17. LIMITATION OF LIABILITY AND DISCLAIMERS:
+</p>
+<p>
+17.1 The Site is provided without any warranties or guarantees and in an "As Is" condition. You must bear the risks associated with the use of the Site.
+</p>
+<p>
+17.2 The Site provides content from other Internet sites or resources and while our website tries to ensure that material included on the Site is correct, reputable and of high quality, it shall not accept responsibility if this is not the case. We will not be responsible for any errors or omissions or for the results obtained from the use of such information or for any technical problems you may experience with the Site. This disclaimer constitutes an essential part of this User Agreement. In addition, to the extent permitted by applicable law, we are not liable, and you agree not to hold Company responsible, for any damages or losses (including, but not limited to, loss of money, goodwill or reputation, profits, or other intangible losses or any special, indirect, or consequential damages) resulting directly or indirectly from:
+</p>
+	<p>
+		(a) Your use of or your inability to use our Website, Services and tools;		
+	</p>
+	<p>
+		(b) Delays or disruptions in our Website, Services, or tools;		
+	</p>
+	<p>
+		(c) Viruses or other malicious software obtained by accessing our Website, Services, or tools or any site, Services, or tool linked to our Website, Services, or tools;
+	</p>
+	<p>
+		(d) Glitches, bugs, errors, or inaccuracies of any kind in our Website, Services, and tools or in the information and graphics obtained from them;
+	</p>
+	<p>
+		(e) The content, actions, or inactions of third parties, including items listed using our Website, services, or tools or the destruction of allegedly fake items;
+	</p>
+	<p>
+		(f) A suspension or other action taken with respect to your account; 
+	</p>
+</ul>
+
+<p>
+17.3 To the fullest extent permitted under applicable law, our website or its suppliers shall not be liable for any indirect, incidental, special, consequential or exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data or other intangible losses arising out of or in connection with the Site, its services or this User Agreement. 
+</p>
+<p>
+17.4 Without prejudice to the generality of the section above, the total liability of our website to you for all liabilities arising out of this User Agreement be it in tort or contract is limited to the value of the services availed by you. Our website, its associates and technology partners make no representations or warranties about the accuracy, reliability, completeness, correctness and/or timeliness of any content, information, software, text, graphics, links or communications provided on or through the use of the Site or that the operation of the Site will be error free and/or uninterrupted. Consequently, our website assumes no liability whatsoever for any monetary or other damage suffered by you on account of the delay, failure, interruption, or corruption of any data or other information transmitted in connection with use of the Site; and/or any interruption or errors in the operation of the Site.
+</p>
+<p>
+18. GOVERNING LAWS AND JURISDICTION:
+</p>
+<p>
+18.1 These Terms and any action related thereto will be governed by the laws of India without regard to or application of its conflict of law provisions or user's state or country of residence. 
+</p>
+<p>
+18.2 Usersagree to submit to the exclusive jurisdiction of the courts  in   Kanpur , Uttar Pradesh, India in relation to proceedings arising out of this agreement.
+</p>
+<p>
+19. DISPUTE RESOLUTION:
+</p>
+<p>
+19.1 If any dispute arises between you and us during your use of the Website or thereafter, in connection with the validity, interpretation, implementation or alleged breach of any provision of the User Agreement, or the documents they incorporate by reference, the dispute shall be referred to a sole Arbitrator who shall be an independent and neutral third party identified by us. The place of arbitration shall  be  Kanpur, Uttar  Pradesh  . The arbitration proceedings shall be in the English Language and shall be governed by Arbitration and Conciliation Act, 1996. 
+</p>
+<p>
+19.2 Generally, transactions are conducted smoothly on our website. However there may be some cases where Users may face issues including Escrow amount issues between Mentors and Job seekers or any other issues amongst the Users. We have a Dispute Resolution process in order to resolve disputes between Users. A 'Dispute' can be defined as a disagreement between two Usersin connection with a transaction on the Website. Disputes arise out of an issue that is raised by either party  not  being completely satisfied with the  resolution  of their complaint/issue. 
+</p>
+<p>
+19.2 We advise that before a User raises a dispute, they should attempt to resolve the issue amicably between each  other . 
+</p>
+<p>
+19.3 In case the Users are unable to amicably settle the dispute themselves then they shall write to us at support@jobbifi.com in order to raise a dispute.  We  shall assign a Moderator to resolve a dispute between Users and any decision taken by the Moderator shall be supreme and binding on the Users. 
+</p>
+<p>
+19.4 Once a dispute is raised by either party, we shall try to but are under no obligation to mediate and resolve the matter amicably. In accordance with Information Technology Act, 2000 and rules made there under, the name and contact details of the Grievance Officer is published  herewith : 
+</p>
+
+<p>
+Jobbifi Team
+support@jobbifi.com 
+</p>
+<p>
+20. PRIVACY:
+</p>
+<p>
+All Personal Information and User Generated Content provided to or displayed on the Site and Services are subject to our Privacy Statement.
+</p>
+<p>
+21. NOTICE
+</p>
+<p>
+21.1 By using the Site and Services, you accept that communication with us will be mainly electronic. We will contact you by email or provide you with information by posting notices on the Site and Services.
+</p>
+<p>
+21.2 You acknowledge that all contracts, notices, information and other communication we may provide electronically comply with any legal requirements that such documents are in writing.
+</p>
+<p>
+21.3 Notice will be deemed received and properly served immediately when posted on the Site and Services, 24 hours after an email is sent. As proof of service, it is sufficient that:
+</p>
+<p>
+(a) the email was sent to the specified email address.
+</p>
+<p>
+22. SPECIAL ADMONITIONS FOR INTERNATIONAL USE
+</p>
+<p>
+The services of our website are available  globally . By agreeing to our terms of use and other policies, you warrant that it is completely legal to use our services in your country. It is the duty of the user to verify any potential violation. You agree to indemnify us or sister companies, employees, agents or any related individual or organization for any liability it might incur in a foreign jurisdiction. Our services shall not be deemed to constitute an offer to sell or serve in countries where it is illegal to do so. We reserve the right to monitor the location from which users access our services and to block access from any jurisdiction in which participation is illegal or restricted.
+</p>
+<p>
+23. LINKS TO OTHER WEBSITES:
+</p>
+<p>
+Links to third party Websites on this site are provided solely as a convenience to you. If you use these links, a new browser will be lodged to access linked Websites. We have not reviewed these third party Websites and does not control and is not responsible for any of these Websites or their content. We do not endorse or make any representations about them, or any information, or other products or materials found there, or any results that may be obtained from using them. If you decide to access any of the third party Websites linked to this site, you do this entirely at your own risk.
+</p>
+<p>
+24. NO WAIVER IMPLIED:
+</p>
+<p>
+The failure of us to enforce at any time any of the provisions of these of Agreement, or the failure to require at any time performance by you of any of the provisions of these provisions, shall in no way be construed to be a present or future waiver of such provisions, nor in any way affect the our right to enforce each and every such provision thereafter. The express waiver by us of any provision, condition or requirement of these provisions shall not constitute a waiver of any future obligation to comply with such provision, condition or requirement.
+</p>
+<p>
+25. SEVERABILITY:
+</p>
+<p>
+Each Term shall be deemed to be severable. If any Term or portion thereof is found to be invalid or unenforceable, such invalidity or unenforceability shall in no way effect the validity or enforceability of any other Term.
+</p>
+<p>
+26. ASSIGNMENT:
+</p>
+<p>
+26.1 You will not assign any rights or delegate any obligations under these Terms, in whole or in part, by operation of law or otherwise, without obtaining our prior written consent, which may be withheld in our sole discretion. 
+</p>
+<p>
+26.2 We may assign our rights and delegate any of our obligations under these Terms, in whole or in part, without your consent. Any assignment or delegation in violation of the foregoing will be null and void. These Terms will be binding and inure to the benefit of each party’s permitted successors and assigns.
+</p>
+<p>
+27. FORCE MAJEURE:
+</p>
+<p>
+We shall be under no liability to you in respect of anything that, if not for this provision, would or might constitute a breach of these Terms, where this arises out of circumstances beyond our control, including but not limited to:
+</p>
+<p>
+(a) acts of god;
+</p>
+<p>
+(b) natural disasters;
+</p>
+<p>
+(c) sabotage;
+</p>
+<p>
+(d) accident;
+</p>
+<p>
+(e) riot;
+</p>
+<p>
+(f) shortage of supplies, equipment, and materials;
+</p>
+<p>
+(g) strikes and lockouts;
+</p>
+<p>
+(h) civil unrest;
+</p>
+<p>
+(i) Computer hacking; or
+</p>
+<p>
+(j) malicious damage.
+</p>
+<p>
+28. DIGITAL SIGNATURE:
+</p>
+<p>
+28.1 By using our services, you are deemed to have executed this Agreement electronically, effective on the date you register your Account and start using our services. Your Account registration constitutes an acknowledgement that you are able to electronically receive, download, and print this Agreement.
+</p>
+<p>
+28.2 In connection with this Agreement, you may be entitled to receive certain records, such as contracts, notices, and communications, in writing. To facilitate your use of the website, you give us permission to provide these records to you electronically instead of in paper form.
+</p>
+<p>
+28.3 By registering for an Account, you consent to electronically receive and access, via email, all records and notices for the services provided to you under this Agreement that we would otherwise be required to provide to you in paper form. However, we reserve the right, in our sole discretion, to communicate with you via the Postal Service and other third-party mail services using the address under which your account is registered. Your consent to receive records and notices electronically will remain in effect until you withdraw it. You may withdraw your consent to receive further records and notices electronically at any time by contacting Customer Support. If you withdraw your consent to receive such records and notices electronically, we will terminate your access to the Services, and you will no longer be able to use the Services. Any withdrawal of your consent to receive records and notices electronically will be effective only after we have a reasonable period of time to process your request for withdrawal. Please note that your withdrawal of consent to receive records and notices electronically will not apply to records and notices electronically provided by us to you before the withdrawal of your consent becomes effective.
+</p>
+<p>
+28.4 In order to ensure that we are able to provide records and notices to you electronically, you must notify us of any change in your email address by updating your Account information on the website or by contacting Customer Support.
+</p>
+<p>
+29. MODIFICATION:
+</p>
+<p>
+The Terms and Conditions cannot be modified on an individual basis by any person affiliated, or claiming affiliation, with us. Nothing in this section will prevent us from modifying the terms of these Terms and Conditions and posting such modifications on our website. We reserve the right, in our sole and exclusive discretion, to revise these terms and conditions at any time. All revisions shall be posted on this page. Since you are bound by all revisions made by us, you should review this page each time you connect to our website. It is important that you fully read and understand the terms and conditions you are agreeing to be bound by, when you use this website.
+</p>
+<p>
+30. COMMUNICATIONS:
+</p>
+<p>
+30.1 Our website's team may send you information about offers, notices, letters and other communication to your  email . You can ask us to refrain from sending you offers or promotional offers at support@jobbifi.com.
+</p>
+<p>
+30.2 You consent to receive notices and information from us in respect of the website and Services by electronic communication. You may withdraw this consent at any time, but if you do so we may choose to suspend or close your Account.
+</p>
+<p>
+31. ENTIRE AGREEMENT:
+</p>
+<p>
+These Terms collectively represent the entire agreement and understanding between you and us and supersede any other agreement or understanding (written, oral or implied) that you and we may have had. Any statement, inducement, promise, covenant or condition not expressly found either in these Terms shall be deemed as void.
+</p>
+<p>
+32. CONTACT US:
+</p>
+<p>
+32.1 For any further clarification of out Terms and Conditions, please write to us at support@jobbifi.com
+</p>
+<p>
+32.2 Our Permanent Address is 
+</p>
+<p>#117/346, Block-O</p>
+
+<p>Geeta Nagar, Kanpur - 208025</p>
+
+<p>UP, India </p>
+
+<p>
+32.3 Our legal representatives can be contacted at legal@jobbifi.com
+</p>
+<p>
+32.4 Our Dispute Resolution team can be contacted at support@jobbifi.com </p>
 
 			</div>
 		</div>
+		<div class="col-md-2"></div>
 	</div>
 	<%@ include file="/WEB-INF/pages/common/footer.jsp"%>
 	<%@ include file="/WEB-INF/pages/common/js.jsp"%>

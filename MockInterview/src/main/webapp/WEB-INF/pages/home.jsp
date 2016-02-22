@@ -665,7 +665,7 @@
 			$('.navbar-collapse li.scroll').removeClass('active').eq(0)
 					.addClass('active');
 		}
-
+		/*
 		$(function(){
 			$("#myModal").on("hidden.bs.modal", function () {
 				 $("#j_username").val("");
@@ -675,7 +675,8 @@
 
 			});
 
-			$("#mysignupModal").on("hidden.bs.modal", function () {
+			$("#headersignuplink").on("click", function () {
+				$("#loginbox").hide();
 				$("#headersignuplink").removeClass('active');
 				$("#userSignUpForm username").val("");   
 			    $("#userSignUpForm email").val("");    
@@ -685,7 +686,7 @@
 			});
 
 		});
-
+		*/
 	</script>
     
     

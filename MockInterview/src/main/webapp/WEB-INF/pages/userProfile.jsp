@@ -129,12 +129,12 @@
                             <div class="stepwizard" style="height:190px;">
                             <div class="stepwizard-row">
                                 <div class="stepwizard-step first-button">
-                                    <button type="button" class="btn btn-info btn-square">Contact this Advisor/Employer</button>
+                                    <button type="button" class="btn btn-info btn-square">Contact this Advisor</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
                                 <div class="stepwizard-step  second-button">
-                                    <button type="button" class="btn btn-success btn-square">Ask for referrals/jobs</button>
+                                    <button type="button" class="btn btn-success btn-square">Ask for referrals</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
@@ -388,9 +388,16 @@
 
 
                  $(document).on("click", "#contactme", function(){
-                    $("#status").html('<i class="fa fa-spinner fa-spin"></i>');
+                    //$("#status").html('<i class="fa fa-spinner fa-spin"></i>');
                     var to = user.username;
                     var message = $("#inputmessage").val();
+
+                    if(message.trim() === "")
+                    {
+                        $("#status").html('<font size="1" color="red">Write some message</font>');
+                        return;
+
+                    }
 
                     var jobid = "";
                     var jobtitle = "Need Consulatation";

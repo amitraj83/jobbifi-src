@@ -111,7 +111,7 @@
                                     
                                     <div class="col-md-12">
                                         <textarea name="message" id="inputmessage" rows="5" cols="80"
-                                                  class="form-control" style="font-size: 11px;height: 200px;">
+                                                  class="form-control" style="font-size: 11px;height: 200px;resize: vertical; ">
 
                                         </textarea>
                                     </div>
@@ -225,7 +225,7 @@
                     for(var i =0; i < json.length; i++)    
                     {   
                         var j = json[i];
-                        var skills=j.skills;
+                        var skills=jQuery.parseJSON(j.skills); //.split(",");
                         var positions = [];
                         for(var j=0; j < json[i].positions.length; j++){
                             var icon =  (j == 0) ? true : false;
@@ -296,7 +296,7 @@
                                     '</div>' +
                                     '</div>' +
                                     '<div class="row"  style="padding:4px;font-size: 12px;"><div class="col-md-12">' +
-                                    '<div class="advisor-title"> {{ #skills }}<span class="label label-info">{{ . }}</span> {{ /skills }}</div>' +
+                                    '<div class="advisor-title"> {{ #skills }}<span class="label label-info">{{ . }}</span>&nbsp; {{ /skills }}</div>' +
                                     '</div></div>' +
                                     '</div>' +
                                     '</div>';

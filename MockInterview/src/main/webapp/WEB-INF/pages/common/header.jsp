@@ -246,26 +246,18 @@
 				<ul class="nav navbar-nav">
 					<!-- IF USER IS NOT AUTHENTICATED -->
 					<sec:authorize access="!isAuthenticated()">
-						<li class="scroll active"><a href="#navigation"
-							onclick="activeHome()">Home</a></li>
-						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
-						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
-						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->
-						<li class="scroll"><a href="#navigation" data-toggle="modal"
-							data-target="#myModal">Login</a></li>
 						<li class="scroll"><a id="headersignuplink" href="#navigation" data-toggle="modal"
 							data-target="#myModal">Sign Up</a></li>	
+						<li class="scroll"><a href="#navigation" data-toggle="modal"
+							data-target="#myModal">Login</a></li>
+						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
+						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
+						<li class="scroll active"><a href="#navigation"
+							onclick="activeHome()">Home</a></li>
+						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->
 						<!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->
 					</sec:authorize>
 					<!-- IF USER IS AN INTERVIEWEE -->
-					<sec:authorize access="hasRole('ROLE_INTERVIEWEE')">
-						<!--<li id="nav_jobs"><a title="Jobs"
-							href="<c:url value='/jobs.do'/>">Jobs</a></li> -->
-						<li id="nav_advisors"><a title="Advisors"
-							href="<c:url value='/advisors.do'/>">Find Advisors</a></li>
-						<!-- <li id="nav_mocks"><a title="My Interviews"
-							href="<c:url value='/myinterview.do'/>">My Mocks</a></li> -->
-					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_INTERVIEWER')">
 						<!-- <li id="nav_advisors"><a title="Advisors"
 							 href="<c:url value='/mocks.do'/>">Advisors</a></li> -->
@@ -277,7 +269,7 @@
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a title="Admin"
 							href="<c:url value='/admin.do'/>">Admin</a></li>
-						<li id="user-dropdown-menu" class="dropdown">
+						<li id="user-dropdown-menu" class="dropdown" >
 						<a
 							class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer;"> <i
 								class="fa fa-user"></i> <sec:authentication
@@ -297,9 +289,6 @@
 					<!-- ANY LOGGED IN USER -->
 					<sec:authorize access="hasRole('ROLE_USER')">
 						<!--<li><a title="Finance" href="<c:url value='/finance.do'/>">Finance</a></li>-->
-						<li><a title="Message" href="<c:url value='/message.do'/>">Messages
-								<span id="messageCount"></span>
-						</a></li>
 						<li id="user-dropdown-menu" class="dropdown">
 						<a
 							class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer;"> <i
@@ -315,8 +304,22 @@
 								<li><a href="javascript:void(0)" onclick="logout();"
 									id="signout"><span class="fa fa-sign-out"></span> Sign out</a>
 								</li>
-							</ul></li>
+							</ul>
+						</li>
+						<li><a title="Message" href="<c:url value='/message.do'/>">Messages
+								<span id="messageCount"></span>
+						</a></li>
+						
 					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_INTERVIEWEE')">
+						<!--<li id="nav_jobs"><a title="Jobs"
+							href="<c:url value='/jobs.do'/>">Jobs</a></li> -->
+						<li id="nav_advisors"><a title="Advisors"
+							href="<c:url value='/advisors.do'/>">Find Advisors</a></li>
+						<!-- <li id="nav_mocks"><a title="My Interviews"
+							href="<c:url value='/myinterview.do'/>">My Mocks</a></li> -->
+					</sec:authorize>
+					
 				</ul>
 			</nav>
 			<div class="search">

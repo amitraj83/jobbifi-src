@@ -57,8 +57,11 @@ public class ResetPasswordController {
     model.addAttribute("authid", req.getParameter("authid"));
     model.addAttribute("authinstance", req.getParameter("authinstance"));
     model.addAttribute("authtoken", req.getParameter("authtoken"));
-
-    return "resetpasswordscreen";
+    if(result == 0){
+    	return "linkexpired";
+    }
+    else
+    	return "resetpasswordscreen";
   }
 
   @RequestMapping(value = "/resetpasswordemail.do", method = RequestMethod.GET)

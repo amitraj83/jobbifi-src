@@ -3817,3 +3817,6 @@ span.job_search_result_employer {
     margin: 0px 5px;
 }
 
+.navbar-nav>li {
+    float: right !important;
+}

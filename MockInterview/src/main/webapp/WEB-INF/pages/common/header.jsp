@@ -1,18 +1,39 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+	<div class="modal-dialog" style="width: 50%;">
+		<div class="modal-content" style="background: #00395E;">
+			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true" style="color: white;">&times;</span>
+							</button>
+				<div style="margin-left: 9px;">
+					<iframe width="99%" height="450"  src="https://www.youtube.com/embed/n-SO8aAGInQ" frameborder="0" allowfullscreen></iframe>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+			
+
+
 <div class="modal fade bs-example-modal-sm" id="myModal" role="dialog"
 	aria-hidden="true">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
 			<div class="modal-body text-center">
 				<div id="loginbox">
-                    <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title text-center">Welcome to Jobbifi
+                    <div class="panel panel-info" style="border-color: #00395E;">
+                    <div class="panel-heading" style="color: #FFFFFF;background-color: #00395E;border-color: #00395E;">
+                        <div class="panel-title text-center" style="font-size: 22px;">Welcome to Jobbifi
                         <div class="pull-right">
                         <button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
+								<span aria-hidden="true" style="color: white;">&times;</span>
 							</button>
                         </div>
                         </div>
@@ -72,9 +93,9 @@
 				<div id="forgotpasswordbox" style="display: none;" class="mainbox">
                 
                 
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title text-center">Forgot your password?
+                <div class="panel panel-info" style="border-color: #00395E;">
+                    <div class="panel-heading" style="color: #FFFFFF;background-color: #00395E;border-color: #00395E;">
+                        <div class="panel-title text-center" style="font-size: 22px;">Forgot your password?
                         <div class="pull-right">
                         <button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
@@ -124,14 +145,13 @@
 				</div>
 				<div id="signupbox" style="display: none;" >
                 
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                    
-                    <div class="panel-title text-center">Signup with Jobbifi
+                <div class="panel panel-info" style="border-color: #00395E;">
+                    <div class="panel-heading" style="color: #FFFFFF;background-color: #00395E;border-color: #00395E;">
+                        <div class="panel-title text-center" style="font-size: 22px;">Signup with Jobbifi
                         <div class="pull-right">
                         <button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
+								<span aria-hidden="true" style="color: white;">&times;</span>
 							</button>
                         </div>
                     </div>
@@ -222,6 +242,162 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade bs-example-modal-sm" id="mysignupModal" role="dialog"
+	aria-hidden="true">
+	<div class="modal-dialog login-modal">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				
+
+				
+				<div id="signupbox"  >
+                
+                <div class="panel panel-info" style="border-color: #00395E;">
+                    <div class="panel-heading" style="color: #FFFFFF;background-color: #00395E;border-color: #00395E;">
+                        <div class="panel-title text-center" style="font-size: 22px;">Signup with Jobbifi
+                        <div class="pull-right">
+                        <button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true" style="color: white;">&times;</span>
+							</button>
+                        </div>
+                    </div>
+                    
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body">
+                           
+                       	<form id="signupform" class="form-horizontal">
+									<div class="form-group row">
+										<div class="col-sm-12 col-md-12">
+											 <label class="radio-inline"> 
+												<input
+												name="usertype" checked="checked" id="intervieweeId"
+												value="INTERVIEWEE" type="radio"/> 
+												Job Seeker
+											</label> 
+											<label class="radio-inline"> 
+												<input name="usertype"
+												id="interviewerId" value="INTERVIEWER" type="radio"/>
+												Career Advisor
+											</label>
+											<!--<label class="radio-inline"> 
+												<input name="usertype"
+												id="employerId" value="EMPLOYER" type="radio"/>
+												Employer
+											</label> -->
+
+										</div>
+									</div>
+									<div id="userSignUpForm" >
+										<div class="form-group row">
+											<div class="col-sm-12 col-md-12">
+												<input type="text" class="form-control text-center" id="email"
+													name="email" placeholder="Email Address">
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-sm-12 col-md-12">
+												<input type="text" class="form-control text-center" id="username"
+													name="username" placeholder="Choose a username">
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-sm-12 col-md-12">
+												<input type="password" class="form-control text-center" id="password"
+													name="password" placeholder="Password">
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<div class="col-md-12">
+												<button type="submit" class="btn btn-success btn-block lowercase">Sign Up</button>
+													<img id="signupbtnloader" style="display: none;"
+													alt="Processing..."
+													src="<c:url value=" /resources/img/loading.gif " />">
+												
+											</div>
+										</div>
+									</div>
+								</form>
+                           
+
+
+
+                        </div>                     
+                    </div>
+                
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Page Loader -->
 <div class="preloader">
 	<div id="loaderImage"></div>
@@ -247,11 +423,16 @@
 					<!-- IF USER IS NOT AUTHENTICATED -->
 					<sec:authorize access="!isAuthenticated()">
 						<li class="scroll"><a id="headersignuplink" href="#navigation" data-toggle="modal"
-							data-target="#myModal">Sign Up</a></li>	
+							data-target="#mysignupModal">Sign Up</a></li>	
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>
 						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
 						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
+						<li class="scroll"><a id="headerwhatthis" href="#navigation" data-toggle="modal"	data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/sGbxmsDFVnE">What's this?</a></li>
+			
+
+			
+			
 						<li class="scroll active"><a href="#navigation"
 							onclick="activeHome()">Home</a></li>
 						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->

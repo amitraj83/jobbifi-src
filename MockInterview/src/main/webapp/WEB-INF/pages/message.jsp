@@ -13,15 +13,8 @@
     <div id="page-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="list-group list-default" id="sidenav">
-                        <a href="javascript:void(0);" id="nav-allmessage" class="list-group-item active">All
-                            Messages</a>
-                        <a href="<c:url value='newmessage.do'/>" id="nav-newmessage" class="list-group-item">New
-                            Message</a>
-                    </div>
-                </div>
-                <div class="col-md-9">
+                
+                <div class="col-md-8">
                     <h1 style="margin-top:0px" id="heading">Messages</h1>
                     <div id="message"></div>
                     <hr/>
@@ -40,6 +33,42 @@
 
                 </div>
 
+
+                <div class="col-md-4 page-sidebar">
+                    <div class="clearfix" style="padding-left: 30px; border-left: 1px solid #ddd;">
+                    
+
+                        <div>
+                        <center>
+                            <h3>What's Next?</h3>    
+                            <div class="stepwizard" style="height:160px;">
+                                <div class="stepwizard-row">
+                                    <div class="stepwizard-step first-button">
+                                        <button type="button" class="btn btn-success btn-square">Communicate with each other</button>
+                                    </div>
+                                </div>
+                                <div class="stepwizard-row">   
+                                    <div class="stepwizard-step second-button">
+                                        <button type="button" class="btn btn-info btn-square">Share your contact details</button>
+                                    </div>
+                                </div>
+                                <div class="stepwizard-row">   
+                                    <div class="stepwizard-step third-button">
+                                        <button type="button" class="btn btn-warning btn-square">Schedule a phone call</button>
+                                    </div>
+                                </div>
+                                <div class="stepwizard-row">   
+                                    <div class="stepwizard-step">
+                                        <button type="button" class="btn btn-success btn-square">Complete your mock interview</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -128,9 +157,13 @@
                         from = "Me";
                         messageWith = to; 
                     }
-					var from1="'"+jobs[i].from+"'";
-					var to1="'"+jobs[i].to+"'";
-                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + messageWith +labelNew + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';
+                    if(messageWith != null)
+                    {
+                    var from1="'"+jobs[i].from+"'";
+                    var to1="'"+jobs[i].to+"'";
+                    jobsHtml += '<tr style="cursor:pointer;" onclick="getChat('+from1+','+to1+')"><td>' + messageWith +labelNew + '</td><td>' + message + '</td><td>' + prettyDate(new Date(jobs[i].creationDate)) + '</td></tr>';    
+                    }
+					
                 }
                 jobsHtml += '</tbody></table>';
             } else {

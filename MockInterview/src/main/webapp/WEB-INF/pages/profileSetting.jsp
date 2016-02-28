@@ -262,8 +262,8 @@
 						} else {
 							$("#skillerror").html("");
 							var skillText = $("#update_skill").val();
-							if(skillText.indexOf("#") != -1)
-								skillText = skillText.replace("#","sharp");
+							// if(skillText.indexOf("#") != -1)
+							// 	skillText = skillText.replace("#","sharp");
 							editSkillSet(skillText, $(
 									"#update_skillexp").val());
 						}
@@ -415,7 +415,7 @@
 				.click(
 						function() {
 							var param = "";
-							var country = $("#updatecountries").val();
+							var country = encodeURIComponent($("#updatecountries").val());
 							param += "country=" + country;
 
 							var skills = new Array();
@@ -428,10 +428,10 @@
 								skill.skillYear = $(li).find("#sky").text();
 								skills.push(skill);
 							}
-							param += "&skills=" + JSON.stringify(skills);
+							param += "&skills=" + encodeURIComponent(JSON.stringify(skills));
 							//param += "&rate=" + $("#perhourrate").val();
 							//param += "&phonenumber=" + $("#phonenumber").val();
-							param += "&cv=" + $("#update_shortcv").val();
+							param += "&cv=" + encodeURIComponent($("#update_shortcv").val());
 
 							var edudiv = $("#update_alleducations").children(
 									"#edudiv");
@@ -449,7 +449,7 @@
 								educations.push(edu);
 							}
 							param += "&educations="
-									+ JSON.stringify(educations);
+									+ encodeURIComponent(JSON.stringify(educations));
 
 							var positiondivs = $("#update_allpositions")
 									.children("#positionDiv");
@@ -477,7 +477,7 @@
 								}
 								positions.push(position);
 							}
-							param += "&positions=" + JSON.stringify(positions);
+							param += "&positions=" + encodeURIComponent(JSON.stringify(positions));
 
 							$
 									.ajax(

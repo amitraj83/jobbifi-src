@@ -530,10 +530,9 @@
 													break;
 												case "Advisors":
 													urlToAppend = 'advisors.do?searchKey='
-															+ $
-																	.trim($(
+															+ $.trim(encodeURIComponent($(
 																			"#front-search-key")
-																			.val());
+																			.val()));
 													break;
 
 												case "Mock Interviews":

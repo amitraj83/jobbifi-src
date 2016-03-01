@@ -339,10 +339,11 @@
         else{
         $(".pagination").hide();
         var start = ((currentPage - 1) * 10);
+        var searchparam = "searchkey=" + encodeURIComponent(searchKey) + "&start=" + start; 
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "search.do",
-                data: "searchkey=" + searchKey + "&start=" + start,
+                data: searchparam
                 //async: false
             }).done(function (msg) 
             {

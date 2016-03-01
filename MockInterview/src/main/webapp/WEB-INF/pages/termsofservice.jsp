@@ -230,7 +230,7 @@ d) Use a username that is offensive, vulgar or obscene or otherwise in bad taste
 8.1 Users shall not make arrangements outside of this platform in order to have any paid relations or any contact with each other contacted through our website. Users agrees that any information or content that he or she or it posts, transmits or receives through our website shall not be considered confidential. 
 </p>
 <p>
-8.2 Users grant us an unlimited, irrevocable, royalty­free license to use, reproduce, display, edit, copy, transmit, publicly perform, create derivative works, or communicate to the public any such information and content on a world­wide basis. 
+8.2 Users grant us an unlimited, irrevocable, royalty free license to use, reproduce, display, edit, copy, transmit, publicly perform, create derivative works, or communicate to the public any such information and content on a world­wide basis. 
 </p>
 <p>
 8.3 Users shall not take any actions that may undermine, disrupt or manipulate the integrity of the User feedback system on the Site.
@@ -248,7 +248,7 @@ d) Use a username that is offensive, vulgar or obscene or otherwise in bad taste
 9.3 Mentors shall get paid by the Job seekers for advises, consultations etc. they give the job seekers in order to prepare them for interviews and help them get hired by employers. Such payments to mentors shall be made via our website. 
 </p>
 <p>
-9.4 The Job seeker shall make payments to Mentor via our website by using their valid debit or credit cards which may be held in our Escrow account till the time services have not been provided to the Job seeker. Once the mentor provides his services to job seeker then we shall release the payment from our Escrow account to Mentor’s account after deducting 10 % as our commission. 
+9.4 The Job seeker shall make payments to Mentor via our website by using their valid debit or credit cards which may be held in our Escrow account till the time services have not been provided to the Job seeker. Once the mentor provides his services to job seeker then we shall release the payment from our Escrow account to Mentor's account after deducting 10 % as our commission. 
 </p>
 <p>
 9.5 If mentor is based abroad then the mentor shall be required to open an Indian bank account in order to receive payments from us. 
@@ -287,7 +287,7 @@ d) Use a username that is offensive, vulgar or obscene or otherwise in bad taste
 (a) belongs to another person and to which You do not have any right;
 </p>
 <p>
-(b) is grossly harmful, harassing, blasphemous, defamatory, obscene, pornographic, paedophilic, libellous, invasive of another's privacy, hateful, or racially, ethnically objectionable, disparaging, relating or encouraging money laundering or gambling, or otherwise unlawful in any manner whatever; or unlawfully threatening or unlawfully harassing including but not limited to "indecent representation of women” within the meaning of the Indecent Representation of Women (Prohibition) Act, 1986;
+(b) is grossly harmful, harassing, blasphemous, defamatory, obscene, pornographic, paedophilic, libellous, invasive of another's privacy, hateful, or racially, ethnically objectionable, disparaging, relating or encouraging money laundering or gambling, or otherwise unlawful in any manner whatever; or unlawfully threatening or unlawfully harassing including but not limited to "indecent representation of women" within the meaning of the Indecent Representation of Women (Prohibition) Act, 1986;
 </p>
 <p>
 (c) is misleading in any way;
@@ -407,7 +407,7 @@ d) Use a username that is offensive, vulgar or obscene or otherwise in bad taste
 12. OWNERSHIP:
 </p>
 <p>
-All right, title, and interest in and to the website (excluding postings/content provided by the users) is and will remain the exclusive property of Jobbifi and our licensors. The website service is protected by copyright, trademark, and other laws of India. Nothing in these Terms gives you a right to use the name of the website or website’s trademark or logo, or any other trademarks, logos, domain names, or other distinctive brand features relating to the website or located on the website. Any feedback, comments, and suggestions you may provide regarding the website (“Feedback”) are entirely voluntary and you grant us a perpetual, irrevocable, worldwide, royalty-free license (with the right to sublicense) to use, reproduce, modify, create derivative works of, commercialize, and otherwise freely exploit such Feedback (including, but not limited to, all Rights therein) as we see fit and without any payment or other obligation to you.
+All right, title, and interest in and to the website (excluding postings/content provided by the users) is and will remain the exclusive property of Jobbifi and our licensors. The website service is protected by copyright, trademark, and other laws of India. Nothing in these Terms gives you a right to use the name of the website or website's trademark or logo, or any other trademarks, logos, domain names, or other distinctive brand features relating to the website or located on the website. Any feedback, comments, and suggestions you may provide regarding the website ("Feedback") are entirely voluntary and you grant us a perpetual, irrevocable, worldwide, royalty-free license (with the right to sublicense) to use, reproduce, modify, create derivative works of, commercialize, and otherwise freely exploit such Feedback (including, but not limited to, all Rights therein) as we see fit and without any payment or other obligation to you.
 </p>
 <p>
 13. INTELLECTUAL PROPERTY RIGHTS:
@@ -567,7 +567,7 @@ Each Term shall be deemed to be severable. If any Term or portion thereof is fou
 26.1 You will not assign any rights or delegate any obligations under these Terms, in whole or in part, by operation of law or otherwise, without obtaining our prior written consent, which may be withheld in our sole discretion. 
 </p>
 <p>
-26.2 We may assign our rights and delegate any of our obligations under these Terms, in whole or in part, without your consent. Any assignment or delegation in violation of the foregoing will be null and void. These Terms will be binding and inure to the benefit of each party’s permitted successors and assigns.
+26.2 We may assign our rights and delegate any of our obligations under these Terms, in whole or in part, without your consent. Any assignment or delegation in violation of the foregoing will be null and void. These Terms will be binding and inure to the benefit of each party's permitted successors and assigns.
 </p>
 <p>
 27. FORCE MAJEURE:

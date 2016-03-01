@@ -301,10 +301,24 @@ $("#loginbtnloader").hide();
 
 $(function(){
 	
+	if(window.location.href == BASE_URL+"#")
+		window.location.href = BASE_URL
+
+	
 	$('#myModal').on('hidden.bs.modal', function () {
 		$('#forgotpasswordbox').hide();
 		$('#signupbox').hide();
 		$('#loginbox').show();
+		$("#j_username").val("");
+		$("#j_password").val("");
+		$("#forgotpass_email").val("");
+		$("#email").val("");
+		$("#username").val("");
+		$("#password").val("");
+		$("#j_password-error").hide();
+		$("#password-error").hide();
+		
+
 	});
 	
 	
@@ -372,4 +386,6 @@ $(function(){
 		loadNewMessageCount();
 	} 
 	
+	
+
 });

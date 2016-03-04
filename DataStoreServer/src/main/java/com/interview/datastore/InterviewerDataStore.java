@@ -403,10 +403,9 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 
 		
 		final DBObject textSearchCommand = new BasicDBObject();
-	    textSearchCommand.put("text", USER.DBCollection);
-	    textSearchCommand.put("search", searchKey);
+	    textSearchCommand.put("$text", new BasicDBObject("$search", searchKey));
+//	    textSearchCommand.put("search", searchKey);
 	    final CommandResult commandResult = Services.getInstance().getBaseDataStore().db.command(textSearchCommand);
-//	    final CommandResult commandResult = db.command(textSearchCommand);
 	    
 	    BasicDBList results = (BasicDBList)commandResult.get("results");
 
@@ -449,6 +448,54 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 				
 	        }
 		}
+	    
+	    
+
+		
+		final DBObject textPositionSearchCommand = new BasicDBObject();
+	    textPositionSearchCommand.put("text", "position");
+	    textPositionSearchCommand.put("search", searchKey);
+	    final CommandResult positionCommandResult = Services.getInstance().getBaseDataStore().db.command(textPositionSearchCommand);
+	    BasicDBList positionResults = (BasicDBList)positionCommandResult.get("results");
+
+	    List<String> positionIDs = new ArrayList<String>();
+	    
+	    for (Iterator<Object> it = positionResults.iterator();it.hasNext();)
+	    {
+	    	DBObject row = (DBObject) it.next();
+	    	BasicDBObject obj = (BasicDBObject)row.get("obj");
+	    	positionIDs.add(obj.get("_id").toString());
+	    }
+	    
+	    BasicDBObject andQuery = new BasicDBObject();
+		List<BasicDBObject> listQuery = new ArrayList<BasicDBObject>();
+		listQuery.add(new BasicDBObject("type","INTERVIEWER"));
+		listQuery.add(new BasicDBObject("positions", new BasicDBObject("$in", positionIDs)));
+		andQuery.put("$and", listQuery);
+	    
+	    DBCursor cursor = collection.find(andQuery);
+	    
+	    while(cursor.hasNext()) {
+			DBObject obj = cursor.next();
+			String username = String.valueOf(obj.get(USER.USERNAME));
+			if(!responseMap.containsKey(username)){
+				Map<String, Object> response = new HashMap<String, Object>();
+				
+				response.put("_id", String.valueOf(obj.get("_id")));
+				response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+				response.put(USER.RATE, obj.get(USER.RATE).toString());
+				response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+				response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+				response.put(USER.RATING, obj.get(USER.RATING).toString());
+				response.put(USER.CV, obj.get(USER.CV).toString());
+				response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+				
+				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+			}
+		}
+		
+	    
+	    
 		return responseMap;
 	}
 	

@@ -189,14 +189,14 @@
 				+ '          <div class="col-md-4"><input name="companyName" class="form-control" type="text" value="$cn$"></div>'
 				+ '     </div>  '
 				+ '     <div class="row form-group">'
-				+ '          <label class="col-md-2 control-label">Start Date</label>'
+				+ '          <label class="col-md-2 control-label">Start Year</label>'
 				+ '          <div class="col-md-4"><select class="form-control" name="startyear">$syui$</select></div>'
-				+ '          <label class="col-md-2 control-label">End Date</label>'
+				+ '          <label class="col-md-2 control-label">End Year</label>'
 				+ '          <div class="col-md-4"><select class="form-control" name="endyear">$eyui$ </select></div>'
 				+ '      </div>  '
 				+ '     <div class="row form-group">'
 				+ '          <label class="col-md-2 control-label">Description</label>'
-				+ '          <div class="col-md-10"><textarea name="description" rows="3" class="form-control">$desc$</textarea></div>'
+				+ '          <div class="col-md-10"><textarea name="description" rows="3" class="form-control" style="resize: vertical;">$desc$</textarea></div>'
 				+ '      </div>  ' + '  </div>' + '</div>';
 
 		var educationHTML = '<div class="form-group" id="edudiv">'
@@ -213,9 +213,9 @@
 				+ '          <div class="col-md-10"><input name="university" class="form-control" type="text" value="$uni$"> </div>'
 				+ '     </div>'
 				+ '      <div class="row form-group">'
-				+ '           <label class="col-md-2 control-label">Start Date</label>'
+				+ '           <label class="col-md-2 control-label">Start Year</label>'
 				+ '           <div class="col-md-4"><select class="form-control">$syui$</select></div>'
-				+ '           <label class="col-md-2 control-label">End Date</label>'
+				+ '           <label class="col-md-2 control-label">End Year</label>'
 				+ '           <div class="col-md-4"><select class="form-control">$eyui$</select></div>'
 				+ '     </div>' + '  </div>' + '</div>';
 
@@ -271,8 +271,8 @@
 
 			$('#update_addmoreeducation').click(
 					function(event) {
-						var sel = "";
-						for (var y = 1990; y < 2020; y++) {
+						var sel = '<option value="-1" >Select Year</option>';
+						for (var y = 1990; y < 2016; y++) {
 							sel += '<option value="'+y+'" >' + y + '</option>';
 						}
 
@@ -285,8 +285,8 @@
 
 			$('#update_addmoreposition').click(
 					function(event) {
-						var sel = "";
-						for (var y = 1990; y < 2020; y++) {
+						var sel = '<option value="-1" >Select Year</option>';
+						for (var y = 1990; y < 2016; y++) {
 							sel += '<option value="'+y+'" >' + y + '</option>';
 						}
 						var screen = positionHTML.split("$title$").join("")
@@ -441,10 +441,49 @@
 								var inputs = $(adiv).find("input");
 								var selects = $(adiv).find("select");
 								var edu = {};
+								if($(inputs[0]).val().trim().length == 0)
+								{
+									message(
+											"Degree field is missing from education no. "+i,
+											"danger");
+									return;
+								}	
 								edu.degree = $(inputs[0]).val();
+								if($(inputs[1]).val().trim().length == 0)
+								{
+									message(
+											"Major field is missing from education no. "+i,
+											"danger");
+									return;
+								}	
+								
 								edu.fieldOfStudy = $(inputs[1]).val();
+								
+								if($(inputs[2]).val().trim().length == 0)
+								{
+									message(
+											"University field is missing from education no. "+i,
+											"danger");
+									return;
+								}	
 								edu.schoolname = $(inputs[2]).val();
+								
+								if($(selects[0]).val() == -1)
+								{
+									message(
+											"Select start year in education no. "+i,
+											"danger");
+									return;
+								}	
 								edu.startYear = $(selects[0]).val();
+								
+								if($(selects[1]).val() == -1)
+								{
+									message(
+											"Select end year in education no. "+i,
+											"danger");
+									return;
+								}	
 								edu.endYear = $(selects[1]).val();
 								educations.push(edu);
 							}
@@ -459,12 +498,36 @@
 								var position = {};
 								position.title = $(adiv).find(
 										"input[name='title']").val();
+								if(position.title.trim().length == 0){
+									message(
+											"Role/Title field is missing in Position no. "+i,
+											"danger");
+									return;
+								}
 								position.companyName = $(adiv).find(
 										"input[name='companyName']").val();
+								if(position.companyName.trim().length == 0){
+									message(
+											"Company Name field is missing in Position no. "+i,
+											"danger");
+									return;
+								}
 								position.startYear = $(adiv).find(
 										"select[name='startyear']").val();
+								if(position.startYear  == -1){
+									message(
+											"Start year field is missing in Position no. "+i,
+											"danger");
+									return;
+								}
 								position.endYear = $(adiv).find(
 										"select[name='endyear']").val();
+								if(position.endYear  == -1){
+									message(
+											"End year field is missing in Position no. "+i,
+											"danger");
+									return;
+								}
 								position.description = $(adiv).find(
 										"textarea[name='description']").val();
 								console.log("Char length:"

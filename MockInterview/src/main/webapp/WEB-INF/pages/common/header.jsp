@@ -428,8 +428,8 @@
 
 			
 			
-						<li class="scroll active"><a href="#navigation"
-							onclick="activeHome()">Home</a></li>
+						<!--<li class="scroll active"><a href="#navigation"
+							onclick="activeHome()">Home</a></li>-->
 						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->
 						<!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->
 					</sec:authorize>
@@ -511,7 +511,7 @@
 	</div>
 
 </header>
-
+<div id="msg"></div>
 
 
 <!--/#navigation-->

@@ -310,8 +310,8 @@
                             'skills': skills,
                             'rate' : json[i].rate,
                             'educations': educations,
-                            /*'image': BASE_URL + json[i].profilepic,*/
-                            'image': BASE_URL + "images/face.jpg",
+                            'image': BASE_URL + json[i].profilepic
+                            /*'image': BASE_URL + "images/face.jpg",*/
                         }
                         
                         searchItem = Mustache.to_html(searchItem, templateData);

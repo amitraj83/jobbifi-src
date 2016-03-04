@@ -43,7 +43,7 @@
 
 			<p>Whom is it useful for?</p> 
 			<p>
-			We have two kinds of audiences: (1) Job seeking candidates, (2) Experienced professionals/Recruiters. Jobbifi is suitable for job seeking candidates because they can search jobs on our website where, for each job, jobbifi gives a related experienced professionals/Recruiter list who can guide the candidate for that job. The communication is substantially open/quick/easy, but at the same time we main individual privacy as well. Experienced professionals/Recruiters want it because (1) they search a candidate for a job in their company, (2) those who wants to give back to community in terms of training candidates for job interviews can do so here as well as they get paid for their consultation.
+			We have two kinds of audiences: (1) Job seeking candidates (job seekers), (2) Experienced professionals/Recruiters (advisors). Jobbifi is suitable for job seekers because they can search a suitable advisor who can train the candidate for their upcoming interivew and also do career consultations. Jobbifi search gives an experienced professionals/Recruiters list who can guide/train the candidate for their upcoming job. The communication is substantially open/quick/easy, but at the same time we main individual privacy as well. Jobbifi is a suitable place for advisors because (1) they can find a suitable candidate for a job in their company, (2) advisors can give back to community in terms of training candidates for job interviews. Very soon, Jobbifi brings a paid mock interview service through which advisors can get paid for their consultations as well.
 			</p>
 
 			<br/>

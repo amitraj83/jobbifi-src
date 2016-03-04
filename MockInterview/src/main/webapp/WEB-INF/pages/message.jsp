@@ -143,7 +143,7 @@
                 	var messageWith = null;
                     var to = jobs[i].to;
                     var from = jobs[i].from;
-                    var message = jobs[i].message;
+                    var message = jobs[i].message.substring(0,150);
                     var labelNew = "";
                     if (LOGIN_USER == to) {
                         to = "Me";

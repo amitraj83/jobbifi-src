@@ -305,6 +305,8 @@ $(function(){
 		window.location.href = BASE_URL
 
 	
+
+	
 	$('#myModal').on('hidden.bs.modal', function () {
 		$('#forgotpasswordbox').hide();
 		$('#signupbox').hide();
@@ -386,6 +388,21 @@ $(function(){
 		loadNewMessageCount();
 	} 
 	
+
+	if(LOGIN_USER == null){
+		if(window.location.href == BASE_URL+'message.do'){
+			window.location.href = BASE_URL;
+		}
+		if(window.location.href == BASE_URL+'profile.do'){
+			//showLoginBox();
+			window.location.href = BASE_URL;
+		}
+		if(window.location.href == BASE_URL+'profilesetting.do'){
+			// showLoginBox();
+			window.location.href = BASE_URL;
+		}
+	}
+
 	
 
 });

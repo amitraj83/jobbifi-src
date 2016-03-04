@@ -287,7 +287,7 @@ a.navbar-brand {
 #navigation .navbar-right li a:hover,
 #navigation .navbar-right li a:focus,
 #navigation .navbar-right li.active a {
-    background-color: #0072bc;
+    background-color: transparent;
 }
 
 .search {
@@ -2440,7 +2440,7 @@ body.modal-open {
 
 #myModal div.small.muted.clearfix,
 #myModal .login-form-content-footer a {
-    color: #888;
+    color: #0072bc;
 }
 
 #loginform > div.form-group.password-field {

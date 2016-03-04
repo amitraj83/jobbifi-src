@@ -300,7 +300,7 @@
 					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="900ms">
 						<i class="fa fa-comments"></i>
-						<h3>Mock Interviews</h3>
+						<h3>Consultations</h3>
 						<h3 class="timer" id="mocksCount">23</h3>
 						
 					</div>					
@@ -470,6 +470,8 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
+
+			$("#front-search-key").focus();
 
 
 			$.ajax({

@@ -29,6 +29,8 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.QueryBuilder;
 
+import scala.util.Random;
+
 
 public class Test {
 

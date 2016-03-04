@@ -34,6 +34,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.WriteResult;
 import com.mongodb.util.JSON;
 
+import scala.util.Random;
+
 public class InterviewerDataStore extends UnicastRemoteObject implements IInterviewerDataStore {
 
 	private static final long serialVersionUID = 1L;
@@ -403,8 +405,8 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 
 		
 		final DBObject textSearchCommand = new BasicDBObject();
-	    textSearchCommand.put("$text", new BasicDBObject("$search", searchKey));
-//	    textSearchCommand.put("search", searchKey);
+		textSearchCommand.put("text", "interviewer");
+	    textSearchCommand.put("search", searchKey);
 	    final CommandResult commandResult = Services.getInstance().getBaseDataStore().db.command(textSearchCommand);
 	    
 	    BasicDBList results = (BasicDBList)commandResult.get("results");
@@ -479,16 +481,29 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 			DBObject obj = cursor.next();
 			String username = String.valueOf(obj.get(USER.USERNAME));
 			if(!responseMap.containsKey(username)){
-				Map<String, Object> response = new HashMap<String, Object>();
-				
-				response.put("_id", String.valueOf(obj.get("_id")));
-				response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
-				response.put(USER.RATE, obj.get(USER.RATE).toString());
-				response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
-				response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
-				response.put(USER.RATING, obj.get(USER.RATING).toString());
-				response.put(USER.CV, obj.get(USER.CV).toString());
-				response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+				 Map<String, Object> response = new HashMap<String, Object>();
+			        
+					response.put("_id", String.valueOf(obj.get("_id")));
+					response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+					response.put(USER.RATE, obj.get(USER.RATE).toString());
+					response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+					response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+					response.put(USER.RATING, obj.get(USER.RATING).toString());
+					response.put(USER.CV, obj.get(USER.CV).toString());
+					response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+					response.put("score", new Random().nextDouble());
+					
+					List<Map<String, Object>> ratingmap = getAllReviews(obj);
+					response.put(VARIABLES.ALLREVIEWS, ratingmap);
+		
+					List<Education> educations = getAllEducations(obj);
+					response.put(USER.EDUCATIONS, educations);
+		
+					List<Position> positions = getAllPositions(obj);
+					response.put(USER.POSITIONS, positions);
+		
+					List<Skill> skills = getAllSkills(obj);
+					response.put(USER.SKILLS, skills);
 				
 				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
 			}

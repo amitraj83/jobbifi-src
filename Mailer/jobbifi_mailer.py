@@ -12,7 +12,6 @@ import requests
 from templates import *
 from jinja2 import Template as T
 
-template_vars = {"USER_NAME":"Amit Raj", "MYNAME":"Aarav Raj"}
 
 mailmap = {
 mailer_pb2.NEW_REGISTRATION:T("""Hello {{ USER_NAME }},
@@ -67,27 +66,26 @@ Jobbifi Support
 """),
 mailer_pb2.NEW_MESSAGE:T("""Hello {{ MESSAGE_RECEIVER }},
 
-{{ MESSAGE_SENDER }} has just sent you a message.
+You have received a message from {{ MESSAGE_SENDER }}.
 
-You can view this conversation in the message section at https://www.jobbifi.com 
+You can view this conversation in the message section at https://www.jobbifi.com/message.do 
 
 It is important to view your messages regularly and respond at your earliest. Your response might be very critical to others.
 
-        Best regards<br />
-        
-        Jobbifi Support
-</html></body>"""),
-mailer_pb2.SUPPORT_REQUEST:T("""{{ SUPPORT_REQUEST_NAME }} &lt;{{ SUPPORT_REQUEST_EMAIL }}&gt;
-      says
-      
-	  
-      <pre>
-      {{ SUPPORT_REQUEST_MESSAGE }}
-      </pre>
-     
-        Best regards
-        Jobbifi Support
-      """)
+Best regards
+Jobbifi Support
+"""),
+mailer_pb2.SUPPORT_REQUEST:T("""A support request has been received.
+
+Name: {{ SUPPORT_REQUEST_NAME }} 
+Email: {{ SUPPORT_REQUEST_EMAIL }}
+Message: {{ SUPPORT_REQUEST_MESSAGE }}
+
+Please reply to this user with 48 hrs to maintain the SLA.      
+
+Best regards
+Jobbifi Support
+""")
 }
 
 subjectMap = {
@@ -98,7 +96,6 @@ mailer_pb2.NEW_MESSAGE:"You have a new message on Jobbifi",
 mailer_pb2.SUPPORT_REQUEST:"Support Request"
 }
 
-print mailmap[mailer_pb2.FORGOT_PASSWORD].render(template_vars)
 
 
 def parse_email(email_message):

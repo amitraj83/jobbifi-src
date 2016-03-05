@@ -3,11 +3,14 @@ package com.interview.helper;
 
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import org.bson.types.ObjectId;
 
 import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
@@ -26,6 +29,8 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.QueryBuilder;
 
+import scala.util.Random;
+
 
 public class Test {
 
@@ -35,37 +40,27 @@ public class Test {
 	 */
 	public static void main(String[] args) throws UnknownHostException {
 		
-		MongoClient mongo = new MongoClient( "127.0.0.1" , 27017 );
+		MongoClient mongo = new MongoClient( "jobbifi.com" , 27017 );
 		DB db = mongo.getDB("interviewbackend");
 		DBCollection collection = db.getCollection("interviewer");
 
-		String searchKey = "java";
+		String searchKey = "apache";
 		
 		final DBObject textSearchCommand = new BasicDBObject();
 	    textSearchCommand.put("text", "interviewer");
 	    textSearchCommand.put("search", searchKey);
 	    final CommandResult commandResult = db.command(textSearchCommand);
-//	    
-//	    BasicDBList results = (BasicDBList)commandResult.get("results");
-
-		
-		
-//		final DBObject textSearchCommand = new BasicDBObject();
-//	    textSearchCommand.put("text", USER.DBCollection);
-//	    textSearchCommand.put("search", searchKey);
-//	    final CommandResult commandResult = db.command(textSearchCommand);
-	    
 	    BasicDBList results = (BasicDBList)commandResult.get("results");
 
-		
+	    Map<String, Object> responseMap = new HashMap<String, Object>();
+        
 	    for (Iterator<Object> it = results.iterator();it.hasNext();)
 	    {
-	    	Map<String, Object> responseMap = new HashMap<String, Object>();
-	        BasicDBObject res  = (BasicDBObject) it.next();
+	    	BasicDBObject res  = (BasicDBObject) it.next();
 	        BasicDBObject obj = (BasicDBObject)res.get("obj");
 	        String score = String.valueOf(res.get("score"));
-	        System.out.println(score);
-	        System.out.println(obj.toMap().toString());
+//	        System.out.println(score);
+//	        System.out.println(obj.toMap().toString());
 	        
 	        Map<String, Object> response = new HashMap<String, Object>();
 			
@@ -79,19 +74,65 @@ public class Test {
 			response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
 			
 			responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
-			System.out.println("Print : "+responseMap.toString());
-	        
+		    
 	    }
+		
+	    System.out.println("Before:"+responseMap.keySet().size());
+		
+		
+		
+		final DBObject textPositionSearchCommand = new BasicDBObject();
+	    textPositionSearchCommand.put("text", "position");
+	    textPositionSearchCommand.put("search", searchKey);
+	    final CommandResult positionCommandResult = db.command(textPositionSearchCommand);
+	    BasicDBList positionResults = (BasicDBList)positionCommandResult.get("results");
+
+	    List<String> positionIDs = new ArrayList<String>();
+	    
+	    for (Iterator<Object> it = positionResults.iterator();it.hasNext();)
+	    {
+	    	DBObject row = (DBObject) it.next();
+	    	BasicDBObject obj = (BasicDBObject)row.get("obj");
+	    	positionIDs.add(obj.get("_id").toString());
+	    }
+	    
+	    BasicDBObject andQuery = new BasicDBObject();
+		List<BasicDBObject> listQuery = new ArrayList<BasicDBObject>();
+		listQuery.add(new BasicDBObject("type","INTERVIEWER"));
+		listQuery.add(new BasicDBObject("positions", new BasicDBObject("$in", positionIDs)));
+		andQuery.put("$and", listQuery);
+	    
+	    DBCursor cursor = collection.find(andQuery);
+	    
+	    while(cursor.hasNext()) {
+			DBObject obj = cursor.next();
+			String username = String.valueOf(obj.get(USER.USERNAME));
+			if(!responseMap.containsKey(username)){
+				Map<String, Object> response = new HashMap<String, Object>();
+				
+				response.put("_id", String.valueOf(obj.get("_id")));
+				response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+				response.put(USER.RATE, obj.get(USER.RATE).toString());
+				response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+				response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+				response.put(USER.RATING, obj.get(USER.RATING).toString());
+				response.put(USER.CV, obj.get(USER.CV).toString());
+				response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+				
+				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+			}
+		}
+		
+		
+		System.out.println("After:"+responseMap.keySet().size());
+		
+		
+		
+		
+		
+		
 		System.out.println("Done");
-//		AggregationOutput output = collection.aggregate(
-//				new BasicDBObject("$match", new BasicDBObject("skills","java").append("$options", "i")), 
-//				new BasicDBObject("$sort", new BasicDBObject("rating", 1)));
-//		
-//		
-//		
-//		for (DBObject row : output.results()) {
-//			System.out.println(row.toMap().toString());
-//		}
+
 		mongo.close();
 	}
 

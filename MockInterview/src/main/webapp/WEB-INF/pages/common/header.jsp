@@ -55,7 +55,7 @@
 									</div>
 									<div class="form-group">
 										<button type="submit" id="login-submit-button"
-											class="btn btn-success btn-block lowercase">Login</button>
+											class="btn btn-success btn-block lowercase" style="width: 370px;">Login</button>
 										<img id="loginbtnloader" style="display: none;"
 											alt="Processing..."
 											src="<c:url value=" /resources/img/loading.gif " />" />
@@ -261,8 +261,7 @@
 
 
 
-
-
+<!--
 
 <div class="modal fade bs-example-modal-sm" id="mysignupModal" role="dialog"
 	aria-hidden="true">
@@ -303,11 +302,7 @@
 												id="interviewerId" value="INTERVIEWER" type="radio"/>
 												Career Advisor
 											</label>
-											<!--<label class="radio-inline"> 
-												<input name="usertype"
-												id="employerId" value="EMPLOYER" type="radio"/>
-												Employer
-											</label> -->
+											
 
 										</div>
 									</div>
@@ -361,7 +356,7 @@
 
 
 
-
+-->
 
 
 
@@ -422,8 +417,8 @@
 				<ul class="nav navbar-nav">
 					<!-- IF USER IS NOT AUTHENTICATED -->
 					<sec:authorize access="!isAuthenticated()">
-						<li class="scroll"><a id="headersignuplink" href="#navigation" data-toggle="modal"
-							data-target="#mysignupModal">Sign Up</a></li>	
+						<!--<li class="scroll"><a id="headersignuplink" href="#navigation" data-toggle="modal"
+							data-target="#mysignupModal">Sign Up</a></li>	-->
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>
 						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
@@ -433,8 +428,8 @@
 
 			
 			
-						<li class="scroll active"><a href="#navigation"
-							onclick="activeHome()">Home</a></li>
+						<!--<li class="scroll active"><a href="#navigation"
+							onclick="activeHome()">Home</a></li>-->
 						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->
 						<!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->
 					</sec:authorize>
@@ -516,7 +511,7 @@
 	</div>
 
 </header>
-
+<div id="msg"></div>
 
 
 <!--/#navigation-->

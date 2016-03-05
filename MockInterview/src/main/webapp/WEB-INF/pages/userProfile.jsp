@@ -169,7 +169,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control textarea" rows="3" name="Message" id="inputmessage" placeholder="Message"></textarea>
+                                        <textarea class="form-control textarea" rows="3" name="Message" id="inputmessage" placeholder="Message" style="resize: vertical; "></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -394,7 +394,7 @@
 
                     if(message.trim() === "")
                     {
-                        $("#status").html('<font size="1" color="red">Write some message</font>');
+                        $("#status").html('<font size="1" color="red">This field is required.</font>');
                         return;
 
                     }

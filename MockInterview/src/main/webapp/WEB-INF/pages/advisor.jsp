@@ -310,8 +310,8 @@
                             'skills': skills,
                             'rate' : json[i].rate,
                             'educations': educations,
-                            /*'image': BASE_URL + json[i].profilepic,*/
-                            'image': BASE_URL + "images/face.jpg",
+                            'image': BASE_URL + json[i].profilepic
+                            /*'image': BASE_URL + "images/face.jpg",*/
                         }
                         
                         searchItem = Mustache.to_html(searchItem, templateData);
@@ -339,10 +339,11 @@
         else{
         $(".pagination").hide();
         var start = ((currentPage - 1) * 10);
+        var searchparam = "searchkey=" + encodeURIComponent(searchKey) + "&start=" + start; 
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "search.do",
-                data: "searchkey=" + searchKey + "&start=" + start,
+                data: searchparam
                 //async: false
             }).done(function (msg) 
             {

@@ -138,12 +138,14 @@
 
             if (null != jobs && jobs.length > 0) {
                 length = Number(jobs.length);
-                jobsHtml = '<table class="table table-striped"><thead><tr><th>With</th><th>Message</th><th>Date</th></tr></thead><tbody>';
+                jobsHtml = '<table class="table table-striped"><thead><tr><th style="width: 17%;">Username</th><th>Message</th><th style="width: 12%;">Date</th></tr></thead><tbody>';
                 for (var i = 0; i < jobs.length; i++) {
                 	var messageWith = null;
                     var to = jobs[i].to;
                     var from = jobs[i].from;
-                    var message = jobs[i].message.substring(0,150);
+					var message = jobs[i].message;
+					if(message.length > 155)
+						message = jobs[i].message.substring(0,155) +" ...";
                     var labelNew = "";
                     if (LOGIN_USER == to) {
                         to = "Me";

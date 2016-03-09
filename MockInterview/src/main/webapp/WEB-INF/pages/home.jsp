@@ -2,7 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jobbifi</title>
+
+<meta name="description" content="Jobbifi allows job seekers to get in touch and directly communicate with highly experienced professionals and recruiters in their field. Such professionals consult job seekers about their future career directions, job interviews preparation and mock interviews. The service provided are absolutely free and we do not charge any money for these services.">
+<meta name="author" content="">
+<meta name="keywords" content="jobs, sales jobs, job, accounting jobs, job opportunities, job search, finance jobs, medical jobs, find jobs, hr jobs, legal jobs, nursing jobs, summer jobs, temporary jobs, job vacancies, job site, job bank, jobs search, jobs online, jobs google, internet jobs, full time jobs, jobs available, financial jobs, healthcare jobs, temp jobs, job listings, part time jobs, banking jobs, top jobs, retail jobs, job sites, government jobs, employment, employment agencies, employment opportunities, careers, recruitment, recruitment agencies, career, job listing, job postings, hiring, vacancies, opportunities, vacancy, help wanted, part time, employers, work, telemarketing jobs, employment google, employment online, job opening, job posting, entry level positions, employment agency, job opportunity, openings, auditing positions, recruiters">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="7 days">
+<meta name="language" content="english">
+
+
+
+<title>Jobbifi - Connecting Job Seekers with experienced professionals and recruiters (advisors) for career related free consultations.</title>
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/ohover.css' />">
 <!--CSS-->

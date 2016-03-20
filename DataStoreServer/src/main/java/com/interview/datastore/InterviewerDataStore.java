@@ -511,6 +511,62 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 		
 	    
 	    
+	    final DBObject textEducationSearchCommand = new BasicDBObject();
+	    textPositionSearchCommand.put("text", "education");
+	    textPositionSearchCommand.put("search", searchKey);
+	    final CommandResult educationCommandResult = Services.getInstance().getBaseDataStore().db.command(textPositionSearchCommand);
+	    BasicDBList educationResults = (BasicDBList)positionCommandResult.get("results");
+
+	    List<String> educationIDs = new ArrayList<String>();
+	    
+	    for (Iterator<Object> it = educationResults.iterator();it.hasNext();)
+	    {
+	    	DBObject row = (DBObject) it.next();
+	    	BasicDBObject obj = (BasicDBObject)row.get("obj");
+	    	educationIDs.add(obj.get("_id").toString());
+	    }
+	    
+	    BasicDBObject andEducationQuery = new BasicDBObject();
+		List<BasicDBObject> listEducationQuery = new ArrayList<BasicDBObject>();
+		listEducationQuery.add(new BasicDBObject("type","INTERVIEWER"));
+		listEducationQuery.add(new BasicDBObject("educations", new BasicDBObject("$in", educationIDs)));
+		andEducationQuery.put("$and", listEducationQuery);
+	    
+	    DBCursor finalcursor = collection.find(andEducationQuery);
+	    
+	    while(finalcursor.hasNext()) {
+			DBObject obj = cursor.next();
+			String username = String.valueOf(obj.get(USER.USERNAME));
+			if(!responseMap.containsKey(username)){
+				 Map<String, Object> response = new HashMap<String, Object>();
+			        
+					response.put("_id", String.valueOf(obj.get("_id")));
+					response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+					response.put(USER.RATE, obj.get(USER.RATE).toString());
+					response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+					response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+					response.put(USER.RATING, obj.get(USER.RATING).toString());
+					response.put(USER.CV, obj.get(USER.CV).toString());
+					response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+					response.put("score", new Random().nextDouble());
+					
+					List<Map<String, Object>> ratingmap = getAllReviews(obj);
+					response.put(VARIABLES.ALLREVIEWS, ratingmap);
+		
+					List<Education> educations = getAllEducations(obj);
+					response.put(USER.EDUCATIONS, educations);
+		
+					List<Position> positions = getAllPositions(obj);
+					response.put(USER.POSITIONS, positions);
+		
+					List<Skill> skills = getAllSkills(obj);
+					response.put(USER.SKILLS, skills);
+				
+				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+			}
+		}
+		
+	    
 		return responseMap;
 	}
 	
@@ -854,6 +910,8 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 	}
 
 
+
+	
 	@Override
 	public boolean isUserAccountActive(String userEmailId) throws RemoteException {
 		DBCollection collection = Services.getInstance().getBaseDataStore().db.getCollection(NAME);

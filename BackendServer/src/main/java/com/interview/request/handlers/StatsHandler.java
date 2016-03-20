@@ -23,7 +23,9 @@ public class StatsHandler extends RequestHandler {
     Map<String, Object> resMap = new HashMap<String, Object>();
 
     try {
-      long countJobs = DataStoreRegistry.getInstance().getJobStore().getJobsCount();
+//      long countJobs = DataStoreRegistry.getInstance().getJobStore().getJobsCount();
+    	
+    	long consultationsCount = DataStoreRegistry.getInstance().getMessageStore().getConsultationsCount();
 
       long candidateCount =
           DataStoreRegistry.getInstance().getInterviewerDataStore().getCandidatesCount();
@@ -31,9 +33,10 @@ public class StatsHandler extends RequestHandler {
       long interviewerCount =
           DataStoreRegistry.getInstance().getInterviewerDataStore().getInterviewerCount();
 
-      resMap.put("jobs", countJobs);
+      //resMap.put("jobs", countJobs);
       resMap.put("candidates", candidateCount);
       resMap.put("employers", interviewerCount);
+      resMap.put("consultations", consultationsCount);
 
 
     } catch (RemoteException e) {

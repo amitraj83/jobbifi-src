@@ -9,6 +9,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 import com.interview.framework.DATASTORES;
+import com.interview.framework.USER;
 import com.interview.framework.VARIABLES;
 import com.interview.framework.pojo.Message;
 import com.interview.framework.rmi.common.IMessageStore;
@@ -240,6 +241,13 @@ public class MessageStore extends UnicastRemoteObject implements IMessageStore {
     return collection.find(orQuery).sort(new BasicDBObject(DATASTORES.MESSAGE.LASTREPLYTODATE, -1));
   }
 
+	public long getConsultationsCount() throws RemoteException{
+		DBCollection collection =
+		        Services.getInstance().getBaseDataStore().db.getCollection(DATASTORES.MESSAGE.Collection);
+		DBCursor cursor = collection.find();
+		return Long.valueOf(cursor.count());
+	}
+  
   public List<Message> getMessage(String parentmessageid) throws RemoteException {
     List<Message> list = new ArrayList<Message>();
     DBCollection collection =

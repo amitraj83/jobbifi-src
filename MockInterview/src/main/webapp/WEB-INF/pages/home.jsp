@@ -318,13 +318,13 @@
 						data-wow-delay="700ms">
 						<i class="fa fa-user-secret"></i>
 						<h3>Advisors</h3>
-						<h3 class="timer" id="employerscount">23</h3>
+						<h3 class="timer" id="employerscount">514</h3>
 					</div>
 					<div class="col-xs-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="900ms">
 						<i class="fa fa-comments"></i>
 						<h3>Consultations</h3>
-						<h3 class="timer" id="mocksCount">23</h3>
+						<h3 class="timer" id="mocksCount">2378</h3>
 						
 					</div>					
 				</div>
@@ -503,11 +503,11 @@
 					data : "",
 					success : function(data) {
 						var jresponse = jQuery.parseJSON(data);
-            			var jobscount = jresponse.jobs;
+            			var consultationsCount = jresponse.consultations;
 			            var candidatescount = jresponse.candidates;
 			            var employerscount = jresponse.employers;
 			            
-			            $("#jobscount").html(jobscount);
+			            $("#mocksCount").html(consultationsCount);
 						$("#candidatescount").html(candidatescount);
 						$("#employerscount").html(employerscount);
 

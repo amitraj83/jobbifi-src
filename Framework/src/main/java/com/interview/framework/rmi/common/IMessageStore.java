@@ -29,4 +29,6 @@ public interface IMessageStore extends Remote {
   public int getNewMessageCount(String username) throws RemoteException;
 
   public void changeMessageStatus(String id) throws RemoteException;
+  
+  public long getConsultationsCount() throws RemoteException;
 }

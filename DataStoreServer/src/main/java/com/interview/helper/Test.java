@@ -40,11 +40,13 @@ public class Test {
 	 */
 	public static void main(String[] args) throws UnknownHostException {
 		
-		MongoClient mongo = new MongoClient( "jobbifi.com" , 27017 );
+		System.out.println("This is new");
+		
+		/*MongoClient mongo = new MongoClient( "jobbifi.com" , 27017 );
 		DB db = mongo.getDB("interviewbackend");
 		DBCollection collection = db.getCollection("interviewer");
 
-		String searchKey = "apache";
+		String searchKey = "java";
 		
 		final DBObject textSearchCommand = new BasicDBObject();
 	    textSearchCommand.put("text", "interviewer");
@@ -59,8 +61,6 @@ public class Test {
 	    	BasicDBObject res  = (BasicDBObject) it.next();
 	        BasicDBObject obj = (BasicDBObject)res.get("obj");
 	        String score = String.valueOf(res.get("score"));
-//	        System.out.println(score);
-//	        System.out.println(obj.toMap().toString());
 	        
 	        Map<String, Object> response = new HashMap<String, Object>();
 			
@@ -133,7 +133,7 @@ public class Test {
 		
 		System.out.println("Done");
 
-		mongo.close();
+		mongo.close();*/
 	}
 
 }

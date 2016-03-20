@@ -39,47 +39,52 @@ public class Test {
 	 * @throws UnknownHostException 
 	 */
 	public static void main(String[] args) throws UnknownHostException {
-		
+		Map<String, Object> responseMap = new HashMap<String, Object>();
 		System.out.println("This is new");
 		
-		/*MongoClient mongo = new MongoClient( "jobbifi.com" , 27017 );
+		MongoClient mongo = new MongoClient( "jobbifi.com" , 27017 );
 		DB db = mongo.getDB("interviewbackend");
 		DBCollection collection = db.getCollection("interviewer");
 
-		String searchKey = "java";
+		String searchKey = "oxford";
+		
 		
 		final DBObject textSearchCommand = new BasicDBObject();
-	    textSearchCommand.put("text", "interviewer");
+		textSearchCommand.put("text", "interviewer");
 	    textSearchCommand.put("search", searchKey);
 	    final CommandResult commandResult = db.command(textSearchCommand);
+	    
 	    BasicDBList results = (BasicDBList)commandResult.get("results");
 
-	    Map<String, Object> responseMap = new HashMap<String, Object>();
-        
+	    
 	    for (Iterator<Object> it = results.iterator();it.hasNext();)
 	    {
+	    	
 	    	BasicDBObject res  = (BasicDBObject) it.next();
 	        BasicDBObject obj = (BasicDBObject)res.get("obj");
 	        String score = String.valueOf(res.get("score"));
 	        
-	        Map<String, Object> response = new HashMap<String, Object>();
-			
-			response.put("_id", String.valueOf(obj.get("_id")));
-			response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
-			response.put(USER.RATE, obj.get(USER.RATE).toString());
-			response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
-			response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
-			response.put(USER.RATING, obj.get(USER.RATING).toString());
-			response.put(USER.CV, obj.get(USER.CV).toString());
-			response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
-			
-			responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
-		    
-	    }
-		
-	    System.out.println("Before:"+responseMap.keySet().size());
-		
-		
+	        if(String.valueOf(obj.get(USER.TYPE)).equals(VARIABLES.INTERVIEWER)){
+	        
+		        Map<String, Object> response = new HashMap<String, Object>();
+		        
+				response.put("_id", String.valueOf(obj.get("_id")));
+				response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+				response.put(USER.RATE, obj.get(USER.RATE).toString());
+				response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+				response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+				response.put(USER.RATING, obj.get(USER.RATING).toString());
+				response.put(USER.CV, obj.get(USER.CV).toString());
+				response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+				response.put("score", score);
+				
+				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+				
+	        }
+		}
+	    
+	    
+
 		
 		final DBObject textPositionSearchCommand = new BasicDBObject();
 	    textPositionSearchCommand.put("text", "position");
@@ -108,32 +113,78 @@ public class Test {
 			DBObject obj = cursor.next();
 			String username = String.valueOf(obj.get(USER.USERNAME));
 			if(!responseMap.containsKey(username)){
-				Map<String, Object> response = new HashMap<String, Object>();
+				 Map<String, Object> response = new HashMap<String, Object>();
+			        
+					response.put("_id", String.valueOf(obj.get("_id")));
+					response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+					response.put(USER.RATE, obj.get(USER.RATE).toString());
+					response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+					response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+					response.put(USER.RATING, obj.get(USER.RATING).toString());
+					response.put(USER.CV, obj.get(USER.CV).toString());
+					response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+					response.put("score", new Random().nextDouble());
+					
 				
-				response.put("_id", String.valueOf(obj.get("_id")));
-				response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
-				response.put(USER.RATE, obj.get(USER.RATE).toString());
-				response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
-				response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
-				response.put(USER.RATING, obj.get(USER.RATING).toString());
-				response.put(USER.CV, obj.get(USER.CV).toString());
-				response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
+			}
+		}
+		
+	    
+	    
+	    final DBObject textEducationSearchCommand = new BasicDBObject();
+	    textEducationSearchCommand.put("text", "education");
+	    textEducationSearchCommand.put("search", searchKey);
+	    final CommandResult educationCommandResult = db.command(textEducationSearchCommand);
+	    BasicDBList educationResults = (BasicDBList)educationCommandResult.get("results");
+
+	    List<String> educationIDs = new ArrayList<String>();
+	    
+	    for (Iterator<Object> it = educationResults.iterator();it.hasNext();)
+	    {
+	    	DBObject row = (DBObject) it.next();
+	    	BasicDBObject obj = (BasicDBObject)row.get("obj");
+	    	System.out.println(obj);
+	    	educationIDs.add(obj.get("_id").toString());
+	    }
+	    
+	    BasicDBObject andEducationQuery = new BasicDBObject();
+		List<BasicDBObject> listEducationQuery = new ArrayList<BasicDBObject>();
+		listEducationQuery.add(new BasicDBObject("type","INTERVIEWER"));
+		listEducationQuery.add(new BasicDBObject("educations", new BasicDBObject("$in", educationIDs)));
+		andEducationQuery.put("$and", listEducationQuery);
+	    
+	    DBCursor finalcursor = collection.find(andEducationQuery);
+	    
+	    while(finalcursor.hasNext()) {
+			DBObject obj = finalcursor.next();
+			String username = String.valueOf(obj.get(USER.USERNAME));
+			if(!responseMap.containsKey(username)){
+				 Map<String, Object> response = new HashMap<String, Object>();
+			        
+					response.put("_id", String.valueOf(obj.get("_id")));
+					response.put(USER.USERNAME, (String) obj.get(USER.USERNAME));
+					response.put(USER.RATE, obj.get(USER.RATE).toString());
+					response.put(USER.COUNTRY, (String) obj.get(USER.COUNTRY));
+					response.put(USER.COMPANIES, obj.get(USER.COMPANIES).toString());
+					response.put(USER.RATING, obj.get(USER.RATING).toString());
+					response.put(USER.CV, obj.get(USER.CV).toString());
+					response.put(USER.PROFILE_PIC, obj.get(USER.PROFILE_PIC).toString());
+					response.put("score", new Random().nextDouble());
+					
 				
 				responseMap.put(String.valueOf(obj.get(USER.USERNAME)), response);
 			}
 		}
 		
 		
-		System.out.println("After:"+responseMap.keySet().size());
 		
 		
 		
 		
-		
-		
-		System.out.println("Done");
+		System.out.println("Done"+responseMap.keySet().size());
 
-		mongo.close();*/
+		mongo.close();
 	}
 
 }

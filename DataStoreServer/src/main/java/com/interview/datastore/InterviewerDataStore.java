@@ -397,11 +397,6 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 			
 		DBCollection collection =
 				Services.getInstance().getBaseDataStore().db.getCollection(USER.DBCollection);
-	
-		
-		
-//		DB db = mongo.getDB("interviewbackend");
-//		DBCollection collection = db.getCollection("interviewer");
 
 		
 		final DBObject textSearchCommand = new BasicDBObject();
@@ -512,10 +507,10 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 	    
 	    
 	    final DBObject textEducationSearchCommand = new BasicDBObject();
-	    textPositionSearchCommand.put("text", "education");
-	    textPositionSearchCommand.put("search", searchKey);
-	    final CommandResult educationCommandResult = Services.getInstance().getBaseDataStore().db.command(textPositionSearchCommand);
-	    BasicDBList educationResults = (BasicDBList)positionCommandResult.get("results");
+	    textEducationSearchCommand.put("text", "education");
+	    textEducationSearchCommand.put("search", searchKey);
+	    final CommandResult educationCommandResult = Services.getInstance().getBaseDataStore().db.command(textEducationSearchCommand);
+	    BasicDBList educationResults = (BasicDBList)educationCommandResult.get("results");
 
 	    List<String> educationIDs = new ArrayList<String>();
 	    
@@ -535,7 +530,7 @@ public class InterviewerDataStore extends UnicastRemoteObject implements IInterv
 	    DBCursor finalcursor = collection.find(andEducationQuery);
 	    
 	    while(finalcursor.hasNext()) {
-			DBObject obj = cursor.next();
+			DBObject obj = finalcursor.next();
 			String username = String.valueOf(obj.get(USER.USERNAME));
 			if(!responseMap.containsKey(username)){
 				 Map<String, Object> response = new HashMap<String, Object>();

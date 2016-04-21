@@ -20,7 +20,7 @@
                                  id="profile_userpic"/>
                         </div>
                         <div class="col-md-8">
-                            <div class="pull-right">
+                            <div class="pull-right" style="display:none">
                                 <center>
                                     <h1 class="rating-num" style="margin-top: 0px;margin-bottom: 0px;">
                                         <span id="profile_rating">4.0</span>

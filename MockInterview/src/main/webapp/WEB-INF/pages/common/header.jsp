@@ -204,7 +204,7 @@
 										
 										<div class="form-group row">
 											<div class="col-md-12">
-												<button type="submit" class="btn btn-success btn-block lowercase">Sign Up</button>
+												<button type="submit" class="btn btn-success btn-block lowercase disabled">Sign Up</button>
 													<img id="signupbtnloader" style="display: none;"
 													alt="Processing..."
 													src="<c:url value=" /resources/img/loading.gif " />">
@@ -232,7 +232,9 @@
 	</div>
 </div>
 
-
+<script type="text/javascript">
+	
+</script>
 
 
 

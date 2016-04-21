@@ -29,24 +29,23 @@
 									id="search" />
 							</div>
 						</div>
-						
 						<div class="row" id="user_profile" style="display: none;">
 							<div class="col-md-12">
+							
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<h3 class="panel-title">Update Your Profile Picture</h3>
+										<h3 class="panel-title" id="userpanelheading">You please Update Your Profile Picture</h3>
 									</div>
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-md-4 text-center">
-												<img src="http://placehold.it/150" id="update_img"
+											<div class="col-md-4 text-center" id="profilepicdiv"> 
+												<!--<img src="http://placehold.it/150" id="update_img"
 													class="avatar img-square" alt="avatar" width="150px"
 													height="150px"> <input id="uploadphoto" type="file"
 													name="file"
 													data-url="aauth/fileupload.do?type=profilepicupdate"
-													style="opacity: 0; filter: alpha(opacity : 0);">
-												<button type="button" id="uploadphotobtn"
-													class="btn btn-sm btn-default">Upload Photo</button>
+													style="opacity: 0; filter: alpha(opacity : 0);">-->
+												
 											</div>
 											<div class="col-md-8 text-center">
 												<textarea rows="9" class="form-control" id="update_shortcv"
@@ -221,39 +220,7 @@
 
 		$(function() {
 			// photo upload
-			$("#uploadphotobtn").click(function() {
-				$("#uploadphoto").trigger('click');
-			});
-			$('#uploadphoto')
-					.attr(
-							{
-								'data-url' : "aauth/fileupload.do?type=profilepicupdate&interviewer="
-							});
-			$('#uploadphoto')
-					.fileupload(
-							{
-								dataType : 'json',
-								maxChunkSize : 20000000,
-								done : function(e, data) {
-									var jsonResponse = jQuery
-											.parseJSON(data.jqXHR.responseText);
-									if (null != jsonResponse) {
-										if (jsonResponse.error == "1") {
-											showError("Error occured while uploading the profile picture. Please try again later.");
-										} else {
-											$("#update_img")
-													.attr(
-															{
-																src : BASE_URL
-																		+ jsonResponse.path
-															});
-										}
-									}
-								},
-								add : function(e, data) {
-									data.submit();
-								}
-							});
+			
 
 			$(document).on("click", ".removePosition", function() {
 				$(this).parent().remove();
@@ -318,19 +285,70 @@
 												var user = jQuery
 														.parseJSON(res);
 												if (user.result == 1) {
+													$("#userpanelheading").html(user.username);
+													//$("#update_img")
+													//		.attr(
+													//				"src",
+													//				BASE_URL
+													//						+ user.profilepic);
 
-													$("#update_img")
+													$("#profilepicdiv").append('<img src="'+BASE_URL+user.profilepic+'" id="update_img" '+
+																				'class="avatar img-square" alt="avatar" width="150px" '+
+																				'height="150px"> <input id="uploadphoto" type="file" '+
+																				'name="file" '+
+																				'data-url="aauth/fileupload.do?type=profilepicupdate&byadmin=true&targetuser='+user.username+'" '+
+																				'style="opacity: 0; filter: alpha(opacity : 0);">'+
+																				'<button type="button" id="uploadphotobtn" '+
+																				'class="btn btn-sm btn-default">Upload Photo</button>');
+													
+													
+
+													$("#uploadphotobtn").on("click",function() {
+														/*$('#uploadphoto')
 															.attr(
-																	"src",
-																	BASE_URL
-																			+ user.profilepic);
+																	{
+																		'data-url' : "aauth/fileupload.do?type=profilepicupdate&byadmin=true&targetuser="+$("#userpanelheading").html()
+																	});
+														*/
+														$("#uploadphoto").trigger('click');
+														$("#uploadphotobtn").val('<i class="fa fa-spinner" aria-hidden="true"></i>');
+														alert($('#uploadphoto').attr('data-url'));
+													});
+													$('#uploadphoto')
+															.fileupload(
+																	{
+																		dataType : 'json',
+																		maxChunkSize : 20000000,
+																		done : function(e, data) {
+																			var jsonResponse = jQuery
+																					.parseJSON(data.jqXHR.responseText);
+																			if (null != jsonResponse) {
+																				if (jsonResponse.error == "1") {
+																					showError("Error occured while uploading the profile picture. Please try again later.");
+																				} else {
+																					$("#update_img")
+																							.attr(
+																									{
+																										src : BASE_URL
+																												+ jsonResponse.path
+																									});
+																				}
+																			}
+																			$("#uploadphotobtn").val('UPLOAD PHOTO')
+																		},
+																		add : function(e, data) {
+																			data.submit();
+																		}
+																	});
+
+
 													$("#updatecountries").html(
 															allCountriesOption);
 													$("#perhourrate").val(
 															user.rate);
 													$("#phonenumber").val(
 															user.phonenumber);
-
+													
 													var allskills = user.skilllist;
 													$("#update_skills").html("");
 													for (var i = 0; i < allskills.length; i++) {

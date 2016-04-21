@@ -83,7 +83,10 @@ public class PostLoginFileAccessController extends BaseController {
               request.getContextPath() + File.separatorChar + PROFILE_PIC_DIRECTORY
                   + File.separatorChar + secToken + File.separatorChar + uuid + "." + extension;
           Map<Object, Object> data = new HashMap<Object, Object>();
-          data.put(USER.USERNAME, getLoginUser());
+          if(request.getParameter("byadmin") != null && Boolean.parseBoolean(request.getParameter("byadmin")) == true)
+        	  data.put(USER.USERNAME, request.getParameter("targetuser"));
+          else
+        	  data.put(USER.USERNAME, getLoginUser());
           data.put(USER.PROFILE_PIC, profilePicUrl);
           data.put(REQUEST_TYPES.SUB_REQ, REQUEST_TYPES.UPDATE_USER_PROFILE_PIC);
           Services.getInstance().getRequestHandlerService().handleRequest(data,

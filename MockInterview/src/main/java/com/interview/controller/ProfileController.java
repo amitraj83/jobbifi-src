@@ -125,7 +125,12 @@ public class ProfileController extends BaseController {
     Map<Object, Object> reqMap = new HashMap<Object, Object>();
     Map<Object, Object> reqMap2 = new HashMap<Object, Object>();
 
-    reqMap2.put(USER.USERNAME, getLoginUser());
+    if(req.getParameter("byadmin") != null && Boolean.parseBoolean(req.getParameter("byadmin")) == true)
+    	reqMap2.put(USER.USERNAME, req.getParameter("targetuser"));
+    else
+    	reqMap2.put(USER.USERNAME, getLoginUser());
+    
+//    reqMap2.put(USER.USERNAME, getLoginUser());
     Map<String, Object> userInfo = Services.getInstance().getRequestHandlerService()
         .handleRequest(reqMap2, REQUEST_TYPES.USER_INFO);
     String existingProfilepic = userInfo.get(USER.PROFILE_PIC).toString();
@@ -138,8 +143,13 @@ public class ProfileController extends BaseController {
     reqMap.put(USER.PHONE_NUMBER, req.getParameter("phonenumber"));
     reqMap.put(USER.CV, req.getParameter("cv"));
     reqMap.put(USER.COUNTRY, req.getParameter("country"));
-    reqMap.put(USER.USERNAME, getLoginUser());
-
+    
+    if(req.getParameter("byadmin") != null && Boolean.parseBoolean(req.getParameter("byadmin")) == true)
+    	reqMap.put(USER.USERNAME, req.getParameter("targetuser"));
+    else
+    	reqMap.put(USER.USERNAME, getLoginUser());
+    
+    
     try {
       List<Skill> skillList = Services.getInstance().getJSONUtilityService()
           .readValue(req.getParameter("skills"), new TypeReference<List<Skill>>() {});

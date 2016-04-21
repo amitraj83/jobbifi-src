@@ -61,6 +61,11 @@
 									<div class="panel-body">
 										<form id="editgeneralinfo" class="form-horizontal" role="form">
 											<div class="form-group">
+												<label class="col-lg-3 control-label">User Type</label>
+												<div class="col-lg-9" id="usertype">
+												</div>
+											</div>
+											<div class="form-group">
 												<label class="col-lg-3 control-label">Rate (per
 													hour)</label>
 												<div class="col-lg-9">
@@ -312,7 +317,6 @@
 														*/
 														$("#uploadphoto").trigger('click');
 														$("#uploadphotobtn").val('<i class="fa fa-spinner" aria-hidden="true"></i>');
-														alert($('#uploadphoto').attr('data-url'));
 													});
 													$('#uploadphoto')
 															.fileupload(
@@ -341,7 +345,7 @@
 																		}
 																	});
 
-
+													$("#usertype").html(user.type);
 													$("#updatecountries").html(
 															allCountriesOption);
 													$("#perhourrate").val(
@@ -581,7 +585,7 @@
 									.ajax(
 											{
 												type : "GET",
-												url : "<c:url value='updateprofile.do'/>",
+												url : "<c:url value='updateprofile.do?byadmin=true&targetuser="+$("#userpanelheading").html()+"'/>",
 												data : param
 											})
 									.done(

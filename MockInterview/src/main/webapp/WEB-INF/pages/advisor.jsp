@@ -45,14 +45,20 @@
                             <div class="stepwizard" style="height:160px;">
                             <div class="stepwizard-row">
                                 <div class="stepwizard-step first-button">
-                                    <button type="button" class="btn btn-success btn-square">Ask Advisor for Referrals</button>
+                                    <button type="button" class="btn btn-success btn-square">Select your Advisor</button>
                                 </div>
                             </div>
                             <div class="stepwizard-row">   
                                 <div class="stepwizard-step second-button">
+                                    <button type="button" class="btn btn-info btn-square">Ask Advisor for Referrals</button>
+                                </div>
+                            </div>
+                            <div class="stepwizard-row">   
+                                <div class="stepwizard-step third-button">
                                     <button type="button" class="btn btn-info btn-square">Mock interview with Advisor</button>
                                 </div>
                             </div>
+
                             <div class="stepwizard-row">   
                                 <div class="stepwizard-step">
                                     <button type="button" class="btn btn-warning btn-square">Succeed in real interview!</button>

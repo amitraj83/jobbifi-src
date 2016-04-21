@@ -237,7 +237,6 @@
 
 <script type="text/javascript">
 function handleClick(cb) {
-  console.log("Clicked, new value = " + cb.checked);
   if(cb.checked){
   	document.getElementById("signupButton").className = "btn btn-success btn-block lowercase";
   }

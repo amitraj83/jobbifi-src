@@ -204,7 +204,10 @@
 										
 										<div class="form-group row">
 											<div class="col-md-12">
-												<button type="submit" class="btn btn-success btn-block lowercase disabled">Sign Up</button>
+											<div class="checkbox" style="padding:7px;">
+											  <label><input type="checkbox" onclick='handleClick(this);' value="">You accept the <a href="termsofservice.do">terms and conditions.</a></label>
+											</div>
+												<button type="submit" class="btn btn-success btn-block lowercase disabled" id="signupButton">Sign Up</button>
 													<img id="signupbtnloader" style="display: none;"
 													alt="Processing..."
 													src="<c:url value=" /resources/img/loading.gif " />">
@@ -233,7 +236,16 @@
 </div>
 
 <script type="text/javascript">
-	
+function handleClick(cb) {
+  console.log("Clicked, new value = " + cb.checked);
+  if(cb.checked){
+  	document.getElementById("signupButton").className = "btn btn-success btn-block lowercase";
+  }
+  else
+  {
+  	document.getElementById("signupButton").className = "btn btn-success btn-block lowercase disabled";	
+  }
+}
 </script>
 
 

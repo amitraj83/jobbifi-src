@@ -13,6 +13,7 @@
 <div id="timeline" class="container">
     <div class="page-header">
         <h1>Jobs @ Jobbifi</h1>
+		<p>If you think any of the following opportunity sounds exciting to you, please send your cv to support@jobbifi.com</p>
     </div>
     <ul class="timeline">
         <li>
@@ -70,13 +71,22 @@
           </div>
         </li>
         <li class="timeline-inverted">
+		<div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">VP, Sales and Marketing</h4>
             </div>
             <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-            </div>
+              <p>This exciting opportunity is for someone who wants to develop a business from scratch. Jobbifi is looking for a VP to take care of the sales and marketing. The primary tasks would be to coordinate with subordinates, making strategies to sales, finding leads, and closing sales. The conversion goal would be the signup of job seekers and career advisors. </p>
+               	<p>Role Responsibilities :</p>
+
+				 <p><i class="fa fa-hand-o-right"></i>&nbsp;Monitor customers analyze their behaviours and visit statistics.</p>
+				 <p><i class="fa fa-hand-o-right"></i>&nbsp;Plan and prepare strategies for sales and marketing of Jobbifi</p>
+				 <p><i class="fa fa-hand-o-right"></i>&nbsp;Manage the sales and marketing staff to maximize efficiency and increase the company profit.</p>
+				 <p><i class="fa fa-hand-o-right"></i>&nbsp;Formulate objectives, target and directions for the sales and marketing department.</p>
+
+			
+			</div>
           </div>
         </li>
     </ul>

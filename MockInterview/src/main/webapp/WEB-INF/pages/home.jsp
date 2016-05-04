@@ -425,30 +425,36 @@
 				<div class="row">
 					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="300ms">
-						<h2>Visit Our Office</h2>
-						<address>
+						<h2>Connect with us</h2>
 							<p>
-								<i class="fa fa-map-marker"></i> #117/346, Block-O
+								<i class="fa fa-envelope"></i> <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>
 							</p>
-
-							<p style="padding-left: 20px;">Geeta Nagar, Kanpur - 208025</p>
-
-							<p style="padding-left: 20px;">UP, India</p>
-						</address>
+							<p>
+								<i class="fa fa-skype" aria-hidden="true"></i> <a href="skype:jobbifi?call">jobbifi</a>
+							</p>
 					</div>
 					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
 						data-wow-delay="400ms">
-						<h2>Talk to us</h2>
+						<h2>Socialize with us</h2>
 
 						<div class="business-time">
+					
+								
 							<p>
-								<i class="fa fa-phone"></i> Phone: +91-9036928424
+								<i class="fa fa-youtube-square" aria-hidden="true"></i><a href="https://www.youtube.com/watch?v=5aVFER7UyaA">Youtube</a>
 							</p>
-
 							<p>
-								<i class="fa fa-envelope"></i> Email: support@jobbifi.com
+								<i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/jobbifitech">Twitter</a>
 							</p>
-
+							<p>
+								<i class="fa fa-facebook-official" aria-hidden="true"></i><a href="https://www.facebook.com/jobbifi/">Facebook</a>
+							</p>
+							<p>
+								<i class="fa fa-linkedin" aria-hidden="true"></i><a href="https://ie.linkedin.com/in/jobbifi-technologies-022072120">LinkedIn</a>
+							</p>
+							
+							
+							
 							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
 						</div>
 					</div>

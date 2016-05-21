@@ -3,16 +3,18 @@
 <html>
 <head>
 
-<meta name="description" content="Jobbifi allows job seekers to get in touch and directly communicate with highly experienced professionals and recruiters in their field. Such professionals consult job seekers about their future career directions, job interviews preparation and mock interviews. The service provided are absolutely free and we do not charge any money for these services.">
+<meta name="description" content="Jobbifi connecting job seekers to experienced professionals and recruiters (advisors) for consulting future career directions, job interviews preparation and guidance @ absolutely free services">
 <meta name="author" content="">
-<meta name="keywords" content="jobs, sales jobs, job, accounting jobs, job opportunities, job search, finance jobs, medical jobs, find jobs, hr jobs, legal jobs, nursing jobs, summer jobs, temporary jobs, job vacancies, job site, job bank, jobs search, jobs online, jobs google, internet jobs, full time jobs, jobs available, financial jobs, healthcare jobs, temp jobs, job listings, part time jobs, banking jobs, top jobs, retail jobs, job sites, government jobs, employment, employment agencies, employment opportunities, careers, recruitment, recruitment agencies, career, job listing, job postings, hiring, vacancies, opportunities, vacancy, help wanted, part time, employers, work, telemarketing jobs, employment google, employment online, job opening, job posting, entry level positions, employment agency, job opportunity, openings, auditing positions, recruiters">
+<meta name="keywords" content="online career consultants, career advisors, interview guidance, job consulting, mock interview practice, job opportunities, career guidance online, free career consultancy, online interview practice">
 <meta name="robots" content="index, follow">
 <meta name="revisit-after" content="7 days">
 <meta name="language" content="english">
 
 
 
-<title>Jobbifi - Connecting Job Seekers with experienced professionals and recruiters (advisors) for career related free consultations.</title>
+<title>Free Online Career Consultants / Advisors for Job Seekers, Interview Guidance - Jobbifi</title>
+<meta charset="utf-8" />
+<link rel="canonical" href="https://www.jobbifi.com/">
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/ohover.css' />">
 <!--CSS-->
@@ -160,8 +162,7 @@
 							<h3 class="wow fadeInDown" data-wow-duration="700ms"
 								data-wow-delay="300ms">How it works for Candidates</h3>
 							<p class="wow fadeInUp" data-wow-duration="700ms"
-								data-wow-delay="300ms" style="margin-top:15px;">We've made it amazingly simple for
-								job seekers to succeed in their dream job interview.</p>
+								data-wow-delay="300ms" style="margin-top:15px;">We've made it simple for job seekers to succeed in their dream job interview with Career advisor online free.</p>
 						</div>
 					</div>
 					<ul class="timeline">
@@ -176,11 +177,7 @@
 									
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">Giving your career or upcoming interview an
-										always needed push has traditionally been an ordeal. With
-										Jobbifi's advisor search and recommendation engine, getting in
-										touch with a company insider, career guidance professional or even
-										advisors in your target company is a breeze.</p>
+									<p class="text-muted text-justify">Giving your career or upcoming interview an always needed push has traditionally been an ordeal. With Jobbifi's advisor search and recommendation engine, which acts as an online interview guide, getting in touch with a company insider, free online career consultant or even advisors in your target company is a breeze. Free online career consultant will bring an end to all your ambiguity and give you a crystal clear vision towards your destiny.</p>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -196,7 +193,7 @@
 									
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">Ask your advisor to help you prepare a strong CV, referrals and mock interviews. An advisor is the only person who can guide in a right and targeted way to land in your dream job. Advisors can push your CVs to the right place with right recommendations. </p>
+									<p class="text-muted text-justify">Ask your advisor to help you prepare a strong CV, referrals and mock interviews. An advisor is the only person who can guide in a right and targeted way to land your dream job. Advisors can push your CVs to the right place with right recommendations. Online mock interview practice will groom your persona all the way being supervised by the industry experts. The career advisor online will have better vision for you to expand the horizon of your career.</p>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -209,10 +206,10 @@
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4>Mock Interviews</h4>
-									<h4 class="subheading"></h4>
+									<!--<h4 class="subheading"></h4>-->
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">Ask your advisors to take your mock interviews to help you prepare for your next upcoming job interview. Advisors can tell you perfectly what a company is looking into the candidates. How to behave and answer in real job interviews. They can help you to analyze your weaknesses, which you can overcome with right guidance.</p>
+									<p class="text-muted text-justify">Ask your advisors to take your mock interviews to help you prepare for your next upcoming job interview. Advisors can tell you perfectly what a company is looking into the candidates. Online mock interview practice under the guidance of a professional will help you learn how to behave and answer in real job interviews. They can help you do your SWOT (Strength, Weaknesses, Opportunity, and Threats) analysis which will pave an easy path for your carrier. It's a kind of online interview guide making path of your career smoother.</p>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -225,10 +222,10 @@
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4>Get hired!</h4>
-									<h4 class="subheading"></h4>
+									<!--<h4 class="subheading"></h4>-->
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">With right advices from your advisors, you can perform better in your upcoming job interviews and increase your chances to get hired. </p>
+									<p class="text-muted text-justify">With right advices from your free online career consultant, you can perform better in your upcoming job interviews and increase your chances to get hired.</p>
 								</div>
 							</div>
 						</li>
@@ -427,10 +424,10 @@
 						data-wow-delay="300ms">
 						<h2>Connect with us</h2>
 							<p>
-								<i class="fa fa-envelope"></i> <a href="mailto:support@jobbifi.com">support@jobbifi.com</a>
+								<i class="fa fa-envelope"></i> <a href="mailto:support@jobbifi.com" title="Email">support@jobbifi.com</a>
 							</p>
 							<p>
-								<i class="fa fa-skype" aria-hidden="true"></i> <a href="skype:jobbifi?call">jobbifi</a>
+								<i class="fa fa-skype" aria-hidden="true"></i> <a href="skype:jobbifi?call" title="Skype">jobbifi</a>
 							</p>
 					</div>
 					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
@@ -441,16 +438,16 @@
 					
 								
 							<p>
-								<i class="fa fa-youtube-square" aria-hidden="true"></i><a href="https://www.youtube.com/watch?v=5aVFER7UyaA">Youtube</a>
+								<i class="fa fa-youtube-square" aria-hidden="true"></i><a href="https://www.youtube.com/watch?v=5aVFER7UyaA" title="Youtube">Youtube</a>
 							</p>
 							<p>
 								<i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/jobbifitech">Twitter</a>
 							</p>
 							<p>
-								<i class="fa fa-facebook-official" aria-hidden="true"></i><a href="https://www.facebook.com/jobbifi/">Facebook</a>
+								<i class="fa fa-facebook-official" aria-hidden="true"></i><a href="https://www.facebook.com/jobbifi/" title="Facebook">Facebook</a>
 							</p>
 							<p>
-								<i class="fa fa-linkedin" aria-hidden="true"></i><a href="https://ie.linkedin.com/in/jobbifi-technologies-022072120">LinkedIn</a>
+								<i class="fa fa-linkedin" aria-hidden="true"></i><a href="https://ie.linkedin.com/in/jobbifi-technologies-022072120" title="Linkedin">LinkedIn</a>
 							</p>
 							
 							
@@ -474,7 +471,7 @@
 										required="required" placeholder="Email Id">
 								</div>
 								<div class="form-group col-sm-12">
-									<textarea name="message" id="message" required="required"
+									<textarea name="message" id="message" required
 										class="form-control" rows="8" placeholder="Your Text"></textarea>
 								</div>
 							</div>

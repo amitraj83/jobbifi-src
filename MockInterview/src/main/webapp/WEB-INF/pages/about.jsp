@@ -3,7 +3,9 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/pages/common/css.jsp"%>
-<title>About us</title>
+<title>Free Online Interview Preparation for Fresher, Online Interview Practice - Jobbifi</title>
+<meta name="description" content="We are providing free online interview preparation for fresher with extra taking care by our professional career advisors at absolutely free."/>
+<meta name="keywords" content="Interview preparation for fresher, Free online interview preparation, Interview preparation online, interview preparation for fresher, entry level positions, fresher jobs"/> 
 </head>
 <body>
 	<%@ include file="/WEB-INF/pages/common/header.jsp"%>
@@ -20,8 +22,8 @@
 		<div class="col-md-12">
 			<br/>
 			<div class="row">
-			<div class="col-md-6"><img src="images/careerexpert.jpg" width="500px" height="250px"></div>
-			<div class="col-md-6">
+			<div class="col-md-6"><img src="../images/careerexpert.jpg" class="img-responsive" width="500px" height="250px"></div>
+			<div class="col-md-6"> 
 				<p>
 				We are career experts. Our network of job seekers, career advisors and employer helps you to find the right person who can help you to grow in your career path. We connect job seeking candidates with the right career advisor who can help you to prepare for your upcoming interview and do the job referrals. Our intelligent search engine helps employers to find the right candidate for their requirements. 
 				</p>

@@ -445,12 +445,10 @@ function handleClick(cb) {
 							data-target="#mysignupModal">Sign Up</a></li>	-->
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>
-					</sec:authorize>		
 						<li ><a  href="http://jobbifi.com:9982/">Blog</a></li>
 						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
 						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
-						<li class="scroll"><a id="headerwhatthis" href="#navigation" data-toggle="modal"	data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/sGbxmsDFVnE">What's this?</a></li>
-			
+						
 
 			
 			
@@ -458,7 +456,7 @@ function handleClick(cb) {
 							onclick="activeHome()">Home</a></li>-->
 						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->
 						<!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->
-					<!-- </sec:authorize> -->
+					</sec:authorize>
 					<!-- IF USER IS AN INTERVIEWEE -->
 					<sec:authorize access="hasRole('ROLE_INTERVIEWER')">
 						<!-- <li id="nav_advisors"><a title="Advisors"
@@ -508,9 +506,11 @@ function handleClick(cb) {
 								</li>
 							</ul>
 						</li>
+						<li ><a  href="http://jobbifi.com:9982/">Blog</a></li>
 						<li><a title="Message" href="<c:url value='/message.do'/>">Messages
 								<span id="messageCount"></span>
 						</a></li>
+					
 						
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_INTERVIEWEE')">
@@ -521,6 +521,8 @@ function handleClick(cb) {
 						<!-- <li id="nav_mocks"><a title="My Interviews"
 							href="<c:url value='/myinterview.do'/>">My Mocks</a></li> -->
 					</sec:authorize>
+						<li class="scroll"><a id="headerwhatthis" href="#navigation" data-toggle="modal"	data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/sGbxmsDFVnE">What's this?</a></li>
+			
 					
 				</ul>
 			</nav>

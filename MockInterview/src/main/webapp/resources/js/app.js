@@ -348,7 +348,6 @@ $(function(){
 	
 	if(window.location.href == BASE_URL+"#")
 	{
-		alert("Here it is coming");
 		window.location.href = BASE_URL;
 	}	
 

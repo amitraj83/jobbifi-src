@@ -236,6 +236,17 @@
 </div>
 
 <script type="text/javascript">
+
+$("#password").keydown(function(event){
+	alert("key pressed");
+    if(event.keyCode == 13) {
+    	alert("Enter perssed");
+      event.preventDefault();
+      return false;
+    }
+  });
+
+
 function handleClick(cb) {
   if(cb.checked){
   	document.getElementById("signupButton").className = "btn btn-success btn-block lowercase";
@@ -434,6 +445,7 @@ function handleClick(cb) {
 							data-target="#mysignupModal">Sign Up</a></li>	-->
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>
+					</sec:authorize>		
 						<li ><a  href="http://jobbifi.com:9982/">Blog</a></li>
 						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
 						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
@@ -446,7 +458,7 @@ function handleClick(cb) {
 							onclick="activeHome()">Home</a></li>-->
 						<!--<li class="scroll"><a class="scroll" href="#pricing-tables">Employers</a></li>-->
 						<!-- <li class="scroll"><a href="#pricing-tables">Pricing Table</a></li> -->
-					</sec:authorize>
+					<!-- </sec:authorize> -->
 					<!-- IF USER IS AN INTERVIEWEE -->
 					<sec:authorize access="hasRole('ROLE_INTERVIEWER')">
 						<!-- <li id="nav_advisors"><a title="Advisors"

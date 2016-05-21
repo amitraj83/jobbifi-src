@@ -144,7 +144,7 @@ function registerUser(){
             //$("#j_password").val(password);
             //$("#signupbox").html("You have been registered successfully. Please check your email "+email+" to vefiry your account!!");
             //showSuccess("You have been registered successfully.Please check your email for email verificaton!!");
-             login(email, password, true);
+             loginafterregistration(email, password, true);
 
         } else if(json.response == -1){
             showError("Error occured while registration.");                      
@@ -220,6 +220,67 @@ function showLoginBox(){
 	$("#myModal").modal("show");
 }
 
+
+function loginafterregistration(email, password, automaticLoginAfterSignup){	 
+
+  $("#loginbtnloader").show();
+  var data = "";
+  data = "j_username=" + email + "&j_password=" + password;
+  // $.ajax({
+  //     'type': 'POST',
+  //     'url': BASE_URL + "isuseraccountactive.do",      
+  //     'data': "emailid="+$("#j_username").val(),
+  //     'dataType': 'json',
+  //      success:function(response){
+  //          if(response.active == 1) {
+           	
+           	
+			  $.ajax({
+			      'type': 'POST',
+			      'url': BASE_URL + "j_spring_security_check",      
+			      'data': data,
+			      'dataType': 'json',
+			       success:function(response){
+			            if(response.RESULT != null && response.RESULT == "SUCCESS"){
+			               if(response.REDIRECT){
+			            	   // admin
+			                  window.top.location = BASE_URL + response.REDIRECT;
+			                  return;
+			               }
+			               
+			               var callback = "";
+			               if($("#callback").val() != ""){
+			            	   if(window.location.href.indexOf("?") > 0 ){
+			            		   callback = "&callbackj=" + $("#callback").val();
+			            	   } else {
+			            		   callback = "?callbackj=" + $("#callback").val();
+			            	   }
+			               }
+			               
+			               var page = BASE_URL +"profilesetting.do"; 
+			               window.location.replace(page);
+			               $("#myModal").modal("hide");
+
+			            } else {
+			            	showError("Email or password is wrong.");                
+			            }
+			            $("#loginbtnloader").hide();
+			       }, 
+			       error : function(){
+			    	   showError("Unable to process the rquest.");
+			    	   $("#loginbtnloader").hide();
+			       }
+			    });
+
+
+
+$("#loginbtnloader").hide();
+
+  
+}
+
+
+
 function login(email, password, automaticLoginAfterSignup){	 
 
   $("#loginbtnloader").show();
@@ -276,22 +337,6 @@ function login(email, password, automaticLoginAfterSignup){
 
 
 
-
-   //         }
-   //         else if(response.active == 2){
-   //         		showError("Your account is not active. Check your email to activate your account.");
-   //         }
-   //         else if(response.active == 3){
-			// showError("This user account does not exist. Please register!");
-   //         }
-   //     }, 
-   //     error : function(){
-   //  	   showError("Unable to process the rquest. Please try again later.");
-    	   
-   //     }
-   //  });
-
-
 $("#loginbtnloader").hide();
 
   
@@ -302,7 +347,10 @@ $("#loginbtnloader").hide();
 $(function(){
 	
 	if(window.location.href == BASE_URL+"#")
-		window.location.href = BASE_URL
+	{
+		alert("Here it is coming");
+		window.location.href = BASE_URL;
+	}	
 
 	
 

@@ -69,8 +69,10 @@ public class LinkedinController {
 
     String callbackUrl = myProps.getProperty("linkedincallbackurl");
     LinkedInRequestToken requestToken = oauthService.getOAuthRequestToken(callbackUrl);
+    req.getSession().setAttribute("requestToken", requestToken);
     String authUrl = requestToken.getAuthorizationUrl();
     req.getSession().setAttribute("requestToken", requestToken);
+    System.out.println("Auth URL:"+authUrl);
 
     return "redirect:" + authUrl;
   }

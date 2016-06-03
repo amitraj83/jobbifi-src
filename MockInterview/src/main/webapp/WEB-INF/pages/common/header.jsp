@@ -75,6 +75,7 @@
 									onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot
 									password?</a>
 							</div>
+							<button type="button" onclick="javascript:linkedinLogin();">LinkedIn Login</button>
 							<div class="col-sm-6 col-md-6 text-right">
 								<a href="#" class="small muted"
 									onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign up now</a>

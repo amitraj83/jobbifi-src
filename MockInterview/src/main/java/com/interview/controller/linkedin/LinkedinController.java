@@ -129,7 +129,7 @@ public class LinkedinController {
       Authentication authentication =
           new UsernamePasswordAuthenticationToken(profile.getEmailAddress(), null, authorities);
       SecurityContextHolder.getContext().setAuthentication(authentication);
-      return "redirect:" + myProps.getProperty("homeurl") + "/dashboard.html";
+      return "redirect:" + myProps.getProperty("homeurl") ;
 
     } else {
       HttpSession session = req.getSession();

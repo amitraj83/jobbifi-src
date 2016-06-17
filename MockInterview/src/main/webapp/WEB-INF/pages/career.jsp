@@ -13,7 +13,7 @@
 <div id="timeline" class="container">
     <div class="page-header">
         <h1>Jobs @ Jobbifi</h1>
-		<p>If you think any of the following opportunity sounds exciting to you, please send your cv to support@jobbifi.com</p>
+		<p>If you think any of the following opportunity sounds exciting to you, click here to <a href="javascript:openSignupBox()">Signup !</a></p>
     </div>
     <ul class="timeline">
         <li>
@@ -98,6 +98,14 @@
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
+function openSignupBox(){
+if (LOGIN_USER == null) {
+            showLoginBox();
+            return;
+        }
+	
+}
+
 </script>
 </body>
 </html>

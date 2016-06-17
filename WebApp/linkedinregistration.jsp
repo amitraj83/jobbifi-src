@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Mock Interviews</title>
+    <title>Jobbifi</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/modern-business.css" rel="stylesheet">
     <link href="libraries/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -315,7 +315,7 @@
                     url: BASE_URL + "linkedinuserregistercancel.do",
                 }).done(function (msg) {
                     if (msg == "DONE") {
-                        window.location.href = BASE_URL + 'index.jsp';
+                        window.location.href = BASE_URL;
                     }
                 });
             });
@@ -351,7 +351,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="javascript:void(0)">Mock Interview</a>
+            <a class="navbar-brand" href="https://www.jobbifi.com">Jobbifi</a>
         </div>
     </div>
 </nav>

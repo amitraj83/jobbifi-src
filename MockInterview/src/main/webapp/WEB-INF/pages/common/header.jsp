@@ -47,7 +47,7 @@
                     	
 					</div>
                     <hr/>
-                    <center><h5>OR</h5></center>
+                    <h5 class="text-center">OR</h5>
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
                              <form id="loginform" role="form" name="f"
@@ -174,7 +174,7 @@
 	                    	<button class="btn-primary" type="button" onclick="javascript:linkedinLogin();">Register With LinkedIn</button>
 						</div>
 	                    <hr/>
-	                    <center><h4>OR</h4></center>
+	                    <h4 class="text-center">OR</h4>
 	                    
 
                        	<form id="signupform" class="form-horizontal">

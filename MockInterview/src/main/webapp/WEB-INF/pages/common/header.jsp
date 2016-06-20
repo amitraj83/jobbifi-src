@@ -39,6 +39,15 @@
                         </div>
                     </div>     
                     <div style="padding-top:30px" class="panel-body">
+
+                    <div>
+                    	<button class="btn-primary" type="button" onclick="javascript:linkedinLogin();">
+	                    	Login With LinkedIn
+                    	</button>
+                    	
+					</div>
+                    <hr/>
+                    <center><h5>OR</h5></center>
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
                              <form id="loginform" role="form" name="f"
@@ -75,6 +84,7 @@
 									onClick="$('#loginbox').hide(); $('#forgotpasswordbox').show()">Forgot
 									password?</a>
 							</div>
+
 							<div class="col-sm-6 col-md-6 text-right">
 								<a href="#" class="small muted"
 									onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign up now</a>
@@ -159,7 +169,14 @@
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body">
-                           
+                        
+                    	<div>
+	                    	<button class="btn-primary" type="button" onclick="javascript:linkedinLogin();">Register With LinkedIn</button>
+						</div>
+	                    <hr/>
+	                    <center><h4>OR</h4></center>
+	                    
+
                        	<form id="signupform" class="form-horizontal">
 									<div class="form-group row">
 										<div class="col-sm-12 col-md-12">

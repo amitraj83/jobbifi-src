@@ -150,82 +150,7 @@
 		<!--/#home-carousel-->
 	</div>
 	<!--/#carousel-wrapper-->
-	<br />
-	<div class="container">
-			<div class="row text-center section-title">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h3 class="wow fadeInDown" data-wow-duration="700ms"
-						data-wow-delay="300ms">Browse Your Advisors</h3>
-					<p class="wow fadeInUp" data-wow-duration="700ms"
-						data-wow-delay="300ms"></p>
-				</div>
-			</div>
-		<div class="row">
-					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
-						data-wow-delay="300ms">
-						<h3>Advisors By Role</h3>
-							<p>
-								<a href="https://www.jobbifi.com/advisors.do?searchKey=software" title="Software Advisors">Software Advisors</a>
-							</p>
-							<p>
-								<a href="https://www.jobbifi.com/advisors.do?searchKey=management" title="Management Advisors">Management Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=consulting" title="Consulting Advisors">Consulting Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=marketing" title="Marketing Advisors">Marketing Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=medical" title="Medical Advisors">Medical Advisors</a>
-							</p>
-					</div>
-					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
-						data-wow-delay="400ms">
-						<h3>Advisors By Skills</h3>
-							<p>
-								<a href="https://www.jobbifi.com/advisors.do?searchKey=programming" title="Software Advisors">Programming Advisors</a>
-							</p>
-							<p>
-								<a href="https://www.jobbifi.com/advisors.do?searchKey=java" title="Management Advisors">Java Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=networking" title="Consulting Advisors">Networking Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=business" title="Marketing Advisors">Business Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=dental" title="Medical Advisors">Dental Advisors</a>
-							</p>
-							
-							
-							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
-					</div>
-					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
-						data-wow-delay="400ms">
-						<h3>Advisors By City</h3>
-							<p>
-								<a href="https://www.jobbifi.com/advisors.do?searchKey=bangalore" title="Software Advisors">Bangalore Advisors</a>
-							</p>
-							<p>
-								<a href="https://www.jobbifi.com/advisors.do?searchKey=mumbai" title="Management Advisors">Mumbai Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=delhi" title="Consulting Advisors">Delhi Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=hyderabad" title="Marketing Advisors">Hyderabad Advisors</a>
-							</p>
-							<p>
-								 <a href="https://www.jobbifi.com/advisors.do?searchKey=chennai" title="Medical Advisors">Chennai Advisors</a>
-							</p>
-							
-							
-							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
-					</div>
-		</div>
-	</div>		
+			
 
 
 	<br />
@@ -311,6 +236,83 @@
 			</div>
 		</div>
 	</div>
+
+	<br />
+	<div class="container">
+			<div class="row text-center section-title">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h3 class="wow fadeInDown" data-wow-duration="700ms"
+						data-wow-delay="300ms">Browse Your Advisors</h3>
+					<p class="wow fadeInUp" data-wow-duration="700ms"
+						data-wow-delay="300ms"></p>
+				</div>
+			</div>
+		<div class="row">
+					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
+						data-wow-delay="300ms">
+						<h3>Advisors By Role</h3>
+							<p>
+								<a href="https://www.jobbifi.com/advisors.do?searchKey=software" title="Software Advisors">Software Advisors</a>
+							</p>
+							<p>
+								<a href="https://www.jobbifi.com/advisors.do?searchKey=management" title="Management Advisors">Management Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=consulting" title="Consulting Advisors">Consulting Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=marketing" title="Marketing Advisors">Marketing Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=medical" title="Medical Advisors">Medical Advisors</a>
+							</p>
+					</div>
+					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
+						data-wow-delay="400ms">
+						<h3>Advisors By Skills</h3>
+							<p>
+								<a href="https://www.jobbifi.com/advisors.do?searchKey=programming" title="Software Advisors">Programming Advisors</a>
+							</p>
+							<p>
+								<a href="https://www.jobbifi.com/advisors.do?searchKey=java" title="Management Advisors">Java Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=networking" title="Consulting Advisors">Networking Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=business" title="Marketing Advisors">Business Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=dental" title="Medical Advisors">Dental Advisors</a>
+							</p>
+							
+							
+							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
+					</div>
+					<div class="col-sm-4 wow zoomIn" data-wow-duration="700ms"
+						data-wow-delay="400ms">
+						<h3>Advisors By City</h3>
+							<p>
+								<a href="https://www.jobbifi.com/advisors.do?searchKey=bangalore" title="Software Advisors">Bangalore Advisors</a>
+							</p>
+							<p>
+								<a href="https://www.jobbifi.com/advisors.do?searchKey=mumbai" title="Management Advisors">Mumbai Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=delhi" title="Consulting Advisors">Delhi Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=hyderabad" title="Marketing Advisors">Hyderabad Advisors</a>
+							</p>
+							<p>
+								 <a href="https://www.jobbifi.com/advisors.do?searchKey=chennai" title="Medical Advisors">Chennai Advisors</a>
+							</p>
+							
+							
+							<!-- <p><i class="fa fa-clock-o"></i> Sun. <span>Closed</span></p> -->
+					</div>
+		</div>
+	</div>
 	
 	<br />
 	<br />
@@ -334,7 +336,85 @@
 	</div>
 	<!--/parallax-section-->
 	<br />
-	
+	<div id="pricing-tables" class="padding-top padding-bottom white-section">
+		<div class="container">
+			<div class="row text-center section-title">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h3 class="wow fadeInDown" data-wow-duration="700ms"
+						data-wow-delay="300ms">Packages for job seekers</h3>
+					<p class="wow fadeInUp" data-wow-duration="700ms"
+						data-wow-delay="300ms" style="margin-top:15px;">We offer unbeatable packages for the
+						job seekers to succeed in their career.</p>
+				</div>
+			</div>
+			<div class="pricing-table">
+				<center>
+					<div class="row">
+						<div class="col-md-1"></div>
+						<div class="col-sm-3">
+							<div class="single-table wow zoomIn" data-wow-duration="700ms"
+								data-wow-delay="300ms">
+								<h2>Silver</h2>
+
+								<p class="price">
+									<span>Free</span> &nbsp; monthly
+								</p>
+								<ul>
+									<li>100 CV Access</li>
+									<li>10 Job postings</li>
+									<li>Hiring Management</li>
+									<li>Limited Support</li>
+								</ul>
+								<a href="#" class="btn-signup">Buy Now</a>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="single-table featured-table wow zoomIn"
+								data-wow-duration="700ms" data-wow-delay="400ms">
+								<h2>Gold</h2>
+
+								<p class="price">
+									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
+										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>3000</span>
+									monthly
+								</p>
+								<ul>
+									<li>500 CV Access</li>
+									<li>50 Job postings</li>
+									<li>Hiring Management</li>
+									<li>Dedicated Support</li>
+								</ul>
+								<a href="#" class="btn-signup">Buy Now</a>
+
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="single-table wow zoomIn" data-wow-duration="700ms"
+								data-wow-delay="500ms">
+								<h2>Platinum</h2>
+
+								<p class="price">
+									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
+										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>5000</span>
+									monthly
+								</p>
+								<ul>
+									<li>Unlimited CV Access</li>
+									<li>Unlimited Job postings</li>
+									<li>Hiring Management</li>
+									<li>Dedicated Support</li>
+								</ul>
+								<a href="#" class="btn-signup">Buy Now</a>
+
+							</div>
+						</div>
+						<div class="col-md-1"></div>
+					</div>
+				</center>
+			</div>
+		</div>
+	</div>
+	<!--
 	<div id="about-us">
 		<div class="container">
 			<div class="row text-center section-title">
@@ -366,7 +446,7 @@
 			</div>
 			
 		</div>
-	</div>
+	</div> -->
 	<!--/about-us-->
 	
 	<!--/#clients-->
@@ -406,82 +486,8 @@
 		</div>
 	</div>
 	<!--/parallax-section-->
-	<!--
-	<div id="pricing-tables" class="padding-top padding-bottom white-section">
-		<div class="container">
-			<div class="row text-center section-title">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h3 class="wow fadeInDown" data-wow-duration="700ms"
-						data-wow-delay="300ms">Employers</h3>
-					<p class="wow fadeInUp" data-wow-duration="700ms"
-						data-wow-delay="300ms">We offer unbeatable packages for the
-						employers to post jobs and to find the right candidate</p>
-				</div>
-			</div>
-			<div class="pricing-table">
-				<center>
-					<div class="row">
-						<div class="col-md-1"></div>
-						<div class="col-sm-3">
-							<div class="single-table wow zoomIn" data-wow-duration="700ms"
-								data-wow-delay="300ms">
-								<h2>Silver</h2>
-
-								<p class="price">
-									<span>Free</span> &nbsp; monthly
-								</p>
-								<ul>
-									<li>100 CV Access</li>
-									<li>10 Job postings</li>
-									<li>Hiring Management</li>
-									<li>Limited Support</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="single-table featured-table wow zoomIn"
-								data-wow-duration="700ms" data-wow-delay="400ms">
-								<h2>Gold</h2>
-
-								<p class="price">
-									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>3000</span>
-									monthly
-								</p>
-								<ul>
-									<li>500 CV Access</li>
-									<li>50 Job postings</li>
-									<li>Hiring Management</li>
-									<li>Dedicated Support</li>
-								</ul>
-
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="single-table wow zoomIn" data-wow-duration="700ms"
-								data-wow-delay="500ms">
-								<h2>Platinum</h2>
-
-								<p class="price">
-									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
-										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>5000</span>
-									monthly
-								</p>
-								<ul>
-									<li>Unlimited CV Access</li>
-									<li>Unlimited Job postings</li>
-									<li>Hiring Management</li>
-									<li>Dedicated Support</li>
-								</ul>
-
-							</div>
-						</div>
-						<div class="col-md-1"></div>
-					</div>
-				</center>
-			</div>
-		</div>
-	</div> -->
+	
+	 
     	<div id="contact-us" class="padding-top padding-bottom">
 		<div class="container">
 			<!-- <div class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">

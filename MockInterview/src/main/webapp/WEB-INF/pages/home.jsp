@@ -357,15 +357,23 @@
 								<h2>Silver</h2>
 
 								<p class="price">
-									<span>Free</span> &nbsp; monthly
+									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
+										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>2000</span>
+									monthly
 								</p>
 								<ul>
-									<li>100 CV Access</li>
-									<li>10 Job postings</li>
-									<li>Hiring Management</li>
-									<li>Limited Support</li>
+									<li>Resume writing</li>
+									<li>1000 Resume flash</li>
+									<li>10 referrals</li>
+									<li>50 job applications</li>
+									<li>2 mock interview</li>
 								</ul>
-								<a href="#" class="btn-signup">Buy Now</a>
+								<sec:authorize access="!isAuthenticated()">
+								<a href="#" class="btn-signup">Signup Now</a>
+								</sec:authorize>
+								<sec:authorize access="isAuthenticated()">
+								<a href="silver.jsp" class="btn-signup">Buy Now</a>
+								</sec:authorize>
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -379,12 +387,18 @@
 									monthly
 								</p>
 								<ul>
-									<li>500 CV Access</li>
-									<li>50 Job postings</li>
-									<li>Hiring Management</li>
-									<li>Dedicated Support</li>
+									<li>Resume writing</li>
+									<li>2000 Resume flash</li>
+									<li>20 referrals</li>
+									<li>100 job applications</li>
+									<li>3 mock interview</li>
 								</ul>
-								<a href="#" class="btn-signup">Buy Now</a>
+								<sec:authorize access="!isAuthenticated()">
+								<a href="#" class="btn-signup">Signup Now</a>
+								</sec:authorize>
+								<sec:authorize access="isAuthenticated()">
+								<a href="gold.jsp" class="btn-signup">Buy Now</a>
+								</sec:authorize>
 
 							</div>
 						</div>
@@ -399,13 +413,18 @@
 									monthly
 								</p>
 								<ul>
-									<li>Unlimited CV Access</li>
-									<li>Unlimited Job postings</li>
-									<li>Hiring Management</li>
-									<li>Dedicated Support</li>
+									<li>Resume writing</li>
+									<li>5000 Resume flash</li>
+									<li>30 referrals</li>
+									<li>150 job applications</li>
+									<li>4 mock interview</li>
 								</ul>
-								<a href="#" class="btn-signup">Buy Now</a>
-
+								<sec:authorize access="!isAuthenticated()">
+								<a href="#" class="btn-signup">Signup Now</a>
+								</sec:authorize>
+								<sec:authorize access="isAuthenticated()">
+								<a href="platinum.jsp" class="btn-signup">Buy Now</a>
+								</sec:authorize>
 							</div>
 						</div>
 						<div class="col-md-1"></div>

@@ -37,7 +37,11 @@
 
 <div id="timeline" class="container">
     <div class="page-header">
-        <h1>Silver Package</h1>
+    <div class="row">
+      <div class="col-md-6"><h1  style="margin-top: 0px;">Silver Package <span class="label label-default"><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;2000</span></h1></div>
+      <div class="col-md-6"  style="margin-top: -10px;"><button type="button" class="btn btn-primary pull-right">Buy Now</button></div>
+    </div>
+        
 		<p>This package includes following:</p>
     </div>
     <ul class="timeline">
@@ -45,33 +49,14 @@
           <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">QA Automation Engineer</h4>
+              <h4 class="timeline-title">Resume Writing</h4>
             </div>
             <div class="timeline-body">
-    <p>As a QA engineer, you will be responsible to assure the quality of features. You will have to understand and test each feature. You must have to do manual and automation testing both. As a key member of the team, you will have to log the issues and track them and make sure it is closed. </p>
-    <p>You must have experience in :</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Executing both manual and automation testing.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Help dev to reproduce errors and ensure defect is fixed.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Solid knowledge of software testing methodologies.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Coding experience in Java and JQuery.</p>
-
-            </div>
-          </div>
-        </li>
-        <li class="timeline-inverted">
-          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">QA Automation Engineer</h4>
-            </div>
-            <div class="timeline-body">
-		<p>As a QA engineer, you will be responsible to assure the quality of features. You will have to understand and test each feature. You must have to do manual and automation testing both. As a key member of the team, you will have to log the issues and track them and make sure it is closed. </p>
-		<p>You must have experience in :</p>
-		 <p><i class="fa fa-hand-o-right"></i>&nbsp;Executing both manual and automation testing.</p>
-		 <p><i class="fa fa-hand-o-right"></i>&nbsp;Help dev to reproduce errors and ensure defect is fixed.</p>
-		 <p><i class="fa fa-hand-o-right"></i>&nbsp;Solid knowledge of software testing methodologies.</p>
-		 <p><i class="fa fa-hand-o-right"></i>&nbsp;Coding experience in Java and JQuery.</p>
-
+    <p>Many people are not found by recruiters because their resume does not reflect the right match with the target job. Our industry experts with more than 10 years of experience will write your resume that highlights your skills, strength and competencies in a way that your resume cannot be ignored by recruiters. </p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;Our expert will contact you to understand your skill set.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;We prepare your resume up to our expectations.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;We showcase your resume with your skills and strength according to industry standards.</p>
+     
             </div>
           </div>
         </li>
@@ -79,16 +64,15 @@
           <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">QA Automation Engineer</h4>
+              <h4 class="timeline-title">1000 Resume flash</h4>
             </div>
             <div class="timeline-body">
-    <p>As a QA engineer, you will be responsible to assure the quality of features. You will have to understand and test each feature. You must have to do manual and automation testing both. As a key member of the team, you will have to log the issues and track them and make sure it is closed. </p>
-    <p>You must have experience in :</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Executing both manual and automation testing.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Help dev to reproduce errors and ensure defect is fixed.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Solid knowledge of software testing methodologies.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Coding experience in Java and JQuery.</p>
-
+		<p>More recruiters see your resume, more chances to get a call back from recruiters. We send your resume to 1000 recruiters in top companies. Once, our network of recruiters receive your resume, your chances of interview call is increased. </p>
+		<p>You must have experience in :</p>
+		 <p><i class="fa fa-hand-o-right"></i>&nbsp;We send your resume to 1000 recruiters.</p>
+		 <p><i class="fa fa-hand-o-right"></i>&nbsp;Our network of recruiters are notified about your skills.</p>
+		 <p><i class="fa fa-hand-o-right"></i>&nbsp;We make sure to increase your chances of interaction with recruiters.</p>
+		 
             </div>
           </div>
         </li>
@@ -96,20 +80,53 @@
           <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">QA Automation Engineer</h4>
+              <h4 class="timeline-title">10 Referrals</h4>
             </div>
             <div class="timeline-body">
-    <p>As a QA engineer, you will be responsible to assure the quality of features. You will have to understand and test each feature. You must have to do manual and automation testing both. As a key member of the team, you will have to log the issues and track them and make sure it is closed. </p>
-    <p>You must have experience in :</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Executing both manual and automation testing.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Help dev to reproduce errors and ensure defect is fixed.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Solid knowledge of software testing methodologies.</p>
-     <p><i class="fa fa-hand-o-right"></i>&nbsp;Coding experience in Java and JQuery.</p>
-
+    <p>Referral is one of the best way to get hired. We will find 10 right professionals in top companies who can forward/refer your resume in their companies. </p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your resume is referred to the recruiters.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referer assures the recruiter that you are a suitable candidate for the job.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referrer may help you to prepare for the job.</p>
+     
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">50 Job applications</h4>
+            </div>
+            <div class="timeline-body">
+    <p>We understand that finding jobs and job applications are tough and time consuming processes. We made it more simpler. We will apply for your desired jobs on our behalf. We know where to find the right job for you. Our experts will find the right jobs for you and apply on your behalf, to save your time.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;Our experts will show the right for you </p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;On your approval, we will apply jobs for you.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;More job applications, more the chances for you to get a job.</p>
+     
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">2 Mock Interviews</h4>
+            </div>
+            <div class="timeline-body">
+    <p>The biggest reason of a failed interview is that the candidate does not know what the interviewer is looking into the candidate. Many times a candidate thinks that I answered all question correctly, still the inerviewer reject him/her. It is because you failed to show what the interviewer was looking for. If you have an interview in company X, we will try to find out a company insider from company X or someone who worked in company X to take your mock interview. Your mock interview will help you to focus on the skills that a company is looking into you.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;2 mock interview sessions</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;We will find your mock interview advisors from your target company.</p>
+     <p><i class="fa fa-hand-o-right"></i>&nbsp;Mock interview is the best way to increase your chances to get hired in your dream company.</p>
+     
             </div>
           </div>
         </li>
     </ul>
+</div>
+
+<hr/>
+<div class="row">
+  
 </div>
 
 </div>

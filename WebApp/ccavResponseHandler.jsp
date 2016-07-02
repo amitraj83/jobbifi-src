@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-		String workingKey = "E70DC793E16ED214E4DAC189B85DB7BC";		//32 Bit Alphanumeric Working Key should be entered here so that data can be decrypted.
+		String workingKey = "E70DC793E16ED214E4DAC189B85DB7BC";		//Put in the Working Key provided by CCAVENUES
 		String encResp= request.getParameter("encResp");
 		AesCryptUtil aesUtil=new AesCryptUtil(workingKey);
 		String decResp = aesUtil.decrypt(encResp);

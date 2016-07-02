@@ -11,8 +11,10 @@
 </head>
 <body>
 	<%
-	 String accessCode= "AVFR65DF66AW11RFWA";		//Put in the Access Code in quotes provided by CCAVENUES.
-	 String workingKey = "E70DC793E16ED214E4DAC189B85DB7BC";    //Put in the 32 Bit Working Key provided by CCAVENUES.  
+	 String merchantId = request.getParameter("merchant_id");   
+	 String accessCode = "AVFR65DF66AW11RFWA";	// Put in the Access Code provided by CCAVENUES
+	 String workingKey = "E70DC793E16ED214E4DAC189B85DB7BC";    // Put in the Working Key provided by CCAVENUES								 
+	                                                            
 	 Enumeration enumeration=request.getParameterNames();
 	 String ccaRequest="", pname="", pvalue="";
 	 while(enumeration.hasMoreElements()) {
@@ -23,12 +25,21 @@
 	 AesCryptUtil aesUtil=new AesCryptUtil(workingKey);
 	 String encRequest = aesUtil.encrypt(ccaRequest);
 	%>
-	<form id="nonseamless" method="post" name="redirect" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction"/> 
-	<!-- <form id="nonseamless" method="post" name="redirect" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction"/> -->
-		<input type="hidden" id="encRequest" name="encRequest" value="<%= encRequest %>">
-		<input type="hidden" name="access_code" id="access_code" value="<%= accessCode %>">
-		<script language='javascript'>document.redirect.submit();</script>
-	</form>
+	<center>
+		<br><br>
+      	<!-- width required mininmum 482px -->
+       	<iframe  width="482" height="500" scrolling="No" frameborder="0"  id="paymentFrame" src="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=<%= merchantId %>&encRequest=<%=  encRequest %>&access_code=<%= accessCode %>">
+	  	</iframe>
+	</center>
 	
- </body> 
+	<script type="text/javascript">
+    	$(document).ready(function(){
+    		$('iframe#paymentFrame').load(function() {
+				 window.addEventListener('message', function(e) {
+			    	 $("#paymentFrame").css("height",e.data['newHeight']+'px'); 	 
+			 	 }, false);
+			 }); 
+    	});
+	</script>
+</body> 
 </html>

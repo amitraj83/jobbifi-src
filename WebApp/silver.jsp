@@ -30,6 +30,7 @@
 <body>
 <%@ include file="/WEB-INF/pages/common/header.jsp" %>
 
+
 <div id="carousel-wrapper" style="background-image: url(images/packages.jpg); background-size: cover;">
 
 </div>
@@ -39,7 +40,17 @@
     <div class="page-header">
     <div class="row">
       <div class="col-md-6"><h1  style="margin-top: 0px;">Silver Package <span class="label label-default"><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;2000</span></h1></div>
-      <div class="col-md-6"  style="margin-top: -10px;"><button type="button" class="btn btn-primary pull-right">Buy Now</button></div>
+      <div class="col-md-6"  style="margin-top: -10px;">
+
+      <sec:authorize access="!isAuthenticated()">  
+      <button type="button" class="btn btn-primary pull-right" onclick="javascript:showLoginBox();">Login to Buy</button>
+      </sec:authorize>
+                
+      <sec:authorize access="isAuthenticated()">
+      <button type="button" class="btn btn-primary pull-right" id="silverBuyBotton">Buy Now</button>
+      </sec:authorize>
+
+      </div>
     </div>
         
 		<p>This package includes following:</p>
@@ -135,6 +146,26 @@
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
 <script type="text/javascript">
+$("#silverBuyBotton").on("click", function(event){
+  event.preventDefault();
+  alert("Working");
+
+  $('<form>', {
+      "id": "customerData",
+      "name":"customerData",
+      "method": "post",
+      "html": '<input type="text" name="tid" id="tid" readonly />'+
+              '<input type="text" name="merchant_id" id="merchant_id" value="101257" />'+
+              '<input type="text" name="order_id" value="121212" />'+
+              '<input type="text" name="currency" value="INR" />  '+
+              '<input type="text" name="amount" value="2000.00" />'+
+              '<input type="text" name="redirect_url" value="ccavResponseHandler.jsp" />'+
+              '<input type="text" name="cancel_url" value="ccavResponseHandler.jsp" />'+
+              '<input type="text" name="language" id="language" value="EN" />',
+      "action": 'ccavRequestHandler.jsp'
+  }).appendTo(document.body).submit();
+
+});
 </script>
 </body>
 </html>

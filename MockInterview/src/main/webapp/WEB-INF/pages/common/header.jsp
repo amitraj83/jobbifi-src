@@ -462,7 +462,7 @@ function handleClick(cb) {
 							data-target="#mysignupModal">Sign Up</a></li>	-->
 						<li class="scroll"><a href="#navigation" data-toggle="modal"
 							data-target="#myModal">Login</a></li>
-						<li ><a  href="http://jobbifi.com:9982/">Blog</a></li>
+						<li ><a  href="http://blog.jobbifi.com">Blog</a></li>
 						<li class="scroll"><a class="scroll" href="#about-us">Advisor</a></li>
 						<li class="scroll"><a class="scroll" href="#candidate-workflow">Candidate</a></li>
 						

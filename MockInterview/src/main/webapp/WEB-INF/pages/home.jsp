@@ -359,7 +359,7 @@
 								<p class="price">
 									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
 										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>2000</span>
-									monthly
+									
 								</p>
 								<ul>
 									<li>Resume writing</li>
@@ -372,7 +372,7 @@
 								<a href="#" class="btn-signup">Signup Now</a>
 								</sec:authorize>
 								<sec:authorize access="isAuthenticated()">
-								<a href="silver.jsp" class="btn-signup">Buy Now</a>
+								<a href="silver.jsp" class="btn-signup" >Buy Now</a>
 								</sec:authorize>
 							</div>
 						</div>
@@ -384,7 +384,7 @@
 								<p class="price">
 									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
 										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>3000</span>
-									monthly
+									
 								</p>
 								<ul>
 									<li>Resume writing</li>
@@ -410,7 +410,7 @@
 								<p class="price">
 									<span class="dollar-icon"><i class="fa fa-inr fa-lg"
 										style="vertical-align: -31%; padding-right: 5px;"></i></span><span>5000</span>
-									monthly
+									
 								</p>
 								<ul>
 									<li>Resume writing</li>
@@ -599,6 +599,7 @@
 	
 		$(document).ready(function() {
 
+			
 			$("#front-search-key").focus();
 
 

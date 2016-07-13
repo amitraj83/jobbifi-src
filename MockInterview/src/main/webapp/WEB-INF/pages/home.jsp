@@ -9,7 +9,7 @@
 <meta name="robots" content="index, follow">
 <meta name="revisit-after" content="7 days">
 <meta name="language" content="english">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 <title>Free Online Career Consultants / Advisors for Job Seekers, Interview Guidance - Jobbifi</title>
@@ -364,16 +364,10 @@
 								<ul>
 									<li>Resume writing</li>
 									<li>1000 Resume flash</li>
-									<li>10 referrals</li>
 									<li>50 job applications</li>
 									<li>2 mock interview</li>
 								</ul>
-								<sec:authorize access="!isAuthenticated()">
-								<a href="#" class="btn-signup">Signup Now</a>
-								</sec:authorize>
-								<sec:authorize access="isAuthenticated()">
 								<a href="silver.jsp" class="btn-signup" >Buy Now</a>
-								</sec:authorize>
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -389,17 +383,11 @@
 								<ul>
 									<li>Resume writing</li>
 									<li>2000 Resume flash</li>
-									<li>20 referrals</li>
 									<li>100 job applications</li>
 									<li>3 mock interview</li>
 								</ul>
-								<sec:authorize access="!isAuthenticated()">
-								<a href="#" class="btn-signup">Signup Now</a>
-								</sec:authorize>
-								<sec:authorize access="isAuthenticated()">
 								<a href="gold.jsp" class="btn-signup">Buy Now</a>
-								</sec:authorize>
-
+							
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -415,16 +403,10 @@
 								<ul>
 									<li>Resume writing</li>
 									<li>5000 Resume flash</li>
-									<li>30 referrals</li>
 									<li>150 job applications</li>
 									<li>4 mock interview</li>
 								</ul>
-								<sec:authorize access="!isAuthenticated()">
-								<a href="#" class="btn-signup">Signup Now</a>
-								</sec:authorize>
-								<sec:authorize access="isAuthenticated()">
 								<a href="platinum.jsp" class="btn-signup">Buy Now</a>
-								</sec:authorize>
 							</div>
 						</div>
 						<div class="col-md-1"></div>

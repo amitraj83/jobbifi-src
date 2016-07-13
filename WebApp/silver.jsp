@@ -75,6 +75,20 @@
 } 	
   
 </style>
+<script type="text/javascript">
+	
+	window.onload = function() {
+		var d = new Date().getTime();
+		document.getElementById("tid").value = d;
+		document.getElementById("tid2").value = d;
+		document.getElementById("orderid1").value = "Silver-"+d;
+		document.getElementById("orderid2").value = "Silver-"+d;
+	};
+
+	function getOrderID(){
+		return new Date().getTime();
+	}
+</script>
 
 </head>
 <body>
@@ -95,7 +109,7 @@
 				<div class="item active">
 					<div class="carousel-caption container text-center" >
 						<h2 class="text-center">
-							OUR SERVICES SUIT EVERYONE<br /> <span id="search-form-title-changer">BUY OUR PACKAGES ACCORDING TO YOUR EXPERIENCE AND REQUIREMENTS</span>&nbsp;
+							OUR SERVICES SUIT EVERYONE<br /> <span id="search-form-title-changer">BUY OUR PACKAGES FOR NEXT STEP IN YOUR CAREER</span>&nbsp;
 						</h2>
 						<br />
 
@@ -136,7 +150,7 @@
 				<input type="hidden" name="merchant_id" id="merchant_id" value="101257" style="display:none"/> 
 			
 			
-				<input type="hidden" name="order_id" value="123456" style="display:none"/>
+				<input type="hidden" name="order_id"  id="orderid1" style="display:none"/>
 			
 			
 				<input type="hidden" name="currency" value="INR" style="display:none" />
@@ -158,63 +172,63 @@
 				<input type="hidden" name="language" id="language" value="EN" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_name" value="Peter" style="display:none" />
+				<input type="hidden" name="billing_name" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_address"
-					value="Santacruz" style="display:none" style="display:none" />
+					value="" style="display:none" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="billing_city" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_state" value="MH" style="display:none" />
+				<input type="hidden" name="billing_state" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_zip" value="400054" style="display:none" />
+				<input type="hidden" name="billing_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="billing_tel" value="0229874789" style="display:none" />
+				<input type="hidden" name="billing_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="billing_email"
-					value="testing@domain.com" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_name" value="Sam" style="display:none" />
+				<input type="hidden" name="delivery_name" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="delivery_address"
-					value="Vile Parle" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="delivery_city" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_state" value="Maharashtra" style="display:none" />
+				<input type="hidden" name="delivery_state" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_zip" value="400038" style="display:none" />
+				<input type="hidden" name="delivery_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="delivery_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_tel" value="0221234321" style="display:none" />
+				<input type="hidden" name="delivery_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="merchant_param1"
-					value="Silver" style="display:none" />
+					value="Jobbifi - Silver Package" style="display:none" />
 			
 			
 				<input type="hidden" name="merchant_param2"
@@ -233,10 +247,10 @@
 					value="additional Info." style="display:none" />
 			
 			
-				<select name="integration_type" style="display:none">
+				<!-- <select name="integration_type" style="display:none">
 						<option value="iframe_normal">iframe_normal</option>
 				</select>
-			
+							 -->
 			
 				<input type="hidden" name="promo_code" value=""style="display:none" />
 			
@@ -244,7 +258,7 @@
 				<input type="hidden" name="customer_identifier" value=""style="display:none" />
 			
 			
-				<button type="submit" class="btn btn-primary pull-right" style="margin-top: 0;">Buy Now</button>
+				<button type="submit" class="btn btn-primary" style="margin-top: 0;">Buy Now</button>
 			
 				</table>
 			</form>
@@ -290,21 +304,21 @@
 			    </div>
 			  </div>
 			</li>
-			<li class="timeline-inverted">
+			<!-- <li class="timeline-inverted">
 			  <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
 			  <div class="timeline-panel">
 			    <div class="timeline-heading">
 			      <h4 class="timeline-title">10 Referrals</h4>
 			    </div>
 			    <div class="timeline-body">
-		    <p>Referral is one of the best way to get hired. We will find 10 right professionals in top companies who can forward/refer your resume in their companies. </p>
-		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your resume is referred to the recruiters.</p>
-		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referer assures the recruiter that you are a suitable candidate for the job.</p>
-		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referrer may help you to prepare for the job.</p>
-		     
+					    <p>Referral is one of the best way to get hired. We will find 10 right professionals in top companies who can forward/refer your resume in their companies. </p>
+					     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your resume is referred to the recruiters.</p>
+					     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referer assures the recruiter that you are a suitable candidate for the job.</p>
+					     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referrer may help you to prepare for the job.</p>
+					     
 			    </div>
 			  </div>
-			</li>
+			</li> -->
 			<li class="timeline-inverted">
 			  <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
 			  <div class="timeline-panel">
@@ -312,7 +326,7 @@
 			      <h4 class="timeline-title">50 Job applications</h4>
 			    </div>
 			    <div class="timeline-body">
-		    <p>We understand that finding jobs and job applications are tough and time consuming processes. We made it more simpler. We will apply for your desired jobs on our behalf. We know where to find the right job for you. Our experts will find the right jobs for you and apply on your behalf, to save your time.</p>
+		    <p>We understand that finding jobs and job applications are tough and time consuming processes. We made it more simpler. Jobbifi can find relevant jobs for you and also apply on your behalf - you dont need to do anything. We can apply almost 50 jobs for you. So, you dont need to invest time in applying jobs. The result would be that you will get recruiters call. We expect that out of 50 jobs that we apply, you will receive at least 30 call backs. Out of 30 call backs, at least 10 interviews will be scheduled.</p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Our experts will show the right for you </p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;On your approval, we will apply jobs for you.</p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;More job applications, more the chances for you to get a job.</p>
@@ -343,21 +357,21 @@
                   
 		  <div class="pull-right">
 		  
-			<sec:authorize access="!isAuthenticated()">  
-		        <button type="button" class="btn btn-primary pull-right" onclick="javascript:showLoginBox();" style="margin-top: 0;">Login to Buy</button>
+				<sec:authorize access="!isAuthenticated()">  
+		        	<button type="button" class="btn btn-primary pull-right" onclick="javascript:showLoginBox();" style="margin-top: 0;">Login to Buy</button>
 		        </sec:authorize>
 				
 		        <sec:authorize access="isAuthenticated()">
 		      
 		        <form method="post" name="customerData" action="ccavRequestHandler.jsp">
 			
-				<input type="hidden" name="tid" id="tid" readonly style="display:none"/>
+				<input type="hidden" name="tid" id="tid2"  readonly style="display:none"/>
 			
 			
 				<input type="hidden" name="merchant_id" id="merchant_id" value="101257" style="display:none"/> 
 			
 			
-				<input type="hidden" name="order_id" value="123456" style="display:none"/>
+				<input type="hidden" name="order_id" id="orderid2" style="display:none"/>
 			
 			
 				<input type="hidden" name="currency" value="INR" style="display:none" />
@@ -379,63 +393,63 @@
 				<input type="hidden" name="language" id="language" value="EN" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_name" value="Peter" style="display:none" />
+				<input type="hidden" name="billing_name" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_address"
-					value="Santacruz" style="display:none" style="display:none" />
+					value="" style="display:none" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="billing_city" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_state" value="MH" style="display:none" />
+				<input type="hidden" name="billing_state" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_zip" value="400054" style="display:none" />
+				<input type="hidden" name="billing_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="billing_tel" value="0229874789" style="display:none" />
+				<input type="hidden" name="billing_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="billing_email"
-					value="testing@domain.com" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_name" value="Sam" style="display:none" />
+				<input type="hidden" name="delivery_name" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="delivery_address"
-					value="Vile Parle" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="delivery_city" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_state" value="Maharashtra" style="display:none" />
+				<input type="hidden" name="delivery_state" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_zip" value="400038" style="display:none" />
+				<input type="hidden" name="delivery_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="delivery_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_tel" value="0221234321" style="display:none" />
+				<input type="hidden" name="delivery_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="merchant_param1"
-					value="Silver" style="display:none" />
+					value="Jobbifi - Silver Package" style="display:none" />
 			
 			
 				<input type="hidden" name="merchant_param2"
@@ -454,10 +468,10 @@
 					value="additional Info." style="display:none" />
 			
 			
-				<select name="integration_type" style="display:none">
+				<!-- <select name="integration_type" style="display:none">
 						<option value="iframe_normal">iframe_normal</option>
 				</select>
-			
+							 -->
 			
 				<input type="hidden" name="promo_code" value=""style="display:none" />
 			
@@ -465,7 +479,7 @@
 				<input type="hidden" name="customer_identifier" value=""style="display:none" />
 			
 			
-				<button type="submit" class="btn btn-primary pull-right" style="margin-top: 0;">Buy Now</button>
+				<button type="submit" class="btn btn-primary" style="margin-top: 0;">Buy Now</button>
 			
 				</table>
 			</form>
@@ -534,15 +548,6 @@
 
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
-<script type="text/javascript">
 
-	window.onload = function() {
-		var d = new Date().getTime();
-		document.getElementById("tid").value = d;
-	};
-
-
-
-</script>
 </body>
 </html>

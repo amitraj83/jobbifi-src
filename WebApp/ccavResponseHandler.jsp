@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-		String workingKey = "E70DC793E16ED214E4DAC189B85DB7BC";		//Put in the Working Key provided by CCAVENUES
+		String workingKey = "E70DC793E16ED214E4DAC189B85DB7BC";		//32 Bit Alphanumeric Working Key should be entered here so that data can be decrypted.
 		String encResp= request.getParameter("encResp");
 		AesCryptUtil aesUtil=new AesCryptUtil(workingKey);
 		String decResp = aesUtil.decrypt(encResp);
@@ -31,21 +31,18 @@
 	%>
 	<center>
 		<font size="4" color="blue"><b>Response Page</b></font>
-		<table border="1">
-			<%
-				Enumeration enumeration = hs.keys();
-				while(enumeration.hasMoreElements()) {
-					pname=""+enumeration.nextElement();
-					pvalue=""+ hs.get(pname);
-			%>
-				<tr>
-					<td><%= pname %> </td>
-					<td> <%= pvalue %> </td>
-				</tr>
-			<%
+				<%
+				String status = hs.get("order_status");
+				if(status == "Success"){
+					%> <p>Your order was successful. Please check your email for the order confirmation.</p><br> Continue to <a href="https://www.jobbifi.com">Jobbifi</a><%
 				}
-		%>
-		</table>
+				else{
+					%> <p>Your order was not successful. Please check your email for the order failure.</p><br> Continue to <a href="https://www.jobbifi.com">Jobbifi</a><%
+				}
+
+				%>
+				
+		
 	</center>
 </body>
 </html>

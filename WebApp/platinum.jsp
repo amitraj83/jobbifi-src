@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/pages/common/css.jsp" %>
-    <title>Job Seekers Package - Silver</title>
+    <title>Job Seekers Package - Platinum</title>
 
 <style type="text/css">
   #navigation.otherview>div.main-nav {
@@ -75,6 +75,15 @@
 } 	
   
 </style>
+<script>
+	window.onload = function() {
+		var d = new Date().getTime();
+		document.getElementById("tid").value = d;
+		document.getElementById("tid2").value = d;
+		document.getElementById("orderid1").value = "Platinum-"+d;
+		document.getElementById("orderid2").value = "Platinum-"+d;
+	};
+</script>
 
 </head>
 <body>
@@ -95,7 +104,7 @@
 				<div class="item active">
 					<div class="carousel-caption container text-center" >
 						<h2 class="text-center">
-							OUR SERVICES SUIT EVERYONE<br /> <span id="search-form-title-changer">BUY OUR PACKAGES ACCORDING TO YOUR EXPERIENCE AND REQUIREMENTS</span>&nbsp;
+							OUR SERVICES SUIT EVERYONE<br /> <span id="search-form-title-changer">BUY OUR PACKAGES FOR NEXT STEP IN YOUR CAREER</span>&nbsp;
 						</h2>
 						<br />
 
@@ -118,7 +127,7 @@
               <div class="panel-heading" style="color: #fff;background-color: #4cae4c;">
                 <div class="row">
                   <div class="col col-xs-6">
-                    <h1 class="panel-title" style="    margin-top: 4px;font-size: 32px;">Silver Package | <i class="fa fa-inr" aria-hidden="true"></i>&nbsp;5000</span></h1>
+                    <h1 class="panel-title" style="    margin-top: 4px;font-size: 32px;">Platinum Package | <i class="fa fa-inr" aria-hidden="true"></i>&nbsp;5000</span></h1>
                   </div>
                   <div class="col col-xs-6 text-right">
                     
@@ -136,7 +145,7 @@
 				<input type="hidden" name="merchant_id" id="merchant_id" value="101257" style="display:none"/> 
 			
 			
-				<input type="hidden" name="order_id" value="123456" style="display:none"/>
+				<input type="hidden" name="order_id" id="orderid1" style="display:none"/>
 			
 			
 				<input type="hidden" name="currency" value="INR" style="display:none" />
@@ -158,63 +167,63 @@
 				<input type="hidden" name="language" id="language" value="EN" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_name" value="Peter" style="display:none" />
+				<input type="hidden" name="billing_name" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_address"
-					value="Santacruz" style="display:none" style="display:none" />
+					value="" style="display:none" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="billing_city" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_state" value="MH" style="display:none" />
+				<input type="hidden" name="billing_state" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_zip" value="400054" style="display:none" />
+				<input type="hidden" name="billing_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="billing_tel" value="0229874789" style="display:none" />
+				<input type="hidden" name="billing_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="billing_email"
-					value="testing@domain.com" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_name" value="Sam" style="display:none" />
+				<input type="hidden" name="delivery_name" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="delivery_address"
-					value="Vile Parle" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="delivery_city" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_state" value="Maharashtra" style="display:none" />
+				<input type="hidden" name="delivery_state" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_zip" value="400038" style="display:none" />
+				<input type="hidden" name="delivery_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="delivery_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_tel" value="0221234321" style="display:none" />
+				<input type="hidden" name="delivery_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="merchant_param1"
-					value="Silver" style="display:none" />
+					value="Jobbifi - Platinum Package" style="display:none" />
 			
 			
 				<input type="hidden" name="merchant_param2"
@@ -233,10 +242,10 @@
 					value="additional Info." style="display:none" />
 			
 			
-				<select name="integration_type" style="display:none">
+				<!-- <select name="integration_type" style="display:none">
 						<option value="iframe_normal">iframe_normal</option>
 				</select>
-			
+							 -->
 			
 				<input type="hidden" name="promo_code" value=""style="display:none" />
 			
@@ -244,7 +253,7 @@
 				<input type="hidden" name="customer_identifier" value=""style="display:none" />
 			
 			
-				<button type="submit" class="btn btn-primary pull-right" style="margin-top: 0;">Buy Now</button>
+				<button type="submit" class="btn btn-primary" style="margin-top: 0;">Buy Now</button>
 			
 				</table>
 			</form>
@@ -278,10 +287,10 @@
 			  <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
 			  <div class="timeline-panel">
 			    <div class="timeline-heading">
-			      <h4 class="timeline-title">1000 Resume flash</h4>
+			      <h4 class="timeline-title">5000 Resume flash</h4>
 			    </div>
 			    <div class="timeline-body">
-				<p>More recruiters see your resume, more chances to get a call back from recruiters. We send your resume to 1000 recruiters in top companies. Once, our network of recruiters receive your resume, your chances of interview call is increased. </p>
+				<p>More recruiters see your resume, more chances to get a call back from recruiters. We send your resume to 5000 recruiters in top companies. Once, our network of recruiters receive your resume, your chances of interview call is increased. </p>
 				<p>You must have experience in :</p>
 				 <p><i class="fa fa-hand-o-right"></i>&nbsp;We send your resume to 1000 recruiters.</p>
 				 <p><i class="fa fa-hand-o-right"></i>&nbsp;Our network of recruiters are notified about your skills.</p>
@@ -290,29 +299,29 @@
 			    </div>
 			  </div>
 			</li>
-			<li class="timeline-inverted">
+			<!-- <li class="timeline-inverted">
 			  <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
 			  <div class="timeline-panel">
 			    <div class="timeline-heading">
 			      <h4 class="timeline-title">10 Referrals</h4>
 			    </div>
 			    <div class="timeline-body">
-		    <p>Referral is one of the best way to get hired. We will find 10 right professionals in top companies who can forward/refer your resume in their companies. </p>
-		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your resume is referred to the recruiters.</p>
-		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referer assures the recruiter that you are a suitable candidate for the job.</p>
-		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referrer may help you to prepare for the job.</p>
-		     
+					    <p>Referral is one of the best way to get hired. We will find 10 right professionals in top companies who can forward/refer your resume in their companies. </p>
+					     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your resume is referred to the recruiters.</p>
+					     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referer assures the recruiter that you are a suitable candidate for the job.</p>
+					     <p><i class="fa fa-hand-o-right"></i>&nbsp;Your referrer may help you to prepare for the job.</p>
+					     
 			    </div>
 			  </div>
-			</li>
+			</li> -->
 			<li class="timeline-inverted">
 			  <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
 			  <div class="timeline-panel">
 			    <div class="timeline-heading">
-			      <h4 class="timeline-title">50 Job applications</h4>
+			      <h4 class="timeline-title">150 Job applications</h4>
 			    </div>
 			    <div class="timeline-body">
-		    <p>We understand that finding jobs and job applications are tough and time consuming processes. We made it more simpler. We will apply for your desired jobs on our behalf. We know where to find the right job for you. Our experts will find the right jobs for you and apply on your behalf, to save your time.</p>
+		    <p>We understand that finding jobs and job applications are tough and time consuming processes. We made it more simpler. Jobbifi can find relevant jobs for you and also apply on your behalf - you dont need to do anything. We can apply almost 150 jobs for you. So, you dont need to invest time in applying jobs. The result would be that you will get recruiters call. We expect that out of 150 jobs that we apply, you will receive at least 80 call backs. Out of 80 call backs, at least 30 interviews will be scheduled.</p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Our experts will show the right for you </p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;On your approval, we will apply jobs for you.</p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;More job applications, more the chances for you to get a job.</p>
@@ -324,11 +333,11 @@
 			  <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
 			  <div class="timeline-panel">
 			    <div class="timeline-heading">
-			      <h4 class="timeline-title">2 Mock Interviews</h4>
+			      <h4 class="timeline-title">4 Mock Interviews</h4>
 			    </div>
 			    <div class="timeline-body">
 		    <p>The biggest reason of a failed interview is that the candidate does not know what the interviewer is looking into the candidate. Many times a candidate thinks that I answered all question correctly, still the inerviewer reject him/her. It is because you failed to show what the interviewer was looking for. If you have an interview in company X, we will try to find out a company insider from company X or someone who worked in company X to take your mock interview. Your mock interview will help you to focus on the skills that a company is looking into you.</p>
-		     <p><i class="fa fa-hand-o-right"></i>&nbsp;2 mock interview sessions</p>
+		     <p><i class="fa fa-hand-o-right"></i>&nbsp;4 mock interview sessions</p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;We will find your mock interview advisors from your target company.</p>
 		     <p><i class="fa fa-hand-o-right"></i>&nbsp;Mock interview is the best way to increase your chances to get hired in your dream company.</p>
 		     
@@ -343,21 +352,21 @@
                   
 		  <div class="pull-right">
 		  
-			<sec:authorize access="!isAuthenticated()">  
-		        <button type="button" class="btn btn-primary pull-right" onclick="javascript:showLoginBox();" style="margin-top: 0;">Login to Buy</button>
+				<sec:authorize access="!isAuthenticated()">  
+		        	<button type="button" class="btn btn-primary pull-right" onclick="javascript:showLoginBox();" style="margin-top: 0;">Login to Buy</button>
 		        </sec:authorize>
 				
 		        <sec:authorize access="isAuthenticated()">
 		      
 		        <form method="post" name="customerData" action="ccavRequestHandler.jsp">
 			
-				<input type="hidden" name="tid" id="tid" readonly style="display:none"/>
+				<input type="hidden" name="tid" id="tid2" readonly style="display:none"/>
 			
 			
 				<input type="hidden" name="merchant_id" id="merchant_id" value="101257" style="display:none"/> 
 			
 			
-				<input type="hidden" name="order_id" value="123456" style="display:none"/>
+				<input type="hidden" name="order_id" id="orderid2" style="display:none"/>
 			
 			
 				<input type="hidden" name="currency" value="INR" style="display:none" />
@@ -379,63 +388,63 @@
 				<input type="hidden" name="language" id="language" value="EN" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_name" value="Peter" style="display:none" />
+				<input type="hidden" name="billing_name" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_address"
-					value="Santacruz" style="display:none" style="display:none" />
+					value="" style="display:none" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="billing_city" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_state" value="MH" style="display:none" />
+				<input type="hidden" name="billing_state" value="" style="display:none" />
 			
 			
-				<input type="hidden" name="billing_zip" value="400054" style="display:none" />
+				<input type="hidden" name="billing_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="billing_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="billing_tel" value="0229874789" style="display:none" />
+				<input type="hidden" name="billing_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="billing_email"
-					value="testing@domain.com" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_name" value="Sam" style="display:none" />
+				<input type="hidden" name="delivery_name" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="delivery_address"
-					value="Vile Parle" style="display:none" />
+					value="" style="display:none" />
 			
 			
-				<input type="hidden" name="delivery_city" value="Mumbai" style="display:none" />
+				<input type="hidden" name="delivery_city" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_state" value="Maharashtra" style="display:none" />
+				<input type="hidden" name="delivery_state" value="" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_zip" value="400038" style="display:none" />
+				<input type="hidden" name="delivery_zip" value="" style="display:none" />
 			
 			
 				<input type="hidden" name="delivery_country" value="India" style="display:none" />
 				
 			
 			
-				<input type="hidden" name="delivery_tel" value="0221234321" style="display:none" />
+				<input type="hidden" name="delivery_tel" value="" style="display:none" />
 				
 			
 			
 				<input type="hidden" name="merchant_param1"
-					value="Silver" style="display:none" />
+					value="Jobbifi - Platinum Package" style="display:none" />
 			
 			
 				<input type="hidden" name="merchant_param2"
@@ -454,10 +463,10 @@
 					value="additional Info." style="display:none" />
 			
 			
-				<select name="integration_type" style="display:none">
+				<!-- <select name="integration_type" style="display:none">
 						<option value="iframe_normal">iframe_normal</option>
 				</select>
-			
+							 -->
 			
 				<input type="hidden" name="promo_code" value=""style="display:none" />
 			
@@ -465,7 +474,7 @@
 				<input type="hidden" name="customer_identifier" value=""style="display:none" />
 			
 			
-				<button type="submit" class="btn btn-primary pull-right" style="margin-top: 0;">Buy Now</button>
+				<button type="submit" class="btn btn-primary" style="margin-top: 0;">Buy Now</button>
 			
 				</table>
 			</form>
@@ -495,9 +504,9 @@
 			    <i class="fa fa-gg" aria-hidden="true"></i>
 			</div>
 			<div class="info">
-			    <h4 class="text-center">Gold</h4>
-			    <p>The most famous package that suits everyone's need whether you are experienced or fresher. You will have sufficient mock interviews, CV iterations, CV flashes that you will definitely succeed in your career. You will have amazingly positive results with this package.</p>
-			    <a href="gold.jsp" class="btn"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Checkout</a>
+			    <h4 class="text-center">Silver</h4>
+			    <p>The best package for freshers and to test our services. Try this package to make sure that we only work for you to get you a job. It gives you the best chance to accelerate your job hunt and analyze your strength and weaknesses.</p>
+			    <a href="silver.jsp" class="btn"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Checkout</a>
 			</div>
 		    </div>
 		</div>
@@ -508,9 +517,9 @@
 			    <span class="fa fa-2x fa-css3" ></span>
 			</div>
 			<div class="info">
-			    <h4 class="text-center">Platinum</h4>
-			    <p>This package provides you the ultimate service which drastically increases your chances to land in your dream job. You will have unlimited CV iterations, many many CV flashes, many job applications and surprisingly enough mock interview and personal consultations.</p>
-			    <a href="platinum.jsp" class="btn"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Checkout</a>
+			    <h4 class="text-center">Gold</h4>
+			    <p>The most famous package that suits everyone's need whether you are experienced or fresher. You will have sufficient mock interviews, CV iterations, CV flashes that you will definitely succeed in your career. You will have amazingly positive results with this package.</p>
+			    <a href="gold.jsp" class="btn"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Checkout</a>
 			</div>
 		    </div>
 		</div>
@@ -534,15 +543,6 @@
 
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
 <%@ include file="/WEB-INF/pages/common/js.jsp" %>
-<script type="text/javascript">
 
-	window.onload = function() {
-		var d = new Date().getTime();
-		document.getElementById("tid").value = d;
-	};
-
-
-
-</script>
 </body>
 </html>

@@ -32,7 +32,7 @@
 	<center>
 		<font size="4" color="blue"><b>Response Page</b></font>
 				<%
-				String status = hs.get("order_status");
+				String status = String.valueOf(hs.get("order_status"));
 				if(status == "Success"){
 					%> <p>Your order was successful. Please check your email for the order confirmation.</p><br> Continue to <a href="https://www.jobbifi.com">Jobbifi</a><%
 				}

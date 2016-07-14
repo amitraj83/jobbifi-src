@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-datepicker3.min.css' />">
 <link rel="stylesheet" href="<c:url value='/resources/css/star-rating.css' />">
 <link rel="stylesheet" href="<c:url value='/css/animate.css' />">
-<link rel="stylesheet" href="<c:url value='/css/prettyPhoto.css' />">
+<!-- <link rel="stylesheet" href="<c:url value='/css/prettyPhoto.css' />"> -->
 <link rel="stylesheet" href="<c:url value='/resources/template/css/font-awesome.min.css' />">
 <link rel="stylesheet" href="<c:url value='/css/font.css' />">
 <link rel="stylesheet" href="<c:url value='/resources/template/css/flexslider.css' />">

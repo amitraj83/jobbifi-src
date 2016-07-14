@@ -22,7 +22,7 @@
 <link href="css/animate.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/font.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet">
+<!-- <link href="css/prettyPhoto.css" rel="stylesheet"> -->
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <!--[if lt IE 9]>

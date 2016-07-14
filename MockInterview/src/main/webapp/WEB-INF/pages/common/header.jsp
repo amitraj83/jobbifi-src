@@ -67,7 +67,7 @@
 											class="btn btn-success btn-block lowercase" style="width: 370px;">Login</button>
 										<img id="loginbtnloader" style="display: none;"
 											alt="Processing..."
-											src="<c:url value=" /resources/img/loading.gif " />" />
+											src="<c:url value="/resources/img/loading.gif" />" />
 									</div>
 									<input type="hidden" id="callback" />
 								</form>
@@ -227,7 +227,7 @@
 												<button type="submit" class="btn btn-success btn-block lowercase disabled" id="signupButton">Sign Up</button>
 													<img id="signupbtnloader" style="display: none;"
 													alt="Processing..."
-													src="<c:url value=" /resources/img/loading.gif " />">
+													src="<c:url value="/resources/img/loading.gif" />">
 												
 											</div>
 										</div>
@@ -372,7 +372,7 @@ function handleClick(cb) {
 												<button type="submit" class="btn btn-success btn-block lowercase">Sign Up</button>
 													<img id="signupbtnloader" style="display: none;"
 													alt="Processing..."
-													src="<c:url value=" /resources/img/loading.gif " />">
+													src="<c:url value="/resources/img/loading.gif" />">
 												
 											</div>
 										</div>

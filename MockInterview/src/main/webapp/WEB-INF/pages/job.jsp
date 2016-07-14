@@ -116,7 +116,7 @@
                                     <div class="col-md-offset-2 col-md-8">
                                         <button type="submit" id="newmessage" class="btn btn-default">Send</button>
                                         <img id="contactMeloader" style="display: none;" alt="Processing..."
-                                             src="<c:url value=" /resources/img/loading.gif " />">
+                                             src="<c:url value="/resources/img/loading.gif" />">
                                     </div>
                                 </div>
                             </form>

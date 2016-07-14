@@ -543,16 +543,20 @@
 						data-wow-delay="500ms">
 						<h2>Have a query?</h2>
 
-						<form id="contact-form" class="contact-form" name="contact-form"
-							method="post" action="/support.do">
+						 <form id="contact-form" class="contact-form" name="contact-form"
+							method="post" action=""> 
 							<div class="row">
 								<div class="form-group col-sm-6 name-field">
-									<input type="text" name="name" class="form-control"
+									<input type="text" id="contactName" name="name" class="form-control"
 										required="required" placeholder="Name">
 								</div>
 								<div class="form-group col-sm-6 email-field">
-									<input type="email" name="email" class="form-control"
+									<input type="email" id="contactEmail" name="email" class="form-control"
 										required="required" placeholder="Email Id">
+								</div>
+								<div class="form-group col-sm-12 email-field">
+									<input type="text" id="contactPhone" name="phone" class="form-control"
+										required="required" placeholder="Phone no.">
 								</div>
 								<div class="form-group col-sm-12">
 									<textarea name="message" id="message" required
@@ -560,12 +564,12 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-default">Submit</button>
+								<button type="submit" id="contactFormSubmitButton" class="btn btn-default">Submit</button>
 							</div>
 							<div class="alert alert-success" style="display: none;"
 								role="alert" id="contact-form-submitted-alert">Thanks for
 								your query. We'll get back to you soon!</div>
-						</form>
+						</form> 
 					</div>
 				</div>
 			</div>
@@ -609,7 +613,7 @@
 				$.ajax({
 					type : "POST",
 					url : url,
-					data : $("#contact-form").serialize(),
+					data : "name="+$("#contactName").val()+"&message="+$("#message").val()+"-phone:"+$("#contactPhone").val()+"&email="+$("#contactEmail").val(),
 					success : function(data) {
 						alert(data);
 					}

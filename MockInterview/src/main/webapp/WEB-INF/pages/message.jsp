@@ -381,7 +381,7 @@
             '<input type="hidden" name="refentity" value=""/>'+
             '<div class="row">' +
             '	<div class="col-md-5 pull-right">'+
-            '<img id="loader" style="display: none;" alt="Processing..." src=" /resources/img/loading.gif ">'+
+            '<img id="loader" style="display: none;" alt="Processing..." src="/resources/img/loading.gif">'+
             '<button type="button" onclick="submitForm();" id="sendMessage" class="btn btn-info pull-right">Send Message</button></div>' +
             '</form>'
             '</div>' +

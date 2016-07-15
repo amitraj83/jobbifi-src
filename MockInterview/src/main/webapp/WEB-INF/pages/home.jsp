@@ -3,7 +3,7 @@
 <html>
 <head>
 
-<meta name="description" content="Jobbifi connecting job seekers to experienced professionals and recruiters (advisors) for consulting future career directions, job interviews preparation and guidance @ absolutely free services">
+<meta name="description" content="Jobbifi helps you get a job by connecting you with a company insider, CV preparation, job applications, mock interviews with advisors and career services">
 <meta name="author" content="">
 <meta name="keywords" content="online career consultants, career advisors, interview guidance, job consulting, mock interview practice, job opportunities, career guidance online, free career consultancy, online interview practice">
 <meta name="robots" content="index, follow">
@@ -12,8 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Free Online Career Consultants / Advisors for Job Seekers, Interview Guidance - Jobbifi</title>
+<title>Free job placements services by career advisors and company insiders - Jobbifi</title>
 <meta charset="utf-8" />
+<link rel="publisher" href="https://plus.google.com/+Jobbifi">
 <link rel="canonical" href="https://www.jobbifi.com/">
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/ohover.css' />">
@@ -171,7 +172,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/job_search.png" alt="">
+									src="images/candidate-workflow/job_search.png" alt="Job search">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -187,7 +188,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/advisor.png" alt="">
+									src="images/candidate-workflow/advisor.png" alt="Find your career advisors and company insider to get a job">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -203,7 +204,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/interview.png" alt="">
+									src="images/candidate-workflow/interview.png" alt="Mock interview with company insider to crack job interviews">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -219,7 +220,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="images/candidate-workflow/hire.png" alt="">
+									src="images/candidate-workflow/hire.png" alt="We make sure that you get hired in the right company with right offer">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">

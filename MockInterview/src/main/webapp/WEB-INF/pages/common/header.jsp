@@ -40,14 +40,14 @@
                     </div>     
                     <div style="padding-top:30px" class="panel-body">
 
-                    <div>
+                    <!--<div>
                     	<button class="btn-primary" type="button" onclick="javascript:linkedinLogin();">
 	                    	Login With LinkedIn
                     	</button>
                     	
 					</div>
                     <hr/>
-                    <h5 class="text-center">OR</h5>
+                    <h5 class="text-center">OR</h5> -->
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
                              <form id="loginform" role="form" name="f"
@@ -170,11 +170,11 @@
 
                     <div style="padding-top:30px" class="panel-body">
                         
-                    	<div>
+                    	<!-- <div>
 	                    	<button class="btn-primary" type="button" onclick="javascript:linkedinLogin();">Register With LinkedIn</button>
 						</div>
 	                    <hr/>
-	                    <h4 class="text-center">OR</h4>
+	                    <h4 class="text-center">OR</h4> -->
 	                    
 
                        	<form id="signupform" class="form-horizontal">
